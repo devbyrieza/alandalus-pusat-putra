@@ -17,23 +17,7 @@ const nextConfig: any = {
     scrollRestoration: false,
     optimizePackageImports: ['lucide-react', '@headlessui/react'],
   },
-  // Rewrite khusus untuk subdomain MOSA CUP
-  async rewrites() {
-    return {
-      beforeFiles: [
-        {
-          source: '/',
-          has: [
-            {
-              type: 'host',
-              value: 'mosacup.pesantren-alimam.com',
-            },
-          ],
-          destination: '/mosa_cup.html',
-        },
-      ],
-    };
-  },
+
 };
 
 export default nextConfig;

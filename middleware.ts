@@ -1,12 +1,12 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-// DUMMY MIDDLEWARE
-// Vercel Gateway mem-cache rute middleware lama sehingga mengembalikan 404 jika file ini dihapus.
-// Karenanya, kita berikan middleware kosong ini agar Vercel merespons 200 OK.
 export function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  // MATCHER KOSONG: Memaksa Vercel Gateway mengabaikan file ini untuk seluruh rute.
+  // Ini menghindari bug Vercel Edge Runtime yang selalu memunculkan MIDDLEWARE_INVOCATION_FAILED
+  // saat mengakses halaman depan (root).
+  matcher: ['/bypass-vercel-edge-bug-tidak-akan-pernah-dipanggil'],
 };

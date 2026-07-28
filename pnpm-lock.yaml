@@ -50,6 +50,9 @@ importers:
       ioredis:
         specifier: ^5.10.1
         version: 5.10.1
+      is-odd:
+        specifier: ^3.0.1
+        version: 3.0.1
       jspdf:
         specifier: ^2.5.1
         version: 2.5.2
@@ -1884,6 +1887,14 @@ packages:
   is-fullwidth-code-point@3.0.0:
     resolution: {integrity: sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==}
     engines: {node: '>=8'}
+
+  is-number@6.0.0:
+    resolution: {integrity: sha512-Wu1VHeILBK8KAWJUAiSZQX94GmOE45Rg6/538fKwiloUu21KncEkYGPqob2oSZ5mUT73vLGrHQjKw3KMPwfDzg==}
+    engines: {node: '>=0.10.0'}
+
+  is-odd@3.0.1:
+    resolution: {integrity: sha512-CQpnWPrDwmP1+SMHXZhtLtJv90yiyVfluGsX5iNCVkrhQtU3TQHsUWPG9wkdk9Lgd5yNpAg9jQEo90CBaXgWMA==}
+    engines: {node: '>=4'}
 
   is-property@1.0.2:
     resolution: {integrity: sha512-Ks/IoX00TtClbGQr4TWXemAnktAQvYB7HzcCxDGqEZU6oCmb2INHuOoKxbtR+HFkmYWBKv/dOZtGRiAjDhj92g==}
@@ -4204,6 +4215,12 @@ snapshots:
   is-arrayish@0.3.4: {}
 
   is-fullwidth-code-point@3.0.0: {}
+
+  is-number@6.0.0: {}
+
+  is-odd@3.0.1:
+    dependencies:
+      is-number: 6.0.0
 
   is-property@1.0.2: {}
 

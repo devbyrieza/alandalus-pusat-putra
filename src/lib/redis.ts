@@ -18,3 +18,6 @@ export async function setCache(key: string, data: any, ttlSeconds: number = 3600
 export async function getCache<T>(key: string): Promise<T | null> {
   return null;
 }
+
+export async function invalidateAdminPendaftarCache() { return true; }
+

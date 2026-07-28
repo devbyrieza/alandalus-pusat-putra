@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klasemen & Top Skor MOSA CUP 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fdf5f5',
+                            100: '#fbebeb',
+                            500: '#990000',
+                            600: '#800000',
+                            700: '#6a0000',
+                            900: '#550000',
+                        },
+                        gold: {
+                            400: '#e8d4b3',
+                            500: '#ddc192',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen font-sans selection:bg-brand-500 selection:text-white pb-20">
+
+    <!-- Header -->
+    <header class="bg-brand-900 text-white py-6 px-4 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3 md:gap-4">
+                <img src="/images/logo.png" alt="Logo Al-Imam" class="w-12 h-12 md:w-14 md:h-14 object-contain filter drop-shadow-md">
+                <div class="text-left">
+                    <h1 class="font-display text-2xl md:text-3xl font-extrabold tracking-tight">
+                        MOSA CUP <span class="text-gold-400">SCOREBOARD</span>
+                    </h1>
+                    <p class="text-brand-100 text-xs md:text-sm font-medium">Pesantren Al-Imam Al-Islami 2026</p>
+                </div>
+            </div>
+
+            <!-- Mode Status & Login Button -->
+            <div class="flex items-center gap-3">
+                <div id="mode-badge" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span id="mode-text"><i data-lucide="eye" class="w-4 h-4 inline-block"></i> Mode Penonton (Read-Only)</span>
+                </div>
+
+                <button id="admin-toggle-btn" onclick="toggleAdminMode()" class="bg-gold-500 hover:bg-gold-400 text-brand-900 font-bold text-xs px-4 py-2 rounded-lg shadow transition-all active:scale-95 flex items-center gap-1.5">
+                    <span id="admin-btn-icon"><i data-lucide="key" class="w-4 h-4 inline-block"></i></span> <span id="admin-btn-text">Login Panitia</span>
+                </button>
+            </div>
+    </header>
+
+    <!-- Public Live Timer -->
+    <div id="live-timer-banner" class="hidden bg-gradient-to-r from-red-600 to-brand-900 text-white shadow-xl sticky top-[72px] md:top-[88px] z-40 border-b border-red-500/50">
+        <div class="max-w-7xl mx-auto px-4 py-2 md:py-2.5 flex items-center justify-between text-sm md:text-base font-bold tracking-wider">
+            <div class="flex items-center gap-2 md:gap-3 max-w-[50%] md:max-w-[70%]">
+                <span class="w-2.5 h-2.5 rounded-full bg-white animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)] flex-shrink-0"></span>
+                <span id="live-timer-match-label" class="text-[10px] md:text-sm truncate">LIVE MATCH</span>
+            </div>
+            <div class="flex flex-col md:flex-row items-end md:items-center gap-0 md:gap-4">
+                <span id="live-timer-period" class="text-[10px] md:text-xs text-red-200 uppercase tracking-widest">Babak 1</span>
+                <span id="live-timer-clock" class="text-xl md:text-3xl font-black font-display tracking-widest tabular-nums leading-none">00:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Status Banner (shown when logged in) -->
+    <div id="admin-banner" class="hidden bg-amber-400 text-brand-900 flex-col border-b border-amber-500 shadow-inner w-full">
+        <div class="px-4 py-2 text-[10px] md:text-xs font-bold text-center flex items-center justify-center gap-2 border-b border-amber-500/30">
+            <span><i data-lucide="unlock" class="w-4 h-4 inline-block"></i> MODE PANITIA AKTIF &bull; Bisa input skor & timer.</span>
+            <button onclick="logoutAdmin()" class="underline text-brand-900 font-extrabold hover:text-black ml-2">[ Keluar Admin ]</button>
+        </div>
+        
+        <!-- Admin Timer Controls -->
+        <div class="px-2 md:px-4 py-3 bg-amber-300 flex flex-wrap items-center justify-center gap-2 md:gap-4 w-full relative z-50">
+            <div class="text-[10px] md:text-xs font-bold border-r border-amber-500 pr-2 mr-1">TIMER:</div>
+            
+            <select id="admin-timer-match" onchange="syncTimerState()" class="text-xs md:text-sm font-bold bg-white border border-amber-500 rounded px-2 py-1.5 md:py-2 outline-none max-w-[140px] md:max-w-[200px] truncate">
+                <option value="">-- Pilih Match --</option>
+            </select>
+            
+            <select id="admin-timer-period" onchange="syncTimerState()" class="text-xs md:text-sm font-bold bg-white border border-amber-500 rounded px-2 py-1.5 md:py-2 outline-none">
+                <option value="Babak 1">Babak 1</option>
+                <option value="Istirahat">Jeda Istirahat</option>
+                <option value="Babak 2">Babak 2</option>
+                <option value="Adu Penalti">Adu Penalti</option>
+            </select>
+            
+            <div class="flex items-center gap-1 md:gap-2 bg-white rounded-lg p-1 border border-amber-500 shadow-sm">
+                <button id="btn-timer-toggle" type="button" onclick="toggleTimer()" class="bg-brand-600 text-white hover:bg-brand-700 px-3 md:px-5 py-1.5 md:py-2 rounded font-bold text-xs md:text-sm flex items-center gap-1.5 transition-colors">
+                    <i data-lucide="play" class="w-3 h-3 md:w-4 md:h-4"></i> Mulai
+                </button>
+                <button type="button" onclick="resetTimer()" class="bg-slate-200 text-slate-700 hover:bg-slate-300 px-2 md:px-3 py-1.5 md:py-2 rounded font-bold text-xs md:text-sm transition-colors">Reset</button>
+            </div>
+            
+            <div class="ml-1 md:ml-2 bg-brand-900 text-white font-black font-display text-lg md:text-2xl px-3 md:px-4 py-1 rounded tabular-nums" id="admin-timer-display">
+                00:00
+            </div>
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Left Column: Matches -->
+        <div class="lg:col-span-5 space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 md:p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2 class="font-display text-2xl font-bold text-gray-900">Jadwal & Hasil Laga</h2>
+                        <p class="text-xs text-gray-500 mt-0.5" id="match-subtitle">Hasil pertandingan langsung dari lapangan</p>
+                    </div>
+                    <button id="reset-btn" onclick="resetData()" class="hidden text-xs bg-red-50 text-red-600 px-3 py-1.5 rounded-lg font-semibold hover:bg-red-100 transition-colors">Reset Data</button>
+                </div>
+                
+                <form id="scoreForm" class="space-y-6">
+                    <!-- Day 1 -->
+                    <div>
+                        <h3 class="text-sm font-bold text-white bg-brand-700 inline-block px-3 py-1 rounded-md mb-3">Hari 1 (Rabu, 22 Juli)</h3>
+                        <div class="space-y-3" id="day1-matches"></div>
+                    </div>
+                    <!-- Day 2 -->
+                    <div>
+                        <h3 class="text-sm font-bold text-white bg-brand-700 inline-block px-3 py-1 rounded-md mb-3">Hari 2 (Kamis, 23 Juli)</h3>
+                        <div class="space-y-3" id="day2-matches"></div>
+                    </div>
+                    <!-- Day 3 -->
+                    <div>
+                        <h3 class="text-sm font-bold text-white bg-brand-700 inline-block px-3 py-1 rounded-md mb-3">Hari 3 (Jum'at, 24 Juli)</h3>
+                        <div class="space-y-3" id="day3-matches"></div>
+                    </div>
+                    <!-- Day 4 (Finals & Super Match) -->
+                    <div>
+                        <h3 class="text-sm font-bold text-brand-900 bg-amber-400 inline-block px-3 py-1 rounded-md mb-3">Hari 4 - Final & Super Match (Sabtu, 25 Juli)</h3>
+                        <div class="space-y-3" id="day4-matches"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Right Column: Standings & Top Scorer -->
+        <div class="lg:col-span-7 space-y-8">
+            <!-- Standings Table -->
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+                <div class="bg-gradient-to-r from-gray-900 to-gray-800 p-5 md:p-6 border-b border-gray-700 flex justify-between items-center">
+                    <h2 class="font-display text-2xl font-bold text-white tracking-wide">KLASEMEN SEMENTARA</h2>
+                    <span class="text-xs bg-red-600 text-white px-3 py-1.5 rounded-full font-bold tracking-wider flex items-center gap-2 shadow-[0_0_15px_rgba(220,38,38,0.5)] border border-red-500">
+                        <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>LIVE
+                    </span>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left">
+                        <thead class="text-xs text-gray-500 uppercase bg-gray-50 border-b border-gray-200">
+                            <tr>
+                                <th scope="col" class="px-4 py-3 text-center w-10">Pos</th>
+                                <th scope="col" class="px-4 py-3">Tim</th>
+                                <th scope="col" class="px-2 py-3 text-center" title="Main (Pertandingan)">MAIN</th>
+                                <th scope="col" class="px-2 py-3 text-center text-green-600" title="Menang">M</th>
+                                <th scope="col" class="px-2 py-3 text-center text-gray-500" title="Seri">S</th>
+                                <th scope="col" class="px-2 py-3 text-center text-red-500" title="Kalah">K</th>
+                                <th scope="col" class="px-2 py-3 text-center" title="Gol Memasukkan">GM</th>
+                                <th scope="col" class="px-2 py-3 text-center" title="Gol Kemasukan">GK</th>
+                                <th scope="col" class="px-2 py-3 text-center font-bold" title="Selisih Gol">SG</th>
+                                <th scope="col" class="px-4 py-3 text-center font-black text-brand-900 text-base" title="Poin">POIN</th>
+                            </tr>
+                        </thead>
+                        <tbody id="standings-body" class="divide-y divide-gray-100">
+                            <!-- Rows injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="p-4 bg-gray-50 text-xs text-gray-600 space-y-3 border-t border-gray-200">
+                    <div class="space-y-1.5">
+                        <div class="font-bold text-brand-900 mb-1 flex items-center gap-1.5">
+                            <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            INFO & PERATURAN TURNAMEN:
+                        </div>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                            <li><strong>Durasi Laga (Fase Grup & Laga Bintang):</strong> 2 x 5 Menit.</li>
+                            <li><strong>Durasi Laga (Grand Final & Lawan Asatidzah):</strong> 2 x 7 Menit.</li>
+                            <li><strong>Menang Waktu Normal:</strong> 3 Poin</li>
+                            <li><strong>Menang Adu Penalti:</strong> 2 Poin</li>
+                            <li><strong>Kalah Adu Penalti:</strong> 1 Poin</li>
+                            <li><strong>Kalah Waktu Normal:</strong> 0 Poin</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="space-y-1.5 pt-3 border-t border-gray-200">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-green-100 border border-green-400"></div>
+                            <span>Peringkat 1 & 2 : Lolos ke <strong>GRAND FINAL</strong></span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-blue-100 border border-blue-300"></div>
+                            <span>Peringkat 3 & 4 : Perebutan <strong>JUARA 3</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Scorer Section -->
+            <div class="bg-white rounded-2xl shadow-xl border border-brand-100 overflow-hidden">
+                <div class="bg-gradient-to-r from-brand-900 to-brand-700 p-5 md:p-6 border-b border-brand-800 flex justify-between items-center">
+                    <h2 class="font-display text-2xl font-bold text-white tracking-wide">TOP SCORER</h2>
+                    <span class="text-xs bg-white/10 text-brand-100 px-3 py-1 rounded-full font-semibold">MOSA CUP 2026</span>
+                </div>
+                
+                <div id="top-scorer-input-box" class="hidden p-5 md:p-6 border-b border-gray-100 bg-brand-50/30">
+                    <h3 class="text-sm font-bold text-gray-700 mb-3">Catat Gol Baru (Khusus Panitia):</h3>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <select id="ts-team" class="border-2 border-gray-200 rounded-lg p-2.5 flex-1 bg-white outline-none focus:border-brand-500 font-medium" onchange="updatePlayerDropdown()">
+                            <option value="">-- Pilih Tim --</option>
+                            <option value="Badar">Badar</option>
+                            <option value="Uhud">Uhud</option>
+                            <option value="Khandaq">Khandaq</option>
+                            <option value="Khaibar">Khaibar</option>
+                            <option value="Tabuk">Tabuk</option>
+                        </select>
+                        <select id="ts-player" class="border-2 border-gray-200 rounded-lg p-2.5 flex-1 bg-white outline-none focus:border-brand-500 disabled:bg-gray-100 font-medium" disabled>
+                            <option value="">-- Pilih Pemain --</option>
+                        </select>
+                        <button onclick="addGoal()" type="button" class="bg-brand-600 text-white font-bold py-2.5 px-6 rounded-lg hover:bg-brand-700 transition-colors shadow-md active:scale-95 whitespace-nowrap">
+                            + Catat Gol
+                        </button>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto max-h-96 overflow-y-auto">
+                    <table class="w-full text-sm text-left">
+                        <thead class="text-xs text-gray-500 uppercase bg-gray-50 border-b border-gray-200 sticky top-0">
+                            <tr>
+                                <th class="px-4 py-3 w-10 text-center">No</th>
+                                <th class="px-4 py-3">Nama Pemain</th>
+                                <th class="px-4 py-3">Tim</th>
+                                <th class="px-4 py-3 text-center font-bold text-brand-900">Total Gol</th>
+                                <th id="ts-action-header" class="hidden px-4 py-3 w-16 text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="top-scorer-body" class="divide-y divide-gray-100">
+                            <!-- JS injected -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Special Awards Section -->
+            <div class="bg-white rounded-2xl shadow-xl border border-gold-200 overflow-hidden mt-6">
+                <div class="bg-gradient-to-r from-gold-400 to-amber-500 p-4 border-b border-gold-500 flex justify-between items-center">
+                    <h2 class="font-display text-xl font-bold text-brand-900 tracking-wide"><i data-lucide="award" class="w-5 h-5 inline-block"></i> PENGHARGAAN SPESIAL</h2>
+                </div>
+                
+                <div class="p-5 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Best Player -->
+                    <div class="bg-brand-50 border border-brand-200 rounded-xl p-4 text-center relative overflow-hidden group">
+                        <div class="absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform"><i data-lucide="star" class="w-24 h-24 text-brand-900"></i></div>
+                        <div class="text-brand-600 mb-2 flex justify-center"><i data-lucide="star" class="w-8 h-8 fill-brand-600"></i></div>
+                        <h3 class="font-black text-brand-900 text-sm tracking-widest mb-1">BEST PLAYER</h3>
+                        <p class="text-xs text-gray-500 mb-3 border-b border-brand-200/50 pb-2">Pemain Terbaik</p>
+                        
+                        <div id="award-best-player-display" class="font-bold text-lg text-brand-700 min-h-[28px]"><span class="text-gray-400 italic text-sm">Menunggu Final...</span></div>
+                        
+                        <div class="award-admin-box hidden mt-3 relative z-10">
+                            <select id="input-best-player" class="w-full text-xs p-2 border border-brand-300 rounded focus:outline-none focus:border-brand-600 text-center mb-2 font-bold bg-white">
+                                <option value="">-- Pilih Pemain --</option>
+                            </select>
+                            <button onclick="saveAward('best-player')" class="bg-brand-600 text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow w-full hover:bg-brand-700">Simpan</button>
+                        </div>
+                    </div>
+
+                    <!-- Best Goalkeeper -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center relative overflow-hidden group">
+                        <div class="absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform"><i data-lucide="shield" class="w-24 h-24 text-slate-900"></i></div>
+                        <div class="text-slate-600 mb-2 flex justify-center"><i data-lucide="shield" class="w-8 h-8 fill-slate-600"></i></div>
+                        <h3 class="font-black text-slate-900 text-sm tracking-widest mb-1">BEST GOALKEEPER</h3>
+                        <p class="text-xs text-gray-500 mb-3 border-b border-slate-200/50 pb-2">Kiper Terbaik</p>
+                        
+                        <div id="award-best-gk-display" class="font-bold text-lg text-slate-700 min-h-[28px]"><span class="text-gray-400 italic text-sm">Menunggu Final...</span></div>
+                        
+                        <div class="award-admin-box hidden mt-3 relative z-10">
+                            <select id="input-best-gk" class="w-full text-xs p-2 border border-slate-300 rounded focus:outline-none focus:border-slate-600 text-center mb-2 font-bold bg-white">
+                                <option value="">-- Pilih Kiper --</option>
+                            </select>
+                            <button onclick="saveAward('best-gk')" class="bg-slate-600 text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow w-full hover:bg-slate-700">Simpan</button>
+                        </div>
+                    </div>
+
+                    <!-- Best Young Player -->
+                    <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-4 text-center relative overflow-hidden group">
+                        <div class="absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform"><i data-lucide="zap" class="w-24 h-24 text-indigo-900"></i></div>
+                        <div class="text-indigo-600 mb-2 flex justify-center"><i data-lucide="zap" class="w-8 h-8 fill-indigo-600"></i></div>
+                        <h3 class="font-black text-indigo-900 text-sm tracking-widest mb-1">BEST YOUNG PLAYER</h3>
+                        <p class="text-xs text-gray-500 mb-3 border-b border-indigo-200/50 pb-2">Pemain Muda Terbaik</p>
+                        
+                        <div id="award-best-young-display" class="font-bold text-lg text-indigo-700 min-h-[28px]"><span class="text-gray-400 italic text-sm">Menunggu Final...</span></div>
+                        
+                        <div class="award-admin-box hidden mt-3 relative z-10">
+                            <select id="input-best-young" class="w-full text-xs p-2 border border-indigo-300 rounded focus:outline-none focus:border-indigo-600 text-center mb-2 font-bold bg-white">
+                                <option value="">-- Pilih Pemain --</option>
+                            </select>
+                            <button onclick="saveAward('best-young')" class="bg-indigo-600 text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow w-full hover:bg-indigo-700">Simpan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- All Star Section (Hidden from Public) -->
+            <div id="all-star-section" class="hidden bg-white rounded-2xl shadow-xl border border-blue-200 overflow-hidden mt-6">
+                <div class="bg-gradient-to-r from-blue-900 to-blue-700 p-4 border-b border-blue-800 flex justify-between items-center relative overflow-hidden">
+                    <div class="absolute right-0 top-0 opacity-10 transform translate-x-4 -translate-y-4"><i data-lucide="star" class="w-24 h-24 text-white"></i></div>
+                    <h2 class="font-display text-xl font-bold text-white tracking-wide relative z-10"><i data-lucide="users" class="w-5 h-5 inline-block"></i> AL-IMAM ALL STAR SQUAD</h2>
+                </div>
+                
+                <div class="p-5">
+                    <div id="all-star-admin-controls" class="hidden mb-4 p-4 bg-blue-50 border border-blue-200 rounded-xl">
+                        <h3 class="text-xs font-bold text-blue-900 mb-2">Tambah Pemain ke Skuad:</h3>
+                        <div class="flex gap-2">
+                            <select id="all-star-select" class="flex-1 text-sm p-2 border border-blue-300 rounded focus:outline-none focus:border-blue-600 font-semibold bg-white">
+                                <option value="">-- Pilih Pemain --</option>
+                            </select>
+                            <button onclick="addAllStar()" class="bg-blue-600 text-white font-bold text-sm px-4 py-2 rounded-lg hover:bg-blue-700">Tambah</button>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="all-star-roster">
+                        <!-- JS Rendered -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ABSENSI SECTION (Full Width) -->
+    <section class="max-w-7xl mx-auto px-4 pb-12">
+        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-emerald-800 to-emerald-600 p-5 md:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="font-display text-2xl font-bold text-white tracking-wide"><i data-lucide="clipboard-list" class="w-6 h-6 inline-block"></i> ABSENSI SANTRI</h2>
+                    <p id="santri-count-info" class="hidden text-emerald-100 text-sm mt-1">Total 50 Santri Baru • 5 Tim @ 10 Anak</p>
+                </div>
+                <!-- Day Tabs -->
+                <div class="flex gap-2 flex-wrap">
+                    <button onclick="switchAbsensiDay(1)" id="day-tab-1" class="absensi-tab active-tab px-4 py-2 rounded-xl font-bold text-sm transition-all">Hari 1<br><span class="text-xs font-normal">22 Jul</span></button>
+                    <button onclick="switchAbsensiDay(2)" id="day-tab-2" class="absensi-tab px-4 py-2 rounded-xl font-bold text-sm transition-all">Hari 2<br><span class="text-xs font-normal">23 Jul</span></button>
+                    <button onclick="switchAbsensiDay(3)" id="day-tab-3" class="absensi-tab px-4 py-2 rounded-xl font-bold text-sm transition-all">Hari 3<br><span class="text-xs font-normal">24 Jul</span></button>
+                    <button onclick="switchAbsensiDay(4)" id="day-tab-4" class="absensi-tab px-4 py-2 rounded-xl font-bold text-sm transition-all">Hari 4<br><span class="text-xs font-normal">25 Jul</span></button>
+                </div>
+            </div>
+
+            <!-- Summary Bar -->
+            <div id="absensi-summary" class="grid grid-cols-4 divide-x divide-gray-200 border-b border-gray-200 bg-gray-50"></div>
+
+            <!-- Wali Santri note -->
+            <div id="absensi-wali-note" class="bg-blue-50 border-b border-blue-200 px-5 py-3 text-xs text-blue-800 font-semibold flex justify-between items-center">
+                <span><i data-lucide="shield-alert" class="w-4 h-4 inline-block mr-1"></i> Mode Publik (Privasi Nama Disamarkan)</span>
+                <button onclick="openWaliModal()" class="bg-blue-600 text-white px-3 py-1.5 rounded-lg shadow hover:bg-blue-700 transition active:scale-95 font-bold flex items-center gap-1"><i data-lucide="key" class="w-3 h-3 inline-block"></i> Akses Wali</button>
+            </div>
+
+            <!-- Admin note -->
+            <div id="absensi-admin-note" class="hidden bg-amber-50 border-b border-amber-200 px-5 py-2.5 text-xs text-amber-800 font-semibold flex items-center gap-2">
+                <span><i data-lucide="pencil" class="w-3 h-3 inline-block"></i></span> Mode Panitia: Ketuk tombol untuk mengubah status kehadiran santri.
+            </div>
+
+            <!-- Teams Grid -->
+            <div id="absensi-teams-grid" class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+        </div>
+    </section>
+
+    <style>
+        .absensi-tab { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.25); }
+        .absensi-tab:hover { background: rgba(255,255,255,0.25); }
+        .absensi-tab.active-tab { background: white; color: #065f46; border-color: white; }
+        .att-btn { cursor: pointer; border-radius: 8px; padding: 4px 10px; font-size: 11px; font-weight: 700; transition: all 0.15s; border: 1.5px solid transparent; white-space: nowrap; }
+        .att-hadir  { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
+        .att-telat  { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
+        .att-alpha  { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
+        .att-belum  { background: #f3f4f6; color: #6b7280; border-color: #d1d5db; }
+        .att-btn.readonly { cursor: default; pointer-events: none; }
+    </style>
+
+
+    <!-- PIN Modal -->
+    <div id="pin-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl p-6 md:p-8 max-w-sm w-full shadow-2xl border border-gray-100 text-center transform transition-all">
+            <div class="w-12 h-12 bg-brand-50 rounded-full flex items-center justify-center text-brand-700 text-2xl mx-auto mb-4"><i data-lucide="key" class="w-5 h-5 inline-block"></i></div>
+            <h3 class="font-display text-xl font-bold text-gray-900 mb-1">Login Panitia MOSA CUP</h3>
+            <p class="text-xs text-gray-500 mb-6">Hubungi Panitia untuk mendapatkan PIN.</p>
+            
+            <input type="password" id="pin-input" placeholder="Masukkan PIN Panitia" class="w-full text-center text-2xl tracking-widest font-bold border-2 border-gray-300 rounded-xl p-3 mb-4 outline-none focus:border-brand-500">
+            <div id="pin-error" class="hidden text-xs text-red-500 font-bold mb-4">PIN Salah! Silakan coba lagi.</div>
+
+            <div class="flex gap-3">
+                <button onclick="closePinModal()" class="flex-1 bg-gray-100 text-gray-700 font-bold py-3 rounded-xl hover:bg-gray-200 transition-colors">Batal</button>
+                <button onclick="submitPin()" class="flex-1 bg-brand-600 text-white font-bold py-3 rounded-xl hover:bg-brand-700 transition-colors shadow-lg">Masuk</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wali Modal -->
+    <div id="wali-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl p-6 md:p-8 max-w-sm w-full shadow-2xl border border-gray-100 text-center transform transition-all">
+            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 text-2xl mx-auto mb-4"><i data-lucide="shield-check" class="w-6 h-6 inline-block"></i></div>
+            <h3 class="font-display text-xl font-bold text-gray-900 mb-2">Akses Wali Santri</h3>
+            <p class="text-xs text-gray-500 mb-5 leading-relaxed">Abu/Ummu, silakan masukkan <strong>Nomor Pendaftaran / No. Induk ananda</strong> untuk membuka privasi absensi dan melihat ananda berada di tim mana.</p>
+            
+            <input type="text" id="wali-input" placeholder="MTA... atau ILA..." class="w-full text-center text-lg font-bold border-2 border-gray-300 rounded-xl p-3 mb-2 outline-none focus:border-blue-500 uppercase">
+            <div id="wali-error" class="hidden text-[11px] text-red-500 font-bold mb-3">Mohon masukkan format yang valid (MTA... / ILA...).</div>
+
+            <div class="flex gap-3 mt-2">
+                <button onclick="closeWaliModal()" class="flex-1 bg-gray-100 text-gray-700 font-bold py-3 rounded-xl hover:bg-gray-200 transition-colors">Batal</button>
+                <button onclick="submitWali()" class="flex-1 bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition-colors shadow-lg">Buka Privasi</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const PIN_SECRET = "7678";
+        let isAdmin = false;
+        let isWali = (localStorage.getItem('mosa_wali_session') === 'true');
+
+        function openWaliModal() {
+            document.getElementById('wali-modal').classList.remove('hidden');
+            document.getElementById('wali-input').value = '';
+            document.getElementById('wali-error').classList.add('hidden');
+        }
+
+        function closeWaliModal() {
+            document.getElementById('wali-modal').classList.add('hidden');
+        }
+
+        function submitWali() {
+            const inputName = document.getElementById('wali-input').value.trim();
+            const errorBox = document.getElementById('wali-error');
+            
+            if (!inputName) {
+                errorBox.innerText = "Nomor Pendaftaran tidak boleh kosong.";
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
+            // Validasi format: Diawali dengan MTA atau ILA, diikuti angka
+            if (!/^(mta|ila)\d{3,}$/i.test(inputName)) {
+                errorBox.innerText = "Nomor tidak valid. Pastikan diawali dengan MTA atau ILA (contoh: MTA2601...).";
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
+            // Jika formatnya sudah berupa angka > 6 digit, otomatis tembus (tanpa verif ke DB)
+            const isMatch = true;
+
+            if (isMatch) {
+                isWali = true;
+                localStorage.setItem('mosa_wali_session', 'true');
+                renderAbsensi(); refreshIcons();
+                closeWaliModal();
+                // We use a small timeout to let the modal close smoothly before alerting
+                setTimeout(() => {
+                    alert("Verifikasi Berhasil! Nama lengkap seluruh santri telah dibuka.");
+                }, 300);
+            } else {
+                errorBox.innerText = "Nama tidak ditemukan di daftar santri. Silakan coba nama panggilan lainnya.";
+                errorBox.classList.remove('hidden');
+            }
+        }
+
+        // Team definitions
+        const teams = ["Badar", "Uhud", "Khandaq", "Khaibar", "Tabuk"];
+        
+        // Players Database
+        const playersData = {
+            "Badar": ["Andi Ibra Faeyza", "Haidar Ayyubi", "M Fazril Alkais", "Favian Radi", "Raylan Akbar", "Fanni Hariri", "Lalu M. Rizky", "Syeh Al Bani", "Yasser Ali Nurdin", "Pandi Rianto"],
+            "Uhud": ["M Hafidz Reo Afelano", "Azka Panji Kusuma", "Muh Asrorin Da Silva", "Fiqri Ramdan Handoko", "Abdurrahim Pati Raja", "Panji Ahmad", "Hibban", "Zakaria Reynaldo", "Dicky Dwy AP", "Salman Abdul Rahim"],
+            "Khandaq": ["M Yahya Ayyash", "Naufal Dzakiy", "M Rifqi Hamid", "M Azzam Al Hafiz", "Abdullah Rasyid", "Daffa Muammar Dzaki", "Muhammad Rizky", "Miizan Alghifary", "Muhammad Abdurrahman", "Radil"],
+            "Khaibar": ["Abdul Hakim", "Khalish", "Rifqi Arsyad Fadilah", "Labibullah El Fatih", "Wahyu Hidayat", "Farid", "M Rasyid Ridho", "M Hafidz Abdurrahman", "Muhammad Abdurrahim", "Muhammad Habib Rizky"],
+            "Tabuk": ["Ahmad Farros Al Barqy", "Fariq Malaibui", "Abdul Aziz Ali", "Atqanul Ummah", "M Khoirul Azzam", "Ken Alfarezha", "Khubaib Abdul Aziz", "Nurcahya Eka Putra", "M Naufal Alfaniri", "Syafiq Karimalay"]
+        };
+        // Matches definition
+        let currentStandings = [];
+        const matchesData = [
+            { id: 'm1', day: 1, home: 'Badar', away: 'Uhud' },
+            { id: 'm2', day: 1, home: 'Khandaq', away: 'Khaibar' },
+            { id: 'm3', day: 1, home: 'Tabuk', away: 'Badar' },
+            { id: 'm4', day: 2, home: 'Uhud', away: 'Khandaq' },
+            { id: 'm5', day: 2, home: 'Khaibar', away: 'Tabuk' },
+            { id: 'm6', day: 2, home: 'Badar', away: 'Khandaq' },
+            { id: 'm7', day: 2, home: 'Uhud', away: 'Khaibar' },
+            { id: 'm8', day: 3, home: 'Khandaq', away: 'Tabuk' },
+            { id: 'm9', day: 3, home: 'Badar', away: 'Khaibar' },
+            { id: 'm10', day: 3, home: 'Uhud', away: 'Tabuk' },
+            { id: 'f1', day: 4, home: 'Uhud', away: 'Tabuk', isFinal: true, title: 'GRAND FINAL', time: '07.30 - 08.00 WIB', color: 'amber' },
+            { id: 'f2', day: 4, home: 'Juara 1', away: 'Tim All-Star', isFinal: true, title: 'LAGA BINTANG', time: '08.15 - 08.35 WIB', color: 'blue' },
+            { id: 'f3', day: 4, home: 'Pemenang Laga Bintang', away: 'Tim Asatidzah', isFinal: true, title: 'PUNCAK GENGSI', time: '16.30 - 17.00 WIB', color: 'brand' },
+        ];
+
+        let scores = {};
+        let goals = {};
+        let attendance = {}; // { 'day_team_player': 'hadir'|'alpha'|'belum' }
+        let specialAwards = {}; // { 'best-player': '', 'best-gk': '', 'best-young': '' }
+        let allStarSquad = [];
+        let timerState = { isRunning: false, startTime: null, elapsed: 0, period: 'Babak 1', matchId: '' };
+        let currentAbsensiDay = 1;
+        let isInitialLoad = true;
+
+        // Load data & admin state
+        async function loadData() {
+            const adminSession = localStorage.getItem('mosa_admin_session');
+            if (adminSession === 'true') {
+                isAdmin = true;
+            }
+            updateAdminUI(); refreshIcons();
+
+            try {
+                const res = await fetch('/api/mosa-cup');
+                if (res.ok) {
+                    const data = await res.json();
+                    
+                    if (!isAdmin || isInitialLoad) {
+                        // Only sync scores and goals if not admin or if it's the first load
+                        if (data.scores && Object.keys(data.scores).length > 0) {
+                            scores = data.scores;
+                        } else {
+                            const ls = localStorage.getItem('mosa_scores_draft');
+                            if(ls) { try { scores = JSON.parse(ls); } catch(e){} }
+                        }
+                        
+                        if (data.goals && Object.keys(data.goals).length > 0) {
+                            goals = data.goals;
+                        } else {
+                            const lg = localStorage.getItem('mosa_goals_draft');
+                            if(lg) { try { goals = JSON.parse(lg); } catch(e){} }
+                        }
+                        
+                        if (data.attendance && Object.keys(data.attendance).length > 0) {
+                            attendance = data.attendance;
+                        } else {
+                            const la = localStorage.getItem('mosa_attendance_draft');
+                            if(la) { try { attendance = JSON.parse(la); } catch(e){} }
+                        }
+                        
+                        if (data.awards && Object.keys(data.awards).length > 0) {
+                            specialAwards = data.awards;
+                        } else {
+                            const lw = localStorage.getItem('mosa_awards_draft');
+                            if(lw) { try { specialAwards = JSON.parse(lw); } catch(e){} }
+                        }
+                        
+                        if (data.allStarSquad && data.allStarSquad.length > 0) {
+                            allStarSquad = data.allStarSquad;
+                        } else {
+                            allStarSquad = ['Fazril Alkais', 'Lalu Muhamad Rizky Ananda', 'Favian Radi', 'Abdullah Rasyid', 'Ken Alfarezha Haryadi', 'Fariq Malaibui', 'M Khoirul Azzam', 'M Naufal Alfaniri', 'Syafiq Karimalay', 'Yasser Ali Nurdin'];
+                        }
+                    }
+                    isInitialLoad = false;
+                    
+                    // Timer is synced for everyone (even admin, so they see updates from other admins)
+                    if (data.timer) {
+                        timerState = data.timer;
+                        updateTimerUI();
+                    }
+                }
+            } catch(e) {
+                console.error("Gagal memuat data dari server:", e);
+                // Fallback to local storage if offline
+                const savedScores = localStorage.getItem('mosa_scores_draft');
+                if (savedScores) { try { scores = JSON.parse(savedScores); } catch(e) { scores = {}; } }
+                const savedGoals = localStorage.getItem('mosa_goals_draft');
+                if (savedGoals) { try { goals = JSON.parse(savedGoals); } catch(e) { goals = {}; } }
+                const savedAttendance = localStorage.getItem('mosa_attendance_draft');
+                if (savedAttendance) { try { attendance = JSON.parse(savedAttendance); } catch(e) { attendance = {}; } }
+                const savedAwards = localStorage.getItem('mosa_awards_draft');
+                if (savedAwards) { try { specialAwards = JSON.parse(savedAwards); } catch(e) { specialAwards = {}; } }
+            }
+            
+            renderMatches(); refreshIcons();
+            calculateStandings();
+            renderTopScorers(); refreshIcons();
+            renderAbsensi(); refreshIcons();
+            renderAwards();
+        }
+
+        function saveData() {
+            localStorage.setItem('mosa_scores_draft', JSON.stringify(scores));
+            localStorage.setItem('mosa_goals_draft', JSON.stringify(goals));
+            localStorage.setItem('mosa_attendance_draft', JSON.stringify(attendance));
+            localStorage.setItem('mosa_awards_draft', JSON.stringify(specialAwards));
+            calculateStandings();
+            renderTopScorers(); refreshIcons();
+            renderAwards();
+
+            fetch('/api/mosa-cup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ scores, goals, attendance, awards: specialAwards })
+            }).catch(e => console.error("Gagal sinkronisasi data ke server", e));
+        }
+
+        // Admin Auth
+        function toggleAdminMode() {
+            if (isAdmin) {
+                logoutAdmin();
+            } else {
+                document.getElementById('pin-modal').classList.remove('hidden');
+                document.getElementById('pin-input').focus();
+            }
+        }
+
+        function closePinModal() {
+            document.getElementById('pin-modal').classList.add('hidden');
+            document.getElementById('pin-input').value = '';
+            document.getElementById('pin-error').classList.add('hidden');
+        }
+
+        function submitPin() {
+            const pin = document.getElementById('pin-input').value;
+            if (pin === PIN_SECRET) {
+                isAdmin = true;
+                localStorage.setItem('mosa_admin_session', 'true');
+                closePinModal();
+                updateAdminUI(); refreshIcons();
+                renderMatches(); refreshIcons();
+                renderTopScorers(); refreshIcons();
+            } else {
+                document.getElementById('pin-error').classList.remove('hidden');
+            }
+        }
+
+        function logoutAdmin() {
+            isAdmin = false;
+            localStorage.removeItem('mosa_admin_session');
+            updateAdminUI(); refreshIcons();
+            renderMatches(); refreshIcons();
+            renderTopScorers(); refreshIcons();
+        }
+
+        // --- TIMER LOGIC ---
+        function formatTime(ms) {
+            const totalSeconds = Math.floor(ms / 1000);
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function getElapsedMs() {
+            if (timerState.isRunning && timerState.startTime) {
+                return timerState.elapsed + (Date.now() - timerState.startTime);
+            }
+            return timerState.elapsed;
+        }
+
+        function tickTimer() {
+            const ms = getElapsedMs();
+            const formatted = formatTime(ms);
+            
+            const adminDisplay = document.getElementById('admin-timer-display');
+            if(adminDisplay) adminDisplay.innerText = formatted;
+            
+            const publicDisplay = document.getElementById('live-timer-clock');
+            if(publicDisplay) publicDisplay.innerText = formatted;
+        }
+
+        setInterval(tickTimer, 1000); // UI tick every second
+
+        // Poll server for updates every 10 seconds
+        setInterval(() => {
+            loadData();
+        }, 10000);
+
+        function toggleTimer() {
+            if (!isAdmin) return;
+            if (timerState.isRunning) {
+                timerState.isRunning = false;
+                timerState.elapsed += (Date.now() - timerState.startTime);
+            } else {
+                timerState.isRunning = true;
+                timerState.startTime = Date.now();
+            }
+            syncTimerState();
+            updateTimerUI();
+        }
+
+        function resetTimer() {
+            if (!isAdmin) return;
+            if (confirm("Yakin ingin mereset waktu ke 00:00?")) {
+                timerState.isRunning = false;
+                timerState.elapsed = 0;
+                timerState.startTime = null;
+                syncTimerState();
+                updateTimerUI();
+            }
+        }
+
+        function syncTimerState() {
+            if (!isAdmin) return;
+            const periodSelect = document.getElementById('admin-timer-period');
+            const matchSelect = document.getElementById('admin-timer-match');
+            if(periodSelect) timerState.period = periodSelect.value;
+            if(matchSelect) timerState.matchId = matchSelect.value;
+            saveData(); // Sends updated timerState to API
+        }
+
+        function updateTimerUI() {
+            const btn = document.getElementById('btn-timer-toggle');
+            if(btn) {
+                if(timerState.isRunning) {
+                    btn.innerHTML = `<i data-lucide="pause" class="w-3 h-3 md:w-4 md:h-4 inline-block"></i> Jeda`;
+                    btn.className = "bg-amber-600 text-white hover:bg-amber-700 px-3 md:px-5 py-1.5 md:py-2 rounded font-bold text-xs md:text-sm flex items-center gap-1.5 transition-colors";
+                } else {
+                    btn.innerHTML = `<i data-lucide="play" class="w-3 h-3 md:w-4 md:h-4 inline-block"></i> Mulai`;
+                    btn.className = "bg-brand-600 text-white hover:bg-brand-700 px-3 md:px-5 py-1.5 md:py-2 rounded font-bold text-xs md:text-sm flex items-center gap-1.5 transition-colors";
+                }
+            }
+            
+            const banner = document.getElementById('live-timer-banner');
+            const periodDisplay = document.getElementById('live-timer-period');
+            if(banner && periodDisplay) {
+                if(timerState.elapsed > 0 || timerState.isRunning) {
+                    banner.classList.remove('hidden');
+                    periodDisplay.innerText = timerState.period || 'Babak 1';
+                } else {
+                    if(!isAdmin) banner.classList.add('hidden');
+                }
+            }
+            
+            if(isAdmin) {
+                const periodSelect = document.getElementById('admin-timer-period');
+                const matchSelect = document.getElementById('admin-timer-match');
+                if(periodSelect && timerState.period) periodSelect.value = timerState.period;
+                if(matchSelect && timerState.matchId) matchSelect.value = timerState.matchId;
+            }
+            
+            const matchLabel = document.getElementById('live-timer-match-label');
+            if (matchLabel) {
+                if (timerState.matchId) {
+                    const m = matchesData.find(x => x.id === timerState.matchId);
+                    if (m) matchLabel.innerText = m.isFinal ? `${m.title}: ${m.home} vs ${m.away}` : `${m.home} vs ${m.away}`;
+                    else matchLabel.innerText = "LIVE MATCH";
+                } else {
+                    matchLabel.innerText = "LIVE MATCH";
+                }
+            }
+            
+            tickTimer();
+        }
+        // --- END TIMER LOGIC ---
+
+        function updateAdminUI() {
+            const modeBadge = document.getElementById('mode-badge');
+            const modeText = document.getElementById('mode-text');
+            const adminBtnIcon = document.getElementById('admin-btn-icon');
+            const adminBtnText = document.getElementById('admin-btn-text');
+            const adminBanner = document.getElementById('admin-banner');
+            const resetBtn = document.getElementById('reset-btn');
+            const topScorerBox = document.getElementById('top-scorer-input-box');
+            const tsActionHeader = document.getElementById('ts-action-header');
+            const absensiNote = document.getElementById('absensi-admin-note');
+            const santriCountInfo = document.getElementById('santri-count-info');
+
+            if (isAdmin) {
+                modeBadge.className = "px-3.5 py-1.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-500 border border-amber-400/40 flex items-center gap-1.5";
+                modeText.innerHTML = `<i data-lucide="unlock" class="w-4 h-4 inline-block"></i> Mode Panitia`;
+                adminBtnIcon.innerHTML = `<i data-lucide="user" class="w-4 h-4 inline-block"></i>`;
+                adminBtnText.innerText = "Ust. Rieza Eka Tomara";
+                adminBanner.classList.remove('hidden');
+                adminBanner.classList.add('flex');
+                resetBtn.classList.remove('hidden');
+                topScorerBox.classList.remove('hidden');
+                tsActionHeader.classList.remove('hidden');
+                absensiNote.classList.remove('hidden');
+                document.querySelectorAll('.award-admin-box').forEach(el => el.classList.remove('hidden'));
+                if (santriCountInfo) santriCountInfo.classList.remove('hidden');
+                
+                // Show admin timer controls, hide public banner if not running? Actually public banner logic is handled in updateTimerUI
+            } else if (isWali) {
+                modeBadge.className = "px-3.5 py-1.5 rounded-full text-xs font-bold bg-blue-500/20 text-blue-500 border border-blue-400/40 flex items-center gap-1.5";
+                modeText.innerHTML = `<i data-lucide="users" class="w-4 h-4 inline-block"></i> Akses Wali Santri`;
+                adminBtnIcon.innerHTML = `<i data-lucide="key" class="w-4 h-4 inline-block"></i>`;
+                adminBtnText.innerText = "Login Panitia";
+                adminBanner.classList.add('hidden');
+                resetBtn.classList.add('hidden');
+                topScorerBox.classList.add('hidden');
+                tsActionHeader.classList.add('hidden');
+                absensiNote.classList.add('hidden');
+                document.querySelectorAll('.award-admin-box').forEach(el => el.classList.add('hidden'));
+                if (santriCountInfo) santriCountInfo.classList.remove('hidden');
+            } else {
+                modeBadge.className = "px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 flex items-center gap-1.5";
+                modeText.innerHTML = `<i data-lucide="eye" class="w-4 h-4 inline-block"></i> Mode Penonton (Read-Only)`;
+                adminBtnIcon.innerHTML = `<i data-lucide="key" class="w-4 h-4 inline-block"></i>`;
+                adminBtnText.innerText = "Login Panitia";
+                adminBanner.classList.add('hidden');
+                resetBtn.classList.add('hidden');
+                topScorerBox.classList.add('hidden');
+                tsActionHeader.classList.add('hidden');
+                absensiNote.classList.add('hidden');
+                document.querySelectorAll('.award-admin-box').forEach(el => el.classList.add('hidden'));
+                if (santriCountInfo) santriCountInfo.classList.add('hidden');
+            }
+            updateTimerUI();
+            renderAbsensi(); refreshIcons();
+        }
+
+        // Penghargaan Spesial Logic
+        function getTeamForPlayer(playerName) {
+            if (!playerName) return '';
+            for (const team in playersData) {
+                if (playersData[team].includes(playerName)) return team;
+            }
+            return '';
+        }
+
+        function renderAwards() {
+            const bp = specialAwards['best-player'];
+            const bgk = specialAwards['best-gk'];
+            const by = specialAwards['best-young'];
+            
+            const bpTeam = getTeamForPlayer(bp);
+            const bgkTeam = getTeamForPlayer(bgk);
+            const byTeam = getTeamForPlayer(by);
+            
+            document.getElementById('award-best-player-display').innerHTML = bp ? `<div class="flex flex-col items-center"><span class="font-bold text-lg text-brand-700">${bp}</span><span class="text-xs font-semibold text-brand-600 uppercase tracking-widest mt-0.5"><i data-lucide="shield" class="w-3 h-3 inline-block mr-0.5 -mt-0.5"></i>Tim ${bpTeam}</span></div>` : `<span class="text-gray-400 italic text-sm">Menunggu Final...</span>`;
+            document.getElementById('award-best-gk-display').innerHTML = bgk ? `<div class="flex flex-col items-center"><span class="font-bold text-lg text-slate-700">${bgk}</span><span class="text-xs font-semibold text-slate-600 uppercase tracking-widest mt-0.5"><i data-lucide="shield" class="w-3 h-3 inline-block mr-0.5 -mt-0.5"></i>Tim ${bgkTeam}</span></div>` : `<span class="text-gray-400 italic text-sm">Menunggu Final...</span>`;
+            document.getElementById('award-best-young-display').innerHTML = by ? `<div class="flex flex-col items-center"><span class="font-bold text-lg text-indigo-700">${by}</span><span class="text-xs font-semibold text-indigo-600 uppercase tracking-widest mt-0.5"><i data-lucide="shield" class="w-3 h-3 inline-block mr-0.5 -mt-0.5"></i>Tim ${byTeam}</span></div>` : `<span class="text-gray-400 italic text-sm">Menunggu Final...</span>`;
+            
+            if (isAdmin) {
+                if (bp) document.getElementById('input-best-player').value = bp;
+                if (bgk) document.getElementById('input-best-gk').value = bgk;
+                if (by) document.getElementById('input-best-young').value = by;
+            }
+            refreshIcons();
+        }
+
+        function saveAward(type) {
+            const val = document.getElementById(`input-${type}`).value.trim();
+            if (val) {
+                specialAwards[type] = val;
+                saveData();
+                alert("Berhasil menyimpan Penghargaan!");
+            }
+        }
+
+        function editMatchTime(matchId) {
+            if(!isAdmin) return;
+            const current = scores[`${matchId}_time`] || matchesData.find(m => m.id === matchId).time;
+            const newTime = prompt(`PENGATURAN JADWAL:\nKetik jadwal baru (contoh: '08.00 - 08.30 WIB').\n\nATUR OTOMATIS (Khusus F1):\nKetik jam mulai (contoh: 08.00 atau 16.00) agar sistem otomatis menghitung jadwal F1, F2, & F3 secara berurutan.`, current);
+            
+            if(newTime !== null && newTime.trim() !== "") {
+                const input = newTime.trim();
+                const timeRegex = /^(\d{1,2})[\.:](\d{2})$/;
+                
+                if (matchId === 'f1' && timeRegex.test(input)) {
+                    let mMatch = input.match(timeRegex);
+                    let h = parseInt(mMatch[1]);
+                    let m = parseInt(mMatch[2]);
+                    
+                    function addM(hours, mins, add) {
+                        let d = new Date(); d.setHours(hours, mins + add, 0);
+                        let hr = d.getHours().toString().padStart(2, '0');
+                        let mn = d.getMinutes().toString().padStart(2, '0');
+                        return { h: d.getHours(), m: d.getMinutes(), str: `${hr}.${mn}` };
+                    }
+                    
+                    // f1: 30 mins
+                    let f1Start = { h, m, str: addM(h, m, 0).str };
+                    let f1End = addM(f1Start.h, f1Start.m, 30);
+                    scores['f1_time'] = `${f1Start.str} - ${f1End.str} WIB`;
+                    
+                    // f2: gap 15m, duration 20m
+                    let f2Start = addM(f1End.h, f1End.m, 15);
+                    let f2End = addM(f2Start.h, f2Start.m, 20);
+                    scores['f2_time'] = `${f2Start.str} - ${f2End.str} WIB`;
+                    
+                    // f3: gap 15m, duration 25m
+                    let f3Start = addM(f2End.h, f2End.m, 15);
+                    let f3End = addM(f3Start.h, f3Start.m, 25);
+                    scores['f3_time'] = `${f3Start.str} - ${f3End.str} WIB`;
+                    
+                    alert(`Jadwal Final berhasil dihitung otomatis!\n\nF1 (Grand Final): ${scores['f1_time']}\nF2 (Laga Bintang): ${scores['f2_time']}\nF3 (Puncak Gengsi): ${scores['f3_time']}`);
+                } else {
+                    scores[`${matchId}_time`] = input;
+                }
+                
+                saveData();
+                renderMatches(); refreshIcons();
+            }
+        }
+
+        function resetData() {
+            if(confirm("Apakah Anda yakin ingin menghapus semua data (Skor Laga, Top Skor, & Absensi)?")) {
+                scores = {};
+                goals = {};
+                attendance = {};
+                localStorage.removeItem('mosa_scores_draft');
+                localStorage.removeItem('mosa_goals_draft');
+                localStorage.removeItem('mosa_attendance_draft');
+                renderMatches(); refreshIcons();
+                calculateStandings();
+                renderTopScorers(); refreshIcons();
+                renderAbsensi(); refreshIcons();
+            }
+        }
+
+        // Render match inputs or read-only view
+        function renderMatches() {
+            [1, 2, 3, 4].forEach(day => {
+                const container = document.getElementById(`day${day}-matches`);
+                if (!container) return;
+                container.innerHTML = '';
+                
+                matchesData.filter(m => m.day === day).forEach(match => {
+                    const homeScore = scores[`${match.id}_home`] !== undefined ? scores[`${match.id}_home`] : '';
+                    const awayScore = scores[`${match.id}_away`] !== undefined ? scores[`${match.id}_away`] : '';
+                    const homePen = scores[`${match.id}_home_pen`] !== undefined ? scores[`${match.id}_home_pen`] : '';
+                    const awayPen = scores[`${match.id}_away_pen`] !== undefined ? scores[`${match.id}_away_pen`] : '';
+                    
+                    const isDraw = homeScore !== '' && awayScore !== '' && homeScore === awayScore;
+
+                    let centerContent = '';
+                    let penContent = '';
+                    if (isAdmin) {
+                        centerContent = `
+                            <div class="mx-2 md:mx-4 flex flex-col items-center gap-1">
+                                <div class="flex items-center gap-1.5">
+                                    <input type="number" min="0" data-match="${match.id}" data-team="home" value="${homeScore}"
+                                        class="score-input w-9 md:w-11 h-9 md:h-11 text-center font-bold text-base md:text-lg border-2 border-gray-300 rounded-lg focus:border-brand-500 outline-none bg-white">
+                                    <span class="text-gray-400 font-bold text-xs">VS</span>
+                                    <input type="number" min="0" data-match="${match.id}" data-team="away" value="${awayScore}"
+                                        class="score-input w-9 md:w-11 h-9 md:h-11 text-center font-bold text-base md:text-lg border-2 border-gray-300 rounded-lg focus:border-brand-500 outline-none bg-white">
+                                </div>
+                            </div>
+                        `;
+                        penContent = `
+                            <div id="pen-container-${match.id}" class="${isDraw ? '' : 'hidden'} w-full mt-2 pt-2 border-t border-gray-200 flex items-center justify-center gap-2">
+                                <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Penalti:</span>
+                                <input type="number" min="0" data-match="${match.id}" data-team="home_pen" value="${homePen}" placeholder="0"
+                                    class="score-input w-8 h-8 text-center font-bold text-sm border-2 border-amber-300 bg-amber-50 rounded focus:border-brand-500 outline-none">
+                                <span class="text-gray-400 font-bold text-xs">-</span>
+                                <input type="number" min="0" data-match="${match.id}" data-team="away_pen" value="${awayPen}" placeholder="0"
+                                    class="score-input w-8 h-8 text-center font-bold text-sm border-2 border-amber-300 bg-amber-50 rounded focus:border-brand-500 outline-none">
+                            </div>
+                        `;
+                    } else {
+                        const scoreDisplay = (homeScore !== '' && awayScore !== '') ? `${homeScore} - ${awayScore}` : `VS`;
+                        const bgDisplay = (homeScore !== '' && awayScore !== '') ? `bg-brand-900 text-white font-black` : `bg-gray-100 text-gray-500 font-bold`;
+                        centerContent = `
+                            <div class="mx-3 px-3 py-1 rounded-lg text-xs md:text-sm ${bgDisplay} tracking-wider">
+                                ${scoreDisplay}
+                            </div>
+                        `;
+                        if (isDraw && homePen !== '' && awayPen !== '') {
+                            penContent = `
+                                <div class="w-full mt-1.5 pt-1.5 border-t border-gray-200 flex items-center justify-center">
+                                    <span class="text-[10px] font-black text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full border border-amber-200 tracking-wide uppercase">
+                                        Penalti: ${homePen} - ${awayPen}
+                                    </span>
+                                </div>
+                            `;
+                        }
+                    }
+
+                    let html = '';
+                    if (match.isFinal) {
+                        let bgClass, titleColor, iconHtml, titleHtml;
+                        let displayTime = scores[`${match.id}_time`] || match.time;
+                        const editTimeBtn = isAdmin ? `<button onclick="editMatchTime('${match.id}')" class="ml-1 opacity-70 hover:opacity-100"><i data-lucide="edit-2" class="w-3 h-3 inline-block"></i></button>` : '';
+
+                        if (match.color === 'amber') {
+                            bgClass = "bg-amber-50 border-amber-300";
+                            iconHtml = `<div class="bg-amber-400 text-amber-900 p-1.5 rounded-lg shadow-sm"><i data-lucide="trophy" class="w-4 h-4"></i></div>`;
+                            titleHtml = `<div class="text-[10px] font-bold text-amber-600 uppercase tracking-wider flex justify-center items-center">${displayTime} ${editTimeBtn}</div><div class="text-xs font-black text-amber-900">${match.title}</div>`;
+                        } else if (match.color === 'blue') {
+                            bgClass = "bg-blue-50 border-blue-300";
+                            iconHtml = `<div class="bg-blue-400 text-blue-900 p-1.5 rounded-lg shadow-sm"><i data-lucide="star" class="w-4 h-4"></i></div>`;
+                            titleHtml = `<div class="text-[10px] font-bold text-blue-600 uppercase tracking-wider flex justify-center items-center">${displayTime} ${editTimeBtn}</div><div class="text-xs font-black text-blue-900">${match.title}</div>`;
+                        } else {
+                            bgClass = "bg-gradient-to-r from-brand-900 to-brand-700 border-brand-800 text-white";
+                            iconHtml = `<div class="bg-brand-600 text-white p-1.5 rounded-lg border border-white/20"><i data-lucide="swords" class="w-4 h-4"></i></div>`;
+                            titleHtml = `<div class="text-[10px] font-bold text-amber-300 uppercase tracking-wider flex justify-center items-center">${displayTime} ${editTimeBtn}</div><div class="text-xs font-black text-white">${match.title}</div>`;
+                        }
+                        
+                        html = `
+                            <div class="${bgClass} border rounded-xl p-3 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3 relative overflow-hidden">
+                                ${match.color === 'brand' ? '<div class="absolute right-0 top-0 opacity-10 transform translate-x-4 -translate-y-4"><i data-lucide="flame" class="w-24 h-24 text-white"></i></div>' : ''}
+                                <div class="flex flex-col flex-1 relative z-10 w-full">
+                                    <div class="flex items-center gap-2 mb-2 w-full justify-center md:justify-start">
+                                        ${iconHtml}
+                                        <div class="text-center md:text-left">${titleHtml}</div>
+                                    </div>
+                                    <div class="flex items-center justify-between w-full bg-white/90 p-2 rounded-lg border border-black/10">
+                                        <div class="flex-1 text-right font-semibold text-xs md:text-sm text-gray-800">${match.home}</div>
+                                        ${centerContent}
+                                        <div class="flex-1 text-left font-semibold text-xs md:text-sm text-gray-800">${match.away}</div>
+                                    </div>
+                                    ${penContent}
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        html = `
+                            <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 flex flex-col">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex-1 text-right font-semibold text-xs md:text-sm ${homeScore !== '' && homeScore > awayScore ? 'text-brand-700 font-extrabold' : 'text-gray-700'}">${match.home}</div>
+                                    ${centerContent}
+                                    <div class="flex-1 text-left font-semibold text-xs md:text-sm ${awayScore !== '' && awayScore > homeScore ? 'text-brand-700 font-extrabold' : 'text-gray-700'}">${match.away}</div>
+                                </div>
+                                ${penContent}
+                            </div>
+                        `;
+                    }
+                    container.insertAdjacentHTML('beforeend', html);
+                });
+            });
+
+            if (isAdmin) {
+                document.querySelectorAll('.score-input').forEach(input => {
+                    input.addEventListener('input', (e) => {
+                        const matchId = e.target.getAttribute('data-match');
+                        const teamType = e.target.getAttribute('data-team');
+                        const val = e.target.value;
+                        
+                        if (val === '') {
+                            delete scores[`${matchId}_${teamType}`];
+                        } else {
+                            scores[`${matchId}_${teamType}`] = parseInt(val, 10);
+                        }
+                        
+                        // Show or hide pen container dynamically
+                        if (teamType === 'home' || teamType === 'away') {
+                            const h = scores[`${matchId}_home`];
+                            const a = scores[`${matchId}_away`];
+                            const penContainer = document.getElementById(`pen-container-${matchId}`);
+                            if (h !== undefined && a !== undefined && h === a) {
+                                if(penContainer) penContainer.classList.remove('hidden');
+                            } else {
+                                if(penContainer) penContainer.classList.add('hidden');
+                                delete scores[`${matchId}_home_pen`];
+                                delete scores[`${matchId}_away_pen`];
+                            }
+                        }
+                        
+                        const dataToSave = {
+                            scores,
+                            goals,
+                            attendance,
+                            awards: specialAwards,
+                            timer: timerState,
+                            allStarSquad
+                        };
+
+                        try {
+                            fetch('/api/mosa-cup', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(dataToSave)
+                            });
+                        } catch (err) { console.error('Save failed', err); }
+                    });
+                });
+            }
+        }
+
+        // Calculate and render standings with automatic H2H tie-breaker
+        function calculateStandings() {
+            let table = {};
+            teams.forEach(t => {
+                table[t] = { name: t, p: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 };
+            });
+
+            matchesData.forEach(match => {
+                if(match.isFinal) return; // Skip finals for standings
+                
+                const hScore = scores[`${match.id}_home`];
+                const aScore = scores[`${match.id}_away`];
+
+                if (hScore !== undefined && aScore !== undefined) {
+                    table[match.home].p += 1;
+                    table[match.away].p += 1;
+                    
+                    table[match.home].gf += hScore;
+                    table[match.home].ga += aScore;
+                    table[match.away].gf += aScore;
+                    table[match.away].ga += hScore;
+
+                    if (hScore > aScore) {
+                        table[match.home].w += 1;
+                        table[match.home].pts += 3;
+                        table[match.away].l += 1;
+                    } else if (aScore > hScore) {
+                        table[match.away].w += 1;
+                        table[match.away].pts += 3;
+                        table[match.home].l += 1;
+                    } else {
+                        table[match.home].d += 1;
+                        table[match.away].d += 1;
+                        
+                        const hPen = scores[`${match.id}_home_pen`];
+                        const aPen = scores[`${match.id}_away_pen`];
+                        
+                        if (hPen !== undefined && aPen !== undefined && hPen !== aPen) {
+                            if (hPen > aPen) {
+                                table[match.home].pts += 2;
+                                table[match.away].pts += 1;
+                            } else {
+                                table[match.away].pts += 2;
+                                table[match.home].pts += 1;
+                            }
+                        } else {
+                            table[match.home].pts += 1;
+                            table[match.away].pts += 1;
+                        }
+                    }
+                }
+            });
+
+            Object.values(table).forEach(t => {
+                t.gd = t.gf - t.ga;
+            });
+
+            // Sorting with FIFA H2H tie-breaker
+            const sorted = Object.values(table).sort((a, b) => {
+                if (b.pts !== a.pts) return b.pts - a.pts;
+                if (b.gd !== a.gd) return b.gd - a.gd;
+                if (b.gf !== a.gf) return b.gf - a.gf;
+
+                // Automatic Head-to-Head Check
+                const h2hMatch = matchesData.find(m => 
+                    (m.home === a.name && m.away === b.name) || 
+                    (m.home === b.name && m.away === a.name)
+                );
+                if (h2hMatch) {
+                    const hScore = scores[`${h2hMatch.id}_home`];
+                    const aScore = scores[`${h2hMatch.id}_away`];
+                    if (hScore !== undefined && aScore !== undefined) {
+                        if (h2hMatch.home === a.name) {
+                            if (hScore > aScore) return -1;
+                            if (aScore > hScore) return 1;
+                        } else {
+                            if (aScore > hScore) return -1;
+                            if (hScore > aScore) return 1;
+                        }
+                    }
+                }
+                return 0;
+            });
+            
+            currentStandings = sorted;
+
+            const tbody = document.getElementById('standings-body');
+            tbody.innerHTML = '';
+
+            sorted.forEach((team, index) => {
+                let rowBg = "bg-white";
+                let rankBadge = `${index + 1}`;
+                
+                if (index < 2) {
+                    rowBg = "bg-green-50/50";
+                    rankBadge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-600 text-white font-bold text-xs">${index + 1}</span>`;
+                } else if (index < 4) {
+                    rowBg = "bg-blue-50/30";
+                    rankBadge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-blue-500 text-white font-bold text-xs">${index + 1}</span>`;
+                } else {
+                    rankBadge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-200 text-gray-700 font-bold text-xs">${index + 1}</span>`;
+                }
+
+                const tr = `
+                    <tr class="${rowBg} border-b border-gray-100 hover:bg-gray-100/60 transition-colors">
+                        <td class="px-4 py-3.5 text-center">${rankBadge}</td>
+                        <td class="px-4 py-3.5 font-bold text-gray-900">${team.name}</td>
+                        <td class="px-2 py-3.5 text-center font-medium">${team.p}</td>
+                        <td class="px-2 py-3.5 text-center text-green-600 font-semibold">${team.w}</td>
+                        <td class="px-2 py-3.5 text-center text-gray-500">${team.d}</td>
+                        <td class="px-2 py-3.5 text-center text-red-500">${team.l}</td>
+                        <td class="px-2 py-3.5 text-center text-gray-600">${team.gf}</td>
+                        <td class="px-2 py-3.5 text-center text-gray-600">${team.ga}</td>
+                        <td class="px-2 py-3.5 text-center font-bold ${team.gd > 0 ? 'text-green-600' : team.gd < 0 ? 'text-red-500' : 'text-gray-400'}">${team.gd > 0 ? '+' + team.gd : team.gd}</td>
+                        <td class="px-4 py-3.5 text-center font-black text-brand-900 text-lg">${team.pts}</td>
+                    </tr>
+                `;
+                tbody.insertAdjacentHTML('beforeend', tr);
+            });
+        }
+
+        // Top Scorer Logic
+        function updatePlayerDropdown() {
+            const team = document.getElementById('ts-team').value;
+            const playerSelect = document.getElementById('ts-player');
+            playerSelect.innerHTML = '<option value="">-- Pilih Pemain --</option>';
+            
+            if (team && playersData[team]) {
+                playerSelect.disabled = false;
+                playersData[team].forEach(player => {
+                    playerSelect.insertAdjacentHTML('beforeend', `<option value="${player}">${player}</option>`);
+                });
+            } else {
+                playerSelect.disabled = true;
+            }
+        }
+
+        function addGoal() {
+            const team = document.getElementById('ts-team').value;
+            const player = document.getElementById('ts-player').value;
+            
+            if (!team || !player) {
+                alert("Silakan pilih Tim dan Pemain terlebih dahulu!");
+                return;
+            }
+            
+            if (!goals[player]) {
+                goals[player] = { team: team, count: 0 };
+            }
+            goals[player].count += 1;
+            saveData();
+            
+            document.getElementById('ts-team').value = "";
+            updatePlayerDropdown();
+        }
+
+        function removeGoal(player) {
+            if (goals[player]) {
+                goals[player].count -= 1;
+                if (goals[player].count <= 0) {
+                    delete goals[player];
+                }
+                saveData();
+            }
+        }
+
+        function renderTopScorers() {
+            const tbody = document.getElementById('top-scorer-body');
+            tbody.innerHTML = '';
+            
+            const sortedScorers = Object.entries(goals)
+                .map(([name, data]) => ({ name, team: data.team, count: data.count }))
+                .sort((a, b) => {
+                    if (b.count !== a.count) return b.count - a.count;
+                    
+                    // Tie-breaker: urutkan berdasarkan peringkat tim di klasemen
+                    const rankA = currentStandings.findIndex(t => t.name === a.team);
+                    const rankB = currentStandings.findIndex(t => t.name === b.team);
+                    
+                    // index lebih kecil berarti peringkat lebih tinggi
+                    return rankA - rankB; 
+                });
+                
+            if (sortedScorers.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="px-4 py-8 text-center text-gray-400 italic">Belum ada pencetak gol tercatat</td></tr>`;
+                return;
+            }
+
+            sortedScorers.forEach((scorer, index) => {
+                let badgeClass = "bg-gray-100 text-gray-600";
+                if (index === 0) badgeClass = "bg-gold-500 text-brand-900 font-black shadow-sm";
+                else if (index === 1) badgeClass = "bg-gray-300 text-gray-800 shadow-sm";
+                else if (index === 2) badgeClass = "bg-amber-200 text-amber-900 shadow-sm";
+
+                const actionCol = isAdmin ? `
+                    <td class="px-4 py-3 text-center">
+                        <button onclick="removeGoal('${scorer.name}')" class="text-xs text-red-500 hover:text-red-700 hover:bg-red-50 px-2 py-1 rounded border border-red-100 transition-colors">-1 Gol</button>
+                    </td>
+                ` : '';
+
+                const tr = `
+                    <tr class="hover:bg-brand-50/30 bg-white transition-colors">
+                        <td class="px-4 py-3 text-center whitespace-nowrap">
+                            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full font-bold text-xs ${badgeClass}">${index + 1}</span>
+                        </td>
+                        <td class="px-4 py-3 font-semibold text-gray-900">${scorer.name}</td>
+                        <td class="px-4 py-3 text-gray-600 text-xs md:text-sm">${scorer.team}</td>
+                        <td class="px-4 py-3 text-center font-black text-brand-700 text-lg">${scorer.count}</td>
+                        ${actionCol}
+                    </tr>
+                `;
+                tbody.insertAdjacentHTML('beforeend', tr);
+            });
+            
+            // Render All-Star every updateAdminUI
+            renderAllStar(); refreshIcons();
+            
+            updateTimerUI();
+            renderAbsensi(); refreshIcons();
+        }
+
+        // --- ALL STAR LOGIC ---
+        function renderAllStar() {
+            const section = document.getElementById('all-star-section');
+            const adminControls = document.getElementById('all-star-admin-controls');
+            const rosterDiv = document.getElementById('all-star-roster');
+            
+            if (!section || !rosterDiv) return;
+            
+            if (isAdmin || isWali) {
+                section.classList.remove('hidden');
+                if (isAdmin) adminControls.classList.remove('hidden');
+                else adminControls.classList.add('hidden');
+            } else {
+                section.classList.add('hidden');
+            }
+
+            rosterDiv.innerHTML = '';
+            
+            const maxSlots = 7;
+            const totalToRender = Math.max(maxSlots, allStarSquad.length);
+            
+            for (let i = 0; i < totalToRender; i++) {
+                if (i < allStarSquad.length) {
+                    const player = allStarSquad[i];
+                    let playerTeam = "";
+                    for (const team in playersData) {
+                        if (playersData[team].includes(player)) {
+                            playerTeam = team;
+                            break;
+                        }
+                    }
+                    const removeBtn = isAdmin ? `<button onclick="removeAllStar('${player}')" class="text-red-500 hover:text-red-700 ml-2 p-1 rounded-full hover:bg-red-50"><i data-lucide="x" class="w-4 h-4"></i></button>` : '';
+                    rosterDiv.insertAdjacentHTML('beforeend', `
+                        <div class="flex items-center justify-between bg-white border border-gray-200 rounded-lg p-3 shadow-sm hover:border-blue-300 transition-colors">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center shadow-sm shrink-0"><i data-lucide="user" class="w-4 h-4"></i></div>
+                                <div class="flex flex-col">
+                                    <span class="font-bold text-sm text-gray-800 leading-tight">${player}</span>
+                                    ${playerTeam ? `<span class="text-[10px] font-semibold text-blue-600 tracking-wider uppercase mt-0.5"><i data-lucide="shield" class="w-3 h-3 inline-block mr-0.5"></i>Tim ${playerTeam}</span>` : ''}
+                                </div>
+                            </div>
+                            ${removeBtn}
+                        </div>
+                    `);
+                } else {
+                    rosterDiv.insertAdjacentHTML('beforeend', `
+                        <div class="flex items-center gap-3 bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-3 opacity-70">
+                            <div class="w-8 h-8 bg-gray-200 text-gray-400 rounded-full flex items-center justify-center"><i data-lucide="help-circle" class="w-4 h-4"></i></div>
+                            <span class="font-medium text-xs text-gray-500 italic">Sedang Tahap Seleksi...</span>
+                        </div>
+                    `);
+                }
+            }
+        }
+
+        function addAllStar() {
+            if(!isAdmin) return;
+            const select = document.getElementById('all-star-select');
+            const player = select.value;
+            if (!player) return;
+            
+            if (!allStarSquad.includes(player)) {
+                allStarSquad.push(player);
+                saveData();
+                renderAllStar(); refreshIcons();
+            }
+            select.value = "";
+        }
+
+        function removeAllStar(player) {
+            if(!isAdmin) return;
+            if (confirm("Hapus " + player + " dari skuad All-Star?")) {
+                allStarSquad = allStarSquad.filter(p => p !== player);
+                saveData();
+                renderAllStar(); refreshIcons();
+            }
+        }
+        // --- END ALL STAR ---
+
+        // =============================================
+        // RENDER LOGIC
+        // =============================================
+        const teamColors = {
+            'Badar':   { bg: 'bg-blue-50',   border: 'border-blue-300',   header: 'bg-blue-600',   icon: '<i data-lucide="shield-half" class="w-4 h-4 inline-block"></i>' },
+            'Uhud':    { bg: 'bg-green-50',  border: 'border-green-300',  header: 'bg-green-600',  icon: '<i data-lucide="shield-half" class="w-4 h-4 inline-block"></i>' },
+            'Khandaq': { bg: 'bg-amber-50',  border: 'border-amber-300',  header: 'bg-amber-500',  icon: '<i data-lucide="shield-half" class="w-4 h-4 inline-block"></i>' },
+            'Khaibar': { bg: 'bg-purple-50', border: 'border-purple-300', header: 'bg-purple-600', icon: '<i data-lucide="shield-half" class="w-4 h-4 inline-block"></i>' },
+            'Tabuk':   { bg: 'bg-slate-50',  border: 'border-slate-300',   header: 'bg-slate-700',   icon: '<i data-lucide="shield-half" class="w-4 h-4 inline-block"></i>' },
+        };
+
+        function getAttKey(day, team, player) {
+            return `${day}__${team}__${player}`;
+        }
+
+        function getAttStatus(day, team, player) {
+            return attendance[getAttKey(day, team, player)] || 'belum';
+        }
+
+        function cycleAttendance(day, team, player) {
+            if (!isAdmin) return;
+            const key = getAttKey(day, team, player);
+            const current = attendance[key] || 'belum';
+            const next = current === 'belum' ? 'hadir' : current === 'hadir' ? 'telat' : current === 'telat' ? 'alpha' : 'belum';
+            attendance[key] = next;
+            saveData();
+            renderAbsensi(); refreshIcons();
+        }
+
+        function switchAbsensiDay(day) {
+            currentAbsensiDay = day;
+            [1,2,3,4].forEach(d => {
+                const tab = document.getElementById(`day-tab-${d}`);
+                if (d === day) tab.classList.add('active-tab');
+                else tab.classList.remove('active-tab');
+            });
+            renderAbsensi(); refreshIcons();
+        }
+
+        function renderAbsensi() {
+            const day = currentAbsensiDay;
+            const grid = document.getElementById('absensi-teams-grid');
+            const summary = document.getElementById('absensi-summary');
+            grid.innerHTML = '';
+
+            let totalHadir = 0, totalTelat = 0, totalAlpha = 0, totalBelum = 0;
+
+            teams.forEach(team => {
+                const players = playersData[team];
+                const c = teamColors[team];
+
+                let teamHadir = 0, teamTelat = 0, teamAlpha = 0;
+                let playersHtml = '';
+
+                players.forEach(player => {
+                    const status = getAttStatus(day, team, player);
+                    if (status === 'hadir') { teamHadir++; totalHadir++; }
+                    else if (status === 'telat') { teamTelat++; totalTelat++; }
+                    else if (status === 'alpha') { teamAlpha++; totalAlpha++; }
+                    else totalBelum++;
+
+                    const labelMap = { hadir: '<i data-lucide="check-circle-2" class="w-3 h-3 inline-block"></i> Hadir', telat: '<i data-lucide="alert-triangle" class="w-3 h-3 inline-block"></i> Telat', alpha: '<i data-lucide="x-circle" class="w-3 h-3 inline-block"></i> Tidak', belum: '• Belum' };
+                    const classMap = { hadir: 'att-hadir', telat: 'att-telat', alpha: 'att-alpha', belum: 'att-belum' };
+                    const btnClass = `att-btn ${classMap[status]} ${isAdmin ? '' : 'readonly'}`;
+                    const clickAttr = isAdmin ? `onclick="cycleAttendance(${day}, '${team}', '${player}')"` : '';
+
+                    let displayPlayer = player;
+                    if (!isAdmin && !isWali) {
+                        displayPlayer = "Santri " + (players.indexOf(player) + 1);
+                    }
+
+                    playersHtml += `
+                        <div class="flex items-center justify-between py-1.5 border-b border-gray-100 last:border-0">
+                            <span class="text-xs font-medium text-gray-700 truncate mr-2" title="${player}">${displayPlayer}</span>
+                            <button class="${btnClass}" ${clickAttr}>${labelMap[status]}</button>
+                        </div>`;
+                });
+
+                const cardHtml = `
+                    <details class="rounded-xl border-2 ${c.border} ${c.bg} overflow-hidden group">
+                        <summary class="${c.header} px-4 py-2.5 flex justify-between items-center cursor-pointer list-none">
+                            <span class="font-bold text-white text-sm flex items-center gap-2">
+                                ${c.icon} TIM ${team.toUpperCase()}
+                                <span class="text-[10px] group-open:rotate-180 transition-transform">▼</span>
+                            </span>
+                            <div class="flex gap-1.5 text-xs">
+                                <span class="bg-white/20 text-white rounded-full px-2 py-0.5 font-bold"><i data-lucide="check-circle-2" class="w-3 h-3 inline-block"></i> ${teamHadir}</span>
+                                <span class="bg-amber-400/80 text-amber-900 rounded-full px-2 py-0.5 font-bold"><i data-lucide="alert-triangle" class="w-3 h-3 inline-block"></i> ${teamTelat}</span>
+                                <span class="bg-red-400/40 text-white rounded-full px-2 py-0.5 font-bold"><i data-lucide="x-circle" class="w-3 h-3 inline-block"></i> ${teamAlpha}</span>
+                            </div>
+                        </summary>
+                        <div class="px-4 py-2 border-t border-white/20">${playersHtml}</div>
+                    </details>`;
+                grid.insertAdjacentHTML('beforeend', cardHtml);
+            });
+
+            // Update summary bar
+            summary.innerHTML = `
+                <div class="px-3 py-3 text-center">
+                    <div class="text-xl md:text-2xl font-black text-emerald-700">${totalHadir}</div>
+                    <div class="text-[10px] md:text-xs text-gray-500 font-semibold"><i data-lucide="check-circle-2" class="w-3 h-3 inline-block"></i> Hadir</div>
+                </div>
+                <div class="px-3 py-3 text-center">
+                    <div class="text-xl md:text-2xl font-black text-amber-600">${totalTelat}</div>
+                    <div class="text-[10px] md:text-xs text-gray-500 font-semibold"><i data-lucide="alert-triangle" class="w-3 h-3 inline-block"></i> Telat</div>
+                </div>
+                <div class="px-3 py-3 text-center">
+                    <div class="text-xl md:text-2xl font-black text-red-600">${totalAlpha}</div>
+                    <div class="text-[10px] md:text-xs text-gray-500 font-semibold"><i data-lucide="x-circle" class="w-3 h-3 inline-block"></i> Tidak</div>
+                </div>
+                <div class="px-3 py-3 text-center">
+                    <div class="text-xl md:text-2xl font-black text-gray-400">${totalBelum}</div>
+                    <div class="text-[10px] md:text-xs text-gray-500 font-semibold"><i data-lucide="clock" class="w-3 h-3 inline-block"></i> Belum</div>
+                </div>
+            `;
+            
+            const waliNote = document.getElementById('absensi-wali-note');
+            if (waliNote) {
+                if (isAdmin || isWali) {
+                    waliNote.classList.add('hidden');
+                } else {
+                    waliNote.classList.remove('hidden');
+                }
+            }
+        }
+
+        // Enter key for PIN modal
+        document.getElementById('pin-input')?.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') submitPin();
+        });
+
+        // Initialize players for Special Awards dropdowns
+        function populatePlayerDropdowns() {
+            let optionsHtml = '';
+            for (const team in playersData) {
+                optionsHtml += `<optgroup label="Tim ${team}">`;
+                playersData[team].forEach(player => {
+                    optionsHtml += `<option value="${player}">${player}</option>`;
+                });
+                optionsHtml += `</optgroup>`;
+            }
+            document.getElementById('input-best-player').insertAdjacentHTML('beforeend', optionsHtml);
+            document.getElementById('input-best-gk').insertAdjacentHTML('beforeend', optionsHtml);
+            document.getElementById('input-best-young').insertAdjacentHTML('beforeend', optionsHtml);
+            const allStarSelect = document.getElementById('all-star-select');
+            if (allStarSelect) allStarSelect.insertAdjacentHTML('beforeend', optionsHtml);
+        }
+
+        function populateTimerMatchDropdown() {
+            const select = document.getElementById('admin-timer-match');
+            if(!select) return;
+            matchesData.forEach(m => {
+                let text = m.isFinal ? `[${m.title}] ${m.home} vs ${m.away}` : `Hari ${m.day}: ${m.home} vs ${m.away}`;
+                select.insertAdjacentHTML('beforeend', `<option value="${m.id}">${text}</option>`);
+            });
+        }
+
+        function refreshIcons() { if(window.lucide) { lucide.createIcons(); } }
+
+        // Init
+        populatePlayerDropdowns();
+        populateTimerMatchDropdown();
+        loadData();
+
+    </script>
+</body>
+</html>

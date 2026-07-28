@@ -1,0 +1,1 @@
+Get-Content C:\Users\itpua\Dev\Work\al-andalus\alandalus-alimam\query.sql | ssh -o StrictHostKeyChecking=no root@72.61.141.50 "docker exec -i coolify-db psql -U coolify -d ppdb_alimam -t" > C:\Users\itpua\Dev\Work\al-andalus\alandalus-alimam\nilai_db.jsonl

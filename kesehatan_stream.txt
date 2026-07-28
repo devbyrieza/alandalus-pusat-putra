@@ -1,0 +1,1708 @@
+
+q 595.32 0 0 841.92 0 0 cm /BgImg Do Q
+
+/TagSuspect <</TagSuspect /Ordering >>BDC  /Span <</MCID 0/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F1 15.96 Tf
+1 0 0 1 344.83 755.02 Tm
+/GS10 gs
+0 g
+/GS11 gs
+0 G
+ 0.0144 Tc[<03E203B40391>] TJ
+ET
+Q
+ EMC  EMC  /Span <</MCID 1/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F2 15.96 Tf
+1 0 0 1 340.75 755.02 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC /TagSuspect <</TagSuspect /Ordering >>BDC  /Span <</MCID 2/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F1 15.96 Tf
+1 0 0 1 327.19 755.02 Tm
+0 g
+0 G
+ -3.87 Tc[<00030BCC>] TJ
+ET
+Q
+ EMC  EMC  /Span <</MCID 3/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F2 15.96 Tf
+1 0 0 1 323.11 755.02 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC /TagSuspect <</TagSuspect /Ordering >>BDC  /Span <</MCID 4/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F1 15.96 Tf
+1 0 0 1 285.43 755.02 Tm
+0 g
+0 G
+[<03E603E403A303AE>-4<03DF038D>] TJ
+ET
+Q
+ EMC  EMC  /Span <</MCID 5/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F2 15.96 Tf
+1 0 0 1 281.35 755.02 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC /TagSuspect <</TagSuspect /Ordering >>BDC  /Span <</MCID 6/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F1 15.96 Tf
+1 0 0 1 248.69 755.02 Tm
+0 g
+0 G
+[<0003>242<03E203F403A3>-3<03AE>-2<03DF038D>] TJ
+ET
+Q
+ EMC  EMC  /Span <</MCID 7/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 364.63 755.02 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 8/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 90.024 742.18 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 9/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F2 12 Tf
+1 0 0 1 195.77 728.86 Tm
+0 g
+0 G
+[(PA)3(NITI)-2(A P)3(E)-2(NERIM)4(A)-7(AN)4( S)-3(AN)4(T)-2(RI BARU)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 417.58 728.86 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 10/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F2 12 Tf
+1 0 0 1 165.17 715.06 Tm
+0 g
+0 G
+[(PES)-5(AN)4(T)-2(REN A)3(L)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F2 12 Tf
+1 0 0 1 257.57 715.06 Tm
+0 g
+0 G
+[(-)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F2 12 Tf
+1 0 0 1 261.53 715.06 Tm
+0 g
+0 G
+[(AN)4(D)-7(ALUS AL)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F2 12 Tf
+1 0 0 1 339.31 715.06 Tm
+0 g
+0 G
+[(-)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F2 12 Tf
+1 0 0 1 343.27 715.06 Tm
+0 g
+0 G
+[(IM)3(AM)6( S)-3(UK)-9(ABUM)5(I)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 448.3 715.06 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 11/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 245.93 702.22 Tm
+0 g
+0 G
+[(Tahun Pe)12(l)-4(a)9(j)-4(ar)5(an 202)9(6/)-4(20)11(27)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 367.51 702.22 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 12/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 90.024 690.34 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+q
+0.2 g
+88.584 682.9 436.3 1.44 re
+f*
+Q
+Q
+ EMC  /Span <</MCID 13/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 90.024 673.42 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC q
+90.024 657.1 60 12.6 re
+W* n
+ /Span <</MCID 14/Lang (id-ID)>> BDC q
+90.024 657.1 60 12.6 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 659.5 Tm
+0 g
+0 G
+[(Lam)-3(p.)] TJ
+ET
+Q
+q
+90.024 657.1 60 12.6 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 118.46 659.5 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC q
+150.02 657.1 9.984 12.6 re
+W* n
+ /Span <</MCID 15/Lang (id-ID)>> BDC q
+150.02 657.1 9.984 12.6 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 150.02 659.5 Tm
+0 g
+0 G
+[(:)] TJ
+ET
+Q
+q
+150.02 657.1 9.984 12.6 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 153.02 659.5 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC q
+160.01 657.1 363.43 12.6 re
+W* n
+ /Span <</MCID 16/Lang (id-ID)>> BDC q
+160.01 657.1 363.43 12.6 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 163.01 659.5 Tm
+0 g
+0 G
+[(1 Lem)-3(b)11(ar)] TJ
+ET
+Q
+q
+160.01 657.1 363.43 12.6 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 205.49 659.5 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC /Artifact BMC  EMC q
+90.024 628.78 60 25.32 re
+W* n
+ /Span <</MCID 17/Lang (id-ID)>> BDC q
+90.024 628.78 60 25.32 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 643.9 Tm
+0 g
+0 G
+[(H)5(al)] TJ
+ET
+Q
+q
+90.024 628.78 60 25.32 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 105.86 643.9 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC q
+150.02 628.78 9.984 25.32 re
+W* n
+ /Span <</MCID 18/Lang (id-ID)>> BDC q
+150.02 628.78 9.984 25.32 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 150.02 643.9 Tm
+0 g
+0 G
+[(:)] TJ
+ET
+Q
+q
+150.02 628.78 9.984 25.32 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 153.02 643.9 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC q
+160.01 628.78 363.43 25.32 re
+W* n
+ /Span <</MCID 19/Lang (id-ID)>> BDC q
+160.01 628.78 363.43 25.32 re
+W* n
+BT
+/F2 11.04 Tf
+1 0 0 1 163.01 643.9 Tm
+0 g
+0 G
+[(Pem)-2(e)9(ri)-5(ks)10(aan )-63(K)-4(e)9(se)-3(ha)13(t)-3(an )-63(C)5(al)-4(on )-73(San)14(t)-3(r)9(i)-4( )-75(B)4(aru)11( )-75(Pe)12(san)10(t)-3(re)-2(n)13( )-75(A)5(l)] TJ
+ET
+Q
+q
+160.01 628.78 363.43 25.32 re
+W* n
+BT
+/F2 11.04 Tf
+1 0 0 1 434.38 643.9 Tm
+0 g
+0 G
+[(-)] TJ
+ET
+Q
+q
+160.01 628.78 363.43 25.32 re
+W* n
+BT
+/F2 11.04 Tf
+1 0 0 1 438.1 643.9 Tm
+0 g
+0 G
+[(A)5(nd)3(a)11(l)-4(us)10( )-75(A)5(l)] TJ
+ET
+Q
+q
+160.01 628.78 363.43 25.32 re
+W* n
+BT
+/F2 11.04 Tf
+1 0 0 1 491.64 643.9 Tm
+0 g
+0 G
+[(-)] TJ
+ET
+Q
+q
+160.01 628.78 363.43 25.32 re
+W* n
+BT
+/F2 11.04 Tf
+1 0 0 1 495.36 643.9 Tm
+0 g
+0 G
+[(Im)5(a)11(m)-3( )] TJ
+ET
+Q
+q
+160.01 628.78 363.43 25.32 re
+W* n
+BT
+/F2 11.04 Tf
+1 0 0 1 163.01 631.3 Tm
+0 g
+0 G
+[(Su)3(kab)3(umi)] TJ
+ET
+Q
+q
+160.01 628.78 363.43 25.32 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 211.37 631.3 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC /Artifact BMC  EMC  /Span <</MCID 20/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 90.024 617.98 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 21/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 605.62 Tm
+0 g
+0 G
+[(K)5(epa)-2(da Yt)9(h.)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 145.58 605.62 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 22/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 593.02 Tm
+0 g
+0 G
+[(Pet)-4(uga)9(s )] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 127.1 593.02 Tm
+0 g
+0 G
+[(K)5(es)7(eha)8(t)-4(an Pu)11(ske)7(s)9(m)-4(as)7(/)-4(R)4(u)11(m)-4(ah Sa)9(ki)6(t)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 283.99 593.02 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 23/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F4 11.04 Tf
+1 0 0 1 90.024 580.27 Tm
+0 g
+0 G
+[<00AB00AB00AB00AB>11<00AB00AB00AB>11<00AB00AB00AB>11<00AB>11<00AB00AB00AB00AB>11<00AB00AB00AB>11<00AB00AB00AB>] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 321.07 580.27 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 24/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 567.67 Tm
+0 g
+0 G
+[(D)5(i)-4( Tem)7(pat)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 137.42 567.67 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 25/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 90.024 555.79 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 26/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 543.43 Tm
+0 g
+0 G
+[(D)5(enga)-2(n ho)11(r)-3(m)6(at)-5(,)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 160.97 543.43 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 27/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 90.024 531.67 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 28/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 519.31 Tm
+0 g
+0 G
+[(Sehubung)11(an )-316(deng)9(an )-316(keg)9(i)-4(a)9(t)-4(an )-316(pen)9(er)5(i)-4(m)6(aa)-2(n )-314(c)9(al)-5(o)11(n )-314(sa)-3(n)11(t)-4(r)7(i)-4( )-314(bar)-5(u )-314(P)13(es)-3(an)9(t)-4(r)7(en )-316(A)5(l)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 436.66 519.31 Tm
+0 g
+0 G
+[(-)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 440.26 519.31 Tm
+0 g
+0 G
+[(A)5(ndal)-5(us )-317(A)15(l)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 494.28 519.31 Tm
+0 g
+0 G
+[(-)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 497.88 519.31 Tm
+0 g
+0 G
+[(I)7(m)-4(a)9(m)6( )] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 506.71 Tm
+0 g
+0 G
+[(Sukabu)11(m)-4(i)-4( )-32(T)13(ahun )-33(P)13(el)-5(a)9(j)-4(a)9(r)-3(an)9( )-32(2026/)-4(2)11(027, )-32(k)11(am)5(i)-4( )-32(s)9(el)-5(a)9(ku )-32(pa)9(ni)-4(t)6(i)-4(a )-22(m)-4(e)9(m)-4(bu)11(t)-4(uhk)11(an )-33(pe)9(m)-4(e)9(r)-3(i)6(ksa)-3(an )-22(kes)7(eha)8(t)-4(a)9(n)11( )] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 493.99 Tm
+0 g
+0 G
+[(bagi)-5( p)11(ar)5(a c)-2(a)9(l)-4(on s)9(ant)5(r)-3(i)6( se)-3(b)11(ag)9(ai)-5( s)9(al)-5(a)9(h sa)7(t)-4(u b)11(agi)5(an da)8(r)-3(i)-4( )11(r)-3(an)9(gkai)-5(a)9(n pr)7(ose)-3(s)9( se)7(l)-4(ek)9(si)-6(.)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 430.42 493.99 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 29/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 90.024 482.23 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 30/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 469.87 Tm
+0 g
+0 G
+[(U)5(nt)-4(uk )-32(i)6(t)-4(u, )-32(ka)9(m)-4(i)-4( )-21(m)-4(ohon )-32(k)11(es)7(edi)-5(a)9(an )-33(B)4(apa)-2(k)11(/)-4(I)7(bu )-32(unt)-4(u)11(k )-32(m)-4(e)9(l)-4(akuk)9(an )-33(pe)9(m)-4(er)5(i)-4(k)11(sa)-3(an )-33(ke)9(se)-3(h)11(at)-5(an )-33(b)11(agi)-5( )-32(c)9(al)-5(o)11(n)11( )] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 457.27 Tm
+0 g
+0 G
+[(sa)-3(nt)6(r)-3(i)-4( )11(deng)9(an i)-5(d)11(ent)5(i)6(t)-4(as)-3( b)11(er)5(i)6(kut)-4(:)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 226.01 457.27 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 31/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 90.024 445.51 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC q
+90.024 429.19 113.06 12.6 re
+W* n
+ /Span <</MCID 32/Lang (id-ID)>> BDC q
+90.024 429.19 113.06 12.6 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 431.59 Tm
+0 g
+0 G
+[(N)5(am)-5(a)] TJ
+ET
+Q
+q
+90.024 429.19 113.06 12.6 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 116.3 431.59 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC q
+203.09 429.19 9.24 12.6 re
+W* n
+ /Span <</MCID 33/Lang (id-ID)>> BDC q
+203.09 429.19 9.24 12.6 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 203.09 431.59 Tm
+0 g
+0 G
+[(:)] TJ
+ET
+Q
+q
+203.09 429.19 9.24 12.6 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 206.09 431.59 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC q
+212.33 429.19 311.11 12.6 re
+W* n
+ /Span <</MCID 34/Lang (id-ID)>> BDC q
+212.33 429.19 311.11 12.6 re
+W* n
+BT
+/F4 11.04 Tf
+1 0 0 1 215.33 431.59 Tm
+0 g
+0 G
+[<00AB00AB00AB00AB>11<00AB00AB00AB>11<00AB00AB00AB>11<00AB>11<00AB00AB00AB00AB>11<00AB00AB00AB>11<00AB00AB00AB>11<00AB>11<00AB00AB00AB00AB>11<00AB00AB>] TJ
+ET
+Q
+q
+212.33 429.19 311.11 12.6 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 523.32 431.59 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC /Artifact BMC  EMC q
+90.024 413.47 113.06 12.72 re
+W* n
+ /Span <</MCID 35/Lang (id-ID)>> BDC q
+90.024 413.47 113.06 12.72 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 415.99 Tm
+0 g
+0 G
+[(N)5(om)-4(or)-3( P)13(enda)8(f)-3(t)6(ar)-5(a)9(n)] TJ
+ET
+Q
+q
+90.024 413.47 113.06 12.72 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 176.45 415.99 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC q
+203.09 413.47 9.24 12.72 re
+W* n
+ /Span <</MCID 36/Lang (id-ID)>> BDC q
+203.09 413.47 9.24 12.72 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 203.09 415.99 Tm
+0 g
+0 G
+[(:)] TJ
+ET
+Q
+q
+203.09 413.47 9.24 12.72 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 206.09 415.99 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC q
+212.33 413.47 311.11 12.72 re
+W* n
+ /Span <</MCID 37/Lang (id-ID)>> BDC q
+212.33 413.47 311.11 12.72 re
+W* n
+BT
+/F4 11.04 Tf
+1 0 0 1 215.33 415.99 Tm
+0 g
+0 G
+[<00AB00AB00AB00AB>11<00AB00AB00AB>11<00AB00AB00AB>11<00AB>11<00AB00AB00AB00AB>11<00AB00AB00AB>11<00AB00AB00AB>11<00AB>11<00AB00AB00AB00AB>11<00AB00AB>] TJ
+ET
+Q
+q
+212.33 413.47 311.11 12.72 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 523.32 415.99 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC /Artifact BMC  EMC q
+90.024 397.85 113.06 12.624 re
+W* n
+ /Span <</MCID 38/Lang (id-ID)>> BDC q
+90.024 397.85 113.06 12.624 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 400.25 Tm
+0 g
+0 G
+[(Tem)-3(pa)9(t)-4(, Ta)12(ngga)9(l)-4( Lah)12(i)-4(r)] TJ
+ET
+Q
+q
+90.024 397.85 113.06 12.624 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 191.81 400.25 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC q
+203.09 397.85 9.24 12.624 re
+W* n
+ /Span <</MCID 39/Lang (id-ID)>> BDC q
+203.09 397.85 9.24 12.624 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 203.09 400.25 Tm
+0 g
+0 G
+[(:)] TJ
+ET
+Q
+q
+203.09 397.85 9.24 12.624 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 206.09 400.25 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC q
+212.33 397.85 311.11 12.624 re
+W* n
+ /Span <</MCID 40/Lang (id-ID)>> BDC q
+212.33 397.85 311.11 12.624 re
+W* n
+BT
+/F4 11.04 Tf
+1 0 0 1 215.33 400.25 Tm
+0 g
+0 G
+[<00AB00AB00AB00AB>11<00AB00AB00AB>11<00AB00AB00AB>11<00AB>11<00AB00AB00AB00AB>11<00AB00AB00AB>11<00AB00AB00AB>11<00AB>11<00AB00AB00AB00AB>11<00AB00AB>] TJ
+ET
+Q
+q
+212.33 397.85 311.11 12.624 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 523.32 400.25 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC /Artifact BMC  EMC q
+90.024 382.13 113.06 12.72 re
+W* n
+ /Span <</MCID 41/Lang (id-ID)>> BDC q
+90.024 382.13 113.06 12.72 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 384.65 Tm
+0 g
+0 G
+[(A)5(l)-4(am)5(at)] TJ
+ET
+Q
+q
+90.024 382.13 113.06 12.72 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 122.42 384.65 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC q
+203.09 382.13 9.24 12.72 re
+W* n
+ /Span <</MCID 42/Lang (id-ID)>> BDC q
+203.09 382.13 9.24 12.72 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 203.09 384.65 Tm
+0 g
+0 G
+[(:)] TJ
+ET
+Q
+q
+203.09 382.13 9.24 12.72 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 206.09 384.65 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC q
+212.33 382.13 311.11 12.72 re
+W* n
+ /Span <</MCID 43/Lang (id-ID)>> BDC q
+212.33 382.13 311.11 12.72 re
+W* n
+BT
+/F4 11.04 Tf
+1 0 0 1 215.33 384.65 Tm
+0 g
+0 G
+[<00AB00AB00AB00AB>11<00AB00AB00AB>11<00AB00AB00AB>11<00AB>11<00AB00AB00AB00AB>11<00AB00AB00AB>11<00AB00AB00AB>11<00AB>11<00AB00AB00AB00AB>11<00AB00AB>] TJ
+ET
+Q
+q
+212.33 382.13 311.11 12.72 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 523.32 384.65 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC /Artifact BMC  EMC  /Span <</MCID 44/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 90.024 371.33 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 45/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 358.97 Tm
+0 g
+0 G
+[(Je)-3(ni)6(s pe)7(m)-4(e)9(r)-3(i)-4(k)11(sa)-3(an)9( kes)7(eha)8(t)-4(a)9(n yang d)9(i)-4(bu)11(t)-4(uhka)9(n ad)9(al)-5(a)9(h:)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 327.43 358.97 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 46/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F4 11.04 Tf
+1 0 0 1 102.02 346.37 Tm
+0 g
+0 G
+[<0087>] TJ
+ET
+Q
+ EMC  /Span <</MCID 47/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F5 11.04 Tf
+1 0 0 1 105.86 346.37 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 114.02 346.37 Tm
+0 g
+0 G
+[(R)4(i)-4(w)5(aya)-2(t)6( Peny)11(aki)5(t)-4( \()] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F6 11.04 Tf
+1 0 0 1 198.53 346.37 Tm
+0 g
+0 G
+[(An)13(am)5(ne)9(si)-6(s)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 246.05 346.37 Tm
+0 g
+0 G
+[(\))] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 249.65 346.37 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 48/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F4 11.04 Tf
+1 0 0 1 102.02 333.65 Tm
+0 g
+0 G
+[<0087>] TJ
+ET
+Q
+ EMC  /Span <</MCID 49/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F5 11.04 Tf
+1 0 0 1 105.86 333.65 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 114.02 333.65 Tm
+0 g
+0 G
+[(Pem)-4(e)9(r)-3(i)-4(k)11(sa)-3(a)9(n Fi)8(si)-6(k )11(\()] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F6 11.04 Tf
+1 0 0 1 201.53 333.65 Tm
+0 g
+0 G
+[(Phy)12(si)-6(c)9(a)11(l)-4( Tes)9(t)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 260.45 333.65 Tm
+0 g
+0 G
+[(\))] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 264.05 333.65 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 50/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F4 11.04 Tf
+1 0 0 1 102.02 321.05 Tm
+0 g
+0 G
+[<0087>] TJ
+ET
+Q
+ EMC  /Span <</MCID 51/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F5 11.04 Tf
+1 0 0 1 105.86 321.05 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 114.02 321.05 Tm
+0 g
+0 G
+[(Pem)-4(e)9(r)-3(i)-4(k)11(sa)-3(a)9(n Ta)12(j)-4(a)9(m)-4( Peng)11(l)-4(i)6(hat)-5(an)9( \()] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F6 11.04 Tf
+1 0 0 1 262.37 321.05 Tm
+0 g
+0 G
+[(V)13(i)-4(sus)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 286.15 321.05 Tm
+0 g
+0 G
+[(\))-3( da)9(n B)4(ut)6(a W)-2(a)9(r)7(na)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 364.03 321.05 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 52/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 90.024 309.29 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 53/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 296.93 Tm
+0 g
+0 G
+[(C)4(at)-5(a)9(t)-4(an)9(:)-4( )-282(B)4(i)6(l)-4(a )] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F6 11.04 Tf
+1 0 0 1 156.74 296.93 Tm
+0 g
+0 G
+[(vi)5(sus)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 178.85 296.93 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 184.61 296.93 Tm
+0 g
+0 G
+[(t)-4(i)6(dak )-272(nor)-3(m)6(al)-5(,)11( )-282(m)6(ohon )-271(di)6(l)-4(engk)9(api)5( )-282(denga)8(n )-282(n)11(i)-4(l)-4(a)9(i)-4( )-282(n)11(ega)8(t)-4(i)6(f)-3(, )-282(p)11(o)11(si)-6(t)6(i)-4(f)-3(,)11( )-282(a)9(t)-4(au )-272(ni)6(l)-4(ai)15( )] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 284.21 Tm
+0 g
+0 G
+[(si)-6(l)6(i)-4(nd)11(r)-3(i)6(snya)-3( )11(\()-3(con)9(t)-4(oh)11(:)-4( V)5(.O)5(D)5(/)-4(V)5(.O)5(S: )] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 243.89 284.21 Tm
+0 g
+0 G
+[(-)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 247.49 284.21 Tm
+0 g
+0 G
+[(1/)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 256.13 284.21 Tm
+0 g
+0 G
+[(-)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 259.73 284.21 Tm
+0 g
+0 G
+[(0,5\))-3(.)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 279.91 284.21 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 54/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 90.024 272.45 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 55/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 260.09 Tm
+0 g
+0 G
+[(H)5(as)-3(i)-4(l)6( )] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 117.14 260.09 Tm
+0 g
+0 G
+[(pe)9(m)-4(er)5(i)-4(ks)9(aa)-2(n )-97(d)11(apa)8(t)-4( )-97(di)6(i)-4(si)4(kan )-98(p)11(ada)-2( )-97(f)7(or)7(m)-4(u)11(l)-4(i)6(r)-3( )-97(t)-4(e)9(r)-3(l)6(a)9(m)-4(pi)6(r)-3(. )-97(Se)11(l)-4(ur)7(uh )-97(b)11(i)-4(aya)-2( )-97(p)11(em)5(er)5(i)-4(ksa)7(an )-98(ke)9(se)-3(ha)9(t)-4(a)9(n)11( )] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 247.49 Tm
+0 g
+0 G
+[(di)-4(beb)9(anka)-2(n)11( )22(kep)9(ada)-2( )33(ca)8(l)-4(on )22(s)9(a)9(nt)-4(r)7(i)-4( )22(ya)9(ng )22(b)11(er)-5(s)9(angku)9(t)-4(an,)9( )22(den)9(gan )31(m)-4(eka)8(ni)-4(s)9(m)-4(e)9( )22(yang)9( )22(di)6(t)-4(en)9(t)6(ukan )20(o)11(l)-4(eh)9( )22(pi)-4(h)11(ak)9( )] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 234.77 Tm
+0 g
+0 G
+[(R)4(um)-4(ah S)11(aki)5(t)-4(/)-4(P)13(uske)7(sm)4(as)-3(.)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 201.29 234.77 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 56/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 90.024 222.98 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 57/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 210.62 Tm
+0 g
+0 G
+[(D)5(em)-5(i)-4(k)11(i)-4(an)9( )-97(yang )-88(dapa)8(t)-4( )-97(ka)9(m)6(i)6( )-97(sa)-3(m)6(pai)5(kan. )-98(A)5(t)6(as)-3( )] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 293.71 210.62 Tm
+0 g
+0 G
+[(p)11(er)-5(h)11(at)5(i)-4(an)9( )-97(dan )-98(ke)9(r)-3(j)6(a )-98(sa)7(m)-4(an)9(ya, )-98(ka)9(m)6(i)-4( )-86(uca)-2(pka)9(n )-97(t)-4(e)9(r)-3(i)6(m)-4(a)9( )] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 90.024 198.02 Tm
+0 g
+0 G
+[(kas)-3(i)-4(h)11(.)] TJ
+ET
+Q
+q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 115.94 198.02 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 58/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 90.024 186.14 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 59/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 90.024 174.62 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC q
+90.024 98.064 216.65 72.48 re
+W* n
+ /Span <</MCID 60/Lang (id-ID)>> BDC q
+90.024 98.064 216.65 72.48 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 90.024 161.18 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC q
+306.67 98.064 216.77 72.48 re
+W* n
+ /Span <</MCID 61/Lang (id-ID)>> BDC q
+306.67 98.064 216.77 72.48 re
+W* n
+BT
+/F4 11.04 Tf
+1 0 0 1 310.75 160.34 Tm
+0 g
+0 G
+[<00360058004E004400450058>11<0050>-4<004C>-4<000F0003>11<00AB00AB00AB>11<00AB00AB00AB>11<00AB00AB00AB00AB0003>11<0015001300150019>] TJ
+ET
+Q
+q
+306.67 98.064 216.77 72.48 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 495.72 160.34 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 62/Lang (id-ID)>> BDC q
+306.67 98.064 216.77 72.48 re
+W* n
+BT
+/F3 11.04 Tf
+1 0 0 1 310.75 147.62 Tm
+0 g
+0 G
+[(K)5(et)-5(ua P)11(ani)5(t)-4(i)6(a,)] TJ
+ET
+Q
+q
+306.67 98.064 216.77 72.48 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 373.06 147.62 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 63/Lang (id-ID)>> BDC q
+306.67 98.064 216.77 72.48 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 310.75 135.86 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 64/Lang (id-ID)>> BDC q
+306.67 98.064 216.77 72.48 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 310.75 124.34 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 65/Lang (id-ID)>> BDC q
+306.67 98.064 216.77 72.48 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 310.75 112.94 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 66/Lang (id-ID)>> BDC q
+306.67 98.064 216.77 72.48 re
+W* n
+BT
+/F2 11.04 Tf
+1 0 0 1 310.75 100.58 Tm
+0 g
+0 G
+[(Wahab)3( R)5(aj)-3(a)11(sam)5(, M.Pd.)] TJ
+ET
+Q
+q
+306.67 98.064 216.77 72.48 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 423.58 100.58 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+Q
+ EMC /Artifact BMC  EMC  /Span <</MCID 67/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 90.024 86.784 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC  /Span <</MCID 68/Lang (id-ID)>> BDC q
+0.000008871 0 595.32 841.92 re
+W* n
+BT
+/F3 9.96 Tf
+1 0 0 1 90.024 75.264 Tm
+0 g
+0 G
+[( )] TJ
+ET
+Q
+ EMC 
+
+q 595.32 0 0 136.91570101724903 0 705.0042989827509 cm /KopHeaderImg Do Q
+
+
+q 108 0 0 108 185 87 cm /NewStampImg Do Q
+q 110 0 0 75 255 79 cm /SigImg Do Q
+

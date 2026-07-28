@@ -1,0 +1,11 @@
+[18764:25912:0703/211441.766:WARNING:chrome\browser\extensions\activity_log\activity_log_policy.cc:71] Scheduling init
+[18764:25912:0703/211441.767:WARNING:chrome\browser\extensions\activity_log\activity_log_policy.cc:71] Scheduling init
+[17392:19580:0703/211441.826:ERROR:ui\gl\direct_composition_support.cc:247] GetGpuDriverOverlayInfo: Failed to retrieve video device
+[18764:25912:0703/211442.313:WARNING:chrome\browser\edge_pinned_sites\pinned_sites_cache.cc:238] Cache isn't initialized
+[18764:25912:0703/211442.343:INFO:CONSOLE:23] "PDFJS: Loading document url: ./doc.pdf?cb=1783088082343", source: http://localhost:9999/render.html?page=1&width=1920&height=1080&cb=1783088081556 (23)
+[18764:25912:0703/211442.348:WARNING:chrome\browser\edge_pinned_sites\pinned_sites_cache.cc:238] Cache isn't initialized
+[18764:25912:0703/211442.362:INFO:CONSOLE:3815] "[ProtocolLaunch] handler constructed; wiring port events.", source: chrome-extension://ndcpkimcihhghdcddljkfmmjccdmcmof/background.rollup.js (3815)
+[18764:25912:0703/211442.437:INFO:CONSOLE:25] "PDFJS: Document loaded, pages: 1", source: http://localhost:9999/render.html?page=1&width=1920&height=1080&cb=1783088081556 (25)
+[18764:25912:0703/211442.437:INFO:CONSOLE:28] "PDFJS: Page loaded: 1", source: http://localhost:9999/render.html?page=1&width=1920&height=1080&cb=1783088081556 (28)
+[17392:7140:0703/211442.443:ERROR:gpu\command_buffer\service\shared_image\shared_image_manager.cc:395] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.
+[18764:25912:0703/211442.444:WARNING:chrome\browser\edge_pinned_sites\pinned_sites_cache.cc:238] Cache isn't initialized

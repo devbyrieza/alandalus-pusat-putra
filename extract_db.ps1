@@ -1,0 +1,2 @@
+$cmd = "docker exec coolify-db psql -U coolify -d ppdb_alimam -t -c `"COPY (SELECT row_to_json(t) FROM (SELECT nama_lengkap, tempat_lahir, TO_CHAR(tanggal_lahir, 'DD TMMonth YYYY') as tgl_lahir, jenis_kelamin, alamat, rt, rw, kelurahan, kecamatan, kabupaten, provinsi FROM pendaftar) t) TO STDOUT;`""
+ssh -o StrictHostKeyChecking=no root@72.61.141.50 $cmd > C:\Users\itpua\Dev\Work\al-andalus\alandalus-alimam\pendaftar_db.jsonl

@@ -1,0 +1,13 @@
+[25340:16544:0703/213709.543:WARNING:chrome\browser\extensions\activity_log\activity_log_policy.cc:71] Scheduling init
+[25340:16544:0703/213709.544:WARNING:chrome\browser\extensions\activity_log\activity_log_policy.cc:71] Scheduling init
+[9284:24912:0703/213709.555:ERROR:gpu\ipc\service\gpu_channel_manager.cc:927] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[9284:24912:0703/213709.747:ERROR:gpu\ipc\service\gpu_channel_manager.cc:927] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[9284:24912:0703/213709.747:ERROR:gpu\ipc\service\gpu_channel_manager.cc:927] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[25340:16544:0703/213710.022:WARNING:chrome\browser\edge_pinned_sites\pinned_sites_cache.cc:238] Cache isn't initialized
+[25340:16544:0703/213710.044:INFO:CONSOLE:12] "TEST: Loading PDF...", source: http://localhost:9998/render.html (12)
+[25340:16544:0703/213710.048:WARNING:chrome\browser\edge_pinned_sites\pinned_sites_cache.cc:238] Cache isn't initialized
+[25340:16544:0703/213710.056:INFO:CONSOLE:3815] "[ProtocolLaunch] handler constructed; wiring port events.", source: chrome-extension://ndcpkimcihhghdcddljkfmmjccdmcmof/background.rollup.js (3815)
+[25340:16544:0703/213710.114:INFO:CONSOLE:14] "TEST: PDF loaded", source: http://localhost:9998/render.html (14)
+[25340:16544:0703/213710.114:INFO:CONSOLE:17] "TEST: Page loaded", source: http://localhost:9998/render.html (17)
+[25340:16544:0703/213710.120:WARNING:chrome\browser\edge_pinned_sites\pinned_sites_cache.cc:238] Cache isn't initialized
+[9284:13644:0703/213710.125:ERROR:gpu\command_buffer\service\shared_image\shared_image_manager.cc:395] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.

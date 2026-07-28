@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Surat Pernyataan Pengunduran Diri</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            background-color: #525659; /* Latar gelap khas PDF viewer */
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .page {
+            width: 210mm;
+            height: 297mm; /* Kunci tingginya agar background tidak terpotong/berulang */
+            /* Menggunakan kop surat full sebagai background halaman */
+            background-image: url('/images/kop-surat-full.jpg');
+            background-size: 100% 100%; /* Paksa mengikuti ukuran A4 penuh */
+            background-repeat: no-repeat;
+            background-position: center top;
+            background-color: white; /* Fallback */
+
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+            box-sizing: border-box;
+            overflow: hidden;
+            
+            /* Padding disesuaikan */
+            padding-top: 65mm; 
+            padding-bottom: 35mm;
+            padding-left: 20mm;
+            padding-right: 20mm;
+        }
+        
+        /* Content */
+        .content {
+            position: relative;
+            z-index: 1;
+            font-size: 10pt; /* Diperkecil lagi */
+            line-height: 1.3;
+        }
+        .content p, .content ol {
+            margin: 6px 0; /* Perkecil jarak antar paragraf */
+        }
+        .content ol {
+            padding-left: 20px;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .title {
+            font-weight: bold;
+            text-decoration: underline;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+        td {
+            vertical-align: top;
+            padding: 1px 0;
+        }
+        .col-label {
+            width: 30%;
+        }
+        .col-colon {
+            width: 2%;
+        }
+        .col-value {
+            width: 68%;
+        }
+        .signature-area {
+            margin-top: 20px;
+            width: 100%;
+        }
+        .signature-area table {
+            width: 100%;
+            text-align: center;
+        }
+        .signature-area td {
+            width: 50%;
+        }
+        .materai {
+            margin-top: 30px;
+            font-size: 9pt;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        /* Hilangkan margin dan shadow saat di-print (Ctrl+P) */
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+            body {
+                background: none;
+                margin: 0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .page {
+                margin: 0 !important;
+                border: initial;
+                border-radius: initial;
+                width: 210mm;
+                min-height: 297mm;
+                box-shadow: initial;
+                page-break-after: always;
+                padding-top: 75mm !important;
+                padding-bottom: 50mm !important;
+                padding-left: 20mm !important;
+                padding-right: 20mm !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="content">
+            <div class="text-center title">SURAT PERNYATAAN PENGUNDURAN DIRI SANTRI</div>
+
+            <p>Yang bertanda tangan di bawah ini:</p>
+            <table>
+                <tr><td class="col-label">Nama Lengkap</td><td class="col-colon">:</td><td class="col-value"><strong>Cucu Dian Silvia</strong></td></tr>
+                <tr><td class="col-label">NIK</td><td class="col-colon">:</td><td class="col-value"><strong>3202076310690003</strong></td></tr>
+                <tr><td class="col-label">Pekerjaan</td><td class="col-colon">:</td><td class="col-value"><strong>Guru/Dosen</strong></td></tr>
+                <tr><td class="col-label">Alamat Lengkap</td><td class="col-colon">:</td><td class="col-value"><strong>Kp. Lengkong, RT 008/004, Kel. LENGKONG, Kec. LENGKONG, KAB. SUKABUMI, JAWA BARAT 43174</strong></td></tr>
+                <tr><td class="col-label">No. Telepon / HP</td><td class="col-colon">:</td><td class="col-value"><strong>081546726474</strong></td></tr>
+                <tr><td class="col-label">Hubungan dgn Santri</td><td class="col-colon">:</td><td class="col-value"><strong>Ibu Kandung</strong></td></tr>
+            </table>
+
+            <p>Adalah benar merupakan orang tua / wali dari santri:</p>
+            <table>
+                <tr><td class="col-label">Nama Lengkap Santri</td><td class="col-colon">:</td><td class="col-value"><strong>Raylan Akbar</strong></td></tr>
+                <tr><td class="col-label">Tempat, Tanggal Lahir</td><td class="col-colon">:</td><td class="col-value"><strong>Kabupaten Sukabumi, 25 Juni 2010</strong></td></tr>
+                <tr><td class="col-label">NIS / NISN</td><td class="col-colon">:</td><td class="col-value"><strong>2602070013 / 0102833523</strong></td></tr>
+                <tr><td class="col-label">Kelas / Kamar</td><td class="col-colon">:</td><td class="col-value"><strong>IL</strong></td></tr>
+            </table>
+
+            <p>Dengan ini menyatakan dengan sesungguhnya dan penuh kesadaran bahwa kami <strong>MENARIK / MENGUNDURKAN DIRI</strong> anak kami tersebut dari statusnya sebagai santri di <strong>Pesantren Al Imam Al Islami</strong>, terhitung mulai tanggal ..............................................</p>
+
+            <p>Adapun alasan pengunduran diri ini adalah dikarenakan:<br>
+            ..................................................................................................................................................................<br>
+            ..................................................................................................................................................................</p>
+
+            <p>Sehubungan dengan pengunduran diri tersebut, kami menyatakan:</p>
+            <ol>
+                <li>Menyadari dan menerima sepenuhnya bahwa segala bentuk pembayaran administrasi keuangan (uang pangkal, SPP, dan biaya pendidikan lainnya) yang telah disetorkan ke <strong>Pesantren Al Imam Al Islami</strong> dinyatakan <strong>HANGUS</strong> dan tidak dapat ditarik/dikembalikan.</li>
+                <li>Membebaskan pihak staf, pengurus, maupun pimpinan <strong>Pesantren Al Imam Al Islami</strong> dari segala bentuk tuntutan hukum ataupun tuntutan pengembalian dana di kemudian hari atas keputusan pengunduran diri ini.</li>
+            </ol>
+
+            <p>Demikian surat pernyataan ini kami buat dengan sebenarnya, tanpa ada paksaan dari pihak manapun, untuk dapat dipergunakan sebagaimana mestinya.</p>
+
+            <div class="signature-area">
+                <table>
+                    <tr>
+                        <td style="vertical-align: top;">
+                            Mengetahui,<br>
+                            Mudir / Kepala Kepengasuhan
+                            <div style="height: 20px;"></div>
+                            <div style="width: 200px; margin: 0 auto; height: 60px; position: relative;">
+                                <div style="position: absolute; bottom: 0; width: 100%; border-bottom: 1px solid #000;"></div>
+                            </div>
+                        </td>
+                        <td style="vertical-align: top;">
+                            .............................., ..... ........................... 20....<br>
+                            Yang Membuat Pernyataan,<br>
+                            Orang Tua / Wali Santri
+                            <div style="height: 20px;"></div>
+                            <div style="position: relative; width: 250px; margin: 0 auto; text-align: left;">
+                                <div style="font-size: 8pt; color: #999; width: 50px; height: 60px; text-align: center; float: left; margin-right: 10px;">Meterai<br>10.000</div>
+                                <div style="float: left; width: 180px; height: 60px; position: relative;">
+                                    <div style="position: absolute; bottom: 0; width: 100%; border-bottom: 1px solid #000;"></div>
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+[12392:2204:0703/211747.137:WARNING:chrome\browser\extensions\activity_log\activity_log_policy.cc:71] Scheduling init
+[12392:2204:0703/211747.137:WARNING:chrome\browser\extensions\activity_log\activity_log_policy.cc:71] Scheduling init
+[26248:21968:0703/211747.152:ERROR:gpu\ipc\service\gpu_channel_manager.cc:927] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[26248:21968:0703/211747.383:ERROR:gpu\ipc\service\gpu_channel_manager.cc:927] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[26248:21968:0703/211747.383:ERROR:gpu\ipc\service\gpu_channel_manager.cc:927] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[12392:2204:0703/211747.660:WARNING:chrome\browser\edge_pinned_sites\pinned_sites_cache.cc:238] Cache isn't initialized
+[12392:2204:0703/211747.691:INFO:CONSOLE:25] "PDFJS: Loading document url: ./doc.pdf?cb=1783088267691", source: http://localhost:9999/render.html?page=1&width=2261&height=3200&cb=1783088266926 (25)
+[12392:2204:0703/211747.699:INFO:CONSOLE:3815] "[ProtocolLaunch] handler constructed; wiring port events.", source: chrome-extension://ndcpkimcihhghdcddljkfmmjccdmcmof/background.rollup.js (3815)
+[12392:2204:0703/211747.753:INFO:CONSOLE:27] "PDFJS: Document loaded, pages: 2", source: http://localhost:9999/render.html?page=1&width=2261&height=3200&cb=1783088266926 (27)
+[12392:2204:0703/211747.754:INFO:CONSOLE:44] "PDFJS: Page loaded: 1", source: http://localhost:9999/render.html?page=1&width=2261&height=3200&cb=1783088266926 (44)
+[12392:2204:0703/211747.754:INFO:CONSOLE:49] "PDFJS: Viewport size: 1085.28x1536", source: http://localhost:9999/render.html?page=1&width=2261&height=3200&cb=1783088266926 (49)
+[12392:2204:0703/211747.754:INFO:CONSOLE:62] "PDFJS: Starting page render...", source: http://localhost:9999/render.html?page=1&width=2261&height=3200&cb=1783088266926 (62)
+[12392:2204:0703/211747.757:INFO:CONSOLE:32] "=== RUNDOWN EXTRACTED TEXT START ===", source: http://localhost:9999/render.html?page=1&width=2261&height=3200&cb=1783088266926 (32)
+[12392:2204:0703/211747.757:INFO:CONSOLE:38] "=== RUNDOWN EXTRACTED TEXT END ===", source: http://localhost:9999/render.html?page=1&width=2261&height=3200&cb=1783088266926 (38)
+[12392:2204:0703/211748.089:ERROR:chrome\browser\task_manager\providers\fallback_task_provider.cc:126] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/40528867.
+[12392:2204:0703/211748.442:WARNING:components\signin\internal\identity_manager\account_fetcher_service.cc:231] Edge does not support fetching account capabilities
+[12392:2204:0703/211748.442:WARNING:components\signin\internal\identity_manager\account_fetcher_service.cc:192] Should not execute: Tests depending on this function may fail
+[12392:2204:0703/211749.178:INFO:CONSOLE:65] "PDFJS: Rendering complete!", source: http://localhost:9999/render.html?page=1&width=2261&height=3200&cb=1783088266926 (65)
+[12392:2204:0703/211749.221:ERROR:chrome\browser\task_manager\providers\fallback_task_provider.cc:126] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/40528867.
+[12392:25184:0703/211752.200:WARNING:components\sync\engine\syncer_proto_util.cc:669] Error posting from syncer: Response Code (bogus on error): -1 Content-Length (bogus on error): -1 X-AFS-Tracking:  Server Status: CONNECTION_UNAVAILABLE
+[12392:25184:0703/211752.200:ERROR:components\sync\engine\get_updates_processor.cc:424] PostClientToServerMessage() failed during GetUpdates with error Network error (ERR_ABORTED)
+[11920:1668:0703/211752.261:WARNING:net\extras\sqlite\sqlite_persistent_store_backend_base.cc:183] Failed to post task from FlushAndNotifyInBackground@net\extras\sqlite\sqlite_persistent_store_backend_base.cc:239 to client_task_runner_.
+[11920:1668:0703/211752.261:WARNING:net\extras\sqlite\sqlite_persistent_store_backend_base.cc:183] Failed to post task from FlushAndNotifyInBackground@net\extras\sqlite\sqlite_persistent_store_backend_base.cc:239 to client_task_runner_.

@@ -1,0 +1,81 @@
+const fs = require('fs');
+const path = require('path');
+
+const htmlContent = `<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulir Pendaftaran PMB (Ad-1)</title>
+    <style>
+        body { font-family: 'Times New Roman', Times, serif; margin: 0; padding: 20px; font-size: 12pt; line-height: 1.5; }
+        .container { max-width: 800px; margin: 0 auto; border: 1px solid #000; padding: 40px; background: #fff; }
+        .header { text-align: center; border-bottom: 3px solid #000; padding-bottom: 10px; margin-bottom: 20px; }
+        .header h2, .header h3 { margin: 5px 0; }
+        .title { text-align: center; font-weight: bold; font-size: 14pt; margin-bottom: 20px; text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        td { padding: 5px; vertical-align: top; }
+        .label { width: 30%; font-weight: bold; }
+        .colon { width: 2%; text-align: center; }
+        .value { width: 68%; border-bottom: 1px dotted #000; }
+        .section-title { font-weight: bold; margin-top: 20px; margin-bottom: 10px; text-decoration: underline; }
+        .signature-area { margin-top: 40px; display: flex; justify-content: space-between; }
+        .sig-box { text-align: center; width: 40%; }
+        .sig-name { margin-top: 70px; font-weight: bold; text-decoration: underline; }
+        @media print { 
+            body { padding: 0; background: #fff; }
+            .container { border: none; padding: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>YAYASAN AL ANDALUS AL IMAM</h2>
+            <h3>PONDOK PESANTREN AL-IMAM AL-ISLAM</h3>
+            <p style="margin: 0; font-size: 10pt;">Jl. Cikembang, Sukabumi, Jawa Barat</p>
+        </div>
+        
+        <div class="title">FORMULIR PENDAFTARAN SANTRI BARU (AD-1) <br> TAHUN AJARAN 2026/2027</div>
+
+        <div class="section-title">A. IDENTITAS CALON SANTRI</div>
+        <table>
+            <tr><td class="label">1. Nomor Pendaftaran</td><td class="colon">:</td><td class="value">MTA2600001</td></tr>
+            <tr><td class="label">2. Nama Lengkap</td><td class="colon">:</td><td class="value">ATQANUL UMMAH AHMAD</td></tr>
+            <tr><td class="label">3. NIK</td><td class="colon">:</td><td class="value">7371111406140004</td></tr>
+            <tr><td class="label">4. Tempat, Tanggal Lahir</td><td class="colon">:</td><td class="value">KAB. SUKABUMI, 14 Juni 2014</td></tr>
+            <tr><td class="label">5. Jenis Kelamin</td><td class="colon">:</td><td class="value">Laki-Laki</td></tr>
+            <tr><td class="label">6. Alamat Lengkap</td><td class="colon">:</td><td class="value">Jl. Raya Cikembang No. 12, Sukabumi</td></tr>
+            <tr><td class="label">7. Asal Sekolah</td><td class="colon">:</td><td class="value">SD Buqatun Mubarakah</td></tr>
+            <tr><td class="label">8. Jenjang Pilihan</td><td class="colon">:</td><td class="value">MTs</td></tr>
+        </table>
+
+        <div class="section-title">B. IDENTITAS ORANG TUA / WALI</div>
+        <table>
+            <tr><td class="label">1. Nama Ayah</td><td class="colon">:</td><td class="value">Ahmad</td></tr>
+            <tr><td class="label">2. Pekerjaan Ayah</td><td class="colon">:</td><td class="value">Wiraswasta</td></tr>
+            <tr><td class="label">3. No. HP Ayah</td><td class="colon">:</td><td class="value">+62811410257</td></tr>
+            <tr><td class="label">4. Nama Ibu</td><td class="colon">:</td><td class="value">Andi Mumtihanah Mursyid</td></tr>
+            <tr><td class="label">5. Pekerjaan Ibu</td><td class="colon">:</td><td class="value">Guru/Dosen</td></tr>
+            <tr><td class="label">6. No. HP Ibu</td><td class="colon">:</td><td class="value">08114457476</td></tr>
+        </table>
+
+        <p style="text-align: justify; margin-top: 30px;">
+            Dengan ini menyatakan bahwa data yang diisikan adalah benar dan dapat dipertanggungjawabkan. Kami bersedia mematuhi segala peraturan dan ketentuan yang berlaku di Pondok Pesantren Al-Imam Al-Islam.
+        </p>
+
+        <div class="signature-area">
+            <div class="sig-box">
+                <p>Mengetahui/Menyetujui,<br>Orang Tua / Wali</p>
+                <div class="sig-name">( Ahmad )</div>
+            </div>
+            <div class="sig-box">
+                <p>Sukabumi, 15 Januari 2026<br>Calon Santri</p>
+                <div class="sig-name">( Atqanul Ummah Ahmad )</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>`;
+
+fs.writeFileSync(path.join(__dirname, 'Contoh_Formulir_Pendaftaran_Ad1.html'), htmlContent);
+console.log('Berhasil membuat Contoh_Formulir_Pendaftaran_Ad1.html');

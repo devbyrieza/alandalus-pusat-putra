@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Label Piala MOSA CUP 2026 - Bright Premium Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        @page { size: A4 portrait; margin: 10mm; }
+        body { margin: 0; padding: 20px; background: #e5e7eb; -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Montserrat', sans-serif; }
+        
+        .page-container {
+            width: 210mm;
+            min-height: 297mm;
+            background: white;
+            margin: 0 auto;
+            padding: 10mm;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        @media print {
+            body { background: white; margin: 0; padding: 0; }
+            .page-container { margin: 0; box-shadow: none; padding: 0; width: 100%; height: 100%; }
+            .no-print { display: none !important; }
+        }
+
+        .label-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15mm;
+        }
+
+        /* 
+         * PENGATURAN UKURAN LABEL PIALA 
+         * Silakan ubah angka width (lebar) dan height (tinggi) di bawah ini
+         * sesuaikan dengan ukuran tempat label di piala Ustadz.
+         * Default: 7cm x 6cm
+         */
+        .trophy-label {
+            width: 7cm;
+            height: 6cm;
+            position: relative;
+            box-sizing: border-box;
+            border-radius: 6px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .font-title { font-family: 'Cinzel', serif; }
+        
+        /* Drop shadow super tipis untuk teks utama */
+        .text-pop {
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print bg-gray-100 text-gray-800 p-4 text-center sticky top-0 z-50 shadow-md mb-8 rounded-xl max-w-2xl mx-auto border border-gray-300">
+        <h2 class="text-xl font-bold mb-2 text-amber-700 font-title">Pratinjau Label Piala - Bright Premium</h2>
+        <p class="text-sm text-gray-600 mb-2">Latar belakang gedung dengan nuansa terang (Aman & tajam untuk semua jenis printer).</p>
+        <p class="text-sm mb-4">Tekan <kbd class="bg-gray-200 px-2 py-1 rounded border border-gray-400 font-mono text-gray-800">CTRL + P</kbd> untuk mencetak.</p>
+    </div>
+
+    <div class="page-container">
+        <div class="label-grid" id="label-container">
+            <!-- Labels akan di-generate via JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        const awards = [
+            { 
+                title: "JUARA 1", 
+                overlay: "bg-gradient-to-b from-white/95 via-yellow-50/85 to-yellow-200/90",
+                border: "border-4 border-yellow-500 shadow-[0_0_15px_rgba(250,204,21,0.2)]",
+                innerBorder: "border border-yellow-600",
+                titleColor: "text-transparent bg-clip-text bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-800",
+                titleDrop: "drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]",
+                textMain: "text-yellow-950",
+                accent: "bg-yellow-600"
+            },
+            { 
+                title: "JUARA 2", 
+                overlay: "bg-gradient-to-b from-white/95 via-slate-50/85 to-slate-200/90",
+                border: "border-4 border-slate-400 shadow-[0_0_15px_rgba(148,163,184,0.2)]",
+                innerBorder: "border border-slate-500",
+                titleColor: "text-transparent bg-clip-text bg-gradient-to-r from-slate-700 via-slate-600 to-slate-800",
+                titleDrop: "drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]",
+                textMain: "text-slate-900",
+                accent: "bg-slate-500"
+            },
+            { 
+                title: "JUARA 3", 
+                overlay: "bg-gradient-to-b from-white/95 via-orange-50/85 to-orange-200/90",
+                border: "border-4 border-orange-600 shadow-[0_0_15px_rgba(234,88,12,0.2)]",
+                innerBorder: "border border-orange-700",
+                titleColor: "text-transparent bg-clip-text bg-gradient-to-r from-orange-800 via-orange-700 to-orange-900",
+                titleDrop: "drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]",
+                textMain: "text-orange-950",
+                accent: "bg-orange-700"
+            }
+        ];
+
+        const container = document.getElementById('label-container');
+
+        awards.forEach(award => {
+            const labelHtml = `
+                <div class="trophy-label ${award.border}">
+                    
+                    <!-- Latar Belakang Gambar Gedung Utama (Watermark) -->
+                    <div class="absolute inset-0 bg-[url('/images/gedung-utama-dan-lapangan-basket.webp')] bg-cover bg-center transform scale-110 opacity-60"></div>
+                    
+                    <!-- Overlay Cerah untuk meredam gambar agar teks terbaca -->
+                    <div class="absolute inset-0 ${award.overlay}"></div>
+                    
+                    <!-- Garis Inner Tipis -->
+                    <div class="absolute inset-1 ${award.innerBorder} rounded-[2px] z-0 opacity-40"></div>
+
+                    <!-- KONTEN -->
+                    <div class="relative z-10 w-full h-full flex flex-col items-center justify-between py-2 px-2">
+                        
+                        <!-- Header Logos & Instansi -->
+                        <div class="flex justify-between items-center w-full px-1 mt-0.5">
+                            <img src="../images/logo.png" class="h-6 object-contain" alt="Logo">
+                            <div class="text-center flex-1 mx-1">
+                                <p class="font-bold ${award.textMain} text-[5px] uppercase tracking-[0.15em] leading-tight text-pop">Pesantren Al-Imam Al-Islami</p>
+                                <p class="font-semibold ${award.textMain} text-[3.5px] uppercase tracking-[0.05em] leading-tight text-pop opacity-90 mt-[1px]">Managed by Al Andalus International Islamic Boarding School</p>
+                            </div>
+                            <img src="../images/logo-andalus.png" class="h-6 object-contain" alt="Logo">
+                        </div>
+                        
+                        <!-- Award Title -->
+                        <div class="flex-1 flex flex-col items-center justify-center w-full">
+                            <p class="font-bold text-[7px] tracking-widest ${award.textMain} mb-0.5 text-pop">MOSA CUP 2026</p>
+                            <h2 class="font-title font-black text-center leading-none ${award.titleColor}" style="font-size: 28px; filter: ${award.titleDrop};">
+                                ${award.title}
+                            </h2>
+                        </div>
+                        
+                        <!-- Footer -->
+                        <div class="w-[90%] ${award.accent} h-[1px] mb-[3px] opacity-40"></div>
+                        <div class="w-full text-center">
+                            <p class="text-[5.5px] font-extrabold ${award.textMain} uppercase tracking-[0.15em] text-pop">Turnamen Sepak Bola Antar Santri</p>
+                        </div>
+                    </div>
+
+                </div>
+            `;
+            container.innerHTML += labelHtml;
+        });
+    </script>
+</body>
+</html>

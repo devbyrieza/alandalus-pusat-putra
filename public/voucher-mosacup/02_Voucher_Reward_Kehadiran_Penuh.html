@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Voucher Reward Kehadiran Penuh MOSA CUP 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Playfair+Display:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#1a1a2e; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; padding:40px 20px; font-family:'Inter',sans-serif; }
+  .section-title { color:#d4af37; font-family:'Playfair Display',serif; font-size:18px; letter-spacing:3px; text-transform:uppercase; margin-bottom:24px; text-align:center; }
+
+  .voucher-wrapper {
+    display:flex; width:860px; height:300px;
+    border-radius:16px; overflow:hidden;
+    box-shadow:0 25px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(212,175,55,0.25);
+  }
+
+  .stub {
+    width:130px; min-width:130px;
+    background:linear-gradient(180deg,#fff9e6,#fff);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    position:relative; border-right:3px dashed #c8a44a;
+  }
+  .stub::before,.stub::after { content:''; position:absolute; width:22px; height:22px; background:#1a1a2e; border-radius:50%; left:100%; transform:translateX(-50%); }
+  .stub::before { top:-11px; } .stub::after { bottom:-11px; }
+
+  .stub-text { writing-mode:vertical-rl; transform:rotate(180deg); font-weight:900; font-size:15px; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px; background:linear-gradient(180deg,#b8860b,#d4af37,#ffe98a,#d4af37,#8b6914); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .stub-barcode { display:flex; gap:2px; margin:6px 0; align-items:flex-end; }
+  .stub-barcode span { background:#2a1a00; border-radius:1px; }
+  .stub-date { writing-mode:vertical-rl; transform:rotate(180deg); font-size:8px; font-weight:700; letter-spacing:1px; color:#8b0000; }
+  .stub-label { writing-mode:vertical-rl; transform:rotate(180deg); font-size:7px; font-weight:700; letter-spacing:1px; color:#c8a44a; margin-top:5px; text-transform:uppercase; }
+
+  .voucher-body { flex:1; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; }
+  .bg-img { position:absolute; inset:0; background-image:url('/images/gedung-utama-dan-lapangan-basket.webp'); background-size:cover; background-position:center; z-index:0; }
+  .bg-overlay { position:absolute; inset:0; z-index:1; background:linear-gradient(135deg,rgba(100,0,0,0.92) 0%,rgba(70,0,0,0.80) 40%,rgba(40,0,0,0.65) 100%); }
+
+  .logo-area { position:absolute; top:14px; right:18px; z-index:10; display:flex; align-items:center; gap:8px; background:rgba(0,0,0,0.30); padding:5px 10px; border-radius:8px; backdrop-filter:blur(4px); border:1px solid rgba(212,175,55,0.2); }
+  .logo-area img { height:34px; object-fit:contain; filter:drop-shadow(0 1px 4px rgba(0,0,0,0.6)); }
+  .logo-divider { width:1px; height:26px; background:rgba(212,175,55,0.4); }
+  .logo-text { text-align:left; line-height:1.25; }
+  .logo-text .lt1 { font-size:8.5px; font-weight:700; color:#f5e4a0; }
+  .logo-text .lt2 { font-size:10px; font-weight:900; color:#fff; }
+  .logo-text .lt3 { font-size:7px; color:#d4af37; }
+
+  .voucher-content { position:relative; z-index:10; flex:1; display:flex; flex-direction:column; justify-content:center; padding:16px 22px 0 22px; }
+
+  .voucher-tag { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,#8b0000,#a00000); border:1px solid rgba(212,175,55,0.4); color:#d4af37; font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:2px; padding:3px 10px; border-radius:20px; margin-bottom:6px; width:fit-content; }
+  .voucher-main-title { font-family:'Playfair Display',serif; font-weight:900; font-size:48px; text-transform:uppercase; line-height:1; background:linear-gradient(180deg,#ffe98a 0%,#d4af37 40%,#f5e4a0 70%,#b8860b 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:6px; }
+  .voucher-subtitle { display:inline-block; padding:5px 18px; border-radius:6px; background:linear-gradient(135deg,#d4af37,#f5e4a0,#c8a415); color:#5a3a00; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; width:fit-content; }
+  .voucher-nominal { font-family:'Cinzel Decorative',cursive; font-weight:700; font-size:28px; background:linear-gradient(180deg,#ffe98a 0%,#d4af37 50%,#fff7cc 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+  .voucher-footer { position:relative; z-index:10; padding:6px 16px; text-align:center; font-size:9.5px; font-weight:500; background:rgba(140,0,0,0.75); color:#fce8b2; backdrop-filter:blur(4px); border-top:1px solid rgba(212,175,55,0.3); }
+
+  .confetti { position:absolute; z-index:5; pointer-events:none; inset:0; overflow:hidden; }
+  .confetti-piece { position:absolute; border-radius:2px; }
+</style>
+</head>
+<body>
+<div class="section-title">🌟 Voucher Reward Kehadiran Penuh MOSA CUP 2026</div>
+<div class="voucher-wrapper">
+  <div class="stub">
+    <span class="stub-text">VOUCHER</span>
+    <div class="stub-barcode" id="bc"></div>
+    <span class="stub-date">24.07.2026</span>
+    <span class="stub-label">KEHADIRAN</span>
+  </div>
+  <div class="voucher-body">
+    <div class="bg-img"></div>
+    <div class="bg-overlay"></div>
+    <div class="confetti" id="conf"></div>
+    <div class="logo-area">
+      <img src="logo-alimam.png" alt="Logo Al Imam">
+      <div class="logo-divider"></div>
+      <img src="logo-andalus.png" alt="Logo Al Andalus">
+      <div class="logo-divider"></div>
+      <div class="logo-text">
+        <div class="lt1">Pesantren</div>
+        <div class="lt2">Al Imam Al Islami</div>
+        <div class="lt3">Managed by Al Andalus IIBS</div>
+      </div>
+    </div>
+    <div class="voucher-content">
+      <span class="voucher-tag">🌟 Reward Kehadiran Penuh — MOSA CUP 2026</span>
+      <div class="voucher-main-title">VOUCHER JAJAN</div>
+      <div class="voucher-subtitle">PAAS Mart & Kantin Al Imam</div>
+      <div class="voucher-nominal">Rp 6.000</div>
+    </div>
+    <div class="voucher-footer">Diberikan kepada seluruh santri yang hadir pada seluruh rangkaian kegiatan MOSA CUP 2026 · Berlaku 1x penukaran · Tidak dapat diuangkan</div>
+  </div>
+</div>
+<script>
+  [3,5,2,4,6,2,3,5,4,2,6,3,4,5,2,3].forEach((w,i)=>{const h=[28,22,32,18,28,24,16,34,20,26,22,30,18,24,28,22][i];const b=document.createElement('span');b.style.cssText=`width:${w}px;height:${h}px;display:block;background:#2a1a00;`;document.getElementById('bc').appendChild(b);});
+  ['#ffe98a','#d4af37','#f5e4a0','#ffd700','#c8a415','#fff7cc'].forEach(c=>{for(let j=0;j<3;j++){const p=document.createElement('div');p.className='confetti-piece';const s=Math.random()*16+8;p.style.cssText=`width:${s}px;height:${s*.42}px;background:${c};left:${Math.random()*88+5}%;top:${Math.random()*75+5}%;transform:rotate(${Math.random()*360}deg);border-radius:${Math.random()>.5?'50%':'2px'};opacity:${.3+Math.random()*.5};`;document.getElementById('conf').appendChild(p);}});
+</script>
+</body>
+</html>

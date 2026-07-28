@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sertifikat MOSA CUP 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@400;600;800&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        @page { size: A4 landscape; margin: 0; }
+        body { margin: 0; padding: 0; background: #e5e7eb; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        
+        .certificate-wrapper {
+            width: 297mm;
+            height: 210mm;
+            background: white;
+            margin: 20px auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            page-break-after: always;
+            overflow: hidden;
+        }
+
+        @media print {
+            body { background: white; margin: 0; }
+            .certificate-wrapper { margin: 0; box-shadow: none; border: none; }
+            .no-print { display: none !important; }
+        }
+
+        .bg-pattern {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 1;
+        }
+
+        .cert-border {
+            position: absolute;
+            top: 15mm; left: 15mm; right: 15mm; bottom: 15mm;
+            border: 8px solid #92400e; /* amber-800 */
+            padding: 8px;
+            z-index: 2;
+        }
+        .cert-inner-border {
+            border: 2px solid #d97706; /* amber-600 */
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0 0.5rem 0;
+            background: linear-gradient(135deg, #fffbeb 0%, #ffffff 50%, #fffbeb 100%);
+            position: relative;
+        }
+
+        .corner-ornament {
+            position: absolute;
+            width: 60px; height: 60px;
+        }
+        .corner-tl { top: -4px; left: -4px; border-top: 10px solid #92400e; border-left: 10px solid #92400e; }
+        .corner-tr { top: -4px; right: -4px; border-top: 10px solid #92400e; border-right: 10px solid #92400e; }
+        .corner-bl { bottom: -4px; left: -4px; border-bottom: 10px solid #92400e; border-left: 10px solid #92400e; }
+        .corner-br { bottom: -4px; right: -4px; border-bottom: 10px solid #92400e; border-right: 10px solid #92400e; }
+
+        .font-title { font-family: 'Cinzel', serif; }
+        .font-body { font-family: 'Montserrat', sans-serif; }
+        .font-name { font-family: 'Great Vibes', cursive; font-size: 5.5rem; line-height: 1.2; color: #78350f; font-weight: 400; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+        
+        .gold-text {
+            background: linear-gradient(to right, #b45309, #d97706, #b45309);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="font-body">
+
+    <div class="no-print bg-gray-800 text-white p-4 text-center sticky top-0 z-50 shadow-md">
+        <h2 class="text-xl font-bold mb-2">Pratinjau Sertifikat MOSA CUP 2026</h2>
+        <p class="text-sm text-gray-300 mb-4">Tekan <kbd class="bg-gray-700 px-2 py-1 rounded">CTRL + P</kbd> untuk mencetak.</p>
+        <div class="text-xs text-gray-400 bg-gray-900 p-2 rounded inline-block text-left">
+            <strong>Pengaturan Print Wajib:</strong><br>
+            - Destination: Save as PDF / Printer Anda<br>
+            - Layout: Landscape<br>
+            - Paper size: A4<br>
+            - Margins: None / Default<br>
+            - Background graphics: Centang (Aktif)
+        </div>
+    </div>
+
+    <!-- Data Penghargaan -->
+    <script>
+        const individualAwards = [
+            { title: "TOP SKOR (PENCETAK GOL TERBANYAK)", name: "Salman Abdul Rahim", desc: "Berhasil mencetak total 8 Gol dan menunjukkan ketajaman luar biasa sebagai penyerang." },
+            { title: "PEMAIN TERBAIK (BEST PLAYER)", name: "Ken Alfarezha Haryadi", desc: "Menunjukkan visi bermain, teknik, dan kepemimpinan yang luar biasa di atas lapangan sepanjang turnamen." },
+            { title: "PEMAIN MUDA TERBAIK (BEST YOUNG PLAYER)", name: "Muh Asrorin Da Silva", desc: "Pemain muda dengan bakat paling menonjol dan memberikan dampak signifikan bagi timnya." },
+            { title: "KIPER TERBAIK (BEST GOALKEEPER)", name: "Abdurrahim Pati Raja", desc: "Menunjukkan refleks luar biasa dan menjadi benteng pertahanan terakhir yang kokoh." }
+        ];
+
+        individualAwards.forEach(award => {
+            document.write(`
+                <div class="certificate-wrapper">
+                    <div class="bg-pattern"></div>
+                    <div class="cert-border">
+                        <div class="cert-inner-border">
+                            <div class="corner-ornament corner-tl"></div>
+                            <div class="corner-ornament corner-tr"></div>
+                            <div class="corner-ornament corner-bl"></div>
+                            <div class="corner-ornament corner-br"></div>
+
+                            <!-- Header -->
+                            <div class="text-center mb-1 mt-1">
+                                <div class="flex justify-center items-center gap-5 mb-1">
+                                    <img src="../images/logo.png" alt="Logo Al-Imam" class="h-14 md:h-16 object-contain drop-shadow-sm">
+                                    <img src="../images/logo-andalus.png" alt="Logo Al-Andalus" class="h-14 md:h-16 object-contain drop-shadow-sm">
+                                </div>
+                                <h3 class="font-body font-bold text-amber-700 tracking-[0.2em] text-[11px] md:text-sm uppercase mb-0.5">Pesantren Al-Imam Al-Islami</h3>
+                                <p class="font-body font-semibold text-gray-500 text-[9px] md:text-[10px] tracking-wider uppercase mb-2">Managed by Al Andalus International Islamic Boarding School</p>
+                                <h1 class="font-title font-extrabold text-4xl md:text-5xl tracking-widest text-brand-900 mb-2 mt-1">PIAGAM PENGHARGAAN</h1>
+                                <div class="h-1 w-24 bg-amber-600 mx-auto rounded-full"></div>
+                            </div>
+
+                            <!-- Body -->
+                            <div class="text-center z-10 w-4/5 flex-1 flex flex-col justify-center">
+                                <p class="text-gray-600 font-medium tracking-widest uppercase text-xs md:text-sm mb-1">Diberikan dengan penuh kebanggaan kepada:</p>
+                                <h2 class="font-name mt-0 mb-1" style="font-size: 4rem;">${award.name}</h2>
+                                <p class="text-gray-600 mb-1 text-sm">Sebagai</p>
+                                <h3 class="font-title font-bold text-2xl md:text-3xl gold-text mb-2 tracking-wider">${award.title}</h3>
+                                <p class="text-gray-700 max-w-2xl mx-auto italic text-xs md:text-sm leading-relaxed">
+                                    "Pada Turnamen Sepak Bola MOSA CUP 2026. ${award.desc}"
+                                </p>
+                            </div>
+
+                            <!-- Signatures -->
+                            <div class="w-full flex justify-between items-end mt-auto px-16 md:px-24">
+                                <div class="text-center relative">
+                                    <p class="text-[10px] md:text-xs text-gray-600 font-medium relative z-10">&nbsp;</p>
+                                    <p class="text-[10px] md:text-xs text-gray-600 font-medium relative z-10">Ketua Panitia MOSA CUP 2026</p>
+                                    <div class="mt-2 h-16 md:h-20 w-full relative flex items-center justify-center">
+                                        <img src="ttd-rieza-2.png" class="absolute h-16 md:h-20 bottom-0 opacity-95 mix-blend-multiply pointer-events-none object-contain" alt="">
+                                    </div>
+                                    <div class="border-b-2 border-gray-400 w-48 md:w-56 mb-1 mx-auto relative z-10"></div>
+                                    <p class="font-bold text-xs md:text-sm text-gray-900 relative z-10">Ust. Rieza Eka Tomara, S.Kom.</p>
+                                </div>
+                                
+                                <div class="text-center pb-2 md:pb-4">
+                                    <div class="w-14 h-14 md:w-16 md:h-16 border-4 border-amber-600 rounded-full flex items-center justify-center opacity-70">
+                                        <span class="font-title font-bold text-amber-700 text-[8px] md:text-[10px] text-center leading-tight">MOSA<br>CUP<br>2026</span>
+                                    </div>
+                                </div>
+
+                                <div class="text-center relative">
+                                    <p class="text-[10px] md:text-xs text-gray-600 font-medium relative z-10">Mengetahui,</p>
+                                    <p class="text-[10px] md:text-xs text-gray-600 font-medium relative z-10">Mudir Pesantren Al-Imam Al-Islami</p>
+                                    <div class="mt-2 h-16 md:h-20 w-full relative flex items-center justify-center">
+                                        <img src="../documents/Stempel%205.png" class="absolute h-20 md:h-24 -left-2 md:-left-6 -bottom-1 opacity-85 mix-blend-multiply pointer-events-none" alt="">
+                                        <img src="../images/ttd-mudir.png" class="absolute h-16 md:h-20 -bottom-1 opacity-95 mix-blend-multiply pointer-events-none" style="filter: drop-shadow(0 0 1px rgba(0,0,0,0.1));" alt="">
+                                    </div>
+                                    <div class="border-b-2 border-gray-400 w-48 md:w-56 mb-1 mx-auto relative z-10"></div>
+                                    <p class="font-bold text-xs md:text-sm text-gray-900 relative z-10">Ust. Wahab Rajasam, M.Pd.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID Card & Kupon Welcome Day — Pesantren Al-Imam Al-Islami</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Outfit:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --maroon:      #550000;
+            --maroon-dark: #330000;
+            --maroon-mid:  #7a0000;
+            --gold:        #ddc192;
+            --gold-dark:   #b8994e;
+            --gold-light:  #f5e8c8;
+            --white:       #ffffff;
+            --off-white:   #fdf8f0;
+            --text-main:   #1f1008;
+            --text-mid:    #4b2a0a;
+            --text-muted:  #8b6a3a;
+            --bg:          #1a0a00;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            background-image:
+                radial-gradient(ellipse 80% 50% at 20% 20%, rgba(85,0,0,0.4) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 80% at 80% 80%, rgba(221,193,146,0.1) 0%, transparent 60%);
+            min-height: 100vh;
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        /* ============================
+           HEADER PAGE
+        ============================ */
+        .page-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .page-header .kaligrafi {
+            font-size: 1.3rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+        .page-header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(221,193,146,0.5);
+        }
+        .page-header p {
+            color: rgba(221,193,146,0.6);
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+        }
+
+        /* ============================
+           PRINT BUTTON
+        ============================ */
+        .print-btn {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            color: var(--maroon-dark);
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(221,193,146,0.3);
+            letter-spacing: 0.5px;
+        }
+        .print-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(221,193,146,0.5);
+        }
+
+        /* ============================
+           SECTION TITLE
+        ============================ */
+        .section-wrap {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            max-width: 700px;
+        }
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-dark));
+        }
+        .section-title::after {
+            background: linear-gradient(90deg, var(--gold-dark), transparent);
+        }
+        .section-title span {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 0.9rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .container {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* ============================
+           ID CARD BASE
+        ============================ */
+        .id-card {
+            width: 54mm;
+            height: 86mm;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow:
+                0 25px 50px rgba(0,0,0,0.6),
+                0 0 0 1px rgba(221,193,146,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .id-card:hover {
+            transform: translateY(-6px) rotate(0.5deg);
+            box-shadow: 0 35px 70px rgba(0,0,0,0.7), 0 0 0 1px rgba(221,193,146,0.4);
+        }
+
+        /* ============================
+           ORNAMENT SVG
+        ============================ */
+        .ornament {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        /* ============================
+           ID CARD — PANITIA
+        ============================ */
+        .id-card.panitia {
+            background: #111;
+        }
+        .panitia-header {
+            background: linear-gradient(160deg, #1a0000 0%, #3d0000 50%, #1a0000 100%);
+            text-align: center;
+            padding: 1rem 0.5rem 2.5rem;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 82%, 50% 100%, 0 82%);
+        }
+        .panitia-header .pesantren-name {
+            font-family: 'Cinzel', serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 1px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+            margin-bottom: 0.15rem;
+        }
+        .panitia-header .event-sub {
+            font-size: 0.48rem;
+            color: rgba(221,193,146,0.7);
+            letter-spacing: 0.5px;
+        }
+        /* Gold line accent on header */
+        .panitia-header::after {
+            content: '';
+            position: absolute;
+            bottom: 28px;
+            left: 15%;
+            width: 70%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+        }
+
+        /* Photo */
+        .photo-wrap {
+            display: flex;
+            justify-content: center;
+            margin-top: -28px;
+            position: relative;
+            z-index: 10;
+            flex-shrink: 0;
+        }
+        .photo-box {
+            width: 62px;
+            height: 78px;
+            border-radius: 8px;
+            background: #1a1a1a;
+            border: 2px solid var(--gold-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(221,193,146,0.1);
+            overflow: hidden;
+        }
+        .photo-box svg { opacity: 0.35; }
+
+        /* Panitia Badge */
+        .panitia-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 0.8rem 0.5rem;
+            gap: 0.45rem;
+        }
+        .badge-panitia {
+            background: linear-gradient(135deg, var(--maroon), var(--maroon-mid));
+            color: var(--gold);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            padding: 0.25rem 1rem;
+            border-radius: 3px;
+            border: 1px solid rgba(221,193,146,0.4);
+            box-shadow: 0 2px 10px rgba(85,0,0,0.5);
+            text-transform: uppercase;
+        }
+        .panitia-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--white);
+            text-align: center;
+            line-height: 1.2;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+        }
+        .divisi-label {
+            font-size: 0.42rem;
+            text-transform: uppercase;
+            color: rgba(221,193,146,0.5);
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        .divisi-value {
+            font-size: 0.72rem;
+            color: var(--gold);
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .panitia-footer {
+            background: linear-gradient(90deg, var(--maroon-dark), var(--maroon-mid), var(--maroon-dark));
+            color: var(--gold);
+            text-align: center;
+            padding: 0.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.52rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-top: 1px solid rgba(221,193,146,0.3);
+        }
+
+        /* ============================
+           ID CARD — SANTRI
+        ============================ */
+        .id-card.santri {
+            background: var(--off-white);
+        }
+        .santri-header {
+            background: linear-gradient(160deg, var(--maroon-dark) 0%, var(--maroon) 60%, var(--maroon-mid) 100%);
+            text-align: center;
+            padding: 0.9rem 0.5rem 2.5rem;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 82%, 50% 100%, 0 82%);
+        }
+        .santri-header .pesantren-name {
+            font-family: 'Cinzel', serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 1px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+            margin-bottom: 0.15rem;
+        }
+        .santri-header .event-sub {
+            font-size: 0.48rem;
+            color: rgba(221,193,146,0.85);
+            letter-spacing: 0.5px;
+        }
+        .santri-header::after {
+            content: '';
+            position: absolute;
+            bottom: 28px;
+            left: 15%;
+            width: 70%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(221,193,146,0.6), transparent);
+        }
+
+        .santri-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem 0.8rem 0.5rem;
+            gap: 0.4rem;
+        }
+        .santri-nickname {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--maroon);
+            text-align: center;
+            line-height: 1.0;
+            text-shadow: 0 1px 3px rgba(85,0,0,0.15);
+        }
+        .gold-divider {
+            width: 70%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+            border-radius: 1px;
+            flex-shrink: 0;
+        }
+        .santri-fullname-label {
+            font-size: 0.42rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        .santri-fullname-value {
+            font-size: 0.72rem;
+            color: var(--text-main);
+            font-weight: 700;
+            text-align: center;
+        }
+        .info-grid {
+            display: flex;
+            gap: 0.8rem;
+            width: 100%;
+        }
+        .info-cell {
+            flex: 1;
+            background: var(--gold-light);
+            border: 1px solid rgba(221,193,146,0.6);
+            border-radius: 4px;
+            padding: 0.3rem;
+            text-align: center;
+        }
+        .info-cell .lbl {
+            font-size: 0.38rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .info-cell .val {
+            font-size: 0.65rem;
+            color: var(--maroon);
+            font-weight: 800;
+            margin-top: 1px;
+        }
+
+        .santri-footer {
+            background: linear-gradient(90deg, var(--maroon-dark), var(--maroon), var(--maroon-dark));
+            color: var(--gold);
+            text-align: center;
+            padding: 0.45rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.52rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-top: 2px solid var(--gold-dark);
+        }
+
+
+        /* ============================
+           KUPON KONSUMSI
+        ============================ */
+        .coupon-wrap {
+            position: relative;
+        }
+        .coupon {
+            width: 125mm;
+            height: 60mm;
+            background: var(--off-white);
+            border-radius: 14px;
+            display: flex;
+            overflow: hidden;
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.6),
+                0 0 0 1px rgba(221,193,146,0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .coupon:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(221,193,146,0.4);
+        }
+
+        /* Perforated edge - zigzag */
+        .coupon::before {
+            content: '';
+            position: absolute;
+            left: 41%;
+            top: -1px;
+            bottom: -1px;
+            width: 2px;
+            background-image: radial-gradient(circle, #f3f4f6 6px, transparent 7px);
+            background-size: 2px 14px;
+            background-repeat: repeat-y;
+            z-index: 5;
+        }
+
+        .coupon-left {
+            width: 42%;
+            background: linear-gradient(155deg, var(--maroon-dark) 0%, var(--maroon) 55%, #8b0000 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.2rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Subtle circle pattern bg */
+        .coupon-left::before {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(221,193,146,0.07);
+            top: -30px;
+            right: -30px;
+        }
+        .coupon-left::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(221,193,146,0.05);
+            bottom: -20px;
+            left: -20px;
+        }
+
+        .coupon-icon-wrap {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 2px solid rgba(221,193,146,0.4);
+            background: rgba(255,255,255,0.07);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.6rem;
+            font-size: 1.6rem;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 20px rgba(221,193,146,0.2);
+        }
+        .coupon-left-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--white);
+            letter-spacing: 1px;
+            text-align: center;
+            line-height: 1.1;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+        .coupon-left-sub {
+            font-size: 0.55rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .coupon-right {
+            width: 58%;
+            padding: 1.2rem 1.2rem 0.9rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: var(--off-white);
+        }
+
+        .coupon-right-top { display: flex; flex-direction: column; gap: 0.15rem; }
+
+        .coupon-event {
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+        }
+        .coupon-title-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--maroon);
+            line-height: 1.1;
+        }
+
+        .badge-3orang {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: linear-gradient(135deg, var(--maroon), var(--maroon-mid));
+            color: var(--gold);
+            padding: 0.4rem 0.7rem;
+            border-radius: 6px;
+            align-self: flex-start;
+            box-shadow: 0 2px 8px rgba(85,0,0,0.3);
+        }
+        .badge-3orang svg { flex-shrink: 0; }
+        .badge-3orang-text {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 0.78rem;
+            line-height: 1.25;
+            color: var(--gold);
+        }
+        .badge-3orang-text small {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: rgba(221,193,146,0.8);
+        }
+
+        .coupon-note {
+            border-top: 1px dashed rgba(85,0,0,0.2);
+            padding-top: 0.5rem;
+            font-size: 0.62rem;
+            color: var(--text-mid);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        .coupon-note strong { color: var(--maroon); font-weight: 800; }
+
+
+        /* ============================
+           PRINT STYLES
+        ============================ */
+        @media print {
+            body {
+                background: white;
+                padding: 10mm;
+            }
+            .print-btn, .page-header, .section-title { display: none !important; }
+            .id-card, .coupon {
+                box-shadow: none !important;
+                border: 0.5px solid #ccc !important;
+                transform: none !important;
+            }
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <div class="kaligrafi">﷽</div>
+        <h1>PESANTREN AL-IMAM AL-ISLAMI</h1>
+        <p>Sistem ID Card & Kupon Konsumsi · Welcome Day & MOSA 2026</p>
+    </div>
+
+    <button class="print-btn" onclick="window.print()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        CETAK SEMUA DESAIN
+    </button>
+
+    <!-- ===== PANITIA SECTION ===== -->
+    <div class="section-wrap">
+        <div class="section-title"><span>🎖 ID Card Panitia</span></div>
+        <div class="container">
+
+            <!-- Panitia 1 -->
+            <div class="id-card panitia">
+                <div class="panitia-header">
+                    <div class="pesantren-name">PESANTREN AL-IMAM AL-ISLAMI</div>
+                    <div class="event-sub">Welcome Day &amp; Kedatangan Santri Baru 2026</div>
+                </div>
+                <div class="photo-wrap">
+                    <div class="photo-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ddc192" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                </div>
+                <div class="panitia-body">
+                    <div class="badge-panitia">PANITIA</div>
+                    <div class="panitia-name">Nama Lengkap</div>
+                    <div>
+                        <div class="divisi-label">Divisi / Tugas</div>
+                        <div class="divisi-value">Keamanan</div>
+                    </div>
+                </div>
+                <div class="panitia-footer">WELCOME DAY · AL-IMAM · 2026</div>
+            </div>
+
+            <!-- Panitia 2 -->
+            <div class="id-card panitia">
+                <div class="panitia-header">
+                    <div class="pesantren-name">PESANTREN AL-IMAM AL-ISLAMI</div>
+                    <div class="event-sub">Welcome Day &amp; Kedatangan Santri Baru 2026</div>
+                </div>
+                <div class="photo-wrap">
+                    <div class="photo-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ddc192" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                </div>
+                <div class="panitia-body">
+                    <div class="badge-panitia">PANITIA</div>
+                    <div class="panitia-name">Nama Lengkap</div>
+                    <div>
+                        <div class="divisi-label">Divisi / Tugas</div>
+                        <div class="divisi-value">Konsumsi</div>
+                    </div>
+                </div>
+                <div class="panitia-footer">WELCOME DAY · AL-IMAM · 2026</div>
+            </div>
+
+            <!-- Panitia 3 -->
+            <div class="id-card panitia">
+                <div class="panitia-header">
+                    <div class="pesantren-name">PESANTREN AL-IMAM AL-ISLAMI</div>
+                    <div class="event-sub">Welcome Day &amp; Kedatangan Santri Baru 2026</div>
+                </div>
+                <div class="photo-wrap">
+                    <div class="photo-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ddc192" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                </div>
+                <div class="panitia-body">
+                    <div class="badge-panitia">PANITIA</div>
+                    <div class="panitia-name">Nama Lengkap</div>
+                    <div>
+                        <div class="divisi-label">Divisi / Tugas</div>
+                        <div class="divisi-value">Perlengkapan</div>
+                    </div>
+                </div>
+                <div class="panitia-footer">WELCOME DAY · AL-IMAM · 2026</div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ===== SANTRI SECTION ===== -->
+    <div class="section-wrap">
+        <div class="section-title"><span>🎓 ID Card Santri (Welcome Day &amp; MOSA)</span></div>
+        <div class="container">
+
+            <!-- Santri 1 -->
+            <div class="id-card santri">
+                <div class="santri-header">
+                    <div class="pesantren-name">PESANTREN AL-IMAM AL-ISLAMI</div>
+                    <div class="event-sub">Welcome Day &amp; MOSA · Angkatan I · 2026</div>
+                </div>
+                <div class="photo-wrap">
+                    <div class="photo-box" style="border-color: var(--gold-dark); background: var(--gold-light);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b8994e" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                </div>
+                <div class="santri-body">
+                    <div class="santri-nickname">Nama Panggilan</div>
+                    <div class="gold-divider"></div>
+                    <div>
+                        <div class="santri-fullname-label">Nama Lengkap</div>
+                        <div class="santri-fullname-value">Nama Lengkap Santri</div>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-cell">
+                            <div class="lbl">NIS</div>
+                            <div class="val">—</div>
+                        </div>
+                        <div class="info-cell">
+                            <div class="lbl">Kamar</div>
+                            <div class="val">—</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="santri-footer">SANTRI BARU · AL-IMAM · 2026</div>
+            </div>
+
+            <!-- Santri 2 -->
+            <div class="id-card santri">
+                <div class="santri-header">
+                    <div class="pesantren-name">PESANTREN AL-IMAM AL-ISLAMI</div>
+                    <div class="event-sub">Welcome Day &amp; MOSA · Angkatan I · 2026</div>
+                </div>
+                <div class="photo-wrap">
+                    <div class="photo-box" style="border-color: var(--gold-dark); background: var(--gold-light);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b8994e" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                </div>
+                <div class="santri-body">
+                    <div class="santri-nickname">Nama Panggilan</div>
+                    <div class="gold-divider"></div>
+                    <div>
+                        <div class="santri-fullname-label">Nama Lengkap</div>
+                        <div class="santri-fullname-value">Nama Lengkap Santri</div>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-cell">
+                            <div class="lbl">NIS</div>
+                            <div class="val">—</div>
+                        </div>
+                        <div class="info-cell">
+                            <div class="lbl">Kamar</div>
+                            <div class="val">—</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="santri-footer">SANTRI BARU · AL-IMAM · 2026</div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ===== KUPON KONSUMSI SECTION ===== -->
+    <div class="section-wrap">
+        <div class="section-title"><span>🍽️ Kupon Konsumsi Welcome Day</span></div>
+        <div class="container">
+
+            <!-- Kupon 1 -->
+            <div class="coupon">
+                <div class="coupon-left">
+                    <div class="coupon-icon-wrap">🍽️</div>
+                    <div class="coupon-left-title">KUPON<br>MAKAN</div>
+                    <div class="coupon-left-sub">Al-Imam 2026</div>
+                </div>
+                <div class="coupon-right">
+                    <div class="coupon-right-top">
+                        <div class="coupon-event">Welcome Day Santri Baru 2026</div>
+                        <div class="coupon-title-text">Paket Konsumsi<br>Keluarga</div>
+                    </div>
+                    <div class="badge-3orang">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ddc192" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <div class="badge-3orang-text">
+                            Berlaku untuk 3 Orang<br>
+                            <small>(1 Santri + 2 Pendamping)</small>
+                        </div>
+                    </div>
+                    <div class="coupon-note">
+                        <strong>* Catatan:</strong> Serahkan kupon kepada petugas panitia konsumsi. Kupon hanya berlaku pada hari kedatangan santri.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kupon 2 -->
+            <div class="coupon">
+                <div class="coupon-left">
+                    <div class="coupon-icon-wrap">🍽️</div>
+                    <div class="coupon-left-title">KUPON<br>MAKAN</div>
+                    <div class="coupon-left-sub">Al-Imam 2026</div>
+                </div>
+                <div class="coupon-right">
+                    <div class="coupon-right-top">
+                        <div class="coupon-event">Welcome Day Santri Baru 2026</div>
+                        <div class="coupon-title-text">Paket Konsumsi<br>Keluarga</div>
+                    </div>
+                    <div class="badge-3orang">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ddc192" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <div class="badge-3orang-text">
+                            Berlaku untuk 3 Orang<br>
+                            <small>(1 Santri + 2 Pendamping)</small>
+                        </div>
+                    </div>
+                    <div class="coupon-note">
+                        <strong>* Catatan:</strong> Serahkan kupon kepada petugas panitia konsumsi. Kupon hanya berlaku pada hari kedatangan santri.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

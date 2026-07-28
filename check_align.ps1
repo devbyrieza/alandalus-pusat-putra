@@ -1,0 +1,7 @@
+$word = New-Object -ComObject Word.Application
+$word.Visible = $false
+$doc = $word.Documents.Open("C:\Users\itpua\Dev\Work\al-andalus\alandalus-alimam\04-Surat Pemberitahuan Kedatangan Santri Baru 2026-2027-REVISED.docx")
+$para = $doc.Paragraphs.Item(11)
+Write-Host "Alignment of Para 11: $($para.Format.Alignment)"
+$doc.Close()
+$word.Quit()

@@ -5,9 +5,6 @@ const nextConfig: any = {
   eslint: { ignoreDuringBuilds: true },
   // output: "standalone",
 
-  // Hapus generateBuildId yang menggunakan random
-  // Biarkan Next.js handle build ID secara otomatis
-
   // Optimize for faster builds
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
@@ -18,6 +15,19 @@ const nextConfig: any = {
     optimizePackageImports: ['lucide-react', '@headlessui/react'],
   },
 
+  async headers() {
+    return [
+      {
+        source: '/api/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store, must-revalidate',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

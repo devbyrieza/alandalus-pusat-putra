@@ -26,6 +26,8 @@ function getSessionFromCookie(request: NextRequest): {
 }
 
 export async function middleware(request: NextRequest) {
+  try {
+
   const { role: userRole } = getSessionFromCookie(request);
   const { pathname } = request.nextUrl;
   const host = request.headers.get("host") || "";
@@ -187,6 +189,12 @@ export async function middleware(request: NextRequest) {
   }
 
   return response;
+}
+
+  } catch (error) {
+    console.error("MIDDLEWARE EXCEPTION:", error);
+    return NextResponse.next();
+  }
 }
 
 export const config = {

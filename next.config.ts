@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: any = {
   typescript: { ignoreBuildErrors: true },
   eslint: { ignoreDuringBuilds: true },
+  generateBuildId: async () => 'build-' + Date.now(),
   // output: "standalone",
 
   // Optimize for faster builds
@@ -10,10 +11,7 @@ const nextConfig: any = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  experimental: {
-    scrollRestoration: false,
-    optimizePackageImports: ['lucide-react', '@headlessui/react'],
-  },
+
 
   async headers() {
     return [

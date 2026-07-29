@@ -92,13 +92,21 @@ export default function DaftarPage() {
     jenjang: jenjangFromUrl,
   });
 
+  // AUTOSAVE IMPLEMENTATION (Rule AGENTS.md)
+  useEffect(() => {
+    if (typeof window !== 'undefined' && formData) {
+      localStorage.setItem('andalus_putra_daftar_draft', JSON.stringify(formData));
+    }
+  }, [formData]);
+
+
   const [countryCode, setCountryCode] = useState("+62");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const savedData = sessionStorage.getItem("pendaftaran_form");
+      const savedData = localStorage.getItem('andalus_putra_daftar_draft');
       if (savedData) {
         try {
           const parsed = JSON.parse(savedData);
@@ -123,7 +131,7 @@ export default function DaftarPage() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const timeoutId = setTimeout(() => {
-        sessionStorage.setItem("pendaftaran_form", JSON.stringify(formData));
+        localStorage.setItem('andalus_putra_daftar_draft', JSON.stringify(formData));
       }, 500);
       return () => clearTimeout(timeoutId);
     }
@@ -326,7 +334,7 @@ export default function DaftarPage() {
                         });
 
                         if (result.isConfirmed) {
-                          sessionStorage.removeItem("pendaftaran_form");
+                          localStorage.removeItem('andalus_putra_daftar_draft');
                           setFormData({
                             nik: "",
                             nama_lengkap: "",

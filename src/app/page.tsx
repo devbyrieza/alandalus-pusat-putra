@@ -182,7 +182,7 @@ export default function Home() {
 
   const c = {
     grad:       IS_PUTRA ? "from-primary-600 to-primary-800"   : "from-sky-500 to-blue-700",
-    gradText:   IS_PUTRA ? "from-secondary-400 to-secondary-600"   : "from-sky-400 to-blue-500",
+    gradText:   "from-secondary-400 to-secondary-600",
     text600:    IS_PUTRA ? "text-primary-600"  : "text-sky-600",
     text400:    IS_PUTRA ? "text-primary-400"  : "text-sky-400",
     bg600:      IS_PUTRA ? "bg-primary-600"    : "bg-sky-600",

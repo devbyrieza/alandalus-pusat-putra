@@ -124,9 +124,9 @@
   --color-primary-800: var(--color-emerald-800);
   --color-primary-900: var(--color-emerald-900);
   --color-primary-950: var(--color-emerald-950);
-  --color-primary: var(--color-emerald-600);
+  --color-primary: var(--color-emerald-900);
   --color-primary-light: var(--color-emerald-50);
-  --color-primary-dark: var(--color-emerald-800);
+  --color-primary-dark: var(--color-emerald-950);
 
   --color-secondary-50: var(--color-cream-50);
   --color-secondary-100: var(--color-cream-100);
@@ -166,12 +166,12 @@
 
   /* ─── Islamic Color Palette — Semantic Tokens ─── */
   /* Komponen-komponen UI lain jika ada */
-  --color-primary: var(--color-emerald-700);
-  /* Maroon utama */
+  --color-primary: var(--color-emerald-900);
+  /* Hijau Tua utama */
   --color-primary-light: var(--color-emerald-50);
-  /* Maroon muda / background aksen */
-  --color-secondary: var(--color-cream-400);
-  /* Cream Secondary */
+  /* Hijau muda / background aksen */
+  --color-secondary: var(--color-amber-400);
+  /* Kuning Andalus Secondary */
   --color-background: #fafaf9; /* Warm white — lebih segar dari pure white */
   /* Background utama */
   --color-text: #374151;
@@ -258,12 +258,12 @@
 @layer base {
   :root {
   /* Dashboard Gold Standard Vars */
-  --primary:        #047857;
-  --primary-dark:   #4a0909;
-  --primary-light:  #9b1414;
-  --secondary:      #c9983a;
-  --secondary-light: #d6af5e;
-  --secondary-pale:     #f9f5ed;
+  --primary:        #064e3b;
+  --primary-dark:   #022c22;
+  --primary-light:  #059669;
+  --secondary:      #fbbf24;
+  --secondary-light: #fcd34d;
+  --secondary-pale:     #fffbeb;
   --bg:            #f8f7f4;
   --bg-card:       #ffffff;
   --text-main:     #1a1a1a;

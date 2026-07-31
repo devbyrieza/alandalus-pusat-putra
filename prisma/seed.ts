@@ -12,9 +12,11 @@ async function main() {
     const schoolName = process.env.NEXT_PUBLIC_SCHOOL_NAME || 'Al Andalus PPDB';
 
     // Tentukan Suffix Email berdasarkan Branding
-    const emailSuffix = schoolName.toLowerCase().includes('al-imam') 
-        ? 'alimam.com' 
-        : 'ululalbaab.com';
+    const emailSuffix = schoolName.toLowerCase().includes('al-andalus')
+        ? 'pesantren-alandalus.com'
+        : schoolName.toLowerCase().includes('al-imam') 
+            ? 'alimam.com' 
+            : 'ululalbaab.com';
 
     // 1. Seed Tahun Ajaran
     let tahunAjaran = await prisma.tahunAjaran.findFirst({

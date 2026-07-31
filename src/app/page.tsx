@@ -252,7 +252,7 @@ export default function Home() {
               <div className="space-y-4">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif italic font-black text-white leading-[1.08] tracking-tight">
                   Cetak Generasi{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706]">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706] pr-2 md:pr-4">
                     Rabbani
                   </span>{" "}
                   Berkelas Dunia.
@@ -334,7 +334,7 @@ export default function Home() {
               </div>
 
               {/* Floating top-right badge */}
-              <div className="absolute -top-4 -right-4 md:-right-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3 flex items-center gap-2.5 shadow-xl">
+              <div className="absolute -top-4 right-0 md:-right-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3 flex items-center gap-2.5 shadow-xl">
                 <PiCertificateBold className={`w-6 h-6 ${c.text400} shrink-0`} />
                 <div>
                   <p className="text-white text-xs font-bold leading-tight">Terakreditasi Muadalah</p>
@@ -356,7 +356,7 @@ export default function Home() {
             <span className={`text-xs font-bold uppercase tracking-widest ${c.text400}`}>
               Angka Bicara
             </span>
-            <h2 className="text-3xl font-black text-white mt-2">
+            <h2 className="text-3xl font-black text-white mt-2 px-6 sm:px-0 text-balance">
               Capaian Nyata yang Kami Banggakan
             </h2>
           </div>
@@ -378,7 +378,7 @@ export default function Home() {
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 mt-3 mb-4 text-balance">
               Kurikulum{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#166534] to-[#14532d]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#059669] to-[#064e3b] pr-1">
                 TICE
               </span>
               <span className="block mt-1 text-2xl sm:text-3xl md:text-4xl font-bold text-slate-500">Empat Pilar Pendidikan Unggul</span>

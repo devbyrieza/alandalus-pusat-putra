@@ -250,7 +250,7 @@ export default function Home() {
 
               {/* Headline */}
               <div className="space-y-4">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[1.08] tracking-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif italic font-black text-white leading-[1.08] tracking-tight">
                   Cetak Generasi{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706]">
                     Rabbani
@@ -390,7 +390,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* T — Tahfizh (large) */}
-            <div className="md:col-span-2 rounded-3xl p-8 bg-gradient-to-br from-[#166534] to-[#14532d] text-white relative overflow-hidden group hover:scale-[1.01] transition-transform">
+            <div className="md:col-span-2 rounded-3xl p-8 bg-gradient-to-br from-[#059669] to-[#064e3b] text-white relative overflow-hidden group hover:scale-[1.01] transition-transform">
               <div className="absolute top-0 right-0 w-56 h-56 rounded-full bg-white/10 -translate-y-1/2 translate-x-1/2 blur-2xl" />
               <FaQuran className="w-10 h-10 mb-6 opacity-90" />
               <h3 className="text-2xl font-black mb-3">T — Tahfizh Al-Qur'an</h3>

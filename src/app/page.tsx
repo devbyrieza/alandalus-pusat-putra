@@ -210,7 +210,7 @@ export default function Home() {
       {/* ═══ §1 HERO SECTION — SPLIT DARK ═══════════════════════════════════ */}
       <section
         id="hero"
-        className="relative min-h-[calc(100vh-40px)] flex items-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 pt-20 overflow-hidden"
+        className="relative min-h-[calc(100svh-40px)] flex items-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 pt-20 pb-12 md:pb-20 overflow-hidden"
       >
         {/* Animated glows */}
         <div className="absolute inset-0 pointer-events-none">
@@ -250,14 +250,14 @@ export default function Home() {
 
               {/* Headline */}
               <div className="space-y-4">
-                <h1 className="text-5xl md:text-6xl xl:text-7xl font-black text-white leading-[1.05] tracking-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[1.08] tracking-tight">
                   Cetak Generasi{" "}
                   <span className={`text-transparent bg-clip-text bg-gradient-to-r ${c.gradText}`}>
                     Rabbani
-                  </span>
-                  <br />Berkelas Dunia.
+                  </span>{" "}
+                  Berkelas Dunia.
                 </h1>
-                <p className="text-lg text-slate-400 max-w-xl leading-relaxed">
+                <p className="text-base md:text-lg text-slate-400 max-w-xl leading-relaxed text-left">
                   Kurikulum <strong className="text-white">TICE</strong> — Tahfizh Al-Qur'an, Internasional,
                   Karakter Mulia, dan Entrepreneurship. Bergabung bersama{" "}
                   <strong className="text-white">400+ santri aktif</strong> di lingkungan asrama terbaik.
@@ -308,7 +308,7 @@ export default function Home() {
                   alt="Kampus Pesantren Al-Andalus Jonggol"
                   width={600}
                   height={420}
-                  className="object-cover w-full h-[380px]"
+                  className="object-cover w-full h-[240px] sm:h-[320px] md:h-[380px]"
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
@@ -376,15 +376,15 @@ export default function Home() {
             <span className={`text-xs font-bold uppercase tracking-widest ${c.text600}`}>
               Sistem Pendidikan
             </span>
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mt-3 mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 mt-3 mb-4 text-balance">
               Kurikulum{" "}
               <span className={`text-transparent bg-clip-text bg-gradient-to-r ${c.grad}`}>
                 TICE
-              </span>{" "}
-              — Komprehensif
+              </span>
+              <span className="block mt-1 text-2xl sm:text-3xl md:text-4xl font-bold text-slate-500">Empat Pilar Pendidikan Unggul</span>
             </h2>
-            <p className="text-slate-500 max-w-xl mx-auto text-lg">
-              Empat pilar utama yang membentuk generasi Muslim unggul di dunia dan akhirat.
+            <p className="text-slate-500 max-w-xl mx-auto text-base md:text-lg">
+              Membentuk generasi Muslim yang unggul dalam Iman, Ilmu, dan Karakter di dunia dan akhirat.
             </p>
           </header>
 

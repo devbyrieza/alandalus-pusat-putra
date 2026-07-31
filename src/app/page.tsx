@@ -215,11 +215,11 @@ export default function Home() {
         {/* Animated glows */}
         <div className="absolute inset-0 pointer-events-none">
           <div
-            className={`absolute top-0 left-1/3 w-[600px] h-[600px] rounded-full opacity-20 blur-[120px] ${IS_PUTRA ? "bg-primary-700" : "bg-sky-600"}`}
+            className={`hidden md:block absolute top-0 left-1/3 w-[600px] h-[600px] rounded-full opacity-20 blur-[120px] ${IS_PUTRA ? "bg-primary-700" : "bg-sky-600"}`}
             style={{ transform: `translateY(${scrollY * 0.08}px)` }}
           />
           <div
-            className="absolute bottom-0 right-1/3 w-[400px] h-[400px] rounded-full opacity-10 blur-[100px] bg-amber-600"
+            className="hidden md:block absolute bottom-0 right-1/3 w-[400px] h-[400px] rounded-full opacity-10 blur-[100px] bg-amber-600"
             style={{ transform: `translateY(${scrollY * -0.05}px)` }}
           />
           <div

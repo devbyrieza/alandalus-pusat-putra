@@ -210,12 +210,12 @@ export default function Home() {
       {/* ═══ §1 HERO SECTION — SPLIT DARK ═══════════════════════════════════ */}
       <section
         id="hero"
-        className="relative min-h-[calc(100svh-40px)] flex items-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 pt-20 pb-12 md:pb-20 overflow-hidden"
+        className="relative min-h-[calc(100svh-40px)] flex items-center bg-[#020617] pt-20 pb-12 md:pb-20 overflow-hidden"
       >
         {/* Animated glows */}
         <div className="absolute inset-0 pointer-events-none">
           <div
-            className={`hidden md:block absolute top-0 left-1/3 w-[600px] h-[600px] rounded-full opacity-20 blur-[120px] ${IS_PUTRA ? "bg-primary-700" : "bg-sky-600"}`}
+            className={`hidden md:block absolute top-0 left-1/3 w-[600px] h-[600px] rounded-full opacity-20 blur-[120px] bg-[#166534]`}
             style={{ transform: `translateY(${scrollY * 0.08}px)` }}
           />
           <div
@@ -252,7 +252,7 @@ export default function Home() {
               <div className="space-y-4">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[1.08] tracking-tight">
                   Cetak Generasi{" "}
-                  <span className={`text-transparent bg-clip-text bg-gradient-to-r ${c.gradText}`}>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706]">
                     Rabbani
                   </span>{" "}
                   Berkelas Dunia.
@@ -349,7 +349,7 @@ export default function Home() {
       {/* ═══ §2 STATS BAND — Animated Counters ══════════════════════════════ */}
       <section
         ref={statsRef}
-        className="relative py-20 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-y border-white/5"
+        className="relative py-20 bg-[#0f172a] border-y border-white/5"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
@@ -378,7 +378,7 @@ export default function Home() {
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 mt-3 mb-4 text-balance">
               Kurikulum{" "}
-              <span className={`text-transparent bg-clip-text bg-gradient-to-r ${c.grad}`}>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#166534] to-[#14532d]">
                 TICE
               </span>
               <span className="block mt-1 text-2xl sm:text-3xl md:text-4xl font-bold text-slate-500">Empat Pilar Pendidikan Unggul</span>
@@ -390,7 +390,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* T — Tahfizh (large) */}
-            <div className={`md:col-span-2 rounded-3xl p-8 bg-gradient-to-br ${c.grad} text-white relative overflow-hidden group hover:scale-[1.01] transition-transform`}>
+            <div className="md:col-span-2 rounded-3xl p-8 bg-gradient-to-br from-[#166534] to-[#14532d] text-white relative overflow-hidden group hover:scale-[1.01] transition-transform">
               <div className="absolute top-0 right-0 w-56 h-56 rounded-full bg-white/10 -translate-y-1/2 translate-x-1/2 blur-2xl" />
               <FaQuran className="w-10 h-10 mb-6 opacity-90" />
               <h3 className="text-2xl font-black mb-3">T — Tahfizh Al-Qur'an</h3>
@@ -460,7 +460,7 @@ export default function Home() {
       </section>
 
       {/* ═══ §4 PAIN vs SOLUTION TABLE ══════════════════════════════════════ */}
-      <section className="py-24 bg-slate-950">
+      <section className="py-24 bg-[#020617]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="text-center mb-16">
             <span className={`text-xs font-bold uppercase tracking-widest ${c.text400}`}>
@@ -476,7 +476,7 @@ export default function Home() {
 
           <div className="rounded-3xl overflow-hidden border border-slate-800">
             {/* Table header */}
-            <div className="grid grid-cols-2 bg-slate-900 border-b border-slate-800">
+            <div className="grid grid-cols-2 bg-[#0f172a] border-b border-[#1e293b]">
               <div className="p-5 flex items-center gap-2 text-slate-500 text-sm font-bold uppercase tracking-widest border-r border-slate-800">
                 <FaTimesCircle className="w-4 h-4 text-red-500 shrink-0" />
                 Kekhawatiran Orang Tua
@@ -520,9 +520,9 @@ export default function Home() {
               <span className={`text-xs font-bold uppercase tracking-widest ${c.text600}`}>
                 Proses Pendaftaran
               </span>
-              <h2 className="text-4xl font-black text-slate-900 mt-3 mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mt-3 mb-8 md:mb-12">
                 Daftar dalam{" "}
-                <span className={`text-transparent bg-clip-text bg-gradient-to-r ${c.grad}`}>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#166534] to-[#14532d]">
                   4 Langkah
                 </span>{" "}Mudah
               </h2>
@@ -563,8 +563,8 @@ export default function Home() {
 
             {/* Right: Terminal + Contact */}
             <div className="space-y-6">
-              <div className="rounded-3xl bg-slate-950 border border-slate-800 overflow-hidden">
-                <div className="flex items-center gap-2 px-5 py-4 bg-slate-900 border-b border-slate-800">
+              <div className="rounded-3xl bg-[#020617] border border-[#1e293b] overflow-hidden">
+                <div className="flex items-center gap-2 px-5 py-4 bg-[#0f172a] border-b border-[#1e293b]">
                   <div className="flex gap-1.5">
                     <div className="w-3 h-3 rounded-full bg-red-500" />
                     <div className="w-3 h-3 rounded-full bg-yellow-500" />
@@ -635,7 +635,7 @@ export default function Home() {
       </section>
 
       {/* ═══ §6 ALUMNI MARQUEE ══════════════════════════════════════════════ */}
-      <section className={`py-16 ${c.bg950} border-y border-white/5 overflow-hidden`}>
+      <section className="py-16 bg-[#052e16] border-y border-white/5 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
           <span className={`text-xs font-bold uppercase tracking-widest ${c.text400}`}>
             Jejak Alumni
@@ -657,7 +657,7 @@ export default function Home() {
             </span>
             <h2 className="text-4xl font-black text-slate-900 mt-3">
               Semua yang Dibutuhkan Santri,{" "}
-              <span className={`text-transparent bg-clip-text bg-gradient-to-r ${c.grad}`}>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#166534] to-[#14532d]">
                 Tersedia
               </span>
             </h2>
@@ -688,7 +688,7 @@ export default function Home() {
       </section>
 
       {/* ═══ §8 SOCIAL PROOF — University Grid ══════════════════════════════ */}
-      <section className={`py-20 ${c.bg950}`}>
+      <section className="py-20 bg-[#052e16]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-slate-500 text-xs font-bold uppercase tracking-widest mb-10 flex items-center justify-center gap-2">
             <FaTrophy className={`w-4 h-4 ${c.text400}`} />
@@ -764,7 +764,7 @@ export default function Home() {
       </section>
 
       {/* ═══ §10 FINAL CTA ══════════════════════════════════════════════════ */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 to-slate-950 relative overflow-hidden">
+      <section className="py-24 bg-[#0f172a] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full opacity-20 blur-[100px] ${IS_PUTRA ? "bg-primary-700" : "bg-sky-600"}`} />
         </div>
@@ -777,7 +777,7 @@ export default function Home() {
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
             Siapkan Putra Anda untuk{" "}
-            <span className={`text-transparent bg-clip-text bg-gradient-to-r ${c.gradText}`}>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706]">
               Masa Depan Gemilang
             </span>
           </h2>

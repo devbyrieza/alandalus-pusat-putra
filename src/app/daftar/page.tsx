@@ -172,9 +172,7 @@ export default function DaftarPage() {
         }
       }
     }
-    if (formData.jenis_kelamin === "L" && formData.jenjang === "MA") {
-      errors.jenjang = "Mohon maaf, pendaftaran MA Langsung Putra belum dibuka.";
-    }
+    
 
     
 
@@ -397,10 +395,8 @@ export default function DaftarPage() {
                     const isPutra = formData.jenis_kelamin === "L";
                     const isPutri = formData.jenis_kelamin === "P";
                     // Al Imam: Hanya MTs Putra dan IL Putra yang buka. MA Putra tutup, semua Putri tutup.
-                    const isClosed = isPutri || (option.value === "MA" && isPutra);
-                    const closedLabel = isPutri
-                      ? "Pendaftaran Putri Belum Dibuka"
-                      : "Pendaftaran Putra Belum Dibuka";
+                    const isClosed = false;
+                    const closedLabel = "";
 
                     return (
                       <motion.div

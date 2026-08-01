@@ -187,9 +187,7 @@ export default function DaftarPindahanPage() {
       }
     }
 
-    if (formData.jenis_kelamin === "L" && formData.jenjang === "MA") {
-      errors.jenjang = "Mohon maaf, pendaftaran MA Langsung Putra belum dibuka.";
-    }
+    
 
     
 
@@ -419,8 +417,8 @@ export default function DaftarPindahanPage() {
                   ].map((option) => {
                     const isPutra = formData.jenis_kelamin === "L";
                     const isPutri = formData.jenis_kelamin === "P";
-                    const isClosed = true;
-                    const closedLabel = "Pendaftaran Pindahan Belum Dibuka";
+                    const isClosed = false;
+                    const closedLabel = "";
 
                     return (
                       <motion.div

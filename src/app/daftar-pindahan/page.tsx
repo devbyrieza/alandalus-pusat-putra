@@ -18,6 +18,7 @@ import {
 import { Container } from "@/components/layout/Container";
 import { countries } from "@/lib/data/countries";
 import { formatNamaLengkap } from "@/lib/validations/registration";
+import { IS_PUTRA } from "@/config/branding";
 import { motion, AnimatePresence } from "framer-motion";
 import Swal from "sweetalert2";
 
@@ -93,7 +94,7 @@ export default function DaftarPindahanPage() {
     tempat_lahir: "",
     tanggal_lahir: "",
     no_hp: "",
-    jenis_kelamin: "",
+    jenis_kelamin: IS_PUTRA ? "L" : "P",
     jenjang: jenjangFromUrl,
     kelas_masuk: "",
     asal_institusi: "",
@@ -186,15 +187,11 @@ export default function DaftarPindahanPage() {
       }
     }
 
-    if (!formData.jenis_kelamin) {
-      errors.jenis_kelamin = "Pilih jenis kelamin santri";
-    } else if (formData.jenis_kelamin === "P") {
-      errors.jenis_kelamin =
-        "Mohon maaf, pendaftaran Santri Putri dilakukan melalui Pesantren Ulul Albaab.";
-    } else if (formData.jenis_kelamin === "L") {
-      errors.jenis_kelamin =
-        "Mohon maaf, pendaftaran Santri Pindahan Al-Imam Belum Dibuka.";
+    if (formData.jenis_kelamin === "L" && formData.jenjang === "MA") {
+      errors.jenjang = "Mohon maaf, pendaftaran MA Langsung Putra belum dibuka.";
     }
+
+    
 
     if (!formData.jenjang) {
       errors.jenjang = "Pilih jenjang pendidikan";
@@ -369,7 +366,7 @@ export default function DaftarPindahanPage() {
                             tempat_lahir: "",
                             tanggal_lahir: "",
                             no_hp: "",
-                            jenis_kelamin: "",
+                            jenis_kelamin: IS_PUTRA ? "L" : "P",
                             jenjang: "",
                             kelas_masuk: "",
                             asal_institusi: "",
@@ -553,44 +550,7 @@ export default function DaftarPindahanPage() {
                     />
                   </InputField>
 
-                  <div className="md:col-span-2">
-                    <InputField
-                      label="Jenis Kelamin"
-                      error={fieldErrors.jenis_kelamin}
-                    >
-                      <div className="flex gap-4">
-                        {[
-                          { val: "L", label: "Santri Putra" },
-                          { val: "P", label: "Santri Putri" },
-                        ].map((jk) => (
-                          <motion.label
-                            key={jk.val}
-                            whileTap={{ scale: 0.98 }}
-                            className={`flex-1 flex items-center justify-center px-4 md:px-6 py-3 md:py-4 rounded-[1.5rem] md:rounded-[2rem] border-2 cursor-pointer transition-all duration-300 text-sm md:text-base ${
-                              formData.jenis_kelamin === jk.val
-                                ? "bg-primary-700 border-primary-700 text-white font-black shadow-md"
-                                : "bg-secondary-50 border-secondary-200 text-ink-800 hover:border-primary-200 hover:bg-white font-bold"
-                            }`}
-                          >
-                            <input
-                              type="radio"
-                              name="jk"
-                              value={jk.val}
-                              checked={formData.jenis_kelamin === jk.val}
-                              onChange={() =>
-                                setFormData((p) => ({
-                                  ...p,
-                                  jenis_kelamin: jk.val as any,
-                                }))
-                              }
-                              className="hidden"
-                            />
-                            {jk.label}
-                          </motion.label>
-                        ))}
-                      </div>
-                    </InputField>
-                  </div>
+                  
                 </div>
               </motion.section>
 

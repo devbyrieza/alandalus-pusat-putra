@@ -11,6 +11,7 @@ import UrgencyBar from "@/components/ui/UrgencyBar";
 import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
 import LiveActivityToast from "@/components/ui/LiveActivityToast";
 import ScrollProgressBar from "@/components/ui/ScrollProgressBar";
+import MobileBottomCTA from "@/components/ui/MobileBottomCTA";
 
 export default function LayoutWrapper({
   children,
@@ -53,6 +54,7 @@ export default function LayoutWrapper({
           <ScrollToTop />
           <FloatingWhatsApp />
           <LiveActivityToast />
+          <MobileBottomCTA />
         </>
       )}
     </div>

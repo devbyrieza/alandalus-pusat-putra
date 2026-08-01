@@ -43,11 +43,11 @@ export default function LiveActivityToast() {
   }, [activities.length]);
 
   useEffect(() => {
-    // First toast after 8s
+    // First toast setelah 25s — staggered setelah WA tooltip selesai (18s+5s=23s)
     const initial = setTimeout(() => {
       setVisible(true);
       setTimeout(() => setVisible(false), 4500);
-    }, 8000);
+    }, 25000);
 
     // Repeat every 25s
     const interval = setInterval(showNext, 25000);

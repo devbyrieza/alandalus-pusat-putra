@@ -199,10 +199,11 @@ export default function Home() {
     <div className="min-h-screen flex flex-col overflow-x-hidden">
 
       {/* ═══ ANNOUNCEMENT BAR ═══════════════════════════════════════════════ */}
-      <div className={`w-full py-2.5 text-center text-xs font-bold text-white ${c.bg600} flex items-center justify-center gap-2`}>
+      <div className={`w-full py-2 sm:py-2.5 text-xs font-bold text-white ${c.bg600} flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 px-8`}>
         <Zap className="w-3.5 h-3.5 shrink-0" />
-        <span>Pendaftaran Santri Baru Angkatan IX Telah Dibuka — Kuota Terbatas!</span>
-        <Link href="/daftar" className="ml-2 underline underline-offset-2 flex items-center gap-1">
+        <span className="sm:hidden">PPDB Angkatan IX — Kuota Terbatas!</span>
+        <span className="hidden sm:inline">Pendaftaran Santri Baru Angkatan IX Telah Dibuka — Kuota Terbatas!</span>
+        <Link href="/daftar" className="underline underline-offset-2 flex items-center gap-0.5 whitespace-nowrap hover:opacity-80 transition-opacity">
           Daftar <ChevronRight className="w-3 h-3" />
         </Link>
       </div>

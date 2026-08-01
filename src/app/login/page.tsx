@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -76,7 +76,7 @@ const ROLE_INFO: Record<
     label: "Penguji Lisan B. Arab",
     icon: "🗣",
     desc: "Penguji tes Lisan Bahasa Arab",
-    color: "from-sky-50 to-blue-50 border-sky-200",
+    color: "from-sky-50 to-blue-50 border-pink-200",
   },
   admin: {
     label: "Admin",

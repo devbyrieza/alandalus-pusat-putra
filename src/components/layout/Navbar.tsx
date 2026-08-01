@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -45,11 +45,11 @@ export default function Navbar() {
   const isActive = (path: string) => pathname === path;
 
   // Hardcoded hex colors to avoid dynamic class issues
-  const primaryTextClass   = IS_PUTRA ? "text-[#064e3b]"  : "text-[#0284c7]";
-  const primaryBgClass     = IS_PUTRA ? "bg-[#064e3b]"    : "bg-[#0284c7]";
-  const primaryBgHover     = IS_PUTRA ? "hover:bg-[#022c22]" : "hover:bg-[#0369a1]";
-  const primaryBgLightClass = IS_PUTRA ? "bg-[#ecfdf5]"   : "bg-[#e0f2fe]";
-  const primaryShadow      = IS_PUTRA ? "shadow-emerald-500/30" : "shadow-sky-500/30";
+  const primaryTextClass   = IS_PUTRA ? "text-[#064e3b]"  : "text-[#db2777]";
+  const primaryBgClass     = IS_PUTRA ? "bg-[#064e3b]"    : "bg-[#db2777]";
+  const primaryBgHover     = IS_PUTRA ? "hover:bg-[#022c22]" : "hover:bg-[#be185d]";
+  const primaryBgLightClass = IS_PUTRA ? "bg-[#ecfdf5]"   : "bg-[#fce7f3]";
+  const primaryShadow      = IS_PUTRA ? "shadow-emerald-500/30" : "shadow-pink-500/30";
 
   return (
     <>

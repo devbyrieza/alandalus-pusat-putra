@@ -1,355 +1,223 @@
 "use client";
 
-import { useState, useEffect, useCallback, use } from "react";
+import { useState, useEffect, useCallback, Suspense } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import {
   FileCheck,
-  CheckCircle,
-  XCircle,
+  Filter,
   Loader2,
   RefreshCw,
   User,
+  Search,
+  ChevronRight,
+  FileSpreadsheet,
   FileText,
-  AlertCircle,
-  Check,
-  X,
-  Image as ImageIcon,
-  ExternalLink,
-  ChevronLeft,
-  Download,
-  ZoomIn,
-  ZoomOut,
-  Maximize,
-  UploadCloud,
+  CheckCircle,
   Clock,
+  AlertCircle,
+  UploadCloud,
+  Download,
 } from "lucide-react";
+import { exportToExcel, exportToPDF } from "@/lib/utils/export";
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
-import { useRef } from "react";
 import Swal from "sweetalert2";
+import AdminSearchPendaftarModal from "../AdminSearchPendaftarModal";
 
-interface Dokumen {
+interface DokumenSummary {
   id: string;
-  jenis_dokumen: string;
-  status_verifikasi: string;
   is_verified: boolean;
   catatan: string | null;
-  file_url: string | null;
-  file_type: string | null;
-  created_at: string;
-  updated_at: string;
-  pendaftar_id: string;
 }
 
-interface PendaftarInfo {
+interface PendaftarSummary {
   id: string;
   nomor_pendaftaran: string;
   nama_lengkap: string;
   jenjang: string;
   no_hp: string | null;
+  tipe_pendaftaran?: string;
+  dokumen: DokumenSummary[];
 }
 
-const JENIS_DOKUMEN_ORDER = [
-  "Foto Setengah Badan",
-  "Scan Kartu Keluarga",
-  "Scan Akte Kelahiran",
-  "Scan Rapor Semester Ganjil Terakhir",
-  "Scan Rapor Semester Genap Terakhir",
-  "Scan NISN",
-  "Surat Keterangan Sehat",
-  "Scan Pakta Integritas Calon Santri",
-  "Scan Pakta Integritas Calon Orangtua/Wali Santri",
-  "Scan Pernyataan Bebas Perilaku Negatif",
-];
-
-export default function VerifikasiDokumenDetailPage() {
-  const params = useParams();
+function VerifikasiDokumenContent() {
+  const searchParams = useSearchParams();
   const router = useRouter();
-  const id = params.id as string;
 
-  const [pendaftar, setPendaftar] = useState<PendaftarInfo | null>(null);
-  const [dokumenList, setDokumenList] = useState<Dokumen[]>([]);
+  const urlStatus = searchParams.get("status") || "pending";
+  const urlSearch = searchParams.get("search") || "";
+
+  const [pendaftarList, setPendaftarList] = useState<PendaftarSummary[]>([]);
   const [loading, setLoading] = useState(true);
-  const [processingDocs, setProcessingDocs] = useState<Set<string>>(new Set());
-  const [uploadingDoc, setUploadingDoc] = useState<string | null>(null);
-  const [previewDoc, setPreviewDoc] = useState<{
-    url: string;
-    type: string | null;
-    label: string;
-  } | null>(null);
-  const [zoomLevel, setZoomLevel] = useState(1);
+  const [refreshing, setRefreshing] = useState(false);
+  const [statusFilter, setStatusFilter] = useState(urlStatus);
+  const [searchTerm, setSearchTerm] = useState(urlSearch);
+  const [exporting, setExporting] = useState(false);
+  const [userRole, setUserRole] = useState<string | null>(null);
+  const [showSearchModal, setShowSearchModal] = useState(false);
 
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const [selectedUploadDoc, setSelectedUploadDoc] = useState<{
-    id: string;
-    jenis: string;
-  } | null>(null);
+  const canVerify =
+    userRole === "admin_super" ||
+    userRole === "admin" ||
+    userRole === "admin_berkas";
 
-  // Reject Modal State
-  const [rejectModal, setRejectModal] = useState<{
-    isOpen: boolean;
-    docId: string;
-    docName: string;
-    initialReason: string;
-  }>({
-    isOpen: false,
-    docId: "",
-    docName: "",
-    initialReason: "",
-  });
-  const [rejectReason, setRejectReason] = useState("");
+  useEffect(() => {
+    const fetchSession = async () => {
+      try {
+        const res = await fetch("/api/auth/session");
+        if (res.ok) {
+          const data = await res.json();
+          if (data.session?.role) setUserRole(data.session.role);
+          else if (data.user?.user_metadata?.role)
+            setUserRole(data.user.user_metadata.role);
+        }
+      } catch (e) {
+        console.error("Failed to fetch session", e);
+      }
+    };
+    fetchSession();
+  }, []);
+
+  useEffect(() => {
+    if (urlStatus && urlStatus !== statusFilter) setStatusFilter(urlStatus);
+    if (urlSearch && urlSearch !== searchTerm) setSearchTerm(urlSearch);
+  }, [urlStatus, urlSearch]);
+
+  const updateFilters = (newStatus?: string, newSearch?: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (newStatus !== undefined) params.set("status", newStatus);
+    if (newSearch !== undefined) {
+      if (newSearch) params.set("search", newSearch);
+      else params.delete("search");
+    }
+    router.push(`?${params.toString()}`);
+  };
 
   const fetchData = useCallback(async () => {
     try {
-      setLoading(true);
-      // We use status=all but filter by pendaftar_id
+      if (pendaftarList.length === 0) {
+        setLoading(true);
+      } else {
+        setRefreshing(true);
+      }
       const response = await fetch(
-        `/api/admin/verifikasi/dokumen?pendaftar_id=${id}&status=all`,
+        `/api/admin/verifikasi/dokumen?status=${statusFilter}`,
       );
       if (!response.ok) throw new Error("Failed to fetch");
 
       const result = await response.json();
 
-      if (result.pendaftar) {
-        setPendaftar(result.pendaftar);
-      } else if (result.data && result.data.length > 0) {
-        const firstDoc = result.data[0];
-        setPendaftar(firstDoc.pendaftar);
-      }
+      const grouped: Record<string, PendaftarSummary> = {};
 
-      if (result.data) {
-        // Process uploaded documents
-        const docsData = result.data || [];
+      for (const dok of result.data || []) {
+        if (!dok.pendaftar) continue;
 
-        // 1. Sort by date descending to prefer newest files if duplicates exist
-        const sortedDocs = [...docsData].sort(
-          (a: any, b: any) =>
-            new Date(b.updated_at || b.created_at).getTime() -
-            new Date(a.updated_at || a.created_at).getTime(),
-        );
-
-        // 2. Deduplicate and prepare sets
-        const uploadedTypes = new Set<string>();
-        const uniqueDocs: any[] = [];
-        const seenTypes = new Set<string>();
-
-        sortedDocs.forEach((d: any) => {
-          // Map legacy key for logical comparisons and uniqueness tracking
-          let canonicalKey = d.jenis_dokumen;
-          if (canonicalKey === "pakta_integritas") {
-            canonicalKey = "pakta_integritas_santri";
-          }
-          
-          uploadedTypes.add(canonicalKey);
-
-          if (!seenTypes.has(canonicalKey)) {
-            seenTypes.add(canonicalKey);
-            uniqueDocs.push(d);
-          }
-        });
-
-        const processedDocs = uniqueDocs.map((d: any) => {
-          let label = d.jenis_dokumen;
-          switch (d.jenis_dokumen) {
-            case "foto_setengah_badan":
-              label = "Foto Setengah Badan";
-              break;
-            case "kartu_keluarga":
-              label = "Scan Kartu Keluarga";
-              break;
-            case "akta_kelahiran":
-              label = "Scan Akte Kelahiran";
-              break;
-            case "rapor_sem1":
-              label = "Scan Rapor Semester Ganjil Terakhir";
-              break;
-            case "rapor_sem2":
-              label = "Scan Rapor Semester Genap Terakhir";
-              break;
-            case "nisn":
-              label = "Scan NISN";
-              break;
-            case "surat_kesehatan":
-              label = "Surat Keterangan Sehat";
-              break;
-            case "pakta_integritas":
-            case "pakta_integritas_santri":
-              label = "Scan Pakta Integritas Calon Santri";
-              break;
-            case "pakta_integritas_ortu":
-              label = "Scan Pakta Integritas Calon Orangtua/Wali Santri";
-              break;
-            case "pernyataan_bebas_negatif":
-              label = "Scan Pernyataan Bebas Perilaku Negatif";
-              break;
-            default:
-              label = d.jenis_dokumen.replace(/_/g, " ");
-          }
-
-          return {
-            id: d.id,
-            jenis_dokumen: label,
-            raw_jenis: d.jenis_dokumen === "pakta_integritas" ? "pakta_integritas_santri" : d.jenis_dokumen,
-            status_verifikasi: d.is_verified
-              ? "verified"
-              : d.catatan
-                ? "rejected"
-                : "pending",
-            is_verified: d.is_verified,
-            catatan: d.catatan,
-            file_url: d.file_url,
-            file_type: d.file_type,
-            created_at: d.created_at,
-            updated_at: d.updated_at,
-            pendaftar_id: id,
+        const pendaftarId = dok.pendaftar.id;
+        if (!grouped[pendaftarId]) {
+          grouped[pendaftarId] = {
+            id: dok.pendaftar.id,
+            nomor_pendaftaran: dok.pendaftar.nomor_pendaftaran,
+            nama_lengkap: dok.pendaftar.nama_lengkap,
+            jenjang: dok.pendaftar.jenjang,
+            no_hp: dok.pendaftar.no_hp,
+            tipe_pendaftaran: dok.pendaftar.tipe_pendaftaran,
+            dokumen: [],
           };
+        }
+        grouped[pendaftarId].dokumen.push({
+          id: dok.id,
+          is_verified: dok.is_verified,
+          catatan: dok.catatan,
         });
-
-        // Add placeholders for missing required documents
-        const REQUIRED_RAW_TYPES = [
-          "foto_setengah_badan",
-          "kartu_keluarga",
-          "akta_kelahiran",
-          "rapor_sem1",
-          "rapor_sem2",
-          "nisn",
-          "surat_kesehatan",
-          "pakta_integritas_santri",
-  "pakta_integritas_ortu",
-          "pernyataan_bebas_negatif",
-        ];
-
-        REQUIRED_RAW_TYPES.forEach((rawType) => {
-          // Handle backwards compatibility for old 'pakta_integritas' key
-          let isUploaded = uploadedTypes.has(rawType);
-          if (rawType === "pakta_integritas_santri" && uploadedTypes.has("pakta_integritas")) {
-            isUploaded = true;
-          }
-
-          if (!isUploaded) {
-            let label = rawType;
-            switch (rawType) {
-              case "foto_setengah_badan":
-                label = "Foto Setengah Badan";
-                break;
-              case "kartu_keluarga":
-                label = "Scan Kartu Keluarga";
-                break;
-              case "akta_kelahiran":
-                label = "Scan Akte Kelahiran";
-                break;
-              case "rapor_sem1":
-                label = "Scan Rapor Semester Ganjil Terakhir";
-                break;
-              case "rapor_sem2":
-                label = "Scan Rapor Semester Genap Terakhir";
-                break;
-              case "nisn":
-                label = "Scan NISN";
-                break;
-              case "surat_kesehatan":
-                label = "Surat Keterangan Sehat";
-                break;
-              case "pakta_integritas":
-              case "pakta_integritas_santri":
-                label = "Scan Pakta Integritas Calon Santri";
-                break;
-              case "pakta_integritas_ortu":
-                label = "Scan Pakta Integritas Calon Orangtua/Wali Santri";
-                break;
-              case "pernyataan_bebas_negatif":
-                label = "Scan Pernyataan Bebas Perilaku Negatif";
-                break;
-            }
-
-            processedDocs.push({
-              id: `placeholder-${rawType}`,
-              jenis_dokumen: label,
-              raw_jenis: rawType,
-              status_verifikasi: "empty",
-              is_verified: false,
-              catatan: null,
-              file_url: null,
-              file_type: null,
-              created_at: new Date().toISOString(),
-              updated_at: new Date().toISOString(),
-              pendaftar_id: id,
-            });
-          }
-        });
-
-        // Sort documents based on JENIS_DOKUMEN_ORDER
-        processedDocs.sort((a: any, b: any) => {
-          const aIndex = JENIS_DOKUMEN_ORDER.indexOf(a.jenis_dokumen);
-          const bIndex = JENIS_DOKUMEN_ORDER.indexOf(b.jenis_dokumen);
-          if (aIndex === -1 && bIndex === -1)
-            return a.jenis_dokumen.localeCompare(b.jenis_dokumen);
-          if (aIndex === -1) return 1;
-          if (bIndex === -1) return -1;
-          return aIndex - bIndex;
-        });
-
-        setDokumenList(processedDocs);
-      } else {
-        // Handle case where no documents found or applicant doesn't exist/has no docs
-        // We might want to fetch pendaftar info separately if needed,
-        // but for now let's assume if there are no docs, we just show empty
       }
+
+      setPendaftarList(Object.values(grouped));
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
       setLoading(false);
+      setRefreshing(false);
     }
-  }, [id]);
+  }, [statusFilter, pendaftarList.length]);
 
   useEffect(() => {
+    // FORCE CLEANUP: SweetAlert overlay bug fix
+    // Sometimes Swal leaves leftover containers after router.back()
+    const swalContainers = document.querySelectorAll('.swal2-container');
+    swalContainers.forEach(el => el.remove());
+    document.body.classList.remove('swal2-shown', 'swal2-height-auto');
+    document.body.style.paddingRight = '';
+    
     fetchData();
   }, [fetchData]);
 
-  const handleVerify = async (
-    dokumenId: string,
-    status: "verified" | "rejected",
-    catatan?: string,
-  ) => {
+  const handleExport = async (type: "excel" | "pdf") => {
     try {
-      setProcessingDocs((prev) => new Set(prev).add(dokumenId));
+      setExporting(true);
+      const response = await fetch(`/api/admin/verifikasi/dokumen?status=all`);
+      if (!response.ok) throw new Error("Failed to export");
 
-      const response = await fetch("/api/admin/verifikasi/dokumen", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          dokumen_id: dokumenId,
-          status_verifikasi: status,
-          catatan: catatan || null,
-        }),
-      });
+      const result = await response.json();
 
-      if (!response.ok) throw new Error("Failed to verify");
-
-      // Update local state
-      setDokumenList((prev) =>
-        prev.map((d) => {
-          if (d.id === dokumenId) {
-            return {
-              ...d,
-              status_verifikasi: status,
-              is_verified: status === "verified",
-              catatan: status === "verified" ? null : catatan || d.catatan,
-            };
-          }
-          return d;
+      const data = result.data.map(
+        (item: {
+          pendaftar?: {
+            nama_lengkap: string;
+            nomor_pendaftaran: string;
+            jenjang: string;
+            tipe_pendaftaran?: string;
+          };
+          jenis_dokumen: string;
+          is_verified: boolean;
+          catatan: string | null;
+          created_at: string;
+        }) => ({
+          "Nama Pendaftar": item.pendaftar?.nama_lengkap
+            ? toTitleCase(item.pendaftar.nama_lengkap)
+            : "-",
+          "Jalur / Tipe": item.pendaftar?.tipe_pendaftaran === "PINDAHAN" ? "Pindahan" : "Reguler",
+          "No Pendaftaran": item.pendaftar?.nomor_pendaftaran || "-",
+          Jenjang: item.pendaftar?.jenjang || "-",
+          "Jenis Dokumen": item.jenis_dokumen || "-",
+          Status: item.is_verified
+            ? "Terverifikasi"
+            : item.catatan
+              ? "Ditolak"
+              : "Belum Verifikasi",
+          Catatan: item.catatan || "-",
+          "Tanggal Unggah": new Date(item.created_at).toLocaleDateString(
+            "id-ID",
+          ),
         }),
       );
+
+      const filename = `data-dokumen-${new Date().toISOString().split("T")[0]}`;
+
+      if (type === "excel") {
+        exportToExcel(data, filename, "Data Dokumen");
+      } else {
+        const headers = Object.keys(data[0] || {});
+        const rows = data.map((item: any) => Object.values(item));
+        exportToPDF(
+          "Laporan Verifikasi Dokumen",
+          headers,
+          rows,
+          filename,
+          "landscape",
+        );
+      }
     } catch (error) {
-      console.error("Error verifying dokumen:", error);
-      Swal.fire("Gagal!", "Gagal memverifikasi dokumen", "error");
+      console.error("Error exporting:", error);
+      Swal.fire("Gagal!", "Gagal export data", "error");
     } finally {
-      setProcessingDocs((prev) => {
-        const next = new Set(prev);
-        next.delete(dokumenId);
-        return next;
-      });
+      setExporting(false);
     }
   };
+
+  const filteredList = pendaftarList.filter(
+    (p) =>
+      p.nama_lengkap.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.nomor_pendaftaran.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
 
   const toTitleCase = (str: string) => {
     if (!str) return "";
@@ -359,581 +227,256 @@ export default function VerifikasiDokumenDetailPage() {
     );
   };
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("id-ID", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    });
-  };
-
-  const isImageFile = (dok: Dokumen) => {
-    if (dok.file_type) return dok.file_type.startsWith("image/");
-    if (!dok.file_url) return false;
-    return /\.(jpg|jpeg|png|gif|webp)$/i.test(dok.file_url);
-  };
-
-  const handleDownload = async (url: string, filename: string) => {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error("Network response was not ok");
-      const blob = await response.blob();
-      const blobUrl = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.style.display = "none";
-      a.href = blobUrl;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(blobUrl);
-      document.body.removeChild(a);
-    } catch (error) {
-      console.error("Download failed, opening in new tab", error);
-      window.open(url, "_blank");
-    }
-  };
-
-  const openPreview = (url: string, type: string | null, label: string) => {
-    setZoomLevel(1);
-    setPreviewDoc({ url, type, label });
-  };
-
-  const handleReplaceClick = (dokId: string, jenis: string) => {
-    setSelectedUploadDoc({ id: dokId, jenis });
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
-    }
-  };
-
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file || !selectedUploadDoc) return;
-
-    try {
-      setUploadingDoc(selectedUploadDoc.id);
-
-      const formData = new FormData();
-      formData.append("file", file);
-
-      // Revert label mapping to raw key, or if `raw_jenis` exists in state use it
-      // Assuming `raw_jenis` is attached inside `fetchData`
-      const docObj = dokumenList.find((d) => d.id === selectedUploadDoc.id);
-      const rawJenis =
-        (docObj as any)?.raw_jenis ||
-        selectedUploadDoc.jenis.toLowerCase().replace(/ /g, "_");
-
-      formData.append("jenis_dokumen", rawJenis);
-      formData.append("pendaftar_id", id);
-
-      const response = await fetch("/api/admin/verifikasi/dokumen/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        Swal.fire(
-          "Berhasil!",
-          "Dokumen berhasil diganti dan otomatis diverifikasi",
-          "success",
-        );
-        fetchData(); // Reload all data to see the new document
-      } else {
-        Swal.fire("Gagal!", data.error || "Gagal mengunggah dokumen", "error");
-      }
-    } catch (error) {
-      console.error("Error replacing dokumen:", error);
-      Swal.fire("Error!", "Terjadi kesalahan saat mengunggah", "error");
-    } finally {
-      setUploadingDoc(null);
-      setSelectedUploadDoc(null);
-      if (fileInputRef.current) fileInputRef.current.value = ""; // Reset input
-    }
-  };
-
-  if (loading) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[400px]">
-        <Loader2 className="w-12 h-12 animate-spin text-primary-600 mb-4" />
-        <p className="text-ink-300 font-bold tracking-wide">
-          Memuat berkas pendaftar...
-        </p>
-      </div>
-    );
-  }
-
-  if (!pendaftar && !loading) {
-    return (
-      <div className="bg-white rounded-3xl shadow-sm p-6 md:p-10 border border-gold-200 text-center">
-        <AlertCircle className="w-16 h-16 text-primary-500 mx-auto mb-4" />
-        <h2 className="text-2xl font-black text-primary-950 mb-2">
-          Data Tidak Ditemukan
-        </h2>
-        <p className="text-ink-300 font-medium mb-6">
-          Pendaftar ini belum mengunggah berkas apapun atau data salah.
-        </p>
-        <button
-          onClick={() => router.back()}
-          className="px-6 py-3 bg-primary-700 hover:bg-primary-800 text-white rounded-xl font-bold transition-all shadow-lg shadow-primary-700/20 active:scale-95"
-        >
-          Kembali ke Daftar
-        </button>
-      </div>
-    );
-  }
-
   return (
     <div className="space-y-6">
-      <input
-        type="file"
-        ref={fileInputRef}
-        onChange={handleFileChange}
-        className="hidden"
-        accept="image/jpeg, image/png, application/pdf"
-      />
-      {/* Header */}
-      <div className="bg-white rounded-3xl shadow-sm p-6 border border-gold-100">
-        <div className="flex items-center justify-between flex-wrap gap-4">
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => router.back()}
-              className="p-2 hover:bg-gold-50 rounded-lg text-ink-300 transition-colors"
-              title="Kembali"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <div className="p-4 bg-linear-to-br from-primary-600 to-primary-900 rounded-2xl shadow-xl shadow-primary-900/20">
-              <User className="w-8 h-8 text-gold-300" />
+      <div className="bg-white rounded-2xl shadow-sm p-4 md:p-8 border border-primary-100 mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 flex-wrap">
+          <div className="flex flex-wrap items-center gap-3 md:gap-5">
+            <div className="p-2.5 md:p-4 bg-linear-to-br from-primary-600 to-primary-900 rounded-2xl shadow-xl shadow-primary-900/20 flex-shrink-0">
+              <FileCheck className="w-6 h-6 md:w-8 md:h-8 text-secondary-100" />
             </div>
             <div>
-              <h2 className="text-3xl font-black text-primary-950 leading-none mb-1">
-                {toTitleCase(pendaftar?.nama_lengkap || "")}
-              </h2>
-              <div className="flex items-center gap-3 text-ink-300">
-                <span className="font-mono bg-primary-50 px-2.5 py-1 rounded-lg text-sm font-black text-primary-600 border border-primary-100">
-                  {pendaftar?.nomor_pendaftaran}
-                </span>
-                <span className="px-2.5 py-1 bg-gold-400 text-primary-900 rounded-lg text-[10px] font-black uppercase shadow-xs">
-                  {pendaftar?.jenjang}
-                </span>
-              </div>
+              <h1 className="text-lg md:text-3xl font-black text-primary-950 tracking-tight leading-none mb-1">
+                Verifikasi Dokumen
+              </h1>
+              <p className="text-sm text-ink-400 font-bold tracking-wide">
+                Kelola dan verifikasi berkas pendaftaran santri
+              </p>
             </div>
           </div>
-          <button
-            onClick={fetchData}
-            className="flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors"
-          >
-            <RefreshCw className="w-4 h-4" />
-            Muat Ulang
-          </button>
-        </div>
-      </div>
-
-      {/* Documents Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {dokumenList.map((dok) => (
-          <div
-            key={dok.id}
-            className={`bg-white border rounded-3xl overflow-hidden transition-all shadow-xs hover:shadow-xl hover:shadow-primary-900/5 ${
-              dok.status_verifikasi === "verified"
-                ? "border-emerald-200"
-                : dok.status_verifikasi === "rejected"
-                  ? "border-rose-200"
-                  : "border-gold-200"
-            }`}
-          >
-            {/* Document Preview */}
-            <div className="relative aspect-[4/3] bg-stone-100">
-              {dok.file_url ? (
-                isImageFile(dok) ? (
-                  <img
-                    src={dok.file_url}
-                    alt={dok.jenis_dokumen}
-                    className="absolute inset-0 w-full h-full object-cover cursor-pointer"
-                    onClick={() =>
-                      openPreview(
-                        dok.file_url!,
-                        dok.file_type,
-                        dok.jenis_dokumen,
-                      )
-                    }
-                  />
-                ) : (
-                  <div 
-                    className="absolute inset-0 w-full h-full overflow-hidden cursor-pointer group bg-white"
-                    onClick={() => openPreview(dok.file_url!, dok.file_type, dok.jenis_dokumen)}
-                  >
-                    <iframe
-                      src={`${dok.file_url}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                      className="absolute inset-0 w-full h-full border-0 pointer-events-none"
-                      title={`PDF Preview - ${dok.jenis_dokumen}`}
-                    />
-                    <div className="absolute inset-0 z-10 opacity-0 group-hover:bg-black/5 transition-all"></div>
-                  </div>
-                )
-              ) : (
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-stone-400">
-                  <AlertCircle className="w-12 h-12 mb-2" />
-                  <span className="text-sm">File tidak tersedia</span>
-                </div>
-              )}
-
-              {/* View button overlay for images */}
-              {dok.file_url && isImageFile(dok) && (
-                <a
-                  href={dok.file_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute top-3 right-3 p-2 bg-white/90 hover:bg-white rounded-xl text-stone-700 shadow-sm transition-all"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              )}
-            </div>
-
-            <div className="p-5">
-              <div className="flex items-start justify-between mb-2">
-                <h3 className="font-black text-primary-950 capitalize tracking-tight leading-tight">
-                  {dok.jenis_dokumen.replace(/_/g, " ")}
-                </h3>
-                {dok.status_verifikasi === "verified" ? (
-                  <div className="flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2 py-1 rounded-lg text-[10px] font-black uppercase">
-                    <CheckCircle className="w-3 h-3" />
-                    Diterima
-                  </div>
-                ) : dok.status_verifikasi === "rejected" ? (
-                  <div className="flex items-center gap-1 text-rose-600 bg-rose-50 px-2 py-1 rounded-lg text-[10px] font-black uppercase">
-                    <XCircle className="w-3 h-3" />
-                    Ditolak
-                  </div>
-                ) : dok.status_verifikasi === "empty" ? (
-                  <div className="flex items-center gap-1 text-stone-400 bg-stone-50 px-2 py-1 rounded-lg text-[10px] font-black uppercase border border-stone-200 italic">
-                    <Clock className="w-3 h-3" />
-                    Belum Ada
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-1 text-gold-700 bg-gold-50 px-2 py-1 rounded-lg text-[10px] font-black uppercase border border-gold-200">
-                    <RefreshCw className="w-3 h-3" />
-                    Menunggu
-                  </div>
-                )}
-              </div>
-              <div className="flex items-center justify-between mb-4">
-                <p className="text-[10px] text-ink-300 font-black uppercase tracking-widest leading-none">
-                  {formatDate(dok.created_at)}
-                </p>
-                <button
-                  onClick={() => handleReplaceClick(dok.id, dok.jenis_dokumen)}
-                  disabled={uploadingDoc === dok.id}
-                  className="flex items-center gap-1 text-[10px] font-black text-primary-600 hover:text-primary-800 transition-colors uppercase disabled:opacity-50 italic"
-                >
-                  {uploadingDoc === dok.id ? (
-                    <Loader2 className="w-3 h-3 animate-spin" />
-                  ) : (
-                    <UploadCloud className="w-3 h-3" />
-                  )}
-                  {dok.status_verifikasi === "empty"
-                    ? "Upload Berkas"
-                    : "Ubah Data"}
-                </button>
-              </div>
-
-              {/* Actions */}
-              <div className="flex gap-2">
-                <button
-                  onClick={() => handleVerify(dok.id, "verified")}
-                  disabled={
-                    processingDocs.has(dok.id) ||
-                    dok.status_verifikasi === "verified"
-                  }
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold transition-all ${
-                    dok.status_verifikasi === "verified"
-                      ? "bg-emerald-50 text-emerald-600 border border-emerald-100 cursor-default"
-                      : "bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-600/20 active:scale-95 disabled:opacity-50"
-                  }`}
-                >
-                  {processingDocs.has(dok.id) ? (
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                  ) : (
-                    <>
-                      <Check className="w-4 h-4" />
-                      Terima
-                    </>
-                  )}
-                </button>
-                <button
-                  onClick={() => {
-                    setRejectModal({
-                      isOpen: true,
-                      docId: dok.id,
-                      docName: dok.jenis_dokumen.replace(/_/g, " "),
-                      initialReason: dok.catatan || "",
-                    });
-                    setRejectReason(dok.catatan || "");
-                  }}
-                  disabled={processingDocs.has(dok.id)}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-black transition-all active:scale-95 disabled:opacity-50 ${
-                    dok.status_verifikasi === "rejected"
-                      ? "bg-rose-100 text-rose-700 border border-rose-200"
-                      : "bg-white border-2 border-gold-100 hover:border-rose-400 hover:text-rose-600 text-ink-300"
-                  }`}
-                >
-                  {processingDocs.has(dok.id) ? (
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                  ) : (
-                    <>
-                      <X className="w-4 h-4" />
-                      Tolak
-                    </>
-                  )}
-                </button>
-              </div>
-
-              {dok.catatan && (
-                <div className="mt-4 p-3 bg-rose-50 border border-rose-100 rounded-xl">
-                  <p className="text-[10px] font-bold text-rose-800 uppercase mb-1">
-                    Catatan Penolakan:
-                  </p>
-                  <p className="text-xs text-rose-700">{dok.catatan}</p>
-                </div>
-              )}
-
-              {(dok.status_verifikasi === "verified" ||
-                dok.status_verifikasi === "rejected") && (
-                <div className="mt-3 pt-3 border-t border-stone-100 flex items-center gap-1.5 text-[10px] text-stone-500 font-medium">
-                  {!dok.is_verified && dok.catatan && (
-                    <p className="mt-1 flex items-center gap-1.5">
-                      <AlertCircle className="w-4 h-4" /> {dok.catatan}
-                    </p>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Image/PDF Preview Modal */}
-      {previewDoc && (
-        <div
-          className="fixed inset-0 bg-stone-900/95 flex items-start md:items-center pt-10 md:pt-0 pb-20 md:pb-0 justify-center z-[100] p-4 backdrop-blur-md overflow-y-auto overflow-x-hidden"
-          onClick={() => setPreviewDoc(null)}
-        >
-          <div className="relative max-w-6xl max-h-[95vh] w-full h-full bg-white/5 overflow-hidden rounded-3xl flex flex-col shadow-2xl">
-            {/* Modal Header */}
-            <div className="flex items-center justify-between p-4 bg-stone-900/80 backdrop-blur-md border-b border-white/10 shrink-0 z-10 sticky top-0">
-              <h3 className="text-white font-bold capitalize">
-                {previewDoc.label.replace(/_/g, " ")}
-              </h3>
-              <div className="flex items-center gap-2">
-                {/* Zoom Controls for Images Only */}
-                {previewDoc.type !== "application/pdf" && (
-                  <div className="flex items-center gap-1 bg-white/10 rounded-xl p-1 mr-2">
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setZoomLevel((prev) => Math.max(0.5, prev - 0.25));
-                      }}
-                      className="p-1.5 hover:bg-white/20 rounded-lg text-white transition-all"
-                      title="Zoom Out"
-                    >
-                      <ZoomOut className="w-4 h-4" />
-                    </button>
-                    <span className="text-white text-xs font-mono w-12 text-center select-none">
-                      {Math.round(zoomLevel * 100)}%
-                    </span>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setZoomLevel((prev) => Math.min(4, prev + 0.25));
-                      }}
-                      className="p-1.5 hover:bg-white/20 rounded-lg text-white transition-all"
-                      title="Zoom In"
-                    >
-                      <ZoomIn className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setZoomLevel(1);
-                      }}
-                      className="p-1.5 hover:bg-white/20 rounded-lg text-white transition-all"
-                      title="Reset Zoom"
-                    >
-                      <Maximize className="w-4 h-4" />
-                    </button>
-                  </div>
-                )}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleDownload(
-                      previewDoc.url,
-                      `${pendaftar?.nama_lengkap}_${previewDoc.label.replace(/ /g, "_")}.${previewDoc.url.split(".").pop()?.split("?")[0] || "file"}`,
-                    );
-                  }}
-                  className="p-2.5 bg-emerald-600/20 hover:bg-emerald-600/40 rounded-xl text-emerald-400 backdrop-blur-md transition-all flex items-center gap-2 text-xs font-bold"
-                  title="Unduh Dokumen"
-                >
-                  <Download className="w-4 h-4" />
-                  Unduh
-                </button>
-                <a
-                  href={previewDoc.url}
-                  target="_blank"
-                  className="p-2.5 bg-white/10 hover:bg-white/20 rounded-xl text-white backdrop-blur-md transition-all flex items-center gap-2 text-xs font-bold"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  Buka Tab Baru
-                </a>
-                <button
-                  onClick={() => setPreviewDoc(null)}
-                  className="p-2.5 bg-rose-600/20 hover:bg-rose-600/40 rounded-xl text-rose-400 backdrop-blur-md transition-all ml-1"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-
-            {/* Modal Content */}
-            <div
-              className="flex-1 overflow-auto bg-stone-100 flex items-center justify-center p-2 relative"
-              onClick={(e) => e.stopPropagation()}
+          <div className="flex flex-wrap items-center gap-2 flex-shrink-0 relative z-20">
+            {canVerify && (
+              <button
+                type="button"
+                onClick={() => setShowSearchModal(true)}
+                className="flex items-center gap-2 px-3 md:px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-xl text-sm font-bold transition-all shadow-lg shadow-primary-600/20 whitespace-nowrap"
+              >
+                <UploadCloud className="w-4 h-4" />
+                <span className="hidden sm:inline">Upload Atas Nama</span>
+              </button>
+            )}
+            <button
+              onClick={() => handleExport("excel")}
+              disabled={exporting}
+              className="flex items-center gap-2 px-3 md:px-4 py-2 bg-emerald-50 text-emerald-600 hover:bg-emerald-600 hover:text-white rounded-xl font-bold transition-all disabled:opacity-50 text-sm"
             >
-              {previewDoc.type === "application/pdf" ? (
-                <iframe
-                  src={`${previewDoc.url}#toolbar=0`}
-                  className="w-full h-full rounded-xl shadow-inner border-0"
-                  title="PDF Preview"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center overflow-auto absolute inset-0">
-                  <img
-                    src={previewDoc.url}
-                    alt="Preview"
-                    className="max-w-none origin-center drop-shadow-2xl rounded-lg transition-transform duration-200 ease-out"
-                    style={{ transform: `scale(${zoomLevel})` }}
-                  />
-                </div>
-              )}
-            </div>
+              <FileSpreadsheet className="w-4 h-4" />
+              Excel
+            </button>
+            <button
+              onClick={() => handleExport("pdf")}
+              disabled={exporting}
+              className="flex items-center gap-2 px-3 md:px-4 py-2 bg-rose-50 text-rose-600 hover:bg-rose-600 hover:text-white rounded-xl font-bold transition-all disabled:opacity-50 text-sm"
+            >
+              <FileText className="w-4 h-4" />
+              PDF
+            </button>
+            <a
+              href="/api/admin/export/foto"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 md:px-4 py-2 bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white rounded-xl font-bold transition-all text-sm"
+            >
+              <Download className="w-4 h-4" />
+              <span className="hidden sm:inline">Foto ZIP</span>
+            </a>
+            <button
+              onClick={fetchData}
+              disabled={refreshing}
+              className="p-2 bg-primary-50 text-primary-600 hover:bg-primary-600 hover:text-white rounded-xl transition-all disabled:opacity-50"
+              title="Muat Ulang Data"
+            >
+              <RefreshCw
+                className={`w-5 h-5 ${refreshing ? "animate-spin" : ""}`}
+              />
+            </button>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3 md:gap-6 pt-6 border-t border-primary-50">
+          <div className="relative flex-1 group">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-ink-300 group-focus-within:text-primary-600 transition-colors" />
+            <input
+              type="text"
+              placeholder="Cari nama atau nomor pendaftaran..."
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                updateFilters(undefined, e.target.value);
+              }}
+              className="w-full pl-12 pr-4 py-4 bg-primary-50/50 border border-primary-100 rounded-2xl focus:border-primary-500 focus:bg-white focus:outline-none transition-all text-sm md:text-base font-bold text-primary-950 placeholder:text-ink-300"
+            />
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {[
+              { id: "pending", label: "Menunggu" },
+              { id: "verified", label: "Diterima" },
+              { id: "rejected", label: "Ditolak" },
+            ].map((s) => (
+              <button
+                key={s.id}
+                onClick={() => updateFilters(s.id)}
+                className={`px-4 md:px-8 py-3 rounded-2xl font-black transition-all text-sm md:text-base whitespace-nowrap active:scale-95 ${
+                  statusFilter === s.id
+                    ? "bg-primary-700 text-white shadow-lg shadow-primary-700/30 ring-2 ring-primary-500/20"
+                    : "bg-white border border-primary-100 text-ink-400 hover:bg-primary-50 hover:text-primary-700"
+                }`}
+              >
+                {s.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {refreshing && (
+        <div className="fixed inset-0 bg-white/40 backdrop-blur-[1px] z-[100] flex items-start md:items-center pt-10 md:pt-0 pb-20 md:pb-0 justify-center pointer-events-none overflow-y-auto overflow-x-hidden p-4">
+          <div className="bg-white/80 px-6 py-3 rounded-2xl shadow-xl border border-primary-100 flex items-center gap-3 animate-in fade-in zoom-in duration-300">
+            <Loader2 className="w-5 h-5 animate-spin text-primary-600" />
+            <span className="text-sm font-bold text-ink-700 tracking-tight">
+              Memperbarui data...
+            </span>
           </div>
         </div>
       )}
 
-      {/* Reject Modal */}
-      {rejectModal.isOpen && (
-        <div
-          className="fixed inset-0 bg-stone-900/50 flex items-start md:items-center pt-10 md:pt-0 pb-20 md:pb-0 justify-center z-[110] px-4 backdrop-blur-sm overflow-y-auto overflow-x-hidden p-4"
-          onClick={() => {
-            if (!processingDocs.has(rejectModal.docId)) {
-              setRejectModal({ ...rejectModal, isOpen: false });
-            }
-          }}
-        >
-          <div
-            className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-200"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="p-5 border-b border-stone-100 flex items-center justify-between bg-stone-50">
-              <h3 className="text-lg font-bold text-stone-900 flex items-center gap-2">
-                <XCircle className="w-5 h-5 text-rose-600" />
-                Tolak Dokumen
+      {loading && pendaftarList.length === 0 ? (
+        <div className="flex flex-col items-center justify-center p-20 bg-white rounded-3xl border border-primary-100">
+          <Loader2 className="w-12 h-12 animate-spin text-primary-600 mb-4" />
+          <p className="text-ink-400 font-bold tracking-wide">
+            Mengambil data pendaftar...
+          </p>
+        </div>
+      ) : (
+        <>
+          {filteredList.length === 0 ? (
+            <div className="flex flex-col items-center justify-center p-20 bg-white rounded-3xl border-2 border-primary-50 text-center">
+              <div className="w-20 h-20 bg-primary-50 rounded-full flex items-center justify-center mb-6">
+                <FileCheck className="w-10 h-10 text-primary-300" />
+              </div>
+              <h3 className="text-xl font-bold text-primary-950 mb-2">
+                Tidak Ada Pendaftar
               </h3>
-              <button
-                onClick={() =>
-                  setRejectModal({ ...rejectModal, isOpen: false })
-                }
-                disabled={processingDocs.has(rejectModal.docId)}
-                className="text-stone-400 hover:text-stone-600 transition-colors p-2 hover:bg-stone-200 rounded-lg"
-              >
-                <X className="w-5 h-5" />
-              </button>
+              <p className="text-ink-600">
+                Belum ada dokumen yang perlu diverifikasi pada kategori ini.
+              </p>
             </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredList.map((pendaftar) => {
+                const verifiedCount = pendaftar.dokumen.filter(
+                  (d) => d.is_verified,
+                ).length;
+                const totalCount = pendaftar.dokumen.length;
+                const percentage = Math.round(
+                  (verifiedCount / totalCount) * 100,
+                );
 
-            <div className="p-6 space-y-4">
-              <div className="flex items-start gap-3 p-3 bg-rose-50 border border-rose-100 rounded-xl">
-                <FileText className="w-5 h-5 text-rose-600 mt-0.5" />
-                <div>
-                  <p className="text-xs text-rose-600 font-bold uppercase tracking-wider mb-0.5">
-                    Dokumen yang ditolak
-                  </p>
-                  <p className="font-bold text-rose-900 capitalize text-sm">
-                    {rejectModal.docName}
-                  </p>
-                </div>
-              </div>
+                return (
+                  <Link
+                    key={pendaftar.id}
+                    href={`/dashboard/admin/verifikasi-dokumen/${pendaftar.id}`}
+                    className="group bg-white rounded-3xl border border-primary-100 hover:border-primary-400 p-6 transition-all hover:shadow-xl hover:shadow-primary-900/5 relative overflow-hidden"
+                  >
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-primary-50 to-secondary-50 -mr-16 -mt-16 rounded-full opacity-50 transition-transform group-hover:scale-110" />
 
-              <div>
-                <label className="block text-sm font-bold text-stone-700 mb-2">
-                  Alasan Penolakan <span className="text-rose-500">*</span>
-                </label>
-                <div className="relative">
-                  <textarea
-                    value={rejectReason}
-                    onChange={(e) => setRejectReason(e.target.value)}
-                    placeholder="Contoh: Foto buram, dokumen tidak terbaca, masa berlaku habis..."
-                    className="w-full px-4 py-3 border-2 border-stone-200 rounded-xl focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 focus:outline-none min-h-[120px] text-sm resize-none transition-all placeholder:text-stone-400"
-                    autoFocus
-                  />
-                  <div className="absolute bottom-3 right-3 text-xs text-stone-400 font-medium bg-white/80 px-2 py-0.5 rounded-md backdrop-blur-sm">
-                    {rejectReason.length} chars
-                  </div>
-                </div>
-                <p className="text-xs text-stone-500 mt-2 flex items-start gap-1.5">
-                  <AlertCircle className="w-3.5 h-3.5 text-stone-400 shrink-0 mt-0.5" />
-                  <span>
-                    Alasan ini akan dikirimkan otomatis ke WhatsApp pendaftar.
-                  </span>
-                </p>
-              </div>
+                    <div className="relative">
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className="w-14 h-14 bg-primary-50 rounded-2xl flex items-center justify-center group-hover:from-primary-600 group-hover:to-primary-900 transition-all duration-500 shadow-inner border border-primary-100">
+                          <User className="w-6 h-6 text-primary-400 group-hover:text-white transition-colors" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-black text-primary-950 truncate group-hover:text-primary-700 transition-colors leading-tight mb-1">
+                            {toTitleCase(pendaftar.nama_lengkap)}
+                            {pendaftar.tipe_pendaftaran === "PINDAHAN" && (
+                              <span className="ml-2 px-2 py-0.5 bg-violet-100 text-violet-700 rounded-full text-[10px] font-black uppercase tracking-wider border border-violet-200 align-middle">
+                                PINDAHAN
+                              </span>
+                            )}
+                          </h3>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs font-mono font-black text-primary-400 bg-primary-50 px-2 py-0.5 rounded">
+                              {pendaftar.nomor_pendaftaran}
+                            </span>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-primary-700 bg-primary-50 border border-primary-100 px-2 py-0.5 rounded shadow-xs">
+                              {pendaftar.jenjang}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="space-y-3 mb-6">
+                        <div className="flex items-center justify-between text-xs font-black uppercase tracking-widest leading-none">
+                          <span className="text-ink-300">
+                            Penyelesaian Verifikasi
+                          </span>
+                          <span className="text-primary-700">
+                            {percentage}%
+                          </span>
+                        </div>
+                        <div className="h-2.5 bg-primary-50/50 rounded-full overflow-hidden shadow-inner border border-primary-50">
+                          <div
+                            className="h-full bg-linear-to-r from-primary-500 to-primary-700 rounded-full transition-all duration-1000 ease-out"
+                            style={{ width: `${percentage}%` }}
+                          />
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <div className="flex items-center gap-1.5">
+                            <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50" />
+                            <span className="text-xs font-bold text-ink-600">
+                              {verifiedCount} Terverifikasi
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-1.5">
+                            <div className="w-2 h-2 rounded-full bg-secondary-400 shadow-sm shadow-secondary-400/50" />
+                            <span className="text-xs font-bold text-ink-600">
+                              {totalCount - verifiedCount} Menunggu
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-between pt-4 border-t border-primary-50 group-hover:border-primary-100 transition-colors">
+                        <div className="flex items-center gap-2 text-ink-300 font-black text-[10px] uppercase tracking-widest group-hover:text-primary-600 transition-colors">
+                          Proses Verifikasi
+                          <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                        </div>
+                        {percentage === 100 ? (
+                          <CheckCircle className="w-6 h-6 text-emerald-500" />
+                        ) : (
+                          <Clock className="w-5 h-5 text-primary-500 animate-pulse" />
+                        )}
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
-
-            <div className="p-4 bg-stone-50 flex items-center justify-end gap-3 border-t border-stone-100">
-              <button
-                onClick={() =>
-                  setRejectModal({ ...rejectModal, isOpen: false })
-                }
-                disabled={processingDocs.has(rejectModal.docId)}
-                className="px-5 py-2.5 rounded-xl text-sm font-bold text-stone-500 hover:text-stone-700 hover:bg-stone-200 transition-colors"
-              >
-                Batal
-              </button>
-              <button
-                onClick={async () => {
-                  if (!rejectReason.trim()) {
-                    Swal.fire(
-                      "Perhatian",
-                      "Mohon isi alasan penolakan",
-                      "warning",
-                    );
-                    return;
-                  }
-                  await handleVerify(
-                    rejectModal.docId,
-                    "rejected",
-                    rejectReason,
-                  );
-                  setRejectModal({ ...rejectModal, isOpen: false });
-                }}
-                disabled={
-                  processingDocs.has(rejectModal.docId) || !rejectReason.trim()
-                }
-                className="px-5 py-2.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-sm font-bold shadow-lg shadow-rose-600/20 hover:shadow-rose-600/40 transition-all flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transform active:scale-95"
-              >
-                {processingDocs.has(rejectModal.docId) ? (
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                ) : (
-                  <XCircle className="w-4 h-4" />
-                )}
-                Tolak Dokumen
-              </button>
-            </div>
-          </div>
-        </div>
+          )}
+        </>
       )}
+
+      <AdminSearchPendaftarModal
+        isOpen={showSearchModal}
+        onClose={() => setShowSearchModal(false)}
+      />
     </div>
+  );
+}
+
+export default function VerifikasiDokumenPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex flex-col items-center justify-center p-20 bg-white rounded-3xl border border-primary-100">
+          <Loader2 className="w-12 h-12 animate-spin text-primary-600 mb-4" />
+          <p className="text-ink-400 font-bold tracking-wide">
+            Memuat halaman...
+          </p>
+        </div>
+      }
+    >
+      <VerifikasiDokumenContent />
+    </Suspense>
   );
 }

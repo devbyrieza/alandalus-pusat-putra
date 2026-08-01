@@ -1,5 +1,4 @@
-import Footer from "@/components/layout/Footer";
-import { BRANDING, IS_PUTRA } from "@/config/branding";
+﻿import { BRANDING, IS_PUTRA } from "@/config/branding";
 import { Building2, Stethoscope, Droplets, Laptop, ShieldCheck, Home } from "lucide-react";
 
 export default function FasilitasPage() {
@@ -50,7 +49,7 @@ export default function FasilitasPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {fasilitas.map((fas, i) => (
               <div key={i} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 shadow-sm ${IS_PUTRA ? "bg-primary-50 text-primary-600" : "bg-sky-50 text-sky-600"}`}>
+                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 shadow-sm ${IS_PUTRA ? "bg-primary-50 text-primary-600" : "bg-pink-50 text-pink-600"}`}>
                   <fas.icon className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{fas.title}</h3>
@@ -61,7 +60,6 @@ export default function FasilitasPage() {
 
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

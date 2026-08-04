@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { BRANDING, IS_PUTRA } from "@/config/branding";
 import {
@@ -7,6 +7,7 @@ import {
   Award,
   ShieldCheck,
   CheckCircle2,
+  Check,
   Globe,
   Zap,
   TrendingUp,
@@ -590,7 +591,9 @@ export default function Home() {
                   <p>
                     <span className={c.text400}>▸</span>{" "}
                     <span className="text-white">Status Pendaftaran</span>{" "}
-                    <span className="text-green-400 font-bold">✓ DIBUKA</span>
+                    <span className="text-green-400 font-bold inline-flex items-center gap-1">
+                      <Check className="w-3.5 h-3.5" /> DIBUKA
+                    </span>
                   </p>
                   <p>
                     <span className={c.text400}>▸</span>{" "}
@@ -606,9 +609,9 @@ export default function Home() {
                     <span className={c.text400}>▸</span>{" "}
                     <span className="text-slate-600">kuota terbatas — daftar segera...</span>
                   </p>
-                  <p>
-                    <span className="text-green-400">✓</span>{" "}
-                    <span className="text-slate-300">Formulir online tersedia 24/7</span>
+                  <p className="flex items-center gap-1 text-slate-300">
+                    <Check className="w-4 h-4 text-green-400 shrink-0" />{" "}
+                    <span>Formulir online tersedia 24/7</span>
                   </p>
                 </div>
               </div>

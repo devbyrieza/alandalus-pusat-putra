@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -21,6 +21,7 @@ import {
   Award,
   ShieldCheck,
   GraduationCap,
+  Sparkles,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -448,9 +449,9 @@ export default function ContactPage() {
               </div>
 
               {/* Trust microcopy */}
-              <p className="mt-6 text-[11px] text-primary-300 font-bold uppercase tracking-widest">
-                ✦ Pendaftaran Gratis&nbsp;&nbsp;•&nbsp;&nbsp;Proses
-                Mudah&nbsp;&nbsp;•&nbsp;&nbsp;Langsung Konfirmasi
+              <p className="mt-6 text-[11px] text-primary-300 font-bold uppercase tracking-widest flex items-center justify-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-gold-300" />
+                <span>Pendaftaran Gratis&nbsp;&nbsp;•&nbsp;&nbsp;Proses Mudah&nbsp;&nbsp;•&nbsp;&nbsp;Langsung Konfirmasi</span>
               </p>
 
               {/* Legalitas badges */}

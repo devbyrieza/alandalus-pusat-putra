@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useMemo } from "react";
 import {
@@ -21,6 +21,8 @@ import {
   CheckSquare,
   Square,
   Layers,
+  Sparkles,
+  Check,
 } from "lucide-react";
 import Swal from "sweetalert2";
 
@@ -1356,9 +1358,9 @@ export default function JadwalPengujiPage() {
                               ) : (
                                 <button
                                   onClick={() => handleCompleteExam(item.id)}
-                                  className="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl transition-all active:scale-95 shadow-lg shadow-primary-600/20"
+                                  className="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl transition-all active:scale-95 shadow-lg shadow-primary-600/20 flex items-center justify-center gap-1.5"
                                 >
-                                  ✓ Tandai Wawancara Calon Santri Selesai
+                                  <Check className="w-4 h-4" /> Tandai Wawancara Calon Santri Selesai
                                 </button>
                               ))}
                             {userId &&
@@ -1371,9 +1373,9 @@ export default function JadwalPengujiPage() {
                               ) : (
                                 <button
                                   onClick={() => handleCompleteExam(item.id)}
-                                  className="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl transition-all active:scale-95 shadow-lg shadow-primary-600/20"
+                                  className="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl transition-all active:scale-95 shadow-lg shadow-primary-600/20 flex items-center justify-center gap-1.5"
                                 >
-                                  ✓ Tandai Seleksi Al Qur'an Selesai
+                                  <Check className="w-4 h-4" /> Tandai Seleksi Al Qur'an Selesai
                                 </button>
                               ))}
                             {userId &&
@@ -1386,9 +1388,9 @@ export default function JadwalPengujiPage() {
                               ) : (
                                 <button
                                   onClick={() => handleCompleteExam(item.id)}
-                                  className="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl transition-all active:scale-95 shadow-lg shadow-primary-600/20"
+                                  className="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl transition-all active:scale-95 shadow-lg shadow-primary-600/20 flex items-center justify-center gap-1.5"
                                 >
-                                  ✓ Tandai Seleksi Wawancara Orang Tua Selesai
+                                  <Check className="w-4 h-4" /> Tandai Seleksi Wawancara Orang Tua Selesai
                                 </button>
                               ))}
                             {/* Bottom row: Lihat Data + Batalkan */}
@@ -2199,7 +2201,7 @@ export default function JadwalPengujiPage() {
                 <div className="bg-primary-600 rounded-2xl p-4 shadow-lg shadow-primary-950/20 text-white flex items-start gap-3 relative overflow-hidden group">
                   <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -mr-10 -mt-10 blur-xl"></div>
                   <div className="w-8 h-8 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center shrink-0">
-                    <span className="text-sm">✨</span>
+                    <Sparkles className="w-4 h-4 text-amber-300" />
                   </div>
                   <div>
                     <p className="text-[10px] text-primary-100 font-black uppercase tracking-widest mb-0.5">

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -14,6 +14,7 @@ import {
   ChevronDown,
   RefreshCw,
   BookOpen,
+  ArrowRight,
 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { countries } from "@/lib/data/countries";
@@ -36,10 +37,6 @@ interface FormData {
   catatan_pindahan: string;
 }
 
-// ========================================
-// REUSABLE COMPONENTS
-// ========================================
-
 const InputField = ({
   label,
   error,
@@ -49,7 +46,7 @@ const InputField = ({
   error?: string;
   children: React.ReactNode;
 }) => (
-  <div className="space-y-3">
+  <div className="space-y-3" data-error={!!error}>
     <label className="text-xs font-black text-ink-600 uppercase tracking-widest ml-1">
       {label}
     </label>
@@ -65,10 +62,6 @@ const InputField = ({
     )}
   </div>
 );
-
-// ========================================
-// MAIN COMPONENT
-// ========================================
 
 export default function DaftarPindahanPage() {
   useEffect(() => {
@@ -106,9 +99,10 @@ export default function DaftarPindahanPage() {
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
 
+  // Restore draft from localStorage (Form Autosave UX Rule)
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const savedData = sessionStorage.getItem("pendaftaran_pindahan_form");
+      const savedData = localStorage.getItem("andalus_putra_daftar_pindahan_draft");
       if (savedData) {
         try {
           const parsed = JSON.parse(savedData);
@@ -118,7 +112,7 @@ export default function DaftarPindahanPage() {
             jenjang: jenjangFromUrl || parsed.jenjang || "",
           }));
         } catch (error) {
-          console.error("Error parsing saved data:", error);
+          console.error("Error parsing saved draft:", error);
         }
       } else if (jenjangFromUrl) {
         setFormData((prev) => ({
@@ -129,11 +123,11 @@ export default function DaftarPindahanPage() {
     }
   }, [jenjangFromUrl]);
 
-  // Save data on change
+  // Save draft continuously to localStorage
   useEffect(() => {
     if (typeof window !== "undefined") {
       const timeoutId = setTimeout(() => {
-        sessionStorage.setItem("pendaftaran_pindahan_form", JSON.stringify(formData));
+        localStorage.setItem("andalus_putra_daftar_pindahan_draft", JSON.stringify(formData));
       }, 500);
       return () => clearTimeout(timeoutId);
     }
@@ -165,8 +159,6 @@ export default function DaftarPindahanPage() {
       errors.nama_lengkap = "Nama minimal 3 karakter";
     }
 
-    // tempat_lahir tidak lagi wajib diisi (tidak ditampilkan di form)
-
     if (!formData.tanggal_lahir) {
       errors.tanggal_lahir = "Tanggal lahir santri wajib diisi";
     }
@@ -186,10 +178,6 @@ export default function DaftarPindahanPage() {
         }
       }
     }
-
-    
-
-    
 
     if (!formData.jenjang) {
       errors.jenjang = "Pilih jenjang pendidikan";
@@ -338,7 +326,7 @@ export default function DaftarPindahanPage() {
                   </div>
                   <div className="flex-1">
                     <p className="text-lg font-display font-black text-primary-900 leading-none mb-1">
-                      Melanjutkan Draft Pendaftaran
+                      Melanjutkan Draft Pendaftaran Pindahan
                     </p>
                     <p className="text-sm text-primary-600 font-medium">
                       Data yang anda masukkan sebelumnya telah tersimpan otomatis dalam sesi ini.
@@ -357,7 +345,7 @@ export default function DaftarPindahanPage() {
                         });
 
                         if (result.isConfirmed) {
-                          sessionStorage.removeItem("pendaftaran_pindahan_form");
+                          localStorage.removeItem("andalus_putra_daftar_pindahan_draft");
                           setFormData({
                             nik: "",
                             nama_lengkap: "",
@@ -415,36 +403,23 @@ export default function DaftarPindahanPage() {
                       subtitle: "Pindahan tingkat SMA/MA",
                     },
                   ].map((option) => {
-                    const isPutra = formData.jenis_kelamin === "L";
-                    const isPutri = formData.jenis_kelamin === "P";
-                    const isClosed = false;
-                    const closedLabel = "";
-
                     return (
                       <motion.div
                         key={option.value}
-                        whileHover={isClosed ? {} : { scale: 1.02 }}
-                        whileTap={isClosed ? {} : { scale: 0.98 }}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
                         onClick={() => {
-                          if (isClosed) return;
                           setFormData((prev) => ({
                             ...prev,
                             jenjang: option.value as any,
                           }));
                         }}
                         className={`relative cursor-pointer rounded-[2rem] p-6 border-2 transition-all duration-300 app-card ${
-                          isClosed
-                            ? "opacity-50 grayscale cursor-not-allowed border-secondary-200 bg-stone-50"
-                            : formData.jenjang === option.value
-                              ? "border-primary-600 bg-secondary-50 shadow-md"
-                              : "border-secondary-200 bg-white hover:border-primary-200 hover:shadow-sm"
+                          formData.jenjang === option.value
+                            ? "border-primary-600 bg-secondary-50 shadow-md"
+                            : "border-secondary-200 bg-white hover:border-primary-200 hover:shadow-sm"
                         }`}
                       >
-                        {isClosed && (
-                          <div className="absolute top-4 right-4 bg-red-600 text-white text-[10px] font-black px-2 py-1 rounded-full uppercase tracking-tighter shadow-sm z-10">
-                            {closedLabel}
-                          </div>
-                        )}
                         <div className="flex items-center gap-4 relative z-0">
                           <div
                             className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${
@@ -547,8 +522,6 @@ export default function DaftarPindahanPage() {
                       className="w-full px-5 py-3 md:px-8 md:py-5 rounded-xl md:rounded-2xl bg-secondary-50 border border-transparent focus:bg-white focus:border-primary-200 focus:ring-4 focus:ring-secondary-50 transition-all font-bold text-sm md:text-base text-ink-950"
                     />
                   </InputField>
-
-                  
                 </div>
               </motion.section>
 

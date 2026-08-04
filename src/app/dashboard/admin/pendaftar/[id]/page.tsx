@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -14,6 +14,7 @@ import {
   Hash,
   Calendar,
   Search,
+  CheckCircle2,
 } from "lucide-react";
 import Swal from "sweetalert2";
 
@@ -393,11 +394,14 @@ export default function TrashPage() {
 
             <div className="p-6 space-y-4">
               <div className="bg-green-50 border-2 border-green-200 rounded-xl p-4">
-                <p className="text-sm text-green-800 font-medium">
-                  ✅ Data{" "}
-                  <strong>{toTitleCase(restoringItem.nama_lengkap)}</strong> (
-                  {restoringItem.nomor_pendaftaran}) akan dipulihkan dan muncul
-                  kembali di daftar pendaftar aktif.
+                <p className="text-sm text-green-800 font-medium flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>
+                    Data{" "}
+                    <strong>{toTitleCase(restoringItem.nama_lengkap)}</strong> (
+                    {restoringItem.nomor_pendaftaran}) akan dipulihkan dan muncul
+                    kembali di daftar pendaftar aktif.
+                  </span>
                 </p>
               </div>
 

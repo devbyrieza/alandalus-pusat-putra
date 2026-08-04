@@ -39,6 +39,7 @@
   ],
   "exclude": [
     "node_modules",
+    "migration",
     "update-photos.ts",
     "check-restored-users.ts",
     "check_prod_users.ts",

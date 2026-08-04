@@ -1,6 +1,6 @@
-﻿"use client";
+"use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Save, Loader2, Info, UserPlus } from "lucide-react";
@@ -28,6 +28,31 @@ export default function AdminTambahPendaftar() {
     catatan_pindahan: "",
   });
 
+  // Restore draft from localStorage on mount
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedDraft = localStorage.getItem("andalus_putra_admin_tambah_pendaftar_draft");
+      if (savedDraft) {
+        try {
+          const parsed = JSON.parse(savedDraft);
+          setFormData((prev) => ({ ...prev, ...parsed }));
+        } catch (err) {
+          console.error("Error parsing saved draft:", err);
+        }
+      }
+    }
+  }, []);
+
+  // Save draft to localStorage on formData change
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const timer = setTimeout(() => {
+        localStorage.setItem("andalus_putra_admin_tambah_pendaftar_draft", JSON.stringify(formData));
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [formData]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -54,6 +79,8 @@ export default function AdminTambahPendaftar() {
       if (!res.ok) {
         throw new Error(data.error || "Terjadi kesalahan");
       }
+
+      localStorage.removeItem("andalus_putra_admin_tambah_pendaftar_draft");
 
       Swal.fire({
         icon: "success",

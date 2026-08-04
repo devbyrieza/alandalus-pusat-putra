@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import {
@@ -19,7 +19,7 @@ import {
 import Link from "next/link";
 import Swal from "sweetalert2";
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+// --- Types --------------------------------------------------------------------
 
 type FilterTab = "SEMUA" | "BEASISWA" | "KERINGANAN";
 type FilterStatus = "ALL" | "PENDING" | "DISETUJUI" | "DITOLAK";
@@ -33,7 +33,7 @@ interface KeringananJson {
   catatan?: string | null;
 }
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
+// --- Helpers ------------------------------------------------------------------
 
 const fmt = (n: number) => (n > 0 ? `Rp ${n.toLocaleString("id-ID")}` : "Rp 0");
 
@@ -80,7 +80,7 @@ function cakupanLabel(c?: string) {
   return "-";
 }
 
-// ─── Main Page ────────────────────────────────────────────────────────────────
+// --- Main Page ----------------------------------------------------------------
 
 export default function BantuanBiayaPage() {
   const [data, setData] = useState<any[]>([]);
@@ -128,7 +128,7 @@ export default function BantuanBiayaPage() {
     }
   };
 
-  // ─── Filtering ───────────────────────────────────────────────────────────────
+  // --- Filtering ---------------------------------------------------------------
 
   const filtered = data.filter((item) => {
     const jenis = getJenisBantuan(item);
@@ -145,7 +145,7 @@ export default function BantuanBiayaPage() {
     return matchTab && matchStatus && matchSearch;
   });
 
-  // ─── Stats ────────────────────────────────────────────────────────────────────
+  // --- Stats --------------------------------------------------------------------
 
   const totalBeasiswa = data.filter((d) => getJenisBantuan(d) === "BEASISWA").length;
   const totalKeringanan = data.filter((d) => getJenisBantuan(d) === "KERINGANAN").length;
@@ -154,12 +154,12 @@ export default function BantuanBiayaPage() {
 
   return (
     <div className="p-4 md:p-8 space-y-6 max-w-7xl mx-auto">
-      {/* ── Header ── */}
+      {/* -- Header -- */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="text-2xl font-black text-ink-950 flex items-center gap-3">
             <HandCoins className="w-8 h-8 text-primary-600" />
-            Bantuan Biaya — Beasiswa & Keringanan
+            Bantuan Biaya � Beasiswa & Keringanan
           </h1>
           <p className="text-stone-500 text-sm mt-1">
             Kelola pemberian beasiswa gratis dan keringanan potongan biaya per pendaftar
@@ -184,7 +184,7 @@ export default function BantuanBiayaPage() {
         </div>
       </div>
 
-      {/* ── Stats Cards ── */}
+      {/* -- Stats Cards -- */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="bg-white rounded-2xl p-4 border border-stone-100 shadow-sm">
           <p className="text-xs font-black text-stone-400 uppercase tracking-widest mb-2">Total Pengajuan</p>
@@ -216,7 +216,7 @@ export default function BantuanBiayaPage() {
         </div>
       </div>
 
-      {/* ── Filter Tabs: Beasiswa vs Keringanan ── */}
+      {/* -- Filter Tabs: Beasiswa vs Keringanan -- */}
       <div className="flex flex-wrap items-center gap-3">
         {/* Jenis tab */}
         <div className="flex items-center bg-white rounded-xl p-1 border border-stone-200 shadow-sm">
@@ -271,7 +271,7 @@ export default function BantuanBiayaPage() {
         </div>
       </div>
 
-      {/* ── Table ── */}
+      {/* -- Table -- */}
       <div className="bg-white border border-stone-200 shadow-sm rounded-2xl overflow-hidden">
         {loading ? (
           <div className="p-12 flex justify-center">
@@ -309,10 +309,10 @@ export default function BantuanBiayaPage() {
                       {/* Pendaftar */}
                       <td className="px-6 py-4">
                         <div className="font-bold text-ink-900">
-                          {item.pendaftar?.nama_lengkap ? toTitleCase(item.pendaftar.nama_lengkap) : "Tanpa Nama"}
+                          {item.pendaftar?.nama_lengkap ? toTitleCase(item?.pendaftar?.nama_lengkap) : "Tanpa Nama"}
                         </div>
                         <div className="text-stone-500 text-xs">
-                          {item.pendaftar?.nomor_pendaftaran} · {item.pendaftar?.jenjang}
+                          {item.pendaftar?.nomor_pendaftaran} � {item.pendaftar?.jenjang}
                         </div>
                       </td>
 
@@ -352,7 +352,7 @@ export default function BantuanBiayaPage() {
                             {isBeasiswa ? "GRATIS" : fmt(pUP)}
                           </span>
                         ) : (
-                          <span className="text-stone-300 text-xs">—</span>
+                          <span className="text-stone-300 text-xs">�</span>
                         )}
                       </td>
 
@@ -363,7 +363,7 @@ export default function BantuanBiayaPage() {
                             {isBeasiswa ? "GRATIS" : fmt(pSPP)}
                           </span>
                         ) : (
-                          <span className="text-stone-300 text-xs">—</span>
+                          <span className="text-stone-300 text-xs">�</span>
                         )}
                       </td>
 

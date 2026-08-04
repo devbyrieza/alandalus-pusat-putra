@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import {
@@ -158,7 +158,7 @@ export default function PerubahanDataPage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="font-bold text-ink-900 truncate tracking-tight">
-                      {toTitleCase(req.pendaftar.nama_lengkap)}
+                      {toTitleCase(req?.pendaftar?.nama_lengkap)}
                     </h4>
                     <p className="text-xs text-ink-400 font-bold uppercase">
                       {req.pendaftar.no_hp}

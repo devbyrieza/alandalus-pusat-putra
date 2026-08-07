@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -37,6 +37,33 @@ function VerifikasiOTPContent() {
   const [otpCode, setOtpCode] = useState(["", "", "", "", "", ""]);
   const [otpError, setOtpError] = useState("");
   const [isVerifying, setIsVerifying] = useState(false);
+
+  // Autosave draft OTP
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem("alandalus_alimam_verifikasi_otp_draft");
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length === 6) {
+            setOtpCode(parsed);
+          }
+        }
+      } catch (e) {
+        console.warn("Failed to load OTP draft:", e);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && otpCode.some((digit) => digit !== "")) {
+      try {
+        localStorage.setItem("alandalus_alimam_verifikasi_otp_draft", JSON.stringify(otpCode));
+      } catch (e) {
+        console.warn("Failed to save OTP draft:", e);
+      }
+    }
+  }, [otpCode]);
 
   // Simulation Code Check
   const sim_code = searchParams.get("sim_code");
@@ -139,6 +166,12 @@ function VerifikasiOTPContent() {
 
       if (!response.ok) {
         throw new Error(data.error || "Verifikasi OTP gagal");
+      }
+
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("alandalus_alimam_verifikasi_otp_draft");
+        localStorage.removeItem("pendaftaran_form");
+        localStorage.removeItem("pendaftaran_pindahan_form");
       }
 
       // Redirect to Success Page

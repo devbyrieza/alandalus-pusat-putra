@@ -1,4 +1,4 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { prisma } from "@/lib/prisma";
 import {
@@ -141,4 +141,3 @@ export async function POST(req: Request) {
     );
   }
 }
-

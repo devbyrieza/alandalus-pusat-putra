@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
@@ -20,7 +20,7 @@ export default function KepribadianTestPage() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       try {
-        const saved = localStorage.getItem("andalus_pusat_putra_ujian_kepribadian_draft");
+        const saved = localStorage.getItem("alandalus_alimam_ujian_kepribadian_draft");
         if (saved) {
           const parsed = JSON.parse(saved);
           if (parsed && typeof parsed === "object") {
@@ -36,7 +36,7 @@ export default function KepribadianTestPage() {
   useEffect(() => {
     if (typeof window !== "undefined" && Object.keys(answers).length > 0) {
       try {
-        localStorage.setItem("andalus_pusat_putra_ujian_kepribadian_draft", JSON.stringify(answers));
+        localStorage.setItem("alandalus_alimam_ujian_kepribadian_draft", JSON.stringify(answers));
       } catch (e) {
         console.warn("Failed to save kepribadian test draft:", e);
       }
@@ -130,7 +130,7 @@ export default function KepribadianTestPage() {
       if (!res.ok) throw new Error("Gagal mengirim");
 
       if (typeof window !== "undefined") {
-        localStorage.removeItem("andalus_pusat_putra_ujian_kepribadian_draft");
+        localStorage.removeItem("alandalus_alimam_ujian_kepribadian_draft");
       }
 
       await Swal.fire({
@@ -225,7 +225,7 @@ export default function KepribadianTestPage() {
           Seleksi Kepribadian Calon Santri/Wati
         </h1>
         <p className="text-primary-100 text-sm mt-1">
-          20 pernyataan â€¢ Skala 1-4 â€¢ Durasi 30 menit
+          20 pernyataan • Skala 1-4 • Durasi 30 menit
         </p>
       </div>
 
@@ -341,4 +341,3 @@ export default function KepribadianTestPage() {
     </div>
   );
 }
-

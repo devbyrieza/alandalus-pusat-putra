@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -28,7 +28,7 @@ export default function AkademikTestPage() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       try {
-        const saved = localStorage.getItem("andalus_pusat_putra_ujian_akademik_draft");
+        const saved = localStorage.getItem("alandalus_alimam_ujian_akademik_draft");
         if (saved) {
           const parsed = JSON.parse(saved);
           if (parsed && typeof parsed === "object") {
@@ -44,7 +44,7 @@ export default function AkademikTestPage() {
   useEffect(() => {
     if (typeof window !== "undefined" && Object.keys(answers).length > 0) {
       try {
-        localStorage.setItem("andalus_pusat_putra_ujian_akademik_draft", JSON.stringify(answers));
+        localStorage.setItem("alandalus_alimam_ujian_akademik_draft", JSON.stringify(answers));
       } catch (e) {
         console.warn("Failed to save akademik test draft:", e);
       }
@@ -149,7 +149,7 @@ export default function AkademikTestPage() {
       if (!res.ok) throw new Error("Gagal mengirim");
 
       if (typeof window !== "undefined") {
-        localStorage.removeItem("andalus_pusat_putra_ujian_akademik_draft");
+        localStorage.removeItem("alandalus_alimam_ujian_akademik_draft");
       }
 
       await Swal.fire({
@@ -275,10 +275,10 @@ export default function AkademikTestPage() {
             <div className="bg-secondary-50 p-4 rounded-xl border border-secondary-200">
               <h4 className="font-bold text-secondary-800 mb-2">Perhatian</h4>
               <ul className="text-sm text-secondary-700 space-y-1">
-                <li>â€¢ Pastikan koneksi internet stabil</li>
-                <li>â€¢ Jangan refresh halaman saat mengerjakan</li>
-                <li>â€¢ Timer akan berjalan otomatis setelah menekan "Mulai"</li>
-                <li>â€¢ Jawaban otomatis dikirim jika waktu habis</li>
+                <li>• Pastikan koneksi internet stabil</li>
+                <li>• Jangan refresh halaman saat mengerjakan</li>
+                <li>• Timer akan berjalan otomatis setelah menekan "Mulai"</li>
+                <li>• Jawaban otomatis dikirim jika waktu habis</li>
               </ul>
             </div>
             <div className="bg-primary-50 border border-primary-200 rounded-xl p-6">
@@ -324,7 +324,7 @@ export default function AkademikTestPage() {
       <div className="mt-2 space-y-6">
         <div className="bg-gradient-to-r from-indigo-600 to-primary-700 rounded-xl p-6">
           <h2 className="text-xl font-bold text-white">
-            Seleksi Akademik â€” {jenjang}
+            Seleksi Akademik — {jenjang}
           </h2>
           <p className="text-indigo-100 text-sm mt-1">
             {Object.keys(answers).length}/{questions.length} soal terjawab
@@ -380,4 +380,3 @@ export default function AkademikTestPage() {
     </div>
   );
 }
-

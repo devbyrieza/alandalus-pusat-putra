@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
@@ -877,7 +877,7 @@ export default function ExaminerDashboard() {
                               grade === "A"
                                 ? "bg-green-500"
                                 : grade === "B"
-                                  ? "bg-pink-400"
+                                  ? "bg-sky-400"
                                   : "bg-secondary-400";
                             return (
                               <span
@@ -916,7 +916,7 @@ export default function ExaminerDashboard() {
                               grade === "A"
                                 ? "bg-green-500"
                                 : grade === "B"
-                                  ? "bg-pink-400"
+                                  ? "bg-sky-400"
                                   : "bg-secondary-400";
                             return (
                               <span
@@ -955,7 +955,7 @@ export default function ExaminerDashboard() {
                               grade === "A"
                                 ? "bg-green-500"
                                 : grade === "B"
-                                  ? "bg-pink-400"
+                                  ? "bg-sky-400"
                                   : "bg-secondary-400";
                             return (
                               <span
@@ -1016,7 +1016,7 @@ export default function ExaminerDashboard() {
                               grade === "A"
                                 ? "bg-green-500"
                                 : grade === "B"
-                                  ? "bg-pink-400"
+                                  ? "bg-sky-400"
                                   : "bg-secondary-400";
                             return (
                               <span
@@ -1055,7 +1055,7 @@ export default function ExaminerDashboard() {
                               grade === "A"
                                 ? "bg-green-500"
                                 : grade === "B"
-                                  ? "bg-pink-400"
+                                  ? "bg-sky-400"
                                   : "bg-secondary-400";
                             return (
                               <span

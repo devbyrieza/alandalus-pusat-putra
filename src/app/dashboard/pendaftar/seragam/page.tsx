@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import { Loader2, Shirt, Save, CheckCircle2, Ruler, Edit, Lock } from "lucide-react";
@@ -45,11 +45,28 @@ export default function SeragamPage() {
           const baju = data.ukuran_seragam_baju || "";
           const celana = data.ukuran_seragam_celana || "";
           const alma = data.ukuran_seragam_almamater || "";
-          setFormData({
+          
+          let initialForm = {
             ukuran_seragam_baju: baju,
             ukuran_seragam_celana: celana,
             ukuran_seragam_almamater: alma,
-          });
+          };
+
+          if (typeof window !== "undefined") {
+            try {
+              const saved = localStorage.getItem("alandalus_alimam_seragam_draft");
+              if (saved) {
+                const parsed = JSON.parse(saved);
+                if (parsed) {
+                  initialForm = { ...initialForm, ...parsed };
+                }
+              }
+            } catch (e) {
+              console.warn("Failed to load seragam draft:", e);
+            }
+          }
+
+          setFormData(initialForm);
           if (baju && celana && alma) {
             setIsEditing(false);
           }
@@ -61,6 +78,17 @@ export default function SeragamPage() {
       setLoading(false);
     }
   };
+
+  // Autosave changes
+  useEffect(() => {
+    if (typeof window !== "undefined" && isEditing) {
+      try {
+        localStorage.setItem("alandalus_alimam_seragam_draft", JSON.stringify(formData));
+      } catch (e) {
+        console.warn("Failed to save seragam draft:", e);
+      }
+    }
+  }, [formData, isEditing]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -84,6 +112,9 @@ export default function SeragamPage() {
       if (!res.ok) throw new Error(data.message || "Gagal menyimpan data");
 
       setMessage({ type: "success", text: "Ukuran seragam berhasil disimpan!" });
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("alandalus_alimam_seragam_draft");
+      }
       setIsEditing(false);
     } catch (error: any) {
       setMessage({ type: "error", text: error.message });

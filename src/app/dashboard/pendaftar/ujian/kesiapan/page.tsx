@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -20,7 +20,7 @@ export default function KesiapanTestPage() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       try {
-        const saved = localStorage.getItem("andalus_pusat_putra_ujian_kesiapan_draft");
+        const saved = localStorage.getItem("alandalus_alimam_ujian_kesiapan_draft");
         if (saved) {
           const parsed = JSON.parse(saved);
           if (parsed && typeof parsed === "object") {
@@ -36,7 +36,7 @@ export default function KesiapanTestPage() {
   useEffect(() => {
     if (typeof window !== "undefined" && Object.keys(answers).length > 0) {
       try {
-        localStorage.setItem("andalus_pusat_putra_ujian_kesiapan_draft", JSON.stringify(answers));
+        localStorage.setItem("alandalus_alimam_ujian_kesiapan_draft", JSON.stringify(answers));
       } catch (e) {
         console.warn("Failed to save kesiapan test draft:", e);
       }
@@ -109,7 +109,7 @@ export default function KesiapanTestPage() {
       if (!res.ok) throw new Error("Gagal mengirim");
 
       if (typeof window !== "undefined") {
-        localStorage.removeItem("andalus_pusat_putra_ujian_kesiapan_draft");
+        localStorage.removeItem("alandalus_alimam_ujian_kesiapan_draft");
       }
 
       await Swal.fire({
@@ -201,7 +201,7 @@ export default function KesiapanTestPage() {
           Seleksi Kesiapan Calon Santri/Wati
         </h1>
         <p className="text-primary-100 text-sm mt-1">
-          15 pernyataan â€¢ Skala 1-5 â€¢ Durasi 45 menit
+          15 pernyataan • Skala 1-5 • Durasi 45 menit
         </p>
       </div>
 
@@ -284,4 +284,3 @@ export default function KesiapanTestPage() {
     </div>
   );
 }
-

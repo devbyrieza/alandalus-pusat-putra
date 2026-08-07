@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import {
@@ -37,6 +37,37 @@ export default function BroadcastPage() {
   const [message, setMessage] = useState("");
   const [footer, setFooter] = useState("Panitia PPDB Al Imam");
   const [includeName, setIncludeName] = useState(true);
+
+  // Autosave broadcast draft
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem("alandalus_alimam_admin_broadcast_draft");
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed.header) setHeader(parsed.header);
+          if (parsed.message) setMessage(parsed.message);
+          if (parsed.footer) setFooter(parsed.footer);
+          if (typeof parsed.includeName === "boolean") setIncludeName(parsed.includeName);
+        }
+      } catch (e) {
+        console.warn("Failed to load broadcast draft:", e);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        localStorage.setItem(
+          "alandalus_alimam_admin_broadcast_draft",
+          JSON.stringify({ header, message, footer, includeName })
+        );
+      } catch (e) {
+        console.warn("Failed to save broadcast draft:", e);
+      }
+    }
+  }, [header, message, footer, includeName]);
 
   const [sending, setSending] = useState(false);
   const [results, setResults] = useState<any>(null);

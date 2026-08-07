@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -19,7 +19,6 @@ import {
 import { Container } from "@/components/layout/Container";
 import { countries } from "@/lib/data/countries";
 import { formatNamaLengkap } from "@/lib/validations/registration";
-import { IS_PUTRA } from "@/config/branding";
 import { motion, AnimatePresence } from "framer-motion";
 import Swal from "sweetalert2";
 
@@ -89,17 +88,9 @@ export default function DaftarPage() {
     nama_lengkap: "",
     tanggal_lahir: "",
     no_hp: "",
-    jenis_kelamin: IS_PUTRA ? "L" : "P",
+    jenis_kelamin: "",
     jenjang: jenjangFromUrl,
   });
-
-  // AUTOSAVE IMPLEMENTATION (Rule AGENTS.md)
-  useEffect(() => {
-    if (typeof window !== 'undefined' && formData) {
-      localStorage.setItem('andalus_putra_daftar_draft', JSON.stringify(formData));
-    }
-  }, [formData]);
-
 
   const [countryCode, setCountryCode] = useState("+62");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
@@ -107,7 +98,7 @@ export default function DaftarPage() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const savedData = localStorage.getItem('andalus_putra_daftar_draft');
+      const savedData = localStorage.getItem("pendaftaran_form") || sessionStorage.getItem("pendaftaran_form");
       if (savedData) {
         try {
           const parsed = JSON.parse(savedData);
@@ -128,11 +119,12 @@ export default function DaftarPage() {
     }
   }, [jenjangFromUrl]);
 
-  // Save data on change
+  // Save data on change to localStorage
   useEffect(() => {
     if (typeof window !== "undefined") {
       const timeoutId = setTimeout(() => {
-        localStorage.setItem('andalus_putra_daftar_draft', JSON.stringify(formData));
+        localStorage.setItem("pendaftaran_form", JSON.stringify(formData));
+        sessionStorage.setItem("pendaftaran_form", JSON.stringify(formData));
       }, 500);
       return () => clearTimeout(timeoutId);
     }
@@ -172,9 +164,15 @@ export default function DaftarPage() {
         }
       }
     }
-    
-
-    
+    if (!formData.jenis_kelamin) {
+      errors.jenis_kelamin = "Pilih jenis kelamin santri";
+    } else if (formData.jenis_kelamin === "P") {
+      errors.jenis_kelamin =
+        "Mohon maaf, pendaftaran Santri Putri dilakukan melalui Pesantren Ulul Albaab.";
+    } else if (formData.jenis_kelamin === "L" && formData.jenjang === "MA") {
+      errors.jenis_kelamin =
+        "Mohon maaf, pendaftaran MA Langsung Putra belum dibuka.";
+    }
 
     if (!formData.jenjang) {
       errors.jenjang = "Pilih jenjang pendidikan";
@@ -329,13 +327,14 @@ export default function DaftarPage() {
                         });
 
                         if (result.isConfirmed) {
-                          localStorage.removeItem('andalus_putra_daftar_draft');
+                          localStorage.removeItem("pendaftaran_form");
+                          sessionStorage.removeItem("pendaftaran_form");
                           setFormData({
                             nik: "",
                             nama_lengkap: "",
                             tanggal_lahir: "",
                             no_hp: "",
-                            jenis_kelamin: IS_PUTRA ? "L" : "P",
+                            jenis_kelamin: "",
                             jenjang: "",
                           });
                           setFieldErrors({});
@@ -395,8 +394,10 @@ export default function DaftarPage() {
                     const isPutra = formData.jenis_kelamin === "L";
                     const isPutri = formData.jenis_kelamin === "P";
                     // Al Imam: Hanya MTs Putra dan IL Putra yang buka. MA Putra tutup, semua Putri tutup.
-                    const isClosed = false;
-                    const closedLabel = "";
+                    const isClosed = isPutri || (option.value === "MA" && isPutra);
+                    const closedLabel = isPutri
+                      ? "Pendaftaran Putri Belum Dibuka"
+                      : "Pendaftaran Putra Belum Dibuka";
 
                     return (
                       <motion.div
@@ -568,7 +569,44 @@ export default function DaftarPage() {
                     />
                   </InputField>
 
-                  
+                  <div className="md:col-span-2">
+                    <InputField
+                      label="Jenis Kelamin"
+                      error={fieldErrors.jenis_kelamin}
+                    >
+                      <div className="flex gap-4">
+                        {[
+                          { val: "L", label: "Santri Putra" },
+                          { val: "P", label: "Santri Putri" },
+                        ].map((jk) => (
+                          <motion.label
+                            key={jk.val}
+                            whileTap={{ scale: 0.98 }}
+                            className={`flex-1 flex items-center justify-center px-4 md:px-6 py-3 md:py-4 rounded-[1.5rem] md:rounded-[2rem] border-2 cursor-pointer transition-all duration-300 text-sm md:text-base ${
+                              formData.jenis_kelamin === jk.val
+                                ? "bg-primary-700 border-primary-700 text-white font-black shadow-md"
+                                : "bg-secondary-50 border-secondary-200 text-ink-800 hover:border-primary-200 hover:bg-white font-bold"
+                            }`}
+                          >
+                            <input
+                              type="radio"
+                              name="jk"
+                              value={jk.val}
+                              checked={formData.jenis_kelamin === jk.val}
+                              onChange={() =>
+                                setFormData((p) => ({
+                                  ...p,
+                                  jenis_kelamin: jk.val as any,
+                                }))
+                              }
+                              className="hidden"
+                            />
+                            {jk.label}
+                          </motion.label>
+                        ))}
+                      </div>
+                    </InputField>
+                  </div>
                 </div>
               </motion.section>
 

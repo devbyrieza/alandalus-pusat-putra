@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import { Users, Wallet, Loader2, RefreshCw, Clock, FileCheck, CheckCircle2, ClipboardCheck, TrendingUp, ChevronRight, Activity, FileSpreadsheet, FileText, CheckSquare } from "lucide-react";

@@ -159,7 +159,7 @@ export default function BantuanBiayaPage() {
         <div>
           <h1 className="text-2xl font-black text-ink-950 flex items-center gap-3">
             <HandCoins className="w-8 h-8 text-primary-600" />
-            Bantuan Biaya — Beasiswa & Keringanan
+            Bantuan Biaya â€” Beasiswa & Keringanan
           </h1>
           <p className="text-stone-500 text-sm mt-1">
             Kelola pemberian beasiswa gratis dan keringanan potongan biaya per pendaftar
@@ -312,7 +312,7 @@ export default function BantuanBiayaPage() {
                           {item.pendaftar?.nama_lengkap ? toTitleCase(item?.pendaftar?.nama_lengkap) : "Tanpa Nama"}
                         </div>
                         <div className="text-stone-500 text-xs">
-                          {item.pendaftar?.nomor_pendaftaran} · {item.pendaftar?.jenjang}
+                          {item.pendaftar?.nomor_pendaftaran} Â· {item.pendaftar?.jenjang}
                         </div>
                       </td>
 
@@ -352,7 +352,7 @@ export default function BantuanBiayaPage() {
                             {isBeasiswa ? "GRATIS" : fmt(pUP)}
                           </span>
                         ) : (
-                          <span className="text-stone-300 text-xs">—</span>
+                          <span className="text-stone-300 text-xs">â€”</span>
                         )}
                       </td>
 
@@ -363,7 +363,7 @@ export default function BantuanBiayaPage() {
                             {isBeasiswa ? "GRATIS" : fmt(pSPP)}
                           </span>
                         ) : (
-                          <span className="text-stone-300 text-xs">—</span>
+                          <span className="text-stone-300 text-xs">â€”</span>
                         )}
                       </td>
 

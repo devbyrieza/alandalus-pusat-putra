@@ -333,7 +333,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-white font-bold text-sm">PPDB 2027-2028 Dibuka</p>
-                      <p className="text-slate-400 text-xs">Angkatan IX · Kuota Terbatas</p>
+                      <p className="text-amber-300 text-xs font-bold tracking-wide drop-shadow-sm">Angkatan IX · Kuota Terbatas</p>
                     </div>
                     <Link
                       href="/daftar"
@@ -350,7 +350,7 @@ export default function Home() {
                 <PiCertificateBold className={`w-6 h-6 ${c.text400} shrink-0`} />
                 <div>
                   <p className="text-white text-xs font-bold leading-tight">Terakreditasi Muadalah</p>
-                  <p className="text-slate-400 text-[10px]">Setara Internasional</p>
+                  <p className="text-emerald-300 text-[10px] font-bold tracking-wide">Setara Internasional</p>
                 </div>
               </div>
             </div>

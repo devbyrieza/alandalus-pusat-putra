@@ -346,11 +346,11 @@ export default function Home() {
               </div>
 
               {/* Floating top-right badge */}
-              <div className="absolute -top-4 right-0 md:-right-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3 flex items-center gap-2.5 shadow-xl">
+              <div className="absolute -top-4 right-0 md:-right-8 bg-slate-900/80 backdrop-blur-md border border-white/30 rounded-2xl p-3 flex items-center gap-2.5 shadow-xl ring-1 ring-white/10">
                 <PiCertificateBold className={`w-6 h-6 ${c.text400} shrink-0`} />
                 <div>
                   <p className="text-white text-xs font-bold leading-tight">Terakreditasi Muadalah</p>
-                  <p className="text-emerald-300 text-[10px] font-bold tracking-wide">Setara Internasional</p>
+                  <p className="text-amber-300 text-xs font-black tracking-wide drop-shadow-sm">Setara Internasional</p>
                 </div>
               </div>
             </div>

@@ -52,7 +52,7 @@ export default function Navbar() {
     { name: "Beranda PPDB", href: "/" },
     { name: "Alur PPDB", href: "/ppdb" },
     { name: "Program & Biaya", href: "/program" },
-    { name: "Galeri Kampus", href: "/galeri" },
+    { name: "Galeri Pesantren", href: "/galeri" },
     { name: "Kontak Panitia", href: "/kontak" },
   ];
 
@@ -81,7 +81,7 @@ export default function Navbar() {
               PPDB {BRANDING.schoolShortName}
             </div>
             <div className="text-[11px] font-semibold text-slate-400">
-              {BRANDING.schoolName.includes("Putri") ? "Kampus Putri" : "Kampus Putra"}
+              {BRANDING.schoolName.includes("Putri") ? "Pesantren Putri" : "Pesantren Putra"}
             </div>
           </div>
         </Link>

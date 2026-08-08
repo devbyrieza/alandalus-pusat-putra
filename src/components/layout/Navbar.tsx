@@ -80,8 +80,8 @@ export default function Navbar() {
             <div className="font-extrabold text-white text-base leading-tight tracking-tight group-hover:text-emerald-300 transition-colors">
               Al-Andalus Putra
             </div>
-            <div className="text-[11px] font-semibold text-emerald-400/90 tracking-wide">
-              PPDB Online 2026/2027
+            <div className="text-[11px] font-bold text-amber-300 tracking-wide drop-shadow-sm">
+              PPDB Online 2027-2028
             </div>
           </div>
         </Link>

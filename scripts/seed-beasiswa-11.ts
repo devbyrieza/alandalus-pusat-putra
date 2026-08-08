@@ -5,7 +5,7 @@ dotenv.config();
 
 const prisma = new PrismaClient();
 
-const TAHUN_AJARAN_ID = "33acea8f-5049-4a0a-a064-ede3db6d133f"; // 2026/2027
+const TAHUN_AJARAN_ID = "33acea8f-5049-4a0a-a064-ede3db6d133f"; // 2027-2028
 
 // 7 Beasiswa Full Uang Pangkal (Potongan Rp 7.500.000)
 const beasiswaFull = [

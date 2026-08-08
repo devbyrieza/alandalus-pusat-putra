@@ -12,7 +12,7 @@ __KEDATANGAN SANTRI BARU DAN KEGIATAN WELCOME DAY__
 Alhamdulillah\. Shalawat dan salam semoga senantiasa tercurahkan kepada Nabi Muhammad ´À║, keluarga, sahabat, serta ora
 ng\-orang yang berpegang teguh dengan persaksiannya\.
 
-Sehubungan dengan akan dimulainya kegiatan pembelajaran dan pembinaan santri tahun ajaran 2026/2027, maka kami mengunda
+Sehubungan dengan akan dimulainya kegiatan pembelajaran dan pembinaan santri tahun ajaran 2027-2028, maka kami mengunda
 ng sekaligus memberitahukan kepada seluruh calon santri baru Pesantren Al Imam Al Islami beserta orang tu
 a/wali untuk menghadiri kegiatan __Welcome Day__ yang insya Allah akan dilaksanakan pada:
 

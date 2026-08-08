@@ -10,7 +10,7 @@ const dummyData: PendaftarPdfData = {
   tanggal_lahir: "01 Januari 2010",
   alamat: "",
   no_hp: "081234567890",
-  tahun_ajaran: "2026/2027",
+  tahun_ajaran: "2027-2028",
 };
 
 async function generate() {

@@ -332,7 +332,7 @@ export default function Home() {
                       <GraduationCap className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <p className="text-white font-bold text-sm">PPDB 2026/2027 Dibuka</p>
+                      <p className="text-white font-bold text-sm">PPDB 2027-2028 Dibuka</p>
                       <p className="text-slate-400 text-xs">Angkatan IX · Kuota Terbatas</p>
                     </div>
                     <Link
@@ -588,7 +588,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="p-6 font-mono text-sm space-y-2">
-                  <p className="text-slate-600">$ cek status PPDB 2026/2027...</p>
+                  <p className="text-slate-600">$ cek status PPDB 2027-2028...</p>
                   <p>
                     <span className={c.text400}>▸</span>{" "}
                     <span className="text-white">Status Pendaftaran</span>{" "}
@@ -599,7 +599,7 @@ export default function Home() {
                   <p>
                     <span className={c.text400}>▸</span>{" "}
                     <span className="text-white">Angkatan</span>{" "}
-                    <span className="text-amber-400">IX (2026/2027)</span>
+                    <span className="text-amber-400">IX (2027-2028)</span>
                   </p>
                   <p>
                     <span className={c.text400}>▸</span>{" "}

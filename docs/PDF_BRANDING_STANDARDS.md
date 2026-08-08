@@ -15,7 +15,7 @@ Kop surat harus selalu mengikuti struktur berikut:
 ### Spesifikasi Teks Kop:
 - **Baris 1 (Subtitle)**: `Pesantren Al Imam Managed by Andalus` (Font: 8.5pt Normal)
 - **Baris 2 (Utama)**: `PANITIA PENERIMAAN SANTRI BARU` (Font: 17pt Bold)
-- **Baris 3 (TA)**: `Tahun Ajaran 2026-2027` (Font: 11pt Normal)
+- **Baris 3 (TA)**: `Tahun Ajaran 2027-2028` (Font: 11pt Normal)
 - **Baris 4 (Alamat)**: Alamat lengkap institusi (Font: 7pt Small)
 
 ## 2. Pengesahan (Stempel & Tanda Tangan)

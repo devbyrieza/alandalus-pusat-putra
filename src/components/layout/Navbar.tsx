@@ -78,10 +78,10 @@ export default function Navbar() {
           </div>
           <div>
             <div className="font-extrabold text-white text-base leading-tight tracking-tight group-hover:text-emerald-300 transition-colors">
-              PPDB {BRANDING.schoolShortName}
+              Al-Andalus Putra
             </div>
-            <div className="text-[11px] font-semibold text-slate-400">
-              {BRANDING.schoolName.includes("Putri") ? "Pesantren Putri" : "Pesantren Putra"}
+            <div className="text-[11px] font-semibold text-emerald-400/90 tracking-wide">
+              PPDB Online 2026/2027
             </div>
           </div>
         </Link>
@@ -96,7 +96,7 @@ export default function Navbar() {
                 href={link.href}
                 className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
                   isActive
-                    ? "bg-emerald-700 text-slate-950 font-bold shadow-md shadow-emerald-700/30"
+                    ? "bg-emerald-700 text-white font-bold shadow-md shadow-emerald-700/30"
                     : "text-slate-300 hover:text-white hover:bg-slate-800/80"
                 }`}
               >
@@ -125,7 +125,7 @@ export default function Navbar() {
           {session ? (
             <Link
               href="/dashboard"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-700/30 transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-sm shadow-lg shadow-emerald-700/30 transition-all"
             >
               <UserCheck className="w-4 h-4" />
               <span>Dashboard</span>
@@ -140,7 +140,7 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/daftar"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-700/30 transition-all"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-sm shadow-lg shadow-emerald-700/30 transition-all"
               >
                 <span>Daftar PPDB</span>
                 <ArrowRight className="w-4 h-4" />
@@ -196,7 +196,7 @@ export default function Navbar() {
               <Link
                 href="/daftar"
                 onClick={() => setIsMenuOpen(false)}
-                className="w-full text-center py-3 rounded-xl bg-emerald-700 text-slate-950 font-bold text-sm shadow-lg"
+                className="w-full text-center py-3 rounded-xl bg-emerald-700 text-white font-bold text-sm shadow-lg"
               >
                 Daftar PPDB Online Sekarang
               </Link>

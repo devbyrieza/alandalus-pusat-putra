@@ -169,7 +169,7 @@ export default function ProfilTab() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
         {/* Data Pribadi */}
         <div className="bg-white rounded-xl shadow-lg p-6 border-2 border-secondary-100">
           <div className="flex items-center gap-3 mb-4">

@@ -148,7 +148,7 @@ export default function TestimonialsSection() {
         }}
       />
       <div
-        className="absolute -top-48 -left-48 w-[500px] h-[500px] pointer-events-none"
+        className="absolute -top-48 -left-48 w-full max-w-[500px] h-[500px] pointer-events-none"
         style={{
           background:
             "radial-gradient(circle, rgba(253,242,242,0.6) 0%, transparent 65%)",

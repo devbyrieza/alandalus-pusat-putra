@@ -157,7 +157,7 @@ export default function POSPerizinan() {
         </button>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-8">
         {/* Kolom Scan */}
         <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
           <h2 className="text-xl font-semibold mb-4">

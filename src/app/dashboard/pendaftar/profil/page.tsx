@@ -236,7 +236,7 @@ export default function ProfilPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8">
+            <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8">
               <div>
                 <p className="text-xs text-ink-400 uppercase font-bold tracking-widest mb-1">
                   Nama Lengkap
@@ -307,7 +307,7 @@ export default function ProfilPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <p className="text-xs text-ink-400 uppercase font-bold tracking-widest mb-1">
                     Kota/Kabupaten
@@ -357,7 +357,7 @@ export default function ProfilPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <p className="text-xs text-ink-400 uppercase font-bold tracking-widest mb-1">
                   Nama Sekolah
@@ -419,7 +419,7 @@ export default function ProfilPage() {
                         onChange={(e) => setReason(e.target.value)}
                       />
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-3">
                       <button
                         onClick={() => setIsRequesting(false)}
                         className="py-3 text-sm font-bold text-ink-500 hover:bg-surface-100 rounded-xl transition-colors"

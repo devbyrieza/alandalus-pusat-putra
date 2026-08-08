@@ -254,7 +254,7 @@ export default function AkademikTestPage() {
 
         <div className="bg-white rounded-2xl shadow-sm border p-5 md:p-8">
           <div className="space-y-4 text-stone-700">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-stone-50 p-4 rounded-xl text-sm">
+            <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 bg-stone-50 p-4 rounded-xl text-sm">
               <div>
                 <span className="text-stone-500">Jenjang:</span>{" "}
                 <strong>{jenjang}</strong>

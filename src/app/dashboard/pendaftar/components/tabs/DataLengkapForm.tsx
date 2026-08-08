@@ -1209,7 +1209,7 @@ export default function DataLengkapForm({
                   </span>
                   Alamat Tempat Tinggal
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
                     <InputField
                       label="Alamat"
@@ -1221,7 +1221,7 @@ export default function DataLengkapForm({
                       required
                     />
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
                     <InputField
                       label="RT"
                       name="rt"
@@ -1266,7 +1266,7 @@ export default function DataLengkapForm({
                   </span>
                   Sekolah Asal
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
                   <InputField
                     label="Nama Sekolah Asal"
                     name="asal_sekolah"
@@ -1467,7 +1467,7 @@ export default function DataLengkapForm({
                     <h5 className="font-bold text-ink-800 mb-4 bg-surface-100 inline-block px-3 py-1 rounded-lg text-sm">
                       Alamat Ayah
                     </h5>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
                       <div className="md:col-span-2">
                         <InputField
                           label="Alamat"
@@ -1479,7 +1479,7 @@ export default function DataLengkapForm({
                           required
                         />
                       </div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
                         <InputField
                           label="RT"
                           name="rt_ayah"
@@ -1672,7 +1672,7 @@ export default function DataLengkapForm({
                     <h5 className="font-bold text-ink-800 mb-4 bg-surface-100 inline-block px-3 py-1 rounded-lg text-sm">
                       Alamat Ibu
                     </h5>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
                       <div className="md:col-span-2">
                         <InputField
                           label="Alamat"
@@ -1684,7 +1684,7 @@ export default function DataLengkapForm({
                           required
                         />
                       </div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
                         <InputField
                           label="RT"
                           name="rt_ibu"
@@ -1869,7 +1869,7 @@ export default function DataLengkapForm({
                   <h5 className="font-bold text-ink-800 mb-4 bg-surface-100 inline-block px-3 py-1 rounded-lg text-sm">
                     Alamat Wali
                   </h5>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="md:col-span-2">
                       <InputField
                         label="Alamat"
@@ -1881,7 +1881,7 @@ export default function DataLengkapForm({
                         required={isWaliRequired}
                       />
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
                       <InputField
                         label="RT"
                         name="rt_wali"

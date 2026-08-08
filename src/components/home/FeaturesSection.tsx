@@ -57,8 +57,8 @@ export default function FeaturesSection() {
   return (
     <section id="keunggulan" className="section-std relative overflow-hidden">
       {/* CiroAI-style ambient glow blobs */}
-      <div className="glow-blob glow-blob-primary w-[500px] h-[500px] -top-[15%] -right-[10%] opacity-[0.12]" aria-hidden="true" />
-      <div className="glow-blob glow-blob-secondary w-[400px] h-[400px] bottom-[5%] left-[5%] opacity-[0.10]" aria-hidden="true" />
+      <div className="glow-blob glow-blob-primary w-full max-w-[500px] h-[500px] -top-[15%] -right-[10%] opacity-[0.12]" aria-hidden="true" />
+      <div className="glow-blob glow-blob-secondary w-full max-w-[400px] h-[400px] bottom-[5%] left-[5%] opacity-[0.10]" aria-hidden="true" />
       <Container className="relative z-10">
         <div className="flex flex-col lg:flex-row items-start gap-16 lg:gap-24">
           {/* TEXT SIDE */}
@@ -129,11 +129,11 @@ export default function FeaturesSection() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6"
+              className="relative z-10 grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6"
             >
               <div className="space-y-4 lg:space-y-6 mt-12">
                 <div className="app-card p-6 sm:p-8 min-h-56 md:h-64 flex flex-col justify-end items-start group">
-                  <p className="text-4xl lg:text-5xl font-black text-primary-900 mb-2 tracking-tighter uppercase">
+                  <p className="text-4xl lg:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-primary-900 mb-2 tracking-tighter uppercase">
                     TA 26/27
                   </p>
                   <div className="space-y-1">

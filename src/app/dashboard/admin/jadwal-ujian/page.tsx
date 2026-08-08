@@ -389,7 +389,7 @@ export default function JadwalUjianPage() {
       </div>
 
       {/* Broadcast Info Card */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
         <div className="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-2xl p-6 text-white shadow-lg overflow-hidden relative">
           <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-xl"></div>
           <div className="relative flex items-center gap-6">
@@ -630,7 +630,7 @@ export default function JadwalUjianPage() {
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold text-ink-400 uppercase tracking-widest mb-2">
                         Mulai
@@ -667,7 +667,7 @@ export default function JadwalUjianPage() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold text-ink-400 uppercase tracking-widest mb-2">
                         Kuota

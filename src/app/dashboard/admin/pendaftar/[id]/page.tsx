@@ -2083,7 +2083,7 @@ export default function PendaftarDetailPage() {
                           )}
                         </div>
                       </div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-gold-200/50">
+                      <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-gold-200/50">
                         <div>
                           <span className="block text-[10px] text-ink-200 font-black uppercase tracking-widest leading-none mb-1">
                             Metode
@@ -2119,7 +2119,7 @@ export default function PendaftarDetailPage() {
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
               <InfoItem
                 label="Nama Lengkap"
                 value={toTitleCase(pendaftar.nama_lengkap)}
@@ -2184,7 +2184,7 @@ export default function PendaftarDetailPage() {
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="relative group">
                 {editingPhone ? (
                   <div className="flex flex-col gap-1">
@@ -2285,7 +2285,7 @@ export default function PendaftarDetailPage() {
                 </h3>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
                 <InfoItem label="Nama Sekolah" value={pendaftar.asal_sekolah} />
                 <InfoItem
                   label="Tahun Lulus"
@@ -2338,7 +2338,7 @@ export default function PendaftarDetailPage() {
                       </span>
                     )}
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6">
+                  <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6">
                     <InfoItem
                       label="Nama Lengkap"
                       value={toTitleCase(pendaftar.orang_tua.nama_ayah)}
@@ -2404,7 +2404,7 @@ export default function PendaftarDetailPage() {
                       </span>
                     )}
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6">
+                  <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6">
                     <InfoItem
                       label="Nama Lengkap"
                       value={toTitleCase(pendaftar.orang_tua.nama_ibu)}
@@ -2465,7 +2465,7 @@ export default function PendaftarDetailPage() {
                   Data Kesehatan & Catatan
                 </h3>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
                 <InfoItem
                   label="Golongan Darah"
                   value={pendaftar.golongan_darah}
@@ -2679,7 +2679,7 @@ export default function PendaftarDetailPage() {
             {/* Modal Body / Form */}
             <form onSubmit={handleSaveEdit} className="flex-1 overflow-y-auto p-5 md:p-8 space-y-6">
               {editTab === "santri" && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-1">
                     <label className="text-xs font-black uppercase text-stone-600">Nama Lengkap Santri</label>
                     <input
@@ -2813,7 +2813,7 @@ export default function PendaftarDetailPage() {
 
               {editTab === "alamat" && (
                 <div className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="space-y-1">
                       <label className="text-xs font-black uppercase text-stone-600">No. HP Santri</label>
                       <input
@@ -2945,7 +2945,7 @@ export default function PendaftarDetailPage() {
               {editTab === "sekolah" && (
                 <div className="space-y-8">
                   {/* General School Section */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="space-y-1">
                       <label className="text-xs font-black uppercase text-stone-600">Nama Asal Sekolah</label>
                       <input
@@ -3003,7 +3003,7 @@ export default function PendaftarDetailPage() {
                       <h3 className="text-lg font-black text-stone-900">Informasi Khusus Siswa Pindahan</h3>
                     </div>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
                       <div className="space-y-1">
                         <label className="text-xs font-black uppercase text-stone-600">Tipe Pendaftaran</label>
                         <select
@@ -3078,7 +3078,7 @@ export default function PendaftarDetailPage() {
               )}
 
               {editTab === "ayah" && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-1">
                     <label className="text-xs font-black uppercase text-stone-600">Nama Ayah Kandung</label>
                     <input
@@ -3205,7 +3205,7 @@ export default function PendaftarDetailPage() {
               )}
 
               {editTab === "ibu" && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-1">
                     <label className="text-xs font-black uppercase text-stone-600">Nama Ibu Kandung</label>
                     <input
@@ -3332,7 +3332,7 @@ export default function PendaftarDetailPage() {
               )}
 
               {editTab === "wali" && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-1">
                     <label className="text-xs font-black uppercase text-stone-600">Hubungan Wali</label>
                     <input
@@ -3803,7 +3803,7 @@ export default function PendaftarDetailPage() {
 
               {wdFormData.statusKehadiran === "HADIR" && (
                 <>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="text-xs font-black uppercase tracking-wider text-ink-300 mb-2 block">
                         Total Rombongan
@@ -3831,7 +3831,7 @@ export default function PendaftarDetailPage() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="text-xs font-black uppercase tracking-wider text-ink-300 mb-2 block">
                         Jumlah Mobil

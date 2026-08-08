@@ -263,7 +263,7 @@ export default function UserManagementPage() {
               <span className="bg-white/10 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border border-white/10">
                 Control Console
               </span>
-              <h1 className="text-3xl md:text-5xl font-black font-display tracking-tight mt-2 italic shadow-sm text-white">
+              <h1 className="text-3xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black font-display tracking-tight mt-2 italic shadow-sm text-white">
                 Admin Management
               </h1>
             </div>
@@ -431,7 +431,7 @@ export default function UserManagementPage() {
               </button>
             </div>
             <form onSubmit={handleSubmit} className="p-6 md:p-12 space-y-8 overflow-y-auto custom-scrollbar overscroll-contain">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8">
                 <div className="col-span-1 md:col-span-2">
                   <label className="block text-[10px] font-black uppercase text-stone-500 mb-3 tracking-widest">
                     Nama Lengkap Personal

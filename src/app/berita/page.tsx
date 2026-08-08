@@ -22,7 +22,7 @@ export default function BeritaPage() {
       <main className="flex-1 pt-32 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Berita & Kegiatan</h1>
+            <h1 className="text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-6 tracking-tight">Berita & Kegiatan</h1>
             <p className="text-lg text-slate-600 leading-relaxed">
               Pusat informasi, kegiatan, dan dokumentasi visual keseharian santri {BRANDING.schoolName}.
             </p>

@@ -52,7 +52,7 @@ const StatWidget = ({ label, value, icon: Icon, color, trend, breakdown, highlig
           }`}>{label}</p>
           <div className="flex items-baseline justify-between gap-2 flex-wrap">
             <div className="flex items-baseline gap-2">
-              <h3 className={`text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter ${
+              <h3 className={`text-3xl sm:text-4xl lg:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter ${
                 highlighted ? "text-white" : "text-primary-900"
               }`}>{value}</h3>
               <span className={`text-xs font-bold ${
@@ -122,7 +122,7 @@ const StatWidget = ({ label, value, icon: Icon, color, trend, breakdown, highlig
         )}
 
         {breakdown && (
-          <div className={`grid grid-cols-2 gap-4 pt-6 border-t ${
+          <div className={`grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t ${
             highlighted ? "border-white/10" : "border-secondary-200"
           }`}>
             <div className="space-y-4">
@@ -403,22 +403,22 @@ export default function AdminDashboardPage() {
               <Activity className="w-4 h-4 text-secondary-300" />
               <span className="text-white">Status Operasional: Aktif</span>
             </div>
-            <h2 className="text-3xl sm:text-2xl md:text-4xl lg:text-6xl font-black mb-4 sm:mb-6 tracking-tighter leading-tight text-white drop-shadow-sm">
+            <h2 className="text-3xl sm:text-2xl md:text-4xl lg:text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 tracking-tighter leading-tight text-white drop-shadow-sm">
               Pantau <span className="text-secondary-300">Pendaftaran</span>
             </h2>
             <div className="flex items-center gap-8 sm:gap-12 mt-8 lg:mt-12">
               <div>
-                <span className="text-3xl sm:text-3xl md:text-5xl font-black text-white drop-shadow-md">{stats.total_pendaftar}</span>
+                <span className="text-3xl sm:text-3xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white drop-shadow-md">{stats.total_pendaftar}</span>
                 <p className="text-[10px] sm:text-[11px] font-black text-primary-200/70 uppercase tracking-widest mt-2">Pendaftar</p>
               </div>
               <div className="w-px h-12 sm:h-16 bg-white/20" />
               <div>
-                <span className="text-3xl sm:text-3xl md:text-5xl font-black text-secondary-300 drop-shadow-md">{stats.sudah_bayar}</span>
+                <span className="text-3xl sm:text-3xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-secondary-300 drop-shadow-md">{stats.sudah_bayar}</span>
                 <p className="text-[10px] sm:text-[11px] font-black text-primary-200/70 uppercase tracking-widest mt-2">Bayar Pendaftaran</p>
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 w-full lg:w-auto">
+          <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full lg:w-auto">
              <div className="bg-white/10 backdrop-blur-xl p-4 sm:p-6 lg:p-5 md:p-8 rounded-[1.5rem] sm:rounded-[2rem] border border-white/20 shadow-xl flex flex-col items-center group hover:bg-white/15 transition-all">
                 <p className="text-[9px] sm:text-[10px] font-black text-white/80 uppercase tracking-widest mb-2 sm:mb-4 text-center group-hover:text-white transition-colors">Diterima</p>
                 <p className="text-2xl sm:text-2xl md:text-4xl font-black text-emerald-300 drop-shadow-md">{stats.diterima}</p>
@@ -462,7 +462,7 @@ export default function AdminDashboardPage() {
 
       {/* SUMMARY INSIGHTS - Terbuka untuk semua Admin */}
       {(isAdminSuper || isAdminBerkas || isAdminKeuangan) && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
         <div className="bg-linear-to-br from-primary-800 to-primary-950 rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[2.5rem] p-5 sm:p-5 md:p-8 lg:p-6 md:p-10 text-white relative overflow-hidden group shadow-[0_16px_40px_-12px_rgba(159,18,57,0.4)] border border-white/5">
           <div className="absolute top-0 right-0 p-5 md:p-8 opacity-5 group-hover:rotate-12 transition-transform duration-700">
             <TrendingUp className="w-48 h-48" />
@@ -472,7 +472,7 @@ export default function AdminDashboardPage() {
               <div className="w-2 h-8 bg-secondary-400 rounded-full" />
               Statistik Pendaftaran
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
               <div className="space-y-6 sm:space-y-8">
                 <div>
                   <p className="text-[10px] font-black text-primary-200/60 uppercase tracking-widest mb-2">Total Lunas</p>

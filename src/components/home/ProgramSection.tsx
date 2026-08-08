@@ -146,8 +146,8 @@ export default function ProgramSection() {
         aria-hidden
         className="pointer-events-none absolute inset-0 overflow-hidden"
       >
-        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-secondary-100/70 blur-[100px]" />
-        <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] rounded-full bg-primary-50/40 blur-[80px]" />
+        <div className="absolute -top-40 -right-40 w-full max-w-[500px] h-[500px] rounded-full bg-secondary-100/70 blur-[100px]" />
+        <div className="absolute -bottom-32 -left-32 w-full max-w-[400px] h-[400px] rounded-full bg-primary-50/40 blur-[80px]" />
       </div>
 
       <Container className="relative z-10">
@@ -187,7 +187,7 @@ export default function ProgramSection() {
         </div>
 
         <motion.div
-          className="grid md:grid-cols-2 gap-5 lg:gap-8 max-w-5xl mx-auto"
+          className="grid md:grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-8 max-w-5xl mx-auto"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}

@@ -802,7 +802,7 @@ export default function PembayaranPendaftaranTab({
 
       {/* Header Banner */}
       <div className="relative overflow-hidden rounded-[2rem] bg-linear-to-br from-primary-700 to-primary-900 border border-primary-600 p-5 md:p-8 md:p-10 text-white shadow-lg app-card">
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-secondary-50/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-full max-w-[400px] h-[400px] bg-secondary-50/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="flex items-start gap-5">
             <div className="w-16 h-16 rounded-[1.5rem] bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-sm shrink-0">
@@ -974,7 +974,7 @@ export default function PembayaranPendaftaranTab({
               </div>
 
               {/* PAYMENT CARDS GRID */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-6">
                 {/* CARD 1: MIDTRANS (DEV) */}
                 <div className="relative group bg-white rounded-[2.5rem] p-5 md:p-8 border border-ink-100 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 overflow-hidden opacity-80 hover:opacity-100 grayscale-[0.5] hover:grayscale-0">
                   {/* Background Decor */}
@@ -1124,7 +1124,7 @@ export default function PembayaranPendaftaranTab({
                       </p>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch">
+                    <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-6 items-stretch">
                       {/* LEFT COLUMN: BANK INFO */}
                       <div className="bg-gradient-to-br from-secondary-50 to-white border border-secondary-100 rounded-[2.5rem] p-5 md:p-8 shadow-sm relative overflow-hidden flex flex-col justify-between">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-secondary-100/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
@@ -1143,7 +1143,7 @@ export default function PembayaranPendaftaranTab({
 
                           <div className="mb-8">
                             <div className="flex flex-wrap items-center gap-4 mb-2">
-                              <h4 className="font-black text-3xl sm:text-2xl md:text-4xl md:text-5xl text-ink-900 tracking-tight break-all">
+                              <h4 className="font-black text-3xl sm:text-2xl md:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-ink-900 tracking-tight break-all">
                                 {BANK_INFO.nomor_rekening}
                               </h4>
                               <CopyButton

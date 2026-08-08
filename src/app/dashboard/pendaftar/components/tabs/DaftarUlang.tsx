@@ -236,7 +236,7 @@ export default function DaftarUlangTab() {
         <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">
           Pilih Jenis Pembayaran Daftar Ulang
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-3">
           {/* Tab: Uang Pangkal */}
           <button
             type="button"
@@ -428,7 +428,7 @@ export default function DaftarUlangTab() {
       )}
 
       {/* Info Tagihan & Rekening */}
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-1 sm:grid-cols-2 gap-6">
         <div className="bg-white p-6 rounded-xl border border-primary-100 shadow-sm space-y-4">
           <div>
             <h3 className="text-sm font-black text-primary-900 uppercase tracking-wider mb-2">
@@ -463,7 +463,7 @@ export default function DaftarUlangTab() {
             </h3>
 
             {/* Opsi Metode Pembayaran */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4 bg-white p-1 rounded-xl shadow-sm border border-primary-100">
+            <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-2 mb-4 bg-white p-1 rounded-xl shadow-sm border border-primary-100">
               <button
                 onClick={() => setPaymentMethod("transfer")}
                 className={`py-2 px-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 ${
@@ -548,7 +548,7 @@ export default function DaftarUlangTab() {
             <span className="text-xs text-primary-600 block mb-2 leading-tight">
               Butuh bantuan, keringanan, atau konfirmasi biaya?
             </span>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2">
+            <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
               <a
                 href="https://wa.me/6281220636945?text=Assalamualaikum%20Admin%20Finance%2C%20saya%20wali%20dari%20calon%20santri%20ingin%20berkonsultasi%2Fmengajukan%20keringanan%20terkait%20biaya%20Daftar%20Ulang."
                 target="_blank"
@@ -670,7 +670,7 @@ export default function DaftarUlangTab() {
                 <label className="block text-sm font-bold text-slate-700 mb-3">
                   Metode Pelunasan Uang Pangkal
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-3">
                   <button
                     type="button"
                     onClick={() =>

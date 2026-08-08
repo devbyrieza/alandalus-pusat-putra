@@ -755,7 +755,7 @@ export default function KelengkapanBerkasTab() {
       )}
       {/* Header Banner */}
       <div className="relative overflow-hidden rounded-[2rem] bg-linear-to-br from-primary-700 to-primary-900 border border-primary-600 p-5 md:p-8 md:p-10 text-white shadow-lg app-card">
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gold-50/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-full max-w-[400px] h-[400px] bg-gold-50/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="relative z-10 flex items-start md:items-center gap-6">
           <div className="w-16 h-16 rounded-[1.5rem] bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-sm shrink-0">
             <ClipboardList className="w-8 h-8 text-gold-100" />
@@ -976,7 +976,7 @@ export default function KelengkapanBerkasTab() {
                     </h3>
                   </div>
                   <div className="p-6 space-y-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-2 gap-12">
+                    <div className="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-12">
                       {/* Ayah */}
                       <div className="space-y-4">
                         <div className="flex items-center justify-between border-b border-ink-50 pb-2">
@@ -990,7 +990,7 @@ export default function KelengkapanBerkasTab() {
                               "Masih Hidup"}
                           </span>
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4">
                           <SummaryItem
                             label="Nama Lengkap"
                             value={
@@ -1063,7 +1063,7 @@ export default function KelengkapanBerkasTab() {
                               "Masih Hidup"}
                           </span>
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4">
                           <SummaryItem
                             label="Nama Lengkap"
                             value={

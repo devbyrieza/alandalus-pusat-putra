@@ -108,7 +108,7 @@ export default function DashboardPendaftarPage() {
 function HeroBanner({ nama, nomorPendaftaran, lastUpdate }: any) {
   return (
     <div className="relative overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3.5rem] bg-linear-to-br from-primary-700 to-primary-900 text-white p-6 sm:p-5 md:p-8 md:p-16 shadow-2xl border border-primary-600/50">
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary-400/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute top-0 right-0 w-full max-w-[600px] h-[600px] bg-secondary-400/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2" />
       <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 lg:gap-10">
         <div className="flex-1 space-y-4 sm:space-y-6">
           <div className="flex flex-wrap items-center gap-3">
@@ -125,7 +125,7 @@ function HeroBanner({ nama, nomorPendaftaran, lastUpdate }: any) {
               })}
             </span>
           </div>
-          <h1 className="text-3xl sm:text-3xl md:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] font-display tracking-tight text-white italic">
+          <h1 className="text-3xl sm:text-3xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl md:text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-6xl lg:text-7xl font-black leading-[1.1] font-display tracking-tight text-white italic">
             Selamat Datang, <br />
             <span className="text-secondary-400 not-italic uppercase drop-shadow-lg">
               {nama}!

@@ -451,7 +451,7 @@ export default function WelcomeDayPage() {
                   <span className="w-5 h-5 rounded-full bg-ink-100 text-ink-600 flex items-center justify-center text-[10px]">1</span>
                   Apakah Anda akan hadir pada Welcome Day? *
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4">
                   <button
                     type="button"
                     onClick={() => setFormData({ ...formData, statusKehadiran: "HADIR" })}
@@ -569,7 +569,7 @@ export default function WelcomeDayPage() {
                       <span className="w-5 h-5 rounded-full bg-ink-100 text-ink-600 flex items-center justify-center text-[10px]">4</span>
                       Informasi Kendaraan (Manajemen Parkir) *
                     </label>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Mobil */}
                       <div className="bg-white border-2 border-ink-200 rounded-2xl p-5 relative flex items-center justify-between shadow-sm hover:border-primary-300 transition-colors">
                         <div>
@@ -694,7 +694,7 @@ export default function WelcomeDayPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-3">
               <div className="p-4 bg-ink-50 rounded-2xl border border-ink-100">
                 <p className="text-[10px] uppercase tracking-widest font-black text-ink-400 mb-2">Status Kehadiran</p>
                 <div className={`flex items-center gap-2 ${formData.statusKehadiran === "HADIR" ? "text-green-700" : "text-red-700"}`}>
@@ -783,7 +783,7 @@ export default function WelcomeDayPage() {
           <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0" />
           Ketentuan Penting Tata Cara & Alur
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-3">
           <div className="bg-white rounded-xl p-4 border border-amber-100 flex gap-3">
             <div className="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0">
               <Shirt className="w-5 h-5 text-amber-700" />
@@ -950,7 +950,7 @@ export default function WelcomeDayPage() {
           </div>
         </div>
         <div className="p-5">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-3">
             {BERKAS_PERSYARATAN.map((item, idx) => (
               <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-ink-50 border border-ink-100">
                 <div className="w-5 h-5 rounded flex-shrink-0 mt-0.5 flex items-center justify-center text-primary-600">
@@ -978,7 +978,7 @@ export default function WelcomeDayPage() {
           </div>
         </div>
         <div className="p-5">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-3">
             {BERKAS_PERSYARATAN.map((item, idx) => (
               <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-ink-50 border border-ink-100">
                 <div className="w-5 h-5 rounded flex-shrink-0 mt-0.5 flex items-center justify-center text-primary-600">
@@ -1030,7 +1030,7 @@ export default function WelcomeDayPage() {
               </button>
               {openKategori === idx && (
                 <div className="px-6 pb-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-2">
                     {kategori.items.map((item, i) => (
                       <div key={i} className="bg-ink-50 rounded-xl p-3 border border-ink-100">
                         <div className="flex justify-between items-start gap-2 flex-wrap">
@@ -1062,7 +1062,7 @@ export default function WelcomeDayPage() {
             </button>
             {openKategori === 99 && (
               <div className="px-6 pb-5 pt-2 bg-red-50/50">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-2">
                   {BARANG_DILARANG.map((item, i) => (
                     <div key={i} className="flex items-start gap-2 bg-white rounded-xl p-3 border border-red-100">
                       <X className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
@@ -1121,7 +1121,7 @@ export default function WelcomeDayPage() {
           <Phone className="w-4 h-4" />
           Ada Pertanyaan? Hubungi Panitia
         </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-3">
           <a
             href="https://wa.me/6281251971250"
             target="_blank"

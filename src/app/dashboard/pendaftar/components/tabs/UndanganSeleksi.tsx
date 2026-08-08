@@ -346,7 +346,7 @@ export default function UndanganSeleksiTab() {
         </div>
 
         {/* Next Steps Cards */}
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Card Pengumuman */}
           <Link
             href="/dashboard/pendaftar/pengumuman"

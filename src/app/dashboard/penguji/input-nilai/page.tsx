@@ -741,7 +741,7 @@ function InputNilaiContent() {
             })()}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 bg-white p-5 sm:p-6 rounded-2xl border border-teal-100/50">
+          <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 bg-white p-5 sm:p-6 rounded-2xl border border-teal-100/50">
             {isSaved ? (
               <>
                 <div>
@@ -856,7 +856,7 @@ function InputNilaiContent() {
             })()}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 bg-white p-5 sm:p-6 rounded-2xl border border-sky-100/50">
+          <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 bg-white p-5 sm:p-6 rounded-2xl border border-sky-100/50">
             {isSaved ? (
               <>
                 <div>
@@ -944,7 +944,7 @@ function InputNilaiContent() {
                     </div>
                   )}
                   <div className={isInputtedByAdmin ? "opacity-60 pointer-events-none grayscale" : ""}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 text-sm">
+            <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 text-sm">
               <div>
                 <label className="block text-[10px] sm:text-xs font-black text-ink-700 uppercase tracking-widest mb-2 sm:mb-3">Nilai Tajwid (1-100) *</label>
                 <input type="number" min="1" max="100" value={quranForm.tajwid || ""} onChange={(e) => setQuranForm({ ...quranForm, tajwid: e.target.value })} className="w-full px-4 sm:px-5 py-3.5 sm:py-4 bg-white border-2 border-emerald-100 rounded-xl sm:rounded-2xl focus:border-emerald-500 outline-none font-black text-emerald-950 transition-all placeholder:text-ink-400" placeholder="0-100" />
@@ -1105,7 +1105,7 @@ function InputNilaiContent() {
             ))}
 
             <div className="space-y-5 sm:space-y-6 pt-2">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                 <div className="space-y-3 sm:space-y-4">
                   <label className="block text-[10px] sm:text-xs font-black text-ink-800 uppercase tracking-widest mb-2 sm:mb-3">Rekomendasi Hasil</label>
                   <div className="grid grid-cols-1 gap-2 sm:gap-3">
@@ -1232,7 +1232,7 @@ function InputNilaiContent() {
                   )}
                   <div className={isInputtedByAdmin ? "opacity-60 pointer-events-none grayscale" : ""}>
             {/* Dasar Informasi */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-secondary-100 shadow-xs">
+            <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-secondary-100 shadow-xs">
               <div>
                 <label className="block text-[10px] sm:text-xs font-black text-ink-800 uppercase tracking-widest mb-2 sm:mb-3">Nama Audiens/Orangtua *</label>
                 <input type="text" value={cawalsanForm.nama_orangtua || ""} onChange={(e) => setOrangTuaForm({ ...cawalsanForm, nama_orangtua: e.target.value })} className="w-full px-4 sm:px-5 py-3.5 sm:py-4 bg-ink-50/30 border-2 border-ink-100 rounded-xl sm:rounded-2xl focus:border-secondary-500 outline-none font-black text-primary-950 transition-all placeholder:text-ink-400" placeholder="Nama orangtua/wali" />
@@ -1247,7 +1247,7 @@ function InputNilaiContent() {
             <div className="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-secondary-100 shadow-xs space-y-5 sm:space-y-6">
               <div>
                 <label className="block text-[10px] sm:text-xs font-black text-ink-800 uppercase tracking-widest mb-3 sm:mb-4">Kategori Calon Santri *</label>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                   {KATEGORI_OPTIONS.map((opt) => (
                     <label key={opt} className={`flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-xl cursor-pointer border-2 transition-all text-xs sm:text-sm font-black ${cawalsanForm.kategori === opt ? "border-secondary-400 bg-secondary-50 text-primary-950 shadow-sm" : "border-ink-50 hover:border-secondary-200 bg-ink-50/30 text-ink-700"}`}>
                       <input type="radio" name={`kategori-${p.id}`} value={opt} checked={cawalsanForm.kategori === opt} onChange={() => setOrangTuaForm({ ...cawalsanForm, kategori: opt })} className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 accent-secondary-500" />

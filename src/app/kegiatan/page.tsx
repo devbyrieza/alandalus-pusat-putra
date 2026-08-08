@@ -118,7 +118,7 @@ const FeatureCard = ({
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${index % 2 === 1 ? "lg:grid-flow-dense" : ""}`}
+    className={`grid lg:grid-cols-1 sm:grid-cols-2 gap-12 lg:gap-20 items-center ${index % 2 === 1 ? "lg:grid-flow-dense" : ""}`}
   >
     {/* Image Side */}
     <div className={`relative ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
@@ -153,7 +153,7 @@ const FeatureCard = ({
         <item.icon className="w-8 h-8 text-white" />
       </div>
 
-      <h3 className="text-3xl md:text-4xl lg:text-3xl md:text-5xl font-display font-black text-ink-950 mb-4 md:mb-6 leading-tight">
+      <h3 className="text-3xl md:text-4xl lg:text-3xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-black text-ink-950 mb-4 md:mb-6 leading-tight">
         {item.title}
       </h3>
 
@@ -657,7 +657,7 @@ export default function KegiatanPage() {
     <main className="bg-white min-h-screen">
       {/* 1. Hero Section */}
       <section className="relative py-24 md:py-32 overflow-hidden bg-white">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-full max-w-[600px] h-[600px] bg-gold-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] pointer-events-none" />
 
         <Container className="relative z-10 text-center">
@@ -708,13 +708,13 @@ export default function KegiatanPage() {
             viewport={{ once: true }}
             className="bg-white p-5 md:p-8 md:p-12 lg:p-20 rounded-[3rem] md:rounded-[4rem] shadow-premium-xl border border-surface-100 flex flex-col gap-12 items-center overflow-hidden relative text-center"
           >
-            <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-gold-50/50 rounded-full blur-[100px] translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-full max-w-[500px] md:h-[500px] bg-gold-50/50 rounded-full blur-[100px] translate-x-1/3 -translate-y-1/3 pointer-events-none" />
 
             <div className="relative z-10 max-w-4xl mx-auto">
               <span className="text-gold-600 font-extrabold tracking-widest uppercase text-xs mb-4 md:mb-6 block">
                 Output Santri
               </span>
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-black text-ink-950 mb-6 md:mb-8 leading-tight">
+              <h2 className="text-3xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-display font-black text-ink-950 mb-6 md:mb-8 leading-tight">
                 Hasil Nyata <br />
                 <span className="text-primary-600">Pendidikan Kita</span>
               </h2>
@@ -726,7 +726,7 @@ export default function KegiatanPage() {
 
             </div>
 
-            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full">
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 w-full">
               {[
                 {
                   text: "Bahasa Arab sebagai Bahasa Pengantar",
@@ -767,7 +767,7 @@ export default function KegiatanPage() {
       <section className="py-24 md:py-32">
         <Container>
           <div className="text-center max-w-3xl mx-auto mb-24">
-            <motion.h2 className="text-3xl md:text-6xl font-display font-black text-ink-950 mb-8">
+            <motion.h2 className="text-3xl md:text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-display font-black text-ink-950 mb-8">
               Kurikulum Unggulan
             </motion.h2>
             <p className="text-xl text-ink-600 font-medium leading-relaxed">
@@ -788,7 +788,7 @@ export default function KegiatanPage() {
       <section className="py-24 md:py-32 bg-surface-50/50">
         <Container>
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-3xl md:text-5xl font-display font-black text-ink-950 mb-8">
+            <h2 className="text-3xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-black text-ink-950 mb-8">
               Produktivitas 24 Jam
             </h2>
             <p className="text-xl text-ink-600 font-medium leading-relaxed">
@@ -797,7 +797,7 @@ export default function KegiatanPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
+          <div className="grid md:grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-10">
             {jadwalHarian.map((schedule, idx) => (
               <ScheduleCard key={idx} schedule={schedule} index={idx} />
             ))}
@@ -809,7 +809,7 @@ export default function KegiatanPage() {
       <section className="py-24 md:py-32">
         <Container>
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-3xl md:text-5xl font-display font-black text-ink-950 mb-6">
+            <h2 className="text-3xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-black text-ink-950 mb-6">
               Kegiatan Penunjang
             </h2>
             <p className="text-xl text-ink-600 font-medium leading-relaxed">
@@ -834,7 +834,7 @@ export default function KegiatanPage() {
       <section className="py-24 md:py-32 bg-surface-50">
         <Container>
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-3xl md:text-5xl font-display font-black text-ink-950 mb-6">
+            <h2 className="text-3xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-black text-ink-950 mb-6">
               Minat & Bakat
             </h2>
             <p className="text-xl text-ink-600 font-medium leading-relaxed">
@@ -865,7 +865,7 @@ export default function KegiatanPage() {
             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />
 
             <div className="relative z-10">
-              <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-3xl md:text-5xl xl:text-6xl font-display font-black mb-4 sm:mb-6 md:mb-8 text-white leading-tight">
+              <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-3xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-display font-black mb-4 sm:mb-6 md:mb-8 text-white leading-tight">
                 Mulai Perjalanan <br />{" "}
                 <span className="text-gold-400">Terbaik</span> Mereka
               </h2>

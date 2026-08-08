@@ -108,7 +108,7 @@ function StatCard({
       <div className={`w-14 h-14 rounded-2xl ${primaryBg} flex items-center justify-center mx-auto mb-4`}>
         <Icon className={`w-7 h-7 ${primaryColor}`} />
       </div>
-      <div className={`text-4xl md:text-5xl font-black ${primaryColor}`}>
+      <div className={`text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black ${primaryColor}`}>
         {count}{suffix}
       </div>
       <div className="text-slate-400 text-sm font-medium mt-1 uppercase tracking-wider">
@@ -227,11 +227,11 @@ export default function Home() {
         {/* Animated glows */}
         <div className="absolute inset-0 pointer-events-none">
           <div
-            className={`hidden md:block absolute top-0 left-1/3 w-[600px] h-[600px] rounded-full opacity-20 blur-[120px] bg-[#166534]`}
+            className={`hidden md:block absolute top-0 left-1/3 w-full max-w-[600px] h-[600px] rounded-full opacity-20 blur-[120px] bg-[#166534]`}
             style={{ transform: `translateY(${scrollY * 0.08}px)` }}
           />
           <div
-            className="hidden md:block absolute bottom-0 right-1/3 w-[400px] h-[400px] rounded-full opacity-10 blur-[100px] bg-amber-600"
+            className="hidden md:block absolute bottom-0 right-1/3 w-full max-w-[400px] h-[400px] rounded-full opacity-10 blur-[100px] bg-amber-600"
             style={{ transform: `translateY(${scrollY * -0.05}px)` }}
           />
           <div
@@ -244,7 +244,7 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 md:py-16 w-full">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-1 sm:grid-cols-2 gap-16 items-center">
 
             {/* LEFT */}
             <div className="space-y-4 sm:space-y-8">
@@ -262,7 +262,7 @@ export default function Home() {
 
               {/* Headline */}
               <div className="space-y-4">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif italic font-black text-white leading-[1.08] tracking-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-6xl xl:text-7xl font-serif italic font-black text-white leading-[1.08] tracking-tight">
                   Cetak Generasi{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706] pr-2 md:pr-4">
                     Rabbani
@@ -388,7 +388,7 @@ export default function Home() {
             <span className={`text-xs font-bold uppercase tracking-widest ${c.text600}`}>
               Sistem Pendidikan
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 mt-3 mb-4 text-balance">
+            <h2 className="text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mt-3 mb-4 text-balance">
               Kurikulum{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#059669] to-[#064e3b] pr-1">
                 TICE
@@ -488,7 +488,7 @@ export default function Home() {
 
           <div className="rounded-3xl overflow-hidden border border-slate-800">
             {/* Table header */}
-            <div className="grid grid-cols-2 bg-[#0f172a] border-b border-[#1e293b]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 bg-[#0f172a] border-b border-[#1e293b]">
               <div className="p-5 flex items-center gap-2 text-slate-500 text-sm font-bold uppercase tracking-widest border-r border-slate-800">
                 <FaTimesCircle className="w-4 h-4 text-red-500 shrink-0" />
                 Kekhawatiran Orang Tua
@@ -507,7 +507,7 @@ export default function Home() {
               { pain: "Khawatir bullying dan lingkungan teman negatif", fix: "Pembinaan karakter 24/7, guru pengasuh profesional bersertifikat" },
               { pain: "Biaya terlalu mahal dan tidak terjangkau", fix: "Program beasiswa bagi santri berprestasi atau kurang mampu" },
             ].map((row, i) => (
-              <div key={i} className="grid grid-cols-2 border-t border-slate-800 hover:bg-slate-900/60 transition-colors group">
+              <div key={i} className="grid grid-cols-1 sm:grid-cols-2 border-t border-slate-800 hover:bg-slate-900/60 transition-colors group">
                 <div className="p-5 flex items-start gap-3 text-slate-400 text-sm border-r border-slate-800">
                   <AlertTriangle className="w-4 h-4 text-red-500/70 mt-0.5 shrink-0" />
                   {row.pain}
@@ -525,7 +525,7 @@ export default function Home() {
       {/* ═══ §5 CARA DAFTAR — Step-by-Step ════════════════════════════════ */}
       <section id="cara-daftar" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <div className="grid lg:grid-cols-1 sm:grid-cols-2 gap-16 items-start">
 
             {/* Steps */}
             <div>
@@ -830,7 +830,7 @@ export default function Home() {
       {/* ═══ §10 FINAL CTA ══════════════════════════════════════════════════ */}
       <section className="py-24 bg-[#0f172a] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full opacity-20 blur-[100px] bg-[#166534]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[400px] rounded-full opacity-20 blur-[100px] bg-[#166534]" />
         </div>
         <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
           <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 mb-6`}
@@ -840,7 +840,7 @@ export default function Home() {
               Bergabunglah Bersama Kami
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
+          <h2 className="text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6">
             Siapkan Putra Anda untuk{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706]">
               Masa Depan Gemilang

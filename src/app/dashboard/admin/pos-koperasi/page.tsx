@@ -84,7 +84,7 @@ export default function POSKoperasi() {
     <div className="p-6 max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-8 text-[#550000]">POS Kasir Koperasi</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-8">
         {/* Kolom Scan */}
         <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
           <h2 className="text-xl font-semibold mb-4">Scan Kartu Santri</h2>

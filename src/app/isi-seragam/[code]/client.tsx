@@ -74,7 +74,7 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Kolom Kiri: Form Input / Summary */}
           {isEditing ? (
             <div className="bg-white p-6 rounded-3xl shadow-sm border border-ink-100">
@@ -249,7 +249,7 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
               {/* S */}
               <div className="bg-white p-4 rounded-2xl shadow-sm">
                 <h3 className="font-black text-primary-700 mb-2">Ukuran S</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div>
                     <p className="font-bold mb-1 text-ink-900 border-b pb-1">Baju</p>
                     <ul className="space-y-0.5 text-ink-600">
@@ -276,7 +276,7 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
               {/* M */}
               <div className="bg-white p-4 rounded-2xl shadow-sm">
                 <h3 className="font-black text-primary-700 mb-2">Ukuran M</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div>
                     <p className="font-bold mb-1 text-ink-900 border-b pb-1">Baju</p>
                     <ul className="space-y-0.5 text-ink-600">
@@ -303,7 +303,7 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
               {/* L */}
               <div className="bg-white p-4 rounded-2xl shadow-sm">
                 <h3 className="font-black text-primary-700 mb-2">Ukuran L</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div>
                     <p className="font-bold mb-1 text-ink-900 border-b pb-1">Baju</p>
                     <ul className="space-y-0.5 text-ink-600">
@@ -330,7 +330,7 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
               {/* XL */}
               <div className="bg-white p-4 rounded-2xl shadow-sm">
                 <h3 className="font-black text-primary-700 mb-2">Ukuran XL</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div>
                     <p className="font-bold mb-1 text-ink-900 border-b pb-1">Baju</p>
                     <ul className="space-y-0.5 text-ink-600">
@@ -357,7 +357,7 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
               {/* XXL */}
               <div className="bg-white p-4 rounded-2xl shadow-sm">
                 <h3 className="font-black text-primary-700 mb-2">Ukuran XXL</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div>
                     <p className="font-bold mb-1 text-ink-900 border-b pb-1">Baju</p>
                     <ul className="space-y-0.5 text-ink-600">
@@ -384,7 +384,7 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
               {/* 3XL */}
               <div className="bg-white p-4 rounded-2xl shadow-sm">
                 <h3 className="font-black text-primary-700 mb-2">Ukuran 3XL</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div>
                     <p className="font-bold mb-1 text-ink-900 border-b pb-1">Baju</p>
                     <ul className="space-y-0.5 text-ink-600">

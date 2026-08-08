@@ -300,7 +300,7 @@ export default function HeroSection() {
             initial="hidden"
             animate={animate}
             transition={{ delay: shouldReduceMotion ? 0 : 0.25 }}
-            className="relative w-full mt-8 lg:-mt-8 xl:-mt-12 lg:max-w-[500px] xl:max-w-[540px] lg:ml-auto"
+            className="relative w-full mt-8 lg:-mt-8 xl:-mt-12 lg:max-w-full max-w-[500px] xl:max-w-[540px] lg:ml-auto"
             style={{ overflow: "visible" }}
           >
             {/* Main Image */}

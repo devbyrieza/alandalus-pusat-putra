@@ -196,7 +196,7 @@ export default function KartuJajanPage() {
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
             <p className="text-gold-200 font-bold uppercase tracking-widest text-sm mb-2">Saldo Saat Ini</p>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-2">
+            <h2 className="text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-2">
               Rp {Number(dompet.saldo).toLocaleString("id-ID")}
             </h2>
             <div className="flex flex-wrap items-center gap-3 mt-4">
@@ -244,7 +244,7 @@ export default function KartuJajanPage() {
           </h3>
 
           <div className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-2">
               {presetAmounts.map((amount) => (
                 <button
                   key={amount}

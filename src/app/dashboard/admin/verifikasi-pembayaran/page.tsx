@@ -744,7 +744,7 @@ function VerifikasiPembayaranContent() {
                     </div>
 
                     {/* Details Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ml-16 bg-stone-50/50 p-4 rounded-xl border border-stone-100">
+                    <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4 ml-16 bg-stone-50/50 p-4 rounded-xl border border-stone-100">
                       <div>
                         <p className="text-xs font-bold text-stone-400 uppercase tracking-widest mb-1">
                           Nominal Transfer
@@ -903,7 +903,7 @@ function VerifikasiPembayaranContent() {
               </div>
 
               {activeTab === "DAFTAR_ULANG" && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-violet-50 rounded-2xl border border-violet-100">
+                <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-violet-50 rounded-2xl border border-violet-100">
                   <div>
                     <label className="block text-[10px] font-black text-violet-700 uppercase tracking-widest mb-2">
                       Tipe Pembayaran

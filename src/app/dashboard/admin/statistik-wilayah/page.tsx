@@ -103,7 +103,7 @@ export default async function StatistikWilayahPage(props: {
 
       <GlobalFilter tahunAjaranList={tahunAjaranList} jenjangList={jenjangList} />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-1 sm:grid-cols-2 gap-8">
         {/* Provinsi */}
         <div className="bg-white rounded-3xl p-6 shadow-sm border border-ink-100">
           <div className="flex items-center gap-3 mb-6">

@@ -204,7 +204,7 @@ export default function AdminUploadPaymentModal({
                 </button>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Nominal */}
                 <div className="space-y-1.5">
                   <label className="text-sm font-bold text-stone-700">Nominal Transfer (Rp) <span className="text-rose-500">*</span></label>
@@ -247,7 +247,7 @@ export default function AdminUploadPaymentModal({
 
                 {/* Cicilan untuk DAFTAR_ULANG */}
                 {(activeTab === "DAFTAR_ULANG" || activeTab === "SPP") && (
-                  <div className="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-violet-50 border border-violet-100 rounded-xl">
+                  <div className="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-violet-50 border border-violet-100 rounded-xl">
                     <div className="space-y-1.5">
                       <label className="text-xs font-black text-violet-700 uppercase tracking-widest">Tipe Pembayaran</label>
                       <select

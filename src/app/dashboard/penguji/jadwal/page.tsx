@@ -1292,7 +1292,7 @@ export default function JadwalPengujiPage() {
                       </div>
 
                       {/* Time & Location Row */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 px-4 py-4 bg-primary-50/30 rounded-2xl border border-primary-100/50">
+                      <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 mb-6 px-4 py-4 bg-primary-50/30 rounded-2xl border border-primary-100/50">
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center shadow-sm">
                             <Clock className="w-4 h-4 text-primary-600" />
@@ -1761,7 +1761,7 @@ export default function JadwalPengujiPage() {
                   </span>
                 </label>
                 {bulkEditForm.changeTime && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
+                  <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
                     <div>
                       <label className="block text-[10px] font-black text-ink-400 uppercase tracking-widest mb-1.5">
                         Mulai
@@ -1931,7 +1931,7 @@ export default function JadwalPengujiPage() {
               </div>
 
               {/* Waktu */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-black text-ink-400 uppercase tracking-widest mb-2">
                     Mulai
@@ -2157,7 +2157,7 @@ export default function JadwalPengujiPage() {
               </div>
 
               {/* Waktu */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-black text-ink-400 uppercase tracking-widest mb-2">
                     Mulai
@@ -2264,7 +2264,7 @@ export default function JadwalPengujiPage() {
                 <h4 className="text-sm font-bold text-ink-400 uppercase tracking-wider mb-3">
                   Identitas Santri
                 </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                   <div>
                     <label className="block text-secondary-500 text-xs">
                       Nama Lengkap
@@ -2348,7 +2348,7 @@ export default function JadwalPengujiPage() {
                 <h4 className="text-sm font-bold text-ink-400 uppercase tracking-wider mb-3">
                   Data Orang Tua
                 </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                   <div>
                     <label className="block text-secondary-500 text-xs">
                       Nama Ayah
@@ -2547,7 +2547,7 @@ export default function JadwalPengujiPage() {
               </div>
 
               {/* Date Range */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-stone-50 rounded-3xl border border-stone-100 shadow-inner">
+              <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6 p-6 bg-stone-50 rounded-3xl border border-stone-100 shadow-inner">
                 <div>
                   <label className="block text-xs font-black text-ink-400 uppercase tracking-widest mb-2.5">
                     Mulai Tanggal
@@ -2616,7 +2616,7 @@ export default function JadwalPengujiPage() {
                       key={index}
                       className="flex items-center gap-4 bg-white p-4 rounded-3xl border border-stone-200 shadow-sm hover:shadow-md transition-shadow group"
                     >
-                      <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="flex-1 grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
                         <CustomTimePicker value={slot.start} onChange={(val) => {
                           const newSlots = [...(bulkForm.daySlots[activeDay] || [])];
                           newSlots[index].start = val;

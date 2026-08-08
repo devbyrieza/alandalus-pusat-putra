@@ -657,7 +657,7 @@ export default function AdminBeasiswaBlock({
             Cakupan: {cakupanLabel(cakupanActive as CakupanBantuan)}
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-3">
             {(cakupanActive === "UANG_PANGKAL" || cakupanActive === "KEDUANYA") && (
               <div className="bg-white rounded-lg p-3 border border-stone-100">
                 <div className="flex items-center gap-1.5 mb-1">
@@ -745,7 +745,7 @@ export default function AdminBeasiswaBlock({
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="bg-white p-4 rounded-xl border border-stone-200 shadow-sm space-y-4">
               <div className="flex items-center gap-2 border-b border-stone-100 pb-2">
                 <Building2 className="w-4 h-4 text-primary-600" />

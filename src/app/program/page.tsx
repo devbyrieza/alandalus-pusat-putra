@@ -108,7 +108,7 @@ export default function ProgramPage() {
     <main className="bg-white min-h-screen">
       {/* 1. Hero Section - Airy & Clean */}
       <section className="relative py-24 md:py-32 overflow-hidden bg-white">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-full max-w-[600px] h-[600px] bg-secondary-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] pointer-events-none" />
 
         <Container className="relative z-10 text-center">
@@ -125,7 +125,7 @@ export default function ProgramPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl md:text-7xl lg:text-8xl font-display font-black mb-10 tracking-tight leading-[0.9] text-ink-950"
+            className="text-3xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl md:text-7xl lg:text-8xl font-display font-black mb-10 tracking-tight leading-[0.9] text-ink-950"
           >
             Program <br />
             <span className="text-gradient-primary">Terbaik Kita</span>
@@ -181,7 +181,7 @@ export default function ProgramPage() {
           >
             <Container>
               <div
-                className={`grid lg:grid-cols-2 gap-16 lg:gap-24 items-center ${idx % 2 === 1 ? "lg:grid-flow-dense" : ""}`}
+                className={`grid lg:grid-cols-1 sm:grid-cols-2 gap-16 lg:gap-24 items-center ${idx % 2 === 1 ? "lg:grid-flow-dense" : ""}`}
               >
                 {/* Image Side */}
                 <motion.div
@@ -233,7 +233,7 @@ export default function ProgramPage() {
                     viewport={{ once: true }}
                     className="text-center lg:text-left"
                   >
-                    <h2 className="text-2xl md:text-4xl md:text-5xl lg:text-6xl font-display font-black text-ink-950 leading-[0.95] mb-8">
+                    <h2 className="text-2xl md:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-display font-black text-ink-950 leading-[0.95] mb-8">
                       {program.fullName}
                     </h2>
                     <p className="text-xl text-ink-600 font-medium leading-relaxed mb-10 text-center lg:text-left">
@@ -341,7 +341,7 @@ export default function ProgramPage() {
             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />
 
             <div className="relative z-10">
-              <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-3xl md:text-5xl xl:text-6xl font-display font-black mb-4 sm:mb-6 md:mb-8 text-white leading-tight">
+              <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-3xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-display font-black mb-4 sm:mb-6 md:mb-8 text-white leading-tight">
                 Mulai Perjalanan <br />{" "}
                 <span className="text-secondary-300">Terbaik</span> Mereka
               </h2>

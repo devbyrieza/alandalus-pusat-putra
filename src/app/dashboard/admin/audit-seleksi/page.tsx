@@ -487,7 +487,7 @@ export default function AuditSeleksiPage() {
       </div>
       
       {/* Legend & Help */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+      <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
         <div className="bg-primary-950 rounded-3xl p-5 md:p-8 text-white relative overflow-hidden group shadow-xl shadow-primary-900/20">
           <div className="absolute top-0 right-0 p-5 md:p-8 opacity-10 group-hover:rotate-12 transition-transform duration-700">
             <Activity className="w-40 h-40 text-white" />

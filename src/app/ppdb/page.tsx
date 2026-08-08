@@ -210,8 +210,8 @@ function PPDBContent() {
     <main className="bg-white min-h-screen">
       {/* 1. Hero Section - Airy & Impactful */}
       <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-white">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary-50/30 rounded-full blur-[100px] -translate-x-1/2 translate-y-1/2 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-full max-w-[600px] h-[600px] bg-primary-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-full max-w-[400px] h-[400px] bg-secondary-50/30 rounded-full blur-[100px] -translate-x-1/2 translate-y-1/2 pointer-events-none" />
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] pointer-events-none" />
 
         <Container className="relative z-10">
@@ -229,7 +229,7 @@ function PPDBContent() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-2xl md:text-4xl sm:text-6xl lg:text-8xl font-display font-black mb-8 md:mb-10 tracking-tight leading-[0.9] text-ink-950"
+              className="text-2xl md:text-4xl sm:text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-6xl lg:text-8xl font-display font-black mb-8 md:mb-10 tracking-tight leading-[0.9] text-ink-950"
             >
               Siapkan Generasi <br />
               <span className="text-gradient-primary">Terbaik Kita</span>
@@ -309,7 +309,7 @@ function PPDBContent() {
                 <Clock className="w-3.5 h-3.5" />
                 <span>Tahapan Pendaftaran</span>
               </div>
-              <h2 className="text-3xl md:text-5xl font-display font-black text-ink-950 mb-8 leading-tight">
+              <h2 className="text-3xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-black text-ink-950 mb-8 leading-tight">
                 Alur Seleksi <br />{" "}
                 <span className="text-primary-600">Lengkap & Transparan</span>
               </h2>
@@ -352,7 +352,7 @@ function PPDBContent() {
       <section className="py-24 md:py-32 bg-white">
         <Container>
           <div className="text-center mb-16 md:mb-24">
-            <h2 className="text-3xl md:text-6xl font-display font-black text-ink-950 mb-6">
+            <h2 className="text-3xl md:text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-display font-black text-ink-950 mb-6">
               Informasi Investasi <br />
               <span className="text-primary-600">Pendidikan</span>
             </h2>
@@ -380,7 +380,7 @@ function PPDBContent() {
                   <h3 className="text-xl text-ink-400 font-black uppercase tracking-widest mb-3 group-hover:text-white/60 transition-colors">
                     {item.label}
                   </h3>
-                  <p className="text-2xl md:text-4xl md:text-5xl font-display font-black text-ink-950 group-hover:text-white transition-colors">
+                  <p className="text-2xl md:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-black text-ink-950 group-hover:text-white transition-colors">
                     {item.value}
                   </p>
                 </motion.div>
@@ -413,7 +413,7 @@ function PPDBContent() {
       {/* 4. Requirements & FAQ */}
       <section className="py-24 md:py-32 bg-surface-50/50">
         <Container>
-          <div className="grid lg:grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-start">
+          <div className="grid lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-12 lg:gap-24 items-start">
             {/* Requirements */}
             <div className="space-y-12">
               <h2 className="text-3xl md:text-4xl font-display font-black text-ink-950 text-center lg:text-left">
@@ -590,7 +590,7 @@ function PPDBContent() {
             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />
 
             <div className="relative z-10">
-              <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-3xl md:text-5xl xl:text-6xl font-display font-black mb-4 sm:mb-6 md:mb-8 text-white leading-tight">
+              <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-3xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-display font-black mb-4 sm:mb-6 md:mb-8 text-white leading-tight">
                 Mulai Perjalanan <br />{" "}
                 <span className="text-gold-400">Ananda Di Sini</span>
               </h2>

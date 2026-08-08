@@ -250,8 +250,8 @@ export default function DaftarPage() {
   return (
     <main className="min-h-screen bg-white py-12 md:py-24 relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gold-100/30 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-full max-w-[600px] h-[600px] bg-secondary-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full max-w-[600px] h-[600px] bg-gold-100/30 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
       <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] pointer-events-none" />
 
       <Container className="relative z-10">
@@ -268,7 +268,7 @@ export default function DaftarPage() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-2xl md:text-4xl md:text-5xl lg:text-6xl font-display font-black text-ink-950 mb-3 tracking-tight"
+            className="text-2xl md:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-display font-black text-ink-950 mb-3 tracking-tight"
           >
             Mulai Pendaftaran{" "}
             <span className="text-gradient-primary">Terpadu</span>
@@ -509,7 +509,7 @@ export default function DaftarPage() {
                   </h3>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-1 sm:grid-cols-2 gap-8">
                   <div className="md:col-span-2">
                     <InputField
                       label="Nama Lengkap"

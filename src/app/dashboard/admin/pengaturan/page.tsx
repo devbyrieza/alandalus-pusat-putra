@@ -383,7 +383,7 @@ export default function PengaturanPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-bold text-stone-700 mb-1">
                     Buka Pendaftaran

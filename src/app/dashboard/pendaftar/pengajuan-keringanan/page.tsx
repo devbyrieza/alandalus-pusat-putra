@@ -339,7 +339,7 @@ export default function PengajuanKeringananPage() {
               </span>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-1 sm:grid-cols-2 gap-6">
               {/* SKTM */}
               <div className="border border-slate-200 rounded-xl p-4 bg-slate-50">
                 <label className="block text-sm font-bold text-slate-800 mb-1">

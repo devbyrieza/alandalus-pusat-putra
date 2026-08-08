@@ -140,7 +140,7 @@ export default function AdminTambahPendaftar() {
           {/* Tipe Pendaftaran */}
           <div className="space-y-4">
             <h3 className="text-lg font-bold text-stone-900 border-b pb-2">Tipe Pendaftaran</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
               <label className={`relative flex cursor-pointer rounded-xl border-2 p-4 transition-all ${formData.tipe_pendaftaran === 'BARU' ? 'border-primary-500 bg-primary-50' : 'border-stone-200 hover:border-stone-300'}`}>
                 <input type="radio" name="tipe_pendaftaran" value="BARU" className="sr-only" checked={formData.tipe_pendaftaran === 'BARU'} onChange={handleChange} />
                 <div className="flex flex-col">
@@ -161,7 +161,7 @@ export default function AdminTambahPendaftar() {
           {/* Data Pribadi */}
           <div className="space-y-4">
             <h3 className="text-lg font-bold text-stone-900 border-b pb-2">Data Pribadi</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-sm font-bold text-stone-700">NIK (16 Digit) <span className="text-red-500">*</span></label>
                 <input required type="text" name="nik" value={formData.nik} onChange={handleChange} maxLength={16} placeholder="Contoh: 3201..." className="w-full px-4 py-2.5 rounded-xl border-2 border-stone-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-none transition-all" />
@@ -197,7 +197,7 @@ export default function AdminTambahPendaftar() {
           {/* Data Kontak */}
           <div className="space-y-4">
             <h3 className="text-lg font-bold text-stone-900 border-b pb-2">Data Kontak (Untuk Login & Notifikasi)</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-sm font-bold text-stone-700">Nomor WhatsApp <span className="text-red-500">*</span></label>
                 <input required type="tel" name="no_hp" value={formData.no_hp} onChange={handleChange} placeholder="Contoh: 081234567890" className="w-full px-4 py-2.5 rounded-xl border-2 border-stone-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-none transition-all" />
@@ -213,7 +213,7 @@ export default function AdminTambahPendaftar() {
           {formData.tipe_pendaftaran === "PINDAHAN" && (
             <div className="space-y-4 bg-purple-50 p-6 rounded-xl border border-purple-100">
               <h3 className="text-lg font-bold text-purple-900 border-b border-purple-200 pb-2">Informasi Santri Pindahan</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-purple-900">Kelas Tujuan Masuk <span className="text-red-500">*</span></label>
                   <select required name="kelas_masuk" value={formData.kelas_masuk} onChange={handleChange} className="w-full px-4 py-2.5 rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 outline-none transition-all appearance-none bg-white">

@@ -64,7 +64,7 @@ export default function TeachersSection() {
     >
       <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] pointer-events-none" />
       <div
-        className="absolute -top-32 right-0 translate-x-1/3 w-[600px] h-[600px] pointer-events-none"
+        className="absolute -top-32 right-0 translate-x-1/3 w-full max-w-[600px] h-[600px] pointer-events-none"
         style={{
           background:
             "radial-gradient(circle, rgba(254,243,199,0.3) 0%, transparent 60%)",
@@ -153,7 +153,7 @@ export default function TeachersSection() {
           </motion.div>
 
           {/* ── Grid Content ── */}
-          <div className="lg:w-[58%] grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full">
+          <div className="lg:w-[58%] grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full">
             {TEACHER_BACKGROUNDS.map((item, idx) => (
               <motion.div
                 key={idx}

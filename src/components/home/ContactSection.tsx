@@ -75,7 +75,7 @@ export default function ContactSection() {
             </div>
 
             {/* ── Cards Grid ── */}
-            <div className="lg:w-[55%] grid sm:grid-cols-2 gap-3 sm:gap-4 w-full">
+            <div className="lg:w-[55%] grid sm:grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full">
               {CONTACT_INFO.map((item, idx) => (
                 <div
                   key={idx}

@@ -919,7 +919,7 @@ export default function UploadBerkasTab() {
 
       {/* Header */}
       <div className="relative overflow-hidden rounded-[2rem] bg-linear-to-br from-primary-700 to-primary-900 border border-primary-600 p-5 md:p-8 md:p-10 text-white shadow-lg app-card">
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-secondary-50/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-full max-w-[400px] h-[400px] bg-secondary-50/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="flex items-center gap-5">
             <div className="w-16 h-16 rounded-[1.5rem] bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-sm shrink-0">
@@ -1042,7 +1042,7 @@ export default function UploadBerkasTab() {
           <h4 className="font-bold text-secondary-900 mb-2 text-lg">
             Petunjuk Upload Dokumen
           </h4>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-secondary-800 list-disc pl-4 marker:text-secondary-500">
+          <ul className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-sm text-secondary-800 list-disc pl-4 marker:text-secondary-500">
             <li>
               Pastikan dokumen hasil scan atau foto terlihat{" "}
               <strong>jelas dan terbaca</strong>
@@ -1068,7 +1068,7 @@ export default function UploadBerkasTab() {
           </span>
           Dokumen Wajib
         </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
           {dokumenList
             .filter((d) => d.required)
             .map((dokumen) => (
@@ -1097,7 +1097,7 @@ export default function UploadBerkasTab() {
           </span>
           Dokumen Opsional
         </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
           {dokumenList
             .filter((d) => !d.required)
             .map((dokumen) => (

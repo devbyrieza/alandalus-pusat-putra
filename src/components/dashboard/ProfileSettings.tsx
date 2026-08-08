@@ -169,7 +169,7 @@ export default function ProfileSettings({ user }: { user: UserSession }) {
 
         <div className="p-6 md:p-8 bg-gray-50/10">
           <form onSubmit={handleSaveProfile} className="space-y-5">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">
                   Nama Lengkap
@@ -273,7 +273,7 @@ export default function ProfileSettings({ user }: { user: UserSession }) {
           )}
 
           <form onSubmit={handleSavePassword} className="space-y-5">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">
                   Password Baru

@@ -69,7 +69,7 @@ export default function AboutSection() {
       >
         <div className="absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full bg-primary-100/30 blur-3xl" />
         <div className="absolute -bottom-24 -right-24 w-[360px] h-[360px] rounded-full bg-secondary-200/40 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-secondary-100/20 blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[300px] rounded-full bg-secondary-100/20 blur-3xl" />
       </div>
 
       <Container className="relative z-10">
@@ -190,7 +190,7 @@ export default function AboutSection() {
 
                 {/* Misi list */}
                 <motion.ul
-                  className="grid md:grid-cols-2 divide-y divide-primary-50 md:divide-y-0 md:divide-x"
+                  className="grid md:grid-cols-1 sm:grid-cols-2 divide-y divide-primary-50 md:divide-y-0 md:divide-x"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, margin: "-40px" }}

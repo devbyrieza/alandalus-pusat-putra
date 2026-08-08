@@ -109,7 +109,7 @@ export default function DownloadBerkasTab() {
     <div className="space-y-6">
       {/* Header */}
       <div className="relative overflow-hidden rounded-[2rem] bg-linear-to-br from-primary-700 to-primary-900 border border-primary-600 p-5 md:p-8 md:p-10 text-white shadow-lg app-card">
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-secondary-50/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-full max-w-[400px] h-[400px] bg-secondary-50/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="relative z-10 flex items-start md:items-center gap-6">
           <div className="w-16 h-16 rounded-[1.5rem] bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-sm shrink-0">
             <Download className="w-8 h-8 text-secondary-100" />
@@ -137,7 +137,7 @@ export default function DownloadBerkasTab() {
       </div>
 
       {/* Documents List */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4">
         {documents.map((doc, index) => (
           <div
             key={index}

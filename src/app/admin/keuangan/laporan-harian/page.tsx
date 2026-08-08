@@ -85,7 +85,7 @@ export default function LaporanHarianPage() {
         </div>
 
         {/* Ringkasan */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
           <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
             <h3 className="text-sm font-bold text-slate-500 uppercase mb-4 flex items-center gap-2">
               <TrendingUp className="w-4 h-4" /> Pemasukan Keuangan (SPP/Top-Up)
@@ -122,7 +122,7 @@ export default function LaporanHarianPage() {
         {/* Detail Penjualan */}
         <div>
           <h3 className="text-lg font-black text-slate-900 mb-4">Rincian Transaksi Terakhir</h3>
-          <table className="w-full text-left text-sm border-collapse">
+          <div className="w-full overflow-x-auto rounded-2xl border border-slate-200 shadow-sm"><table className="w-full text-left text-sm border-collapse">
             <thead>
               <tr className="bg-slate-900 text-white">
                 <th className="p-3 font-bold rounded-tl-xl">Waktu</th>
@@ -157,7 +157,7 @@ export default function LaporanHarianPage() {
                 <td className="p-4 text-right font-black text-maroon-700 text-xl">Rp {ringkasan.totalNominal.toLocaleString('id-ID')}</td>
               </tr>
             </tfoot>
-          </table>
+          </table></div>
         </div>
 
         {/* Tanda Tangan */}

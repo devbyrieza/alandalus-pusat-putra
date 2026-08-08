@@ -195,7 +195,7 @@ export default function Home() {
     gradText:   "from-secondary-400 to-secondary-600",
     text600:    IS_PUTRA ? "text-primary-600"  : "text-pink-600",
     text400:    IS_PUTRA ? "text-primary-400"  : "text-sky-400",
-    bg600:      IS_PUTRA ? "bg-primary-600"    : "bg-pink-600",
+    bg600:      IS_PUTRA ? "bg-emerald-800"    : "bg-pink-600",
     bgHover:    IS_PUTRA ? "hover:bg-primary-700" : "hover:bg-sky-700",
     shadow:     IS_PUTRA ? "shadow-primary-500/30" : "shadow-sky-500/30",
     border200:  IS_PUTRA ? "border-primary-200" : "border-pink-200",
@@ -213,8 +213,9 @@ export default function Home() {
         <Zap className="w-3.5 h-3.5 shrink-0" />
         <span className="sm:hidden">PPDB Angkatan IX — Kuota Terbatas!</span>
         <span className="hidden sm:inline">Pendaftaran Santri Baru Angkatan IX Telah Dibuka — Kuota Terbatas!</span>
-        <Link href="/daftar" className="underline underline-offset-2 flex items-center gap-0.5 whitespace-nowrap hover:opacity-80 transition-opacity">
-          Daftar <ChevronRight className="w-3 h-3" />
+        <Link href="/daftar" className="inline-flex items-center gap-1 ml-2 px-2.5 py-0.5 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 text-[11px] font-black uppercase tracking-wider shadow-sm transition-all shrink-0">
+          <span>Daftar</span>
+          <ChevronRight className="w-3 h-3 stroke-[3]" />
         </Link>
       </div>
 

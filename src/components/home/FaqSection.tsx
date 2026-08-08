@@ -15,10 +15,10 @@ const FAQS = [
   {
     question: "Apakah santri diwajibkan untuk tinggal di asrama?",
     answer:
-      "Ya, seluruh santri di Pesantren Al Imam Al Islami wajib tinggal di asrama untuk mengikuti seluruh rangkaian kegiatan tarbiyah, halaqah tahfidz, dan pembelajaran kitab turots secara maksimal.",
+      "Ya, seluruh santri di Pesantren Islam Internasional Al-Andalus Putra wajib tinggal di asrama untuk mengikuti seluruh rangkaian kegiatan tarbiyah, halaqah tahfidz, dan pembelajaran kitab turots secara maksimal.",
   },
   {
-    question: "Kurikulum apa yang diterapkan di Pesantren Al Imam Al Islami?",
+    question: "Kurikulum apa yang diterapkan di Pesantren Islam Internasional Al-Andalus Putra?",
     answer:
       "Kami menerapkan Kurikulum Terpadu yang menggabungkan kurikulum Nasional dengan kurikulum khas Andalus yang berfokus pada penguasaan Bahasa Arab, Tahfidz Al-Qur'an, dan Kitab Turots.",
   },
@@ -35,7 +35,7 @@ const FAQS = [
   {
     question: "Apakah tersedia program beasiswa?",
     answer:
-      "Ya, Al Imam Al Islami memiliki Program Beasiswa Dhuafa Berprestasi dengan kuota terbatas (10 santri). Program ini dikhususkan bagi santri dari keluarga kurang mampu yang memiliki hafalan Al-Qur'an (minimal 10 Juz) atau prestasi akademik (Ranking 3 Besar). Calon penerima akan melalui Seleksi dan survey ekonomi langsung oleh pihak Donatur. Saat ini beasiswa mencakup pembebasan Biaya Uang Pangkal.",
+      "Ya, Al-Andalus Putra memiliki Program Beasiswa Dhuafa Berprestasi dengan kuota terbatas (10 santri). Program ini dikhususkan bagi santri dari keluarga kurang mampu yang memiliki hafalan Al-Qur'an (minimal 10 Juz) atau prestasi akademik (Ranking 3 Besar). Calon penerima akan melalui Seleksi dan survey ekonomi langsung oleh pihak Donatur. Saat ini beasiswa mencakup pembebasan Biaya Uang Pangkal.",
   },
 ] as const;
 
@@ -178,7 +178,7 @@ export default function FaqSection() {
             className="section-subtitle max-w-xl mx-auto"
           >
             Temukan jawaban cepat untuk pertanyaan umum seputar pendaftaran,
-            biaya, dan sistem pendidikan di Al Imam Al Islami.
+            biaya, dan sistem pendidikan di Al-Andalus Putra.
           </motion.p>
         </div>
 

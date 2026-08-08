@@ -1,38 +1,26 @@
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-//   PPDB CONFIGURATION - EASY CUSTOMIZATION
-//   Ganti bagian ini saja untuk setiap pesantren baru!
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 export const PPDB_CONFIG = {
-  // 🏫 INFO PESANTREN (GANTI INI DULU!)
   pesantren: {
-    nama: "Pesantren Al Imam Al Islami",
-    singkatan: "Al Imam Al Islami",
-    alamat:
-      "Jl. Pelabuhan II KM 18 Kampung Pupunjul, RT./RW/RW.01, 02, Cikembar, Kec. Cikembar, Kabupaten Sukabumi, Jawa Barat 43157",
-    telepon: "+62 851-1152-4441",
-    email: "alandalusalimam@gmail.com",
-    emailPpdb: "alandalusalimam@gmail.com",
-    website: "https://www.pesantren-alimam.com",
+    nama: "Pesantren Islam Internasional Al-Andalus Putra",
+    singkatan: "Al-Andalus Putra",
+    alamat: "Jl. Raya Menteng, KM.13 RT.03/04, Dusun Cijurey, Desa Sukadamai, Kec. Sukamakmur, Kab. Bogor 16830",
+    telepon: "+62 838-1151-5951",
+    email: "info@pesantren-alandalus.com",
+    emailPpdb: "ppdb@pesantren-alandalus.com",
+    website: "https://pesantren-alandalus-putra.com",
   },
-
-  // 🎨 BRAND COLORS (GANTI SESUAI LOGO)
   colors: {
-    // Primary Colors (Maroon / Cream - Warna Khas Al Imam)
     primary: {
-      50: "#fdf6e3",
-      100: "#f9e8c8",
-      200: "#f0cc99",
-      300: "#e0a868",
-      400: "#c07840",
-      500: "#9b5e28",
-      600: "#7c3a1e", // Warna tombol & aksi utama
-      700: "#6b1c1c", // Warna teks penting
-      800: "#521414",
-      900: "#3d0d0d", // Warna teks gelap
+      50: "#ecfdf5",
+      100: "#d1fae5",
+      200: "#a7f3d0",
+      300: "#6ee7b7",
+      400: "#34d399",
+      500: "#10b981",
+      600: "#059669",
+      700: "#047857",
+      800: "#065f46",
+      900: "#064e3b",
     },
-
-    // Secondary Colors (Kuning / Amber)
     secondary: {
       50: "#fffbeb",
       100: "#fef3c7",
@@ -40,104 +28,12 @@ export const PPDB_CONFIG = {
       300: "#fcd34d",
       400: "#fbbf24",
     },
-
-    // Accent Colors (Warna Aksen)
     accent: {
-      gold: "#fbbf24", // Untuk highlight & achievement
-      teal: "#14b8a6", // Untuk success & info
-      red: "#ef4444", // Untuk error & warning
+      gold: "#fbbf24",
+      teal: "#14b8a6",
+      red: "#ef4444",
     },
   },
-
-  // 📱 PROGRAM PENDIDIKAN (SESUAIKAN!)
-  programs: [
-    {
-      id: "mts",
-      name: "MTs",
-      fullName: "Madrasah Tsanawiyah",
-      description:
-        "Program pendidikan formal setara SMP dengan kurikulum integrasi pesantren.",
-      image: "/images/mts.webp",
-      theme: "brown",
-    },
-    {
-      id: "il",
-      name: "I'dad Lughowi",
-      fullName: "Program Persiapan Bahasa Arab",
-      description:
-        "Program intensif persiapan bahasa Arab untuk jenjang lebih tinggi.",
-      image: "/images/il.webp",
-      theme: "gold",
-    },
-  ],
-
-  // 💰 BIAYA PENDAFTARAN (GANTI SESUAI)
-  pricing: [
-    {
-      label: "Uang Pendaftaran",
-      amount: "Rp 200.000",
-      note: "Tidak dapat dikembalikan",
-    },
-    {
-      label: "Uang Pangkal",
-      amount: "Rp 7.500.000",
-      note: "Pembayaran dapat dicicil",
-    },
-    {
-      label: "SPP Bulan Pertama",
-      amount: "Rp 1.000.000",
-      note: "Biaya SPP",
-    },
-    {
-      label: "Total Daftar Ulang",
-      amount: "Rp 8.500.000",
-      note: "Uang Pangkal + SPP Bulan Pertama",
-    },
-  ],
-
-  // 📋 PERSYARATAN BERKAS (SESUAIKAN!)
-  requirements: [
-    "Fotocopy Kartu Keluarga (1 lembar)",
-    "Fotocopy Akta Kelahiran (1 lembar)",
-    "Fotocopy Rapor (2 semester terakhir)",
-    "Pas Foto 3x4 (4 lembar)",
-  ],
-
-  // 🔗 KONTAK & SOSMED (GANTI SESUAI!)
-  contact: {
-    whatsapp: "+6285111524441",
-    instagram: "@alandalusalimam",
-    facebook: "Wahab Rajasam",
-    youtube: "Belum Tersedia",
-  },
-
-  // ⚙️ SETTING TEKNIS (UMUMNYA TIDAK PERLU DIUBAH)
-  technical: {
-    appName: "PPDB Al Imam Al Islami",
-    appDescription: "Sistem Penerimaan Peserta Didik Baru",
-    version: "2.0.0",
-    author: "Rieza Eka Tomara",
-  },
-};
-
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-//   HELPER FUNCTIONS (Jangan diubah)
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-export const getPesantrenInfo = () => PPDB_CONFIG.pesantren;
-export const getPrograms = () => PPDB_CONFIG.programs;
-export const getPricing = () => PPDB_CONFIG.pricing;
-export const getRequirements = () => PPDB_CONFIG.requirements;
-export const getContact = () => PPDB_CONFIG.contact;
-export const getColors = () => PPDB_CONFIG.colors;
-
-// Untuk generate CSS variables otomatis
-export const generateCSSVariables = () => {
-  const { colors } = PPDB_CONFIG;
-
-  return {
-    primary: colors.primary,
-    secondary: colors.secondary,
-    accent: colors.accent,
-  };
+  tahunAjaran: "2026/2027",
+  angkatan: "Angkatan IX",
 };

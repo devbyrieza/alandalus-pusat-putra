@@ -16,7 +16,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <Building2 className="w-6 h-6 text-gold-500" />
             Portal Staf
           </h2>
-          <p className="text-xs text-slate-400 mt-1 uppercase tracking-widest font-bold">Pesantren Al Imam Al Islami</p>
+          <p className="text-xs text-slate-400 mt-1 uppercase tracking-widest font-bold">Pesantren Islam Internasional Al-Andalus Putra</p>
         </div>
         
         <nav className="p-4 space-y-2">

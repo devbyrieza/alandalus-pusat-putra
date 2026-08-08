@@ -255,9 +255,9 @@ export async function GET(request: NextRequest) {
 <body>
   <div class="container">
     <div class="header">
-      <h1>Pesantren Al Imam Al Islami</h1>
-      <p>Jl. Pelabuhan II KM 18 Kampung Pupunjul, RT./RW/RW.01, 02, Cikembar, Kec. Cikembar, Kabupaten Sukabumi, Jawa Barat 43157</p>
-      <p>Telp: +62 851-1152-4441 | Email: alandalusalimam@gmail.com</p>
+      <h1>Pesantren Islam Internasional Al-Andalus Putra</h1>
+      <p>Jl. Raya Menteng, KM.13 RT.03/04, Dusun Cijurey, Desa Sukadamai, Kec. Sukamakmur, Kab. Bogor 16830</p>
+      <p>Telp: +62 851-1152-4441 | Email: info@pesantren-alandalus.com</p>
     </div>
 
     <div class="kwitansi-title">

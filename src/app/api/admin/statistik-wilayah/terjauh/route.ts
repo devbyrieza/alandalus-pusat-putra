@@ -6,7 +6,7 @@ import path from "path";
 import { getAdminWhereClause } from "@/lib/utils/admin";
 
 const PESANTREN_COORD = {
-  lat: -6.9749, // Koordinat aproksimasi Pesantren Al-Imam (Cikembar)
+  lat: -6.9749, // Koordinat aproksimasi Pesantren Al-Andalus Putra (Sukamakmur)
   lon: 106.7725,
 };
 

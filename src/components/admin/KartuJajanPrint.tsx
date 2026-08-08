@@ -40,8 +40,8 @@ export default function KartuJajanPrint({ santri, fotoUrl }: KartuJajanPrintProp
 
         {/* Logo & Title */}
         <div className="flex flex-col items-center mb-3 drop-shadow-md relative z-10">
-          <img src="/images/logo.png" alt="Logo Al Imam" className="w-8 h-8 rounded-full object-cover border-[1.5px] border-gold-500/80 mb-1.5" onError={(e) => e.currentTarget.style.display = 'none'} />
-          <h1 className="text-white text-[10px] font-black tracking-widest uppercase">Pesantren Al Imam Al Islami</h1>
+          <img src="/images/logo.png" alt="Logo Al-Andalus Putra" className="w-8 h-8 rounded-full object-cover border-[1.5px] border-gold-500/80 mb-1.5" onError={(e) => e.currentTarget.style.display = 'none'} />
+          <h1 className="text-white text-[10px] font-black tracking-widest uppercase">Pesantren Islam Internasional Al-Andalus Putra</h1>
         </div>
         
         {/* Foto Container dengan Auto-Crop yang Diperbaiki */}
@@ -105,7 +105,7 @@ export default function KartuJajanPrint({ santri, fotoUrl }: KartuJajanPrintProp
         {/* Isi Ketentuan */}
         <div className="px-4 py-4 text-[7px] leading-[1.6] text-left flex-1 font-semibold relative z-10" style={{ color: '#550000' }}>
           <ol className="list-decimal pl-3 space-y-2">
-             <li>Kartu ini berfungsi sebagai identitas resmi santri dan alat pembayaran elektronik (Kartu Jajan) di lingkungan Pesantren Al Imam Al Islami.</li>
+             <li>Kartu ini berfungsi sebagai identitas resmi santri dan alat pembayaran elektronik (Kartu Jajan) di lingkungan Pesantren Islam Internasional Al-Andalus Putra.</li>
              <li>Segala bentuk transaksi wajib menggunakan kartu ini. Saldo dapat diisi ulang oleh wali santri melalui Portal Resmi.</li>
              <li>Kartu bersifat pribadi dan <strong>tidak dapat dipindahtangankan</strong> kepada siapapun.</li>
              <li>Apabila kartu hilang/rusak, santri wajib melapor kepada Bagian Administrasi (penggantian kartu dikenakan biaya).</li>
@@ -115,7 +115,7 @@ export default function KartuJajanPrint({ santri, fotoUrl }: KartuJajanPrintProp
         
         {/* Footer Belakang & Alamat */}
         <div className="w-full text-center p-2.5 mt-auto relative z-10 flex flex-col items-center justify-center" style={{ borderTop: '1px dashed #ddc192', backgroundColor: '#fdfbf7' }}>
-           <p className="text-[8px] font-black uppercase mb-1.5" style={{ color: '#550000' }}>Pesantren Al Imam Al Islami</p>
+           <p className="text-[8px] font-black uppercase mb-1.5" style={{ color: '#550000' }}>Pesantren Islam Internasional Al-Andalus Putra</p>
            <p className="text-[5.5px] text-gray-600 font-bold leading-relaxed">Jl. Kp. Cijurey, Gn. Geulis, Kec. Sukaraja<br/>Kabupaten Bogor, Jawa Barat 16710</p>
            <div className="flex justify-center items-center gap-3 mt-2 text-[6px] font-black" style={{ color: '#550000' }}>
              <span className="flex items-center gap-1"><Phone className="w-2 h-2" /> 0812-xxxx-xxxx</span>

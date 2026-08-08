@@ -47,7 +47,7 @@ export const KESIAPAN_QUESTIONS: KesiapanSection[] = [
       },
       {
         id: 7,
-        text: "Saya merasa Pesantren Al Imam Al Islami adalah tempat belajar yang sesuai dengan harapan saya.",
+        text: "Saya merasa Pesantren Islam Internasional Al-Andalus Putra adalah tempat belajar yang sesuai dengan harapan saya.",
         labelMin: "Sangat tidak sesuai",
         labelMax: "Sangat sesuai",
       },

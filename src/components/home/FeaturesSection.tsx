@@ -76,7 +76,7 @@ export default function FeaturesSection() {
                     Keunggulan Utama
                   </span>
                 </div>
-                <h2 className="section-title mb-3">Kenapa Harus Al Imam?</h2>
+                <h2 className="section-title mb-3">Kenapa Harus Al-Andalus Putra?</h2>
                 <p className="text-lg text-ink-600 leading-relaxed font-medium text-justify lg:text-left">
                   Sistem pembentukan karakter berbasis{" "}
                   <strong className="text-primary-700">
@@ -143,7 +143,7 @@ export default function FeaturesSection() {
                     <p className="text-xs leading-tight text-ink-500 font-medium">
                       Dimulainya Sejarah Baru <br />
                       <span className="text-primary-700 font-bold block mt-1">
-                        Pesantren Al Imam Al Islami
+                        Pesantren Islam Internasional Al-Andalus Putra
                       </span>
                     </p>
                   </div>

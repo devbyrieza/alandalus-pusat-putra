@@ -187,7 +187,7 @@ export default function TestimonialsSection() {
             transition={{ delay: 0.15, duration: 0.6, ease: EASE }}
             className="section-subtitle max-w-xl mx-auto mb-6"
           >
-            Al Imam menerapkan standar keunggulan dan sistem yang sama dengan
+            Al-Andalus Putra menerapkan standar keunggulan dan sistem yang sama dengan
             Pesantren Al Andalus Pusat (Jonggol) International Islamic Boarding
             School.
           </motion.p>

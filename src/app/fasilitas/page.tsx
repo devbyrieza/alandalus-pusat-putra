@@ -117,7 +117,7 @@ export default function FasilitasPage() {
     
     const message = `Assalamu'alaikum Warahmatullahi Wabarakatuh.
 
-Saya ingin mengajukan Jadwal Kunjungan ke Pesantren Al Imam Al Islami.
+Saya ingin mengajukan Jadwal Kunjungan ke Pesantren Islam Internasional Al-Andalus Putra.
 
 *Rincian Rencana Kunjungan:*
 • Nama: ${visitForm.nama}
@@ -222,7 +222,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                   <div className="absolute bottom-5 left-5 z-10">
                     <div className="bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-xl shadow-lg border border-white/40 transition-transform duration-300 group-hover:translate-y-[-4px]">
                       <span className="text-ink-950 font-black text-sm md:text-[15px] tracking-tight">
-                        Masjid Jami' Al Imam
+                        Masjid Jami' Al-Andalus Putra
                       </span>
                     </div>
                   </div>
@@ -318,7 +318,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
               className="section-subtitle"
             >
               Sarana vital yang menjadi jantung aktivitas harian di{" "}
-              <br className="hidden md:block" /> Pesantren Al Imam Al Islami
+              <br className="hidden md:block" /> Pesantren Islam Internasional Al-Andalus Putra
               untuk kenyamanan dan kekhusyukan.
             </motion.p>
           </div>
@@ -342,7 +342,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                   </div>
 
                   <h3 className="text-3xl sm:text-2xl md:text-4xl lg:text-3xl md:text-5xl font-black text-primary-950 mb-6 leading-[1.1]">
-                    Masjid Jami' <br className="hidden sm:block" /> Al Imam
+                    Masjid Jami' <br className="hidden sm:block" /> Al-Andalus Putra
                   </h3>
                   <p className="text-base sm:text-lg lg:text-xl text-primary-950/70 mb-8 sm:mb-10 leading-relaxed font-medium">
                     Pusat peribadatan santri yang mampu menampung 1000 jamaah.
@@ -391,7 +391,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                   <div className="relative w-full h-full rounded-[2.5rem] sm:rounded-[3.2rem] overflow-hidden">
                     <Image
                       src="/images/masjid.webp"
-                      alt="Masjid Jami' Al Imam"
+                      alt="Masjid Jami' Al-Andalus Putra"
                       fill
                       className="object-cover transition-transform duration-700 hover:scale-110"
                     />
@@ -847,7 +847,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                   <div className="relative w-full h-full rounded-[2.5rem] sm:rounded-[3.2rem] overflow-hidden">
                     <Image
                       src="/images/kantor-ppdb-tamu.webp"
-                      alt="Kantor PPDB Al Imam"
+                      alt="Kantor PPDB Al-Andalus Putra"
                       fill
                       className="object-cover transition-transform duration-700 hover:scale-110"
                     />
@@ -1057,7 +1057,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     Kunjungi <span className="text-gradient-primary">Kami</span>
                   </h2>
                   <p className="text-lg text-ink-600 mb-8 leading-relaxed font-medium">
-                    Masih banyak fasilitas pendukung lainnya di dalam Pesantren Al Imam Al Islami.
+                    Masih banyak fasilitas pendukung lainnya di dalam Pesantren Islam Internasional Al-Andalus Putra.
                     Ingin melihat langsung? Jadwalkan kunjungan Anda melalui formulir ini.
                   </p>
                   
@@ -1099,7 +1099,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                         allowFullScreen
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
-                        title="Lokasi Pesantren Al Imam Al Islami"
+                        title="Lokasi Pesantren Islam Internasional Al-Andalus Putra"
                         className="grayscale group-hover:grayscale-0 transition-all duration-700 opacity-80 group-hover:opacity-100"
                       />
                       <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-sm border border-primary-100 flex items-center gap-2 z-10 pointer-events-none">

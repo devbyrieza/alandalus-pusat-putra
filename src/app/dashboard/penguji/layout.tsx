@@ -149,7 +149,7 @@ export default function PengujiDashboardLayout({
               <Shield className="w-6 h-6 text-primary-600" />
             </div>
           </div>
-          <h2 className="text-xl font-black text-ink-950 mb-2">Al Imam</h2>
+          <h2 className="text-xl font-black text-ink-950 mb-2">Al-Andalus Putra</h2>
           <p className="text-ink-500 text-sm font-medium animate-pulse">
             Menghubungkan ke sistem seleksi...
           </p>
@@ -192,7 +192,7 @@ export default function PengujiDashboardLayout({
                       Seleksi <span className="text-primary-600">Panel</span>
                     </h1>
                     <p className="text-[10px] uppercase tracking-widest font-black text-gold-600 mt-1">
-                      Al Imam
+                      Al-Andalus Putra
                     </p>
                   </div>
                 </div>

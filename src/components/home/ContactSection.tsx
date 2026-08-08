@@ -10,7 +10,7 @@ const CONTACT_INFO = [
     icon: MapPin,
     title: "Lokasi Pesantren",
     content: "Jl. Pelabuhan II KM 18",
-    detail: "Kampung Pupunjul, Cikembar, Sukabumi",
+    detail: "Kampung Sukamakmur, Sukamakmur, Bogor",
     accent: "maroon" as const,
   },
   {
@@ -23,7 +23,7 @@ const CONTACT_INFO = [
   {
     icon: Mail,
     title: "Email Resmi",
-    content: "alandalusalimam@gmail.com",
+    content: "info@pesantren-alandalus.com",
     detail: "Kirim pertanyaan kapan saja",
     accent: "gold" as const,
   },

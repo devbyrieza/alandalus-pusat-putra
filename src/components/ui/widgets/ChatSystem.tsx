@@ -67,7 +67,7 @@ export default function ChatSystem() {
   const openWhatsApp = () => {
     const waNumber = "6285111524441";
     const waMessage = encodeURIComponent(
-      "Halo Panitia PPDB Pesantren Al Imam Al Islami, saya ingin bertanya...",
+      "Halo Panitia PPDB Pesantren Islam Internasional Al-Andalus Putra, saya ingin bertanya...",
     );
     window.open(`https://wa.me/${waNumber}?text=${waMessage}`, "_blank");
     setIsMenuOpen(false);
@@ -116,7 +116,7 @@ export default function ChatSystem() {
             >
               <div className="px-3 pb-3 pt-2 mb-2 border-b border-surface-100 flex items-center justify-between">
                 <span className="text-[10px] uppercase font-black tracking-widest text-secondary-500 mb-0.5">
-                  PPDB Al Imam Al Islami
+                  PPDB Al-Andalus Putra
                 </span>
                 <button
                   onClick={() => setIsMenuOpen(false)}
@@ -198,7 +198,7 @@ export default function ChatSystem() {
                     Butuh Bantuan?
                   </p>
                   <p className="text-xs text-ink-400 font-medium tracking-wide">
-                    Al Imam Al Islami PPDB
+                    Al-Andalus Putra PPDB
                   </p>
                 </div>
                 <button

@@ -32,7 +32,7 @@ export default function DashboardPendaftarPage() {
                 Dashboard Pendaftar
               </h1>
               <p className="text-sm text-stone-600">
-                Pesantren Al Imam Al Islami
+                Pesantren Islam Internasional Al-Andalus Putra
               </p>
             </div>
             <button

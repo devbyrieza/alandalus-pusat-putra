@@ -22,7 +22,7 @@ const DUMMY_DATA = {
   nama_lengkap: "Ahmad Zaki Mubarak",
   jenis_kelamin: "Laki-laki",
   jenjang: "MTs",
-  tempat_lahir: "Sukabumi",
+  tempat_lahir: "Bogor",
   tanggal_lahir: "2010-08-15",
   alamat: "Jl. Pesantren No. 123",
   no_hp: "081234567890",

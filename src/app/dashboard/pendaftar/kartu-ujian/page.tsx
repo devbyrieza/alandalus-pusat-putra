@@ -63,7 +63,7 @@ export default function ExamCardPage() {
                 "id-ID",
               ),
               waktu: j.waktu_mulai.substring(0, 5),
-              lokasi: j.lokasi || "Pesantren Al-Andalus Al-Imam",
+              lokasi: j.lokasi || "Pesantren Al-Andalus Al-Andalus Putra",
             })) || [],
         };
 
@@ -252,7 +252,7 @@ export default function ExamCardPage() {
             <div className="flex justify-end mt-12">
               <div className="text-center w-48">
                 <p className="mb-20">
-                  Sukabumi,{" "}
+                  Bogor,{" "}
                   {new Date().toLocaleDateString("id-ID", {
                     day: "numeric",
                     month: "long",
@@ -260,7 +260,7 @@ export default function ExamCardPage() {
                   })}
                 </p>
                 <p className="font-bold underline uppercase">
-                  Panitia PPDB Al-Imam
+                  Panitia PPDB Al-Andalus Putra
                 </p>
               </div>
             </div>

@@ -83,7 +83,7 @@ export default function VerifikasiManualPage() {
   const openWhatsApp = (phone: string, kode: string) => {
     const cleanPhone = phone.replace(/\D/g, "");
     const message = encodeURIComponent(
-      `Kode verifikasi PPDB Pesantren Al Imam Al Islami: ${kode}`,
+      `Kode verifikasi PPDB Pesantren Islam Internasional Al-Andalus Putra: ${kode}`,
     );
     window.open(`https://wa.me/${cleanPhone}?text=${message}`, "_blank");
   };

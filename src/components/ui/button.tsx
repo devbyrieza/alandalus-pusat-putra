@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   BUTTON — Al Imam Edition
+   BUTTON — Al-Andalus Putra Edition
    Token-aligned dengan globals.css alimam:
    · Warna   : maroon, cream, gold, ink
    · Shadow  : --shadow-primary, --shadow-primary-lg, --shadow-gold, --shadow-secondary

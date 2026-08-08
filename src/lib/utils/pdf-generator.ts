@@ -261,7 +261,7 @@ const drawFormalSignature = async (doc: jsPDF, y: number) => {
   const pageWidth = doc.internal.pageSize.getWidth();
   const { authority, assets, coords } = PDF_BRANDING;
   
-  // Reposisi tanda tangan: jika full_image (seperti Al-Imam), geser ke kiri agar tidak menabrak Kemenkumham.
+  // Reposisi tanda tangan: jika full_image (seperti Al-Andalus Putra), geser ke kiri agar tidak menabrak Kemenkumham.
   // Jika programmatic (generik), tetap di kanan bawah seperti biasa.
   const isFullImage = PDF_BRANDING.template === "full_image";
   const xBase = isFullImage ? 28 : pageWidth - coords.signature.margin_right;
@@ -390,7 +390,7 @@ export const generateKartuUjian = async (data: PendaftarPdfData) => {
     ["NIK", `: ${data.nik}`],
     ["Jenjang", `: ${data.jenjang}`],
     ["Jadwal Seleksi", `: ${data.jadwal_ujian || "Menunggu Konfirmasi"}`],
-    ["Lokasi", `: ${data.lokasi_ujian || "Pesantren Al Imam Al Islami"}`],
+    ["Lokasi", `: ${data.lokasi_ujian || "Pesantren Islam Internasional Al-Andalus Putra"}`],
   ];
 
   autoTable(doc, {
@@ -481,7 +481,7 @@ export const generateSuratKelulusan = async (data: PendaftarPdfData) => {
   doc.setFontSize(11);
 
   let closing =
-    "Selamat bergabung menjadi keluarga besar Pesantren Al Imam Al Islami. Silakan segera melakukan proses daftar ulang sesuai jadwal yang ditentukan.";
+    "Selamat bergabung menjadi keluarga besar Pesantren Islam Internasional Al-Andalus Putra. Silakan segera melakukan proses daftar ulang sesuai jadwal yang ditentukan.";
   if (statusText === "CADANGAN")
     closing =
       "Anda masuk dalam daftar cadangan. Panitia akan menghubungi Anda jika terdapat kuota yang kosong.";

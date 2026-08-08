@@ -282,7 +282,7 @@ export async function POST(request: Request) {
           minute: "2-digit",
           timeZone: "Asia/Jakarta",
         }) + " WIB";
-      const lokasi = examSession.location || "Pesantren Al Imam Al Islami";
+      const lokasi = examSession.location || "Pesantren Islam Internasional Al-Andalus Putra";
       const jenisUjian = sanitizeTitle(
         examSession.title || "Seleksi Santri Baru",
       );

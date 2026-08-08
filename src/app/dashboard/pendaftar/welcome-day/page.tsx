@@ -306,7 +306,7 @@ export default function WelcomeDayPage() {
               <MapPin className="w-5 h-5 text-gold-300 flex-shrink-0" />
               <div>
                 <p className="text-[10px] text-white/60 uppercase tracking-wider font-bold">Lokasi</p>
-                <p className="text-sm font-black text-white">Area Pesantren Al-Imam</p>
+                <p className="text-sm font-black text-white">Area Pesantren Al-Andalus Putra</p>
               </div>
             </div>
           </div>
@@ -327,7 +327,7 @@ export default function WelcomeDayPage() {
             <p className="text-sm text-blue-800 mt-2 leading-relaxed">
               Bagi Bapak/Ibu Wali Santri yang berasal dari luar daerah atau jaraknya jauh, acara dimulai <strong>Pukul 06.30 WIB</strong>. 
               <br className="hidden sm:block" />
-              Terdapat penginapan rekomendasi terdekat yang berlokasi di <strong>seberang Masjid Jami Cikembar</strong>. 
+              Terdapat penginapan rekomendasi terdekat yang berlokasi di <strong>seberang Masjid Jami Sukamakmur</strong>. 
               Fasilitas kamar ber-AC dan bersih dengan tarif sekitar <strong>Rp 175.000 / malam</strong> (banyak pilihan kamar lain).
             </p>
             <p className="text-xs text-blue-600/80 mt-3 font-bold italic">

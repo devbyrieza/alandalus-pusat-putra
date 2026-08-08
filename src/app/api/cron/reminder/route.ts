@@ -99,7 +99,7 @@ export async function GET(request: Request) {
                 jadwal.penguji_quran?.google_meet_link || 
                 jadwal.penguji_ortu?.google_meet_link;
 
-            const sessionLoc = jadwal.exam_session?.location || "Pesantren Al Imam Al Islami";
+            const sessionLoc = jadwal.exam_session?.location || "Pesantren Islam Internasional Al-Andalus Putra";
             const lokasi = googleMeetLink
                 ? googleMeetLink
                 : (sessionLoc.toLowerCase() === "online" ? "-" : sessionLoc);

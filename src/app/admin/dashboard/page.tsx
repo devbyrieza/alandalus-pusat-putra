@@ -45,7 +45,7 @@ export default function DashboardEksekutifPage() {
     <div className="p-4 md:p-8 max-w-7xl mx-auto h-full space-y-8">
       <div>
         <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">Dashboard Eksekutif</h1>
-        <p className="text-slate-500 mt-1">Ringkasan keuangan dan aktivitas santri Pesantren Al Imam Al Islami.</p>
+        <p className="text-slate-500 mt-1">Ringkasan keuangan dan aktivitas santri Pesantren Islam Internasional Al-Andalus Putra.</p>
       </div>
 
       {/* METRIC CARDS */}

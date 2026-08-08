@@ -222,7 +222,7 @@ export default function Home() {
       {/* ═══ §1 HERO SECTION — SPLIT DARK ═══════════════════════════════════ */}
       <section
         id="hero"
-        className="relative min-h-[calc(100svh-40px)] flex items-center bg-[#020617] pt-20 pb-12 md:pb-20 overflow-hidden"
+        className="relative min-h-[auto] md:min-h-[85vh] flex items-center bg-[#020617] pt-6 sm:pt-12 md:pt-16 pb-10 md:pb-20 overflow-hidden"
       >
         {/* Animated glows */}
         <div className="absolute inset-0 pointer-events-none">
@@ -243,11 +243,11 @@ export default function Home() {
           />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 md:py-16 w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
 
             {/* LEFT */}
-            <div className="space-y-8">
+            <div className="space-y-4 sm:space-y-8">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
                 <span className="relative flex h-2.5 w-2.5 shrink-0">

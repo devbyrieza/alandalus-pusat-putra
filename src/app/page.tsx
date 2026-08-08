@@ -108,7 +108,7 @@ function StatCard({
       <div className={`w-14 h-14 rounded-2xl ${primaryBg} flex items-center justify-center mx-auto mb-4`}>
         <Icon className={`w-7 h-7 ${primaryColor}`} />
       </div>
-      <div className={`text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black ${primaryColor}`}>
+      <div className={`text-4xl sm:text-5xl lg:text-6xl font-black ${primaryColor}`}>
         {count}{suffix}
       </div>
       <div className="text-slate-400 text-sm font-medium mt-1 uppercase tracking-wider">
@@ -244,7 +244,7 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 md:py-16 w-full">
-          <div className="grid lg:grid-cols-1 sm:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
             {/* LEFT */}
             <div className="space-y-4 sm:space-y-8">
@@ -262,7 +262,7 @@ export default function Home() {
 
               {/* Headline */}
               <div className="space-y-4">
-                <h1 className="text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-6xl xl:text-7xl font-serif italic font-black text-white leading-[1.08] tracking-tight">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif italic font-black text-white leading-[1.1] tracking-tight">
                   Cetak Generasi{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706] pr-2 md:pr-4">
                     Rabbani
@@ -313,7 +313,7 @@ export default function Home() {
             </div>
 
             {/* RIGHT: Image + floating cards */}
-            <div className="relative flex justify-center lg:justify-end">
+            <div className="relative flex justify-center lg:justify-end mt-8 lg:mt-0">
               <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50 w-full max-w-lg">
                 <Image
                   src="/images/halaman-dekat-masjid.webp"
@@ -388,7 +388,7 @@ export default function Home() {
             <span className={`text-xs font-bold uppercase tracking-widest ${c.text600}`}>
               Sistem Pendidikan
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mt-3 mb-4 text-balance">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 mt-3 mb-4 text-balance">
               Kurikulum{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#059669] to-[#064e3b] pr-1">
                 TICE
@@ -478,7 +478,7 @@ export default function Home() {
             <span className={`text-xs font-bold uppercase tracking-widest ${c.text400}`}>
               Kekhawatiran Orang Tua
             </span>
-            <h2 className="text-4xl font-black text-white mt-3 mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white mt-3 mb-4">
               Kami Pahami Setiap Keresahan Anda
             </h2>
             <p className="text-slate-400 max-w-xl mx-auto">
@@ -525,7 +525,7 @@ export default function Home() {
       {/* ═══ §5 CARA DAFTAR — Step-by-Step ════════════════════════════════ */}
       <section id="cara-daftar" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-1 sm:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
             {/* Steps */}
             <div>
@@ -669,7 +669,7 @@ export default function Home() {
             <span className={`text-xs font-bold uppercase tracking-widest ${c.text600}`}>
               Fasilitas dan Keunggulan
             </span>
-            <h2 className="text-4xl font-black text-slate-900 mt-3">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 mt-3">
               Semua yang Dibutuhkan Santri,{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#166534] to-[#14532d]">
                 Tersedia
@@ -840,7 +840,7 @@ export default function Home() {
               Bergabunglah Bersama Kami
             </span>
           </div>
-          <h2 className="text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-6">
             Siapkan Putra Anda untuk{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706]">
               Masa Depan Gemilang

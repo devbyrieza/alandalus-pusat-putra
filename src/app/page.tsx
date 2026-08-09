@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { BRANDING, IS_PUTRA } from "@/config/branding";
 import {
@@ -313,45 +313,51 @@ export default function Home() {
             </div>
 
             {/* RIGHT: Image + floating cards */}
-            <div className="relative flex justify-center lg:justify-end mt-8 lg:mt-0">
-              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50 w-full max-w-lg">
-                <Image
-                  src="/images/halaman-dekat-masjid.webp"
-                  alt="Kampus Pesantren Al-Andalus Jonggol"
-                  width={600}
-                  height={420}
-                  className="object-cover object-top w-full h-[280px] sm:h-[360px] md:h-[420px]"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+            <div className="relative flex justify-center lg:justify-end mt-12 lg:mt-0 pb-10">
+              <div className="relative w-full max-w-lg">
+                
+                {/* Image Container */}
+                <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50 w-full">
+                  <Image
+                    src="/images/halaman-dekat-masjid.webp"
+                    alt="Kampus Pesantren Al-Andalus Jonggol"
+                    width={600}
+                    height={420}
+                    className="object-cover object-top w-full h-[280px] sm:h-[360px] md:h-[420px]"
+                    priority
+                  />
+                  {/* Lighter gradient since text is no longer inside */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent" />
+                </div>
 
-                {/* Floating bottom card */}
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3 sm:p-4 flex items-center gap-4">
-                    <div className={`w-10 h-10 rounded-xl ${c.bg600} flex items-center justify-center shrink-0`}>
-                      <GraduationCap className="w-5 h-5 text-white" />
+                {/* Floating bottom card - Now floating outside the image */}
+                <div className="absolute -bottom-6 left-4 right-4 sm:-bottom-8 sm:-left-6 sm:right-6 z-20">
+                  <div className="bg-slate-900/80 backdrop-blur-xl border border-white/20 rounded-2xl p-4 sm:p-5 flex items-center gap-4 shadow-2xl shadow-black/40 ring-1 ring-white/10">
+                    <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl ${c.bg600} flex items-center justify-center shrink-0`}>
+                      <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <div>
-                      <p className="text-white font-bold text-sm">PPDB 2027-2028 Dibuka</p>
-                      <p className="text-amber-300 text-xs font-bold tracking-wide drop-shadow-sm">Angkatan IX · Kuota Terbatas</p>
+                      <p className="text-white font-bold text-sm sm:text-base">PPDB 2027-2028 Dibuka</p>
+                      <p className="text-amber-300 text-[11px] sm:text-xs font-bold tracking-wide drop-shadow-sm">Angkatan IX · Kuota Terbatas</p>
                     </div>
                     <Link
                       href="/daftar"
-                      className={`ml-auto px-4 py-2 rounded-xl text-white text-xs font-bold ${c.bg600} ${c.bgHover} transition shrink-0 flex items-center gap-1`}
+                      className={`ml-auto px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl text-white text-xs sm:text-sm font-bold ${c.bg600} ${c.bgHover} transition shrink-0 flex items-center gap-1.5 shadow-lg`}
                     >
-                      Daftar <ArrowRight className="w-3 h-3" />
+                      Daftar <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </Link>
                   </div>
                 </div>
-              </div>
 
-              {/* Floating top-right badge */}
-              <div className="absolute -top-4 right-0 md:-right-8 bg-slate-900/80 backdrop-blur-md border border-white/30 rounded-2xl p-3 flex items-center gap-2.5 shadow-xl ring-1 ring-white/10">
-                <PiCertificateBold className={`w-6 h-6 ${c.text400} shrink-0`} />
-                <div>
-                  <p className="text-white text-xs font-bold leading-tight">Terakreditasi Muadalah</p>
-                  <p className="text-amber-300 text-xs font-black tracking-wide drop-shadow-sm">Setara Internasional</p>
+                {/* Floating top-right badge - Also slightly adjusted to pop out */}
+                <div className="absolute -top-4 right-0 md:-right-6 bg-slate-900/80 backdrop-blur-xl border border-white/30 rounded-2xl p-3 flex items-center gap-2.5 shadow-xl ring-1 ring-white/10 z-20">
+                  <PiCertificateBold className={`w-6 h-6 ${c.text400} shrink-0`} />
+                  <div>
+                    <p className="text-white text-[11px] font-bold leading-tight">Terakreditasi Muadalah</p>
+                    <p className="text-amber-300 text-xs font-black tracking-wide drop-shadow-sm">Setara Internasional</p>
+                  </div>
                 </div>
+
               </div>
             </div>
           </div>

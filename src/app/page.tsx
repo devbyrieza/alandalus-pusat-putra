@@ -211,8 +211,8 @@ export default function Home() {
       {/* â•â•â• ANNOUNCEMENT BAR â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <div className={`w-full py-2 sm:py-2.5 text-xs font-bold text-white ${c.bg600} flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 px-8`}>
         <Zap className="w-3.5 h-3.5 shrink-0" />
-        <span className="sm:hidden">PPDB Angkatan IX — Kuota Terbatas!</span>
-        <span className="hidden sm:inline">Pendaftaran Santri Baru Angkatan IX Telah Dibuka — Kuota Terbatas!</span>
+        <span className="sm:hidden">PPDB 2027/2028 — Kuota Terbatas!</span>
+        <span className="hidden sm:inline">Pendaftaran Santri Baru 2027/2028 Telah Dibuka — Kuota Terbatas!</span>
         <Link href="/daftar" className="inline-flex items-center gap-1 ml-2 px-2.5 py-0.5 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 text-[11px] font-black uppercase tracking-wider shadow-sm transition-all shrink-0">
           <span>Daftar</span>
           <ChevronRight className="w-3 h-3 stroke-[3]" />
@@ -298,7 +298,7 @@ export default function Home() {
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-2 border-t border-white/10">
                 {[
                   { val: "2013", label: "Tahun Berdiri", Icon: FaStar },
-                  { val: "VIII", label: "Angkatan", Icon: HiAcademicCap },
+                  { val: "A", label: "Akreditasi", Icon: HiAcademicCap },
                   { val: "1000+", label: "Santri & Alumni", Icon: Users },
                   { val: "3", label: "Benua Alumni", Icon: FaGlobeAsia },
                 ].map((s, i) => (
@@ -598,7 +598,7 @@ export default function Home() {
                   </p>
                   <p>
                     <span className={c.text400}>â–¸</span>{" "}
-                    <span className="text-white">Angkatan</span>{" "}
+                    <span className="text-white">Tahun Ajaran</span>{" "}
                     <span className="text-amber-400">IX (2027-2028)</span>
                   </p>
                   <p>

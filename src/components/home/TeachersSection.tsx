@@ -153,7 +153,7 @@ export default function TeachersSection() {
           </motion.div>
 
           {/* ── Grid Content ── */}
-          <div className="lg:w-[58%] grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full">
+          <div className="lg:w-[58%] grid grid-cols-1 sm:grid-cols-1 gap-3 sm:gap-4 w-full">
             {TEACHER_BACKGROUNDS.map((item, idx) => (
               <motion.div
                 key={idx}

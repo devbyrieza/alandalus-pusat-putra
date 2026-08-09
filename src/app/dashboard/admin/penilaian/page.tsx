@@ -1272,7 +1272,7 @@ export default function ExaminerDashboard() {
                     {/* Action Buttons */}
                     <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-2">
                       {isAdminSuper && (
-                        <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-2 col-span-full">
+                        <div className="grid grid-cols-1 sm:grid-cols-1 gap-2 col-span-full">
                           <button
                             onClick={() => handleOpenSkipDialog(s)}
                             className="flex items-center justify-center gap-2 bg-amber-500 text-white py-3 rounded-2xl text-[11px] font-black shadow-lg shadow-amber-500/20 active:scale-95 transition-all"
@@ -1730,7 +1730,7 @@ export default function ExaminerDashboard() {
                   )}
 
                   {inputType === "wawancara_santri" && (
-                    <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-1 gap-4">
                       {[
                         { k: "motivasi", l: "Motivasi (1-5)" },
                         { k: "lingkungan", l: "Lingkungan (1-5)" },

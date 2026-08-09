@@ -310,7 +310,7 @@ export default function GallerySection() {
               variants={containerVariants}
               initial="hidden"
               animate={scheduleInView ? "visible" : "hidden"}
-              className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-3.5"
+              className="grid grid-cols-1 sm:grid-cols-1 gap-3.5"
             >
               {SCHEDULE_ITEMS.map((item, idx) => (
                 <ScheduleCard key={idx} {...item} index={idx} />

@@ -372,7 +372,7 @@ export default function DashboardPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-6xl xl:text-7xl font-display font-black text-primary-950 mb-6 leading-none tracking-tight"
+                className="text-3xl sm:text-4xl md:text-2xl lg:text-5xl xl:text-7xl font-display font-black text-primary-950 mb-6 leading-none tracking-tight"
               >
                 Ahlan wa Sahlan, <br />
                 <span className="text-primary-700 bg-primary-50 px-4 py-1 rounded-3xl inline-block mt-2">
@@ -438,7 +438,7 @@ export default function DashboardPage() {
                       Status Pendaftaran
                     </span>
                     <h2
-                      className={`text-2xl sm:text-3xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-black leading-none tracking-tight ${statusInfo.text}`}
+                      className={`text-2xl sm:text-3xl md:text-2xl lg:text-5xl font-display font-black leading-none tracking-tight ${statusInfo.text}`}
                     >
                       {statusInfo.label}
                     </h2>
@@ -475,7 +475,7 @@ export default function DashboardPage() {
                 <div className="h-0.5 flex-1 mx-10 bg-ink-50 rounded-full" />
               </div>
 
-              <div className="grid sm:grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
+              <div className="grid sm:grid-cols-1 gap-6 sm:gap-8 md:gap-10">
                 <ActionCard
                   href="/dashboard/pendaftar/pembayaran-pendaftaran"
                   icon={CreditCard}
@@ -603,7 +603,7 @@ export default function DashboardPage() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8 }}
-              className="bg-primary-950 p-6 sm:p-5 md:p-8 md:p-10 rounded-[2.5rem] sm:rounded-[3rem] shadow-2xl relative overflow-hidden group"
+              className="bg-primary-950 p-6 sm:p-5 md:p-8 rounded-[2.5rem] sm:rounded-[3rem] shadow-2xl relative overflow-hidden group"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-gold-400" />
               <div className="absolute bottom-0 right-0 w-40 h-40 bg-primary-500/10 rounded-full blur-[60px] translate-y-1/2 translate-x-1/2 pointer-events-none" />

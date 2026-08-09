@@ -2264,7 +2264,7 @@ export default function JadwalPengujiPage() {
                 <h4 className="text-sm font-bold text-ink-400 uppercase tracking-wider mb-3">
                   Identitas Santri
                 </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 sm:grid-cols-1 gap-4 text-sm">
                   <div>
                     <label className="block text-secondary-500 text-xs">
                       Nama Lengkap
@@ -2348,7 +2348,7 @@ export default function JadwalPengujiPage() {
                 <h4 className="text-sm font-bold text-ink-400 uppercase tracking-wider mb-3">
                   Data Orang Tua
                 </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 sm:grid-cols-1 gap-4 text-sm">
                   <div>
                     <label className="block text-secondary-500 text-xs">
                       Nama Ayah

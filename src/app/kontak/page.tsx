@@ -34,7 +34,7 @@ export default function KontakPage() {
             <span>LAYANAN INFORMASI & KONTAK</span>
           </div>
 
-          <h1 className="text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+          <h1 className="text-4xl md:text-2xl sm:text-3xl lg:text-5xl font-black text-slate-900 tracking-tight">
             Kami Siap Membantu Anda
           </h1>
 

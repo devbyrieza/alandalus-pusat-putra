@@ -344,7 +344,7 @@ export default function LoginPage() {
               />
             </div>
           </Link>
-          <h1 className="text-3xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-black text-white mb-2 tracking-tight drop-shadow-md">
+          <h1 className="text-3xl md:text-2xl sm:text-3xl lg:text-5xl font-display font-black text-white mb-2 tracking-tight drop-shadow-md">
             Portal{" "}
             <span className="text-secondary-400 font-black drop-shadow-md">
               {BRANDING.schoolShortName}

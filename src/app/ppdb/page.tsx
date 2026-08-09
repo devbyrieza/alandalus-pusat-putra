@@ -229,7 +229,7 @@ function PPDBContent() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-2xl md:text-4xl sm:text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-6xl lg:text-8xl font-display font-black mb-8 md:mb-10 tracking-tight leading-[0.9] text-ink-950"
+              className="text-2xl md:text-4xl sm:text-3xl lg:text-5xl font-display font-black mb-8 md:mb-10 tracking-tight leading-[0.9] text-ink-950"
             >
               Siapkan Generasi <br />
               <span className="text-gradient-primary">Terbaik Kita</span>
@@ -309,7 +309,7 @@ function PPDBContent() {
                 <Clock className="w-3.5 h-3.5" />
                 <span>Tahapan Pendaftaran</span>
               </div>
-              <h2 className="text-3xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-black text-ink-950 mb-8 leading-tight">
+              <h2 className="text-3xl md:text-2xl sm:text-3xl lg:text-5xl font-display font-black text-ink-950 mb-8 leading-tight">
                 Alur Seleksi <br />{" "}
                 <span className="text-primary-600">Lengkap & Transparan</span>
               </h2>
@@ -352,7 +352,7 @@ function PPDBContent() {
       <section className="py-24 md:py-32 bg-white">
         <Container>
           <div className="text-center mb-16 md:mb-24">
-            <h2 className="text-3xl md:text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-display font-black text-ink-950 mb-6">
+            <h2 className="text-3xl md:text-3xl sm:text-4xl lg:text-5xl font-display font-black text-ink-950 mb-6">
               Informasi Investasi <br />
               <span className="text-primary-600">Pendidikan</span>
             </h2>
@@ -372,7 +372,7 @@ function PPDBContent() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="bg-white p-5 md:p-8 sm:p-6 md:p-12 rounded-[2rem] md:rounded-[3.5rem] border border-surface-100 shadow-premium-lg flex flex-col items-center text-center group hover:bg-primary-900 transition-all duration-500"
+                  className="bg-white p-5 md:p-8 sm:p-6 rounded-[2rem] md:rounded-[3.5rem] border border-surface-100 shadow-premium-lg flex flex-col items-center text-center group hover:bg-primary-900 transition-all duration-500"
                 >
                   <div className="w-20 h-20 bg-surface-50 rounded-[2rem] flex items-center justify-center text-primary-600 mb-8 group-hover:bg-white/10 group-hover:text-white transition-all shadow-premium-sm">
                     <Icon className="w-10 h-10" />
@@ -380,7 +380,7 @@ function PPDBContent() {
                   <h3 className="text-xl text-ink-400 font-black uppercase tracking-widest mb-3 group-hover:text-white/60 transition-colors">
                     {item.label}
                   </h3>
-                  <p className="text-2xl md:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-black text-ink-950 group-hover:text-white transition-colors">
+                  <p className="text-2xl md:text-4xl sm:text-3xl lg:text-5xl font-display font-black text-ink-950 group-hover:text-white transition-colors">
                     {item.value}
                   </p>
                 </motion.div>
@@ -392,7 +392,7 @@ function PPDBContent() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="mt-16 max-w-4xl mx-auto bg-primary-50 border border-primary-100 rounded-[2.5rem] p-5 md:p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 text-center md:text-left"
+            className="mt-16 max-w-4xl mx-auto bg-primary-50 border border-primary-100 rounded-[2.5rem] p-5 md:p-8 flex flex-col md:flex-row items-center gap-8 text-center md:text-left"
           >
             <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-primary-600 shadow-premium-sm shrink-0">
               <HelpCircle className="w-8 h-8" />
@@ -584,13 +584,13 @@ function PPDBContent() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-primary-900 bg-linear-to-br from-primary-800 to-primary-950 rounded-[2rem] md:rounded-[3rem] lg:rounded-[4rem] p-6 sm:p-5 md:p-8 md:p-16 lg:p-24 text-center text-white relative overflow-hidden shadow-premium-2xl"
+            className="bg-primary-900 bg-linear-to-br from-primary-800 to-primary-950 rounded-[2rem] md:rounded-[3rem] lg:rounded-[4rem] p-6 sm:p-5 md:p-8 lg:p-24 text-center text-white relative overflow-hidden shadow-premium-2xl"
           >
             <div className="absolute top-0 right-0 w-32 h-32 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-white/5 rounded-full blur-[60px] md:blur-[100px] -translate-y-1/2 translate-x-1/2" />
             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />
 
             <div className="relative z-10">
-              <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-3xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-3xl sm:text-4xl md:text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-display font-black mb-4 sm:mb-6 md:mb-8 text-white leading-tight">
+              <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-3xl xl:text-3xl font-display font-black mb-4 sm:mb-6 md:mb-8 text-white leading-tight">
                 Mulai Perjalanan <br />{" "}
                 <span className="text-gold-400">Ananda Di Sini</span>
               </h2>

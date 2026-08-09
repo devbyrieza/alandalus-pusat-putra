@@ -57,7 +57,7 @@ export default function ScholarshipSection({ variant = "maroon" }: ScholarshipSe
                 Highlight Program
               </div>
 
-              <h2 className="text-4xl lg:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-[1.1] mb-6" style={{ color: colors.primaryDark }}>
+              <h2 className="text-4xl lg:text-2xl sm:text-3xl md:text-4xl font-black tracking-tight leading-[1.1] mb-6" style={{ color: colors.primaryDark }}>
                 Program Beasiswa <br />
                 <span style={{ color: colors.primary }}>Dhuafa Berprestasi</span>
               </h2>

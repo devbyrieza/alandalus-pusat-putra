@@ -496,13 +496,9 @@ export async function notifyRegistrationSuccess(data: {
 /**
  * Send document verification notification
  */
-export async function notifyDocumentVerified(data: {
-  phone: string | null;
-  nama: string;
-  dokumen_list: string;
-  status: "verified" | "rejected";
-  catatan?: string;
-}) {
+
+  return { status: true, message: "FEATURE_LOCKED" }; // Enforced by tier strategy
+
   if (!data.phone) return { status: false, message: "Phone number missing" };
   const templateId =
     data.status === "verified" ? "document_verified" : "document_rejected";
@@ -523,15 +519,9 @@ export async function notifyDocumentVerified(data: {
 /**
  * Send payment verification notification
  */
-export async function notifyPaymentVerified(data: {
-  phone: string | null;
-  nama: string;
-  jumlah: string;
-  metode: string;
-  tanggal: string;
-  status: "verified" | "rejected";
-  catatan?: string;
-}) {
+
+  return { status: true, message: "FEATURE_LOCKED" }; // Enforced by tier strategy
+
   if (!data.phone) return { status: false, message: "Phone number missing" };
   const templateId =
     data.status === "verified" ? "payment_verified" : "payment_rejected";
@@ -554,14 +544,9 @@ export async function notifyPaymentVerified(data: {
 /**
  * Send deadline reminder
  */
-export async function notifyDeadlineReminder(data: {
-  phone: string;
-  nama: string;
-  jenis_deadline: string;
-  tanggal_deadline: string;
-  status: string;
-  action_needed: string;
-}) {
+
+  return { status: true, message: "FEATURE_LOCKED" }; // Enforced by tier strategy
+
   return sendTemplate({
     phone: data.phone,
     templateId: "deadline_reminder",
@@ -572,14 +557,9 @@ export async function notifyDeadlineReminder(data: {
 /**
  * Send test schedule notification
  */
-export async function notifyTestSchedule(data: {
-  phone: string;
-  nama: string;
-  tanggal: string;
-  waktu: string;
-  tempat: string;
-  meeting_link?: string;
-}) {
+
+  return { status: true, message: "FEATURE_LOCKED" }; // Enforced by tier strategy
+
   let message = TEMPLATES["test_schedule"];
 
   // Replace standard variables
@@ -616,14 +596,9 @@ export async function notifyTestSchedule(data: {
 /**
  * Send announcement notification (supports all 3 statuses)
  */
-export async function notifyStatusChange(data: {
-  phone: string;
-  nama: string;
-  status: "accepted" | "reserve" | "rejected";
-  jenjang?: string;
-  tahun_ajaran?: string;
-  dashboard_url?: string;
-}) {
+
+  return { status: true, message: "FEATURE_LOCKED" }; // Enforced by tier strategy
+
   const templateMap: Record<string, string> = {
     accepted: "announcement_accepted",
     reserve: "announcement_reserve",
@@ -648,13 +623,9 @@ export async function notifyStatusChange(data: {
 /**
  * Send combined final result (Test Complete + Announcement + Re-registration)
  */
-export async function notifyCombinedFinalResult(data: {
-  pendaftarId: string;
-  phone: string | null;
-  nama: string;
-  status: "DITERIMA" | "CADANGAN" | "DITOLAK";
-  jenjang: string;
-}) {
+
+  return { status: true, message: "FEATURE_LOCKED" }; // Enforced by tier strategy
+
   if (!data.phone) return { status: false, message: "Phone number missing" };
   const { enqueueWhatsapp, buildMessageCombinedFinal } =
     await import("./whatsapp-queue");
@@ -890,14 +861,9 @@ export async function blastWithQueue(params: {
 /**
  * Kirim notifikasi pengumuman seleksi per santri
  */
-export async function notifySelectionResult(data: {
-  phone: string | null;
-  nama: string;
-  status: "DITERIMA" | "CADANGAN" | "DITOLAK";
-  jenjang?: string;
-  tahun_ajaran?: string;
-  suratPath?: string;
-}) {
+
+  return { status: true, message: "FEATURE_LOCKED" }; // Enforced by tier strategy
+
   if (!data.phone) return { status: false, message: "Phone number missing" };
   const statusMap: Record<string, "accepted" | "reserve" | "rejected"> = {
     DITERIMA: "accepted",
@@ -934,13 +900,9 @@ export async function notifySelectionResult(data: {
 /**
  * Kirim link Google Form ke santri
  */
-export async function notifyGoogleFormLink(data: {
-  phone: string | null;
-  nama: string;
-  formLink: string;
-  keterangan?: string; // misal: "Seleksi Online", "Survey Tambahan"
-  batasWaktu?: string;
-}) {
+
+  return { status: true, message: "FEATURE_LOCKED" }; // Enforced by tier strategy
+
   if (!data.phone) return { status: false, message: "Phone number missing" };
   return sendTemplate({
     phone: data.phone,
@@ -958,14 +920,9 @@ export async function notifyGoogleFormLink(data: {
 /**
  * Kirim link Zoom meeting ke santri (untuk seleksi online)
  */
-export async function notifyZoomMeeting(data: {
-  phone: string | null;
-  nama: string;
-  jenisUjian: string; // "Seleksi Al Qur'an", "Seleksi Wawancara Calon Santri", "Seleksi Wawancara Orang Tua"
-  tanggal: string;
-  waktu: string;
-  zoomLink: string;
-}) {
+
+  return { status: true, message: "FEATURE_LOCKED" }; // Enforced by tier strategy
+
   if (!data.phone) return { status: false, message: "Phone number missing" };
   return sendTemplate({
     phone: data.phone,
@@ -1002,10 +959,9 @@ export async function notifyDataComplete(data: {
 /**
  * Send All Exams Complete Notification
  */
-export async function notifyAllExamsComplete(data: {
-  phone: string | null;
-  nama: string;
-}) {
+
+  return { status: true, message: "FEATURE_LOCKED" }; // Enforced by tier strategy
+
   if (!data.phone) return { status: false, message: "Phone number missing" };
   return sendTemplate({
     phone: data.phone,

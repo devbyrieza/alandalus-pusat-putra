@@ -23,11 +23,11 @@ export const BRANDING = {
     instagram: "https://www.instagram.com/pp_alandalus/",
     youtube: "https://www.youtube.com/andalustv",
     tiktok: "https://www.tiktok.com/@pp.alandalus",
-    address: "Jl. Raya Menteng, KM.13 RT.03/04, Dusun Cijurey, Desa Sukadamai, Kec. Sukamakmur, Kab. Bogor 16830",
+    address: "Jl. Raya Menteng, KM. 13 RT.03/04, Dusun Cijurey, Desa Sukadamai, Kec. Sukamakmur, Kab. Bogor.",
   },
   
   // Properties required by PPDB dashboard & layout backward compatibility
-  address: "Jl. Raya Menteng, KM.13 RT.03/04, Dusun Cijurey, Desa Sukadamai, Kec. Sukamakmur, Kab. Bogor 16830",
+  address: "Jl. Raya Menteng, KM. 13 RT.03/04, Dusun Cijurey, Desa Sukadamai, Kec. Sukamakmur, Kab. Bogor.",
   phone: "+62 838-1151-5951",
   email: "info@pesantren-alandalus.com",
   igUrl: "https://www.instagram.com/pp_alandalus/",

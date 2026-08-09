@@ -18,7 +18,7 @@ import {
   Languages,
   Briefcase,
   Heart,
-  AlertTriangle,
+  AlertTriangle, XCircle,
   Microscope,
   Star,
   ChevronRight,
@@ -509,7 +509,7 @@ export default function Home() {
             ].map((row, i) => (
               <div key={i} className="grid grid-cols-1 sm:grid-cols-2 border-t border-slate-800 hover:bg-slate-900/60 transition-colors group">
                 <div className="p-5 flex items-start gap-3 text-slate-400 text-sm border-r border-slate-800">
-                  <AlertTriangle className="w-4 h-4 text-red-500/70 mt-0.5 shrink-0" />
+                  <XCircle className="w-4 h-4 text-red-500/70 mt-0.5 shrink-0" />
                   {row.pain}
                 </div>
                 <div className="p-5 flex items-start gap-3 text-slate-200 text-sm font-medium">
@@ -886,6 +886,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 

@@ -300,7 +300,7 @@ export default function Home() {
                   { val: "2013", label: "Tahun Berdiri", Icon: FaStar },
                   { val: "A", label: "Akreditasi", Icon: HiAcademicCap },
                   { val: "1000+", label: "Santri & Alumni", Icon: Users },
-                  { val: "3", label: "Benua Alumni", Icon: FaGlobeAsia },
+                  { val: "Jejaring", label: "3 Benua", Icon: FaGlobeAsia },
                 ].map((s, i) => (
                   <div key={i} className="flex items-center gap-2">
                     {i > 0 && <span className="text-slate-700">·</span>}
@@ -320,14 +320,14 @@ export default function Home() {
                   alt="Kampus Pesantren Al-Andalus Jonggol"
                   width={600}
                   height={420}
-                  className="object-cover w-full h-[240px] sm:h-[320px] md:h-[380px]"
+                  className="object-cover object-top w-full h-[280px] sm:h-[360px] md:h-[420px]"
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
 
                 {/* Floating bottom card */}
                 <div className="absolute bottom-4 left-4 right-4">
-                  <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex items-center gap-4">
+                  <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3 sm:p-4 flex items-center gap-4">
                     <div className={`w-10 h-10 rounded-xl ${c.bg600} flex items-center justify-center shrink-0`}>
                       <GraduationCap className="w-5 h-5 text-white" />
                     </div>
@@ -886,5 +886,7 @@ export default function Home() {
     </div>
   );
 }
+
+
 
 

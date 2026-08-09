@@ -535,7 +535,7 @@ export default function Home() {
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mt-3 mb-8 md:mb-12">
                 Daftar dalam{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#166534] to-[#14532d]">
-                  4 Langkah
+                  7 Langkah
                 </span>{" "}Mudah
               </h2>
 
@@ -551,7 +551,7 @@ export default function Home() {
                       <div className={`w-12 h-12 rounded-2xl ${c.bg600} text-white font-black text-sm flex items-center justify-center shadow-lg ${c.shadow} shrink-0`}>
                         {step.num}
                       </div>
-                      {i < 3 && <div className="w-0.5 flex-1 mt-2 mb-2 bg-slate-200" />}
+                      {i < 6 && <div className="w-0.5 flex-1 mt-2 mb-2 bg-slate-200" />}
                     </div>
                     <div className="pb-8 pt-1">
                       <div className="flex items-center gap-2 mb-1">
@@ -886,6 +886,8 @@ export default function Home() {
     </div>
   );
 }
+
+
 
 
 

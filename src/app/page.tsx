@@ -405,7 +405,7 @@ export default function Home() {
             <div className="md:col-span-2 rounded-3xl p-8 bg-gradient-to-br from-[#059669] to-[#064e3b] text-white relative overflow-hidden group hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
               <div className="absolute top-0 right-0 w-56 h-56 rounded-full bg-white/10 -translate-y-1/2 translate-x-1/2 blur-2xl" />
               <FaQuran className="w-10 h-10 mb-6 opacity-90" />
-              <h3 className="text-2xl font-black mb-3">T — Tahfizh Al-Qur'an</h3>
+              <h3 className="text-2xl font-black mb-3 text-white">T — Tahfizh Al-Qur'an</h3>
               <p className="text-white/80 leading-relaxed mb-6">
                 Program hafalan Al-Qur'an 30 juz dengan metode Itqan yang teruji. Setiap santri mendapatkan
                 bimbingan intensif 26 jam/pekan bersama ustadz hafizh berpengalaman lulusan luar negeri.
@@ -418,7 +418,7 @@ export default function Home() {
             {/* I — Internasional (small) */}
             <div className="rounded-3xl p-8 bg-slate-900 text-white border border-slate-700 group hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
               <Globe className="w-10 h-10 mb-6 text-amber-400" />
-              <h3 className="text-xl font-black mb-3">I — Internasional</h3>
+              <h3 className="text-xl font-black mb-3 text-white">I — Internasional</h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
                 Kurikulum nasional + khas Andalus + persiapan kuliah ke luar negeri (Muadalah).
               </p>

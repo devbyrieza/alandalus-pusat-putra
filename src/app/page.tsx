@@ -306,7 +306,7 @@ export default function Home() {
                     {i > 0 && <span className="text-slate-700">·</span>}
                     <s.Icon className={`w-3.5 h-3.5 ${c.text400} shrink-0`} />
                     <span className="text-white font-black text-sm">{s.val}</span>
-                    <span className="text-slate-500 text-xs">{s.label}</span>
+                    <span className="text-slate-300 text-[13px] font-medium tracking-wide">{s.label}</span>
                   </div>
                 ))}
               </div>
@@ -886,4 +886,5 @@ export default function Home() {
     </div>
   );
 }
+
 

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { BRANDING, IS_PUTRA } from "@/config/branding";
 import {
@@ -60,7 +60,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-// ─── Animated Counter Hook ───────────────────────────────────────────────────
+// â”€â”€â”€ Animated Counter Hook â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function useCountUp(target: number, duration = 2000, start = false) {
   const [count, setCount] = useState(0);
   useEffect(() => {
@@ -78,7 +78,7 @@ function useCountUp(target: number, duration = 2000, start = false) {
   return count;
 }
 
-// ─── Counter Card ─────────────────────────────────────────────────────────────
+// â”€â”€â”€ Counter Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function StatCard({
   value,
   suffix = "",
@@ -118,7 +118,7 @@ function StatCard({
   );
 }
 
-// ─── Infinite Marquee ────────────────────────────────────────────────────────
+// â”€â”€â”€ Infinite Marquee â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const alumniItems = [
   { label: "Universitas Islam Madinah", Icon: FaMosque },
   { label: "Al-Azhar University, Mesir", Icon: FaUniversity },
@@ -159,7 +159,7 @@ function InfiniteMarquee() {
   );
 }
 
-// ─── Testimonials Data ──────────────────────────────────────────────────
+// â”€â”€â”€ Testimonials Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const TESTIMONIALS = [
   { initial: "I", name: "Bapak Irfan H.", role: "Orang Tua Santri · Jakarta", quote: "Awalnya khawatir anak jauh dari keluarga. Tapi setelah setahun, dia justru lebih mandiri dan hafalannya sudah 15 juz. Alhamdulillah." },
   { initial: "R", name: "Ibu Rahmawati", role: "Orang Tua Santri · Bandung", quote: "Komunikasi dengan pihak pesantren sangat baik. Laporan perkembangan putra kami rutin dikirim via WhatsApp, jadi saya benar-benar tenang." },
@@ -169,7 +169,7 @@ const TESTIMONIALS = [
   { initial: "S", name: "Ibu Sari M.", role: "Orang Tua Santri · Bogor", quote: "Fasilitas asramanya bersih dan terjaga. Anak saya betah dan tidak minta pindah — itu saja sudah membuktikan kualitas pesantrennya." },
 ];
 
-// ─── Main Component ────────────────────────────────────────────────────────
+// â”€â”€â”€ Main Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export default function Home() {
   const statsRef = useRef<HTMLDivElement>(null);
   const [statsStarted, setStatsStarted] = useState(false);
@@ -208,7 +208,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
 
-      {/* ═══ ANNOUNCEMENT BAR ═══════════════════════════════════════════════ */}
+      {/* â•â•â• ANNOUNCEMENT BAR â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <div className={`w-full py-2 sm:py-2.5 text-xs font-bold text-white ${c.bg600} flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 px-8`}>
         <Zap className="w-3.5 h-3.5 shrink-0" />
         <span className="sm:hidden">PPDB Angkatan IX — Kuota Terbatas!</span>
@@ -219,7 +219,7 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* ═══ §1 HERO SECTION — SPLIT DARK ═══════════════════════════════════ */}
+      {/* â•â•â• Â§1 HERO SECTION — SPLIT DARK â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section
         id="hero"
         className="relative min-h-[auto] md:min-h-[85vh] flex items-center bg-[#020617] pt-6 sm:pt-12 md:pt-16 pb-10 md:pb-20 overflow-hidden"
@@ -272,7 +272,7 @@ export default function Home() {
                 <p className="text-base md:text-lg text-slate-400 max-w-xl leading-relaxed text-left">
                   Kurikulum <strong className="text-white">TICE</strong> — Tahfizh Al-Qur'an, Internasional,
                   Karakter Mulia, dan Entrepreneurship. Bergabung bersama{" "}
-                  <strong className="text-white">400+ santri aktif</strong> di lingkungan asrama terbaik.
+                  <strong className="text-white">Ribuan santri berprestasi</strong> di lingkungan asrama terbaik.
                 </p>
               </div>
 
@@ -299,7 +299,7 @@ export default function Home() {
                 {[
                   { val: "2013", label: "Tahun Berdiri", Icon: FaStar },
                   { val: "VIII", label: "Angkatan", Icon: HiAcademicCap },
-                  { val: "400+", label: "Santri Aktif", Icon: Users },
+                  { val: "1000+", label: "Santri & Alumni", Icon: Users },
                   { val: "3", label: "Benua Alumni", Icon: FaGlobeAsia },
                 ].map((s, i) => (
                   <div key={i} className="flex items-center gap-2">
@@ -358,7 +358,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ §2 STATS BAND — Animated Counters ══════════════════════════════ */}
+      {/* â•â•â• Â§2 STATS BAND — Animated Counters â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section
         ref={statsRef}
         className="relative py-20 bg-[#0f172a] border-y border-white/5"
@@ -381,7 +381,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ §3 BENTO GRID — Kurikulum TICE ════════════════════════════════ */}
+      {/* â•â•â• Â§3 BENTO GRID — Kurikulum TICE â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section id="program" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="text-center mb-16">
@@ -471,7 +471,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ §4 PAIN vs SOLUTION TABLE ══════════════════════════════════════ */}
+      {/* â•â•â• Â§4 PAIN vs SOLUTION TABLE â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section className="py-24 bg-[#020617]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="text-center mb-16">
@@ -522,7 +522,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ §5 CARA DAFTAR — Step-by-Step ════════════════════════════════ */}
+      {/* â•â•â• Â§5 CARA DAFTAR — Step-by-Step â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section id="cara-daftar" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
@@ -590,24 +590,24 @@ export default function Home() {
                 <div className="p-6 font-mono text-sm space-y-2">
                   <p className="text-slate-600">$ cek status PPDB 2027-2028...</p>
                   <p>
-                    <span className={c.text400}>▸</span>{" "}
+                    <span className={c.text400}>â–¸</span>{" "}
                     <span className="text-white">Status Pendaftaran</span>{" "}
                     <span className="text-green-400 font-bold inline-flex items-center gap-1">
                       <Check className="w-3.5 h-3.5" /> DIBUKA
                     </span>
                   </p>
                   <p>
-                    <span className={c.text400}>▸</span>{" "}
+                    <span className={c.text400}>â–¸</span>{" "}
                     <span className="text-white">Angkatan</span>{" "}
                     <span className="text-amber-400">IX (2027-2028)</span>
                   </p>
                   <p>
-                    <span className={c.text400}>▸</span>{" "}
+                    <span className={c.text400}>â–¸</span>{" "}
                     <span className="text-white">Lokasi</span>{" "}
                     <span className="text-slate-400">Sukamakmur, Jonggol, Bogor</span>
                   </p>
                   <p>
-                    <span className={c.text400}>▸</span>{" "}
+                    <span className={c.text400}>â–¸</span>{" "}
                     <span className="text-slate-600">kuota terbatas — daftar segera...</span>
                   </p>
                   <p className="flex items-center gap-1 text-slate-300">
@@ -648,7 +648,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ §6 ALUMNI MARQUEE ══════════════════════════════════════════════ */}
+      {/* â•â•â• Â§6 ALUMNI MARQUEE â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section className="py-16 bg-[#052e16] border-y border-white/5 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
           <span className={`text-xs font-bold uppercase tracking-widest ${c.text400}`}>
@@ -662,7 +662,7 @@ export default function Home() {
         <InfiniteMarquee />
       </section>
 
-      {/* ═══ §7 FEATURE GRID ════════════════════════════════════════════════ */}
+      {/* â•â•â• Â§7 FEATURE GRID â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="text-center mb-16">
@@ -701,7 +701,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ §8 SOCIAL PROOF — University Grid ══════════════════════════════ */}
+      {/* â•â•â• Â§8 SOCIAL PROOF — University Grid â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section className="py-20 bg-[#052e16]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-slate-500 text-xs font-bold uppercase tracking-widest mb-10 flex items-center justify-center gap-2">
@@ -737,7 +737,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ §9 GALERI FOTO PESANTREN ═══════════════════════════════════════ */}
+      {/* â•â•â• Â§9 GALERI FOTO PESANTREN â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="text-center mb-12">
@@ -777,7 +777,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ §9.5 TESTIMONIAL — Suara Orang Tua ══════════════════════════════ */}
+      {/* â•â•â• Â§9.5 TESTIMONIAL — Suara Orang Tua â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section className="py-24 bg-[#0f172a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="text-center mb-16">
@@ -827,7 +827,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ §10 FINAL CTA ══════════════════════════════════════════════════ */}
+      {/* â•â•â• Â§10 FINAL CTA â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section className="py-24 bg-[#0f172a] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[400px] rounded-full opacity-20 blur-[100px] bg-[#166534]" />
@@ -886,3 +886,4 @@ export default function Home() {
     </div>
   );
 }
+

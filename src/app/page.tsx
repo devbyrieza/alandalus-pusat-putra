@@ -26,6 +26,11 @@ import {
   Medal,
   Building2,
   Users,
+  UserPlus,
+  FileText,
+  CreditCard,
+  BellRing,
+  ClipboardCheck,
 } from "lucide-react";
 import {
   FaMosque,
@@ -547,10 +552,13 @@ export default function Home() {
 
               <ol className="space-y-0">
                 {[
-                  { num: "01", title: "Isi Formulir Online", desc: "Daftar via website ini. Isi data diri calon santri dengan lengkap dan benar.", Icon: HiOutlineBookOpen },
-                  { num: "02", title: "Upload Berkas Dokumen", desc: "Upload foto rapor, foto santri, akte lahir, dan kartu keluarga melalui portal.", Icon: PiCertificateBold },
-                  { num: "03", title: "Lakukan Pembayaran", desc: "Bayar biaya seleksi via transfer bank atau metode pembayaran yang tersedia.", Icon: TrendingUp },
-                  { num: "04", title: "Ikuti Ujian Seleksi", desc: "Hadir di hari yang ditentukan untuk mengikuti ujian tulis dan wawancara.", Icon: HiAcademicCap },
+                  { num: "01", title: "Buat Akun", desc: "Mendaftar dan mengisi form pendaftaran awal.", Icon: UserPlus },
+                  { num: "02", title: "Pembayaran", desc: "Membayar biaya pendaftaran seleksi calon santri baru.", Icon: CreditCard },
+                  { num: "03", title: "Lengkapi Data", desc: "Mengisi data lengkap calon santri dan orangtua/wali.", Icon: FileText },
+                  { num: "04", title: "Upload Berkas", desc: "Upload berkas persyaratan (Rapor, KK, Akte, dll).", Icon: ClipboardCheck },
+                  { num: "05", title: "Tes Seleksi", desc: "Mengikuti ujian tes tertulis dan wawancara.", Icon: HiAcademicCap },
+                  { num: "06", title: "Pengumuman", desc: "Pengumuman hasil kelulusan seleksi PPDB.", Icon: BellRing },
+                  { num: "07", title: "Daftar Ulang", desc: "Membayar uang pangkal dan SPP bulan pertama.", Icon: CheckCircle2 },
                 ].map((step, i) => (
                   <li key={i} className="flex gap-6">
                     <div className="flex flex-col items-center">

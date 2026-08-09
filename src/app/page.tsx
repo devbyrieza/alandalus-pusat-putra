@@ -373,9 +373,9 @@ export default function Home() {
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            <StatCard value={800} suffix="+" label="Alumni" icon={FaUserGraduate} started={statsStarted} delay={0} />
-            <StatCard value={400} suffix="+" label="Santri Aktif" icon={Users} started={statsStarted} delay={200} />
-            <StatCard value={12} suffix="" label="Tahun Pengalaman" icon={FaTrophy} started={statsStarted} delay={400} />
+            <StatCard value={700} suffix="+" label="Alumni" icon={FaUserGraduate} started={statsStarted} delay={0} />
+            <StatCard value={500} suffix="+" label="Santri Aktif" icon={Users} started={statsStarted} delay={200} />
+            <StatCard value={13} suffix="" label="Tahun Pengalaman" icon={FaTrophy} started={statsStarted} delay={400} />
             <StatCard value={50} suffix="+" label="Perguruan Tinggi" icon={FaUniversity} started={statsStarted} delay={600} />
           </div>
         </div>
@@ -886,6 +886,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 

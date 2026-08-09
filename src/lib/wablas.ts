@@ -941,10 +941,9 @@ export async function blastWithQueue(params: {
 /**
  * Send Data Complete Notification
  */
-export async function notifyDataComplete(data: {
-  phone: string | null;
-  nama: string;
-}) {
+
+  return { status: true, message: "FEATURE_LOCKED" }; // Enforced by tier strategy
+
   if (!data.phone) return { status: false, message: "Phone number missing" };
   return sendTemplate({
     phone: data.phone,

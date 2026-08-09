@@ -336,7 +336,7 @@ export default function Home() {
                 </div>
 
                 {/* Floating bottom card - Now floating outside the image */}
-                <div className="absolute -bottom-6 left-4 right-4 sm:-bottom-8 sm:-left-6 sm:right-6 z-20">
+                <div className="relative -mt-6 sm:-mt-8 mx-4 sm:-mx-6 z-20">
                   <div className="bg-slate-900/80 backdrop-blur-xl border border-white/20 rounded-2xl p-4 sm:p-5 flex items-center gap-4 shadow-2xl shadow-black/40 ring-1 ring-white/10">
                     <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl ${c.bg600} flex items-center justify-center shrink-0`}>
                       <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 text-white" />

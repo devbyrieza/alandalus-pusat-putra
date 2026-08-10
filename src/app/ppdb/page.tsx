@@ -246,29 +246,7 @@ function PPDBContent() {
               berakhlak mulia.
             </motion.p>
 
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.25 }}
-              className="max-w-4xl mx-auto bg-primary-50 border border-primary-100 rounded-3xl p-6 md:p-8 mb-12 flex flex-col md:flex-row items-center gap-6 text-left shadow-premium-sm"
-            >
-              <div className="w-16 h-16 bg-primary-600 rounded-2xl flex items-center justify-center text-white shrink-0 shadow-premium-md relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-20" />
-                <Award className="w-8 h-8 relative z-10" />
-              </div>
-              <div>
-                <h3 className="text-xl md:text-2xl font-display font-black text-primary-900 mb-2">
-                  Kesempatan Emas: Angkatan Pertama Era Al Andalus
-                </h3>
-                <p className="text-primary-800 font-medium leading-relaxed">
-                  Menjadi bagian dari angkatan 2027-2028 adalah sebuah
-                  keistimewaan. Ananda akan menjadi{" "}
-                  <strong>pionir dan tonggak sejarah pertama</strong> yang
-                  merasakan secara penuh perpaduan mantap antara sistem unggulan
-                  Al Andalus dengan kekayaan warisan Al   Imam.
-                </p>
-              </div>
-            </motion.div>
+
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}

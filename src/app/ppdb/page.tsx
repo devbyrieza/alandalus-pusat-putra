@@ -127,10 +127,10 @@ function PPDBContent() {
   const jenjang = searchParams.get("jenjang");
 
   const stats = [
-    { label: "Kuota MTs", value: "25 Santri", icon: Users },
-    { label: "Kuota I'dad", value: "25 Santri", icon: Users },
+    { label: "Akreditasi A", value: "Unggul", icon: Award },
+    { label: "Sebaran Alumni", value: "3 Benua", icon: Users },
     { label: "Asatidz", value: "Lulusan Terbaik", icon: GraduationCap },
-    { label: "Target", value: "TimTeng & PTN Favorit", icon: Target },
+    { label: "Target", value: "TimTeng & PTN", icon: Target },
   ];
 
   const timeline = [

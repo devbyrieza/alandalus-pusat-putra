@@ -167,7 +167,7 @@ function InfiniteMarquee() {
 // â”€â”€â”€ Testimonials Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const TESTIMONIALS = [
   { initial: "I", name: "Bapak Irfan H.", role: "Orang Tua Santri · Jakarta", quote: "Awalnya khawatir anak jauh dari keluarga. Tapi setelah setahun, dia justru lebih mandiri dan hafalannya sudah 15 juz. Alhamdulillah." },
-  { initial: "R", name: "Ibu Rahmawati", role: "Orang Tua Santri · Bandung", quote: "Komunikasi dengan pihak pesantren sangat baik. Laporan perkembangan putra kami rutin dikirim via WhatsApp, jadi saya benar-benar tenang." },
+  { initial: "R", name: "Ibu Rahmawati", role: "Orang Tua Santri · Bandung", quote: `Komunikasi dengan pihak pesantren sangat baik. Laporan perkembangan ${IS_PUTRA ? "putra" : "putri"} kami rutin dikirim via WhatsApp, jadi saya benar-benar tenang.` },
   { initial: "D", name: "Bapak Dedy S.", role: "Orang Tua Santri · Surabaya", quote: "Anak saya yang dulu malas sholat, kini jadi imam masjid kampung saat liburan. Perubahan yang tidak pernah kami bayangkan sebelumnya." },
   { initial: "F", name: "Ibu Fitri A.", role: "Orang Tua Santri · Bekasi", quote: "Kurikulum TICE ini memang berbeda. Anak hafal Qur'an sekaligus lancar berbahasa Arab dan Inggris. Dua kebaikan yang kami dapat sekaligus." },
   { initial: "H", name: "Bapak Hendra P.", role: "Orang Tua Santri · Medan", quote: "Tahun pertama sempat ragu. Tapi melihat perubahan karakter dan prestasi anak dalam dua tahun ini, tidak ada yang kami sesalkan." },
@@ -805,7 +805,7 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-slate-400 max-w-xl mx-auto">
-              Dengarkan langsung dari para orang tua yang telah mempercayakan pendidikan putra mereka kepada Al-Andalus.
+              Dengarkan langsung dari para orang tua yang telah mempercayakan pendidikan {IS_PUTRA ? "putra" : "putri"} mereka kepada Al-Andalus.
             </p>
           </header>
 
@@ -855,13 +855,13 @@ export default function Home() {
             </span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-6">
-            Siapkan Putra Anda untuk{" "}
+            Siapkan {IS_PUTRA ? "Putra" : "Putri"} Anda untuk{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706]">
               Masa Depan Gemilang
             </span>
           </h2>
           <p className="text-slate-400 text-lg mb-10 max-w-xl mx-auto">
-            Bergabunglah bersama ratusan keluarga yang telah mempercayakan pendidikan putra mereka
+            Bergabunglah bersama ratusan keluarga yang telah mempercayakan pendidikan {IS_PUTRA ? "putra" : "putri"} mereka
             kepada Al-Andalus selama 12 tahun.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

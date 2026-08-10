@@ -269,7 +269,7 @@ export default function Home() {
               <div className="space-y-4">
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif italic font-black text-white leading-[1.1] tracking-tight">
                   Cetak Generasi{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706] pr-2 md:pr-4">
+                  <span className="box-decoration-clone text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706] pr-2 md:pr-4">
                     Rabbani
                   </span>{" "}
                   Berkelas Dunia.
@@ -401,7 +401,7 @@ export default function Home() {
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 mt-3 mb-4 text-balance">
               Kurikulum{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#059669] to-[#064e3b] pr-1">
+              <span className="box-decoration-clone text-transparent bg-clip-text bg-gradient-to-r from-[#059669] to-[#064e3b] pr-1">
                 TICE
               </span>
               <span className="block mt-1 text-2xl sm:text-3xl md:text-4xl font-bold text-slate-500">Empat Pilar Pendidikan Unggul</span>
@@ -545,7 +545,7 @@ export default function Home() {
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mt-3 mb-8 md:mb-12">
                 Daftar dalam{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#166534] to-[#14532d]">
+                <span className="box-decoration-clone text-transparent bg-clip-text bg-gradient-to-r from-[#166534] to-[#14532d]">
                   7 Langkah
                 </span>{" "}Mudah
               </h2>
@@ -685,7 +685,7 @@ export default function Home() {
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 mt-3">
               Semua yang Dibutuhkan Santri,{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#166534] to-[#14532d]">
+              <span className="box-decoration-clone text-transparent bg-clip-text bg-gradient-to-r from-[#166534] to-[#14532d]">
                 Tersedia
               </span>
             </h2>
@@ -800,7 +800,7 @@ export default function Home() {
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-white mt-3 mb-4 text-balance px-4 sm:px-0">
               Mereka Sudah{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706] pr-1">
+              <span className="box-decoration-clone text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706] pr-1">
                 Membuktikannya
               </span>
             </h2>
@@ -856,7 +856,7 @@ export default function Home() {
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-6">
             Siapkan {IS_PUTRA ? "Putra" : "Putri"} Anda untuk{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706]">
+            <span className="box-decoration-clone text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706]">
               Masa Depan Gemilang
             </span>
           </h2>

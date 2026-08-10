@@ -136,7 +136,7 @@ function PPDBContent() {
   const timeline = [
     {
       phase: "Registrasi Online",
-      date: "10 Feb - 7 Juni 2026",
+      date: "Mulai 28 Agustus 2026",
       desc: "Buat akun pendaftar dan isi formulir awal melalui website resmi.",
       status: "active",
     },

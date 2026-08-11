@@ -569,7 +569,7 @@ function PPDBContent() {
                 <span className="text-gold-400">Ananda Di Sini</span>
               </h2>
               <p className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-100 max-w-2xl mx-auto mb-6 sm:mb-8 md:mb-10 lg:mb-12 font-medium leading-relaxed px-2">
-                {`Jangan lewatkan kesempatan emas untuk memberikan pendidikan terbaik bagi masa depan ${IS_PUTRA ? "putra" : "putri"} Anda. Segera daftarkan ananda sebelum kuota terpenuhi.`}
+                Jangan lewatkan kesempatan emas untuk memberikan pendidikan terbaik bagi masa depan putra Anda. Segera daftarkan ananda sebelum kuota terpenuhi.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center px-4">
                 <Link href="/daftar">

@@ -56,7 +56,7 @@ export function CTAInfoPPDB({
       >
         <Link href="/ppdb" className="flex items-center justify-center gap-2">
           <FileText className="w-5 h-5" />
-          <span>Pelajari PPDB 2027-2028</span>
+          <span>Pelajari PPDB 2026-2027</span>
         </Link>
       </Button>
 
@@ -64,7 +64,7 @@ export function CTAInfoPPDB({
         <p className="text-xs text-center text-[var(--color-text-500)]">
           Pendaftaran dibuka hingga{" "}
           <span className="font-bold text-[var(--color-gold-700)]">
-            31 Maret 2026
+            31 Maret 2025
           </span>
         </p>
       )}
@@ -179,7 +179,7 @@ export function CTADaftarSekarang({
   };
 
   const urgencyMessages = {
-    default: "Hanya tersisa 50 kuota untuk tahun ajaran 2027-2028",
+    default: "Hanya tersisa 50 kuota untuk tahun ajaran 2026-2027",
     countdown: "Pendaftaran ditutup dalam 15 hari lagi!",
     scarcity: "50 dari 500 kuota sudah terisi - Buruan daftar!",
     none: null,
@@ -315,7 +315,7 @@ export function MobileCTAPPDB() {
         <Clock className="w-5 h-5 text-[var(--color-gold-600)] flex-shrink-0 mt-0.5" />
         <div>
           <p className="text-sm font-bold text-[var(--color-text-900)] mb-1">
-            Pendaftaran Ditutup 31 Maret 2026
+            Pendaftaran Ditutup 31 Maret 2025
           </p>
           <p className="text-xs text-[var(--color-text-600)]">
             Hanya tersisa{" "}

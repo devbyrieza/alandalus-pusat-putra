@@ -284,7 +284,7 @@ export default function WelcomeDayPage() {
               <PartyPopper className="w-8 h-8 md:w-10 md:h-10 text-gold-400 drop-shadow-sm" />
               Welcome Day & Serah Terima
             </span>
-            <span className="text-gold-300 block mt-2 text-xl md:text-2xl">Santri Baru 2027-2028</span>
+            <span className="text-gold-300 block mt-2 text-xl md:text-2xl">Santri Baru 2026-2027</span>
           </h1>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
@@ -292,7 +292,7 @@ export default function WelcomeDayPage() {
               <Calendar className="w-5 h-5 text-gold-300 flex-shrink-0" />
               <div>
                 <p className="text-[10px] text-white/60 uppercase tracking-wider font-bold">Hari & Tanggal</p>
-                <p className="text-sm font-black text-white">Sabtu, 18 Juli 2026</p>
+                <p className="text-sm font-black text-white">Sabtu, 18 Juli 2025</p>
               </div>
             </div>
             <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-2xl px-4 py-3 border border-white/10">
@@ -340,7 +340,7 @@ export default function WelcomeDayPage() {
       {/* ─── DOKUMEN RESMI (DOWNLOAD) ─── */}
       <div className="grid grid-cols-1 gap-4">
         <a
-          href="/documents/Surat Pemberitahuan Kedatangan Santri Baru 2027-2028.pdf"
+          href="/documents/Surat Pemberitahuan Kedatangan Santri Baru 2026-2027.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-3 bg-white hover:bg-emerald-50 rounded-2xl p-4 border border-ink-100 hover:border-emerald-200 transition-all shadow-sm group"
@@ -467,7 +467,7 @@ export default function WelcomeDayPage() {
                     <div>
                       <p className={`font-black text-base ${formData.statusKehadiran === "HADIR" ? "text-white" : "text-ink-900"}`}>Ya, Kami Akan Hadir</p>
                       <p className={`text-xs font-medium mt-1 ${formData.statusKehadiran === "HADIR" ? "text-emerald-50" : "text-ink-500"}`}>
-                        Kami siap hadir pada 18 Juli 2026
+                        Kami siap hadir pada 18 Juli 2025
                       </p>
                     </div>
                   </button>
@@ -898,7 +898,7 @@ export default function WelcomeDayPage() {
           </div>
           <div>
             <h2 className="font-black text-primary-950 text-base">Jadwal Acara Welcome Day</h2>
-            <p className="text-xs text-primary-600 font-bold">Sabtu, 18 Juli 2026</p>
+            <p className="text-xs text-primary-600 font-bold">Sabtu, 18 Juli 2025</p>
           </div>
         </div>
         <div className="p-5">

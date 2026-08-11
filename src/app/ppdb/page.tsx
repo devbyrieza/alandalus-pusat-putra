@@ -136,7 +136,7 @@ function PPDBContent() {
   const timeline = [
     {
       phase: "Registrasi Online",
-      date: "Mulai 28 Agustus 2026",
+      date: "25 Jan - 7 Feb 2026",
       desc: "Buat akun pendaftar dan isi formulir awal melalui website resmi.",
       status: "active",
     },
@@ -154,7 +154,7 @@ function PPDBContent() {
     },
     {
       phase: "Ujian Seleksi",
-      date: "Jadwal Dipilih",
+      date: "Ahad, 8 Februari 2026",
       desc: "Tes Lisan (Tahfidz/Bacaan Al-Qur'an), Tes Tertulis (Pengetahuan Dasar Agama & Akademik), serta Seleksi Wawancara Calon Santri & Orang Tua.",
       status: "upcoming",
     },
@@ -177,25 +177,22 @@ function PPDBContent() {
       title: "Dokumen Persyaratan",
       icon: FileText,
       items: [
-        { name: "Scan Kartu Keluarga", type: "Wajib" },
-        { name: "Scan Akte Kelahiran", type: "Wajib" },
-        { name: "Scan Rapor 2 Semester Terakhir", type: "Wajib" },
-        { name: "Scan Nomor Induk Siswa Nasional (NISN)", type: "Wajib" },
-        { name: "Foto Setengah Badan", type: "Wajib" },
+        { name: "Scan Akta Kelahiran", type: "Wajib" },
+        { name: "Scan Rapor 4 Semester Terakhir, SD/MI Kelas 4 & 5 atau SMP/MTS Kelas 7 & 8", type: "Wajib" },
+        { name: "Scan Kartu Keluarga (KK)", type: "Wajib" },
+        { name: "Scan Nomor Induk Siswa Nasional (NISN) atau Surat Keterangan NISN", type: "Wajib" },
+        { name: "Foto Setengah Badan (Putra: background merah, baju putih berkerah, tanpa penutup kepala & kacamata)", type: "Wajib" },
+        { name: "Scan Hasil Tes Lab HBsAg (Hepatitis B)", type: "Wajib" },
       ],
     },
     {
       title: "Dokumen Pendukung",
       icon: CheckCircle,
-      note: "Ketiga format dokumen di atas dapat di-unduh melalui akun Dashboard pendaftar saat Anda sudah berada di tahap upload berkas.",
+      note: "Format dokumen di bawah dapat di-unduh (DOWNLOAD) melalui akun Dashboard pendaftar saat Anda sudah berada di tahap upload berkas.",
       items: [
-        { name: "Surat Keterangan Sehat (Format Panitia)", type: "Wajib" },
-        { name: "Scan Pakta Integritas Calon Santri (Format Panitia)", type: "Wajib" },
-        { name: "Scan Pakta Integritas Calon Orangtua/Wali Santri (Format Panitia)", type: "Wajib" },
-        {
-          name: "Scan Pernyataan Bebas Perilaku Negatif (Format Panitia)",
-          type: "Wajib",
-        },
+        { name: "Surat Keterangan Sehat (Format Bebas, dari RS/Klinik)", type: "Wajib" },
+        { name: "Scan Pakta Integritas (Format Panitia)", type: "Wajib" },
+        { name: "Scan Pernyataan Bebas Perilaku Negatif (Format Panitia)", type: "Wajib" },
       ],
     },
   ];
@@ -222,7 +219,7 @@ function PPDBContent() {
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-surface-200 text-primary-700 text-xs font-black uppercase tracking-widest mb-10 shadow-premium-sm"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Penerimaan Santri Baru T.A 2027-2028</span>
+              <span>Penerimaan Santri Baru T.A 2026-2027</span>
             </motion.div>
 
             <motion.h1
@@ -377,7 +374,7 @@ function PPDBContent() {
             </div>
             <div>
               <p className="text-lg text-primary-900 font-bold leading-relaxed">
-                Catatan Penting: Uang Pangkal TA. 2027-2028 sebesar Rp 35.000.000 dapat dicicil maksimal 3x pembayaran. Skema: <strong>50% (Rp 17.500.000)</strong> dibayar 1 pekan setelah pengumuman kelulusan, <strong>25%</strong> paling lambat 1 Maret 2027, dan <strong>25%</strong> sisanya lunas pada 1 Juli 2027. Uang pangkal dikembalikan 100% jika mengundurkan diri dalam 14 hari setelah pengumuman.
+                Catatan Penting: Uang Pangkal TA. 2026-2027 sebesar Rp 35.000.000 dapat dicicil maksimal 3x pembayaran. Skema: <strong>50% (Rp 17.500.000)</strong> dibayar 1 pekan setelah pengumuman kelulusan, <strong>25%</strong> paling lambat 1 Maret 2026, dan <strong>25%</strong> sisanya lunas pada 1 Juli 2026. Uang pangkal dikembalikan 100% jika mengundurkan diri dalam 14 hari setelah pengumuman.
               </p>
             </div>
           </motion.div>
@@ -518,7 +515,7 @@ function PPDBContent() {
                     },
                     {
                       q: "Kapan batas akhir pendaftaran?",
-                      a: "Pendaftaran PPDB Tahun Ajaran 2027-2028 dibuka mulai tanggal 10 Februari sampai dengan 7 Juni 2026. Namun, pendaftaran dapat ditutup lebih awal jika kuota santri baru sudah terpenuhi.",
+                      a: "Pendaftaran PPDB Tahun Ajaran 2026-2027 dibuka mulai tanggal 25 Januari sampai dengan 7 Februari 2026. Namun, pendaftaran dapat ditutup lebih awal jika kuota santri baru sudah terpenuhi.",
                     },
                     {
                       q: "Bagaimana sistem kurikulumnya?",
@@ -645,3 +642,4 @@ export default function PPDBPage() {
     </Suspense>
   );
 }
+

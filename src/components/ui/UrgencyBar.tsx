@@ -5,7 +5,7 @@ import { X, Clock, Zap } from "lucide-react";
 import Link from "next/link";
 
 // PPDB deadline: 30 Juni 2026
-const DEADLINE = new Date("2026-06-30T23:59:59+07:00");
+const DEADLINE = new Date("2025-06-30T23:59:59+07:00");
 
 function getCountdown() {
   const now = new Date();
@@ -46,7 +46,7 @@ export default function UrgencyBar() {
           <div className="flex items-center gap-1.5 shrink-0">
             <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-primary-200 whitespace-nowrap">
-              PPDB 2027-2028 Dibuka
+              PPDB 2026-2027 Dibuka
             </span>
           </div>
 

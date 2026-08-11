@@ -381,7 +381,7 @@ export default function DashboardLayout({
                       </span>
                     </h1>
                     <p className="text-[10px] text-ink-500 font-bold mt-1 uppercase tracking-widest">
-                      Tahun 2027-2028
+                      Tahun 2026-2027
                     </p>
                   </div>
                 </div>
@@ -584,7 +584,7 @@ export default function DashboardLayout({
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-black text-primary-900"><Calendar size={20} className="inline-block mr-2" /> Konfirmasi Welcome Day Belum Diisi!</p>
-                      <p className="text-xs text-primary-700 leading-snug mt-0.5">Harap konfirmasi kehadiran Welcome Day (18 Juli 2026) segera.</p>
+                      <p className="text-xs text-primary-700 leading-snug mt-0.5">Harap konfirmasi kehadiran Welcome Day (18 Juli 2025) segera.</p>
                     </div>
                     <Link
                       href="/dashboard/pendaftar/welcome-day"

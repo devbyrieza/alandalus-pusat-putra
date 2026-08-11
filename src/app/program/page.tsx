@@ -17,6 +17,7 @@ import {
   Trophy,
   Globe,
   ShieldCheck,
+  CreditCard,
 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/button";
@@ -32,9 +33,12 @@ const PROGRAMS = [
     description:
       "Kami menerapkan Kurikulum Terpadu yang menggabungkan standar Nasional dengan khas Andalus, berfokus pada penguasaan Tahfidz Al-Qur'an serta pembentukan karakter Leadership yang kokoh sejak dini.",
     stats: [
+      { label: "Kuota Putra", value: "60 Santri", icon: Users },
       { label: "Tahfidz", value: "Target 12 Juz", icon: BookOpen },
-      { label: "Prioritas", value: "Leadership", icon: ShieldCheck },
-      { label: "Bahasa", value: "Dwi-Bahasa", icon: Globe },
+      { label: "Biaya Daftar", value: "Rp 500.000", icon: CreditCard },
+      { label: "Uang Pangkal", value: "Rp 35 Juta", icon: CreditCard },
+      { label: "SPP Bulanan", value: "Rp 3 Juta", icon: CreditCard },
+      { label: "Daftar Ulang", value: "Mulai Thn ke-2", icon: Calendar },
     ],
     curriculum: [
       "Target Hafalan 12 Juz Mutqin",
@@ -56,9 +60,12 @@ const PROGRAMS = [
     description:
       "Program persiapan intensif menuju jenjang Aliyah, berfokus pada pemantapan Bahasa Arab, Tahfidz, dan kematangan leadership organisasi untuk mencetak kader ulama yang kontributif.",
     stats: [
+      { label: "Kuota Putra", value: "30 Santri", icon: Users },
       { label: "Tahfidz", value: "Target 16 Juz", icon: BookOpen },
-      { label: "Kekhasan", value: "Kader Leadership", icon: Users },
-      { label: "Fokus", value: "Bahasa & Syar'i", icon: Sparkles },
+      { label: "Biaya Daftar", value: "Rp 500.000", icon: CreditCard },
+      { label: "Uang Pangkal", value: "Rp 35 Juta", icon: CreditCard },
+      { label: "SPP Bulanan", value: "Rp 3 Juta", icon: CreditCard },
+      { label: "Daftar Ulang", value: "Mulai Thn ke-2", icon: Calendar },
     ],
     curriculum: [
       "Tahun I'dad: Intensif Bahasa Arab",

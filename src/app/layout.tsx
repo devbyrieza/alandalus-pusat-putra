@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(BRANDING.websiteUrl),
 
   title: {
-    default: `${BRANDING.schoolName} | PPDB 2027-2028`,
+    default: `${BRANDING.schoolName} | PPDB 2026-2027`,
     template: `%s | ${BRANDING.schoolName}`,
   },
   description: `Pendaftaran Santri Baru ${BRANDING.schoolName}. Pendidikan berbasis Al-Qur'an dan As-Sunnah sesuai pemahaman salafush shalih.`,
@@ -87,9 +87,9 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: `${BRANDING.schoolName} | PPDB 2027-2028`,
+    title: `${BRANDING.schoolName} | PPDB 2026-2027`,
     description:
-      "Pendidikan berbasis Al-Qur'an dan As-Sunnah sesuai pemahaman salafush shalih. Daftar sekarang untuk tahun ajaran 2027-2028.",
+      "Pendidikan berbasis Al-Qur'an dan As-Sunnah sesuai pemahaman salafush shalih. Daftar sekarang untuk tahun ajaran 2026-2027.",
     url: BRANDING.websiteUrl,
     siteName: BRANDING.schoolName,
     images: [
@@ -106,7 +106,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: `${BRANDING.schoolName} | PPDB 2027-2028`,
+    title: `${BRANDING.schoolName} | PPDB 2026-2027`,
     description:
       "Pendidikan berbasis Al-Qur'an dan As-Sunnah sesuai pemahaman salafush shalih.",
     images: ["/twitter-image.jpg"],

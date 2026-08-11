@@ -31,6 +31,7 @@ export function middleware(request: NextRequest) {
     if (!isPpdbRoute && pathname !== "/" && !host.includes("localhost") && !host.includes("127.0.0.1")) {
       const url = request.nextUrl.clone();
       url.host = host.replace("ppdb.", "");
+      url.port = "";
       return NextResponse.redirect(url);
     }
   } else {
@@ -39,6 +40,7 @@ export function middleware(request: NextRequest) {
       const url = request.nextUrl.clone();
       const newHost = `ppdb.${host.replace("www.", "")}`;
       url.host = newHost;
+      url.port = "";
       
       // If accessing /ppdb on main domain, remove it so it goes to root of subdomain
       if (pathname === "/ppdb") {

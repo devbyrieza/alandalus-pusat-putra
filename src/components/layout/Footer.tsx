@@ -12,7 +12,7 @@ export default function Footer() {
   const primaryBgHov  = IS_PUTRA ? "hover:bg-primary-700" : "hover:bg-sky-700";
 
   return (
-    <footer className="bg-slate-950 border-t border-slate-800 text-slate-400">
+    <footer className="bg-andalus-green-950 border-t border-andalus-green-800 text-slate-400">
 
       {/* Main Footer Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -47,7 +47,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 flex items-center justify-center transition-colors group"
+                  className="w-10 h-10 rounded-xl bg-andalus-green-800 hover:bg-slate-700 flex items-center justify-center transition-colors group"
                 >
                   <Icon className="w-4 h-4 text-slate-400 group-hover:text-white transition-colors" />
                 </a>
@@ -104,14 +104,14 @@ export default function Footer() {
                 href={`mailto:${BRANDING.email}`}
                 className="flex items-center gap-3 text-sm text-slate-500 hover:text-slate-200 transition-colors"
               >
-                <div className="w-9 h-9 rounded-xl bg-slate-800 flex items-center justify-center shrink-0">
+                <div className="w-9 h-9 rounded-xl bg-andalus-green-800 flex items-center justify-center shrink-0">
                   <Mail className="w-4 h-4 text-slate-400" />
                 </div>
                 <span>{BRANDING.email}</span>
               </a>
 
               <div className="flex items-start gap-3 text-sm text-slate-500">
-                <div className="w-9 h-9 rounded-xl bg-slate-800 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-9 h-9 rounded-xl bg-andalus-green-800 flex items-center justify-center shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4 text-slate-400" />
                 </div>
                 <span className="leading-relaxed">{BRANDING.contact.address}</span>
@@ -132,7 +132,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-slate-800">
+      <div className="border-t border-andalus-green-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-600 text-xs">
             © {new Date().getFullYear()} {BRANDING.schoolName}. All rights reserved.

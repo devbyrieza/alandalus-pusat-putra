@@ -50,7 +50,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Beranda PPDB", href: "/" },
-    { name: "Alur PPDB", href: "/ppdb" },
+    { name: "Alur Seleksi", href: "/#alur" },
     { name: "Program & Biaya", href: "/program" },
     { name: "Galeri Pesantren", href: "/galeri" },
     { name: "Kontak Panitia", href: "/kontak" },

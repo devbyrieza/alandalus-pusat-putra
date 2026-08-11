@@ -8,11 +8,38 @@ export function middleware(request: NextRequest) {
   // Detect if visiting via PPDB Subdomain (e.g. ppdb.pesantren-alandalus-putra.com)
   const isPpdbSubdomain = host.startsWith("ppdb.");
 
-  // If visiting the root "/" on ppdb subdomain, direct them straight to PPDB Portal (/ppdb or /daftar)
-  if (isPpdbSubdomain && pathname === "/") {
-    const url = request.nextUrl.clone();
-    url.pathname = "/ppdb";
-    return NextResponse.rewrite(url);
+  // List of PPDB specific routes
+  const ppdbRoutes = ["/ppdb", "/program", "/galeri", "/kontak", "/daftar", "/login", "/dashboard", "/verifikasi-otp", "/send-otp", "/daftar-pindahan", "/daftar-sukses"];
+  const isPpdbRoute = ppdbRoutes.some((route) => pathname === route || pathname.startsWith(route + "/"));
+
+  if (isPpdbSubdomain) {
+    // If visiting the root "/" on ppdb subdomain, rewrite to PPDB Portal (/ppdb)
+    if (pathname === "/") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/ppdb";
+      return NextResponse.rewrite(url);
+    }
+    
+    // If they explicitly visit /ppdb on the subdomain, redirect to / to keep URL clean
+    if (pathname === "/ppdb") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/";
+      return NextResponse.redirect(url);
+    }
+  } else {
+    // If on main domain and accessing a PPDB route, force redirect to subdomain
+    if (isPpdbRoute && !host.includes("localhost") && !host.includes("127.0.0.1")) {
+      const url = request.nextUrl.clone();
+      const newHost = `ppdb.${host.replace("www.", "")}`;
+      url.host = newHost;
+      
+      // If accessing /ppdb on main domain, remove it so it goes to root of subdomain
+      if (pathname === "/ppdb") {
+        url.pathname = "/";
+      }
+      
+      return NextResponse.redirect(url);
+    }
   }
 
   return NextResponse.next();

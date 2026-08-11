@@ -218,7 +218,7 @@ export default function Home() {
         <Zap className="w-3.5 h-3.5 shrink-0" />
         <span className="sm:hidden">PPDB 2027/2028 — Kuota Terbatas!</span>
         <span className="hidden sm:inline">Pendaftaran Santri Baru 2027/2028 Telah Dibuka — Kuota Terbatas!</span>
-        <Link href="/daftar" className="inline-flex items-center gap-1 ml-2 px-2.5 py-0.5 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 text-[11px] font-black uppercase tracking-wider shadow-sm transition-all shrink-0">
+        <Link href="/ppdb" className="inline-flex items-center gap-1 ml-2 px-2.5 py-0.5 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 text-[11px] font-black uppercase tracking-wider shadow-sm transition-all shrink-0">
           <span>Daftar</span>
           <ChevronRight className="w-3 h-3 stroke-[3]" />
         </Link>
@@ -284,7 +284,7 @@ export default function Home() {
               {/* CTA */}
               <div className="flex flex-wrap gap-4">
                 <Link
-                  href="/daftar"
+                  href="/ppdb"
                   className={`inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-white text-base ${c.bg600} ${c.bgHover} shadow-xl ${c.shadow} transition-all hover:-translate-y-1 hover:shadow-2xl group`}
                 >
                   Daftar Sekarang
@@ -346,7 +346,7 @@ export default function Home() {
                       <p className="text-amber-300 text-[11px] sm:text-xs font-bold tracking-wide drop-shadow-sm">Angkatan IX · Kuota Terbatas</p>
                     </div>
                     <Link
-                      href="/daftar"
+                      href="/ppdb"
                       className={`ml-auto px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl text-white text-xs sm:text-sm font-bold ${c.bg600} ${c.bgHover} transition shrink-0 flex items-center gap-1.5 shadow-lg`}
                     >
                       Daftar <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -579,7 +579,7 @@ export default function Home() {
               </ol>
 
               <Link
-                href="/daftar"
+                href="/ppdb"
                 className={`inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-white ${c.bg600} ${c.bgHover} shadow-xl ${c.shadow} transition-all hover:-translate-y-1 group mt-2`}
               >
                 Mulai Daftar Sekarang
@@ -866,7 +866,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/daftar"
+              href="/ppdb"
               className={`inline-flex items-center justify-center gap-2 px-10 py-4 rounded-2xl font-bold text-white text-lg ${c.bg600} ${c.bgHover} shadow-2xl ${c.shadow} transition-all hover:-translate-y-1 group`}
             >
               <GraduationCap className="w-5 h-5" />

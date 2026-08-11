@@ -42,7 +42,7 @@ export default function MobileBottomCTA() {
           <div className="flex items-center gap-3 px-4 pt-3 pb-2">
             {/* Primary CTA */}
             <Link
-              href="/daftar"
+              href="/ppdb"
               className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl text-white text-sm font-black shadow-lg active:scale-95 transition-transform"
               style={{ backgroundColor: primaryBg }}
             >

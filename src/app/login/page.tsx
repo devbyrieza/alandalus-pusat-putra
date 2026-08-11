@@ -554,7 +554,7 @@ export default function LoginPage() {
                       Belum Punya Akun?
                     </p>
                     <Link
-                      href="/daftar"
+                      href="/ppdb"
                       className="inline-flex items-center gap-2 px-6 md:px-10 py-3 rounded-xl bg-white/50 backdrop-blur-sm text-primary-800 font-black text-sm border border-primary-100 hover:bg-white hover:shadow-md hover:-translate-y-1 transition-all"
                     >
                       Daftar Baru Di Sini

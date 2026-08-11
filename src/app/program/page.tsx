@@ -350,7 +350,7 @@ export default function ProgramPage() {
                 kami untuk mendapatkan pilihan program yang paling tepat.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center px-4">
-                <Link href="/daftar">
+                <Link href="/ppdb">
                   <button className="w-full sm:w-auto px-6 sm:px-6 md:px-10 py-3.5 sm:py-4 md:py-5 rounded-pill bg-white text-primary-900 font-black text-sm sm:text-base md:text-lg hover:bg-primary-50 shadow-md transition-all min-h-[48px] sm:min-h-[52px]">
                     Pendaftaran Online
                   </button>

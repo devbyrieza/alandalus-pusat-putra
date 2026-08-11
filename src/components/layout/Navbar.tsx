@@ -49,12 +49,51 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Beranda PPDB", href: "/" },
-    { name: "Alur Seleksi", href: "/#alur" },
+    { name: "Beranda", href: "/" },
     { name: "Program & Biaya", href: "/program" },
     { name: "Galeri Pesantren", href: "/galeri" },
     { name: "Kontak Panitia", href: "/kontak" },
+    { name: "Alur Seleksi", href: "/ppdb" },
   ];
+
+  const handleNavClick = (e: any, href: string, closeMenu?: () => void) => {
+    e.preventDefault();
+    if (closeMenu) closeMenu();
+    
+    const host = window.location.hostname;
+    const isPpdbHost = host.startsWith("ppdb.");
+    const isPpdbRoute = href.startsWith("/ppdb") || href.startsWith("/login") || href.startsWith("/dashboard") || href.startsWith("/daftar");
+    
+    if (isPpdbHost) {
+      if (isPpdbRoute) {
+        // Subdomain -> Subdomain (SPA)
+        let target = href;
+        if (target.startsWith("/ppdb")) {
+          target = target.replace("/ppdb", "/");
+          if (target === "") target = "/";
+        }
+        if (target.includes("#") && pathname === target.split("#")[0]) {
+           const id = target.split("#")[1];
+           document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+        } else {
+           window.location.href = target;
+        }
+      } else {
+        // Subdomain -> Main Domain (Hard Redirect)
+        const mainDomain = host.replace("ppdb.", "");
+        const port = window.location.port ? `:${window.location.port}` : "";
+        window.location.href = `${window.location.protocol}//${mainDomain}${port}${href}`;
+      }
+    } else {
+      if (isPpdbRoute) {
+        // Main Domain -> Subdomain (Hard Redirect to let Middleware catch it)
+        window.location.href = href;
+      } else {
+        // Main Domain -> Main Domain (SPA or Hard navigation)
+        window.location.href = href;
+      }
+    }
+  };
 
   return (
     <header
@@ -85,19 +124,23 @@ export default function Navbar() {
         {/* DESKTOP NAV LINKS */}
         <nav className="hidden lg:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-2xl border border-slate-800 backdrop-blur-md">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const normalizedPath = pathname === "/" ? "/ppdb" : pathname;
+            const linkBase = link.href.split("#")[0];
+            const isActive = normalizedPath === linkBase;
+            
             return (
-              <Link
-                key={link.href}
+              <a
+                key={link.name}
                 href={link.href}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
+                onClick={(e) => handleNavClick(e, link.href)}
+                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer ${
                   isActive
                     ? "bg-emerald-700 text-white font-bold shadow-md shadow-emerald-700/30"
                     : "text-slate-300 hover:text-white hover:bg-slate-800/80"
                 }`}
               >
                 {link.name}
-              </Link>
+              </a>
             );
           })}
         </nav>
@@ -119,28 +162,31 @@ export default function Navbar() {
 
           {/* Session check: Login or Dashboard */}
           {session ? (
-            <Link
+            <a
               href="/dashboard"
+              onClick={(e) => handleNavClick(e, "/dashboard")}
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-sm shadow-lg shadow-emerald-700/30 transition-all"
             >
               <UserCheck className="w-4 h-4" />
               <span>Dashboard</span>
-            </Link>
+            </a>
           ) : (
             <div className="flex items-center gap-2">
-              <Link
+              <a
                 href="/login"
+                onClick={(e) => handleNavClick(e, "/login")}
                 className="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white transition-colors"
               >
                 Masuk
-              </Link>
-              <Link
-                href="/daftar"
+              </a>
+              <a
+                href="/ppdb"
+                onClick={(e) => handleNavClick(e, "/ppdb")}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-sm shadow-lg shadow-emerald-700/30 transition-all"
               >
                 <span>Daftar PPDB</span>
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </a>
             </div>
           )}
         </div>
@@ -165,14 +211,14 @@ export default function Navbar() {
           >
             <nav className="space-y-2">
               {navLinks.map((link) => (
-                <Link
+                <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => handleNavClick(e, link.href, () => setIsMenuOpen(false))}
                   className="block px-4 py-3 rounded-xl text-slate-300 font-medium hover:bg-slate-900 hover:text-white"
                 >
                   {link.name}
-                </Link>
+                </a>
               ))}
               <a
                 href="https://pesantren-alandalus.com"
@@ -189,20 +235,20 @@ export default function Navbar() {
             </nav>
 
             <div className="pt-4 border-t border-slate-800 flex flex-col gap-3">
-              <Link
-                href="/daftar"
-                onClick={() => setIsMenuOpen(false)}
+              <a
+                href="/ppdb"
+                onClick={(e) => handleNavClick(e, "/ppdb", () => setIsMenuOpen(false))}
                 className="w-full text-center py-3 rounded-xl bg-emerald-700 text-white font-bold text-sm shadow-lg"
               >
                 Daftar PPDB Online Sekarang
-              </Link>
-              <Link
+              </a>
+              <a
                 href="/login"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => handleNavClick(e, "/login", () => setIsMenuOpen(false))}
                 className="w-full text-center py-3 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 font-semibold text-sm"
               >
                 Masuk Akun Santri / Wali
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}

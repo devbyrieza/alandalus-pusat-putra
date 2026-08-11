@@ -199,7 +199,7 @@ export function CTADaftarSekarang({
         `}
         asChild
       >
-        <Link href="/daftar" className="flex items-center justify-center gap-2">
+        <Link href="/ppdb" className="flex items-center justify-center gap-2">
           {showSparkles && <Sparkles className="w-5 h-5 animate-pulse" />}
           <span>Daftar Sekarang - Kuota Terbatas!</span>
         </Link>
@@ -245,7 +245,7 @@ export function CTAStickyDaftar() {
           className="shadow-xl hover:shadow-2xl font-bold transition-all duration-300 hover:scale-105 bg-gradient-gold text-white"
           asChild
         >
-          <Link href="/daftar" className="flex items-center gap-2">
+          <Link href="/ppdb" className="flex items-center gap-2">
             <Sparkles className="w-4 h-4" />
             Daftar Sekarang
           </Link>

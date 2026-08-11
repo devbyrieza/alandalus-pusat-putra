@@ -143,7 +143,7 @@ export default function TentangPage() {
             <p className="text-emerald-100 text-lg">Pendaftaran Santri Baru Tahun Ajaran 2027-2028 Telah Dibuka. Kuota Terbatas!</p>
             <div className="pt-2">
               <Link
-                href="/daftar"
+                href="/ppdb"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold shadow-xl transition-all"
               >
                 <span>Daftar PPDB Online</span>

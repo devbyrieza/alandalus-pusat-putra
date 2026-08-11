@@ -1,4 +1,4 @@
-﻿import { BRANDING, IS_PUTRA } from "@/config/branding";
+import { BRANDING, IS_PUTRA } from "@/config/branding";
 import Link from "next/link";
 import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
 import { FaInstagram, FaYoutube, FaFacebook, FaTiktok } from "react-icons/fa";
@@ -120,7 +120,7 @@ export default function Footer() {
 
             {/* CTA */}
             <Link
-              href="/daftar"
+              href="/ppdb"
               className={`inline-flex items-center gap-2 px-5 py-3 rounded-2xl text-white text-sm font-bold ${primaryBg} ${primaryBgHov} transition-all mt-2`}
             >
               <HiAcademicCap className="w-4 h-4" />
@@ -135,7 +135,7 @@ export default function Footer() {
       <div className="border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-600 text-xs">
-            Â© {new Date().getFullYear()} {BRANDING.schoolName}. All rights reserved.
+            © {new Date().getFullYear()} {BRANDING.schoolName}. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link href="/ppdb"  className="text-xs text-slate-600 hover:text-slate-400 transition-colors">Info PPDB</Link>

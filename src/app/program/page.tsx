@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { IS_PUTRA } from "@/config/branding";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import {
@@ -27,9 +28,9 @@ import { motion, AnimatePresence } from "framer-motion";
 const PROGRAMS = [
   {
     id: "mts",
-    name: "Madrasah Tsanawiyah",
-    buttonLabel: "Daftar MTs",
-    fullName: "Program Madrasah Tsanawiyah (SMP)",
+    name: "SMPIT - SMAIT",
+    buttonLabel: "Daftar SMPIT",
+    fullName: "Program Pendidikan SMPIT - SMAIT",
     description:
       "Kami menerapkan Kurikulum Terpadu yang menggabungkan standar Nasional dengan khas Andalus, berfokus pada penguasaan Tahfidz Al-Qur'an serta pembentukan karakter Leadership yang kokoh sejak dini.",
     stats: [
@@ -54,9 +55,9 @@ const PROGRAMS = [
   },
   {
     id: "il",
-    name: "I'dad Lughowi",
+    name: "I'DAD LUGHAWIY",
     buttonLabel: "Daftar IL",
-    fullName: "Program I'dad Lughowi (SMA)",
+    fullName: "I'DAD LUGHAWIY / PRA SMAIT",
     description:
       "Program persiapan intensif menuju jenjang Aliyah, berfokus pada pemantapan Bahasa Arab, Tahfidz, dan kematangan leadership organisasi untuk mencetak kader ulama yang kontributif.",
     stats: [
@@ -335,7 +336,30 @@ export default function ProgramPage() {
         ))}
       </div>
 
+      
+      {/* 4. Ekstrakurikuler */}
+      <section className="py-24 bg-white border-t border-surface-100">
+        <Container>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-black text-ink-950 mb-4">Program Ekstrakurikuler</h2>
+            <p className="text-lg text-ink-600 max-w-2xl mx-auto">Pengembangan minat, bakat, dan keterampilan santri melalui berbagai kegiatan positif yang menyenangkan.</p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-5xl mx-auto">
+            {(IS_PUTRA ? [
+              "Futsal", "Basket", "Badminton", "Renang", "Panahan", "Entrepreneur", "Jurnalistik", "Coding", "Pramuka", "Wushu", "Taekwondo", "Karate", "Arabic & English Explorers", "Science Olympians", "Literasi Ilmiah"
+            ] : [
+              "Tata Boga", "Tata Busana", "Tata Rias", "Panahan", "Wingchun", "Pramuka", "Kaligrafi", "Fotografi", "Desain Grafis", "Public Speaking", "Creative Writing", "Arabic & English Club"
+            ]).map((item, idx) => (
+              <div key={idx} className="px-5 py-3 rounded-xl bg-surface-50 border border-surface-100 font-bold text-ink-700 shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-primary-200 transition-all">
+                {item}
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       {/* Bottom CTA - Impactful */}
+
       <section className="py-16 md:py-24 lg:py-32 bg-surface-50">
         <Container>
           <motion.div

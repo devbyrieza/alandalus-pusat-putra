@@ -107,7 +107,7 @@ export default function TentangPage() {
               </div>
               <h3 className="text-2xl font-bold text-slate-900">Visi Utama</h3>
               <p className="text-slate-600 leading-relaxed">
-                Menjadi lembaga pendidikan Islam unggulan dalam mencetak generasi Rabbani yang hafal Al-Qur'an, menguasai ilmu syar'i dan sains, serta berkontribusi nyata bagi ummat dan bangsa.
+                Kaderisasi Umat Rabbani, Cendekia, dan Mandiri.
               </p>
             </div>
 

@@ -126,6 +126,9 @@ function StatCard({
 // â”€â”€â”€ Infinite Marquee â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const alumniItems = [
   { label: "Universitas Islam Madinah", Icon: FaMosque },
+  { label: "Yarmouk University, Jordan", Icon: FaUniversity },
+  { label: "Universitas di Syiria", Icon: FaMosque },
+  { label: "STIBA Ar Raayah", Icon: FaQuran },
   { label: "Al-Azhar University, Mesir", Icon: FaUniversity },
   { label: "Universiti Utara Malaysia", Icon: FaGlobeAsia },
   { label: "HK Polytechnic University", Icon: Building2 },
@@ -725,6 +728,9 @@ export default function Home() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
             {[
               { label: "Univ. Islam Madinah", Icon: FaMosque },
+              { label: "Yarmouk, Jordan", Icon: FaUniversity },
+              { label: "Univ. di Syiria", Icon: FaMosque },
+              { label: "STIBA Ar Raayah", Icon: FaQuran },
               { label: "Al-Azhar, Mesir", Icon: FaUniversity },
               { label: "Auckland, NZ", Icon: Globe },
               { label: "HK Polytechnic", Icon: Building2 },

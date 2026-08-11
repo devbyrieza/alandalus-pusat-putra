@@ -167,7 +167,7 @@ function PPDBContent() {
     {
       phase: "Daftar Ulang",
       date: "Setelah Lulus",
-      desc: "Melakukan pelunasan biaya masuk.",
+      desc: "Melakukan pembayaran Uang Pangkal (dapat dicicil 3x). Pastikan pembayaran pertama minimal 50% diselesaikan 1 pekan setelah pengumuman.",
       status: "upcoming",
     },
   ];
@@ -201,9 +201,9 @@ function PPDBContent() {
   ];
 
   const biaya = [
-    { label: "Biaya Pendaftaran", value: "Rp 200rb", icon: CreditCard },
-    { label: "Uang Pangkal", value: "Rp 7.5Jt", icon: Shield },
-    { label: "Taawun (SPP)", value: "Rp 1Jt", icon: Star },
+    { label: "Biaya Pendaftaran", value: "Rp 500rb", icon: CreditCard },
+    { label: "Uang Pangkal", value: "Rp 35Jt", icon: Shield },
+    { label: "SPP / Bulan", value: "Rp 3Jt", icon: Star },
   ];
 
   return (
@@ -377,11 +377,7 @@ function PPDBContent() {
             </div>
             <div>
               <p className="text-lg text-primary-900 font-bold leading-relaxed">
-                Catatan Penting: Biaya pendaftaran dan uang pangkal bersifat
-                non-refundable. Uang pangkal (daftar ulang) dapat dicicil
-                maksimal 3x pembayaran, dengan{" "}
-                <strong>syarat pembayaran pertama minimal 50%</strong>, dan
-                wajib dilunasi sebelum Juli 2026.
+                Catatan Penting: Uang Pangkal TA. 2027-2028 sebesar Rp 35.000.000 dapat dicicil maksimal 3x pembayaran. Skema: <strong>50% (Rp 17.500.000)</strong> dibayar 1 pekan setelah pengumuman kelulusan, <strong>25%</strong> paling lambat 1 Maret 2027, dan <strong>25%</strong> sisanya lunas pada 1 Juli 2027. Uang pangkal dikembalikan 100% jika mengundurkan diri dalam 14 hari setelah pengumuman.
               </p>
             </div>
           </motion.div>

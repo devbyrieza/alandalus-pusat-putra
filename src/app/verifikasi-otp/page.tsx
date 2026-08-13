@@ -248,7 +248,7 @@ function VerifikasiOTPContent() {
   return (
     <div className="app-card max-w-md w-full bg-white rounded-[2.5rem] shadow-lg border border-primary-100 p-5 md:p-8 relative z-10">
       {/* Decorative Blur Inside Card */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-gold-50/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-amber-50/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
       {/* Header */}
       <div className="text-center mb-6 relative z-10">
@@ -257,10 +257,10 @@ function VerifikasiOTPContent() {
             channel === "whatsapp"
               ? "bg-primary-50 border border-primary-100"
               : "bg-primary-50 border border-primary-100"
-          } rounded-full flex items-center justify-center mx-auto mb-4 relative shadow-sm`}
+          } rounded-full flex items-center justify-center mx-auto mb-4 relative shadow-xl shadow-emerald-900/20`}
         >
           {/* Icon WhatsApp only */}
-          <div className="p-3 bg-primary-700 rounded-2xl shadow-sm app-card">
+          <div className="p-3 bg-primary-700 rounded-3xl shadow-xl shadow-emerald-900/20 app-card">
             <Smartphone className="w-10 h-10 text-white" />
           </div>
         </div>
@@ -279,13 +279,13 @@ function VerifikasiOTPContent() {
 
         {/* OTP Display Banner (when WhatsApp not available) */}
         {sim_code && (
-          <div className="mt-4 p-3 bg-gold-50 border border-gold-200 rounded-xl app-card shadow-sm">
+          <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-3xl app-card shadow-xl shadow-emerald-900/20">
             <p className="text-xs font-black uppercase tracking-widest text-primary-800 mb-1">
               Kode Verifikasi Anda
             </p>
             <p className="text-sm text-primary-950 font-medium">
               Masukkan kode berikut:{" "}
-              <span className="font-mono text-xl font-black bg-white px-2 py-0.5 rounded-lg border border-gold-100 shadow-sm ml-2">
+              <span className="font-mono text-xl font-black bg-white px-2 py-0.5 rounded-lg border border-amber-100 shadow-xl shadow-emerald-900/20 ml-2">
                 {sim_code}
               </span>
             </p>
@@ -311,7 +311,7 @@ function VerifikasiOTPContent() {
             value={digit}
             onChange={(e) => handleOTPChange(index, e.target.value)}
             onKeyDown={(e) => handleOTPKeyDown(index, e)}
-            className={`w-12 h-14 md:w-14 md:h-16 text-center text-3xl font-display font-black border-2 rounded-xl focus:outline-none focus:ring-4 transition-all app-card shadow-sm ${
+            className={`w-12 h-14 md:w-14 md:h-16 text-center text-3xl font-display font-black border-2 rounded-3xl focus:outline-none focus:ring-4 transition-all app-card shadow-xl shadow-emerald-900/20 ${
               otpError
                 ? "border-red-500 bg-red-50 focus:ring-red-100 text-red-700"
                 : digit
@@ -327,7 +327,7 @@ function VerifikasiOTPContent() {
       {/* Error Message */}
       <div className="relative z-10">
         {otpError && (
-          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl app-card shadow-sm">
+          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-3xl app-card shadow-xl shadow-emerald-900/20">
             <p className="text-sm text-red-700 font-bold flex items-center justify-center gap-2">
               <AlertCircle className="w-5 h-5 flex-shrink-0" />
               <span>{otpError}</span>
@@ -337,7 +337,7 @@ function VerifikasiOTPContent() {
 
         {/* Loading State */}
         {isVerifying && (
-          <div className="mb-4 p-3 bg-primary-50 border border-primary-200 rounded-xl app-card shadow-sm">
+          <div className="mb-4 p-3 bg-primary-50 border border-primary-200 rounded-3xl app-card shadow-xl shadow-emerald-900/20">
             <p className="text-sm text-primary-700 font-bold flex items-center justify-center gap-2">
               <Loader2 className="w-5 h-5 animate-spin" />
               <span>Memverifikasi kode...</span>
@@ -371,7 +371,7 @@ function VerifikasiOTPContent() {
           <button
             onClick={handleVerifyOTP}
             disabled={isVerifying || otpCode.join("").length !== 6}
-            className="w-full py-4 px-6 font-black text-lg md:text-xl rounded-pill transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-3 shadow-md border border-transparent hover:bg-gold-100 hover:text-primary-900 bg-primary-900 text-white hover:border-primary-900 active:scale-95 app-card tracking-wide"
+            className="w-full py-4 px-6 font-black text-lg md:text-xl rounded-pill transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-3 shadow-md border border-transparent hover:bg-amber-100 hover:text-primary-900 bg-primary-900 text-white hover:border-primary-900 active:scale-95 app-card tracking-wide"
           >
             <CheckCircle2 className="w-6 h-6" />
             Verifikasi Kode
@@ -407,7 +407,7 @@ function VerifikasiOTPContent() {
       </div>
 
       {/* Help Info */}
-      <div className="mt-6 p-4 bg-primary-50 border border-primary-100 rounded-[1.5rem] relative z-10 app-card shadow-sm">
+      <div className="mt-6 p-4 bg-primary-50 border border-primary-100 rounded-[1.5rem] relative z-10 app-card shadow-xl shadow-emerald-900/20">
         <p className="text-xs uppercase tracking-widest text-ink-950 font-black mb-2 pl-1">
           Tips Verifikasi
         </p>
@@ -436,7 +436,7 @@ function VerifikasiOTPContent() {
           href="https://wa.me/622667345601"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs bg-gold-50 text-primary-700 px-4 py-1.5 rounded-full font-black border border-gold-200 hover:bg-gold-100 transition-colors inline-block"
+          className="text-xs bg-amber-50 text-primary-700 px-4 py-1.5 rounded-full font-black border border-amber-200 hover:bg-amber-100 transition-colors inline-block"
         >
           Hubungi Admin WhatsApp
         </a>
@@ -461,7 +461,7 @@ export default function VerifikasiOTPPage() {
   return (
     <main className="min-h-screen bg-white flex items-center justify-center p-6 relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-full max-w-[600px] h-[600px] bg-gold-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-full max-w-[600px] h-[600px] bg-amber-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-full max-w-[500px] h-[500px] bg-primary-50/30 rounded-full blur-[100px] -translate-x-1/2 translate-y-1/2 pointer-events-none" />
       <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] pointer-events-none" />
 

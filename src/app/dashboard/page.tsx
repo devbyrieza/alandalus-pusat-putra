@@ -59,26 +59,26 @@ const STATUS_LABELS: Record<
 > = {
   draft: {
     label: "Belum Lengkap",
-    color: "gold",
-    bg: "bg-gold-50",
-    border: "border-gold-200",
-    text: "text-gold-700",
+    color: "amber",
+    bg: "bg-amber-50",
+    border: "border-amber-200",
+    text: "text-amber-700",
     icon: Clock,
     message: "Mari lengkapi data untuk melanjutkan ke tahap berikutnya!",
   },
   waiting_payment: {
     label: "Menunggu Pembayaran",
-    color: "gold",
-    bg: "bg-gold-50",
-    border: "border-gold-200",
-    text: "text-gold-700",
+    color: "amber",
+    bg: "bg-amber-50",
+    border: "border-amber-200",
+    text: "text-amber-700",
     icon: Clock,
     message:
       "Tinggal satu langkah lagi! Silakan lakukan pembayaran untuk melanjutkan.",
   },
   payment_verification: {
     label: "Verifikasi Pembayaran",
-    color: "maroon",
+    color: "emerald",
     bg: "bg-primary-50",
     border: "border-primary-200",
     text: "text-primary-700",
@@ -106,7 +106,7 @@ const STATUS_LABELS: Record<
   },
   tes_tertulis: {
     label: "Tes Tertulis",
-    color: "maroon",
+    color: "emerald",
     bg: "bg-primary-50",
     border: "border-primary-200",
     text: "text-primary-700",
@@ -134,7 +134,7 @@ const STATUS_LABELS: Record<
   },
   scheduled: {
     label: "Dijadwalkan Ujian",
-    color: "maroon",
+    color: "emerald",
     bg: "bg-primary-50",
     border: "border-primary-200",
     text: "text-primary-700",
@@ -219,12 +219,12 @@ const ActionCard = ({
     >
       <div className="flex items-start justify-between mb-8">
         <div
-          className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-premium-xs transition-transform group-hover:scale-110 ${disabled ? "bg-ink-100 text-ink-500" : `bg-primary-50 text-primary-600`}`}
+          className={`w-14 h-14 rounded-3xl flex items-center justify-center shadow-premium-xs transition-transform group-hover:scale-110 ${disabled ? "bg-ink-100 text-ink-500" : `bg-primary-50 text-primary-600`}`}
         >
           <Icon className="w-7 h-7" />
         </div>
         <span
-          className={`px-4 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest ${disabled ? "bg-ink-100 text-ink-600" : "bg-gold-400 text-primary-950 shadow-sm"}`}
+          className={`px-4 py-1.5 rounded-3xl text-[10px] font-black uppercase tracking-widest ${disabled ? "bg-ink-100 text-ink-600" : "bg-amber-400 text-primary-950 shadow-xl shadow-emerald-900/20"}`}
         >
           Tahap {step.replace("Step ", "")}
         </span>
@@ -332,7 +332,7 @@ export default function DashboardPage() {
 
   const statusInfo = STATUS_LABELS[pendaftar.status_pendaftaran] || {
     label: pendaftar.status_pendaftaran,
-    color: "maroon",
+    color: "emerald",
     bg: "bg-primary-50",
     border: "border-primary-200",
     text: "text-primary-700",
@@ -359,7 +359,7 @@ export default function DashboardPage() {
                 animate={{ opacity: 1, x: 0 }}
                 className="flex items-center gap-3 mb-6"
               >
-                <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center text-primary-600 border border-primary-100 shadow-sm">
+                <div className="w-10 h-10 rounded-3xl bg-primary-50 flex items-center justify-center text-primary-600 border border-primary-100 shadow-xl shadow-emerald-900/20">
                   <LayoutDashboard className="w-6 h-6" />
                 </div>
                 <div className="h-0.5 w-12 bg-primary-100 rounded-full" />
@@ -452,10 +452,10 @@ export default function DashboardPage() {
                 </p>
 
                 <div className="mt-12 flex flex-wrap gap-4">
-                  <div className="px-5 md:px-8 py-3 rounded-2xl bg-primary-50 border border-primary-100 text-[10px] font-black uppercase tracking-[0.2em] text-primary-700 shadow-sm">
+                  <div className="px-5 md:px-8 py-3 rounded-3xl bg-primary-50 border border-primary-100 text-[10px] font-black uppercase tracking-[0.2em] text-primary-700 shadow-xl shadow-emerald-900/20">
                     ID: {pendaftar.id.substring(0, 8).toUpperCase()}
                   </div>
-                  <div className="px-5 md:px-8 py-3 rounded-2xl bg-primary-50 border border-primary-100 text-[10px] font-black uppercase tracking-[0.2em] text-primary-700 shadow-sm">
+                  <div className="px-5 md:px-8 py-3 rounded-3xl bg-primary-50 border border-primary-100 text-[10px] font-black uppercase tracking-[0.2em] text-primary-700 shadow-xl shadow-emerald-900/20">
                     Tgl:{" "}
                     {new Date(pendaftar.created_at).toLocaleDateString(
                       "id-ID",
@@ -482,7 +482,7 @@ export default function DashboardPage() {
                   title="Biaya Pendaftaran"
                   description="Selesaikan pembayaran administrasi sebesar Rp 200.000 untuk mengaktifkan formulir."
                   step="01"
-                  color="maroon"
+                  color="emerald"
                   disabled={false}
                   delay={0.5}
                 />
@@ -492,7 +492,7 @@ export default function DashboardPage() {
                   title="Lengkapi Biodata"
                   description="Isi formulir lengkap mulai dari data diri, keluarga, hingga riwayat kesehatan santri."
                   step="02"
-                  color="maroon"
+                  color="emerald"
                   disabled={
                     !hasReachedStatus(pendaftar.status_pendaftaran, "verified")
                   }
@@ -504,7 +504,7 @@ export default function DashboardPage() {
                   title="Upload Dokumen"
                   description="Unggah dokumen persyaratan (Akte, KK, KTP) untuk diverifikasi oleh tim panitia."
                   step="03"
-                  color="maroon"
+                  color="emerald"
                   disabled={
                     !hasReachedStatus(
                       pendaftar.status_pendaftaran,
@@ -519,7 +519,7 @@ export default function DashboardPage() {
                   title="Jadwal Seleksi"
                   description="Lihat jadwal seleksi Al-Qur'an dan wawancara setelah berkasmu dinyatakan lengkap."
                   step="04"
-                  color="maroon"
+                  color="emerald"
                   disabled={
                     !hasReachedStatus(
                       pendaftar.status_pendaftaran,
@@ -534,7 +534,7 @@ export default function DashboardPage() {
                   title="Hasil Kelulusan"
                   description="Pengumuman hasil akhir seleksi penerimaan santri baru T.A 2026-2027."
                   step="05"
-                  color="maroon"
+                  color="emerald"
                   disabled={
                     !hasReachedStatus(pendaftar.status_pendaftaran, "tested")
                   }
@@ -546,7 +546,7 @@ export default function DashboardPage() {
                     title="Daftar Ulang"
                     description="Konfirmasi kedatangan dan penyelesaian administrasi bagi santri yang dinyatakan lulus."
                     step="06"
-                    color="maroon"
+                    color="emerald"
                     disabled={
                       !hasReachedStatus(pendaftar.status_pendaftaran, "accepted")
                     }
@@ -558,7 +558,7 @@ export default function DashboardPage() {
                     title="Pengajuan Keringanan"
                     description="Ajukan Beasiswa atau Keringanan (khusus Uang Pangkal) bagi yang memenuhi syarat."
                     step="07"
-                    color="maroon"
+                    color="emerald"
                     disabled={
                       !hasReachedStatus(pendaftar.status_pendaftaran, "accepted")
                     }
@@ -578,7 +578,7 @@ export default function DashboardPage() {
               className="bg-white p-6 sm:p-5 md:p-8 rounded-[2rem] sm:rounded-[3rem] shadow-2xl shadow-primary-900/5 border border-ink-50 flex flex-col items-center text-center relative overflow-hidden group"
             >
               <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary-600 to-primary-900" />
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-[1.5rem] sm:rounded-[2rem] bg-primary-50 flex items-center justify-center text-primary-600 mb-6 sm:mb-8 border border-primary-100 shadow-sm transition-transform group-hover:scale-110">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-[1.5rem] sm:rounded-[2rem] bg-primary-50 flex items-center justify-center text-primary-600 mb-6 sm:mb-8 border border-primary-100 shadow-xl shadow-emerald-900/20 transition-transform group-hover:scale-110">
                 <IdCard className="w-8 h-8 sm:w-10 sm:h-10" />
               </div>
               <p className="text-[10px] font-black uppercase tracking-[0.4em] text-ink-500 mb-2">
@@ -589,7 +589,7 @@ export default function DashboardPage() {
               </h4>
               <div className="w-full h-px bg-ink-50 mb-8" />
               <div className="flex items-center gap-3">
-                <Star className="w-6 h-6 text-gold-500 fill-gold-500 animate-pulse" />
+                <Star className="w-6 h-6 text-amber-500 fill-amber-500 animate-pulse" />
                 <span className="font-black text-sm text-primary-700 uppercase tracking-widest leading-none">
                   {pendaftar.jenjang === "MTs"
                     ? "Madrasah Tsanawiyah"
@@ -605,7 +605,7 @@ export default function DashboardPage() {
               transition={{ delay: 0.8 }}
               className="bg-primary-950 p-6 sm:p-5 md:p-8 rounded-[2.5rem] sm:rounded-[3rem] shadow-2xl relative overflow-hidden group"
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gold-400" />
+              <div className="absolute top-0 left-0 w-full h-1 bg-amber-400" />
               <div className="absolute bottom-0 right-0 w-40 h-40 bg-primary-500/10 rounded-full blur-[60px] translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
               <div className="relative z-10">
@@ -625,9 +625,9 @@ export default function DashboardPage() {
                   href="https://wa.me/6281285300800"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-5 p-6 rounded-[2rem] bg-white hover:bg-gold-400 transition-all group/btn shadow-xl active:scale-95"
+                  className="flex items-center gap-5 p-6 rounded-[2rem] bg-white hover:bg-amber-400 transition-all group/btn shadow-xl active:scale-95"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-primary-600 text-white flex items-center justify-center shadow-lg group-hover/btn:scale-110 transition-transform">
+                  <div className="w-14 h-14 rounded-3xl bg-primary-600 text-white flex items-center justify-center shadow-lg group-hover/btn:scale-110 transition-transform">
                     <Phone className="w-7 h-7" />
                   </div>
                   <div className="text-left leading-none">

@@ -78,7 +78,7 @@ function DaftarSuksesContent() {
         </p>
 
         {/* Nomor Pendaftaran */}
-        <div className="bg-white rounded-xl border border-secondary-200 p-4 mb-3 shadow-sm app-card">
+        <div className="bg-white rounded-3xl border border-secondary-200 p-4 mb-3 shadow-xl shadow-emerald-900/20 app-card">
           <p className="text-xs font-bold text-ink-500 mb-2 flex items-center gap-1.5 uppercase tracking-wider">
             <CreditCard className="w-3.5 h-3.5 text-primary-600" />
             Nomor Pendaftaran
@@ -89,7 +89,7 @@ function DaftarSuksesContent() {
             </p>
             <button
               onClick={() => handleCopy(nomor_pendaftaran, "nomor")}
-              className="p-2.5 bg-secondary-50 hover:bg-secondary-200 border border-primary-200 rounded-xl transition-colors shrink-0 app-card hover:scale-105 active:scale-95"
+              className="p-2.5 bg-secondary-50 hover:bg-secondary-200 border border-primary-200 rounded-3xl transition-colors shrink-0 app-card hover:scale-105 active:scale-95"
               title="Salin nomor pendaftaran"
             >
               {copiedField === "nomor" ? (
@@ -102,7 +102,7 @@ function DaftarSuksesContent() {
         </div>
 
         {/* NIK Santri */}
-        <div className="bg-white rounded-xl border border-secondary-200 p-4 mb-3 shadow-sm app-card">
+        <div className="bg-white rounded-3xl border border-secondary-200 p-4 mb-3 shadow-xl shadow-emerald-900/20 app-card">
           <p className="text-xs font-bold text-ink-500 mb-2 flex items-center gap-1.5 uppercase tracking-wider">
             <IdCard className="w-3.5 h-3.5 text-primary-600" />
             NIK Santri (Password)
@@ -111,7 +111,7 @@ function DaftarSuksesContent() {
             <p className="text-lg font-black text-ink-900 break-all">{nik}</p>
             <button
               onClick={() => handleCopy(nik, "nik")}
-              className="p-2.5 bg-secondary-50 hover:bg-secondary-200 border border-primary-200 rounded-xl transition-colors shrink-0 app-card hover:scale-105 active:scale-95"
+              className="p-2.5 bg-secondary-50 hover:bg-secondary-200 border border-primary-200 rounded-3xl transition-colors shrink-0 app-card hover:scale-105 active:scale-95"
               title="Salin NIK"
             >
               {copiedField === "nik" ? (
@@ -139,9 +139,9 @@ function DaftarSuksesContent() {
       </div>
 
       {/* Important Notes */}
-      <div className="bg-white border-2 border-secondary-200 rounded-[1.5rem] p-5 mb-8 relative z-10 shadow-sm">
+      <div className="bg-white border-2 border-secondary-200 rounded-[1.5rem] p-5 mb-8 relative z-10 shadow-xl shadow-emerald-900/20">
         <p className="text-sm text-ink-950 font-black mb-3 flex items-center gap-2">
-          <AlertTriangle className="w-4 h-4 text-gold-400" />
+          <AlertTriangle className="w-4 h-4 text-amber-400" />
           PENTING - Simpan Data Ini!
         </p>
         <ul className="text-xs text-ink-700 space-y-2.5 font-medium">

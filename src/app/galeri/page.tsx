@@ -191,7 +191,7 @@ export default function GaleriPage() {
               <button
                 key={cat.key}
                 onClick={() => setActiveCategory(cat.key)}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium transition-all duration-300 border ${
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-3xl font-medium transition-all duration-300 border ${
                   isActive
                     ? "bg-emerald-500 text-slate-950 border-emerald-400 shadow-lg shadow-emerald-500/25 scale-105"
                     : "bg-slate-900/80 text-slate-300 border-slate-800 hover:border-slate-700 hover:bg-slate-800"
@@ -219,7 +219,7 @@ export default function GaleriPage() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
                 onClick={() => setSelectedImage(item)}
-                className="group relative cursor-pointer rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 hover:border-emerald-500/50 shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="group relative cursor-pointer rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 hover:border-emerald-500/50 shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-slate-950">
                   <Image
@@ -264,14 +264,14 @@ export default function GaleriPage() {
           <div className="flex flex-wrap justify-center gap-4 pt-2">
             <Link
               href="/ppdb"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold shadow-lg shadow-emerald-500/25 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-3xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold shadow-lg shadow-emerald-500/25 transition-all"
             >
               <span>Daftar PPDB Sekarang</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="/fasilitas"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold border border-slate-700 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-3xl bg-slate-800 hover:bg-slate-700 text-white font-semibold border border-slate-700 transition-all"
             >
               <span>Lihat Detail Fasilitas</span>
             </Link>

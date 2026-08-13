@@ -62,7 +62,7 @@ const HeroStat = ({
     transition={{ delay, duration: 0.5 }}
     className="app-card bg-white p-5 flex flex-col items-center text-center min-w-[140px]"
   >
-    <div className="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center text-primary-600 mb-3 border border-primary-100 shadow-sm">
+    <div className="w-12 h-12 rounded-3xl bg-primary-50 flex items-center justify-center text-primary-600 mb-3 border border-primary-100 shadow-xl shadow-emerald-900/20">
       <Icon className="w-6 h-6" />
     </div>
     <p className="text-2xl font-black text-primary-950 leading-none mb-1">
@@ -156,7 +156,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill bg-primary-50 border border-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest mb-8 shadow-sm"
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill bg-primary-50 border border-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest mb-8 shadow-xl shadow-emerald-900/20"
               >
                 <Building2 className="w-3.5 h-3.5" />
                 <span>Sarana & Prasarana</span>
@@ -220,7 +220,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute bottom-5 left-5 z-10">
-                    <div className="bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-xl shadow-lg border border-white/40 transition-transform duration-300 group-hover:translate-y-[-4px]">
+                    <div className="bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-3xl shadow-lg border border-white/40 transition-transform duration-300 group-hover:translate-y-[-4px]">
                       <span className="text-ink-950 font-black text-sm md:text-[15px] tracking-tight">
                         Masjid Jami' Al-Andalus Putra
                       </span>
@@ -235,7 +235,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute bottom-5 left-5 z-10">
-                    <div className="bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-xl shadow-lg border border-white/40 transition-transform duration-300 group-hover:translate-y-[-4px]">
+                    <div className="bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-3xl shadow-lg border border-white/40 transition-transform duration-300 group-hover:translate-y-[-4px]">
                       <span className="text-ink-950 font-black text-sm md:text-[15px] tracking-tight">
                         Area Olahraga
                       </span>
@@ -252,7 +252,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute bottom-5 left-5 z-10">
-                    <div className="bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-xl shadow-lg border border-white/40 transition-transform duration-300 group-hover:translate-y-[-4px]">
+                    <div className="bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-3xl shadow-lg border border-white/40 transition-transform duration-300 group-hover:translate-y-[-4px]">
                       <span className="text-ink-950 font-black text-sm md:text-[15px] tracking-tight">
                         Asrama Nyaman
                       </span>
@@ -267,7 +267,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute bottom-5 left-5 z-10">
-                    <div className="bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-xl shadow-lg border border-white/40 transition-transform duration-300 group-hover:translate-y-[-4px]">
+                    <div className="bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-3xl shadow-lg border border-white/40 transition-transform duration-300 group-hover:translate-y-[-4px]">
                       <span className="text-ink-950 font-black text-sm md:text-[15px] tracking-tight">
                         Kelas Modern
                       </span>
@@ -337,7 +337,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     <Home className="w-48 h-48" />
                   </div>
 
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-sm transition-transform group-hover:scale-110 border border-primary-100">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-xl shadow-emerald-900/20 transition-transform group-hover:scale-110 border border-primary-100">
                     <Home className="w-8 h-8 sm:w-10 sm:h-10" />
                   </div>
 
@@ -352,7 +352,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
 
                   <div className="grid grid-cols-1 sm:grid-cols-1 gap-6 sm:gap-8">
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -365,7 +365,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       </div>
                     </div>
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -431,7 +431,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     <School className="w-48 h-48" />
                   </div>
 
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-sm transition-transform group-hover:scale-110 border border-primary-100">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-xl shadow-emerald-900/20 transition-transform group-hover:scale-110 border border-primary-100">
                     <School className="w-8 h-8 sm:w-10 sm:h-10" />
                   </div>
 
@@ -446,7 +446,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
 
                   <div className="grid grid-cols-1 sm:grid-cols-1 gap-6 sm:gap-8">
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -459,7 +459,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       </div>
                     </div>
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -489,7 +489,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     <Building className="w-48 h-48" />
                   </div>
 
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-sm transition-transform group-hover:scale-110 border border-primary-100">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-xl shadow-emerald-900/20 transition-transform group-hover:scale-110 border border-primary-100">
                     <Building className="w-8 h-8 sm:w-10 sm:h-10" />
                   </div>
 
@@ -504,7 +504,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
 
                   <div className="grid grid-cols-1 sm:grid-cols-1 gap-6 sm:gap-8">
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -517,7 +517,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       </div>
                     </div>
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -583,7 +583,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     <Trophy className="w-48 h-48" />
                   </div>
 
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-sm transition-transform group-hover:scale-110 border border-primary-100">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-xl shadow-emerald-900/20 transition-transform group-hover:scale-110 border border-primary-100">
                     <Trophy className="w-8 h-8 sm:w-10 sm:h-10" />
                   </div>
 
@@ -598,7 +598,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
 
                   <div className="grid grid-cols-1 sm:grid-cols-1 gap-6 sm:gap-8">
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -611,7 +611,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       </div>
                     </div>
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -641,7 +641,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     <Award className="w-48 h-48" />
                   </div>
 
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-sm transition-transform group-hover:scale-110 border border-primary-100">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-xl shadow-emerald-900/20 transition-transform group-hover:scale-110 border border-primary-100">
                     <Award className="w-8 h-8 sm:w-10 sm:h-10" />
                   </div>
 
@@ -656,7 +656,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
 
                   <div className="grid grid-cols-1 sm:grid-cols-1 gap-6 sm:gap-8">
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -669,7 +669,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       </div>
                     </div>
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -735,7 +735,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     <Droplets className="w-48 h-48" />
                   </div>
 
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-sm transition-transform group-hover:scale-110 border border-primary-100">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-xl shadow-emerald-900/20 transition-transform group-hover:scale-110 border border-primary-100">
                     <Droplets className="w-8 h-8 sm:w-10 sm:h-10" />
                   </div>
 
@@ -750,7 +750,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
 
                   <div className="grid grid-cols-1 sm:grid-cols-1 gap-6 sm:gap-8">
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -763,7 +763,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       </div>
                     </div>
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -793,7 +793,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     <Building2 className="w-48 h-48" />
                   </div>
 
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-sm transition-transform group-hover:scale-110 border border-primary-100">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-xl shadow-emerald-900/20 transition-transform group-hover:scale-110 border border-primary-100">
                     <Building2 className="w-8 h-8 sm:w-10 sm:h-10" />
                   </div>
 
@@ -808,7 +808,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
 
                   <div className="grid grid-cols-1 sm:grid-cols-1 gap-6 sm:gap-8">
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -821,7 +821,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       </div>
                     </div>
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -891,9 +891,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-sm"
+              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-xl shadow-emerald-900/20"
             >
-              <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-sm">
+              <div className="w-12 h-12 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-xl shadow-emerald-900/20">
                 <BookOpen className="w-6 h-6" />
               </div>
               <h3 className="font-black text-lg text-primary-950 mb-2">
@@ -914,9 +914,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-sm"
+              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-xl shadow-emerald-900/20"
             >
-              <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-sm">
+              <div className="w-12 h-12 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-xl shadow-emerald-900/20">
                 <FlaskConical className="w-6 h-6" />
               </div>
               <h3 className="font-black text-lg text-primary-950 mb-2">
@@ -937,9 +937,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-sm"
+              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-xl shadow-emerald-900/20"
             >
-              <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-sm">
+              <div className="w-12 h-12 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-xl shadow-emerald-900/20">
                 <Utensils className="w-6 h-6" />
               </div>
               <h3 className="font-black text-lg text-primary-950 mb-2">
@@ -961,9 +961,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-sm"
+              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-xl shadow-emerald-900/20"
             >
-              <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-sm">
+              <div className="w-12 h-12 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-xl shadow-emerald-900/20">
                 <Heart className="w-6 h-6" />
               </div>
               <h3 className="font-black text-lg text-primary-950 mb-2">
@@ -984,9 +984,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6 }}
-              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-sm"
+              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-xl shadow-emerald-900/20"
             >
-              <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-sm">
+              <div className="w-12 h-12 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-xl shadow-emerald-900/20">
                 <Shield className="w-6 h-6" />
               </div>
               <h3 className="font-black text-lg text-primary-950 mb-2">
@@ -1007,9 +1007,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.7 }}
-              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-sm"
+              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-xl shadow-emerald-900/20"
             >
-              <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-sm">
+              <div className="w-12 h-12 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-xl shadow-emerald-900/20">
                 <Building2 className="w-6 h-6" />
               </div>
               <h3 className="font-black text-lg text-primary-950 mb-2">
@@ -1049,7 +1049,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                 >
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill bg-white border border-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill bg-white border border-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest mb-6 shadow-xl shadow-emerald-900/20">
                     <Calendar className="w-3.5 h-3.5" />
                     <span>Survey Pesantren</span>
                   </div>
@@ -1063,7 +1063,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                   
                   <div className="space-y-6">
                     <div className="flex gap-4">
-                      <div className="w-12 h-12 rounded-2xl bg-primary-50 flex items-center justify-center text-primary-600 shrink-0 border border-primary-100">
+                      <div className="w-12 h-12 rounded-3xl bg-primary-50 flex items-center justify-center text-primary-600 shrink-0 border border-primary-100">
                         <CheckCircle2 className="w-6 h-6" />
                       </div>
                       <div>
@@ -1072,7 +1072,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       </div>
                     </div>
                     <div className="flex gap-4">
-                      <div className="w-12 h-12 rounded-2xl bg-primary-50 flex items-center justify-center text-primary-600 shrink-0 border border-primary-100">
+                      <div className="w-12 h-12 rounded-3xl bg-primary-50 flex items-center justify-center text-primary-600 shrink-0 border border-primary-100">
                         <MapPin className="w-6 h-6" />
                       </div>
                       <div>
@@ -1102,7 +1102,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                         title="Lokasi Pesantren Islam Internasional Al-Andalus Putra"
                         className="grayscale group-hover:grayscale-0 transition-all duration-700 opacity-80 group-hover:opacity-100"
                       />
-                      <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-sm border border-primary-100 flex items-center gap-2 z-10 pointer-events-none">
+                      <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-3xl shadow-xl shadow-emerald-900/20 border border-primary-100 flex items-center gap-2 z-10 pointer-events-none">
                         <MapPin className="w-4 h-4 text-primary-600" />
                         <span className="text-[10px] font-black text-ink-950 uppercase tracking-widest">
                           Lokasi Pesantren
@@ -1127,7 +1127,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       animate={{ scale: 1, opacity: 1 }}
                       className="py-12 flex flex-col items-center text-center"
                     >
-                      <div className="w-20 h-20 rounded-full bg-green-50 text-green-600 flex items-center justify-center mb-6 border border-green-100 shadow-sm">
+                      <div className="w-20 h-20 rounded-full bg-green-50 text-green-600 flex items-center justify-center mb-6 border border-green-100 shadow-xl shadow-emerald-900/20">
                         <Check className="w-10 h-10" strokeWidth={3} />
                       </div>
                       <h3 className="text-2xl font-black text-ink-950 mb-3">Permintaan Terkirim!</h3>
@@ -1136,7 +1136,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       </p>
                       <button 
                         onClick={() => setFormStatus('idle')}
-                        className="px-6 py-3 rounded-xl bg-primary-50 text-primary-700 font-bold hover:bg-primary-100 transition-colors"
+                        className="px-6 py-3 rounded-3xl bg-primary-50 text-primary-700 font-bold hover:bg-primary-100 transition-colors"
                       >
                         Isi Form Kembali
                       </button>
@@ -1152,7 +1152,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                             required 
                             type="text" 
                             placeholder="Contoh: Bapak Ahmad" 
-                            className="w-full px-4 py-3.5 rounded-xl border border-ink-100 bg-surface-50 focus:bg-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-hidden transition-all font-medium text-ink-900 placeholder:text-ink-300" 
+                            className="w-full px-4 py-3.5 rounded-3xl border border-ink-100 bg-surface-50 focus:bg-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-hidden transition-all font-medium text-ink-900 placeholder:text-ink-300" 
                             value={visitForm.nama}
                             onChange={(e) => setVisitForm({ ...visitForm, nama: e.target.value })}
                           />
@@ -1165,7 +1165,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                             required 
                             type="tel" 
                             placeholder="Contoh: 0812..." 
-                            className="w-full px-4 py-3.5 rounded-xl border border-ink-100 bg-surface-50 focus:bg-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-hidden transition-all font-medium text-ink-900 placeholder:text-ink-300" 
+                            className="w-full px-4 py-3.5 rounded-3xl border border-ink-100 bg-surface-50 focus:bg-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-hidden transition-all font-medium text-ink-900 placeholder:text-ink-300" 
                             value={visitForm.wa}
                             onChange={(e) => setVisitForm({ ...visitForm, wa: e.target.value })}
                           />
@@ -1180,7 +1180,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                           <input 
                             required 
                             type="date" 
-                            className="w-full px-4 py-3.5 rounded-xl border border-ink-100 bg-surface-50 focus:bg-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-hidden transition-all font-medium text-ink-900" 
+                            className="w-full px-4 py-3.5 rounded-3xl border border-ink-100 bg-surface-50 focus:bg-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-hidden transition-all font-medium text-ink-900" 
                             value={visitForm.tanggal}
                             onChange={(e) => setVisitForm({ ...visitForm, tanggal: e.target.value })}
                           />
@@ -1191,7 +1191,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                           </label>
                           <select 
                             required 
-                            className="w-full px-4 py-3.5 rounded-xl border border-ink-100 bg-surface-50 focus:bg-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-hidden transition-all font-medium text-ink-900 cursor-pointer"
+                            className="w-full px-4 py-3.5 rounded-3xl border border-ink-100 bg-surface-50 focus:bg-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-hidden transition-all font-medium text-ink-900 cursor-pointer"
                             value={visitForm.jam}
                             onChange={(e) => setVisitForm({ ...visitForm, jam: e.target.value })}
                           >
@@ -1213,13 +1213,13 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                           type="number" 
                           min="1" 
                           placeholder="Contoh: 3" 
-                          className="w-full px-4 py-3.5 rounded-xl border border-ink-100 bg-surface-50 focus:bg-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-hidden transition-all font-medium text-ink-900 placeholder:text-ink-300" 
+                          className="w-full px-4 py-3.5 rounded-3xl border border-ink-100 bg-surface-50 focus:bg-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-hidden transition-all font-medium text-ink-900 placeholder:text-ink-300" 
                           value={visitForm.jumlah}
                           onChange={(e) => setVisitForm({ ...visitForm, jumlah: e.target.value })}
                         />
                       </div>
 
-                      <button type="submit" className="w-full py-4 rounded-xl bg-primary-600 text-white font-black text-lg shadow-lg shadow-primary-600/20 hover:bg-primary-700 hover:-translate-y-0.5 hover:shadow-xl transition-all flex items-center justify-center gap-2 mt-2">
+                      <button type="submit" className="w-full py-4 rounded-3xl bg-primary-600 text-white font-black text-lg shadow-lg shadow-primary-600/20 hover:bg-primary-700 hover:-translate-y-0.5 hover:shadow-xl transition-all flex items-center justify-center gap-2 mt-2">
                         <span>Ajukan Jadwal Kunjungan</span>
                         <ArrowRight className="w-5 h-5" />
                       </button>

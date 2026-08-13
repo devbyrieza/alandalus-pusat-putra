@@ -86,7 +86,7 @@ export default function POSKoperasi() {
       
       <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-8">
         {/* Kolom Scan */}
-        <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+        <div className="bg-white p-6 rounded-3xl shadow-md border border-gray-100">
           <h2 className="text-xl font-semibold mb-4">Scan Kartu Santri</h2>
           <form onSubmit={handleScan}>
             <div className="mb-4">
@@ -115,7 +115,7 @@ export default function POSKoperasi() {
         </div>
 
         {/* Kolom Pembayaran */}
-        <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 opacity-100 transition-opacity">
+        <div className="bg-white p-6 rounded-3xl shadow-md border border-gray-100 opacity-100 transition-opacity">
           <h2 className="text-xl font-semibold mb-4">Informasi Transaksi</h2>
           
           {santriData ? (

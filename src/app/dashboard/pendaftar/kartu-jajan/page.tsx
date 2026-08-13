@@ -175,7 +175,7 @@ export default function KartuJajanPage() {
 
   if (!dompet) {
     return (
-      <div className="bg-white rounded-[1.5rem] p-8 text-center shadow-sm border border-gold-100">
+      <div className="bg-white rounded-[1.5rem] p-8 text-center shadow-xl shadow-emerald-900/20 border border-amber-100">
         <AlertCircle className="w-12 h-12 text-ink-300 mx-auto mb-4" />
         <h3 className="text-xl font-bold text-ink-900 mb-2">Kartu Jajan Belum Aktif</h3>
         <p className="text-ink-500 max-w-md mx-auto">
@@ -195,13 +195,13 @@ export default function KartuJajanPage() {
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
-            <p className="text-gold-200 font-bold uppercase tracking-widest text-sm mb-2">Saldo Saat Ini</p>
+            <p className="text-amber-200 font-bold uppercase tracking-widest text-sm mb-2">Saldo Saat Ini</p>
             <h2 className="text-4xl md:text-2xl sm:text-3xl lg:text-5xl font-black tracking-tight mb-2">
               Rp {Number(dompet.saldo).toLocaleString("id-ID")}
             </h2>
             <div className="flex flex-wrap items-center gap-3 mt-4">
               {isEditingLimit ? (
-                <div className="flex items-center gap-2 bg-white/20 p-1.5 rounded-xl">
+                <div className="flex items-center gap-2 bg-white/20 p-1.5 rounded-3xl">
                   <span className="text-sm font-bold ml-2">Rp</span>
                   <input
                     type="number"
@@ -237,9 +237,9 @@ export default function KartuJajanPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Top-up Form */}
-        <div className="lg:col-span-1 bg-white p-6 rounded-[2rem] shadow-sm border border-surface-100 h-fit">
+        <div className="lg:col-span-1 bg-white p-6 rounded-[2rem] shadow-xl shadow-emerald-900/20 border border-surface-100 h-fit">
           <h3 className="text-lg font-bold text-primary-950 mb-4 flex items-center gap-2">
-            <HandCoins className="w-5 h-5 text-gold-500" />
+            <HandCoins className="w-5 h-5 text-amber-500" />
             Top Up Saldo
           </h3>
 
@@ -249,10 +249,10 @@ export default function KartuJajanPage() {
                 <button
                   key={amount}
                   onClick={() => setTopupAmount(amount)}
-                  className={`py-2 px-3 text-sm font-bold rounded-xl border transition-all ${
+                  className={`py-2 px-3 text-sm font-bold rounded-3xl border transition-all ${
                     topupAmount === amount
                       ? "border-primary-600 bg-primary-50 text-primary-800"
-                      : "border-surface-200 text-ink-600 hover:border-gold-300 hover:bg-gold-50"
+                      : "border-surface-200 text-ink-600 hover:border-amber-300 hover:bg-amber-50"
                   }`}
                 >
                   {amount / 1000}K
@@ -268,18 +268,18 @@ export default function KartuJajanPage() {
                 step="10000"
                 value={topupAmount}
                 onChange={(e) => setTopupAmount(Number(e.target.value))}
-                className="w-full pl-12 pr-4 py-3 rounded-xl border-2 border-surface-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 font-bold text-ink-900 transition-all outline-hidden"
+                className="w-full pl-12 pr-4 py-3 rounded-3xl border-2 border-surface-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 font-bold text-ink-900 transition-all outline-hidden"
               />
             </div>
 
             {error && (
-              <p className="text-red-500 text-xs font-bold bg-red-50 p-3 rounded-xl">{error}</p>
+              <p className="text-red-500 text-xs font-bold bg-red-50 p-3 rounded-3xl">{error}</p>
             )}
 
             <button
               onClick={handleTopup}
               disabled={processing || topupAmount < 10000 || dompet.status !== "AKTIF"}
-              className="w-full py-3.5 bg-primary-600 hover:bg-primary-700 disabled:bg-surface-200 disabled:text-ink-400 text-white font-black rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm"
+              className="w-full py-3.5 bg-primary-600 hover:bg-primary-700 disabled:bg-surface-200 disabled:text-ink-400 text-white font-black rounded-3xl transition-colors flex items-center justify-center gap-2 shadow-xl shadow-emerald-900/20"
             >
               {processing ? <RefreshCw className="w-5 h-5 animate-spin" /> : "Top Up Sekarang"}
             </button>
@@ -290,9 +290,9 @@ export default function KartuJajanPage() {
         </div>
 
         {/* Transaction History */}
-        <div className="lg:col-span-2 bg-white p-6 rounded-[2rem] shadow-sm border border-surface-100">
+        <div className="lg:col-span-2 bg-white p-6 rounded-[2rem] shadow-xl shadow-emerald-900/20 border border-surface-100">
           <h3 className="text-lg font-bold text-primary-950 mb-6 flex items-center gap-2">
-            <Clock className="w-5 h-5 text-gold-500" />
+            <Clock className="w-5 h-5 text-amber-500" />
             Riwayat Transaksi
           </h3>
 
@@ -303,9 +303,9 @@ export default function KartuJajanPage() {
               </div>
             ) : (
               transaksiList.map((trx) => (
-                <div key={trx.id} className="flex items-center justify-between p-4 rounded-2xl bg-surface-50 border border-surface-100 hover:border-gold-200 transition-colors">
+                <div key={trx.id} className="flex items-center justify-between p-4 rounded-3xl bg-surface-50 border border-surface-100 hover:border-amber-200 transition-colors">
                   <div className="flex items-center gap-4">
-                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
+                    <div className={`w-10 h-10 rounded-3xl flex items-center justify-center shrink-0 ${
                       trx.jenis_transaksi === "TOPUP" ? "bg-green-100 text-green-600" : "bg-red-100 text-red-600"
                     }`}>
                       {trx.jenis_transaksi === "TOPUP" ? <CheckCircle2 className="w-5 h-5" /> : <XCircle className="w-5 h-5" />}

@@ -41,7 +41,7 @@ export default function AdminKartuJajanPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-full min-h-[500px]">
-        <Loader2 className="w-8 h-8 animate-spin text-gold-500" />
+        <Loader2 className="w-8 h-8 animate-spin text-amber-500" />
       </div>
     );
   }
@@ -56,7 +56,7 @@ export default function AdminKartuJajanPage() {
         
         <button
           onClick={() => handlePrint()}
-          className="flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-xl font-bold shadow-md transition-all active:scale-95"
+          className="flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-3xl font-bold shadow-md transition-all active:scale-95"
         >
           <Printer className="w-5 h-5" />
           Cetak {santriList.length} Kartu
@@ -65,10 +65,10 @@ export default function AdminKartuJajanPage() {
 
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Table List (Left Side) */}
-        <div className="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <div className="lg:col-span-2 bg-white rounded-3xl shadow-xl shadow-emerald-900/20 border border-slate-200 overflow-hidden">
           <div className="p-4 border-b border-slate-100 bg-slate-50 flex items-center justify-between">
             <h3 className="font-bold flex items-center gap-2 text-slate-700">
-              <Users className="w-5 h-5 text-gold-500" />
+              <Users className="w-5 h-5 text-amber-500" />
               Daftar Santri ({santriList.length})
             </h3>
           </div>
@@ -107,7 +107,7 @@ export default function AdminKartuJajanPage() {
 
         {/* Live Preview (Right Side) */}
         <div className="lg:col-span-1">
-          <div className="bg-slate-100 p-6 rounded-2xl border border-slate-200 sticky top-6">
+          <div className="bg-slate-100 p-6 rounded-3xl border border-slate-200 sticky top-6">
             <h3 className="font-bold text-slate-700 mb-4 text-center text-sm uppercase tracking-widest">Preview Desain Cetak</h3>
             
             {/* The Print Area (Hidden during normal view, only shows during print, but we show a preview wrapper here) */}

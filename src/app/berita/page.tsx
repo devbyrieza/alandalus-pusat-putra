@@ -51,7 +51,7 @@ export default function BeritaPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((item, i) => (
-              <div key={i} className="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden group hover:shadow-md transition-all">
+              <div key={i} className="bg-white rounded-3xl border border-slate-100 shadow-xl shadow-emerald-900/20 overflow-hidden group hover:shadow-md transition-all">
                 <div className="aspect-[4/3] bg-slate-200 relative flex items-center justify-center">
                   <span className="text-slate-400 font-medium">Image/Thumbnail Placeholder</span>
                   {item.type === "video" && (

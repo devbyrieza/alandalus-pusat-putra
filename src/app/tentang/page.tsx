@@ -37,7 +37,7 @@ export default function TentangPage() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-wider mb-6 shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-wider mb-6 shadow-xl shadow-emerald-900/20"
           >
             <Sparkles className="w-4 h-4 text-emerald-600" />
             <span>PROFIL RESMI {BRANDING.schoolShortName.toUpperCase()}</span>
@@ -101,8 +101,8 @@ export default function TentangPage() {
           </div>
 
           <div className="grid md:grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center font-bold">
+            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-xl shadow-emerald-900/20 space-y-4">
+              <div className="w-12 h-12 rounded-3xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center font-bold">
                 <Target className="w-6 h-6" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900">Visi Utama</h3>
@@ -111,8 +111,8 @@ export default function TentangPage() {
               </p>
             </div>
 
-            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-teal-500/10 text-teal-600 flex items-center justify-center font-bold">
+            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-xl shadow-emerald-900/20 space-y-4">
+              <div className="w-12 h-12 rounded-3xl bg-teal-500/10 text-teal-600 flex items-center justify-center font-bold">
                 <BookOpen className="w-6 h-6" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900">Misi Utama</h3>
@@ -144,7 +144,7 @@ export default function TentangPage() {
             <div className="pt-2">
               <Link
                 href="/ppdb"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold shadow-xl transition-all"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-3xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold shadow-xl transition-all"
               >
                 <span>Daftar PPDB Online</span>
                 <Send className="w-4 h-4" />

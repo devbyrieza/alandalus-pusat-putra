@@ -591,7 +591,7 @@ export default function ExaminerDashboard() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-black text-ink-900 tracking-tight flex items-center gap-3">
-            <div className="p-2 bg-primary-600 rounded-xl shadow-lg shadow-primary-600/20">
+            <div className="p-2 bg-primary-600 rounded-3xl shadow-lg shadow-primary-600/20">
               <ClipboardEdit className="w-6 h-6 text-white" />
             </div>
             Pusat <span className="text-primary-700">Penilaian</span>
@@ -601,10 +601,10 @@ export default function ExaminerDashboard() {
           </p>
         </div>
 
-        <div className="flex bg-ink-50 p-1 rounded-2xl border border-ink-100 w-fit">
+        <div className="flex bg-ink-50 p-1 rounded-3xl border border-ink-100 w-fit">
           <button
             onClick={() => setActiveTab("data")}
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-3xl text-sm font-bold transition-all ${
               activeTab === "data"
                 ? "bg-white text-primary-700 shadow-clay-sm"
                 : "text-ink-500 hover:text-ink-800"
@@ -615,7 +615,7 @@ export default function ExaminerDashboard() {
           </button>
           <button
             onClick={() => setActiveTab("system")}
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-3xl text-sm font-bold transition-all ${
               activeTab === "system"
                 ? "bg-white text-primary-700 shadow-clay-sm"
                 : "text-ink-500 hover:text-ink-800"
@@ -640,7 +640,7 @@ export default function ExaminerDashboard() {
           
         {/* Header Stats (Rekap Kelulusan) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <div className="bg-green-50 p-6 rounded-xl shadow-sm border border-green-100 relative overflow-hidden">
+          <div className="bg-green-50 p-6 rounded-3xl shadow-xl shadow-emerald-900/20 border border-green-100 relative overflow-hidden">
             <p className="text-green-600 text-sm font-bold tracking-wider uppercase mb-1">Total Diterima</p>
             <div className="flex items-end gap-2">
               <h3 className="text-2xl md:text-4xl font-black text-green-700">
@@ -650,7 +650,7 @@ export default function ExaminerDashboard() {
             </div>
             <div className="absolute -right-4 -bottom-4 bg-green-200/50 w-24 h-24 rounded-full blur-xl"></div>
           </div>
-          <div className="bg-secondary-50 p-6 rounded-xl shadow-sm border border-secondary-100 relative overflow-hidden">
+          <div className="bg-secondary-50 p-6 rounded-3xl shadow-xl shadow-emerald-900/20 border border-secondary-100 relative overflow-hidden">
             <p className="text-secondary-600 text-sm font-bold tracking-wider uppercase mb-1">Cadangan</p>
             <div className="flex items-end gap-2">
               <h3 className="text-2xl md:text-4xl font-black text-secondary-700">
@@ -660,7 +660,7 @@ export default function ExaminerDashboard() {
             </div>
             <div className="absolute -right-4 -bottom-4 bg-secondary-200/50 w-24 h-24 rounded-full blur-xl"></div>
           </div>
-          <div className="bg-rose-50 p-6 rounded-xl shadow-sm border border-rose-100 relative overflow-hidden">
+          <div className="bg-rose-50 p-6 rounded-3xl shadow-xl shadow-emerald-900/20 border border-rose-100 relative overflow-hidden">
             <p className="text-rose-600 text-sm font-bold tracking-wider uppercase mb-1">Ditolak</p>
             <div className="flex items-end gap-2">
               <h3 className="text-2xl md:text-4xl font-black text-rose-700">
@@ -681,14 +681,14 @@ export default function ExaminerDashboard() {
                   placeholder="Cari nama atau no. pendaftaran..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-white border border-ink-100 rounded-xl pl-9 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary-600/10 outline-none shadow-inner"
+                  className="w-full bg-white border border-ink-100 rounded-3xl pl-9 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary-600/10 outline-none shadow-inner"
                 />
               </div>
 
               <div className="flex flex-wrap gap-2 w-full lg:w-auto">
                 <Button
                   onClick={handleExportExcel}
-                  className="btn-secondary flex items-center gap-2 bg-emerald-50 text-emerald-700 border-emerald-100 hover:bg-emerald-100 rounded-xl font-bold py-2"
+                  className="btn-secondary flex items-center gap-2 bg-emerald-50 text-emerald-700 border-emerald-100 hover:bg-emerald-100 rounded-3xl font-bold py-2"
                 >
                   <Download className="w-4 h-4" /> Export Excel
                 </Button>
@@ -711,7 +711,7 @@ export default function ExaminerDashboard() {
                       Swal.fire("Error", "Gagal menghitung ulang", "error");
                     }
                   }}
-                  className="btn-secondary flex items-center gap-2 bg-purple-50 text-purple-700 border-purple-100 hover:bg-purple-100 rounded-xl font-bold py-2"
+                  className="btn-secondary flex items-center gap-2 bg-purple-50 text-purple-700 border-purple-100 hover:bg-purple-100 rounded-3xl font-bold py-2"
                 >
                   <RefreshCcw className="w-4 h-4" /> Hitung Ulang
                 </Button>
@@ -719,7 +719,7 @@ export default function ExaminerDashboard() {
                 <Button
                   onClick={fetchStudents}
                   variant="outline"
-                  className="rounded-xl border-ink-200"
+                  className="rounded-3xl border-ink-200"
                 >
                   <RefreshCcw className="w-4 h-4 mr-2" /> Refresh
                 </Button>
@@ -841,7 +841,7 @@ export default function ExaminerDashboard() {
                               "bg-ink-100 text-ink-500 border-ink-200";
                             return (
                               <span
-                                className={`px-2.5 py-1 text-[10px] font-black rounded-full border shadow-sm ${color}`}
+                                className={`px-2.5 py-1 text-[10px] font-black rounded-full border shadow-xl shadow-emerald-900/20 ${color}`}
                               >
                                 {examStatus || "MENUNGGU"}
                               </span>
@@ -862,7 +862,7 @@ export default function ExaminerDashboard() {
 
                             if (isSkipped) {
                               return (
-                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-sm border border-amber-200">
+                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-xl shadow-emerald-900/20 border border-amber-200">
                                   SKIP
                                 </span>
                               );
@@ -881,7 +881,7 @@ export default function ExaminerDashboard() {
                                   : "bg-secondary-400";
                             return (
                               <span
-                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded shadow-sm`}
+                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded shadow-xl shadow-emerald-900/20`}
                               >
                                 {grade}
                               </span>
@@ -901,7 +901,7 @@ export default function ExaminerDashboard() {
 
                             if (isSkipped) {
                               return (
-                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-sm border border-amber-200">
+                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-xl shadow-emerald-900/20 border border-amber-200">
                                   SKIP
                                 </span>
                               );
@@ -920,7 +920,7 @@ export default function ExaminerDashboard() {
                                   : "bg-secondary-400";
                             return (
                               <span
-                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded shadow-sm`}
+                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded shadow-xl shadow-emerald-900/20`}
                               >
                                 {grade}
                               </span>
@@ -940,7 +940,7 @@ export default function ExaminerDashboard() {
 
                             if (isSkipped) {
                               return (
-                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-sm border border-amber-200">
+                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-xl shadow-emerald-900/20 border border-amber-200">
                                   SKIP
                                 </span>
                               );
@@ -959,7 +959,7 @@ export default function ExaminerDashboard() {
                                   : "bg-secondary-400";
                             return (
                               <span
-                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded shadow-sm`}
+                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded shadow-xl shadow-emerald-900/20`}
                               >
                                 {grade}
                               </span>
@@ -981,7 +981,7 @@ export default function ExaminerDashboard() {
 
                             if (isWsSkipped && isWoSkipped) {
                               return (
-                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-sm border border-amber-200">
+                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-xl shadow-emerald-900/20 border border-amber-200">
                                   SKIP
                                 </span>
                               );
@@ -992,14 +992,14 @@ export default function ExaminerDashboard() {
 
                             if (isWsSkipped && wo === 0) {
                               return (
-                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-sm border border-amber-200">
+                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-xl shadow-emerald-900/20 border border-amber-200">
                                   S: SKIP
                                 </span>
                               );
                             }
                             if (isWoSkipped && ws === 0) {
                               return (
-                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-sm border border-amber-200">
+                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-xl shadow-emerald-900/20 border border-amber-200">
                                   O: SKIP
                                 </span>
                               );
@@ -1020,7 +1020,7 @@ export default function ExaminerDashboard() {
                                   : "bg-secondary-400";
                             return (
                               <span
-                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded shadow-sm`}
+                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded shadow-xl shadow-emerald-900/20`}
                               >
                                 {grade} {isWsSkipped ? "(S:SKIP)" : isWoSkipped ? "(O:SKIP)" : ""}
                               </span>
@@ -1040,7 +1040,7 @@ export default function ExaminerDashboard() {
 
                             if (isSkipped) {
                               return (
-                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-sm border border-amber-200">
+                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-xl shadow-emerald-900/20 border border-amber-200">
                                   SKIP
                                 </span>
                               );
@@ -1059,7 +1059,7 @@ export default function ExaminerDashboard() {
                                   : "bg-secondary-400";
                             return (
                               <span
-                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded shadow-sm`}
+                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded shadow-xl shadow-emerald-900/20`}
                               >
                                 {grade}
                               </span>
@@ -1082,13 +1082,13 @@ export default function ExaminerDashboard() {
                               <>
                                 <button
                                   onClick={() => handleOpenSkipDialog(s)}
-                                  className="flex items-center gap-1.5 bg-amber-500 text-white px-3 py-1.5 rounded-xl text-[10px] font-black hover:bg-amber-600 transition-all shadow-md group-hover:scale-105"
+                                  className="flex items-center gap-1.5 bg-amber-500 text-white px-3 py-1.5 rounded-3xl text-[10px] font-black hover:bg-amber-600 transition-all shadow-md group-hover:scale-105"
                                 >
                                   <Zap className="w-3 h-3" /> BYPASS
                                 </button>
                                 <button
                                   onClick={() => handleOpenAssignDialog(s)}
-                                  className="flex items-center gap-1.5 bg-blue-600 text-white px-3 py-1.5 rounded-xl text-[10px] font-black hover:bg-blue-700 transition-all shadow-md group-hover:scale-105"
+                                  className="flex items-center gap-1.5 bg-blue-600 text-white px-3 py-1.5 rounded-3xl text-[10px] font-black hover:bg-blue-700 transition-all shadow-md group-hover:scale-105"
                                 >
                                   <Users className="w-3 h-3" /> PLOT
                                 </button>
@@ -1096,7 +1096,7 @@ export default function ExaminerDashboard() {
                             )}
                             <button
                               onClick={() => handleOpenInput(s, "quran")}
-                              className="flex items-center gap-1.5 bg-ink-900 text-white px-3 py-1.5 rounded-xl text-[10px] font-black hover:bg-primary-600 transition-all shadow-md group-hover:scale-105"
+                              className="flex items-center gap-1.5 bg-ink-900 text-white px-3 py-1.5 rounded-3xl text-[10px] font-black hover:bg-primary-600 transition-all shadow-md group-hover:scale-105"
                             >
                               <Zap className="w-3 h-3" /> QUR&apos;AN
                             </button>
@@ -1104,7 +1104,7 @@ export default function ExaminerDashboard() {
                               onClick={() =>
                                 handleOpenInput(s, "wawancara_santri")
                               }
-                              className="flex items-center gap-1.5 bg-white border border-ink-200 text-ink-700 px-3 py-1.5 rounded-xl text-[10px] font-black hover:border-primary-600 transition-all shadow-sm group-hover:scale-105"
+                              className="flex items-center gap-1.5 bg-white border border-ink-200 text-ink-700 px-3 py-1.5 rounded-3xl text-[10px] font-black hover:border-primary-600 transition-all shadow-xl shadow-emerald-900/20 group-hover:scale-105"
                             >
                               <MessageSquare className="w-3 h-3" /> W.SANTRI
                             </button>
@@ -1112,7 +1112,7 @@ export default function ExaminerDashboard() {
                               onClick={() =>
                                 handleOpenInput(s, "wawancara_ortu")
                               }
-                              className="flex items-center gap-1.5 bg-gold-50 border border-gold-200 text-gold-800 px-3 py-1.5 rounded-xl text-[10px] font-black hover:border-gold-400 transition-all shadow-sm group-hover:scale-105"
+                              className="flex items-center gap-1.5 bg-amber-50 border border-amber-200 text-amber-800 px-3 py-1.5 rounded-3xl text-[10px] font-black hover:border-amber-400 transition-all shadow-xl shadow-emerald-900/20 group-hover:scale-105"
                             >
                               <MessageSquare className="w-3 h-3" /> W.ORTU
                             </button>
@@ -1167,7 +1167,7 @@ export default function ExaminerDashboard() {
                         </p>
                       </div>
                       {/* Total Badge */}
-                      <div className="bg-primary-600 px-4 py-2.5 rounded-2xl text-white text-center shrink-0">
+                      <div className="bg-primary-600 px-4 py-2.5 rounded-3xl text-white text-center shrink-0">
                         <p className="text-[8px] font-black opacity-70 uppercase">
                           Total
                         </p>
@@ -1241,7 +1241,7 @@ export default function ExaminerDashboard() {
                       ].map((item) => (
                         <div
                           key={item.label}
-                          className="bg-ink-50 rounded-xl p-2.5 text-center"
+                          className="bg-ink-50 rounded-3xl p-2.5 text-center"
                         >
                           <p className="text-sm font-black text-ink-900 leading-none">
                             {(() => {
@@ -1275,13 +1275,13 @@ export default function ExaminerDashboard() {
                         <div className="grid grid-cols-1 sm:grid-cols-1 gap-2 col-span-full">
                           <button
                             onClick={() => handleOpenSkipDialog(s)}
-                            className="flex items-center justify-center gap-2 bg-amber-500 text-white py-3 rounded-2xl text-[11px] font-black shadow-lg shadow-amber-500/20 active:scale-95 transition-all"
+                            className="flex items-center justify-center gap-2 bg-amber-500 text-white py-3 rounded-3xl text-[11px] font-black shadow-lg shadow-amber-500/20 active:scale-95 transition-all"
                           >
                             <Zap className="w-3.5 h-3.5" /> BYPASS
                           </button>
                           <button
                             onClick={() => handleOpenAssignDialog(s)}
-                            className="flex items-center justify-center gap-2 bg-blue-600 text-white py-3 rounded-2xl text-[11px] font-black shadow-lg shadow-blue-500/20 active:scale-95 transition-all"
+                            className="flex items-center justify-center gap-2 bg-blue-600 text-white py-3 rounded-3xl text-[11px] font-black shadow-lg shadow-blue-500/20 active:scale-95 transition-all"
                           >
                             <Users className="w-3.5 h-3.5" /> PLOT
                           </button>
@@ -1289,13 +1289,13 @@ export default function ExaminerDashboard() {
                       )}
                       <button
                         onClick={() => handleOpenInput(s, "quran")}
-                        className="flex items-center justify-center gap-2 bg-ink-900 text-white py-3 rounded-2xl text-[11px] font-black shadow-lg shadow-ink-900/10 active:scale-95 transition-all"
+                        className="flex items-center justify-center gap-2 bg-ink-900 text-white py-3 rounded-3xl text-[11px] font-black shadow-lg shadow-ink-900/10 active:scale-95 transition-all"
                       >
                         <Zap className="w-3.5 h-3.5" /> TES QUR&apos;AN
                       </button>
                       <button
                         onClick={() => handleOpenInput(s, "wawancara_santri")}
-                        className="flex flex-col items-center justify-center bg-gold-400 text-primary-900 py-2 rounded-2xl text-[10px] sm:text-[11px] font-black shadow-lg shadow-gold-400/20 active:scale-95 transition-all"
+                        className="flex flex-col items-center justify-center bg-amber-400 text-primary-900 py-2 rounded-3xl text-[10px] sm:text-[11px] font-black shadow-lg shadow-amber-400/20 active:scale-95 transition-all"
                       >
                         <span className="flex items-center gap-1">
                           <MessageSquare className="w-3 h-3" /> SANTRI
@@ -1303,7 +1303,7 @@ export default function ExaminerDashboard() {
                       </button>
                       <button
                         onClick={() => handleOpenInput(s, "wawancara_ortu")}
-                        className="flex flex-col items-center justify-center bg-gold-200 text-gold-900 py-2 rounded-2xl text-[10px] sm:text-[11px] font-black shadow-lg shadow-gold-200/20 active:scale-95 transition-all"
+                        className="flex flex-col items-center justify-center bg-amber-200 text-amber-900 py-2 rounded-3xl text-[10px] sm:text-[11px] font-black shadow-lg shadow-amber-200/20 active:scale-95 transition-all"
                       >
                         <span className="flex items-center gap-1">
                           <MessageSquare className="w-3 h-3" /> ORTU
@@ -1346,7 +1346,7 @@ export default function ExaminerDashboard() {
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white rounded-3xl p-6 shadow-clay-md border border-white/40 flex items-center gap-4">
-              <div className="p-4 bg-secondary-50 text-secondary-600 rounded-2xl">
+              <div className="p-4 bg-secondary-50 text-secondary-600 rounded-3xl">
                 <Clock className="w-8 h-8" />
               </div>
               <div>
@@ -1359,7 +1359,7 @@ export default function ExaminerDashboard() {
               </div>
             </div>
             <div className="bg-white rounded-3xl p-6 shadow-clay-md border border-white/40 flex items-center gap-4">
-              <div className="p-4 bg-green-50 text-green-600 rounded-2xl">
+              <div className="p-4 bg-green-50 text-green-600 rounded-3xl">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
               <div>
@@ -1372,7 +1372,7 @@ export default function ExaminerDashboard() {
               </div>
             </div>
             <div className="bg-white rounded-3xl p-6 shadow-clay-md border border-white/40 flex items-center gap-4">
-              <div className="p-4 bg-red-50 text-red-600 rounded-2xl">
+              <div className="p-4 bg-red-50 text-red-600 rounded-3xl">
                 <AlertCircle className="w-8 h-8" />
               </div>
               <div>
@@ -1390,7 +1390,7 @@ export default function ExaminerDashboard() {
           
         {/* Header Stats (Rekap Kelulusan) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <div className="bg-green-50 p-6 rounded-xl shadow-sm border border-green-100 relative overflow-hidden">
+          <div className="bg-green-50 p-6 rounded-3xl shadow-xl shadow-emerald-900/20 border border-green-100 relative overflow-hidden">
             <p className="text-green-600 text-sm font-bold tracking-wider uppercase mb-1">Total Diterima</p>
             <div className="flex items-end gap-2">
               <h3 className="text-2xl md:text-4xl font-black text-green-700">
@@ -1400,7 +1400,7 @@ export default function ExaminerDashboard() {
             </div>
             <div className="absolute -right-4 -bottom-4 bg-green-200/50 w-24 h-24 rounded-full blur-xl"></div>
           </div>
-          <div className="bg-secondary-50 p-6 rounded-xl shadow-sm border border-secondary-100 relative overflow-hidden">
+          <div className="bg-secondary-50 p-6 rounded-3xl shadow-xl shadow-emerald-900/20 border border-secondary-100 relative overflow-hidden">
             <p className="text-secondary-600 text-sm font-bold tracking-wider uppercase mb-1">Cadangan</p>
             <div className="flex items-end gap-2">
               <h3 className="text-2xl md:text-4xl font-black text-secondary-700">
@@ -1410,7 +1410,7 @@ export default function ExaminerDashboard() {
             </div>
             <div className="absolute -right-4 -bottom-4 bg-secondary-200/50 w-24 h-24 rounded-full blur-xl"></div>
           </div>
-          <div className="bg-rose-50 p-6 rounded-xl shadow-sm border border-rose-100 relative overflow-hidden">
+          <div className="bg-rose-50 p-6 rounded-3xl shadow-xl shadow-emerald-900/20 border border-rose-100 relative overflow-hidden">
             <p className="text-rose-600 text-sm font-bold tracking-wider uppercase mb-1">Ditolak</p>
             <div className="flex items-end gap-2">
               <h3 className="text-2xl md:text-4xl font-black text-rose-700">
@@ -1425,7 +1425,7 @@ export default function ExaminerDashboard() {
           <div className="bg-white rounded-3xl shadow-clay-md border border-white/40 overflow-hidden">
             <div className="p-5 md:p-8 space-y-8">
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-ink-50 rounded-2xl">
+                <div className="p-3 bg-ink-50 rounded-3xl">
                   <LayoutDashboard className="w-6 h-6 text-ink-600" />
                 </div>
                 <div>
@@ -1491,7 +1491,7 @@ export default function ExaminerDashboard() {
                       }
                     }}
                     disabled={isBroadcasting}
-                    className="w-full bg-primary-600 hover:bg-primary-700 text-white rounded-2xl py-6 font-black text-base shadow-lg shadow-primary-600/20"
+                    className="w-full bg-primary-600 hover:bg-primary-700 text-white rounded-3xl py-6 font-black text-base shadow-lg shadow-primary-600/20"
                   >
                     {isBroadcasting
                       ? "Memproses..."
@@ -1510,7 +1510,7 @@ export default function ExaminerDashboard() {
                   <Button
                     onClick={handleFlushQueue}
                     disabled={isProcessingQueue || !queueStats?.pending}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white rounded-2xl py-6 font-black text-base shadow-lg shadow-emerald-600/20 disabled:bg-slate-200 disabled:text-slate-400 disabled:shadow-none"
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white rounded-3xl py-6 font-black text-base shadow-lg shadow-emerald-600/20 disabled:bg-slate-200 disabled:text-slate-400 disabled:shadow-none"
                   >
                     {isProcessingQueue
                       ? `Mengirim (${flushProgress}%)...`
@@ -1547,7 +1547,7 @@ export default function ExaminerDashboard() {
             <div className="inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-white/20">
               <div className="bg-white px-6 pt-8 pb-6 sm:p-5 md:p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-primary-50 text-primary-600 rounded-2xl">
+                  <div className="p-3 bg-primary-50 text-primary-600 rounded-3xl">
                     <Users className="w-5 h-5 font-black" />
                   </div>
                   <h3
@@ -1558,7 +1558,7 @@ export default function ExaminerDashboard() {
                   </h3>
                 </div>
 
-                <div className="bg-ink-50 rounded-2xl p-4 mb-6 border border-ink-100">
+                <div className="bg-ink-50 rounded-3xl p-4 mb-6 border border-ink-100">
                   <p className="text-[10px] font-black text-ink-400 uppercase tracking-widest mb-1">
                     Peserta
                   </p>
@@ -1584,7 +1584,7 @@ export default function ExaminerDashboard() {
                     <select
                       value={assignType}
                       onChange={(e) => handleAssignTypeChange(e.target.value as any, assignStudent)}
-                      className="w-full bg-ink-50 border border-ink-100 rounded-xl px-4 py-3 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
+                      className="w-full bg-ink-50 border border-ink-100 rounded-3xl px-4 py-3 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
                     >
                       <option value="quran">Tes Al-Qur&apos;an</option>
                       <option value="wawancara_santri">Wawancara Calon Santri</option>
@@ -1599,7 +1599,7 @@ export default function ExaminerDashboard() {
                     <select
                       value={assignExaminerId}
                       onChange={(e) => setAssignExaminerId(e.target.value)}
-                      className="w-full bg-ink-50 border border-ink-100 rounded-xl px-4 py-3 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
+                      className="w-full bg-ink-50 border border-ink-100 rounded-3xl px-4 py-3 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
                     >
                       <option value="">-- Pilih Staff/Penguji (Kosongkan untuk Hapus) --</option>
                       {usersList.map((u) => (
@@ -1614,14 +1614,14 @@ export default function ExaminerDashboard() {
               <div className="bg-ink-50 px-6 py-6 sm:px-5 md:px-8 sm:flex sm:flex-row-reverse gap-3 border-t border-ink-100">
                 <Button
                   onClick={handleSaveAssignment}
-                  className="w-full sm:w-auto bg-primary-600 hover:bg-primary-700 text-white rounded-2xl px-5 md:px-8 py-3 font-black shadow-lg shadow-primary-600/20"
+                  className="w-full sm:w-auto bg-primary-600 hover:bg-primary-700 text-white rounded-3xl px-5 md:px-8 py-3 font-black shadow-lg shadow-primary-600/20"
                 >
                   Simpan Penugasan
                 </Button>
                 <button
                   type="button"
                   onClick={() => setAssignStudent(null)}
-                  className="mt-3 sm:mt-0 w-full sm:w-auto bg-white border border-ink-200 text-ink-600 hover:bg-ink-100 rounded-2xl px-5 md:px-8 py-3 font-black shadow-sm transition-all"
+                  className="mt-3 sm:mt-0 w-full sm:w-auto bg-white border border-ink-200 text-ink-600 hover:bg-ink-100 rounded-3xl px-5 md:px-8 py-3 font-black shadow-xl shadow-emerald-900/20 transition-all"
                 >
                   Batal
                 </button>
@@ -1655,7 +1655,7 @@ export default function ExaminerDashboard() {
             <div className="inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-white/20">
               <div className="bg-white px-6 pt-8 pb-6 sm:p-5 md:p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-primary-50 text-primary-600 rounded-2xl">
+                  <div className="p-3 bg-primary-50 text-primary-600 rounded-3xl">
                     <Zap className="w-5 h-5 font-black" />
                   </div>
                   <h3
@@ -1671,7 +1671,7 @@ export default function ExaminerDashboard() {
                   </h3>
                 </div>
 
-                <div className="bg-ink-50 rounded-2xl p-4 mb-6 border border-ink-100">
+                <div className="bg-ink-50 rounded-3xl p-4 mb-6 border border-ink-100">
                   <p className="text-[10px] font-black text-ink-400 uppercase tracking-widest mb-1">
                     Peserta Tes
                   </p>
@@ -1706,7 +1706,7 @@ export default function ExaminerDashboard() {
                             })
                           }
                           placeholder="0-100"
-                          className="w-full bg-ink-50 border border-ink-100 rounded-xl px-4 py-3 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
+                          className="w-full bg-ink-50 border border-ink-100 rounded-3xl px-4 py-3 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
                         />
                       </div>
                       <div className="flex-1">
@@ -1723,7 +1723,7 @@ export default function ExaminerDashboard() {
                             })
                           }
                           placeholder="0-100"
-                          className="w-full bg-ink-50 border border-ink-100 rounded-xl px-4 py-3 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
+                          className="w-full bg-ink-50 border border-ink-100 rounded-3xl px-4 py-3 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
                         />
                       </div>
                     </div>
@@ -1749,7 +1749,7 @@ export default function ExaminerDashboard() {
                             onChange={(e) =>
                               setWsForm({ ...wsForm, [f.k]: e.target.value })
                             }
-                            className="w-full bg-ink-50 border border-ink-100 rounded-xl px-3 py-2 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
+                            className="w-full bg-ink-50 border border-ink-100 rounded-3xl px-3 py-2 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
                           >
                             <option value="">Pilih...</option>
                             <option value="1">1</option>
@@ -1781,7 +1781,7 @@ export default function ExaminerDashboard() {
                                 [`q${idx + 1}`]: e.target.value,
                               })
                             }
-                            className="w-full bg-ink-50 border border-ink-100 rounded-xl px-3 py-2 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
+                            className="w-full bg-ink-50 border border-ink-100 rounded-3xl px-3 py-2 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
                           >
                             <option value="">Pilih...</option>
                             <option value="A">
@@ -1803,7 +1803,7 @@ export default function ExaminerDashboard() {
                       <select
                         value={selectedExaminerId}
                         onChange={(e) => setSelectedExaminerId(e.target.value)}
-                        className="w-full bg-ink-50 border border-ink-100 rounded-xl px-4 py-3 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
+                        className="w-full bg-ink-50 border border-ink-100 rounded-3xl px-4 py-3 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
                       >
                         <option value="">-- Pilih Staff/Penguji --</option>
                         {usersList.map((u) => (
@@ -1824,7 +1824,7 @@ export default function ExaminerDashboard() {
                       onChange={(e) => setCatatan(e.target.value)}
                       rows={3}
                       placeholder="Tambahkan catatan jika diperlukan..."
-                      className="w-full bg-ink-50 border border-ink-100 rounded-xl px-4 py-3 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
+                      className="w-full bg-ink-50 border border-ink-100 rounded-3xl px-4 py-3 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
                     ></textarea>
                   </div>
                 </div>
@@ -1833,14 +1833,14 @@ export default function ExaminerDashboard() {
                 <Button
                   onClick={handleSubmitScore}
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto bg-primary-600 hover:bg-primary-700 text-white rounded-2xl px-5 md:px-8 py-3 font-black shadow-lg shadow-primary-600/20 disabled:opacity-50"
+                  className="w-full sm:w-auto bg-primary-600 hover:bg-primary-700 text-white rounded-3xl px-5 md:px-8 py-3 font-black shadow-lg shadow-primary-600/20 disabled:opacity-50"
                 >
                   {isSubmitting ? "Menyimpan..." : "Simpan Nilai"}
                 </Button>
                 <button
                   type="button"
                   onClick={() => setSelectedStudent(null)}
-                  className="mt-3 sm:mt-0 w-full sm:w-auto bg-white border border-ink-200 text-ink-600 hover:bg-ink-100 rounded-2xl px-5 md:px-8 py-3 font-black shadow-sm transition-all"
+                  className="mt-3 sm:mt-0 w-full sm:w-auto bg-white border border-ink-200 text-ink-600 hover:bg-ink-100 rounded-3xl px-5 md:px-8 py-3 font-black shadow-xl shadow-emerald-900/20 transition-all"
                 >
                   Batal
                 </button>

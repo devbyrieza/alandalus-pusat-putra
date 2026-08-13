@@ -182,7 +182,7 @@ export default function ExamCardPage() {
               <h3 className="font-bold border-b border-black mb-2 pb-1 uppercase text-sm">
                 Rincian Jadwal Seleksi
               </h3>
-              <div className="w-full overflow-x-auto rounded-2xl border border-slate-200 shadow-sm"><table className="w-full border-collapse border border-black text-sm">
+              <div className="w-full overflow-x-auto rounded-3xl border border-slate-200 shadow-xl shadow-emerald-900/20"><table className="w-full border-collapse border border-black text-sm">
                 <thead>
                   <tr className="bg-gray-100">
                     <th className="border border-black p-2 text-left">
@@ -215,9 +215,9 @@ export default function ExamCardPage() {
                     ))
                   ) : (
                     <tr>
-                      <td
+                      <t
                         colSpan={4}
-                        className="border border-black p-4 text-center italic text-gray-500"
+                        className="border border-black px-5 py-4 text-center italic text-gray-500"
                       >
                         Jadwal belum dipilih/ditentukan
                       </td>

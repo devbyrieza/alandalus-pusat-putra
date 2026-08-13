@@ -137,7 +137,7 @@ export default function POSPerizinan() {
       <div className="flex space-x-4 mb-8">
         <button
           onClick={() => { setMode("KELUAR"); resetForm(); }}
-          className={`flex-1 flex items-center justify-center gap-2 py-4 rounded-xl font-bold text-lg transition-all ${
+          className={`flex-1 flex items-center justify-center gap-2 py-4 rounded-3xl font-bold text-lg transition-all ${
             mode === "KELUAR" 
               ? "bg-[#550000] text-white shadow-lg scale-105" 
               : "bg-white text-gray-500 hover:bg-red-50 border"
@@ -147,7 +147,7 @@ export default function POSPerizinan() {
         </button>
         <button
           onClick={() => { setMode("KEMBALI"); resetForm(); }}
-          className={`flex-1 flex items-center justify-center gap-2 py-4 rounded-xl font-bold text-lg transition-all ${
+          className={`flex-1 flex items-center justify-center gap-2 py-4 rounded-3xl font-bold text-lg transition-all ${
             mode === "KEMBALI" 
               ? "bg-[#ddc192] text-[#550000] shadow-lg scale-105" 
               : "bg-white text-gray-500 hover:bg-yellow-50 border"
@@ -159,7 +159,7 @@ export default function POSPerizinan() {
       
       <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-8">
         {/* Kolom Scan */}
-        <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+        <div className="bg-white p-6 rounded-3xl shadow-md border border-gray-100">
           <h2 className="text-xl font-semibold mb-4">
             {mode === "KELUAR" ? "1. Scan Kartu" : "Silakan Scan Kartu"}
           </h2>
@@ -196,7 +196,7 @@ export default function POSPerizinan() {
 
         {/* Kolom Input Izin (Hanya muncul saat Keluar) */}
         {mode === "KELUAR" && (
-          <div className={`bg-white p-6 rounded-xl shadow-md border border-gray-100 transition-opacity ${santriData ? 'opacity-100' : 'opacity-50 pointer-events-none'}`}>
+          <div className={`bg-white p-6 rounded-3xl shadow-md border border-gray-100 transition-opacity ${santriData ? 'opacity-100' : 'opacity-50 pointer-events-none'}`}>
             <h2 className="text-xl font-semibold mb-4">2. Detail Perizinan</h2>
             
             {santriData && (

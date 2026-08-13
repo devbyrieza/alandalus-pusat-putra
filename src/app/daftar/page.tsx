@@ -251,7 +251,7 @@ export default function DaftarPage() {
     <main className="min-h-screen bg-white py-12 md:py-24 relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-full max-w-[600px] h-[600px] bg-secondary-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-full max-w-[600px] h-[600px] bg-gold-100/30 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full max-w-[600px] h-[600px] bg-amber-100/30 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
       <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] pointer-events-none" />
 
       <Container className="relative z-10">
@@ -261,7 +261,7 @@ export default function DaftarPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-2xl shadow-sm border border-secondary-200 mb-6 group hover:scale-110 transition-transform app-card">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-3xl shadow-xl shadow-emerald-900/20 border border-secondary-200 mb-6 group hover:scale-110 transition-transform app-card">
             <School className="w-8 h-8 text-primary-600" />
           </div>
           <motion.h1
@@ -359,7 +359,7 @@ export default function DaftarPage() {
                 transition={{ delay: 0.4 }}
               >
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="w-10 h-10 rounded-xl bg-secondary-50 flex items-center justify-center text-primary-600 shadow-sm border border-secondary-200">
+                  <div className="w-10 h-10 rounded-3xl bg-secondary-50 flex items-center justify-center text-primary-600 shadow-xl shadow-emerald-900/20 border border-secondary-200">
                     <GraduationCap className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-display font-black text-ink-950">
@@ -416,11 +416,11 @@ export default function DaftarPage() {
                             ? "opacity-50 grayscale cursor-not-allowed border-secondary-200 bg-stone-50"
                             : formData.jenjang === option.value
                               ? "border-primary-600 bg-secondary-50 shadow-md"
-                              : "border-secondary-200 bg-white hover:border-primary-200 hover:shadow-sm"
+                              : "border-secondary-200 bg-white hover:border-primary-200 hover:shadow-xl shadow-emerald-900/20"
                         }`}
                       >
                         {isClosed && (
-                          <div className="absolute top-4 right-4 bg-red-600 text-white text-[10px] font-black px-2 py-1 rounded-full uppercase tracking-tighter shadow-sm z-10">
+                          <div className="absolute top-4 right-4 bg-red-600 text-white text-[10px] font-black px-2 py-1 rounded-full uppercase tracking-tighter shadow-xl shadow-emerald-900/20 z-10">
                             {closedLabel}
                           </div>
                         )}
@@ -501,7 +501,7 @@ export default function DaftarPage() {
                 className="space-y-8"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-secondary-50 flex items-center justify-center text-primary-600 shadow-sm border border-secondary-200">
+                  <div className="w-10 h-10 rounded-3xl bg-secondary-50 flex items-center justify-center text-primary-600 shadow-xl shadow-emerald-900/20 border border-secondary-200">
                     <User className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-display font-black text-ink-950">
@@ -525,7 +525,7 @@ export default function DaftarPage() {
                           }))
                         }
                         placeholder="Sesuai Akta Kelahiran santri"
-                        className="w-full px-5 py-3 md:px-8 md:py-5 rounded-xl md:rounded-2xl bg-secondary-50 border border-transparent focus:bg-white focus:border-primary-200 focus:ring-4 focus:ring-secondary-50 transition-all font-bold placeholder:text-ink-500 text-sm md:text-base text-ink-950"
+                        className="w-full px-5 py-3 md:px-8 md:py-5 rounded-3xl md:rounded-3xl bg-secondary-50 border border-transparent focus:bg-white focus:border-primary-200 focus:ring-4 focus:ring-secondary-50 transition-all font-bold placeholder:text-ink-500 text-sm md:text-base text-ink-950"
                       />
                     </InputField>
                   </div>
@@ -544,7 +544,7 @@ export default function DaftarPage() {
                           }))
                         }
                         placeholder="16 Digit NIK"
-                        className="w-full px-5 py-3 md:px-8 md:py-5 rounded-xl md:rounded-2xl bg-secondary-50 border border-transparent focus:bg-white focus:border-primary-200 focus:ring-4 focus:ring-secondary-50 transition-all font-bold placeholder:text-ink-500 text-sm md:text-base text-ink-950"
+                        className="w-full px-5 py-3 md:px-8 md:py-5 rounded-3xl md:rounded-3xl bg-secondary-50 border border-transparent focus:bg-white focus:border-primary-200 focus:ring-4 focus:ring-secondary-50 transition-all font-bold placeholder:text-ink-500 text-sm md:text-base text-ink-950"
                       />
                       <p className="text-[10px] text-ink-500 mt-1.5 ml-1 font-bold">
                         NIK (Nomor Induk Kependudukan) santri dapat dilihat pada lembar Kartu Keluarga (KK) di sebelah nama santri, atau pada KIA/KTP Anak.
@@ -565,7 +565,7 @@ export default function DaftarPage() {
                           tanggal_lahir: e.target.value,
                         }))
                       }
-                      className="w-full px-5 py-3 md:px-8 md:py-5 rounded-xl md:rounded-2xl bg-secondary-50 border border-transparent focus:bg-white focus:border-primary-200 focus:ring-4 focus:ring-secondary-50 transition-all font-bold text-sm md:text-base text-ink-950"
+                      className="w-full px-5 py-3 md:px-8 md:py-5 rounded-3xl md:rounded-3xl bg-secondary-50 border border-transparent focus:bg-white focus:border-primary-200 focus:ring-4 focus:ring-secondary-50 transition-all font-bold text-sm md:text-base text-ink-950"
                     />
                   </InputField>
 
@@ -618,7 +618,7 @@ export default function DaftarPage() {
                 className="space-y-8"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-secondary-50 flex items-center justify-center text-primary-600 shadow-sm border border-secondary-200">
+                  <div className="w-10 h-10 rounded-3xl bg-secondary-50 flex items-center justify-center text-primary-600 shadow-xl shadow-emerald-900/20 border border-secondary-200">
                     <Phone className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-display font-black text-ink-950">
@@ -630,7 +630,7 @@ export default function DaftarPage() {
                   label="Nomor WhatsApp Orang Tua"
                   error={fieldErrors.no_hp}
                 >
-                  <div className="relative flex shadow-sm border border-transparent focus-within:border-primary-200 focus-within:ring-4 focus-within:ring-secondary-50 rounded-xl md:rounded-2xl overflow-hidden bg-secondary-50 transition-all">
+                  <div className="relative flex shadow-xl shadow-emerald-900/20 border border-transparent focus-within:border-primary-200 focus-within:ring-4 focus-within:ring-secondary-50 rounded-3xl md:rounded-3xl overflow-hidden bg-secondary-50 transition-all">
                     <div className="relative">
                       <select
                         value={countryCode}

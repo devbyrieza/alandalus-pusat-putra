@@ -46,7 +46,7 @@ export default function LaporanHarianPage() {
   };
 
   return (
-    <div className="p-4 md:p-8 max-w-5xl mx-auto h-full flex flex-col">
+    <div className="px-7 py-6 md:p-8 max-w-5xl mx-auto h-full flex flex-col">
       <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4 print:hidden">
         <div>
           <h1 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">Rekap & Tutup Kasir</h1>
@@ -60,12 +60,12 @@ export default function LaporanHarianPage() {
               type="date" 
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="bg-white border border-slate-200 font-bold text-slate-700 rounded-xl py-2 pl-10 pr-4 focus:outline-none focus:border-maroon-500"
+              className="bg-white border border-slate-200 font-bold text-slate-700 rounded-3xl py-2 pl-10 pr-4 focus:outline-none focus:border-emerald-500"
             />
           </div>
           <button 
             onClick={handlePrint}
-            className="bg-slate-900 hover:bg-slate-800 text-white font-bold py-2 px-5 rounded-xl flex items-center gap-2 transition-all shadow-sm"
+            className="bg-slate-900 hover:bg-slate-800 text-white font-bold py-2 px-5 rounded-3xl flex items-center gap-2 transition-all shadow-xl shadow-emerald-900/20"
           >
             <Printer className="w-4 h-4" /> Cetak Laporan
           </button>
@@ -73,7 +73,7 @@ export default function LaporanHarianPage() {
       </div>
 
       {/* PRINTABLE AREA */}
-      <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 print:shadow-none print:border-none print:p-0">
+      <div className="bg-white rounded-3xl border border-slate-200 shadow-xl shadow-emerald-900/20 p-8 print:shadow-none print:border-none print:p-0">
         
         {/* Laporan Header */}
         <div className="text-center border-b-2 border-slate-900 pb-6 mb-6">
@@ -86,7 +86,7 @@ export default function LaporanHarianPage() {
 
         {/* Ringkasan */}
         <div className="grid grid-cols-1 sm:grid-cols-1 gap-6 mb-8">
-          <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+          <div className="bg-slate-50 p-6 rounded-3xl border border-slate-100">
             <h3 className="text-sm font-bold text-slate-500 uppercase mb-4 flex items-center gap-2">
               <TrendingUp className="w-4 h-4" /> Pemasukan Keuangan (SPP/Top-Up)
             </h3>
@@ -102,18 +102,18 @@ export default function LaporanHarianPage() {
             </div>
           </div>
 
-          <div className="bg-maroon-50 p-6 rounded-2xl border border-maroon-100">
-            <h3 className="text-sm font-bold text-maroon-700 uppercase mb-4 flex items-center gap-2">
+          <div className="bg-emerald-50 p-6 rounded-3xl border border-emerald-100">
+            <h3 className="text-sm font-bold text-emerald-700 uppercase mb-4 flex items-center gap-2">
               <FileText className="w-4 h-4" /> Operasional Kantin (E-Money)
             </h3>
             <div className="space-y-3">
-              <div className="flex justify-between items-center border-b border-maroon-200 pb-2">
-                <span className="font-medium text-maroon-800">Jumlah Transaksi (Struk)</span>
-                <span className="font-black text-maroon-900">{ringkasan.totalTransaksi} Trx</span>
+              <div className="flex justify-between items-center border-b border-emerald-200 pb-2">
+                <span className="font-medium text-emerald-800">Jumlah Transaksi (Struk)</span>
+                <span className="font-black text-emerald-900">{ringkasan.totalTransaksi} Trx</span>
               </div>
-              <div className="flex justify-between items-center border-b border-maroon-200 pb-2">
-                <span className="font-medium text-maroon-800">Total Omzet Kantin Hari Ini</span>
-                <span className="font-black text-maroon-900 text-xl">Rp {ringkasan.totalNominal.toLocaleString('id-ID')}</span>
+              <div className="flex justify-between items-center border-b border-emerald-200 pb-2">
+                <span className="font-medium text-emerald-800">Total Omzet Kantin Hari Ini</span>
+                <span className="font-black text-emerald-900 text-xl">Rp {ringkasan.totalNominal.toLocaleString('id-ID')}</span>
               </div>
             </div>
           </div>
@@ -122,7 +122,7 @@ export default function LaporanHarianPage() {
         {/* Detail Penjualan */}
         <div>
           <h3 className="text-lg font-black text-slate-900 mb-4">Rincian Transaksi Terakhir</h3>
-          <div className="w-full overflow-x-auto rounded-2xl border border-slate-200 shadow-sm"><table className="w-full text-left text-sm border-collapse">
+          <div className="w-full overflow-x-auto rounded-3xl border border-slate-200 shadow-xl shadow-emerald-900/20"><table className="w-full text-left text-sm border-collapse">
             <thead>
               <tr className="bg-slate-900 text-white">
                 <th className="p-3 font-bold rounded-tl-xl">Waktu</th>
@@ -153,8 +153,8 @@ export default function LaporanHarianPage() {
             </tbody>
             <tfoot>
               <tr>
-                <td colSpan={3} className="p-4 text-right font-black text-slate-800 uppercase">Total Akhir Omzet Kantin:</td>
-                <td className="p-4 text-right font-black text-maroon-700 text-xl">Rp {ringkasan.totalNominal.toLocaleString('id-ID')}</td>
+                <t colSpan={3} className="px-5 py-4 text-right font-black text-slate-800 uppercase">Total Akhir Omzet Kantin:</td>
+                <t className="px-5 py-4 text-right font-black text-emerald-700 text-xl">Rp {ringkasan.totalNominal.toLocaleString('id-ID')}</td>
               </tr>
             </tfoot>
           </table></div>

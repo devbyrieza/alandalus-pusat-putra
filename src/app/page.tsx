@@ -110,7 +110,7 @@ function StatCard({
   const primaryBg = IS_PUTRA ? "bg-primary-500/10" : "bg-pink-500/10";
   return (
     <div className="text-center group">
-      <div className={`w-14 h-14 rounded-2xl ${primaryBg} flex items-center justify-center mx-auto mb-4`}>
+      <div className={`w-14 h-14 rounded-3xl ${primaryBg} flex items-center justify-center mx-auto mb-4`}>
         <Icon className={`w-7 h-7 ${primaryColor}`} />
       </div>
       <div className={`text-4xl sm:text-5xl lg:text-6xl font-black ${primaryColor}`}>
@@ -221,7 +221,7 @@ export default function Home() {
         <Zap className="w-3.5 h-3.5 shrink-0" />
         <span className="sm:hidden">PPDB 2026/2027 — Kuota Terbatas!</span>
         <span className="hidden sm:inline">Pendaftaran Santri Baru 2026/2027 Telah Dibuka — Kuota Terbatas!</span>
-        <Link href="/ppdb" className="inline-flex items-center gap-1 ml-2 px-2.5 py-0.5 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 text-[11px] font-black uppercase tracking-wider shadow-sm transition-all shrink-0">
+        <Link href="/ppdb" className="inline-flex items-center gap-1 ml-2 px-2.5 py-0.5 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 text-[11px] font-black uppercase tracking-wider shadow-xl shadow-emerald-900/20 transition-all shrink-0">
           <span>Daftar</span>
           <ChevronRight className="w-3 h-3 stroke-[3]" />
         </Link>
@@ -288,14 +288,14 @@ export default function Home() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/ppdb"
-                  className={`inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-white text-base ${c.bg600} ${c.bgHover} shadow-xl ${c.shadow} transition-all hover:-translate-y-1 hover:shadow-2xl group`}
+                  className={`inline-flex items-center gap-2 px-8 py-4 rounded-3xl font-bold text-white text-base ${c.bg600} ${c.bgHover} shadow-xl ${c.shadow} transition-all hover:-translate-y-1 hover:shadow-2xl group`}
                 >
                   Daftar Sekarang
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
                   href="/tentang"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-white text-base bg-white/10 hover:bg-white/20 border border-white/20 transition-all hover:-translate-y-1 backdrop-blur-sm"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-3xl font-bold text-white text-base bg-white/10 hover:bg-white/20 border border-white/20 transition-all hover:-translate-y-1 backdrop-blur-sm"
                 >
                   <PiBookOpenTextBold className="w-5 h-5" />
                   Profil Pesantren
@@ -340,17 +340,17 @@ export default function Home() {
 
                 {/* Floating bottom card - Now floating outside the image */}
                 <div className="relative -mt-6 sm:-mt-8 mx-4 sm:-mx-6 z-20">
-                  <div className="bg-slate-900/80 backdrop-blur-xl border border-white/20 rounded-2xl p-4 sm:p-5 flex items-center gap-4 shadow-2xl shadow-black/40 ring-1 ring-white/10">
-                    <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl ${c.bg600} flex items-center justify-center shrink-0`}>
+                  <div className="bg-slate-900/80 backdrop-blur-xl border border-white/20 rounded-3xl p-4 sm:p-5 flex items-center gap-4 shadow-2xl shadow-black/40 ring-1 ring-white/10">
+                    <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-3xl ${c.bg600} flex items-center justify-center shrink-0`}>
                       <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <div>
                       <p className="text-white font-bold text-sm sm:text-base">PPDB 2026-2027 Dibuka</p>
-                      <p className="text-amber-300 text-[11px] sm:text-xs font-bold tracking-wide drop-shadow-sm">Angkatan IX · Kuota Terbatas</p>
+                      <p className="text-amber-300 text-[11px] sm:text-xs font-bold tracking-wide drop-shadow-xl shadow-emerald-900/20">Angkatan IX · Kuota Terbatas</p>
                     </div>
                     <Link
                       href="/ppdb"
-                      className={`ml-auto px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl text-white text-xs sm:text-sm font-bold ${c.bg600} ${c.bgHover} transition shrink-0 flex items-center gap-1.5 shadow-lg`}
+                      className={`ml-auto px-4 py-2 sm:px-5 sm:py-2.5 rounded-3xl text-white text-xs sm:text-sm font-bold ${c.bg600} ${c.bgHover} transition shrink-0 flex items-center gap-1.5 shadow-lg`}
                     >
                       Daftar <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </Link>
@@ -358,11 +358,11 @@ export default function Home() {
                 </div>
 
                 {/* Floating top-right badge - Also slightly adjusted to pop out */}
-                <div className="absolute -top-4 right-0 md:-right-6 bg-slate-900/80 backdrop-blur-xl border border-white/30 rounded-2xl p-3 flex items-center gap-2.5 shadow-xl ring-1 ring-white/10 z-20">
+                <div className="absolute -top-4 right-0 md:-right-6 bg-slate-900/80 backdrop-blur-xl border border-white/30 rounded-3xl p-3 flex items-center gap-2.5 shadow-xl ring-1 ring-white/10 z-20">
                   <PiCertificateBold className={`w-6 h-6 ${c.text400} shrink-0`} />
                   <div>
                     <p className="text-white text-[11px] font-bold leading-tight">Terakreditasi Muadalah</p>
-                    <p className="text-amber-300 text-xs font-black tracking-wide drop-shadow-sm">Setara Internasional</p>
+                    <p className="text-amber-300 text-xs font-black tracking-wide drop-shadow-xl shadow-emerald-900/20">Setara Internasional</p>
                   </div>
                 </div>
 
@@ -565,7 +565,7 @@ export default function Home() {
                 ].map((step, i) => (
                   <li key={i} className="flex gap-6">
                     <div className="flex flex-col items-center">
-                      <div className={`w-12 h-12 rounded-2xl ${c.bg600} text-white font-black text-sm flex items-center justify-center shadow-lg ${c.shadow} shrink-0`}>
+                      <div className={`w-12 h-12 rounded-3xl ${c.bg600} text-white font-black text-sm flex items-center justify-center shadow-lg ${c.shadow} shrink-0`}>
                         {step.num}
                       </div>
                       {i < 6 && <div className="w-0.5 flex-1 mt-2 mb-2 bg-slate-200" />}
@@ -583,7 +583,7 @@ export default function Home() {
 
               <Link
                 href="/ppdb"
-                className={`inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-white ${c.bg600} ${c.bgHover} shadow-xl ${c.shadow} transition-all hover:-translate-y-1 group mt-2`}
+                className={`inline-flex items-center gap-2 px-8 py-4 rounded-3xl font-bold text-white ${c.bg600} ${c.bgHover} shadow-xl ${c.shadow} transition-all hover:-translate-y-1 group mt-2`}
               >
                 Mulai Daftar Sekarang
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -647,13 +647,13 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-sm text-slate-700 hover:text-slate-900 transition-colors group"
                   >
-                    <div className="w-9 h-9 rounded-xl bg-green-500 flex items-center justify-center shrink-0">
+                    <div className="w-9 h-9 rounded-3xl bg-green-500 flex items-center justify-center shrink-0">
                       <FaWhatsapp className="w-4 h-4 text-white" />
                     </div>
                     <span className="group-hover:underline font-medium">{BRANDING.contact.whatsapp}</span>
                   </a>
                   <div className="flex items-start gap-3 text-sm text-slate-500">
-                    <div className="w-9 h-9 rounded-xl bg-slate-200 flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-9 h-9 rounded-3xl bg-slate-200 flex items-center justify-center shrink-0 mt-0.5">
                       <FaMapMarkerAlt className="w-4 h-4 text-slate-500" />
                     </div>
                     <span className="leading-relaxed">{BRANDING.contact.address}</span>
@@ -707,7 +707,7 @@ export default function Home() {
                 key={i}
                 className={`group p-6 rounded-3xl border border-slate-100 bg-white hover:border-slate-200 hover:-translate-y-1 hover:shadow-xl transition-all`}
               >
-                <div className={`w-12 h-12 rounded-2xl ${c.bg50} ${c.text600} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform`}>
+                <div className={`w-12 h-12 rounded-3xl ${c.bg50} ${c.text600} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform`}>
                   <feat.Icon className="w-6 h-6" />
                 </div>
                 <h3 className="font-black text-slate-900 text-lg mb-2">{feat.title}</h3>
@@ -747,7 +747,7 @@ export default function Home() {
             ].map(({ label, Icon }, i) => (
               <div
                 key={i}
-                className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white/5 border border-white/8 hover:bg-white/10 transition-colors text-center"
+                className="flex flex-col items-center gap-2 p-4 rounded-3xl bg-white/5 border border-white/8 hover:bg-white/10 transition-colors text-center"
               >
                 <Icon className={`w-6 h-6 ${c.text400}`} />
                 <span className="text-slate-400 text-xs font-medium leading-tight">{label}</span>
@@ -773,7 +773,7 @@ export default function Home() {
               { src: "/images/lapangan-minisoccer.webp", label: "Lapangan Olahraga" },
               { src: "/images/gedung-utama-dan-lapangan-basket.webp", label: "Gedung Utama" },
             ].map((photo, i) => (
-              <div key={i} className="relative group overflow-hidden rounded-2xl aspect-video">
+              <div key={i} className="relative group overflow-hidden rounded-3xl aspect-video">
                 <Image
                   src={photo.src}
                   alt={photo.label}
@@ -789,7 +789,7 @@ export default function Home() {
           <div className="text-center mt-8">
             <Link
               href="/galeri"
-              className={`inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-bold text-sm ${c.text600} border-2 ${c.border200} transition-all`}
+              className={`inline-flex items-center gap-2 px-6 py-3 rounded-3xl font-bold text-sm ${c.text600} border-2 ${c.border200} transition-all`}
             >
               Lihat Semua Galeri <ArrowRight className="w-4 h-4" />
             </Link>
@@ -823,7 +823,7 @@ export default function Home() {
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div
-                    className="w-11 h-11 rounded-2xl flex items-center justify-center text-white font-black text-lg shrink-0"
+                    className="w-11 h-11 rounded-3xl flex items-center justify-center text-white font-black text-lg shrink-0"
                     style={{ background: "linear-gradient(135deg, #059669, #064e3b)" }}
                   >
                     {t.initial}
@@ -873,7 +873,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/ppdb"
-              className={`inline-flex items-center justify-center gap-2 px-10 py-4 rounded-2xl font-bold text-white text-lg ${c.bg600} ${c.bgHover} shadow-2xl ${c.shadow} transition-all hover:-translate-y-1 group`}
+              className={`inline-flex items-center justify-center gap-2 px-10 py-4 rounded-3xl font-bold text-white text-lg ${c.bg600} ${c.bgHover} shadow-2xl ${c.shadow} transition-all hover:-translate-y-1 group`}
             >
               <GraduationCap className="w-5 h-5" />
               Daftar Sekarang
@@ -883,7 +883,7 @@ export default function Home() {
               href={`https://wa.me/${BRANDING.contact.whatsapp.replace(/\D/g, "")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-2xl font-bold text-white text-lg bg-green-600 hover:bg-green-700 transition-all hover:-translate-y-1 shadow-xl shadow-green-500/20"
+              className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-3xl font-bold text-white text-lg bg-green-600 hover:bg-green-700 transition-all hover:-translate-y-1 shadow-xl shadow-green-500/20"
             >
               <FaWhatsapp className="w-5 h-5" />
               WhatsApp Kami

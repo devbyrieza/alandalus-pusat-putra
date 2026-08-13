@@ -114,7 +114,7 @@ function VerifyPinContent() {
             <div className="absolute top-[-50px] right-[-50px] w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
             <div className="absolute bottom-[-30px] left-[-30px] w-24 h-24 bg-white/5 rounded-full blur-xl"></div>
 
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg border border-white/30 rotate-3">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 backdrop-blur-md rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg border border-white/30 rotate-3">
               <Lock className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
             </div>
             <h1 className="text-xl sm:text-2xl font-black text-white tracking-tight">
@@ -146,7 +146,7 @@ function VerifyPinContent() {
                   onChange={(e) => handleChange(i, e.target.value)}
                   onKeyDown={(e) => handleKeyDown(i, e)}
                   disabled={loading || success}
-                  className={`w-12 h-16 sm:w-14 sm:h-18 text-center text-2xl sm:text-3xl font-black bg-stone-50 border-2 rounded-2xl transition-all duration-300 outline-none
+                  className={`w-12 h-16 sm:w-14 sm:h-18 text-center text-2xl sm:text-3xl font-black bg-stone-50 border-2 rounded-3xl transition-all duration-300 outline-none
                                         ${
                                           success
                                             ? "border-emerald-500 text-emerald-600 bg-emerald-50"
@@ -176,7 +176,7 @@ function VerifyPinContent() {
             {!loading && !success && (
               <button
                 onClick={handleSubmit}
-                className="group flex items-center justify-center gap-2 w-full py-4 bg-stone-900 hover:bg-black text-white rounded-2xl font-bold transition-all shadow-lg hover:shadow-stone-300 uppercase tracking-widest text-xs"
+                className="group flex items-center justify-center gap-2 w-full py-4 bg-stone-900 hover:bg-black text-white rounded-3xl font-bold transition-all shadow-lg hover:shadow-stone-300 uppercase tracking-widest text-xs"
               >
                 Konfirmasi PIN
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

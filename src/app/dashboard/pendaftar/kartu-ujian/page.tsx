@@ -215,7 +215,7 @@ export default function ExamCardPage() {
                     ))
                   ) : (
                     <tr>
-                      <t
+                      <td
                         colSpan={4}
                         className="border border-black px-5 py-4 text-center italic text-gray-500"
                       >

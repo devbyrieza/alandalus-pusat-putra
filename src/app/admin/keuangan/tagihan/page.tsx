@@ -91,9 +91,9 @@ export default function ManajemenTagihanPage() {
                 <th className="px-5 py-4 font-bold">Santri</th>
                 <th className="px-5 py-4 font-bold">Jenis Tagihan</th>
                 <th className="px-5 py-4 font-bold">Tanggal</th>
-                <t className="px-5 py-4 font-bold text-right">Nominal</th>
-                <t className="px-5 py-4 font-bold text-center">Status</th>
-                <t className="px-5 py-4 font-bold text-center">Aksi</th>
+                <th className="px-5 py-4 font-bold text-right">Nominal</th>
+                <th className="px-5 py-4 font-bold text-center">Status</th>
+                <th className="px-5 py-4 font-bold text-center">Aksi</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
@@ -105,18 +105,18 @@ export default function ManajemenTagihanPage() {
                 </tr>
               ) : tagihan.map((t: any) => (
                 <tr key={t.id} className="hover:bg-slate-50/50 transition-colors">
-                  <t className="px-5 py-4 font-bold text-slate-800">{t.nama}</td>
-                  <t className="px-5 py-4">
+                  <td className="px-5 py-4 font-bold text-slate-800">{t.nama}</td>
+                  <td className="px-5 py-4">
                     <div className="flex items-center gap-2 text-slate-600 font-medium text-sm">
                       <FileText className="w-4 h-4 text-slate-400" />
                       {t.jenis}
                     </div>
                   </td>
-                  <t className="px-5 py-4 text-sm text-slate-500">{t.tanggal}</td>
-                  <t className="px-5 py-4 font-black text-slate-700 text-right">
+                  <td className="px-5 py-4 text-sm text-slate-500">{t.tanggal}</td>
+                  <td className="px-5 py-4 font-black text-slate-700 text-right">
                     Rp {t.nominal.toLocaleString('id-ID')}
                   </td>
-                  <t className="px-5 py-4 text-center">
+                  <td className="px-5 py-4 text-center">
                     {t.status === 'lunas' ? (
                       <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">
                         <CheckCircle2 className="w-3.5 h-3.5" /> Lunas
@@ -127,7 +127,7 @@ export default function ManajemenTagihanPage() {
                       </span>
                     )}
                   </td>
-                  <t className="px-5 py-4 text-center">
+                  <td className="px-5 py-4 text-center">
                      {t.status === 'pending' && (
                        <button className="text-xs font-bold text-emerald-600 hover:text-emerald-800 hover:underline">
                          Verifikasi Bayar

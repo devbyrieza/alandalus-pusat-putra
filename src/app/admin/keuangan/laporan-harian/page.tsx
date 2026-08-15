@@ -153,7 +153,7 @@ export default function LaporanHarianPage() {
             </tbody>
             <tfoot>
               <tr>
-                <t colSpan={3} className="px-5 py-4 text-right font-black text-slate-800 uppercase">Total Akhir Omzet Kantin:</td>
+                <td colSpan={3} className="px-5 py-4 text-right font-black text-slate-800 uppercase">Total Akhir Omzet Kantin:</td>
                 <td className="px-5 py-4 text-right font-black text-emerald-700 text-xl">Rp {ringkasan.totalNominal.toLocaleString('id-ID')}</td>
               </tr>
             </tfoot>

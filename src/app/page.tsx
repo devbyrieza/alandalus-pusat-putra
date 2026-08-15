@@ -519,7 +519,6 @@ export default function Home() {
               { pain: "Hafalan Qur'an tapi akademik terbengkalai?", fix: "TICE memadukan tahfizh 30 juz + akademik internasional seimbang" },
               { pain: "Fasilitas asrama tidak layak dan tidak nyaman", fix: "Asrama modern, kamar bersih, fasilitas olahraga & lab lengkap" },
               { pain: "Khawatir bullying dan lingkungan teman negatif", fix: "Pembinaan karakter 24/7, guru pengasuh profesional bersertifikat" },
-              { pain: "Biaya terlalu mahal dan tidak terjangkau", fix: "Program beasiswa bagi santri berprestasi atau kurang mampu" },
             ].map((row, i) => (
               <div key={i} className="grid grid-cols-1 sm:grid-cols-2 border-t border-slate-800 hover:bg-slate-900/60 transition-colors group">
                 <div className="p-5 flex items-start gap-3 text-slate-400 text-sm border-r border-slate-800">
@@ -701,7 +700,6 @@ export default function Home() {
               { Icon: Award, title: "Tenaga Didik Expert", desc: "Asatidz lulusan Universitas Islam Madinah, Al-Azhar Mesir, LIPIA, dan perguruan tinggi terkemuka." },
               { Icon: FaGlobeAsia, title: "Jaringan Global", desc: "Alumni tersebar di 3 benua: Asia, Afrika (Mesir), dan Oseania (New Zealand, Hong Kong)." },
               { Icon: Microscope, title: "Lab dan Fasilitas Modern", desc: "Laboratorium IPA, lab bahasa, perpustakaan digital, lapangan olahraga, dan masjid kampus." },
-              { Icon: Medal, title: "Program Beasiswa", desc: "Tersedia program beasiswa penuh dan parsial bagi santri berprestasi dan dari keluarga kurang mampu." },
             ].map((feat, i) => (
               <div
                 key={i}

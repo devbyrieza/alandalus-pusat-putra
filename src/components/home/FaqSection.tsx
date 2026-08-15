@@ -32,11 +32,6 @@ const FAQS = [
     answer:
       "Sistem seleksi meliputi tes lisan (tahfidz/bacaan Al-Qur'an), tes tertulis (pengetahuan dasar agama dan akademik), serta Seleksi Wawancara Calon Santri dan orang tua.",
   },
-  {
-    question: "Apakah tersedia program beasiswa?",
-    answer:
-      "Ya, Al-Andalus Putra memiliki Program Beasiswa Dhuafa Berprestasi dengan kuota terbatas (10 santri). Program ini dikhususkan bagi santri dari keluarga kurang mampu yang memiliki hafalan Al-Qur'an (minimal 10 Juz) atau prestasi akademik (Ranking 3 Besar). Calon penerima akan melalui Seleksi dan survey ekonomi langsung oleh pihak Donatur. Saat ini beasiswa mencakup pembebasan Biaya Uang Pangkal.",
-  },
 ] as const;
 
 const EASE = [0.16, 1, 0.3, 1] as const;

@@ -88,9 +88,9 @@ export default function ManajemenTagihanPage() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase tracking-wider">
-                <t className="px-5 py-4 font-bold">Santri</th>
-                <t className="px-5 py-4 font-bold">Jenis Tagihan</th>
-                <t className="px-5 py-4 font-bold">Tanggal</th>
+                <th className="px-5 py-4 font-bold">Santri</th>
+                <th className="px-5 py-4 font-bold">Jenis Tagihan</th>
+                <th className="px-5 py-4 font-bold">Tanggal</th>
                 <t className="px-5 py-4 font-bold text-right">Nominal</th>
                 <t className="px-5 py-4 font-bold text-center">Status</th>
                 <t className="px-5 py-4 font-bold text-center">Aksi</th>

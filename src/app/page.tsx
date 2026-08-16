@@ -219,8 +219,8 @@ export default function Home() {
       {/* â•â•â• ANNOUNCEMENT BAR â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <div className={`w-full py-2 sm:py-2.5 text-xs font-bold text-white ${c.bg600} flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 px-8`}>
         <Zap className="w-3.5 h-3.5 shrink-0" />
-        <span className="sm:hidden">PPDB 2026/2027 — Kuota Terbatas!</span>
-        <span className="hidden sm:inline">Pendaftaran Santri Baru 2026/2027 Telah Dibuka — Kuota Terbatas!</span>
+        <span className="sm:hidden">PPDB 2027/2028 — Kuota Terbatas!</span>
+        <span className="hidden sm:inline">Pendaftaran Santri Baru 2027/2028 Telah Dibuka — Kuota Terbatas!</span>
         <Link href="/ppdb" className="inline-flex items-center gap-1 ml-2 px-2.5 py-0.5 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 text-[11px] font-black uppercase tracking-wider shadow-xl shadow-emerald-900/20 transition-all shrink-0">
           <span>Daftar</span>
           <ChevronRight className="w-3 h-3 stroke-[3]" />
@@ -345,7 +345,7 @@ export default function Home() {
                       <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <div>
-                      <p className="text-white font-bold text-sm sm:text-base">PPDB 2026-2027 Dibuka</p>
+                      <p className="text-white font-bold text-sm sm:text-base">PPDB 2027-2028 Dibuka</p>
                       <p className="text-amber-300 text-[11px] sm:text-xs font-bold tracking-wide drop-shadow-xl shadow-emerald-900/20">Angkatan IX · Kuota Terbatas</p>
                     </div>
                     <Link
@@ -604,7 +604,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="p-6 font-mono text-sm space-y-2">
-                  <p className="text-slate-600">$ cek status PPDB 2026-2027...</p>
+                  <p className="text-slate-600">$ cek status PPDB 2027-2028...</p>
                   <p>
                     <span className={c.text400}>â–¸</span>{" "}
                     <span className="text-white">Status Pendaftaran</span>{" "}
@@ -615,7 +615,7 @@ export default function Home() {
                   <p>
                     <span className={c.text400}>â–¸</span>{" "}
                     <span className="text-white">Tahun Ajaran</span>{" "}
-                    <span className="text-amber-400">IX (2026-2027)</span>
+                    <span className="text-amber-400">IX (2027-2028)</span>
                   </p>
                   <p>
                     <span className={c.text400}>â–¸</span>{" "}

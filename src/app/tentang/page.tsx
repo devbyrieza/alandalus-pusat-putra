@@ -140,7 +140,7 @@ export default function TentangPage() {
         <Container>
           <div className="max-w-3xl mx-auto space-y-6">
             <h2 className="text-3xl font-bold">Bergabunglah Bersama Keluarga Besar {BRANDING.schoolShortName}</h2>
-            <p className="text-emerald-100 text-lg">Pendaftaran Santri Baru Tahun Ajaran 2026-2027 Telah Dibuka. Kuota Terbatas!</p>
+            <p className="text-emerald-100 text-lg">Pendaftaran Santri Baru Tahun Ajaran 2027-2028 Telah Dibuka. Kuota Terbatas!</p>
             <div className="pt-2">
               <Link
                 href="/ppdb"

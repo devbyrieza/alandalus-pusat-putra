@@ -116,7 +116,7 @@ export default function Navbar() {
               Al-Andalus Putra
             </div>
             <div className="text-[11px] font-bold text-amber-300 tracking-wide drop-shadow-sm">
-              PPDB Online 2026-2027
+              PPDB Online 2027-2028
             </div>
           </div>
         </Link>

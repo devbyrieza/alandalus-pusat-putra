@@ -16,6 +16,8 @@ import ProgressBarProvider from "@/components/providers/ProgressBarProvider";
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 import { Plus_Jakarta_Sans, Inter, Playfair_Display } from "next/font/google";
 import { BRANDING } from "@/config/branding";
+import SplashScreen from "@/components/ui/SplashScreen";
+
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -166,6 +168,7 @@ export default function RootLayout({
         className={`${plusJakarta.variable} ${inter.variable} ${playfairDisplay.variable} font-sans antialiased bg-white text-ink-900 overflow-x-hidden transition-colors duration-500`}
         suppressHydrationWarning
       >
+        <SplashScreen />
         <ProgressBarProvider>
         <SmoothScrollProvider>
           <ThemeProvider

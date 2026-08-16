@@ -122,7 +122,7 @@ export default function Navbar() {
         </Link>
 
         {/* DESKTOP NAV LINKS */}
-        <nav className="hidden lg:flex items-center gap-1 bg-andalus-green-900/60 p-1.5 rounded-2xl border border-andalus-green-800 backdrop-blur-md">
+        <nav className="hidden lg:flex items-center gap-1 bg-white/5 p-1.5 rounded-2xl border border-white/10 backdrop-blur-md">
           {navLinks.map((link) => {
             const normalizedPath = pathname === "/" ? "/ppdb" : pathname;
             const linkBase = link.href.split("#")[0];
@@ -135,8 +135,8 @@ export default function Navbar() {
                 onClick={(e) => handleNavClick(e, link.href)}
                 className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer ${
                   isActive
-                    ? "bg-andalus-green-700 text-white font-bold shadow-md shadow-andalus-green-700/30"
-                    : "text-slate-300 hover:text-white hover:bg-andalus-green-800/80"
+                    ? "bg-andalus-green-600 text-white font-bold shadow-md shadow-andalus-green-600/30"
+                    : "text-slate-300 hover:text-white hover:bg-white/10"
                 }`}
               >
                 {link.name}

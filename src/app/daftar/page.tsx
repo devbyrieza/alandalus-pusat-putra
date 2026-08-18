@@ -164,15 +164,7 @@ export default function DaftarPage() {
         }
       }
     }
-    if (!formData.jenis_kelamin) {
-      errors.jenis_kelamin = "Pilih jenis kelamin santri";
-    } else if (formData.jenis_kelamin === "P") {
-      errors.jenis_kelamin =
-        "Mohon maaf, pendaftaran Santri Putri dilakukan melalui Pesantren Ulul Albaab.";
-    } else if (formData.jenis_kelamin === "L" && formData.jenjang === "MA") {
-      errors.jenis_kelamin =
-        "Mohon maaf, pendaftaran MA Langsung Putra belum dibuka.";
-    }
+    // Validasi jenis kelamin dihapus karena sudah di-hardcode
 
     if (!formData.jenjang) {
       errors.jenjang = "Pilih jenjang pendidikan";

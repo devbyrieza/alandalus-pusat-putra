@@ -25,102 +25,74 @@ export async function POST() {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
-    // Check if 2027-2028 already exists
-    const existing = await prisma.tahunAjaran.findFirst({
-      where: {
-        tahun_mulai: 2026,
-        tahun_selesai: 2027,
-      },
-    });
-
-    if (existing) {
-      // Force update price to 200000 and ensure it is active
-      await prisma.$transaction(async (tx) => {
-        await tx.tahunAjaran.update({
-          where: { id: existing.id },
-          data: { biaya_pendaftaran: 200000, is_active: true },
-        });
-
-        // Deactivate others
-        await tx.tahunAjaran.updateMany({
-          where: {
-            id: { not: existing.id },
-            is_active: true,
-          },
-          data: { is_active: false },
-        });
-
-        // MIGRASI DATA: Pindahkan semua data ke 2027-2028
-        console.log(`[SEED] Migrating data to ${existing.id} (2027-2028)`);
-        await tx.pendaftar.updateMany({
-          where: { tahun_ajaran_id: { not: existing.id } },
-          data: { tahun_ajaran_id: existing.id },
-        });
-        await tx.pembayaran.updateMany({
-          where: { tahun_ajaran_id: { not: existing.id } },
-          data: { tahun_ajaran_id: existing.id },
-        });
-        await tx.jadwalUjian.updateMany({
-          where: { tahun_ajaran_id: { not: existing.id } },
-          data: { tahun_ajaran_id: existing.id },
-        });
-        await tx.pengumuman.updateMany({
-          where: { tahun_ajaran_id: { not: existing.id } },
-          data: { tahun_ajaran_id: existing.id },
-        });
-        await tx.hasilSeleksi.updateMany({
-          where: { tahun_ajaran_id: { not: existing.id } },
-          data: { tahun_ajaran_id: existing.id },
-        });
-        await tx.reservasiPSB.updateMany({
-          where: { tahun_ajaran_id: { not: existing.id } },
-          data: { tahun_ajaran_id: existing.id },
-        });
-      });
-
-      return NextResponse.json({
-        success: true,
-        message: "Tahun Ajaran 2027-2028 diaktifkan & Data Berhasil Dimigrasi!",
-        data: { ...existing, is_active: true },
-      });
-    }
-
-    // Create 2027-2028 tahun ajaran
     const result = await prisma.$transaction(async (tx) => {
-      // Deactivate all existing tahun ajaran
+      // 1. Cari atau buat 2027-2028 (dengan tahun_mulai: 2027 yang BENAR)
+      let ta2027 = await tx.tahunAjaran.findFirst({
+        where: { tahun_mulai: 2027, tahun_selesai: 2028 },
+      });
+
+      if (!ta2027) {
+        ta2027 = await tx.tahunAjaran.create({
+          data: {
+            tahun_mulai: 2027,
+            tahun_selesai: 2028,
+            nama: "2027/2028",
+            is_active: true,
+            tanggal_buka_pendaftaran: new Date("2026-08-01"),
+            tanggal_tutup_pendaftaran: new Date("2027-01-31"),
+            biaya_pendaftaran: 250000,
+          },
+        });
+      } else {
+        await tx.tahunAjaran.update({
+          where: { id: ta2027.id },
+          data: { is_active: true, biaya_pendaftaran: 250000 },
+        });
+      }
+
+      // 2. Nonaktifkan yang lain
       await tx.tahunAjaran.updateMany({
-        where: { is_active: true },
+        where: { id: { not: ta2027.id }, is_active: true },
         data: { is_active: false },
       });
 
-      // Create 2027-2028
-      const newTA = await tx.tahunAjaran.create({
-        data: {
-          tahun_mulai: 2026,
-          tahun_selesai: 2027,
-          nama: "2027-2028",
-          is_active: true,
-          tanggal_buka_pendaftaran: new Date("2026-01-01"),
-          tanggal_tutup_pendaftaran: new Date("2026-07-31"),
-          biaya_pendaftaran: 200000,
+      // 3. Pindahkan semua Pendaftar yang mendaftar setelah 1 Juli 2026 ke TA 2027/2028
+      const cutoffDate = new Date("2026-07-01");
+      const pendaftarsToMigrate = await tx.pendaftar.findMany({
+        where: {
+          created_at: { gte: cutoffDate },
+          tahun_ajaran_id: { not: ta2027.id },
         },
       });
 
-      // MIGRASI DATA: Pindahkan semua data ke 2027-2028 baru
-      console.log(`[SEED] Migrating data to ${newTA.id} (New 2027-2028)`);
-      await tx.pendaftar.updateMany({ data: { tahun_ajaran_id: newTA.id } });
-      await tx.pembayaran.updateMany({ data: { tahun_ajaran_id: newTA.id } });
-      await tx.jadwalUjian.updateMany({ data: { tahun_ajaran_id: newTA.id } });
-      await tx.pengumuman.updateMany({ data: { tahun_ajaran_id: newTA.id } });
-      await tx.hasilSeleksi.updateMany({ data: { tahun_ajaran_id: newTA.id } });
-      await tx.reservasiPSB.updateMany({ data: { tahun_ajaran_id: newTA.id } });
+      console.log(`[SEED] Mengurutkan dan migrasi ${pendaftarsToMigrate.length} pendaftar ke TA 2027-2028`);
 
-      return newTA;
+      for (const p of pendaftarsToMigrate) {
+        // Ganti nomor pendaftaran dari awalan 26 menjadi 27
+        const newNomor = p.nomor_pendaftaran.replace(/^([a-zA-Z]+)26(\d+)$/, "$127$2");
+        
+        await tx.pendaftar.update({
+          where: { id: p.id },
+          data: {
+            tahun_ajaran_id: ta2027.id,
+            nomor_pendaftaran: newNomor,
+          },
+        });
+
+        // Update relasi
+        await tx.pembayaran.updateMany({ where: { pendaftar_id: p.id }, data: { tahun_ajaran_id: ta2027.id } });
+        await tx.jadwalUjian.updateMany({ where: { pendaftar_id: p.id }, data: { tahun_ajaran_id: ta2027.id } });
+        await tx.pengumuman.updateMany({ where: { pendaftar_id: p.id }, data: { tahun_ajaran_id: ta2027.id } });
+        await tx.hasilSeleksi.updateMany({ where: { pendaftar_id: p.id }, data: { tahun_ajaran_id: ta2027.id } });
+        await tx.reservasiPSB.updateMany({ where: { pendaftar_id: p.id }, data: { tahun_ajaran_id: ta2027.id } });
+      }
+
+      return ta2027;
     });
 
     return NextResponse.json({
       success: true,
-      message: "Tahun Ajaran 2027-2028 berhasil dibuat dan diaktifkan",
+      message: "Tahun Ajaran 2027/2028 berhasil dibuat/diaktifkan dan Data pendaftar berhasil dimigrasi (koreksi awalan nomor).",
       data: result,
     });
   } catch (error) {
@@ -178,3 +150,5 @@ export async function GET() {
     );
   }
 }
+
+

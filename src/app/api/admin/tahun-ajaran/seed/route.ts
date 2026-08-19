@@ -137,14 +137,14 @@ export async function GET() {
     });
 
     const active = data.find((ta) => ta.is_active);
-    const has2026 = data.find(
-      (ta) => ta.tahun_mulai === 2026 && ta.tahun_selesai === 2027,
+    const has2027 = data.find(
+      (ta) => ta.tahun_mulai === 2027,
     );
 
     return NextResponse.json({
       all: data,
       active,
-      has2026_2027: !!has2026,
+      has2027_2028: !!has2027,
     });
   } catch (error) {
     console.error("Get tahun ajaran error:", error);
@@ -154,6 +154,7 @@ export async function GET() {
     );
   }
 }
+
 
 
 

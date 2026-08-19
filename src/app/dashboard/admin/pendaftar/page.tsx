@@ -1565,7 +1565,7 @@ function AdminPendaftarContent() {
               }}
               className="w-full px-4 py-3 bg-amber-50/50 border border-amber-100 rounded-3xl focus:border-primary-500 focus:bg-white focus:outline-none font-bold text-primary-950"
             >
-              <option value="">Semua Tahun Ajaran</option>
+              <option value="all">Semua Tahun Ajaran</option>
               {tahunAjaranList.map((ta) => (
                 <option key={ta.id} value={ta.id}>
                   {ta.nama} {ta.is_active && "⭐"}
@@ -2539,5 +2539,6 @@ export default function AdminPendaftarPage() {
     </Suspense>
   );
 }
+
 
 

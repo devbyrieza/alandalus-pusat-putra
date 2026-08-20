@@ -34,11 +34,11 @@ async function main() {
   };
 
   const files = [
-    { name: 'Data Utama', file: 'DataSantri_AlImam_2026-2027_UTAMA.csv' },
-    { name: 'Kesehatan & Asrama', file: 'DataSantri_AlImam_2026-2027_KESEHATAN.csv' },
-    { name: 'Data Orang Tua', file: 'DataSantri_AlImam_2026-2027_ORANGTUA.csv' },
-    { name: 'Rekap Asal', file: 'DataSantri_AlImam_2026-2027_REKAP_ASAL.csv' },
-    { name: 'Kontak Darurat', file: 'DataSantri_AlImam_2026-2027_KONTAK.csv' },
+    { name: 'Data Utama', file: 'DataSantri_AlImam_2026/2027_UTAMA.csv' },
+    { name: 'Kesehatan & Asrama', file: 'DataSantri_AlImam_2026/2027_KESEHATAN.csv' },
+    { name: 'Data Orang Tua', file: 'DataSantri_AlImam_2026/2027_ORANGTUA.csv' },
+    { name: 'Rekap Asal', file: 'DataSantri_AlImam_2026/2027_REKAP_ASAL.csv' },
+    { name: 'Kontak Darurat', file: 'DataSantri_AlImam_2026/2027_KONTAK.csv' },
   ];
 
   for (const f of files) {
@@ -148,7 +148,7 @@ async function main() {
     });
   });
 
-  const outPath = path.join(dir, 'Data_Santri_AlImam_Kepengasuhan_2026-2027_V5.xlsx');
+  const outPath = path.join(dir, 'Data_Santri_AlImam_Kepengasuhan_2026/2027_V5.xlsx');
   await workbook.xlsx.writeFile(outPath);
   console.log('✅ File Excel berhasil dibuat:', outPath);
 }

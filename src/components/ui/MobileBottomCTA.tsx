@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import { IS_PUTRA, BRANDING } from "@/config/branding";
 import { FaWhatsapp } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
-const WA_MSG = `Assalamu'alaikum, saya ingin bertanya tentang PPDB ${BRANDING.schoolName} Tahun Ajaran 2027-2028.`;
+const WA_MSG = `Assalamu'alaikum, saya ingin bertanya tentang PPDB ${BRANDING.schoolName} Tahun Ajaran 2027/2028.`;
 
 export default function MobileBottomCTA() {
   const [visible, setVisible] = useState(false);
@@ -66,3 +66,4 @@ export default function MobileBottomCTA() {
     </AnimatePresence>
   );
 }
+

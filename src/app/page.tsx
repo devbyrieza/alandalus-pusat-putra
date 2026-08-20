@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { BRANDING, IS_PUTRA } from "@/config/branding";
 import {
@@ -345,7 +345,7 @@ export default function Home() {
                       <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <div>
-                      <p className="text-white font-bold text-sm sm:text-base">PPDB 2027-2028 Dibuka</p>
+                      <p className="text-white font-bold text-sm sm:text-base">PPDB 2027/2028 Dibuka</p>
                       <p className="text-amber-300 text-[11px] sm:text-xs font-bold tracking-wide drop-shadow-xl shadow-emerald-900/20">Angkatan IX · Kuota Terbatas</p>
                     </div>
                     <Link
@@ -604,7 +604,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="p-6 font-mono text-sm space-y-2">
-                  <p className="text-slate-600">$ cek status PPDB 2027-2028...</p>
+                  <p className="text-slate-600">$ cek status PPDB 2027/2028...</p>
                   <p>
                     <span className={c.text400}>â–¸</span>{" "}
                     <span className="text-white">Status Pendaftaran</span>{" "}
@@ -615,7 +615,7 @@ export default function Home() {
                   <p>
                     <span className={c.text400}>â–¸</span>{" "}
                     <span className="text-white">Tahun Ajaran</span>{" "}
-                    <span className="text-amber-400">IX (2027-2028)</span>
+                    <span className="text-amber-400">IX (2027/2028)</span>
                   </p>
                   <p>
                     <span className={c.text400}>â–¸</span>{" "}
@@ -904,6 +904,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 

@@ -36,6 +36,6 @@ async function getFonts(filename) {
 
 async function main() {
     await getFonts('PDF 003-Surat Undangan Welcome Day Pesantren Al Imam Al Islami.pdf');
-    await getFonts('Surat Pemberitahuan Kedatangan Santri Baru 2026-2027.pdf');
+    await getFonts('Surat Pemberitahuan Kedatangan Santri Baru 2026/2027.pdf');
 }
 main().catch(console.error);

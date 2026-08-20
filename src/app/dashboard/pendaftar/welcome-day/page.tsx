@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import {
   Loader2,
@@ -284,7 +284,7 @@ export default function WelcomeDayPage() {
               <PartyPopper className="w-8 h-8 md:w-10 md:h-10 text-amber-400 drop-shadow-xl shadow-emerald-900/20" />
               Welcome Day & Serah Terima
             </span>
-            <span className="text-amber-300 block mt-2 text-xl md:text-2xl">Santri Baru 2027-2028</span>
+            <span className="text-amber-300 block mt-2 text-xl md:text-2xl">Santri Baru 2027/2028</span>
           </h1>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
@@ -340,7 +340,7 @@ export default function WelcomeDayPage() {
       {/* ─── DOKUMEN RESMI (DOWNLOAD) ─── */}
       <div className="grid grid-cols-1 gap-4">
         <a
-          href="/documents/Surat Pemberitahuan Kedatangan Santri Baru 2027-2028.pdf"
+          href="/documents/Surat Pemberitahuan Kedatangan Santri Baru 2027/2028.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-3 bg-white hover:bg-emerald-50 rounded-3xl p-4 border border-ink-100 hover:border-emerald-200 transition-all shadow-xl shadow-emerald-900/20 group"
@@ -1189,3 +1189,4 @@ export default function WelcomeDayPage() {
     </div>
   );
 }
+

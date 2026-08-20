@@ -77,7 +77,7 @@ async function main() {
         page.node.set(PDFName.of('Contents'), newContents);
     }
     
-    const finalPath = path.join(docDir, 'Surat Pemberitahuan Kedatangan Santri Baru 2026-2027.pdf');
+    const finalPath = path.join(docDir, 'Surat Pemberitahuan Kedatangan Santri Baru 2026/2027.pdf');
     fs.writeFileSync(finalPath, await pdfDoc.save());
     console.log("Successfully generated clean PDF!");
     

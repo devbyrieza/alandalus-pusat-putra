@@ -104,7 +104,7 @@ async function processDoc(filename, isPemberitahuan, isKesehatan) {
 }
 
 async function main() {
-    await processDoc('Surat Pemberitahuan Kedatangan Santri Baru 2026-2027.pdf', true, false);
+    await processDoc('Surat Pemberitahuan Kedatangan Santri Baru 2026/2027.pdf', true, false);
     await processDoc('Contoh_SuratKesehatan.pdf', false, true);
     await processDoc('Contoh_PaktaIntegritas.pdf', false, false);
     await processDoc('Contoh_SuratPernyataan.pdf', false, false);

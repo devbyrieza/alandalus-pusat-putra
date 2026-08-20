@@ -4,7 +4,7 @@ const zlib = require('zlib');
 const path = require('path');
 
 async function checkFinal() {
-  const fileBytes = fs.readFileSync('public/documents/Surat Pemberitahuan Kedatangan Santri Baru 2026-2027.pdf');
+  const fileBytes = fs.readFileSync('public/documents/Surat Pemberitahuan Kedatangan Santri Baru 2026/2027.pdf');
   const pdfDoc = await PDFDocument.load(fileBytes);
   const page = pdfDoc.getPage(0); // Page 1
   

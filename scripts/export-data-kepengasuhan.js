@@ -174,7 +174,7 @@ async function main() {
     noUrut++;
   }
 
-  const f1Name = 'DataSantri_AlImam_2026-2027_UTAMA.csv';
+  const f1Name = 'DataSantri_AlImam_2026/2027_UTAMA.csv';
   fs.writeFileSync(path.join('/tmp', f1Name), f1, 'utf8');
   console.log(`📄 File 1 selesai: ${f1Name}`);
 
@@ -230,7 +230,7 @@ async function main() {
     no2++;
   }
 
-  const f2Name = 'DataSantri_AlImam_2026-2027_ORANGTUA.csv';
+  const f2Name = 'DataSantri_AlImam_2026/2027_ORANGTUA.csv';
   fs.writeFileSync(path.join('/tmp', f2Name), f2, 'utf8');
   console.log(`📄 File 2 selesai: ${f2Name}`);
 
@@ -276,7 +276,7 @@ async function main() {
     no3++;
   }
 
-  const f3Name = 'DataSantri_AlImam_2026-2027_KESEHATAN.csv';
+  const f3Name = 'DataSantri_AlImam_2026/2027_KESEHATAN.csv';
   fs.writeFileSync(path.join('/tmp', f3Name), f3, 'utf8');
   console.log(`📄 File 3 selesai: ${f3Name}`);
 
@@ -327,7 +327,7 @@ async function main() {
     no6++;
   }
 
-  const f4Name = 'DataSantri_AlImam_2026-2027_REKAP_ASAL.csv';
+  const f4Name = 'DataSantri_AlImam_2026/2027_REKAP_ASAL.csv';
   fs.writeFileSync(path.join('/tmp', f4Name), f4, 'utf8');
   console.log(`📄 File 4 selesai: ${f4Name}`);
 
@@ -359,7 +359,7 @@ async function main() {
     no7++;
   }
 
-  const f5Name = 'DataSantri_AlImam_2026-2027_KONTAK.csv';
+  const f5Name = 'DataSantri_AlImam_2026/2027_KONTAK.csv';
   fs.writeFileSync(path.join('/tmp', f5Name), f5, 'utf8');
   console.log(`📄 File 5 selesai: ${f5Name}`);
 

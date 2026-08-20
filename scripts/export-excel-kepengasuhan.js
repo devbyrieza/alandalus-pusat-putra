@@ -184,7 +184,7 @@ async function main() {
   });
 
   // Generate File
-  const filePath = path.join('/tmp', 'Data_Santri_Kepengasuhan_2026-2027.xlsx');
+  const filePath = path.join('/tmp', 'Data_Santri_Kepengasuhan_2026/2027.xlsx');
   await workbook.xlsx.writeFile(filePath);
   console.log(`✅ File Excel berhasil dibuat: ${filePath}`);
 }

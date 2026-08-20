@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -116,7 +116,7 @@ export default function Navbar() {
               Al-Andalus Putra
             </div>
             <div className="text-[11px] font-bold text-amber-300 tracking-wide drop-shadow-sm">
-              PPDB Online 2027-2028
+              PPDB Online 2027/2028
             </div>
           </div>
         </Link>
@@ -256,3 +256,4 @@ export default function Navbar() {
     </header>
   );
 }
+

@@ -4,7 +4,7 @@ const { PDFDocument, PDFArray } = require('pdf-lib');
 const zlib = require('zlib');
 
 async function inspectAlignment() {
-  const filePath = path.resolve(__dirname, 'public/documents/Surat Pemberitahuan Kedatangan Santri Baru 2026-2027.pdf');
+  const filePath = path.resolve(__dirname, 'public/documents/Surat Pemberitahuan Kedatangan Santri Baru 2026/2027.pdf');
   const fileBytes = fs.readFileSync(filePath);
   const pdfDoc = await PDFDocument.load(fileBytes);
   

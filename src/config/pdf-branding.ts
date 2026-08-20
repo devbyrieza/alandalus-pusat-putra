@@ -1,10 +1,10 @@
-export const PDF_BRANDING = {
+﻿export const PDF_BRANDING = {
   template: "full_image" as "full_image" | "programmatic",
   institution: {
     name: "PESANTREN ISLAM INTERNASIONAL AL-ANDALUS PUTRA",
     subtitle: "Kaderisasi Umat Rabbani, Cendekia, dan Mandiri",
     committee: "PANITIA PENERIMAAN SANTRI BARU",
-    academic_year: "2027-2028",
+    academic_year: "2027/2028",
     address: "Jl. Raya Menteng, KM.13 RT.03/04, Dusun Cijurey, Desa Sukadamai, Kec. Sukamakmur, Kab. Bogor 16830",
     contact: "Website: https://pesantren-alandalus-putra.com | Email: info@pesantren-alandalus.com",
     phones: "WhatsApp: 0838-1151-5951",
@@ -47,3 +47,4 @@ export const PDF_BRANDING = {
     city: "Bogor",
   },
 };
+

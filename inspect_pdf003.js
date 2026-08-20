@@ -53,7 +53,7 @@ async function inspectDoc(filename, outname) {
 
 async function main() {
     await inspectDoc('PDF 003-Surat Undangan Welcome Day Pesantren Al Imam Al Islami.pdf', 'pdf003_stream.txt');
-    await inspectDoc('Surat Pemberitahuan Kedatangan Santri Baru 2026-2027.pdf', 'sp_stream.txt');
+    await inspectDoc('Surat Pemberitahuan Kedatangan Santri Baru 2026/2027.pdf', 'sp_stream.txt');
 }
 
 main().catch(console.error);

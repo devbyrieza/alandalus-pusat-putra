@@ -10,7 +10,7 @@ async function check() {
     'Contoh_SuratKesehatan.pdf',
     'Contoh_SuratPernyataan.pdf',
     'Contoh_PaktaIntegritas.pdf',
-    'Surat Pemberitahuan Kedatangan Santri Baru 2026-2027.pdf'
+    'Surat Pemberitahuan Kedatangan Santri Baru 2026/2027.pdf'
   ];
   
   for (const file of files) {

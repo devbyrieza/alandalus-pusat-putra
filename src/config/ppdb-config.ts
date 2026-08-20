@@ -1,4 +1,4 @@
-export const PPDB_CONFIG = {
+﻿export const PPDB_CONFIG = {
   pesantren: {
     nama: "Pesantren Islam Internasional Al-Andalus Putra",
     singkatan: "Al-Andalus Putra",
@@ -34,6 +34,7 @@ export const PPDB_CONFIG = {
       red: "#ef4444",
     },
   },
-  tahunAjaran: "2027-2028",
+  tahunAjaran: "2027/2028",
   angkatan: "Angkatan IX",
 };
+

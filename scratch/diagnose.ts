@@ -9,7 +9,7 @@ const dummyData = {
   tanggal_lahir: "01 Januari 2010",
   alamat: "Jl. Merdeka No. 10, Sukabumi",
   no_hp: "081234567890",
-  tahun_ajaran: "2027-2028",
+  tahun_ajaran: "2027/2028",
 };
 
 async function test() {

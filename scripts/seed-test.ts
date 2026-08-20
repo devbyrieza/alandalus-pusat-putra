@@ -10,7 +10,7 @@ async function main() {
   if (!ta) {
     ta = await prisma.tahunAjaran.create({
       data: {
-        nama: "2027-2028",
+        nama: "2027/2028",
         tahun_mulai: 2026,
         tahun_selesai: 2027,
         is_active: true,

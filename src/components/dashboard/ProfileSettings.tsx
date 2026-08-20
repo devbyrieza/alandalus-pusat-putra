@@ -88,8 +88,28 @@ export default function ProfileSettings({ user }: { user: UserSession }) {
       return;
     }
 
-    if (newPassword.length < 6) {
-      setError("Password baru minimal 6 karakter.");
+    if (newPassword.length < 8) {
+      setError("Password baru minimal 8 karakter.");
+      return;
+    }
+
+    if (!/(?=.*[a-z])/.test(newPassword)) {
+      setError("Password baru harus mengandung setidaknya satu huruf kecil.");
+      return;
+    }
+
+    if (!/(?=.*[A-Z])/.test(newPassword)) {
+      setError("Password baru harus mengandung setidaknya satu huruf besar.");
+      return;
+    }
+
+    if (!/(?=.*\\d)/.test(newPassword)) {
+      setError("Password baru harus mengandung setidaknya satu angka.");
+      return;
+    }
+
+    if (!/(?=.*[@$!%*?&#])/.test(newPassword)) {
+      setError("Password baru harus mengandung setidaknya satu karakter spesial (contoh: @, #, !).");
       return;
     }
 
@@ -252,7 +272,7 @@ export default function ProfileSettings({ user }: { user: UserSession }) {
             <h3 className="text-lg font-bold text-gray-900">Ubah Password</h3>
           </div>
           <p className="text-sm text-gray-500">
-            Gunakan kombinasi password yang kuat dan aman.
+            Gunakan minimal 8 karakter dengan kombinasi huruf besar, huruf kecil, angka, dan karakter spesial.
           </p>
         </div>
 

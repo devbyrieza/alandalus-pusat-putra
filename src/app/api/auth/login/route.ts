@@ -164,7 +164,7 @@ export async function POST(request: NextRequest) {
         });
       }
 
-      const isDefaultPassword = password === "2026#@" || profile.plain_password === "2026#@";
+      const isDefaultPassword = profile.must_change_password === true || password === "2026#@" || profile.plain_password === "2026#@";
 
       // Single role — login normally
       const responseJson = NextResponse.json({

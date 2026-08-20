@@ -31,13 +31,6 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { newPassword } = body;
 
-    if (!newPassword || newPassword.length < 6) {
-      return NextResponse.json(
-        { error: "Password baru minimal 6 karakter." },
-        { status: 400 },
-      );
-    }
-
     // Verify user exists
     const user = await prisma.profile.findUnique({
       where: { id: userId },
@@ -50,12 +43,55 @@ export async function POST(request: Request) {
       );
     }
 
+    if (!newPassword || newPassword.length < 8) {
+      return NextResponse.json(
+        { error: "Password baru minimal 8 karakter." },
+        { status: 400 },
+      );
+    }
+
+    if (!/(?=.*[a-z])/.test(newPassword)) {
+      return NextResponse.json(
+        { error: "Password baru harus mengandung setidaknya satu huruf kecil." },
+        { status: 400 },
+      );
+    }
+
+    if (!/(?=.*[A-Z])/.test(newPassword)) {
+      return NextResponse.json(
+        { error: "Password baru harus mengandung setidaknya satu huruf besar." },
+        { status: 400 },
+      );
+    }
+
+    if (!/(?=.*\\d)/.test(newPassword)) {
+      return NextResponse.json(
+        { error: "Password baru harus mengandung setidaknya satu angka." },
+        { status: 400 },
+      );
+    }
+
+    if (!/(?=.*[@$!%*?&#])/.test(newPassword)) {
+      return NextResponse.json(
+        { error: "Password baru harus mengandung setidaknya satu karakter spesial (contoh: @, #, !)." },
+        { status: 400 },
+      );
+    }
+
+    if (user.username && newPassword.toLowerCase().includes(user.username.toLowerCase())) {
+      return NextResponse.json(
+        { error: "Password baru tidak boleh mengandung username Anda." },
+        { status: 400 },
+      );
+    }
+
     const password_hash = await hashPassword(newPassword);
 
     await prisma.profile.update({
       where: { id: userId },
       data: {
         password_hash,
+        must_change_password: false,
         updated_at: new Date(),
       },
     });

@@ -36,6 +36,10 @@ export async function GET() {
         role: {
           not: "pendaftar",
         },
+        OR: [
+          { username: { not: "wahabrajasam" } },
+          { username: null },
+        ]
       },
       orderBy: { created_at: "desc" },
     });

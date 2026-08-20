@@ -154,16 +154,20 @@ export async function POST(request: NextRequest) {
         });
       }
 
+      const isDefaultPassword = password === "2026#@" || profile.plain_password === "2026#@";
+
       // Single role — login normally
       const responseJson = NextResponse.json({
         success: true,
         message: "Login berhasil",
         role: profile.role,
+        is_default_password: isDefaultPassword,
         data: {
           id: profile.id,
           full_name: profile.full_name,
           phone: profile.phone,
           role: profile.role,
+          is_default_password: isDefaultPassword,
         },
       });
 
@@ -173,6 +177,7 @@ export async function POST(request: NextRequest) {
           role: profile.role,
           id: profile.id,
           full_name: profile.full_name,
+          is_default_password: isDefaultPassword,
         }),
         {
           path: "/",

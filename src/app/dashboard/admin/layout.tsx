@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { UserRole } from "@/lib/access-control";
 import AdminSidebar from "./AdminSidebar";
+import { DefaultPasswordModal } from "@/components/DefaultPasswordModal";
 import { prisma } from "@/lib/prisma";
 import { getAdminWhereClause } from "@/lib/utils/admin";
 
@@ -80,6 +81,7 @@ export default async function AdminDashboardLayout({
       unverifiedDocsCount={unverifiedDocsCount}
       pendingDataRequestsCount={pendingDataRequestsCount}
     >
+      <DefaultPasswordModal />
       {children}
     </AdminSidebar>
   );

@@ -263,26 +263,31 @@ export function getMenuItemsForRole(role: UserRole) {
       { name: "Dashboard", href: "/dashboard/penguji", icon: "LayoutDashboard" },
       { name: "Jadwal Seleksi", href: "/dashboard/penguji/jadwal", icon: "Calendar" },
       { name: "Input Nilai", href: "/dashboard/penguji/input-nilai", icon: "ClipboardEdit" },
+      { name: "Bank Soal & Penilaian", href: "/dashboard/penguji/bank-soal", icon: "FileText" },
     ],
     pewawancara_calsan: [
       { name: "Dashboard", href: "/dashboard/penguji", icon: "LayoutDashboard" },
       { name: "Jadwal Seleksi", href: "/dashboard/penguji/jadwal", icon: "Calendar" },
       { name: "Input Nilai", href: "/dashboard/penguji/input-nilai", icon: "ClipboardEdit" },
+      { name: "Bank Soal & Penilaian", href: "/dashboard/penguji/bank-soal", icon: "FileText" },
     ],
     pewawancara_cawalsan: [
       { name: "Dashboard", href: "/dashboard/penguji", icon: "LayoutDashboard" },
       { name: "Jadwal Seleksi", href: "/dashboard/penguji/jadwal", icon: "Calendar" },
       { name: "Input Nilai", href: "/dashboard/penguji/input-nilai", icon: "ClipboardEdit" },
+      { name: "Bank Soal & Penilaian", href: "/dashboard/penguji/bank-soal", icon: "FileText" },
     ],
     penguji_hafalan: [
       { name: "Dashboard", href: "/dashboard/penguji", icon: "LayoutDashboard" },
       { name: "Jadwal Seleksi", href: "/dashboard/penguji/jadwal", icon: "Calendar" },
       { name: "Input Nilai", href: "/dashboard/penguji/input-nilai", icon: "ClipboardEdit" },
+      { name: "Bank Soal & Penilaian", href: "/dashboard/penguji/bank-soal", icon: "FileText" },
     ],
     penguji_bahasa_arab: [
       { name: "Dashboard", href: "/dashboard/penguji", icon: "LayoutDashboard" },
       { name: "Jadwal Seleksi", href: "/dashboard/penguji/jadwal", icon: "Calendar" },
       { name: "Input Nilai", href: "/dashboard/penguji/input-nilai", icon: "ClipboardEdit" },
+      { name: "Bank Soal & Penilaian", href: "/dashboard/penguji/bank-soal", icon: "FileText" },
     ],
     admin: [
       { name: "Dashboard", href: "/dashboard/admin", icon: "LayoutDashboard" },
@@ -290,21 +295,24 @@ export function getMenuItemsForRole(role: UserRole) {
       { name: "Verifikasi Dokumen", href: "/dashboard/admin/verifikasi-dokumen", icon: "FileCheck" },
       { name: "Verifikasi Pembayaran", href: "/dashboard/admin/verifikasi-pembayaran", icon: "CreditCard" },
       { name: "Manajemen Jadwal", href: "/dashboard/admin/jadwal/monitoring", icon: "Calendar" },
+      { name: "Bantuan Biaya", href: "/dashboard/admin/beasiswa", icon: "Trophy" },
       { name: "Rekap Seragam", href: "/dashboard/admin/seragam", icon: "Shirt" },
       { name: "Penilaian & Kelulusan", href: "/dashboard/admin/penilaian", icon: "ClipboardEdit", group: "HASIL SELEKSI" },
-        { name: "Statistik Wilayah", href: "/dashboard/admin/statistik-wilayah", icon: "Map", group: "HASIL SELEKSI" },
+      { name: "Bank Soal & Penilaian", href: "/dashboard/admin/bank-soal", icon: "FileText", group: "HASIL SELEKSI" },
+      { name: "Statistik Wilayah", href: "/dashboard/admin/statistik-wilayah", icon: "Map", group: "HASIL SELEKSI" },
     ],
     admin_super: [
       { name: "Dashboard", href: "/dashboard/admin", icon: "LayoutDashboard" },
       { name: "Data Pendaftar", href: "/dashboard/admin/pendaftar", icon: "Users", group: "OPERASIONAL" },
-      { name: "Verifikasi Dokumen", href: "/dashboard/admin/verifikasi-dokumen", icon: "FileCheck", group: "OPERASIONAL" },
-      { name: "Verifikasi Pembayaran", href: "/dashboard/admin/verifikasi-pembayaran", icon: "CreditCard", group: "OPERASIONAL" },
       { name: "Manajemen Jadwal", href: "/dashboard/admin/jadwal/monitoring", icon: "Calendar", group: "OPERASIONAL" },
+      { name: "Bantuan Biaya", href: "/dashboard/admin/beasiswa", icon: "Trophy", group: "OPERASIONAL" },
       { name: "Rekap Keuangan", href: "/dashboard/admin/keuangan", icon: "Landmark", group: "OPERASIONAL" },
       { name: "Rekap Seragam", href: "/dashboard/admin/seragam", icon: "Shirt", group: "OPERASIONAL" },
+      { name: "Fee Penguji", href: "/dashboard/admin/fee-penguji", icon: "Wallet", group: "OPERASIONAL" },
       { name: "Penilaian & Kelulusan", href: "/dashboard/admin/penilaian", icon: "ClipboardEdit", group: "HASIL SELEKSI" },
-        { name: "Statistik Wilayah", href: "/dashboard/admin/statistik-wilayah", icon: "Map", group: "HASIL SELEKSI" },
-      { name: "Pengumuman", href: "/dashboard/admin/pengumuman", icon: "Bell", group: "KOMUNIKASI" },
+      { name: "Bank Soal & Penilaian", href: "/dashboard/admin/bank-soal", icon: "FileText", group: "HASIL SELEKSI" },
+      { name: "Statistik Wilayah", href: "/dashboard/admin/statistik-wilayah", icon: "Map", group: "HASIL SELEKSI" },
+      { name: "Broadcast WA", href: "/dashboard/admin/broadcast", icon: "Zap", group: "KOMUNIKASI" },
       { name: "Manajemen User", href: "/dashboard/admin/users", icon: "UserCog", group: "SISTEM" },
       { name: "Pengaturan", href: "/dashboard/admin/pengaturan", icon: "Settings", group: "SISTEM" },
     ],
@@ -347,4 +355,3 @@ export function getUnlockMessage(tabName: TabName): string {
     "Selesaikan tahap sebelumnya untuk membuka akses."
   );
 }
-

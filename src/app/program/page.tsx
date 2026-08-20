@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { IS_PUTRA } from "@/config/branding";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import {
@@ -18,7 +17,6 @@ import {
   Trophy,
   Globe,
   ShieldCheck,
-  CreditCard,
 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/button";
@@ -28,18 +26,15 @@ import { motion, AnimatePresence } from "framer-motion";
 const PROGRAMS = [
   {
     id: "mts",
-    name: "SMPIT - SMAIT",
-    buttonLabel: "Daftar SMPIT",
-    fullName: "Program Pendidikan SMPIT - SMAIT",
+    name: "Madrasah Tsanawiyah",
+    buttonLabel: "Daftar MTs",
+    fullName: "Program Madrasah Tsanawiyah (SMP)",
     description:
       "Kami menerapkan Kurikulum Terpadu yang menggabungkan standar Nasional dengan khas Andalus, berfokus pada penguasaan Tahfidz Al-Qur'an serta pembentukan karakter Leadership yang kokoh sejak dini.",
     stats: [
-      { label: "Kuota Putra", value: "60 Santri", icon: Users },
       { label: "Tahfidz", value: "Target 12 Juz", icon: BookOpen },
-      { label: "Biaya Daftar", value: "Rp 500.000", icon: CreditCard },
-      { label: "Uang Pangkal", value: "Rp 35 Juta", icon: CreditCard },
-      { label: "SPP Bulanan", value: "Rp 3 Juta", icon: CreditCard },
-      { label: "Daftar Ulang", value: "Mulai Thn ke-2", icon: Calendar },
+      { label: "Prioritas", value: "Leadership", icon: ShieldCheck },
+      { label: "Bahasa", value: "Dwi-Bahasa", icon: Globe },
     ],
     curriculum: [
       "Target Hafalan 12 Juz Mutqin",
@@ -49,24 +44,21 @@ const PROGRAMS = [
       "Kurikulum Nasional Lengkap",
     ],
     image: "/images/mts.webp",
-    theme: "emerald",
+    theme: "maroon",
     accent: "text-primary-600",
     bg: "bg-primary-50",
   },
   {
     id: "il",
-    name: "I'DAD LUGHAWIY",
+    name: "I'dad Lughowi",
     buttonLabel: "Daftar IL",
-    fullName: "I'DAD LUGHAWIY / PRA SMAIT",
+    fullName: "Program I'dad Lughowi (SMA)",
     description:
       "Program persiapan intensif menuju jenjang Aliyah, berfokus pada pemantapan Bahasa Arab, Tahfidz, dan kematangan leadership organisasi untuk mencetak kader ulama yang kontributif.",
     stats: [
-      { label: "Kuota Putra", value: "30 Santri", icon: Users },
       { label: "Tahfidz", value: "Target 16 Juz", icon: BookOpen },
-      { label: "Biaya Daftar", value: "Rp 500.000", icon: CreditCard },
-      { label: "Uang Pangkal", value: "Rp 35 Juta", icon: CreditCard },
-      { label: "SPP Bulanan", value: "Rp 3 Juta", icon: CreditCard },
-      { label: "Daftar Ulang", value: "Mulai Thn ke-2", icon: Calendar },
+      { label: "Kekhasan", value: "Kader Leadership", icon: Users },
+      { label: "Fokus", value: "Bahasa & Syar'i", icon: Sparkles },
     ],
     curriculum: [
       "Tahun I'dad: Intensif Bahasa Arab",
@@ -76,8 +68,8 @@ const PROGRAMS = [
       "Pembinaan Dakwah Lapangan",
     ],
     image: "/images/il.webp",
-    theme: "amber",
-    accent: "text-amber-600",
+    theme: "gold",
+    accent: "text-gold-600",
     bg: "bg-secondary-50",
   },
 ];
@@ -116,14 +108,14 @@ export default function ProgramPage() {
     <main className="bg-white min-h-screen">
       {/* 1. Hero Section - Airy & Clean */}
       <section className="relative py-24 md:py-32 overflow-hidden bg-white">
-        <div className="absolute top-0 right-0 w-full max-w-[600px] h-[600px] bg-secondary-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] pointer-events-none" />
 
         <Container className="relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill bg-primary-50 border border-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest mb-8 shadow-xl shadow-emerald-900/20"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill bg-primary-50 border border-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest mb-8 shadow-md"
           >
             <GraduationCap className="w-3.5 h-3.5" />
             <span>Jenjang Pendidikan</span>
@@ -133,7 +125,7 @@ export default function ProgramPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-2xl sm:text-3xl lg:text-5xl font-display font-black mb-10 tracking-tight leading-[0.9] text-ink-950"
+            className="text-3xl md:text-5xl lg:text-8xl font-display font-black mb-10 tracking-tight leading-[0.9] text-ink-950"
           >
             Program <br />
             <span className="text-gradient-primary">Terbaik Kita</span>
@@ -163,12 +155,12 @@ export default function ProgramPage() {
                     .getElementById(program.id)
                     ?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className={`px-8 py-3 rounded-pill font-black text-sm transition-all border shadow-xl shadow-emerald-900/20
+                className={`px-8 py-3 rounded-pill font-black text-sm transition-all border shadow-md
                                 ${
                                   activeSection === program.id
-                                    ? program.theme === "emerald"
+                                    ? program.theme === "maroon"
                                       ? "bg-primary-700 text-white border-primary-700"
-                                      : "bg-amber-500 text-white border-amber-500"
+                                      : "bg-gold-500 text-white border-gold-500"
                                     : "bg-white text-ink-500 border-primary-100 hover:border-primary-300 hover:text-primary-700"
                                 }`}
               >
@@ -189,7 +181,7 @@ export default function ProgramPage() {
           >
             <Container>
               <div
-                className={`grid lg:grid-cols-1 sm:grid-cols-2 gap-16 lg:gap-24 items-center ${idx % 2 === 1 ? "lg:grid-flow-dense" : ""}`}
+                className={`grid lg:grid-cols-2 gap-16 lg:gap-24 items-center ${idx % 2 === 1 ? "lg:grid-flow-dense" : ""}`}
               >
                 {/* Image Side */}
                 <motion.div
@@ -198,24 +190,21 @@ export default function ProgramPage() {
                   viewport={{ once: true }}
                   className={`relative ${idx % 2 === 1 ? "lg:col-start-2" : ""}`}
                 >
-                  <div className="aspect-4/5 rounded-[3.5rem] overflow-hidden shadow-lg relative z-10 p-3 bg-white border border-primary-100">
-                    <div className="relative w-full h-full rounded-[2.8rem] overflow-hidden">
+                  <div className="aspect-[4/5] max-h-[520px] min-h-[350px] md:min-h-[440px] w-full rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-lg relative z-10 p-2.5 md:p-3 bg-white border border-primary-100">
+                    <div className="relative w-full h-full min-h-[330px] md:min-h-[420px] rounded-[2rem] md:rounded-[2.8rem] overflow-hidden bg-gradient-to-br from-primary-950 via-primary-900 to-primary-950">
                       <Image
                         src={program.image}
                         alt={program.fullName}
                         fill
                         priority={idx === 0}
                         sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover transition-transform duration-700 hover:scale-110 bg-surface-200 animate-pulse"
-                        onLoad={(e) =>
-                          e.currentTarget.classList.remove("animate-pulse")
-                        }
+                        className="object-cover transition-transform duration-700 hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
                       <div className="absolute bottom-10 left-10 right-10 z-20">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-black uppercase tracking-widest mb-3">
-                          <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-black uppercase tracking-widest mb-3">
+                          <Star className="w-3.5 h-3.5 fill-gold-400 text-gold-400" />
                           <span>Program Unggulan</span>
                         </div>
                         <h3 className="text-3 font-display font-black text-white md:text-4xl leading-none">
@@ -228,7 +217,7 @@ export default function ProgramPage() {
                   {/* Decorative Blob */}
                   <div
                     className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] rounded-full blur-[120px] -z-10 opacity-30
-                                        ${program.theme === "emerald" ? "bg-primary-100" : "bg-secondary-200"}
+                                        ${program.theme === "maroon" ? "bg-primary-100" : "bg-secondary-200"}
                                     `}
                   />
                 </motion.div>
@@ -241,7 +230,7 @@ export default function ProgramPage() {
                     viewport={{ once: true }}
                     className="text-center lg:text-left"
                   >
-                    <h2 className="text-2xl md:text-4xl sm:text-3xl lg:text-5xl font-display font-black text-ink-950 leading-[0.95] mb-8">
+                    <h2 className="text-2xl md:text-4xl lg:text-6xl font-display font-black text-ink-950 leading-[0.95] mb-8">
                       {program.fullName}
                     </h2>
                     <p className="text-xl text-ink-600 font-medium leading-relaxed mb-10 text-center lg:text-left">
@@ -254,11 +243,11 @@ export default function ProgramPage() {
                     {program.stats.map((stat, sIdx) => (
                       <div
                         key={sIdx}
-                        className={`app-card bg-white p-5 rounded-[2rem] border border-primary-50 shadow-xl shadow-emerald-900/20 hover:shadow-md transition-all text-center group`}
+                        className={`app-card bg-white p-5 rounded-[2rem] border border-primary-50 shadow-md hover:shadow-lg transition-all text-center group`}
                       >
                         <div
                           className={`w-10 h-10 rounded-3xl mx-auto mb-3 flex items-center justify-center transition-transform group-hover:scale-110 border border-primary-100
-                                                    ${program.theme === "emerald" ? "bg-primary-50 text-primary-600" : "bg-secondary-100 text-amber-700"}
+                                                    ${program.theme === "maroon" ? "bg-primary-50 text-primary-600" : "bg-secondary-100 text-gold-700"}
                                                 `}
                         >
                           <stat.icon className="w-5 h-5" />
@@ -280,7 +269,7 @@ export default function ProgramPage() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className={`app-card rounded-[3rem] p-10 mb-10 border ${program.bg} border-primary-100 shadow-xl shadow-emerald-900/20 relative overflow-hidden`}
+                    className={`app-card rounded-[3rem] p-10 mb-10 border ${program.bg} border-primary-100 shadow-md relative overflow-hidden`}
                   >
                     <div className="absolute top-0 right-0 p-5 md:p-8 opacity-5">
                       <BookOpen className="w-32 h-32 text-primary-900" />
@@ -288,7 +277,7 @@ export default function ProgramPage() {
 
                     <h3 className="text-2xl font-black text-ink-950 mb-8 flex items-center gap-3">
                       <div
-                        className={`w-3 h-10 rounded-full ${program.theme === "emerald" ? "bg-primary-600" : "bg-amber-500"}`}
+                        className={`w-3 h-10 rounded-full ${program.theme === "maroon" ? "bg-primary-600" : "bg-gold-500"}`}
                       />
                       Kurikulum & Fokus
                     </h3>
@@ -300,8 +289,8 @@ export default function ProgramPage() {
                           className="flex items-start gap-4 group/item"
                         >
                           <div
-                            className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5 shadow-xl shadow-emerald-900/20
-                                                        ${program.theme === "emerald" ? "bg-primary-600 text-white" : "bg-amber-500 text-white"}
+                            className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5 shadow-md
+                                                        ${program.theme === "maroon" ? "bg-primary-600 text-white" : "bg-gold-500 text-white"}
                                                     `}
                           >
                             <CheckCircle2 className="w-4 h-4" />
@@ -321,8 +310,8 @@ export default function ProgramPage() {
                   >
                     <Link href={`/daftar?program=${program.id}`}>
                       <button
-                        className={`w-full sm:w-auto px-14 py-5 rounded-pill font-black text-white text-lg shadow-md transition-all hover:-translate-y-1
-                                                ${program.theme === "emerald" ? "bg-primary-700 hover:bg-primary-800" : "bg-amber-600 hover:bg-amber-700"}
+                        className={`w-full sm:w-auto px-14 py-5 rounded-pill font-black text-white text-lg shadow-lg transition-all hover:-translate-y-1
+                                                ${program.theme === "maroon" ? "bg-primary-700 hover:bg-primary-800" : "bg-gold-600 hover:bg-gold-700"}
                                             `}
                       >
                         Daftarkan Sekarang
@@ -336,30 +325,7 @@ export default function ProgramPage() {
         ))}
       </div>
 
-      
-      {/* 4. Ekstrakurikuler */}
-      <section className="py-24 bg-white border-t border-surface-100">
-        <Container>
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-display font-black text-ink-950 mb-4">Program Ekstrakurikuler</h2>
-            <p className="text-lg text-ink-600 max-w-2xl mx-auto">Pengembangan minat, bakat, dan keterampilan santri melalui berbagai kegiatan positif yang menyenangkan.</p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-5xl mx-auto">
-            {(IS_PUTRA ? [
-              "Futsal", "Basket", "Badminton", "Renang", "Panahan", "Entrepreneur", "Jurnalistik", "Coding", "Pramuka", "Wushu", "Taekwondo", "Karate", "Arabic & English Explorers", "Science Olympians", "Literasi Ilmiah"
-            ] : [
-              "Tata Boga", "Tata Busana", "Tata Rias", "Panahan", "Wingchun", "Pramuka", "Kaligrafi", "Fotografi", "Desain Grafis", "Public Speaking", "Creative Writing", "Arabic & English Club"
-            ]).map((item, idx) => (
-              <div key={idx} className="px-5 py-3 rounded-3xl bg-surface-50 border border-surface-100 font-bold text-ink-700 shadow-xl shadow-emerald-900/20 hover:shadow-md hover:-translate-y-1 hover:border-primary-200 transition-all">
-                {item}
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
       {/* Bottom CTA - Impactful */}
-
       <section className="py-16 md:py-24 lg:py-32 bg-surface-50">
         <Container>
           <motion.div
@@ -372,7 +338,7 @@ export default function ProgramPage() {
             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />
 
             <div className="relative z-10">
-              <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-3xl xl:text-3xl font-display font-black mb-4 sm:mb-6 md:mb-8 text-white leading-tight">
+              <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-3xl xl:text-6xl font-display font-black mb-4 sm:mb-6 md:mb-8 text-white leading-tight">
                 Mulai Perjalanan <br />{" "}
                 <span className="text-secondary-300">Terbaik</span> Mereka
               </h2>
@@ -381,8 +347,8 @@ export default function ProgramPage() {
                 kami untuk mendapatkan pilihan program yang paling tepat.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center px-4">
-                <Link href="/ppdb">
-                  <button className="w-full sm:w-auto px-6 sm:px-6 md:px-10 py-3.5 sm:py-4 md:py-5 rounded-pill bg-white text-primary-900 font-black text-sm sm:text-base md:text-lg hover:bg-primary-50 shadow-md transition-all min-h-[48px] sm:min-h-[52px]">
+                <Link href="/daftar">
+                  <button className="w-full sm:w-auto px-6 sm:px-6 md:px-10 py-3.5 sm:py-4 md:py-5 rounded-pill bg-white text-primary-900 font-black text-sm sm:text-base md:text-lg hover:bg-primary-50 shadow-lg transition-all min-h-[48px] sm:min-h-[52px]">
                     Pendaftaran Online
                   </button>
                 </Link>

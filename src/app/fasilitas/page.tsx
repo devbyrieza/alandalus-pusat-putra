@@ -62,7 +62,7 @@ const HeroStat = ({
     transition={{ delay, duration: 0.5 }}
     className="app-card bg-white p-5 flex flex-col items-center text-center min-w-[140px]"
   >
-    <div className="w-12 h-12 rounded-3xl bg-primary-50 flex items-center justify-center text-primary-600 mb-3 border border-primary-100 shadow-xl shadow-emerald-900/20">
+    <div className="w-12 h-12 rounded-3xl bg-primary-50 flex items-center justify-center text-primary-600 mb-3 border border-primary-100 shadow-md">
       <Icon className="w-6 h-6" />
     </div>
     <p className="text-2xl font-black text-primary-950 leading-none mb-1">
@@ -89,7 +89,7 @@ export default function FasilitasPage() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       try {
-        const saved = localStorage.getItem("alandalus_alimam_fasilitas_visit_draft");
+        const saved = localStorage.getItem("alandalus_pusat-putra_fasilitas_visit_draft");
         if (saved) {
           const parsed = JSON.parse(saved);
           if (parsed && typeof parsed === "object") {
@@ -105,7 +105,7 @@ export default function FasilitasPage() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       try {
-        localStorage.setItem("alandalus_alimam_fasilitas_visit_draft", JSON.stringify(visitForm));
+        localStorage.setItem("alandalus_pusat-putra_fasilitas_visit_draft", JSON.stringify(visitForm));
       } catch (e) {
         console.warn("Failed to save visit form draft:", e);
       }
@@ -117,7 +117,7 @@ export default function FasilitasPage() {
     
     const message = `Assalamu'alaikum Warahmatullahi Wabarakatuh.
 
-Saya ingin mengajukan Jadwal Kunjungan ke Pesantren Islam Internasional Al-Andalus Putra.
+Saya ingin mengajukan Jadwal Kunjungan ke Pesantren Al Imam Al Islami.
 
 *Rincian Rencana Kunjungan:*
 • Nama: ${visitForm.nama}
@@ -129,13 +129,13 @@ Saya ingin mengajukan Jadwal Kunjungan ke Pesantren Islam Internasional Al-Andal
 Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
 
     const encodedText = encodeURIComponent(message);
-    // alandalus-alimam CS number
+    // alandalus-pusat-putra CS number
     const waNumber = "6285111524441"; 
     
     window.open(`https://wa.me/${waNumber}?text=${encodedText}`, '_blank');
     setFormStatus('success');
     if (typeof window !== "undefined") {
-      localStorage.removeItem("alandalus_alimam_fasilitas_visit_draft");
+      localStorage.removeItem("alandalus_pusat-putra_fasilitas_visit_draft");
     }
   };
 
@@ -147,16 +147,16 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
     <main className="bg-white min-h-screen">
       {/* 1. Hero Section - Airy & Clean */}
       <section className="relative py-24 md:py-32 overflow-hidden section-std">
-        <div className="absolute top-0 right-0 w-full max-w-[600px] h-[600px] bg-primary-50/60 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-50/60 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] pointer-events-none" />
 
         <Container className="relative z-10">
-          <div className="grid md:grid-cols-2 lg:grid-cols-1 sm:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-16 items-center">
             <div className="text-center lg:text-left">
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill bg-primary-50 border border-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest mb-8 shadow-xl shadow-emerald-900/20"
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill bg-primary-50 border border-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest mb-8 shadow-md"
               >
                 <Building2 className="w-3.5 h-3.5" />
                 <span>Sarana & Prasarana</span>
@@ -209,10 +209,10 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="relative hidden lg:grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6 h-[600px]"
+              className="relative hidden lg:grid grid-cols-1 md:grid-cols-2 gap-6 h-[600px]"
             >
               <div className="space-y-6 pt-12">
-                <div className="aspect-4/5 rounded-[3rem] overflow-hidden shadow-lg relative group border border-primary-100">
+                <div className="aspect-[4/5] max-h-[500px] w-full rounded-[3rem] overflow-hidden shadow-lg relative group border border-primary-100 bg-gradient-to-br from-primary-950 to-primary-900">
                   <Image
                     src="/images/masjid.webp"
                     alt="Masjid"
@@ -222,12 +222,12 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                   <div className="absolute bottom-5 left-5 z-10">
                     <div className="bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-3xl shadow-lg border border-white/40 transition-transform duration-300 group-hover:translate-y-[-4px]">
                       <span className="text-ink-950 font-black text-sm md:text-[15px] tracking-tight">
-                        Masjid Jami' Al-Andalus Putra
+                        Masjid Jami' Al Imam
                       </span>
                     </div>
                   </div>
                 </div>
-                <div className="aspect-square rounded-[3rem] overflow-hidden shadow-lg relative group border border-primary-100">
+                <div className="aspect-square rounded-[3rem] overflow-hidden shadow-lg relative group border border-primary-100 bg-gradient-to-br from-primary-950 to-primary-900">
                   <Image
                     src="/images/lapangan-minisoccer.webp"
                     alt="Lapangan"
@@ -244,7 +244,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                 </div>
               </div>
               <div className="space-y-6">
-                <div className="aspect-square rounded-[3rem] overflow-hidden shadow-lg relative group border border-primary-100">
+                <div className="aspect-square rounded-[3rem] overflow-hidden shadow-lg relative group border border-primary-100 bg-gradient-to-br from-primary-950 to-primary-900">
                   <Image
                     src="/images/asrama.webp"
                     alt="Asrama"
@@ -259,7 +259,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     </div>
                   </div>
                 </div>
-                <div className="aspect-4/5 rounded-[3rem] overflow-hidden shadow-lg relative group border border-primary-100">
+                <div className="aspect-[4/5] max-h-[500px] w-full rounded-[3rem] overflow-hidden shadow-lg relative group border border-primary-100 bg-gradient-to-br from-primary-950 to-primary-900">
                   <Image
                     src="/images/kelas-dari-dalam.webp"
                     alt="Kelas"
@@ -318,14 +318,14 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
               className="section-subtitle"
             >
               Sarana vital yang menjadi jantung aktivitas harian di{" "}
-              <br className="hidden md:block" /> Pesantren Islam Internasional Al-Andalus Putra
+              <br className="hidden md:block" /> Pesantren Al Imam Al Islami
               untuk kenyamanan dan kekhusyukan.
             </motion.p>
           </div>
 
           <div className="space-y-24 lg:space-y-32">
             {/* 1. Masjid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-1 sm:grid-cols-2 gap-12 lg:gap-24 items-center">
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -337,12 +337,12 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     <Home className="w-48 h-48" />
                   </div>
 
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-xl shadow-emerald-900/20 transition-transform group-hover:scale-110 border border-primary-100">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-md transition-transform group-hover:scale-110 border border-primary-100">
                     <Home className="w-8 h-8 sm:w-10 sm:h-10" />
                   </div>
 
                   <h3 className="text-3xl sm:text-2xl md:text-4xl lg:text-3xl font-black text-primary-950 mb-6 leading-[1.1]">
-                    Masjid Jami' <br className="hidden sm:block" /> Al-Andalus Putra
+                    Masjid Jami' <br className="hidden sm:block" /> Al Imam
                   </h3>
                   <p className="text-base sm:text-lg lg:text-xl text-primary-950/70 mb-8 sm:mb-10 leading-relaxed font-medium">
                     Pusat peribadatan santri yang mampu menampung 1000 jamaah.
@@ -350,9 +350,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     audio berkualitas tinggi.
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-1 gap-6 sm:gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -365,7 +365,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       </div>
                     </div>
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -387,11 +387,11 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                 viewport={{ once: true }}
                 className="order-1 lg:order-2"
               >
-                <div className="aspect-square rounded-[3rem] sm:rounded-[4rem] bg-white p-3 sm:p-4 shadow-xl relative rotate-2 hover:rotate-0 transition-transform duration-700 border border-primary-100">
+                <div className="aspect-square rounded-[3rem] sm:rounded-[4rem] bg-white p-3 sm:p-6 sm:p-8 shadow-xl relative rotate-2 hover:rotate-0 transition-transform duration-700 border border-primary-100">
                   <div className="relative w-full h-full rounded-[2.5rem] sm:rounded-[3.2rem] overflow-hidden">
                     <Image
                       src="/images/masjid.webp"
-                      alt="Masjid Jami' Al-Andalus Putra"
+                      alt="Masjid Jami' Al Imam"
                       fill
                       className="object-cover transition-transform duration-700 hover:scale-110"
                     />
@@ -401,14 +401,14 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
             </div>
 
             {/* 2. Ruang Kelas */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-1 sm:grid-cols-2 gap-12 lg:gap-24 items-center">
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 className="order-1"
               >
-                <div className="aspect-square rounded-[3rem] sm:rounded-[4rem] bg-white p-3 sm:p-4 shadow-xl relative -rotate-2 hover:rotate-0 transition-transform duration-700 border border-primary-100">
+                <div className="aspect-square rounded-[3rem] sm:rounded-[4rem] bg-white p-3 sm:p-6 sm:p-8 shadow-xl relative -rotate-2 hover:rotate-0 transition-transform duration-700 border border-primary-100">
                   <div className="relative w-full h-full rounded-[2.5rem] sm:rounded-[3.2rem] overflow-hidden">
                     <Image
                       src="/images/kelas-dari-dalam.webp"
@@ -431,7 +431,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     <School className="w-48 h-48" />
                   </div>
 
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-xl shadow-emerald-900/20 transition-transform group-hover:scale-110 border border-primary-100">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-md transition-transform group-hover:scale-110 border border-primary-100">
                     <School className="w-8 h-8 sm:w-10 sm:h-10" />
                   </div>
 
@@ -444,9 +444,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     peraga edukatif dan sirkulasi udara yang baik.
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-1 gap-6 sm:gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -459,7 +459,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       </div>
                     </div>
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -477,7 +477,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
             </div>
 
             {/* 3. Asrama */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-1 sm:grid-cols-2 gap-12 lg:gap-24 items-center">
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -489,7 +489,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     <Building className="w-48 h-48" />
                   </div>
 
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-xl shadow-emerald-900/20 transition-transform group-hover:scale-110 border border-primary-100">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-md transition-transform group-hover:scale-110 border border-primary-100">
                     <Building className="w-8 h-8 sm:w-10 sm:h-10" />
                   </div>
 
@@ -502,9 +502,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     penyimpanan pribadi.
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-1 gap-6 sm:gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -517,7 +517,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       </div>
                     </div>
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -539,7 +539,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                 viewport={{ once: true }}
                 className="order-1 lg:order-2"
               >
-                <div className="aspect-square rounded-[3rem] sm:rounded-[4rem] bg-white p-3 sm:p-4 shadow-xl relative rotate-2 hover:rotate-0 transition-transform duration-700 border border-primary-100">
+                <div className="aspect-square rounded-[3rem] sm:rounded-[4rem] bg-white p-3 sm:p-6 sm:p-8 shadow-xl relative rotate-2 hover:rotate-0 transition-transform duration-700 border border-primary-100">
                   <div className="relative w-full h-full rounded-[2.5rem] sm:rounded-[3.2rem] overflow-hidden">
                     <Image
                       src="/images/asrama.webp"
@@ -553,14 +553,14 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
             </div>
 
             {/* 4. Lapangan Minisoccer */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-1 sm:grid-cols-2 gap-12 lg:gap-24 items-center">
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 className="order-1"
               >
-                <div className="aspect-square rounded-[3rem] sm:rounded-[4rem] bg-white p-3 sm:p-4 shadow-xl relative -rotate-2 hover:rotate-0 transition-transform duration-700 border border-primary-100">
+                <div className="aspect-square rounded-[3rem] sm:rounded-[4rem] bg-white p-3 sm:p-6 sm:p-8 shadow-xl relative -rotate-2 hover:rotate-0 transition-transform duration-700 border border-primary-100">
                   <div className="relative w-full h-full rounded-[2.5rem] sm:rounded-[3.2rem] overflow-hidden">
                     <Image
                       src="/images/lapangan-minisoccer.webp"
@@ -583,7 +583,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     <Trophy className="w-48 h-48" />
                   </div>
 
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-xl shadow-emerald-900/20 transition-transform group-hover:scale-110 border border-primary-100">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-md transition-transform group-hover:scale-110 border border-primary-100">
                     <Trophy className="w-8 h-8 sm:w-10 sm:h-10" />
                   </div>
 
@@ -596,9 +596,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     sintetis standar yang aman dan nyaman.
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-1 gap-6 sm:gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -611,7 +611,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       </div>
                     </div>
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -629,7 +629,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
             </div>
 
             {/* 5. Lapangan Basket */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-1 sm:grid-cols-2 gap-12 lg:gap-24 items-center">
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -641,7 +641,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     <Award className="w-48 h-48" />
                   </div>
 
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-xl shadow-emerald-900/20 transition-transform group-hover:scale-110 border border-primary-100">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-md transition-transform group-hover:scale-110 border border-primary-100">
                     <Award className="w-8 h-8 sm:w-10 sm:h-10" />
                   </div>
 
@@ -654,9 +654,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     berbagai aktivitas fisik harian.
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-1 gap-6 sm:gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -669,7 +669,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       </div>
                     </div>
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -691,7 +691,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                 viewport={{ once: true }}
                 className="order-1 lg:order-2"
               >
-                <div className="aspect-square rounded-[3rem] sm:rounded-[4rem] bg-white p-3 sm:p-4 shadow-xl relative rotate-2 hover:rotate-0 transition-transform duration-700 border border-primary-100">
+                <div className="aspect-square rounded-[3rem] sm:rounded-[4rem] bg-white p-3 sm:p-6 sm:p-8 shadow-xl relative rotate-2 hover:rotate-0 transition-transform duration-700 border border-primary-100">
                   <div className="relative w-full h-full rounded-[2.5rem] sm:rounded-[3.2rem] overflow-hidden">
                     <Image
                       src="/images/gedung-utama-dan-lapangan-basket.webp"
@@ -705,14 +705,14 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
             </div>
 
             {/* 6. Depot Galon Gratis */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-1 sm:grid-cols-2 gap-12 lg:gap-24 items-center">
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 className="order-1"
               >
-                <div className="aspect-square rounded-[3rem] sm:rounded-[4rem] bg-white p-3 sm:p-4 shadow-xl relative -rotate-2 hover:rotate-0 transition-transform duration-700 border border-primary-100">
+                <div className="aspect-square rounded-[3rem] sm:rounded-[4rem] bg-white p-3 sm:p-6 sm:p-8 shadow-xl relative -rotate-2 hover:rotate-0 transition-transform duration-700 border border-primary-100">
                   <div className="relative w-full h-full rounded-[2.5rem] sm:rounded-[3.2rem] overflow-hidden">
                     <Image
                       src="/images/depot-galon-gratis.webp"
@@ -735,7 +735,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     <Droplets className="w-48 h-48" />
                   </div>
 
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-xl shadow-emerald-900/20 transition-transform group-hover:scale-110 border border-primary-100">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-md transition-transform group-hover:scale-110 border border-primary-100">
                     <Droplets className="w-8 h-8 sm:w-10 sm:h-10" />
                   </div>
 
@@ -748,9 +748,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     penyaringan modern yang terjaga kualitasnya.
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-1 gap-6 sm:gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -763,7 +763,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       </div>
                     </div>
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -781,7 +781,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
             </div>
 
             {/* 7. Kantor PPDB & Tamu */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-1 sm:grid-cols-2 gap-12 lg:gap-24 items-center">
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -793,7 +793,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     <Building2 className="w-48 h-48" />
                   </div>
 
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-xl shadow-emerald-900/20 transition-transform group-hover:scale-110 border border-primary-100">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-700 mb-8 sm:mb-10 shadow-md transition-transform group-hover:scale-110 border border-primary-100">
                     <Building2 className="w-8 h-8 sm:w-10 sm:h-10" />
                   </div>
 
@@ -806,9 +806,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     proses pendaftaran.
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-1 gap-6 sm:gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -821,7 +821,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       </div>
                     </div>
                     <div className="flex items-start gap-4 group/item">
-                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-xl shadow-emerald-900/20 mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5">
                         <CheckCircle2 className="w-5 h-5" />
                       </div>
                       <div>
@@ -843,11 +843,11 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                 viewport={{ once: true }}
                 className="order-1 lg:order-2"
               >
-                <div className="aspect-square rounded-[3rem] sm:rounded-[4rem] bg-white p-3 sm:p-4 shadow-xl relative rotate-2 hover:rotate-0 transition-transform duration-700 border border-primary-100">
+                <div className="aspect-square rounded-[3rem] sm:rounded-[4rem] bg-white p-3 sm:p-6 sm:p-8 shadow-xl relative rotate-2 hover:rotate-0 transition-transform duration-700 border border-primary-100">
                   <div className="relative w-full h-full rounded-[2.5rem] sm:rounded-[3.2rem] overflow-hidden">
                     <Image
                       src="/images/kantor-ppdb-tamu.webp"
-                      alt="Kantor PPDB Al-Andalus Putra"
+                      alt="Kantor PPDB Al Imam"
                       fill
                       className="object-cover transition-transform duration-700 hover:scale-110"
                     />
@@ -867,7 +867,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-2xl sm:text-3xl lg:text-5xl font-black text-primary-950 mb-4"
+              className="text-3xl md:text-5xl font-black text-primary-950 mb-4"
             >
               Fasilitas <span className="text-primary-600">Penunjang</span>
             </motion.h2>
@@ -891,9 +891,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-xl shadow-emerald-900/20"
+              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-md"
             >
-              <div className="w-12 h-12 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-xl shadow-emerald-900/20">
+              <div className="w-12 h-12 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-md">
                 <BookOpen className="w-6 h-6" />
               </div>
               <h3 className="font-black text-lg text-primary-950 mb-2">
@@ -914,9 +914,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-xl shadow-emerald-900/20"
+              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-md"
             >
-              <div className="w-12 h-12 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-xl shadow-emerald-900/20">
+              <div className="w-12 h-12 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-md">
                 <FlaskConical className="w-6 h-6" />
               </div>
               <h3 className="font-black text-lg text-primary-950 mb-2">
@@ -937,9 +937,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-xl shadow-emerald-900/20"
+              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-md"
             >
-              <div className="w-12 h-12 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-xl shadow-emerald-900/20">
+              <div className="w-12 h-12 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-md">
                 <Utensils className="w-6 h-6" />
               </div>
               <h3 className="font-black text-lg text-primary-950 mb-2">
@@ -961,9 +961,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-xl shadow-emerald-900/20"
+              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-md"
             >
-              <div className="w-12 h-12 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-xl shadow-emerald-900/20">
+              <div className="w-12 h-12 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-md">
                 <Heart className="w-6 h-6" />
               </div>
               <h3 className="font-black text-lg text-primary-950 mb-2">
@@ -984,9 +984,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6 }}
-              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-xl shadow-emerald-900/20"
+              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-md"
             >
-              <div className="w-12 h-12 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-xl shadow-emerald-900/20">
+              <div className="w-12 h-12 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-md">
                 <Shield className="w-6 h-6" />
               </div>
               <h3 className="font-black text-lg text-primary-950 mb-2">
@@ -1007,9 +1007,9 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.7 }}
-              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-xl shadow-emerald-900/20"
+              className="app-card bg-white p-6 md:p-8 flex flex-col items-start group hover:-translate-y-1 transition-transform border border-primary-50 shadow-md"
             >
-              <div className="w-12 h-12 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-xl shadow-emerald-900/20">
+              <div className="w-12 h-12 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-700 mb-5 group-hover:scale-110 transition-transform border border-primary-100 shadow-md">
                 <Building2 className="w-6 h-6" />
               </div>
               <h3 className="font-black text-lg text-primary-950 mb-2">
@@ -1049,21 +1049,21 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                 >
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill bg-white border border-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest mb-6 shadow-xl shadow-emerald-900/20">
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill bg-white border border-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest mb-6 shadow-md">
                     <Calendar className="w-3.5 h-3.5" />
                     <span>Survey Pesantren</span>
                   </div>
-                  <h2 className="text-2xl md:text-4xl sm:text-3xl lg:text-5xl font-display font-black text-ink-950 mb-6 leading-tight">
+                  <h2 className="text-2xl md:text-4xl font-display font-black text-ink-950 mb-6 leading-tight">
                     Kunjungi <span className="text-gradient-primary">Kami</span>
                   </h2>
                   <p className="text-lg text-ink-600 mb-8 leading-relaxed font-medium">
-                    Masih banyak fasilitas pendukung lainnya di dalam Pesantren Islam Internasional Al-Andalus Putra.
+                    Masih banyak fasilitas pendukung lainnya di dalam Pesantren Al Imam Al Islami.
                     Ingin melihat langsung? Jadwalkan kunjungan Anda melalui formulir ini.
                   </p>
                   
                   <div className="space-y-6">
                     <div className="flex gap-4">
-                      <div className="w-12 h-12 rounded-3xl bg-primary-50 flex items-center justify-center text-primary-600 shrink-0 border border-primary-100">
+                      <div className="w-12 h-12 rounded-2xl bg-primary-50 flex items-center justify-center text-primary-600 shrink-0 border border-primary-100">
                         <CheckCircle2 className="w-6 h-6" />
                       </div>
                       <div>
@@ -1072,7 +1072,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       </div>
                     </div>
                     <div className="flex gap-4">
-                      <div className="w-12 h-12 rounded-3xl bg-primary-50 flex items-center justify-center text-primary-600 shrink-0 border border-primary-100">
+                      <div className="w-12 h-12 rounded-2xl bg-primary-50 flex items-center justify-center text-primary-600 shrink-0 border border-primary-100">
                         <MapPin className="w-6 h-6" />
                       </div>
                       <div>
@@ -1088,7 +1088,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
-                    className="mt-10 bg-white p-2.5 rounded-[2rem] border border-primary-100 shadow-lg shadow-primary-900/5 overflow-hidden relative group"
+                    className="mt-10 bg-white p-4.5 rounded-[2rem] border border-primary-100 shadow-lg shadow-primary-900/5 overflow-hidden relative group"
                   >
                     <div className="rounded-[1.5rem] overflow-hidden h-[200px] relative bg-primary-50">
                       <iframe
@@ -1099,10 +1099,10 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                         allowFullScreen
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
-                        title="Lokasi Pesantren Islam Internasional Al-Andalus Putra"
+                        title="Lokasi Pesantren Al Imam Al Islami"
                         className="grayscale group-hover:grayscale-0 transition-all duration-700 opacity-80 group-hover:opacity-100"
                       />
-                      <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-3xl shadow-xl shadow-emerald-900/20 border border-primary-100 flex items-center gap-2 z-10 pointer-events-none">
+                      <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-3xl shadow-md border border-primary-100 flex items-center gap-2 z-10 pointer-events-none">
                         <MapPin className="w-4 h-4 text-primary-600" />
                         <span className="text-[10px] font-black text-ink-950 uppercase tracking-widest">
                           Lokasi Pesantren
@@ -1127,7 +1127,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                       animate={{ scale: 1, opacity: 1 }}
                       className="py-12 flex flex-col items-center text-center"
                     >
-                      <div className="w-20 h-20 rounded-full bg-green-50 text-green-600 flex items-center justify-center mb-6 border border-green-100 shadow-xl shadow-emerald-900/20">
+                      <div className="w-20 h-20 rounded-full bg-green-50 text-[#550000] flex items-center justify-center mb-6 border border-green-100 shadow-md">
                         <Check className="w-10 h-10" strokeWidth={3} />
                       </div>
                       <h3 className="text-2xl font-black text-ink-950 mb-3">Permintaan Terkirim!</h3>
@@ -1143,7 +1143,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                     </motion.div>
                   ) : (
                     <form onSubmit={handleVisitSubmit} className="space-y-6">
-                      <div className="grid sm:grid-cols-1 gap-6">
+                      <div className="grid sm:grid-cols-2 gap-6">
                         <div className="space-y-2">
                           <label className="text-sm font-black text-ink-950 flex items-center gap-2">
                             <User className="w-4 h-4 text-primary-600" /> Nama Lengkap
@@ -1172,7 +1172,7 @@ Mohon konfirmasi kesediaan waktu kunjungan tersebut. Terima kasih.`;
                         </div>
                       </div>
 
-                      <div className="grid sm:grid-cols-1 gap-6">
+                      <div className="grid sm:grid-cols-2 gap-6">
                         <div className="space-y-2">
                           <label className="text-sm font-black text-ink-950 flex items-center gap-2">
                             <Calendar className="w-4 h-4 text-primary-600" /> Rencana Tanggal

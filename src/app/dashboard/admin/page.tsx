@@ -418,18 +418,18 @@ export default function AdminDashboardPage() {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 w-full lg:w-[320px] shrink-0">
-             <div className="bg-white/10 backdrop-blur-xl p-3.5 sm:p-5 rounded-2xl sm:rounded-3xl border border-white/20 shadow-xl flex flex-col items-center justify-center text-center group hover:bg-white/15 transition-all min-w-0">
-                <p className="text-[10px] sm:text-xs font-black text-white/90 uppercase tracking-wider mb-1 sm:mb-2 text-center group-hover:text-white transition-colors truncate w-full">Diterima</p>
-                <p className="text-2xl sm:text-3xl font-black text-primary-300 drop-shadow-md">{stats.diterima}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 w-full lg:w-auto shrink-0">
+             <div className="bg-white/10 backdrop-blur-xl p-4 sm:p-5 lg:p-6 rounded-2xl sm:rounded-3xl border border-white/20 shadow-xl flex flex-col items-center justify-center text-center group hover:bg-white/15 transition-all min-w-[140px]">
+                <p className="text-[10px] sm:text-xs font-black text-white/90 uppercase tracking-wider mb-2 text-center group-hover:text-white transition-colors">Diterima</p>
+                <p className="text-2xl sm:text-3xl lg:text-4xl font-black text-primary-300 drop-shadow-md">{stats.diterima}</p>
              </div>
-             <div className="bg-white/10 backdrop-blur-xl p-3.5 sm:p-5 rounded-2xl sm:rounded-3xl border border-white/20 shadow-xl flex flex-col items-center justify-center text-center group hover:bg-white/15 transition-all min-w-0">
-                <p className="text-[10px] sm:text-xs font-black text-white/90 uppercase tracking-wider mb-1 sm:mb-2 text-center group-hover:text-white transition-colors truncate w-full">Proses Daftar Ulang</p>
-                <p className="text-2xl sm:text-3xl font-black text-secondary-300 drop-shadow-md">{stats.daftar_ulang_sedang}</p>
+             <div className="bg-white/10 backdrop-blur-xl p-4 sm:p-5 lg:p-6 rounded-2xl sm:rounded-3xl border border-white/20 shadow-xl flex flex-col items-center justify-center text-center group hover:bg-white/15 transition-all min-w-[160px]">
+                <p className="text-[10px] sm:text-xs font-black text-white/90 uppercase tracking-wider mb-2 text-center group-hover:text-white transition-colors">Proses Daftar Ulang</p>
+                <p className="text-2xl sm:text-3xl lg:text-4xl font-black text-secondary-300 drop-shadow-md">{stats.daftar_ulang_sedang}</p>
              </div>
-             <div className="col-span-2 bg-white/10 backdrop-blur-xl p-3.5 sm:p-5 rounded-2xl sm:rounded-3xl border border-white/20 shadow-xl flex flex-col items-center justify-center text-center group hover:bg-white/15 transition-all min-w-0">
-                <p className="text-[10px] sm:text-xs font-black text-white/90 uppercase tracking-wider mb-1 sm:mb-2 text-center group-hover:text-white transition-colors truncate w-full">Lunas Daftar Ulang</p>
-                <p className="text-2xl sm:text-3xl font-black text-primary-300 drop-shadow-md">{stats.daftar_ulang_selesai}</p>
+             <div className="bg-white/10 backdrop-blur-xl p-4 sm:p-5 lg:p-6 rounded-2xl sm:rounded-3xl border border-white/20 shadow-xl flex flex-col items-center justify-center text-center group hover:bg-white/15 transition-all min-w-[160px]">
+                <p className="text-[10px] sm:text-xs font-black text-white/90 uppercase tracking-wider mb-2 text-center group-hover:text-white transition-colors">Lunas Daftar Ulang</p>
+                <p className="text-2xl sm:text-3xl lg:text-4xl font-black text-primary-300 drop-shadow-md">{stats.daftar_ulang_selesai}</p>
              </div>
           </div>
         </div>

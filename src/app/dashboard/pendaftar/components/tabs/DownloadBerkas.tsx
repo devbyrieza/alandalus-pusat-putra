@@ -87,21 +87,21 @@ export default function DownloadBerkasTab() {
     },
     {
       name: "Template Surat Sehat",
-      description: "Format kosong surat keterangan sehat",
+      description: "Format resmi surat keterangan sehat panitia",
       status: "available",
-      action: async () => await generateSuratKesehatan(data),
+      action: () => window.open("/templates/surat-kesehatan.pdf", "_blank"),
     },
     {
       name: "Pakta Integritas",
-      description: "Format kosong pakta integritas santri",
+      description: "Format resmi pakta integritas santri & orang tua panitia",
       status: "available",
-      action: async () => await generatePaktaIntegritas(data),
+      action: () => window.open("/templates/pakta-integritas.pdf", "_blank"),
     },
     {
       name: "Surat Pernyataan",
-      description: "Format kosong pernyataan bebas perilaku negatif",
+      description: "Format resmi surat pernyataan orang tua / wali panitia",
       status: "available",
-      action: async () => await generateSuratPernyataan(data),
+      action: () => window.open("/templates/surat-pernyataan.pdf", "_blank"),
     },
   ];
 

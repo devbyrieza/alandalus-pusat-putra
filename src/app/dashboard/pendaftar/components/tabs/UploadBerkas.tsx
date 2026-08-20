@@ -347,32 +347,48 @@ function DokumenCard({
             </div>
           </div>
           <div className="flex items-center gap-2">
+            {/* Template Download Buttons */}
             {dokumen.key === "surat_kesehatan" && (
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  window.open("/api/dokumen/download/surat-kesehatan", "_blank");
-                }}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-primary-100 hover:bg-primary-600 text-primary-700 hover:text-white rounded-lg text-[10px] font-black border border-primary-200 transition-colors shadow-sm"
-                title="Download Format Surat Kesehatan"
+              <a
+                href="/templates/surat-kesehatan.pdf"
+                download="Surat_Keterangan_Kesehatan_AlAndalus.pdf"
+                target="_blank"
+                rel="noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-100 hover:bg-emerald-600 text-emerald-800 hover:text-white rounded-lg text-[10px] font-black border border-emerald-300 transition-colors shadow-sm"
+                title="Download Format Surat Keterangan Kesehatan Panitia"
               >
                 <Download className="w-3.5 h-3.5" />
                 Download Format
-              </button>
+              </a>
             )}
-            {[
-              "pakta_integritas_santri",
-              "pakta_integritas_ortu",
-              "pernyataan_bebas_negatif",
-            ].includes(dokumen.key) && (
-              <button
-                disabled
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-primary-50 text-primary-400 rounded-lg text-[10px] font-black border border-primary-100 cursor-not-allowed opacity-70"
-                title="Format dokumen sedang disiapkan panitia"
+            {(dokumen.key === "pakta_integritas_santri" || dokumen.key === "pakta_integritas_ortu" || dokumen.key === "pakta_integritas") && (
+              <a
+                href="/templates/pakta-integritas.pdf"
+                download="Pakta_Integritas_AlAndalus.pdf"
+                target="_blank"
+                rel="noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-100 hover:bg-emerald-600 text-emerald-800 hover:text-white rounded-lg text-[10px] font-black border border-emerald-300 transition-colors shadow-sm"
+                title="Download Format Pakta Integritas Panitia"
               >
                 <Download className="w-3.5 h-3.5" />
-                Format Belum Ready
-              </button>
+                Download Format
+              </a>
+            )}
+            {(dokumen.key === "pernyataan_bebas_negatif" || dokumen.key === "surat_pernyataan" || dokumen.key === "surat_pernyataan_ortu") && (
+              <a
+                href="/templates/surat-pernyataan.pdf"
+                download="Surat_Pernyataan_Orang_Tua_AlAndalus.pdf"
+                target="_blank"
+                rel="noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-100 hover:bg-emerald-600 text-emerald-800 hover:text-white rounded-lg text-[10px] font-black border border-emerald-300 transition-colors shadow-sm"
+                title="Download Format Surat Pernyataan Orang Tua Panitia"
+              >
+                <Download className="w-3.5 h-3.5" />
+                Download Format
+              </a>
             )}
             {dokumen.status !== "pending" && (
               <>

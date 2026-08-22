@@ -8,23 +8,19 @@ export async function POST() {
 
   // Clear auth session cookie
   
-  response.cookies.delete({ name: "app_session", domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN || undefined });
-  response.cookies.delete({ name: "siakad_session", domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN || undefined });
-  response.cookies.delete({ name: "ppdb_session", domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN || undefined });
-  // local un-domained cleanup fallback
-  response.cookies.delete("app_session");
-  response.cookies.delete("siakad_session");
-  response.cookies.delete("ppdb_session");
-                    
+  const domain = process.env.NEXT_PUBLIC_COOKIE_DOMAIN;
   
-  response.cookies.delete({ name: "app_session", domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN || undefined });
-  response.cookies.delete({ name: "siakad_session", domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN || undefined });
-  response.cookies.delete({ name: "ppdb_session", domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN || undefined });
-  // local un-domained cleanup fallback
-  response.cookies.delete("app_session");
-  response.cookies.delete("siakad_session");
-  response.cookies.delete("ppdb_session");
-                    
+  // Clean up domain-wide cookies
+  if (domain) {
+    response.headers.append("Set-Cookie", `app_session=; Path=/; Max-Age=0; Domain=${domain}`);
+    response.headers.append("Set-Cookie", `siakad_session=; Path=/; Max-Age=0; Domain=${domain}`);
+    response.headers.append("Set-Cookie", `ppdb_session=; Path=/; Max-Age=0; Domain=${domain}`);
+  }
+
+  // Clean up subdomain/host-specific cookies
+  response.headers.append("Set-Cookie", "app_session=; Path=/; Max-Age=0");
+  response.headers.append("Set-Cookie", "siakad_session=; Path=/; Max-Age=0");
+  response.headers.append("Set-Cookie", "ppdb_session=; Path=/; Max-Age=0");
 
   return response;
 }

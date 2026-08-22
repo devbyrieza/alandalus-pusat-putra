@@ -18,15 +18,21 @@ export async function POST(request: NextRequest) {
     baseDomain = "pesantren-alimam.com";
   }
 
+  const headers = new Headers();
+  headers.append("Content-Type", "application/json");
+
   if (baseDomain) {
-    response.cookies.delete({ name: "app_session", domain: baseDomain, path: "/" });
-    response.cookies.delete({ name: "siakad_session", domain: baseDomain, path: "/" });
-    response.cookies.delete({ name: "ppdb_session", domain: baseDomain, path: "/" });
-  } else {
-    response.cookies.delete({ name: "app_session", path: "/" });
-    response.cookies.delete({ name: "siakad_session", path: "/" });
-    response.cookies.delete({ name: "ppdb_session", path: "/" });
+    headers.append("Set-Cookie", `app_session=; Path=/; Max-Age=0; Domain=${baseDomain}`);
+    headers.append("Set-Cookie", `siakad_session=; Path=/; Max-Age=0; Domain=${baseDomain}`);
+    headers.append("Set-Cookie", `ppdb_session=; Path=/; Max-Age=0; Domain=${baseDomain}`);
   }
 
-  return response;
+  headers.append("Set-Cookie", "app_session=; Path=/; Max-Age=0");
+  headers.append("Set-Cookie", "siakad_session=; Path=/; Max-Age=0");
+  headers.append("Set-Cookie", "ppdb_session=; Path=/; Max-Age=0");
+
+  return new Response(JSON.stringify({ success: true, message: "Logout berhasil" }), {
+    status: 200,
+    headers: headers,
+  });
 }

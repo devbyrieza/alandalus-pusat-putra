@@ -1,4 +1,4 @@
-﻿// â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+// â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
 // MIDDLEWARE: Role-Based Protection & Domain Routing
 // â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
 
@@ -169,19 +169,26 @@ export async function middleware(request: NextRequest) {
 
   const response = NextResponse.next();
 
-  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // ══════════════════════════════════════════════════════════════════════
   // ROLLING SESSION: Automatically renew session cookie duration
-  // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  // ══════════════════════════════════════════════════════════════════════
   const rawSessionCookie = request.cookies.get("app_session");
   if (rawSessionCookie && userRole) {
     const maxAge = 60 * 60 * 24 * 90; // 90 Days
     const expires = new Date(Date.now() + maxAge * 1000);
       
+    let baseDomain = "";
+    if (host.includes("pesantren-alandalus-putra.com")) baseDomain = "pesantren-alandalus-putra.com";
+    else if (host.includes("pesantren-alandalus-putri.com")) baseDomain = "pesantren-alandalus-putri.com";
+    else if (host.includes("alandalus-ululalbaab.com")) baseDomain = "alandalus-ululalbaab.com";
+    else if (host.includes("pesantren-alimam.com")) baseDomain = "pesantren-alimam.com";
+
     response.cookies.set("app_session", rawSessionCookie.value, {
       path: "/",
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
+      domain: baseDomain || undefined,
       maxAge,
       expires,
     });

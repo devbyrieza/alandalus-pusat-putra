@@ -261,10 +261,10 @@ export default function UserManagementPage() {
             </div>
             <div>
               <span className="bg-white/10 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border border-white/10">
-                Control Console
+                Panel Kontrol
               </span>
               <h1 className="text-3xl md:text-2xl sm:text-3xl lg:text-5xl font-black font-display tracking-tight mt-2 italic shadow-xl shadow-emerald-900/20 text-white">
-                Admin Management
+                Manajemen Admin
               </h1>
             </div>
           </div>
@@ -275,7 +275,7 @@ export default function UserManagementPage() {
             }}
             className="bg-secondary-400 hover:bg-secondary-300 text-primary-950 px-6 md:px-10 py-5 rounded-3xl font-black uppercase text-xs shadow-xl transition-all flex items-center justify-center gap-2 hover:scale-105 active:scale-95"
           >
-            <Plus className="w-6 h-6" /> Add System User
+            <Plus className="w-6 h-6" /> Tambah Pengguna
           </button>
         </div>
       </div>
@@ -287,14 +287,14 @@ export default function UserManagementPage() {
             <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-300" />
             <input
               type="text"
-              placeholder="Search system users..."
+              placeholder="Cari pengguna sistem..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full pl-16 pr-8 py-5 bg-white border-2 border-secondary-100 rounded-[2.5rem] focus:outline-none focus:border-primary-500 font-bold shadow-xl shadow-emerald-900/20 placeholder:text-stone-300"
             />
           </div>
           <p className="text-[10px] font-black uppercase tracking-widest text-stone-500 bg-stone-100 px-4 py-2 rounded-full">
-            Total: {users.length} Database entries
+            Total: {users.length} Data Pengguna
           </p>
         </div>
 
@@ -417,7 +417,7 @@ export default function UserManagementPage() {
             <div className="p-6 md:p-12 border-b flex justify-between items-center bg-stone-50/50 shrink-0">
               <div>
                 <h3 className="text-3xl font-black text-ink-950 font-display italic tracking-tight uppercase leading-none mb-1">
-                  {isEditing ? "Configure" : "Initialize"} Account
+                  {isEditing ? "Konfigurasi" : "Inisialisasi"} Akun
                 </h3>
                 <p className="text-ink-400 font-bold text-sm tracking-wide">
                   Pengaturan aksesibilitas user dashboard.
@@ -462,7 +462,7 @@ export default function UserManagementPage() {
                 </div>
                 <div>
                   <label className="block text-[10px] font-black uppercase text-stone-500 mb-3 tracking-widest">
-                    Authority Role
+                    Peran (Role)
                   </label>
                   <select
                     value={formData.role}
@@ -480,7 +480,7 @@ export default function UserManagementPage() {
                 </div>
                 <div>
                   <label className="block text-[10px] font-black uppercase text-stone-500 mb-3 tracking-widest">
-                    Access Key (Password)
+                    Kata Sandi (Password)
                   </label>
                   <div className="relative group/pass">
                     <input
@@ -604,7 +604,7 @@ export default function UserManagementPage() {
                   type="submit"
                   className="w-full py-6 bg-primary-950 text-white font-black uppercase text-xs tracking-widest rounded-3xl shadow-2xl hover:bg-primary-800 hover:scale-[1.02] active:scale-95 transition-all shadow-primary-900/30"
                 >
-                  {isEditing ? "Synchronize Updates" : "Commit New User"}
+                  {isEditing ? "Simpan Perubahan" : "Tambah Pengguna Baru"}
                 </button>
               </div>
             </form>

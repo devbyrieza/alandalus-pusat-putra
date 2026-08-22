@@ -37,6 +37,17 @@ export function DefaultPasswordModal({ profileUrl = "/dashboard/admin/profil" }:
     }
   }, [pathname, profileUrl]);
 
+  if (pathname === profileUrl && isOpen) {
+    return (
+      <div className="bg-red-500 text-white px-4 py-3 text-center text-sm font-bold shadow-md z-[9999] relative">
+        <div className="flex items-center justify-center gap-2">
+          <ShieldAlert className="w-5 h-5" />
+          <span>PEMBARUAN KATA SANDI DIWAJIBKAN: Silakan ganti kata sandi default Anda melalui form di halaman ini demi keamanan akun.</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <AnimatePresence>
       {isOpen && (

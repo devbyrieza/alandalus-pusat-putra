@@ -5,7 +5,7 @@ import { notifySelectionResult } from "@/lib/wablas";
 
 async function checkSuperAdmin() {
   const cookieStore = await cookies();
-  const sessionCookie = cookieStore.get("app_session");
+  const sessionCookie = cookieStore.get("al_session");
 
   if (!sessionCookie) return null;
 
@@ -143,3 +143,4 @@ export async function POST(request: Request) {
     );
   }
 }
+

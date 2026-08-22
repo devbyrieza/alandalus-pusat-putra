@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
   try {
     // 1. Validasi session
     const cookieStore = await cookies();
-    const sessionCookie = cookieStore.get("app_session");
+    const sessionCookie = cookieStore.get("al_session");
 
     if (!sessionCookie) {
       return NextResponse.json(
@@ -345,3 +345,4 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+

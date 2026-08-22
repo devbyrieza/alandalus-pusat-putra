@@ -8,7 +8,7 @@ function getSessionFromCookie(request: NextRequest): {
   role: string | null;
   id: string | null;
 } {
-  const sessionCookie = request.cookies.get("app_session");
+  const sessionCookie = request.cookies.get("al_session");
 
   if (!sessionCookie) {
     return { role: null, id: null };
@@ -172,7 +172,7 @@ export async function middleware(request: NextRequest) {
   // ══════════════════════════════════════════════════════════════════════
   // ROLLING SESSION: Automatically renew session cookie duration
   // ══════════════════════════════════════════════════════════════════════
-  const rawSessionCookie = request.cookies.get("app_session");
+  const rawSessionCookie = request.cookies.get("al_session");
   if (rawSessionCookie && userRole) {
     const maxAge = 60 * 60 * 24 * 90; // 90 Days
     const expires = new Date(Date.now() + maxAge * 1000);
@@ -183,7 +183,7 @@ export async function middleware(request: NextRequest) {
     else if (host.includes("alandalus-ululalbaab.com")) baseDomain = "alandalus-ululalbaab.com";
     else if (host.includes("pesantren-alimam.com")) baseDomain = "pesantren-alimam.com";
 
-    response.cookies.set("app_session", rawSessionCookie.value, {
+    response.cookies.set("al_session", rawSessionCookie.value, {
       path: "/",
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
@@ -209,4 +209,5 @@ export const config = {
     '/((?!api|_next/static|_next/image|favicon.ico).*)',
   ],
 };
+
 

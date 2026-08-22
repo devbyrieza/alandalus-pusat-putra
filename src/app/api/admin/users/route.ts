@@ -6,7 +6,7 @@ import crypto from "crypto";
 
 async function checkAdminPrivilege() {
   const cookieStore = await cookies();
-  const sessionCookie = cookieStore.get("app_session");
+  const sessionCookie = cookieStore.get("al_session");
 
   if (!sessionCookie) return null;
 
@@ -313,3 +313,4 @@ export async function DELETE(request: Request) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
+

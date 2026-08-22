@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
     });
 
     response.cookies.set(
-      "app_session",
+      "al_session",
       JSON.stringify({
         role: chosen_role,
         id: profile.id,
@@ -70,3 +70,4 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Terjadi kesalahan" }, { status: 500 });
   }
 }
+

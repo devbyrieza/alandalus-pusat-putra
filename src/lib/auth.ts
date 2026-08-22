@@ -54,7 +54,7 @@ export interface SessionData {
 /**
  * getCurrentSession
  * Mengambil data user yang sedang login dari server.
- * Keamanan: Menggunakan httpOnly cookie 'app_session'.
+ * Keamanan: Menggunakan httpOnly cookie 'al_session'.
  */
 export const getCurrentSession = async (): Promise<SessionData | null> => {
   try {
@@ -170,3 +170,4 @@ export const isSessionExpiringSoon = async (): Promise<boolean> => {
   
   return diffHours < 24;
 };
+

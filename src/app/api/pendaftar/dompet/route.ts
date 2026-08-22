@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 export async function GET(request: NextRequest) {
   try {
     const cookieStore = await cookies();
-    const sessionCookie = cookieStore.get("app_session");
+    const sessionCookie = cookieStore.get("al_session");
 
     if (!sessionCookie) {
       return NextResponse.json({ success: false, error: "Sesi tidak ditemukan" }, { status: 401 });
@@ -52,3 +52,4 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ success: false, error: "Terjadi kesalahan internal" }, { status: 500 });
   }
 }
+

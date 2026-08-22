@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
   try {
     // 1. Validasi session manual
     const cookieStore = await cookies();
-    const sessionCookie = cookieStore.get("app_session");
+    const sessionCookie = cookieStore.get("al_session");
 
     if (!sessionCookie) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -329,5 +329,6 @@ export async function GET(request: NextRequest) {
     );
   }
 }
+
 
 

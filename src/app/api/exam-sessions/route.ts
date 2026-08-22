@@ -8,7 +8,7 @@ import {
 
 async function getSession() {
   const cookieStore = await cookies();
-  const sessionCookie = cookieStore.get("app_session");
+  const sessionCookie = cookieStore.get("al_session");
   if (!sessionCookie) return null;
   try {
     return JSON.parse(sessionCookie.value);
@@ -359,3 +359,4 @@ export async function PATCH(request: Request) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
+

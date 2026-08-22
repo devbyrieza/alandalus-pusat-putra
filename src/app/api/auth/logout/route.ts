@@ -22,12 +22,12 @@ export async function POST(request: NextRequest) {
   headers.append("Content-Type", "application/json");
 
   if (baseDomain) {
-    headers.append("Set-Cookie", `app_session=; Path=/; Max-Age=0; Domain=${baseDomain}`);
+    headers.append("Set-Cookie", `al_session=; Path=/; Max-Age=0; Domain=${baseDomain}`);
     headers.append("Set-Cookie", `siakad_session=; Path=/; Max-Age=0; Domain=${baseDomain}`);
     headers.append("Set-Cookie", `ppdb_session=; Path=/; Max-Age=0; Domain=${baseDomain}`);
   }
 
-  headers.append("Set-Cookie", "app_session=; Path=/; Max-Age=0");
+  headers.append("Set-Cookie", "al_session=; Path=/; Max-Age=0");
   headers.append("Set-Cookie", "siakad_session=; Path=/; Max-Age=0");
   headers.append("Set-Cookie", "ppdb_session=; Path=/; Max-Age=0");
 
@@ -36,3 +36,4 @@ export async function POST(request: NextRequest) {
     headers: headers,
   });
 }
+

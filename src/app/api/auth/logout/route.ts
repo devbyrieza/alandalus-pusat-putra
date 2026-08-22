@@ -19,14 +19,14 @@ export async function POST(request: NextRequest) {
   }
 
   if (baseDomain) {
-    response.headers.append("Set-Cookie", `app_session=; Path=/; Max-Age=0; Domain=${baseDomain}`);
-    response.headers.append("Set-Cookie", `siakad_session=; Path=/; Max-Age=0; Domain=${baseDomain}`);
-    response.headers.append("Set-Cookie", `ppdb_session=; Path=/; Max-Age=0; Domain=${baseDomain}`);
+    response.cookies.delete({ name: "app_session", domain: baseDomain, path: "/" });
+    response.cookies.delete({ name: "siakad_session", domain: baseDomain, path: "/" });
+    response.cookies.delete({ name: "ppdb_session", domain: baseDomain, path: "/" });
+  } else {
+    response.cookies.delete({ name: "app_session", path: "/" });
+    response.cookies.delete({ name: "siakad_session", path: "/" });
+    response.cookies.delete({ name: "ppdb_session", path: "/" });
   }
-
-  response.headers.append("Set-Cookie", "app_session=; Path=/; Max-Age=0");
-  response.headers.append("Set-Cookie", "siakad_session=; Path=/; Max-Age=0");
-  response.headers.append("Set-Cookie", "ppdb_session=; Path=/; Max-Age=0");
 
   return response;
 }

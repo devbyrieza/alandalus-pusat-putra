@@ -1,4 +1,4 @@
-﻿export const PPDB_CONFIG = {
+export const PPDB_CONFIG = {
   pesantren: {
     nama: "Pesantren Islam Internasional Al-Andalus Putra",
     singkatan: "Al-Andalus Putra",

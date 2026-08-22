@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { BRANDING, IS_PUTRA } from "@/config/branding";

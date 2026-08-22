@@ -1,4 +1,4 @@
-﻿export const PDF_BRANDING = {
+export const PDF_BRANDING = {
   template: "full_image" as "full_image" | "programmatic",
   institution: {
     name: "PESANTREN ISLAM INTERNASIONAL AL-ANDALUS PUTRA",

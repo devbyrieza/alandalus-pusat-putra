@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { motion, useMotionValue, animate } from "framer-motion";
 import { useInView } from "react-intersection-observer";

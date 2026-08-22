@@ -347,48 +347,45 @@ function DokumenCard({
             </div>
           </div>
           <div className="flex items-center gap-2">
-            {/* Template Download Buttons */}
+                        {/* Template Download Buttons */}
             {dokumen.key === "surat_kesehatan" && (
-              <a
-                href="/templates/surat-kesehatan.pdf"
-                download="Surat_Keterangan_Kesehatan_AlAndalus.pdf"
-                target="_blank"
-                rel="noreferrer"
-                onClick={(e) => e.stopPropagation()}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open("/api/dokumen/download/surat-kesehatan", "_blank");
+                }}
                 className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-100 hover:bg-emerald-600 text-emerald-800 hover:text-white rounded-lg text-[10px] font-black border border-emerald-300 transition-colors shadow-sm"
                 title="Download Format Surat Keterangan Kesehatan Panitia"
               >
                 <Download className="w-3.5 h-3.5" />
                 Download Format
-              </a>
+              </button>
             )}
             {(dokumen.key === "pakta_integritas_santri" || dokumen.key === "pakta_integritas_ortu" || dokumen.key === "pakta_integritas") && (
-              <a
-                href="/templates/pakta-integritas.pdf"
-                download="Pakta_Integritas_AlAndalus.pdf"
-                target="_blank"
-                rel="noreferrer"
-                onClick={(e) => e.stopPropagation()}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open("/api/dokumen/download/pakta-integritas", "_blank");
+                }}
                 className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-100 hover:bg-emerald-600 text-emerald-800 hover:text-white rounded-lg text-[10px] font-black border border-emerald-300 transition-colors shadow-sm"
                 title="Download Format Pakta Integritas Panitia"
               >
                 <Download className="w-3.5 h-3.5" />
                 Download Format
-              </a>
+              </button>
             )}
             {(dokumen.key === "pernyataan_bebas_negatif" || dokumen.key === "surat_pernyataan" || dokumen.key === "surat_pernyataan_ortu") && (
-              <a
-                href="/templates/surat-pernyataan.pdf"
-                download="Surat_Pernyataan_Orang_Tua_AlAndalus.pdf"
-                target="_blank"
-                rel="noreferrer"
-                onClick={(e) => e.stopPropagation()}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open("/api/dokumen/download/surat-pernyataan", "_blank");
+                }}
                 className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-100 hover:bg-emerald-600 text-emerald-800 hover:text-white rounded-lg text-[10px] font-black border border-emerald-300 transition-colors shadow-sm"
                 title="Download Format Surat Pernyataan Orang Tua Panitia"
               >
                 <Download className="w-3.5 h-3.5" />
                 Download Format
-              </a>
+              </button>
             )}
             {dokumen.status !== "pending" && (
               <>

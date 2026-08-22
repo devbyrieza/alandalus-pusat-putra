@@ -23,6 +23,7 @@ import { ROLE_LABELS, UserRole } from "@/lib/access-control";
 interface AdminUser {
   id: string;
   email: string;
+  username?: string;
   full_name: string;
   role: string;
   secondary_roles?: string[];
@@ -101,6 +102,7 @@ export default function UserManagementPage() {
   const [formData, setFormData] = useState({
     id: "",
     email: "",
+    username: "",
     password: "",
     full_name: "",
     role: "admin_berkas",
@@ -132,6 +134,7 @@ export default function UserManagementPage() {
     setFormData({
       id: "",
       email: "",
+      username: "",
       password: "",
       full_name: "",
       role: "admin_berkas",
@@ -372,6 +375,7 @@ export default function UserManagementPage() {
                                 setFormData({
                                   id: user.id,
                                   email: user.email,
+                                  username: user.username || "",
                                   password: "",
                                   full_name: user.full_name,
                                   role: user.role,
@@ -457,6 +461,20 @@ export default function UserManagementPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
+                    className="w-full px-4 md:px-5 py-4 bg-stone-100/50 border-2 border-transparent focus:border-primary-600 focus:bg-white focus:outline-none font-bold rounded-3xl transition-all"
+                  />
+                </div>
+                <div className="col-span-1 md:col-span-2">
+                  <label className="block text-[10px] font-black uppercase text-stone-500 mb-3 tracking-widest">
+                    Username Khusus (Opsional)
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.username}
+                    onChange={(e) =>
+                      setFormData({ ...formData, username: e.target.value })
+                    }
+                    placeholder="Contoh: ustadz_fulan"
                     className="w-full px-4 md:px-5 py-4 bg-stone-100/50 border-2 border-transparent focus:border-primary-600 focus:bg-white focus:outline-none font-bold rounded-3xl transition-all"
                   />
                 </div>

@@ -165,10 +165,10 @@ export default function PengujiDashboardLayout({
         {/* Mobile Header - branding only, NO hamburger */}
         <header
           data-ui-version="2"
-          className="lg:hidden sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-surface-200 px-5 py-4 flex items-center justify-center"
+          className="lg:hidden sticky top-0 z-40 bg-white  border-b border-surface-200 px-5 py-4 flex items-center justify-center"
         >
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-linear-to-br from-primary-600 to-primary-700 flex items-center justify-center text-white text-sm font-black shadow-md">
+            <div className="w-8 h-8 rounded-xl bg-linear-to-br from-primary-600 to-primary-700 flex items-center justify-center text-white text-sm font-black shadow-md">
               <ShieldCheck className="w-4 h-4" />
             </div>
             <span className="font-black text-ink-950 tracking-tight leading-none text-sm">
@@ -217,7 +217,7 @@ export default function PengujiDashboardLayout({
                       </span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2 text-[9px] font-black text-primary-700 bg-primary-50 px-2.5 py-1 rounded-lg border border-primary-100 uppercase tracking-widest">
+                  <div className="flex items-center gap-2 text-[9px] font-black text-primary-700 bg-primary-50 px-2.5 py-1 rounded-xl border border-primary-100 uppercase tracking-widest">
                     <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
                     Aktif Sesi
                   </div>
@@ -272,18 +272,18 @@ export default function PengujiDashboardLayout({
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   onClick={() => setSidebarOpen(false)}
-                  className="lg:hidden fixed inset-0 z-[60] bg-ink-950/20 backdrop-blur-md overflow-y-auto overflow-x-hidden p-4 overscroll-contain custom-scrollbar"
+                  className="lg:hidden fixed inset-0 z-[60] bg-ink-950/20  overflow-y-auto overflow-x-hidden p-4 overscroll-contain custom-scrollbar"
                 />
                 <motion.aside
                   initial={{ x: -280 }}
                   animate={{ x: 0 }}
                   exit={{ x: -280 }}
                   transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                  className="lg:hidden fixed left-0 top-0 bottom-0 w-[280px] z-[70] bg-white shadow-2xl flex flex-col p-6"
+                  className="lg:hidden fixed left-0 top-0 bottom-0 w-[280px] z-[70] bg-white shadow-lg flex flex-col p-6"
                 >
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-linear-to-br from-primary-600 to-primary-700 flex items-center justify-center text-white shadow-md">
+                      <div className="w-8 h-8 rounded-xl bg-linear-to-br from-primary-600 to-primary-700 flex items-center justify-center text-white shadow-md">
                         <ShieldCheck className="w-5 h-5" />
                       </div>
                       <span className="font-black text-ink-950">
@@ -299,7 +299,7 @@ export default function PengujiDashboardLayout({
                   </div>
 
                   {/* User Info */}
-                  <div className="mb-5 p-3.5 rounded-2xl bg-surface-50 border border-surface-100 flex items-center gap-3">
+                  <div className="mb-5 p-3.5 rounded-xl bg-surface-50 border border-surface-100 flex items-center gap-3">
                     <div className="w-9 h-9 rounded-full bg-white shadow-sm flex items-center justify-center border border-surface-100 font-black text-primary-700 text-sm shrink-0">
                       {pengujiName.charAt(0)}
                     </div>
@@ -358,7 +358,7 @@ export default function PengujiDashboardLayout({
           {/* Main Content Content */}
           <div className="flex-1 flex flex-col min-w-0 lg:ml-72 min-h-screen">
             {/* Topbar Desktop */}
-            <header className="hidden lg:flex items-center justify-between h-24 px-6 md:px-10 sticky top-0 bg-surface-50/80 backdrop-blur-md z-30 shrink-0">
+            <header className="hidden lg:flex items-center justify-between h-24 px-6 md:px-10 sticky top-0 bg-surface-50/80  z-30 shrink-0">
               <div className="flex-1 max-w-xl">
                 {/* Search bar removed as requested to avoid double search UI */}
               </div>
@@ -382,7 +382,7 @@ export default function PengujiDashboardLayout({
                         {ROLE_LABELS[userRole as UserRole] || "Penguji"}
                       </p>
                     </div>
-                    <div className="w-12 h-12 rounded-2xl bg-linear-to-br from-primary-50 to-primary-100 flex items-center justify-center border border-primary-200 shadow-premium-sm text-primary-700 font-black">
+                    <div className="w-12 h-12 rounded-xl bg-linear-to-br from-primary-50 to-primary-100 flex items-center justify-center border border-primary-200 shadow-premium-sm text-primary-700 font-black">
                       {pengujiName.charAt(0)}
                     </div>
                   </div>
@@ -416,7 +416,7 @@ export default function PengujiDashboardLayout({
                   className="flex flex-col items-center gap-1 group py-1 min-w-[70px]"
                 >
                   <div
-                    className={`p-2 rounded-2xl transition-all ${item.active ? "bg-primary-600 text-white shadow-lg shadow-primary-200" : "text-ink-400 group-hover:bg-primary-50"}`}
+                    className={`p-2 rounded-xl transition-all ${item.active ? "bg-primary-600 text-white shadow-lg shadow-primary-200" : "text-ink-400 group-hover:bg-primary-50"}`}
                   >
                     <item.icon className="w-5 h-5" />
                   </div>
@@ -431,7 +431,7 @@ export default function PengujiDashboardLayout({
                 onClick={() => setSidebarOpen(true)}
                 className="flex flex-col items-center gap-1 group py-1 min-w-[70px]"
               >
-                <div className="p-2 rounded-2xl text-ink-400 group-hover:bg-primary-50 transition-all">
+                <div className="p-2 rounded-xl text-ink-400 group-hover:bg-primary-50 transition-all">
                   <Menu className="w-5 h-5" />
                 </div>
                 <span className="text-[9px] font-black uppercase tracking-widest text-ink-400">

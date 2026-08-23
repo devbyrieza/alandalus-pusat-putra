@@ -140,7 +140,7 @@ export default function ProfilTab() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-6 text-white">
+      <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl p-6 text-white">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-black mb-2">Profil Saya</h1>
@@ -173,7 +173,7 @@ export default function ProfilTab() {
         {/* Data Pribadi */}
         <div className="bg-white rounded-xl shadow-lg p-6 border-2 border-secondary-100">
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-2 bg-secondary-100 rounded-lg">
+            <div className="p-2 bg-secondary-100 rounded-xl">
               <User className="w-6 h-6 text-primary-700" />
             </div>
             <h3 className="text-lg font-bold text-stone-900">Data Pribadi</h3>
@@ -202,7 +202,7 @@ export default function ProfilTab() {
         {/* Kontak */}
         <div className="bg-white rounded-xl shadow-lg p-6 border-2 border-primary-100">
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-2 bg-primary-100 rounded-lg">
+            <div className="p-2 bg-primary-100 rounded-xl">
               <Phone className="w-6 h-6 text-primary-600" />
             </div>
             <h3 className="text-lg font-bold text-stone-900">
@@ -227,7 +227,7 @@ export default function ProfilTab() {
         {/* Alamat */}
         <div className="bg-white rounded-xl shadow-lg p-6 border-2 border-green-100">
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-2 bg-green-100 rounded-lg">
+            <div className="p-2 bg-green-100 rounded-xl">
               <MapPin className="w-6 h-6 text-green-600" />
             </div>
             <h3 className="text-lg font-bold text-stone-900">Alamat</h3>
@@ -245,7 +245,7 @@ export default function ProfilTab() {
         {/* Asal Sekolah */}
         <div className="bg-white rounded-xl shadow-lg p-6 border-2 border-purple-100">
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-2 bg-purple-100 rounded-lg">
+            <div className="p-2 bg-purple-100 rounded-xl">
               <School className="w-6 h-6 text-purple-600" />
             </div>
             <h3 className="text-lg font-bold text-stone-900">Asal Sekolah</h3>
@@ -261,7 +261,7 @@ export default function ProfilTab() {
       <div className="bg-primary-50 border-2 border-primary-200 rounded-xl p-6">
         <div className="flex gap-4">
           <div className="flex-shrink-0">
-            <div className="p-2 bg-primary-200 rounded-lg">
+            <div className="p-2 bg-primary-200 rounded-xl">
               <User className="w-6 h-6 text-primary-700" />
             </div>
           </div>

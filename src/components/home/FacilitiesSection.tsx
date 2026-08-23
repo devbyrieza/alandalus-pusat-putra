@@ -252,7 +252,7 @@ export default function FacilitiesSection() {
             <motion.div
               key={idx}
               variants={itemVariants}
-              className="group flex items-center gap-3.5 p-3.5 rounded-2xl bg-white border border-secondary-100 hover:border-primary-100 shadow-premium-sm hover:shadow-premium-md transition-all duration-300 ease-out cursor-default"
+              className="group flex items-center gap-3.5 p-3.5 rounded-xl bg-white border border-secondary-100 hover:border-primary-100 shadow-premium-sm hover:shadow-premium-md transition-all duration-300 ease-out cursor-default"
             >
               <div
                 className={`w-10 h-10 rounded-[10px] flex items-center justify-center shrink-0 ring-1 shadow-xs transition-transform duration-300 group-hover:scale-105 ${iconClasses[facility.color] ?? iconClasses.ink}`}

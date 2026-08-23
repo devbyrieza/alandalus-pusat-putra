@@ -97,7 +97,7 @@ export default function Navbar() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-andalus-green-950/95 backdrop-blur-md border-b border-andalus-green-800 shadow-xl py-3"
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-andalus-green-950/95  border-b border-andalus-green-800 shadow-lg py-3"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* LOGO & BRAND */}
@@ -122,7 +122,7 @@ export default function Navbar() {
         </Link>
 
         {/* DESKTOP NAV LINKS */}
-        <nav className="hidden lg:flex items-center gap-1 bg-white/5 p-1.5 rounded-2xl border border-white/10 backdrop-blur-md">
+        <nav className="hidden lg:flex items-center gap-1 bg-white/5 p-1.5 rounded-xl border border-white/10 ">
           {navLinks.map((link) => {
             const normalizedPath = pathname === "/" ? "/ppdb" : pathname;
             const linkBase = link.href.split("#")[0];
@@ -207,7 +207,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-andalus-green-950 border-b border-andalus-green-800 overflow-hidden px-4 py-6 space-y-4 shadow-2xl"
+            className="lg:hidden bg-andalus-green-950 border-b border-andalus-green-800 overflow-hidden px-4 py-6 space-y-4 shadow-lg"
           >
             <nav className="space-y-2">
               {navLinks.map((link) => (

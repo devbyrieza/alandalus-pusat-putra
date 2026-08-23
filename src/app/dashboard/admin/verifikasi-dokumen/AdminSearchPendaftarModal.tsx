@@ -52,11 +52,11 @@ export default function AdminSearchPendaftarModal({ isOpen, onClose }: AdminSear
 
   return (
     <div 
-      className="fixed inset-0 bg-stone-900/80 backdrop-blur-sm z-[100] flex justify-center items-start pt-10 md:pt-16 px-4 overflow-y-auto overscroll-contain custom-scrollbar"
+      className="fixed inset-0 bg-stone-900/80  z-[100] flex justify-center items-start pt-10 md:pt-16 px-4 overflow-y-auto overscroll-contain custom-scrollbar"
       onClick={onClose}
     >
       <div 
-        className="bg-white rounded-3xl w-full max-w-xl shadow-2xl relative mb-20 animate-in zoom-in-95 duration-200"
+        className="bg-white rounded-xl w-full max-w-xl shadow-lg relative mb-20 animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between p-6 border-b border-stone-100">
@@ -100,7 +100,7 @@ export default function AdminSearchPendaftarModal({ isOpen, onClose }: AdminSear
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <span className="font-bold text-stone-800">{p.nama_lengkap}</span>
-                        <span className="text-xs font-black text-primary-600 bg-primary-100 px-2 py-0.5 rounded-lg">
+                        <span className="text-xs font-black text-primary-600 bg-primary-100 px-2 py-0.5 rounded-xl">
                           {p.jenjang}
                         </span>
                       </div>

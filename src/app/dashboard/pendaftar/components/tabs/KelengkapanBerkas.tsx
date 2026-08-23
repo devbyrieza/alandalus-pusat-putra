@@ -239,11 +239,11 @@ function DokumenCard({
               <div className="flex items-center gap-2 mb-1">
                 <h4 className="font-bold text-ink-900">{dokumen.label}</h4>
                 {dokumen.required ? (
-                  <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-secondary-100 text-secondary-700 rounded-lg">
+                  <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-secondary-100 text-secondary-700 rounded-xl">
                     Wajib
                   </span>
                 ) : (
-                  <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-surface-200 text-ink-600 rounded-lg">
+                  <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-surface-200 text-ink-600 rounded-xl">
                     Opsional
                   </span>
                 )}
@@ -326,7 +326,7 @@ function DokumenCard({
               </div>
 
               {dokumen.status === "rejected" && dokumen.catatan && (
-                <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded-lg">
+                <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded-xl">
                   <p className="text-sm text-red-700">
                     <strong>Catatan:</strong> {dokumen.catatan}
                   </p>
@@ -334,7 +334,7 @@ function DokumenCard({
               )}
 
               {dokumen.status === "verified" && dokumen.verified_at && (
-                <div className="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg">
+                <div className="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-xl">
                   <p className="text-sm text-emerald-700 font-medium">
                     ✓ Diverifikasi pada{" "}
                     {new Date(dokumen.verified_at).toLocaleDateString("id-ID", {
@@ -370,7 +370,7 @@ function DokumenCard({
               {isUploading ? (
                 <Loader2 className="w-10 h-10 text-primary-500 animate-spin" />
               ) : (
-                <div className="w-14 h-14 bg-primary-50 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="w-14 h-14 bg-primary-50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Upload className="w-7 h-7 text-primary-700" />
                 </div>
               )}
@@ -705,8 +705,8 @@ export default function KelengkapanBerkasTab() {
   if (error && activeTab !== "data") {
     return (
       <div className="space-y-6">
-        <div className="bg-red-50 border border-red-200 rounded-3xl p-5 md:p-8 text-center shadow-sm">
-          <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+        <div className="bg-red-50 border border-red-200 rounded-xl p-5 md:p-8 text-center shadow-sm">
+          <div className="w-16 h-16 bg-red-100 rounded-xl flex items-center justify-center mx-auto mb-4">
             <XCircle className="w-8 h-8 text-red-500" />
           </div>
           <h3 className="text-lg font-bold text-red-900 mb-2">
@@ -729,7 +729,7 @@ export default function KelengkapanBerkasTab() {
     <div className="space-y-8 animate-in fade-in duration-500">
       {toast && (
         <div
-          className={`fixed top-6 right-6 z-50 px-6 py-4 rounded-2xl shadow-clay-lg flex items-center gap-3 animate-in slide-in-from-right duration-300 ${
+          className={`fixed top-6 right-6 z-50 px-6 py-4 rounded-xl shadow-clay-lg flex items-center gap-3 animate-in slide-in-from-right duration-300 ${
             toast.type === "success"
               ? "bg-emerald-500 text-white shadow-emerald-500/20"
               : "bg-red-500 text-white shadow-red-500/20"
@@ -745,7 +745,7 @@ export default function KelengkapanBerkasTab() {
           </span>
           <button
             onClick={() => setToast(null)}
-            className="ml-2 hover:bg-white/20 p-1 rounded-lg transition-colors"
+            className="ml-2 hover:bg-white/20 p-1 rounded-xl transition-colors"
           >
             <XCircle className="w-4 h-4 opacity-0" /> {/* Spacer */}
             <span className="sr-only">Close</span>
@@ -757,7 +757,7 @@ export default function KelengkapanBerkasTab() {
       <div className="relative overflow-hidden rounded-[2rem] bg-linear-to-br from-primary-700 to-primary-900 border border-primary-600 p-5 md:p-8 text-white shadow-lg app-card">
         <div className="absolute top-0 right-0 w-full max-w-[400px] h-[400px] bg-gold-50/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="relative z-10 flex items-start md:items-center gap-6">
-          <div className="w-16 h-16 rounded-[1.5rem] bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-sm shrink-0">
+          <div className="w-16 h-16 rounded-[1.5rem] bg-white/10  flex items-center justify-center border border-white/20 shadow-sm shrink-0">
             <ClipboardList className="w-8 h-8 text-gold-100" />
           </div>
           <div>
@@ -816,7 +816,7 @@ export default function KelengkapanBerkasTab() {
           {dataPendaftaran ? (
             <div className="space-y-8">
               <div className="flex items-center gap-4 mb-2">
-                <div className="w-12 h-12 bg-gold-100 rounded-2xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gold-100 rounded-xl flex items-center justify-center">
                   <FileText className="w-6 h-6 text-primary-700" />
                 </div>
                 <div>
@@ -829,7 +829,7 @@ export default function KelengkapanBerkasTab() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 bg-surface-50 p-6 rounded-3xl border border-ink-100 shadow-inner">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 bg-surface-50 p-6 rounded-xl border border-ink-100 shadow-inner">
                 <div className="md:col-span-2 lg:col-span-1">
                   <p className="text-[10px] font-black text-ink-600 uppercase tracking-[0.2em] mb-1">
                     Nomor Pendaftaran
@@ -1293,9 +1293,9 @@ export default function KelengkapanBerkasTab() {
       )}
 
       {showConfirmModal && (
-        <div className="fixed inset-0 z-[100] flex items-start md:items-center pt-10 md:pt-0 pb-20 md:pb-0 justify-center p-4 bg-ink-900/60 backdrop-blur-sm animate-in fade-in duration-200 overflow-y-auto overflow-x-hidden overscroll-contain custom-scrollbar">
-          <div className="bg-white rounded-[2rem] shadow-2xl max-w-md w-full overflow-hidden animate-in zoom-in-95 duration-200 p-5 md:p-8 text-center relative">
-            <div className="w-20 h-20 bg-secondary-50 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-inner border border-secondary-100 rotate-3">
+        <div className="fixed inset-0 z-[100] flex items-start md:items-center pt-10 md:pt-0 pb-20 md:pb-0 justify-center p-4 bg-ink-900/60  animate-in fade-in duration-200 overflow-y-auto overflow-x-hidden overscroll-contain custom-scrollbar">
+          <div className="bg-white rounded-[2rem] shadow-lg max-w-md w-full overflow-hidden animate-in zoom-in-95 duration-200 p-5 md:p-8 text-center relative">
+            <div className="w-20 h-20 bg-secondary-50 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-inner border border-secondary-100 rotate-3">
               <AlertTriangle className="w-10 h-10 text-secondary-500" />
             </div>
 

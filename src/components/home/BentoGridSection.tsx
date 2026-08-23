@@ -28,7 +28,7 @@ export default function BentoGridSection() {
             <Image src="/images/hero.jpg" alt="Masjid" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="absolute inset-0 p-8 flex flex-col justify-end">
-              <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center mb-4 text-white">
+              <div className="w-12 h-12 bg-white/20  rounded-xl flex items-center justify-center mb-4 text-white">
                 <BookOpen className="w-6 h-6" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-2">Masjid Jami' Pusat Hafalan</h3>

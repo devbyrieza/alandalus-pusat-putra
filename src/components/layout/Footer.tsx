@@ -121,7 +121,7 @@ export default function Footer() {
             {/* CTA */}
             <Link
               href="/ppdb"
-              className={`inline-flex items-center gap-2 px-5 py-3 rounded-2xl text-white text-sm font-bold ${primaryBg} ${primaryBgHov} transition-all mt-2`}
+              className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl text-white text-sm font-bold ${primaryBg} ${primaryBgHov} transition-all mt-2`}
             >
               <HiAcademicCap className="w-4 h-4" />
               Daftar PPDB Online

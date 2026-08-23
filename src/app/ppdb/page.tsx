@@ -49,9 +49,9 @@ const StatCard = ({
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ delay, duration: 0.5 }}
-    className="bg-white p-6 sm:p-5 md:p-8 rounded-3xl sm:rounded-[2rem] border border-surface-100 shadow-premium-sm hover:shadow-premium-md transition-all text-center group"
+    className="bg-white p-6 sm:p-5 md:p-8 rounded-xl sm:rounded-[2rem] border border-surface-100 shadow-premium-sm hover:shadow-premium-md transition-all text-center group"
   >
-    <div className="w-14 h-14 mx-auto bg-surface-50 rounded-3xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-premium-xs">
+    <div className="w-14 h-14 mx-auto bg-surface-50 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-premium-xs">
       <Icon className="w-7 h-7 text-primary-600" />
     </div>
     <div className="font-display font-black text-lg sm:text-2xl md:text-3xl text-ink-950 mb-1 leading-tight break-words">
@@ -76,7 +76,7 @@ const TimelineItem = ({ item, index }: { item: any; index: number }) => (
 
     {/* Dot */}
     <div
-      className={`absolute left-0 top-0 w-12 h-12 md:w-16 md:h-16 rounded-3xl md:rounded-3xl border-4 flex items-center justify-center bg-white z-10 shadow-premium-sm transition-all duration-500
+      className={`absolute left-0 top-0 w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-xl border-4 flex items-center justify-center bg-white z-10 shadow-premium-sm transition-all duration-500
       ${item.status === "active" ? "border-primary-600 text-primary-600" : "border-surface-100 text-ink-300"}`}
     >
       <span className="text-xl md:text-2xl font-display font-black">
@@ -296,7 +296,7 @@ function PPDBContent() {
               <div className="bg-white p-6 sm:p-5 md:p-8 rounded-[2rem] md:rounded-[3rem] border border-surface-100 shadow-premium-lg relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary-50 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
                 <div className="relative z-10 flex items-center gap-5">
-                  <div className="w-14 h-14 bg-primary-500 rounded-3xl flex items-center justify-center text-white shadow-premium-md">
+                  <div className="w-14 h-14 bg-primary-500 rounded-xl flex items-center justify-center text-white shadow-premium-md">
                     <CheckCircle className="w-7 h-7" />
                   </div>
                   <div>
@@ -369,7 +369,7 @@ function PPDBContent() {
             viewport={{ once: true }}
             className="mt-16 max-w-4xl mx-auto bg-primary-50 border border-primary-100 rounded-[2.5rem] p-5 md:p-8 flex flex-col md:flex-row items-center gap-8 text-center md:text-left"
           >
-            <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center text-primary-600 shadow-premium-sm shrink-0">
+            <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center text-primary-600 shadow-premium-sm shrink-0">
               <HelpCircle className="w-8 h-8" />
             </div>
             <div>
@@ -403,7 +403,7 @@ function PPDBContent() {
                       className="bg-white p-6 sm:p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] border border-surface-100 shadow-premium-md"
                     >
                       <div className="flex items-center gap-4 md:gap-5 mb-6 md:mb-8">
-                        <div className="w-12 h-12 md:w-14 md:h-14 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-600 shadow-premium-sm shrink-0">
+                        <div className="w-12 h-12 md:w-14 md:h-14 bg-primary-50 rounded-xl flex items-center justify-center text-primary-600 shadow-premium-sm shrink-0">
                           <ReqIcon className="w-6 h-6 md:w-7 md:h-7" />
                         </div>
                         <h3 className="text-xl md:text-2xl font-display font-black text-ink-950 leading-tight">
@@ -414,10 +414,10 @@ function PPDBContent() {
                         {req.items.map((item, i) => (
                           <li
                             key={i}
-                            className="flex items-center gap-3 md:gap-4 bg-surface-50/50 p-3 md:p-4 rounded-3xl md:rounded-3xl border border-surface-100 group hover:bg-white transition-all"
+                            className="flex items-center gap-3 md:gap-4 bg-surface-50/50 p-3 md:p-4 rounded-xl md:rounded-xl border border-surface-100 group hover:bg-white transition-all"
                           >
                             <div
-                              className={`w-8 h-8 rounded-3xl flex items-center justify-center shadow-premium-xs ${
+                              className={`w-8 h-8 rounded-xl flex items-center justify-center shadow-premium-xs ${
                                 item.type === "Wajib" ||
                                 item.type === "Required"
                                   ? "bg-primary-500 text-white"
@@ -483,9 +483,9 @@ function PPDBContent() {
                       return (
                         <div
                           key={i}
-                          className="flex gap-4 md:gap-5 items-start bg-white/5 p-5 md:p-6 rounded-[1.5rem] md:rounded-[2rem] border border-white/5 backdrop-blur-sm group transition-all duration-300"
+                          className="flex gap-4 md:gap-5 items-start bg-white/5 p-5 md:p-6 rounded-[1.5rem] md:rounded-[2rem] border border-white/5  group transition-all duration-300"
                         >
-                          <div className="w-10 h-10 md:w-12 md:h-12 bg-white/10 rounded-3xl flex items-center justify-center shrink-0">
+                          <div className="w-10 h-10 md:w-12 md:h-12 bg-white/10 rounded-xl flex items-center justify-center shrink-0">
                             <FeatIcon className="w-5 h-5 md:w-6 md:h-6 text-amber-400" />
                           </div>
                           <div>
@@ -523,9 +523,9 @@ function PPDBContent() {
                     },
                   ].map((faq, i) => (
                     <motion.div key={i} className="group">
-                      <details className="bg-white rounded-3xl border border-surface-100 shadow-premium-sm transition-all duration-300 open:shadow-premium-lg">
+                      <details className="bg-white rounded-xl border border-surface-100 shadow-premium-sm transition-all duration-300 open:shadow-premium-lg">
                         <summary className="p-5 md:p-6 flex items-center gap-4 md:gap-5 cursor-pointer list-none">
-                          <div className="w-8 h-8 md:w-10 md:h-10 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-all shrink-0">
+                          <div className="w-8 h-8 md:w-10 md:h-10 bg-primary-50 rounded-xl flex items-center justify-center text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-all shrink-0">
                             <HelpCircle className="w-4 h-4 md:w-5 md:h-5" />
                           </div>
                           <span className="flex-1 font-black text-ink-950 tracking-tight text-sm md:text-base">

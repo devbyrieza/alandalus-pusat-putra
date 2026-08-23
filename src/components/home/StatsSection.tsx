@@ -132,7 +132,7 @@ function StatCard({
       }}
       className="group relative h-full hover-lift-sm"
     >
-      <div className="glass-panel relative flex flex-col items-center text-center px-6 py-8 md:px-8 md:py-10 rounded-2xl overflow-hidden h-full">
+      <div className="glass-panel relative flex flex-col items-center text-center px-6 py-8 md:px-8 md:py-10 rounded-xl overflow-hidden h-full">
         {/* Hover radial bg */}
         <div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"

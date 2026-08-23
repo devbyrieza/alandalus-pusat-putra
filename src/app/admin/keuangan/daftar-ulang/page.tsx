@@ -24,7 +24,7 @@ export default function DaftarUlangPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        <div className="bg-white p-5 rounded-3xl border border-slate-200 shadow-xl shadow-emerald-900/20 flex items-center gap-4">
+        <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-lg shadow-emerald-900/20 flex items-center gap-4">
           <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600">
             <CheckCircle2 className="w-6 h-6" />
           </div>
@@ -33,7 +33,7 @@ export default function DaftarUlangPage() {
             <p className="text-2xl font-black text-slate-800">1 <span className="text-sm font-medium text-slate-400">Santri</span></p>
           </div>
         </div>
-        <div className="bg-white p-5 rounded-3xl border border-slate-200 shadow-xl shadow-emerald-900/20 flex items-center gap-4">
+        <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-lg shadow-emerald-900/20 flex items-center gap-4">
           <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
             <UserCheck className="w-6 h-6" />
           </div>
@@ -42,7 +42,7 @@ export default function DaftarUlangPage() {
             <p className="text-2xl font-black text-slate-800">1 <span className="text-sm font-medium text-slate-400">Santri</span></p>
           </div>
         </div>
-        <div className="bg-white p-5 rounded-3xl border border-slate-200 shadow-xl shadow-emerald-900/20 flex items-center gap-4">
+        <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-lg shadow-emerald-900/20 flex items-center gap-4">
           <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-600">
             <AlertCircle className="w-6 h-6" />
           </div>
@@ -53,8 +53,8 @@ export default function DaftarUlangPage() {
         </div>
       </div>
 
-      <div className="bg-white rounded-3xl border border-slate-200 shadow-xl shadow-emerald-900/20 overflow-hidden flex-1">
-        <div className="w-full overflow-x-auto rounded-3xl border border-slate-200 shadow-xl shadow-emerald-900/20"><table className="w-full text-left">
+      <div className="bg-white rounded-xl border border-slate-200 shadow-lg shadow-emerald-900/20 overflow-hidden flex-1">
+        <div className="w-full overflow-x-auto rounded-xl border border-slate-200 shadow-lg shadow-emerald-900/20"><table className="w-full text-left">
           <thead className="bg-slate-50 border-b border-slate-200">
             <tr className="text-xs font-bold text-slate-500 uppercase tracking-wider">
               <th className="px-5 py-4">Santri</th>

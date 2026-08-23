@@ -113,7 +113,7 @@ export default function StepGuard({
           <div className="bg-white rounded-xl p-4 border-2 border-primary-200 mb-6">
             <p className="text-sm text-stone-500 mb-2">Status Anda saat ini:</p>
             <span
-              className={`inline-block px-4 py-2 rounded-lg text-sm font-bold ${statusInfo.color}`}
+              className={`inline-block px-4 py-2 rounded-xl text-sm font-bold ${statusInfo.color}`}
             >
               {statusInfo.label}
             </span>

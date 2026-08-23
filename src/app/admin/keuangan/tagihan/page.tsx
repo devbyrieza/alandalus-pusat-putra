@@ -62,13 +62,13 @@ export default function ManajemenTagihanPage() {
               placeholder="Cari santri..." 
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-white border border-slate-200 rounded-3xl py-2 pl-10 pr-4 focus:outline-none focus:border-emerald-500"
+              className="w-full bg-white border border-slate-200 rounded-xl py-2 pl-10 pr-4 focus:outline-none focus:border-emerald-500"
             />
           </div>
           <button 
             onClick={handleGenerateSPP}
             disabled={isGenerating}
-            className="bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 text-white font-bold py-2 px-4 rounded-3xl flex items-center gap-2 transition-all shadow-xl shadow-emerald-900/20 whitespace-nowrap"
+            className="bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 text-white font-bold py-2 px-4 rounded-xl flex items-center gap-2 transition-all shadow-lg shadow-emerald-900/20 whitespace-nowrap"
           >
             {isGenerating ? <Loader2 className="w-5 h-5 animate-spin" /> : <Plus className="w-5 h-5" />}
             Generate SPP
@@ -77,13 +77,13 @@ export default function ManajemenTagihanPage() {
       </div>
 
       {message.text && (
-        <div className={`mb-6 p-4 rounded-3xl flex items-center gap-3 font-bold shadow-xl shadow-emerald-900/20 animate-in fade-in ${message.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+        <div className={`mb-6 p-4 rounded-xl flex items-center gap-3 font-bold shadow-lg shadow-emerald-900/20 animate-in fade-in ${message.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
           <CheckCircle2 className="w-5 h-5" />
           {message.text}
         </div>
       )}
 
-      <div className="bg-white rounded-3xl border border-slate-200 shadow-xl shadow-emerald-900/20 overflow-hidden flex-1 flex flex-col">
+      <div className="bg-white rounded-xl border border-slate-200 shadow-lg shadow-emerald-900/20 overflow-hidden flex-1 flex flex-col">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>

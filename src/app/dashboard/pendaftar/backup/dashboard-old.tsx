@@ -37,7 +37,7 @@ export default function DashboardPendaftarPage() {
             </div>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded-lg transition-all"
+              className="flex items-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded-xl transition-all"
             >
               <LogOut className="w-4 h-4" />
               <span>Logout</span>
@@ -49,7 +49,7 @@ export default function DashboardPendaftarPage() {
       {/* Content */}
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Welcome Card */}
-        <div className="bg-gradient-to-r from-primary-500 to-primary-600 rounded-2xl p-5 md:p-8 mb-8 text-white shadow-2xl">
+        <div className="bg-gradient-to-r from-primary-500 to-primary-600 rounded-xl p-5 md:p-8 mb-8 text-white shadow-lg">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
               <User className="w-8 h-8 text-primary-600" />
@@ -59,7 +59,7 @@ export default function DashboardPendaftarPage() {
               <p className="text-primary-100">Selamat datang di dashboard Anda</p>
             </div>
           </div>
-          <div className="bg-white/20 rounded-xl p-4 backdrop-blur-sm">
+          <div className="bg-white/20 rounded-xl p-4 ">
             <p className="text-sm mb-1">Nomor Pendaftaran:</p>
             <p className="text-2xl font-black">MTI20260006</p>
           </div>
@@ -109,7 +109,7 @@ export default function DashboardPendaftarPage() {
         </div>
 
         {/* Info Box */}
-        <div className="bg-primary-50 border-2 border-primary-200 rounded-2xl p-6">
+        <div className="bg-primary-50 border-2 border-primary-200 rounded-xl p-6">
           <div className="flex items-start gap-4">
             <AlertCircle className="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" />
             <div>

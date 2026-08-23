@@ -220,7 +220,7 @@ function WilayahSelect({
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder={`Cari ${label.toLowerCase()}...`}
-                    className="w-full pl-8 pr-3 py-2 text-sm rounded-lg bg-primary-50/60 border border-primary-100 text-ink-900 placeholder:text-ink-300 focus:outline-none focus:border-primary-400 focus:bg-white focus:shadow-[0_0_0_3px_rgba(128,0,0,0.06)] transition-all duration-150 font-medium"
+                    className="w-full pl-8 pr-3 py-2 text-sm rounded-xl bg-primary-50/60 border border-primary-100 text-ink-900 placeholder:text-ink-300 focus:outline-none focus:border-primary-400 focus:bg-white focus:shadow-[0_0_0_3px_rgba(128,0,0,0.06)] transition-all duration-150 font-medium"
                   />
                   <svg
                     className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-ink-400 pointer-events-none"

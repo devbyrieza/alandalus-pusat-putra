@@ -107,7 +107,7 @@ function ActivityCard({
         duration: 0.6,
         ease: [0.16, 1, 0.3, 1],
       }}
-      className="group flex flex-col bg-white rounded-2xl border border-primary-100 shadow-premium-sm overflow-hidden transition-all duration-500 ease-spring hover:-translate-y-2 hover:shadow-premium-md hover:border-primary-200"
+      className="group flex flex-col bg-white rounded-xl border border-primary-100 shadow-premium-sm overflow-hidden transition-all duration-500 ease-spring hover:-translate-y-2 hover:shadow-premium-md hover:border-primary-200"
     >
       {/* Image */}
       <div className="relative h-52 overflow-hidden shrink-0 bg-secondary-100">
@@ -123,7 +123,7 @@ function ActivityCard({
 
         {/* Badge */}
         <div className="absolute top-3 left-3">
-          <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm text-[0.6rem] font-bold text-primary-700 uppercase tracking-widest border border-primary-100/50 shadow-sm">
+          <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-white  text-[0.6rem] font-bold text-primary-700 uppercase tracking-widest border border-primary-100/50 shadow-sm">
             {activity.badge}
           </span>
         </div>
@@ -171,7 +171,7 @@ function ExtraChip({ item, index }: { item: ExtraActivity; index: number }) {
         duration: 0.4,
         ease: [0.16, 1, 0.3, 1],
       }}
-      className="group flex flex-col items-center justify-center gap-3 p-5 md:p-6 bg-white rounded-2xl border border-secondary-200 hover:border-primary-200 hover:shadow-premium-sm hover:bg-secondary-50/50 transition-all duration-400 cursor-default"
+      className="group flex flex-col items-center justify-center gap-3 p-5 md:p-6 bg-white rounded-xl border border-secondary-200 hover:border-primary-200 hover:shadow-premium-sm hover:bg-secondary-50/50 transition-all duration-400 cursor-default"
     >
       <div
         className={[
@@ -296,7 +296,7 @@ export default function ActivitiesSection() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 + idx * 0.05 }}
-                  className="flex flex-col items-center gap-3 p-4 bg-white rounded-2xl border border-primary-50 shadow-sm hover:border-primary-100 hover:shadow-md transition-all group text-center"
+                  className="flex flex-col items-center gap-3 p-4 bg-white rounded-xl border border-primary-50 shadow-sm hover:border-primary-100 hover:shadow-md transition-all group text-center"
                 >
                   <div className="w-10 h-10 rounded-xl bg-secondary-50 flex items-center justify-center text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-colors">
                     <Icon className="w-5 h-5" />
@@ -317,7 +317,7 @@ export default function ActivitiesSection() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="w-full"
           >
-            <div className="relative p-10 md:p-12 rounded-[2.5rem] bg-primary-900 overflow-hidden shadow-2xl">
+            <div className="relative p-10 md:p-12 rounded-[2.5rem] bg-primary-900 overflow-hidden shadow-lg">
               <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
               <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gold-500/10 rounded-full blur-[60px] -translate-y-1/2 translate-x-1/4" />
 
@@ -335,7 +335,7 @@ export default function ActivitiesSection() {
 
                 <div className="shrink-0">
                   <Link href="/kegiatan">
-                    <button className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gold-500 text-primary-950 font-black text-sm uppercase tracking-widest rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95">
+                    <button className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gold-500 text-primary-950 font-black text-sm uppercase tracking-widest rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95">
                       <span className="relative z-10">Eksplorasi Seluruh Kegiatan</span>
                       <CalendarIcon className="relative z-10 w-5 h-5 transition-transform duration-300 group-hover:rotate-12" />
                       <div className="absolute inset-0 bg-gold-400 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />

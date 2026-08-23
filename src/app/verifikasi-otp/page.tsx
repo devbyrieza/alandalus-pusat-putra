@@ -257,10 +257,10 @@ function VerifikasiOTPContent() {
             channel === "whatsapp"
               ? "bg-primary-50 border border-primary-100"
               : "bg-primary-50 border border-primary-100"
-          } rounded-full flex items-center justify-center mx-auto mb-4 relative shadow-xl shadow-emerald-900/20`}
+          } rounded-full flex items-center justify-center mx-auto mb-4 relative shadow-lg shadow-emerald-900/20`}
         >
           {/* Icon WhatsApp only */}
-          <div className="p-3 bg-primary-700 rounded-3xl shadow-xl shadow-emerald-900/20 app-card">
+          <div className="p-3 bg-primary-700 rounded-xl shadow-lg shadow-emerald-900/20 app-card">
             <Smartphone className="w-10 h-10 text-white" />
           </div>
         </div>
@@ -279,13 +279,13 @@ function VerifikasiOTPContent() {
 
         {/* OTP Display Banner (when WhatsApp not available) */}
         {sim_code && (
-          <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-3xl app-card shadow-xl shadow-emerald-900/20">
+          <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-xl app-card shadow-lg shadow-emerald-900/20">
             <p className="text-xs font-black uppercase tracking-widest text-primary-800 mb-1">
               Kode Verifikasi Anda
             </p>
             <p className="text-sm text-primary-950 font-medium">
               Masukkan kode berikut:{" "}
-              <span className="font-mono text-xl font-black bg-white px-2 py-0.5 rounded-lg border border-amber-100 shadow-xl shadow-emerald-900/20 ml-2">
+              <span className="font-mono text-xl font-black bg-white px-2 py-0.5 rounded-xl border border-amber-100 shadow-lg shadow-emerald-900/20 ml-2">
                 {sim_code}
               </span>
             </p>
@@ -311,7 +311,7 @@ function VerifikasiOTPContent() {
             value={digit}
             onChange={(e) => handleOTPChange(index, e.target.value)}
             onKeyDown={(e) => handleOTPKeyDown(index, e)}
-            className={`w-12 h-14 md:w-14 md:h-16 text-center text-3xl font-display font-black border-2 rounded-3xl focus:outline-none focus:ring-4 transition-all app-card shadow-xl shadow-emerald-900/20 ${
+            className={`w-12 h-14 md:w-14 md:h-16 text-center text-3xl font-display font-black border-2 rounded-xl focus:outline-none focus:ring-4 transition-all app-card shadow-lg shadow-emerald-900/20 ${
               otpError
                 ? "border-red-500 bg-red-50 focus:ring-red-100 text-red-700"
                 : digit
@@ -327,7 +327,7 @@ function VerifikasiOTPContent() {
       {/* Error Message */}
       <div className="relative z-10">
         {otpError && (
-          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-3xl app-card shadow-xl shadow-emerald-900/20">
+          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl app-card shadow-lg shadow-emerald-900/20">
             <p className="text-sm text-red-700 font-bold flex items-center justify-center gap-2">
               <AlertCircle className="w-5 h-5 flex-shrink-0" />
               <span>{otpError}</span>
@@ -337,7 +337,7 @@ function VerifikasiOTPContent() {
 
         {/* Loading State */}
         {isVerifying && (
-          <div className="mb-4 p-3 bg-primary-50 border border-primary-200 rounded-3xl app-card shadow-xl shadow-emerald-900/20">
+          <div className="mb-4 p-3 bg-primary-50 border border-primary-200 rounded-xl app-card shadow-lg shadow-emerald-900/20">
             <p className="text-sm text-primary-700 font-bold flex items-center justify-center gap-2">
               <Loader2 className="w-5 h-5 animate-spin" />
               <span>Memverifikasi kode...</span>
@@ -407,7 +407,7 @@ function VerifikasiOTPContent() {
       </div>
 
       {/* Help Info */}
-      <div className="mt-6 p-4 bg-primary-50 border border-primary-100 rounded-[1.5rem] relative z-10 app-card shadow-xl shadow-emerald-900/20">
+      <div className="mt-6 p-4 bg-primary-50 border border-primary-100 rounded-[1.5rem] relative z-10 app-card shadow-lg shadow-emerald-900/20">
         <p className="text-xs uppercase tracking-widest text-ink-950 font-black mb-2 pl-1">
           Tips Verifikasi
         </p>

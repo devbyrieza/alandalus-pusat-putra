@@ -231,7 +231,7 @@ export default function DashboardLayout({
           </div>
 
           {/* Tooltip for locked state */}
-          <div className="absolute left-14 top-full z-50 w-64 p-3 mt-2 text-xs text-white bg-ink-900 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 lg:left-full lg:top-0 lg:ml-2">
+          <div className="absolute left-14 top-full z-50 w-64 p-3 mt-2 text-xs text-white bg-ink-900 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 lg:left-full lg:top-0 lg:ml-2">
             <div className="font-bold mb-1 flex items-center gap-2">
               <Lock className="w-3.5 h-3.5 text-gold-400" />
               <span>Akses Terkunci</span>
@@ -265,7 +265,7 @@ export default function DashboardLayout({
       <div className="px-3 py-1">
         <Link
           href={item.href}
-          className={`group flex items-center px-4 py-3.5 text-sm font-bold rounded-2xl transition-all duration-200 ${
+          className={`group flex items-center px-4 py-3.5 text-sm font-bold rounded-xl transition-all duration-200 ${
             item.active
               ? "bg-primary-900 text-white shadow-md border border-primary-800"
               : showAnyBadge
@@ -298,7 +298,7 @@ export default function DashboardLayout({
   if (loading) {
     return (
       <div className="min-h-screen bg-surface-50 flex items-center justify-center">
-        <div className="bg-white p-5 md:p-8 rounded-3xl shadow-clay-lg text-center max-w-sm w-full mx-4">
+        <div className="bg-white p-5 md:p-8 rounded-xl shadow-clay-lg text-center max-w-sm w-full mx-4">
           <div className="relative w-16 h-16 mx-auto mb-6">
             <div className="absolute inset-0 border-4 border-gold-100 rounded-full" />
             <div className="absolute inset-0 border-4 border-primary-700 rounded-full border-t-transparent animate-spin" />
@@ -320,7 +320,7 @@ export default function DashboardLayout({
       <IdleTimeoutTracker />
       <div className="min-h-screen bg-surface-50 font-sans selection:bg-primary-100 selection:text-primary-900">
         {/* Mobile Header (Fintech Style) */}
-        <div className="lg:hidden bg-white/90 backdrop-blur-xl sticky top-0 z-40 px-4 sm:px-5 py-3 sm:py-4 flex items-center justify-between border-b border-gold-200 shadow-sm">
+        <div className="lg:hidden bg-white  sticky top-0 z-40 px-4 sm:px-5 py-3 sm:py-4 flex items-center justify-between border-b border-gold-200 shadow-sm">
           <div className="flex items-center gap-2 sm:gap-3">
             {/* Tombol MENU yang jelas - bukan hanya ikon hamburger */}
             <button
@@ -362,11 +362,11 @@ export default function DashboardLayout({
         <div className="flex relative">
           {/* Desktop Sidebar */}
           <aside className="hidden lg:flex lg:w-72 lg:flex-col lg:fixed lg:top-0 lg:left-0 lg:h-screen z-50">
-            <div className="flex flex-col h-full bg-white/70 backdrop-blur-xl border-r border-white/50 shadow-clay-lg">
+            <div className="flex flex-col h-full bg-white  border-r border-white/50 shadow-clay-lg">
               {/* Brand */}
               <div className="px-6 pt-8 pb-6 border-b border-gold-100/50 mb-2">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center shadow-md ring-4 ring-gold-50 overflow-hidden">
+                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-md ring-4 ring-gold-50 overflow-hidden">
                     <img
                       src={BRANDING.logoPath}
                       alt="Logo"
@@ -425,7 +425,7 @@ export default function DashboardLayout({
               </nav>
 
               {/* Footer */}
-              <div className="p-4 border-t border-surface-100 bg-white/50 backdrop-blur-sm">
+              <div className="p-4 border-t border-surface-100 bg-white/50 ">
                 <button
                   onClick={handleLogout}
                   className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold text-red-600 bg-white border border-red-100 hover:bg-red-50 hover:border-red-200 rounded-xl transition-all shadow-sm"
@@ -445,11 +445,11 @@ export default function DashboardLayout({
             className={`fixed inset-0 z-50 lg:hidden transition-opacity duration-300 ${sidebarOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
           >
             <div
-              className="absolute inset-0 bg-ink-900/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-ink-900/60 "
               onClick={() => setSidebarOpen(false)}
             />
             <div
-              className={`absolute top-0 left-0 bottom-0 w-80 bg-white shadow-2xl transition-transform duration-300 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
+              className={`absolute top-0 left-0 bottom-0 w-80 bg-white shadow-lg transition-transform duration-300 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
             >
               {/* Mobile Sidebar Content */}
               <div className="flex flex-col h-full overflow-hidden">
@@ -481,7 +481,7 @@ export default function DashboardLayout({
                   <p className="font-black text-ink-950 text-lg mb-1">
                     {namaDepan}
                   </p>
-                  <p className="font-mono text-xs font-bold text-primary-700 bg-white px-2 py-1 rounded-lg inline-block border border-gold-100">
+                  <p className="font-mono text-xs font-bold text-primary-700 bg-white px-2 py-1 rounded-xl inline-block border border-gold-100">
                     {nomorPendaftaran}
                   </p>
                 </div>
@@ -514,7 +514,7 @@ export default function DashboardLayout({
           {/* Main Content Area */}
           <main className="flex-1 lg:pl-72 w-full transition-all duration-300 flex flex-col min-h-screen relative pb-24 lg:pb-0">
             {/* Desktop Topbar - Glass Effect */}
-            <header className="hidden lg:flex sticky top-4 z-30 mx-8 mt-4 rounded-[1.5rem] bg-white/70 backdrop-blur-xl px-6 py-4 items-center justify-between shadow-sm border border-gold-100">
+            <header className="hidden lg:flex sticky top-4 z-30 mx-8 mt-4 rounded-[1.5rem] bg-white  px-6 py-4 items-center justify-between shadow-sm border border-gold-100">
               <div>
                 <h2 className="text-xl font-black text-primary-950 tracking-tight">
                   Dashboard Pendaftar
@@ -556,7 +556,7 @@ export default function DashboardLayout({
               {/* Banner Pengingat Seragam - muncul otomatis jika belum diisi */}
               {!seragamLengkap && (statusProses === "accepted" || statusProses === "enrolled" || statusProses === "enrolled_full") && pathname !== "/dashboard/pendaftar/seragam" && (
                 <div className="mx-4 md:mx-6 lg:mx-5 mt-4 mb-0">
-                  <div className="flex items-center gap-3 bg-orange-50 border border-orange-300 rounded-2xl px-4 py-3 shadow-sm">
+                  <div className="flex items-center gap-3 bg-orange-50 border border-orange-300 rounded-xl px-4 py-3 shadow-sm">
                     <div className="w-9 h-9 rounded-xl bg-orange-500 flex items-center justify-center flex-shrink-0 shadow-sm">
                       <Shirt className="w-5 h-5 text-white" />
                     </div>
@@ -578,7 +578,7 @@ export default function DashboardLayout({
               {/* Banner Pengingat Welcome Day - muncul otomatis jika belum konfirmasi */}
               {!welcomeDayDone && (statusProses === "accepted" || statusProses === "enrolled" || statusProses === "enrolled_full") && pathname !== "/dashboard/pendaftar/welcome-day" && (
                 <div className="mx-4 md:mx-6 lg:mx-5 mt-3 mb-0">
-                  <div className="flex items-center gap-3 bg-primary-50 border border-primary-200 rounded-2xl px-4 py-3 shadow-sm">
+                  <div className="flex items-center gap-3 bg-primary-50 border border-primary-200 rounded-xl px-4 py-3 shadow-sm">
                     <div className="w-9 h-9 rounded-xl bg-primary-600 flex items-center justify-center flex-shrink-0 shadow-sm">
                       <Calendar className="w-5 h-5 text-white" />
                     </div>

@@ -45,7 +45,7 @@ export default function GlobalFilter({
   };
 
   return (
-    <div className="bg-white rounded-3xl p-6 shadow-sm border border-ink-100 mb-8">
+    <div className="bg-white rounded-xl p-6 shadow-sm border border-ink-100 mb-8">
       <div className="flex flex-col md:flex-row gap-4 items-end">
         <div className="flex-1 w-full">
           <label className="block text-xs font-bold text-ink-500 mb-2 uppercase">Tahun Ajaran</label>

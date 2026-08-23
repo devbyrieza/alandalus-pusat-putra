@@ -68,7 +68,7 @@ function TestimonialCard({
       viewport={{ once: true, margin: "-32px" }}
       transition={{ delay: idx * 0.08, duration: 0.6, ease: EASE }}
       whileHover={{ y: -4 }}
-      className="group relative bg-white flex flex-col h-full rounded-2xl border border-secondary-100 shadow-premium-sm hover:shadow-premium-md hover:border-primary-200 overflow-hidden transition-all duration-400"
+      className="group relative bg-white flex flex-col h-full rounded-xl border border-secondary-100 shadow-premium-sm hover:shadow-premium-md hover:border-primary-200 overflow-hidden transition-all duration-400"
     >
       {/* Hover gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-primary-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -106,7 +106,7 @@ function TestimonialCard({
         <div className="border-t border-secondary-100 pt-5">
           <div className="flex items-center gap-3.5">
             {/* Avatar */}
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center shrink-0 text-white font-black text-sm shadow-xs group-hover:shadow-primary/20 group-hover:-rotate-3 transition-all duration-400">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center shrink-0 text-white font-black text-sm shadow-xs group-hover: group-hover:-rotate-3 transition-all duration-400">
               {initial}
             </div>
 

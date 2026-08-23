@@ -51,9 +51,9 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
   return (
     <div className="min-h-screen bg-ink-50 p-4 md:p-8 font-sans">
       <div className="max-w-4xl mx-auto space-y-6">
-        <div className="bg-white p-6 rounded-3xl shadow-sm border border-ink-100 flex items-start gap-4 relative overflow-hidden">
+        <div className="bg-white p-6 rounded-xl shadow-sm border border-ink-100 flex items-start gap-4 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-32 h-32 bg-primary-50 rounded-bl-[100px] -z-0"></div>
-          <div className="w-12 h-12 bg-primary-100 text-primary-700 rounded-2xl flex items-center justify-center flex-shrink-0 relative z-10">
+          <div className="w-12 h-12 bg-primary-100 text-primary-700 rounded-xl flex items-center justify-center flex-shrink-0 relative z-10">
             <Shirt className="w-6 h-6" />
           </div>
           <div className="relative z-10">
@@ -66,7 +66,7 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
         </div>
 
         {message.text && (
-          <div className={`p-4 rounded-2xl border flex items-center gap-3 text-sm font-bold ${
+          <div className={`p-4 rounded-xl border flex items-center gap-3 text-sm font-bold ${
             message.type === 'success' ? 'bg-green-50 border-green-200 text-green-700' : 'bg-red-50 border-red-200 text-red-700'
           }`}>
             {message.type === 'success' && <CheckCircle2 className="w-5 h-5" />}
@@ -77,7 +77,7 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
         <div className="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Kolom Kiri: Form Input / Summary */}
           {isEditing ? (
-            <div className="bg-white p-6 rounded-3xl shadow-sm border border-ink-100">
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-ink-100">
               <h2 className="text-lg font-black text-ink-950 mb-6 flex items-center gap-2">
                 <Ruler className="w-5 h-5 text-ink-400" />
                 Form Pemilihan Ukuran
@@ -154,7 +154,7 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
               </form>
             </div>
           ) : (
-            <div className="bg-white p-6 rounded-3xl shadow-sm border border-ink-100 flex flex-col justify-between">
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-ink-100 flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <span className="flex h-2.5 w-2.5 relative">
@@ -175,7 +175,7 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
 
                 <div className="space-y-4">
                   {/* Item 1: Baju */}
-                  <div className="flex items-center justify-between p-4 bg-ink-50 border border-ink-100 rounded-2xl">
+                  <div className="flex items-center justify-between p-4 bg-ink-50 border border-ink-100 rounded-xl">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-primary-50 text-primary-700 rounded-xl flex items-center justify-center flex-shrink-0">
                         <Shirt className="w-5 h-5" />
@@ -191,7 +191,7 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
                   </div>
 
                   {/* Item 2: Celana */}
-                  <div className="flex items-center justify-between p-4 bg-ink-50 border border-ink-100 rounded-2xl">
+                  <div className="flex items-center justify-between p-4 bg-ink-50 border border-ink-100 rounded-xl">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-primary-50 text-primary-700 rounded-xl flex items-center justify-center flex-shrink-0">
                         <Ruler className="w-5 h-5" />
@@ -207,7 +207,7 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
                   </div>
 
                   {/* Item 3: Almamater */}
-                  <div className="flex items-center justify-between p-4 bg-ink-50 border border-ink-100 rounded-2xl">
+                  <div className="flex items-center justify-between p-4 bg-ink-50 border border-ink-100 rounded-xl">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-primary-50 text-primary-700 rounded-xl flex items-center justify-center flex-shrink-0">
                         <Shirt className="w-5 h-5 animate-pulse" />
@@ -240,14 +240,14 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
           )}
 
           {/* Kolom Kanan: Panduan Ukuran */}
-          <div className="bg-ink-50 p-6 rounded-3xl border border-ink-200 space-y-6">
+          <div className="bg-ink-50 p-6 rounded-xl border border-ink-200 space-y-6">
             <h2 className="text-sm font-black text-ink-950 uppercase tracking-widest border-b border-ink-200 pb-2">
               Panduan Ukuran (Size Chart)
             </h2>
             
             <div className="space-y-4 text-sm font-medium text-ink-700">
               {/* S */}
-              <div className="bg-white p-4 rounded-2xl shadow-sm">
+              <div className="bg-white p-4 rounded-xl shadow-sm">
                 <h3 className="font-black text-primary-700 mb-2">Ukuran S</h3>
                 <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div>
@@ -274,7 +274,7 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
               </div>
 
               {/* M */}
-              <div className="bg-white p-4 rounded-2xl shadow-sm">
+              <div className="bg-white p-4 rounded-xl shadow-sm">
                 <h3 className="font-black text-primary-700 mb-2">Ukuran M</h3>
                 <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div>
@@ -301,7 +301,7 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
               </div>
 
               {/* L */}
-              <div className="bg-white p-4 rounded-2xl shadow-sm">
+              <div className="bg-white p-4 rounded-xl shadow-sm">
                 <h3 className="font-black text-primary-700 mb-2">Ukuran L</h3>
                 <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div>
@@ -328,7 +328,7 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
               </div>
 
               {/* XL */}
-              <div className="bg-white p-4 rounded-2xl shadow-sm">
+              <div className="bg-white p-4 rounded-xl shadow-sm">
                 <h3 className="font-black text-primary-700 mb-2">Ukuran XL</h3>
                 <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div>
@@ -355,7 +355,7 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
               </div>
 
               {/* XXL */}
-              <div className="bg-white p-4 rounded-2xl shadow-sm">
+              <div className="bg-white p-4 rounded-xl shadow-sm">
                 <h3 className="font-black text-primary-700 mb-2">Ukuran XXL</h3>
                 <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div>
@@ -382,7 +382,7 @@ export default function IsiSeragamClient({ code, pendaftar }: { code: string; pe
               </div>
 
               {/* 3XL */}
-              <div className="bg-white p-4 rounded-2xl shadow-sm">
+              <div className="bg-white p-4 rounded-xl shadow-sm">
                 <h3 className="font-black text-primary-700 mb-2">Ukuran 3XL</h3>
                 <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div>

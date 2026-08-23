@@ -43,7 +43,7 @@ export function CTAInfoPPDB({
       <Button
         size="lg"
         className={`
-          group shadow-lg hover:shadow-xl font-bold transition-all duration-300 hover:-translate-y-1
+          group shadow-lg hover:shadow-lg font-bold transition-all duration-300 hover:-translate-y-1
           ${
             variant === "primary"
               ? "bg-gradient-to-r from-[var(--color-brown-700)] to-[var(--color-brown-900)] hover:from-[var(--color-brown-800)] hover:to-[var(--color-brown-950)] text-white"
@@ -88,7 +88,7 @@ export function CTASyaratJadwal({
       <Button
         size="lg"
         className={`
-          group shadow-lg hover:shadow-xl font-bold transition-all duration-300 hover:-translate-y-1
+          group shadow-lg hover:shadow-lg font-bold transition-all duration-300 hover:-translate-y-1
           bg-gradient-to-r from-[var(--color-primary-600)] to-[var(--color-primary-700)] 
           hover:from-[var(--color-primary-700)] hover:to-[var(--color-primary-800)] text-white
           ${size === "sm" ? "px-6 py-2.5 text-sm" : "px-8 py-4 text-base"}
@@ -190,7 +190,7 @@ export function CTADaftarSekarang({
       <Button
         size="lg"
         className={`
-          group relative shadow-xl hover:shadow-2xl font-bold transition-all duration-300 hover:-translate-y-1
+          group relative shadow-lg hover:shadow-lg font-bold transition-all duration-300 hover:-translate-y-1
           bg-gradient-to-r from-[var(--color-gold-500)] to-[var(--color-gold-600)] 
           hover:from-[var(--color-gold-600)] hover:to-[var(--color-gold-700)] 
           text-white animate-pulse hover:animate-none
@@ -225,7 +225,7 @@ export function CTADaftarSekarang({
  */
 export function CTAStickyDaftar() {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-[var(--color-secondary-200)] shadow-2xl p-4 animate-fadeInUp">
+    <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95  border-t border-[var(--color-secondary-200)] shadow-lg p-4 animate-fadeInUp">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 flex-wrap">
         <div className="flex-1">
           <p className="text-sm font-bold text-[var(--color-text-900)] mb-1">
@@ -242,7 +242,7 @@ export function CTAStickyDaftar() {
 
         <Button
           size="lg"
-          className="shadow-xl hover:shadow-2xl font-bold transition-all duration-300 hover:scale-105 bg-gradient-gold text-white"
+          className="shadow-lg hover:shadow-lg font-bold transition-all duration-300 hover:scale-105 bg-gradient-gold text-white"
           asChild
         >
           <Link href="/ppdb" className="flex items-center gap-2">
@@ -266,7 +266,7 @@ export function NavbarCTAPPDB() {
   return (
     <Button
       size="sm"
-      className="shadow-md hover:shadow-xl shadow-gold text-white font-semibold transition-all duration-300 hover:-translate-y-1 bg-gradient-gold"
+      className="shadow-md hover:shadow-lg shadow-gold text-white font-semibold transition-all duration-300 hover:-translate-y-1 bg-gradient-gold"
       asChild
     >
       <Link href="/ppdb" className="flex items-center gap-2">
@@ -330,7 +330,7 @@ export function MobileCTAPPDB() {
       {/* CTA Button */}
       <Button
         size="sm"
-        className="w-full text-white font-bold shadow-lg hover:shadow-xl shadow-gold bg-gradient-gold"
+        className="w-full text-white font-bold shadow-lg hover:shadow-lg shadow-gold bg-gradient-gold"
         asChild
       >
         <Link href="/ppdb" className="flex items-center justify-center gap-2">

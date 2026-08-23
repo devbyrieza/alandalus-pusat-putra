@@ -51,18 +51,18 @@ export default function BeritaPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((item, i) => (
-              <div key={i} className="bg-white rounded-3xl border border-slate-100 shadow-xl shadow-emerald-900/20 overflow-hidden group hover:shadow-md transition-all">
+              <div key={i} className="bg-white rounded-xl border border-slate-100 shadow-lg shadow-emerald-900/20 overflow-hidden group hover:shadow-md transition-all">
                 <div className="aspect-[4/3] bg-slate-200 relative flex items-center justify-center">
                   <span className="text-slate-400 font-medium">Image/Thumbnail Placeholder</span>
                   {item.type === "video" && (
                     <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                       <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
+                       <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
                           <Play className={`w-5 h-5 ml-1 ${IS_PUTRA ? "text-primary-600" : "text-pink-600"}`} />
                        </div>
                     </div>
                   )}
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-white/90 backdrop-blur text-[10px] font-bold uppercase tracking-widest rounded-full text-slate-700">
+                    <span className="px-3 py-1 bg-white backdrop-blur text-[10px] font-bold uppercase tracking-widest rounded-full text-slate-700">
                       {item.cat}
                     </span>
                   </div>

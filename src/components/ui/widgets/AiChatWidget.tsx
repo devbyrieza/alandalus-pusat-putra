@@ -187,7 +187,7 @@ export default function AiChatWidget({
               )}
             </div>
             <div
-              className={`max-w-[75%] p-3.5 rounded-2xl ${
+              className={`max-w-[75%] p-3.5 rounded-xl ${
                 msg.role === "user"
                   ? "bg-primary-700 text-white rounded-br-none shadow-sm"
                   : "bg-white text-ink-900 border border-surface-100 rounded-bl-none shadow-premium-xs"
@@ -209,7 +209,7 @@ export default function AiChatWidget({
             <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shrink-0 mb-1 shadow-premium-xs">
               <Bot className="w-5 h-5" />
             </div>
-            <div className="bg-white p-4 rounded-2xl rounded-bl-none border border-surface-100 shadow-premium-xs flex gap-1 items-center h-12">
+            <div className="bg-white p-4 rounded-xl rounded-bl-none border border-surface-100 shadow-premium-xs flex gap-1 items-center h-12">
               <motion.div
                 animate={{ y: [0, -5, 0] }}
                 transition={{ repeat: Infinity, duration: 0.6, delay: 0 }}

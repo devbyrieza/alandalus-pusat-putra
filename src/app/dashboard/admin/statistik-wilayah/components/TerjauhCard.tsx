@@ -47,7 +47,7 @@ export default function TerjauhCard({
   };
 
   return (
-    <div className="bg-white rounded-3xl p-6 shadow-sm border border-ink-100 mt-8">
+    <div className="bg-white rounded-xl p-6 shadow-sm border border-ink-100 mt-8">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center">
           <Navigation className="w-5 h-5" />
@@ -113,7 +113,7 @@ export default function TerjauhCard({
             Top 5 Pendaftar Terjauh
           </div>
           {result.map((item: any, index: number) => (
-            <div key={index} className={`p-5 md:p-6 bg-linear-to-br ${index === 0 ? 'from-orange-50 to-white border-orange-200 shadow-md' : 'from-surface-50 to-white border-ink-100 shadow-sm'} border rounded-2xl transition-all hover:shadow-md`}>
+            <div key={index} className={`p-5 md:p-6 bg-linear-to-br ${index === 0 ? 'from-orange-50 to-white border-orange-200 shadow-md' : 'from-surface-50 to-white border-ink-100 shadow-sm'} border rounded-xl transition-all hover:shadow-md`}>
               <div className="flex flex-col md:flex-row items-center gap-5 md:gap-6 text-center md:text-left">
                 <div className={`rounded-full flex items-center justify-center shrink-0 shadow-sm border ${index === 0 ? 'bg-orange-100 text-orange-600 border-orange-200 w-16 h-16 md:w-20 md:h-20' : 'bg-surface-100 text-ink-500 border-ink-200 w-12 h-12 md:w-14 md:h-14'}`}>
                   {index === 0 ? <MapPin className="w-8 h-8 md:w-10 md:h-10" /> : <span className="text-lg md:text-xl font-black">#{index + 1}</span>}
@@ -121,11 +121,11 @@ export default function TerjauhCard({
                 <div className="flex-1 min-w-0">
                   <div className="inline-flex items-center gap-2 mb-1.5 md:mb-2 flex-wrap justify-center md:justify-start">
                     {index === 0 && (
-                      <span className="px-2 py-1 bg-orange-600 text-white text-[10px] font-black uppercase tracking-widest rounded-lg shadow-sm">
+                      <span className="px-2 py-1 bg-orange-600 text-white text-[10px] font-black uppercase tracking-widest rounded-xl shadow-sm">
                         Terjauh Utama
                       </span>
                     )}
-                    <span className="text-[10px] md:text-xs font-bold text-ink-400 capitalize px-2 py-1 bg-surface-100 rounded-lg">
+                    <span className="text-[10px] md:text-xs font-bold text-ink-400 capitalize px-2 py-1 bg-surface-100 rounded-xl">
                       Status: {item.status}
                     </span>
                   </div>

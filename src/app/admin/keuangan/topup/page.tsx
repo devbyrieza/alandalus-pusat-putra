@@ -102,14 +102,14 @@ export default function FinanceTopupPage() {
             placeholder="Cari nama atau No. Reg..." 
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-3xl py-2.5 pl-10 pr-4 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
+            className="w-full bg-white border border-slate-200 rounded-xl py-2.5 pl-10 pr-4 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
           />
         </div>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-8 flex-1 items-start">
         {/* Kiri: Daftar Santri */}
-        <div className="lg:col-span-2 bg-white rounded-3xl border border-slate-200 shadow-xl shadow-emerald-900/20 overflow-hidden flex flex-col h-[600px]">
+        <div className="lg:col-span-2 bg-white rounded-xl border border-slate-200 shadow-lg shadow-emerald-900/20 overflow-hidden flex flex-col h-[600px]">
           <div className="bg-slate-50 p-4 border-b border-slate-200 flex justify-between items-center">
             <h3 className="font-bold text-slate-700">Daftar Santri Aktif</h3>
             <button onClick={fetchSantri} className="text-slate-400 hover:text-emerald-600 transition-colors" title="Refresh Data">
@@ -132,7 +132,7 @@ export default function FinanceTopupPage() {
                   <div 
                     key={santri.id}
                     onClick={() => setSelectedSantri(santri)}
-                    className={`flex items-center justify-between p-3 rounded-3xl cursor-pointer transition-all ${selectedSantri?.id === santri.id ? 'bg-emerald-50 border border-emerald-200' : 'hover:bg-slate-50 border border-transparent'}`}
+                    className={`flex items-center justify-between p-3 rounded-xl cursor-pointer transition-all ${selectedSantri?.id === santri.id ? 'bg-emerald-50 border border-emerald-200' : 'hover:bg-slate-50 border border-transparent'}`}
                   >
                     <div>
                       <p className={`font-bold ${selectedSantri?.id === santri.id ? 'text-emerald-800' : 'text-slate-800'}`}>{santri.nama_lengkap}</p>
@@ -150,10 +150,10 @@ export default function FinanceTopupPage() {
         </div>
 
         {/* Kanan: Panel Top Up */}
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-xl shadow-emerald-900/20 p-6 relative overflow-hidden">
+        <div className="bg-white rounded-xl border border-slate-200 shadow-lg shadow-emerald-900/20 p-6 relative overflow-hidden">
           {/* Header Panel */}
           <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
-            <div className="w-10 h-10 bg-emerald-100 text-emerald-700 rounded-3xl flex items-center justify-center">
+            <div className="w-10 h-10 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center">
               <Wallet className="w-5 h-5" />
             </div>
             <div>
@@ -171,7 +171,7 @@ export default function FinanceTopupPage() {
             </div>
           ) : (
             <div className="animate-in fade-in duration-300">
-              <div className="bg-slate-900 rounded-3xl p-5 mb-6 text-white shadow-inner">
+              <div className="bg-slate-900 rounded-xl p-5 mb-6 text-white shadow-inner">
                 <p className="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Penerima</p>
                 <p className="font-black text-lg line-clamp-1">{selectedSantri.nama_lengkap}</p>
                 <div className="flex justify-between items-end mt-4">
@@ -191,7 +191,7 @@ export default function FinanceTopupPage() {
                     value={nominal}
                     onChange={(e) => setNominal(e.target.value)}
                     placeholder="Contoh: 500000"
-                    className="w-full font-bold text-lg text-slate-900 bg-slate-50 border border-slate-200 rounded-3xl py-3 px-4 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
+                    className="w-full font-bold text-lg text-slate-900 bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
                   />
                 </div>
 
@@ -201,7 +201,7 @@ export default function FinanceTopupPage() {
                     <button 
                       key={val}
                       onClick={() => setNominal(val.toString())}
-                      className="py-2 text-xs font-bold rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-colors"
+                      className="py-2 text-xs font-bold rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-colors"
                     >
                       {val / 1000}k
                     </button>
@@ -215,13 +215,13 @@ export default function FinanceTopupPage() {
                     value={keterangan}
                     onChange={(e) => setKeterangan(e.target.value)}
                     placeholder="BSI M-Banking - Bpk Hasan"
-                    className="w-full text-sm font-medium text-slate-700 bg-slate-50 border border-slate-200 rounded-3xl py-3 px-4 focus:outline-none focus:border-emerald-500"
+                    className="w-full text-sm font-medium text-slate-700 bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 focus:outline-none focus:border-emerald-500"
                   />
                 </div>
               </div>
 
               {message.text && (
-                <div className={`mt-5 p-3 rounded-3xl border flex items-center gap-2 text-sm font-bold ${message.type === 'success' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-red-50 text-red-700 border-red-200'}`}>
+                <div className={`mt-5 p-3 rounded-xl border flex items-center gap-2 text-sm font-bold ${message.type === 'success' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-red-50 text-red-700 border-red-200'}`}>
                   {message.type === 'success' ? <CheckCircle2 className="w-5 h-5" /> : <XCircle className="w-5 h-5" />}
                   {message.text}
                 </div>
@@ -230,7 +230,7 @@ export default function FinanceTopupPage() {
               <button
                 onClick={handleTopup}
                 disabled={!nominal || isProcessing}
-                className="w-full mt-6 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-black py-4 rounded-3xl shadow-md transition-all active:scale-95 flex items-center justify-center gap-2"
+                className="w-full mt-6 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-black py-4 rounded-xl shadow-md transition-all active:scale-95 flex items-center justify-center gap-2"
               >
                 {isProcessing ? <Loader2 className="w-5 h-5 animate-spin" /> : "Tambahkan Saldo"}
               </button>

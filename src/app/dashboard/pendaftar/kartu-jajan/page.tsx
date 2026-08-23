@@ -175,7 +175,7 @@ export default function KartuJajanPage() {
 
   if (!dompet) {
     return (
-      <div className="bg-white rounded-[1.5rem] p-8 text-center shadow-xl shadow-emerald-900/20 border border-amber-100">
+      <div className="bg-white rounded-[1.5rem] p-8 text-center shadow-lg shadow-emerald-900/20 border border-amber-100">
         <AlertCircle className="w-12 h-12 text-ink-300 mx-auto mb-4" />
         <h3 className="text-xl font-bold text-ink-900 mb-2">Kartu Jajan Belum Aktif</h3>
         <p className="text-ink-500 max-w-md mx-auto">
@@ -201,7 +201,7 @@ export default function KartuJajanPage() {
             </h2>
             <div className="flex flex-wrap items-center gap-3 mt-4">
               {isEditingLimit ? (
-                <div className="flex items-center gap-2 bg-white/20 p-1.5 rounded-3xl">
+                <div className="flex items-center gap-2 bg-white/20 p-1.5 rounded-xl">
                   <span className="text-sm font-bold ml-2">Rp</span>
                   <input
                     type="number"
@@ -209,25 +209,25 @@ export default function KartuJajanPage() {
                     onChange={(e) => setNewLimit(Number(e.target.value))}
                     className="w-24 bg-transparent border-b border-white/50 text-white font-bold outline-hidden focus:border-white"
                   />
-                  <button onClick={handleSaveLimit} disabled={savingLimit} className="p-1.5 bg-green-500 hover:bg-green-600 rounded-lg text-white">
+                  <button onClick={handleSaveLimit} disabled={savingLimit} className="p-1.5 bg-green-500 hover:bg-green-600 rounded-xl text-white">
                     {savingLimit ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
                   </button>
-                  <button onClick={() => setIsEditingLimit(false)} className="p-1.5 bg-red-500 hover:bg-red-600 rounded-lg text-white">
+                  <button onClick={() => setIsEditingLimit(false)} className="p-1.5 bg-red-500 hover:bg-red-600 rounded-xl text-white">
                     <X className="w-4 h-4" />
                   </button>
                 </div>
               ) : (
                 <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-lg text-xs font-bold border border-white/20">
+                  <span className="px-3 py-1 bg-white/10  rounded-xl text-xs font-bold border border-white/20">
                     Limit Harian: Rp {Number(dompet.batas_jajan_harian).toLocaleString("id-ID")}
                   </span>
-                  <button onClick={() => { setIsEditingLimit(true); setNewLimit(Number(dompet.batas_jajan_harian)); }} className="p-1.5 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors" title="Ubah Limit Jajan">
+                  <button onClick={() => { setIsEditingLimit(true); setNewLimit(Number(dompet.batas_jajan_harian)); }} className="p-1.5 bg-white/10 hover:bg-white/20 rounded-xl text-white transition-colors" title="Ubah Limit Jajan">
                     <Edit2 className="w-3.5 h-3.5" />
                   </button>
                 </div>
               )}
               
-              <span className={`px-3 py-1 rounded-lg text-xs font-bold border ${dompet.status === "AKTIF" ? "bg-green-500/20 text-green-200 border-green-500/30" : "bg-red-500/20 text-red-200 border-red-500/30"}`}>
+              <span className={`px-3 py-1 rounded-xl text-xs font-bold border ${dompet.status === "AKTIF" ? "bg-green-500/20 text-green-200 border-green-500/30" : "bg-red-500/20 text-red-200 border-red-500/30"}`}>
                 Status: {dompet.status}
               </span>
             </div>
@@ -237,7 +237,7 @@ export default function KartuJajanPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Top-up Form */}
-        <div className="lg:col-span-1 bg-white p-6 rounded-[2rem] shadow-xl shadow-emerald-900/20 border border-surface-100 h-fit">
+        <div className="lg:col-span-1 bg-white p-6 rounded-[2rem] shadow-lg shadow-emerald-900/20 border border-surface-100 h-fit">
           <h3 className="text-lg font-bold text-primary-950 mb-4 flex items-center gap-2">
             <HandCoins className="w-5 h-5 text-amber-500" />
             Top Up Saldo
@@ -249,7 +249,7 @@ export default function KartuJajanPage() {
                 <button
                   key={amount}
                   onClick={() => setTopupAmount(amount)}
-                  className={`py-2 px-3 text-sm font-bold rounded-3xl border transition-all ${
+                  className={`py-2 px-3 text-sm font-bold rounded-xl border transition-all ${
                     topupAmount === amount
                       ? "border-primary-600 bg-primary-50 text-primary-800"
                       : "border-surface-200 text-ink-600 hover:border-amber-300 hover:bg-amber-50"
@@ -268,18 +268,18 @@ export default function KartuJajanPage() {
                 step="10000"
                 value={topupAmount}
                 onChange={(e) => setTopupAmount(Number(e.target.value))}
-                className="w-full pl-12 pr-4 py-3 rounded-3xl border-2 border-surface-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 font-bold text-ink-900 transition-all outline-hidden"
+                className="w-full pl-12 pr-4 py-3 rounded-xl border-2 border-surface-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 font-bold text-ink-900 transition-all outline-hidden"
               />
             </div>
 
             {error && (
-              <p className="text-red-500 text-xs font-bold bg-red-50 p-3 rounded-3xl">{error}</p>
+              <p className="text-red-500 text-xs font-bold bg-red-50 p-3 rounded-xl">{error}</p>
             )}
 
             <button
               onClick={handleTopup}
               disabled={processing || topupAmount < 10000 || dompet.status !== "AKTIF"}
-              className="w-full py-3.5 bg-primary-600 hover:bg-primary-700 disabled:bg-surface-200 disabled:text-ink-400 text-white font-black rounded-3xl transition-colors flex items-center justify-center gap-2 shadow-xl shadow-emerald-900/20"
+              className="w-full py-3.5 bg-primary-600 hover:bg-primary-700 disabled:bg-surface-200 disabled:text-ink-400 text-white font-black rounded-xl transition-colors flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/20"
             >
               {processing ? <RefreshCw className="w-5 h-5 animate-spin" /> : "Top Up Sekarang"}
             </button>
@@ -290,7 +290,7 @@ export default function KartuJajanPage() {
         </div>
 
         {/* Transaction History */}
-        <div className="lg:col-span-2 bg-white p-6 rounded-[2rem] shadow-xl shadow-emerald-900/20 border border-surface-100">
+        <div className="lg:col-span-2 bg-white p-6 rounded-[2rem] shadow-lg shadow-emerald-900/20 border border-surface-100">
           <h3 className="text-lg font-bold text-primary-950 mb-6 flex items-center gap-2">
             <Clock className="w-5 h-5 text-amber-500" />
             Riwayat Transaksi
@@ -303,9 +303,9 @@ export default function KartuJajanPage() {
               </div>
             ) : (
               transaksiList.map((trx) => (
-                <div key={trx.id} className="flex items-center justify-between p-4 rounded-3xl bg-surface-50 border border-surface-100 hover:border-amber-200 transition-colors">
+                <div key={trx.id} className="flex items-center justify-between p-4 rounded-xl bg-surface-50 border border-surface-100 hover:border-amber-200 transition-colors">
                   <div className="flex items-center gap-4">
-                    <div className={`w-10 h-10 rounded-3xl flex items-center justify-center shrink-0 ${
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
                       trx.jenis_transaksi === "TOPUP" ? "bg-green-100 text-green-600" : "bg-red-100 text-red-600"
                     }`}>
                       {trx.jenis_transaksi === "TOPUP" ? <CheckCircle2 className="w-5 h-5" /> : <XCircle className="w-5 h-5" />}

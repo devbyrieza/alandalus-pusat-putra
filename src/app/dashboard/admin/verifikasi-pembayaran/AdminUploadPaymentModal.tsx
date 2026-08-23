@@ -123,11 +123,11 @@ export default function AdminUploadPaymentModal({
 
   return (
     <div 
-      className="fixed inset-0 bg-stone-900/80 backdrop-blur-sm z-[100] flex justify-center items-start pt-10 md:pt-16 px-4 overflow-y-auto overscroll-contain custom-scrollbar"
+      className="fixed inset-0 bg-stone-900/80  z-[100] flex justify-center items-start pt-10 md:pt-16 px-4 overflow-y-auto overscroll-contain custom-scrollbar"
       onClick={onClose}
     >
       <div 
-        className="bg-white rounded-3xl w-full max-w-2xl shadow-2xl relative mb-20"
+        className="bg-white rounded-xl w-full max-w-2xl shadow-lg relative mb-20"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between p-6 border-b border-stone-100">
@@ -169,7 +169,7 @@ export default function AdminUploadPaymentModal({
                       >
                         <div className="flex items-center justify-between mb-1">
                           <span className="font-bold text-stone-800">{p.nama_lengkap}</span>
-                          <span className="text-xs font-black text-primary-600 bg-primary-100 px-2 py-0.5 rounded-lg">
+                          <span className="text-xs font-black text-primary-600 bg-primary-100 px-2 py-0.5 rounded-xl">
                             {p.jenjang}
                           </span>
                         </div>
@@ -253,7 +253,7 @@ export default function AdminUploadPaymentModal({
                       <select
                         value={tipeCicilan}
                         onChange={(e) => setTipeCicilan(e.target.value)}
-                        className="w-full px-4 py-2 bg-white border border-violet-200 rounded-lg focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 font-bold text-violet-900"
+                        className="w-full px-4 py-2 bg-white border border-violet-200 rounded-xl focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 font-bold text-violet-900"
                       >
                         <option value="LUNAS">LUNAS</option>
                         <option value="CICILAN">CICILAN</option>
@@ -268,7 +268,7 @@ export default function AdminUploadPaymentModal({
                           max="12"
                           value={cicilanKe}
                           onChange={(e) => setCicilanKe(e.target.value)}
-                          className="w-full px-4 py-2 bg-white border border-violet-200 rounded-lg focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 font-bold text-violet-900"
+                          className="w-full px-4 py-2 bg-white border border-violet-200 rounded-xl focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 font-bold text-violet-900"
                         />
                       </div>
                     )}

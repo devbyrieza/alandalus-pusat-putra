@@ -82,7 +82,7 @@ export default function ChatSystem() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-ink-950/40 backdrop-blur-sm z-9990 md:hidden"
+            className="fixed inset-0 bg-ink-950/40  z-9990 md:hidden"
             onClick={() => setIsAiOpen(false)}
           />
         )}
@@ -111,7 +111,7 @@ export default function ChatSystem() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.9 }}
               transition={{ duration: 0.2 }}
-              className="bg-white rounded-2xl shadow-premium-2xl border border-surface-100 p-2 mb-4 w-[280px] overflow-hidden"
+              className="bg-white rounded-xl shadow-premium-2xl border border-surface-100 p-2 mb-4 w-[280px] overflow-hidden"
               style={{ transformOrigin: "bottom right" }}
             >
               <div className="px-3 pb-3 pt-2 mb-2 border-b border-surface-100 flex items-center justify-between">
@@ -191,7 +191,7 @@ export default function ChatSystem() {
                 initial={{ opacity: 0, scale: 0.8, x: 20 }}
                 animate={{ opacity: 1, scale: 1, x: 0 }}
                 exit={{ opacity: 0, scale: 0.8, x: 20 }}
-                className="bg-white px-4 py-3 rounded-2xl shadow-premium-lg border border-surface-100 items-center gap-3 mb-2 max-w-[220px] relative hidden md:flex"
+                className="bg-white px-4 py-3 rounded-xl shadow-premium-lg border border-surface-100 items-center gap-3 mb-2 max-w-[220px] relative hidden md:flex"
               >
                 <div className="flex-1">
                   <p className="text-[13px] font-black text-ink-950 leading-tight mb-1">

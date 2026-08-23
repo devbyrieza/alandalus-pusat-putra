@@ -112,7 +112,7 @@ export default function ExamCardPage() {
       </div>
 
       {/* A4 Paper simulating div */}
-      <div className="bg-white shadow-xl w-full max-w-[21cm] min-h-[29.7cm] p-[2cm] relative print:shadow-none print:w-full print:p-0">
+      <div className="bg-white shadow-lg w-full max-w-[21cm] min-h-[29.7cm] p-[2cm] relative print:shadow-none print:w-full print:p-0">
         {/* Header with Border */}
         <div className="border-2 border-black p-1 mb-1">
           <div className="border border-black p-6 relative">
@@ -182,7 +182,7 @@ export default function ExamCardPage() {
               <h3 className="font-bold border-b border-black mb-2 pb-1 uppercase text-sm">
                 Rincian Jadwal Seleksi
               </h3>
-              <div className="w-full overflow-x-auto rounded-3xl border border-slate-200 shadow-xl shadow-emerald-900/20"><table className="w-full border-collapse border border-black text-sm">
+              <div className="w-full overflow-x-auto rounded-xl border border-slate-200 shadow-lg shadow-emerald-900/20"><table className="w-full border-collapse border border-black text-sm">
                 <thead>
                   <tr className="bg-gray-100">
                     <th className="border border-black p-2 text-left">

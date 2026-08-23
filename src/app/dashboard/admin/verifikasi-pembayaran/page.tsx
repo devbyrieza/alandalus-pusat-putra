@@ -464,7 +464,7 @@ function VerifikasiPembayaranContent() {
       {/* Refreshing Overlay */}
       {isRefreshing && (
         <div className="fixed inset-0 bg-white/40 backdrop-blur-[1px] z-[100] flex items-start md:items-center pt-10 md:pt-0 pb-20 md:pb-0 justify-center pointer-events-none overflow-y-auto overflow-x-hidden p-4 overscroll-contain custom-scrollbar">
-          <div className="bg-white/80 px-6 py-3 rounded-3xl shadow-xl border border-stone-100 flex items-center gap-3 animate-in fade-in zoom-in duration-300">
+          <div className="bg-white px-6 py-3 rounded-xl shadow-lg border border-stone-100 flex items-center gap-3 animate-in fade-in zoom-in duration-300">
             <Loader2 className="w-5 h-5 animate-spin text-primary-600" />
             <span className="text-sm font-bold text-stone-700 tracking-tight">
               Memperbarui data...
@@ -481,10 +481,10 @@ function VerifikasiPembayaranContent() {
         accept="image/jpeg, image/png, application/pdf"
       />
       {/* Header */}
-      <div className="bg-white rounded-[2rem] shadow-xl shadow-emerald-900/20 p-5 md:p-8 border border-stone-100">
+      <div className="bg-white rounded-[2rem] shadow-lg shadow-emerald-900/20 p-5 md:p-8 border border-stone-100">
         <div className="flex flex-col xl:flex-row xl:items-center gap-4 xl:justify-between flex-wrap">
           <div className="flex flex-wrap sm:flex-nowrap items-center gap-4">
-            <div className="w-12 h-12 md:w-16 md:h-16 bg-primary-50 rounded-3xl flex items-center justify-center border border-primary-100 shrink-0">
+            <div className="w-12 h-12 md:w-16 md:h-16 bg-primary-50 rounded-xl flex items-center justify-center border border-primary-100 shrink-0">
               <CreditCard className="w-6 h-6 md:w-8 md:h-8 text-primary-700" />
             </div>
             <div>
@@ -502,7 +502,7 @@ function VerifikasiPembayaranContent() {
               <button
                 type="button"
                 onClick={() => setShowUploadAtasNamaModal(true)}
-                className="flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-3xl text-sm font-bold transition-all shadow-lg shadow-primary-600/20 whitespace-nowrap"
+                className="flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-xl text-sm font-bold transition-all shadow-lg shadow-primary-600/20 whitespace-nowrap"
               >
                 <UploadCloud className="w-4 h-4" />
                 Upload Atas Nama
@@ -513,7 +513,7 @@ function VerifikasiPembayaranContent() {
           <div className="flex flex-wrap bg-stone-100 p-1.5 rounded-[1.25rem] w-full sm:w-fit shadow-inner ring-1 ring-stone-200/50 justify-center">
             <button
               onClick={() => updateFilters(undefined, "PENDAFTARAN")}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-3xl text-xs font-black uppercase tracking-widest transition-all duration-300 ${
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all duration-300 ${
                 activeTab === "PENDAFTARAN"
                   ? "bg-white text-primary-700 shadow-clay-sm ring-1 ring-stone-100"
                   : "text-stone-400 hover:text-stone-600 hover:bg-stone-50"
@@ -521,14 +521,14 @@ function VerifikasiPembayaranContent() {
             >
               Pendaftaran
               {counts.PENDAFTARAN > 0 && (
-                <span className="bg-rose-500 text-white flex items-center justify-center w-5 h-5 text-[10px] rounded-full shrink-0 shadow-xl shadow-emerald-900/20">
+                <span className="bg-rose-500 text-white flex items-center justify-center w-5 h-5 text-[10px] rounded-full shrink-0 shadow-lg shadow-emerald-900/20">
                   {counts.PENDAFTARAN}
                 </span>
               )}
             </button>
             <button
               onClick={() => updateFilters(undefined, "DAFTAR_ULANG")}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-3xl text-xs font-black uppercase tracking-widest transition-all duration-300 ${
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all duration-300 ${
                 activeTab === "DAFTAR_ULANG"
                   ? "bg-white text-primary-700 shadow-clay-sm ring-1 ring-stone-100"
                   : "text-stone-400 hover:text-stone-600 hover:bg-stone-50"
@@ -536,14 +536,14 @@ function VerifikasiPembayaranContent() {
             >
               Uang Pangkal
               {counts.DAFTAR_ULANG > 0 && (
-                <span className="bg-rose-500 text-white flex items-center justify-center w-5 h-5 text-[10px] rounded-full shrink-0 shadow-xl shadow-emerald-900/20">
+                <span className="bg-rose-500 text-white flex items-center justify-center w-5 h-5 text-[10px] rounded-full shrink-0 shadow-lg shadow-emerald-900/20">
                   {counts.DAFTAR_ULANG}
                 </span>
               )}
             </button>
             <button
               onClick={() => updateFilters(undefined, "SPP")}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-3xl text-xs font-black uppercase tracking-widest transition-all duration-300 ${
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all duration-300 ${
                 activeTab === "SPP"
                   ? "bg-white text-violet-700 shadow-clay-sm ring-1 ring-stone-100"
                   : "text-stone-400 hover:text-stone-600 hover:bg-stone-50"
@@ -551,7 +551,7 @@ function VerifikasiPembayaranContent() {
             >
               SPP
               {counts.SPP > 0 && (
-                <span className="bg-rose-500 text-white flex items-center justify-center w-5 h-5 text-[10px] rounded-full shrink-0 shadow-xl shadow-emerald-900/20">
+                <span className="bg-rose-500 text-white flex items-center justify-center w-5 h-5 text-[10px] rounded-full shrink-0 shadow-lg shadow-emerald-900/20">
                   {counts.SPP}
                 </span>
               )}
@@ -562,7 +562,7 @@ function VerifikasiPembayaranContent() {
             <button
               onClick={() => handleExport("excel")}
               disabled={exporting}
-              className="flex items-center gap-2 px-3 md:px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-3xl font-bold transition-all shadow-xl shadow-emerald-900/20 hover:shadow-md disabled:opacity-50 text-sm"
+              className="flex items-center gap-2 px-3 md:px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-emerald-900/20 hover:shadow-md disabled:opacity-50 text-sm"
               title="Download Excel"
             >
               {exporting ? (
@@ -575,7 +575,7 @@ function VerifikasiPembayaranContent() {
             <button
               onClick={() => handleExport("pdf")}
               disabled={exporting}
-              className="flex items-center gap-2 px-3 md:px-4 py-2.5 bg-rose-600 hover:bg-rose-700 text-white rounded-3xl font-bold transition-all shadow-xl shadow-emerald-900/20 hover:shadow-md disabled:opacity-50 text-sm"
+              className="flex items-center gap-2 px-3 md:px-4 py-2.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-emerald-900/20 hover:shadow-md disabled:opacity-50 text-sm"
               title="Download PDF"
             >
               {exporting ? (
@@ -587,7 +587,7 @@ function VerifikasiPembayaranContent() {
             </button>
             <button
               onClick={() => fetchPembayaran(true)}
-              className="flex items-center gap-2 px-3 md:px-6 py-2.5 bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 rounded-3xl font-bold transition-all shadow-xl shadow-emerald-900/20 hover:shadow-md text-sm"
+              className="flex items-center gap-2 px-3 md:px-6 py-2.5 bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 rounded-xl font-bold transition-all shadow-lg shadow-emerald-900/20 hover:shadow-md text-sm"
             >
               <RefreshCw className="w-4 h-4" />
               <span className="hidden sm:inline">Refresh</span>
@@ -604,13 +604,13 @@ function VerifikasiPembayaranContent() {
           placeholder="Cari nama atau nomor pendaftaran..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full pl-12 pr-4 py-4 bg-white border border-stone-200 rounded-3xl focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 focus:outline-none transition-all text-sm md:text-base font-bold text-stone-800 placeholder:text-stone-400 shadow-xl shadow-emerald-900/20"
+          className="w-full pl-12 pr-4 py-4 bg-white border border-stone-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 focus:outline-none transition-all text-sm md:text-base font-bold text-stone-800 placeholder:text-stone-400 shadow-lg shadow-emerald-900/20"
         />
       </div>
 
       {/* Stats / Filter Bar */}
-      <div className="flex flex-wrap items-center gap-3 bg-white p-4 rounded-3xl shadow-xl shadow-emerald-900/20 border border-stone-100">
-        <div className="px-4 py-2 bg-stone-100 rounded-lg text-sm font-bold text-stone-600">
+      <div className="flex flex-wrap items-center gap-3 bg-white p-4 rounded-xl shadow-lg shadow-emerald-900/20 border border-stone-100">
+        <div className="px-4 py-2 bg-stone-100 rounded-xl text-sm font-bold text-stone-600">
           Total: {filteredPembayaran.length}
         </div>
 
@@ -621,7 +621,7 @@ function VerifikasiPembayaranContent() {
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => updateFilters("pending")}
-              className={`px-3 md:px-4 py-2 rounded-lg text-sm font-bold transition-all ${
+              className={`px-3 md:px-4 py-2 rounded-xl text-sm font-bold transition-all ${
                 statusFilter === "pending"
                   ? "bg-secondary-100 text-secondary-700 ring-2 ring-secondary-500/20"
                   : "hover:bg-stone-50 text-stone-500"
@@ -631,7 +631,7 @@ function VerifikasiPembayaranContent() {
             </button>
             <button
               onClick={() => updateFilters("verified")}
-              className={`px-3 md:px-4 py-2 rounded-lg text-sm font-bold transition-all ${
+              className={`px-3 md:px-4 py-2 rounded-xl text-sm font-bold transition-all ${
                 statusFilter === "verified"
                   ? "bg-emerald-100 text-emerald-700 ring-2 ring-emerald-500/20"
                   : "hover:bg-stone-50 text-stone-500"
@@ -641,7 +641,7 @@ function VerifikasiPembayaranContent() {
             </button>
             <button
               onClick={() => updateFilters("rejected")}
-              className={`px-3 md:px-4 py-2 rounded-lg text-sm font-bold transition-all ${
+              className={`px-3 md:px-4 py-2 rounded-xl text-sm font-bold transition-all ${
                 statusFilter === "rejected"
                   ? "bg-red-100 text-red-700 ring-2 ring-red-500/20"
                   : "hover:bg-stone-50 text-stone-500"
@@ -664,9 +664,9 @@ function VerifikasiPembayaranContent() {
                   <button
                     key={tipe}
                     onClick={() => setTipeCicilanFilter(tipe as any)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-black uppercase tracking-wider transition-all ${
+                    className={`px-3 py-1.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all ${
                       tipeCicilanFilter === tipe
-                        ? "bg-primary-700 text-white shadow-xl shadow-emerald-900/20 shadow-primary-700/20"
+                        ? "bg-primary-700 text-white shadow-lg shadow-emerald-900/20 shadow-primary-700/20"
                         : "bg-white text-stone-500 border border-stone-200 hover:bg-stone-50"
                     }`}
                   >
@@ -679,7 +679,7 @@ function VerifikasiPembayaranContent() {
         )}
       </div>
       {/* List */}
-      <div className="bg-white rounded-[2rem] shadow-xl shadow-emerald-900/20 border border-stone-100 overflow-hidden min-h-[400px]">
+      <div className="bg-white rounded-[2rem] shadow-lg shadow-emerald-900/20 border border-stone-100 overflow-hidden min-h-[400px]">
         {loading ? (
           <div className="flex items-center justify-center h-[400px]">
             <div className="text-center">
@@ -714,7 +714,7 @@ function VerifikasiPembayaranContent() {
                   <div className="flex-1">
                     {/* Header Row */}
                     <div className="flex items-start gap-4 mb-3">
-                      <div className="w-12 h-12 rounded-3xl bg-primary-50 flex items-center justify-center text-primary-800 font-black text-lg shrink-0 border border-primary-100">
+                      <div className="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center text-primary-800 font-black text-lg shrink-0 border border-primary-100">
                         {pay.pendaftar?.nama_lengkap
                           ? pay?.pendaftar?.nama_lengkap.charAt(0).toUpperCase()
                           : "?"}
@@ -744,7 +744,7 @@ function VerifikasiPembayaranContent() {
                     </div>
 
                     {/* Details Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-1 gap-4 ml-16 bg-stone-50/50 p-4 rounded-3xl border border-stone-100">
+                    <div className="grid grid-cols-1 sm:grid-cols-1 gap-4 ml-16 bg-stone-50/50 p-4 rounded-xl border border-stone-100">
                       <div>
                         <p className="text-xs font-bold text-stone-400 uppercase tracking-widest mb-1">
                           Nominal Transfer
@@ -778,7 +778,7 @@ function VerifikasiPembayaranContent() {
                           <p className="text-xs font-bold text-stone-400 uppercase tracking-widest mb-1">
                             Status Cicilan
                           </p>
-                          <span className="px-2.5 py-1 bg-violet-100 text-violet-700 rounded-lg text-[10px] font-black uppercase tracking-widest border border-violet-200">
+                          <span className="px-2.5 py-1 bg-violet-100 text-violet-700 rounded-xl text-[10px] font-black uppercase tracking-widest border border-violet-200">
                             Cicilan Ke-{pay.cicilan_ke}
                           </span>
                         </div>
@@ -793,7 +793,7 @@ function VerifikasiPembayaranContent() {
                       )}
                       {pay.keringanan_reason && (
                         <div className="col-span-1 sm:col-span-2 pt-2 border-t border-secondary-200/50 mt-1">
-                          <p className="text-xs text-secondary-700 bg-secondary-50 p-2 rounded-lg border border-secondary-100 font-medium">
+                          <p className="text-xs text-secondary-700 bg-secondary-50 p-2 rounded-xl border border-secondary-100 font-medium">
                             <strong className="text-secondary-900 block mb-0.5 uppercase text-[9px] tracking-widest">Alasan Keringanan:</strong>
                             "{pay.keringanan_reason}"
                           </p>
@@ -806,7 +806,7 @@ function VerifikasiPembayaranContent() {
                   <div className="flex sm:flex-col gap-3 sm:w-48 shrink-0">
                     <button
                       onClick={() => openModal(pay)}
-                      className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2.5 bg-white border-2 border-dashed border-stone-300 hover:border-primary-500 hover:bg-primary-50 text-stone-600 hover:text-primary-800 rounded-3xl text-sm font-bold transition-all"
+                      className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2.5 bg-white border-2 border-dashed border-stone-300 hover:border-primary-500 hover:bg-primary-50 text-stone-600 hover:text-primary-800 rounded-xl text-sm font-bold transition-all"
                     >
                       <Eye className="w-4 h-4" />
                       Detail & Bukti
@@ -815,7 +815,7 @@ function VerifikasiPembayaranContent() {
                     {statusFilter === "pending" && (
                       <button
                         onClick={() => openModal(pay)}
-                        className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-3 bg-primary-700 hover:bg-primary-800 text-white rounded-3xl text-sm font-bold shadow-lg shadow-primary-700/20 transition-all hover:-translate-y-0.5"
+                        className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-3 bg-primary-700 hover:bg-primary-800 text-white rounded-xl text-sm font-bold shadow-lg shadow-primary-700/20 transition-all hover:-translate-y-0.5"
                       >
                         <CheckCircle className="w-4 h-4" />
                         Verifikasi
@@ -825,7 +825,7 @@ function VerifikasiPembayaranContent() {
                     {statusFilter === "verified" && (
                       <button
                         onClick={() => openModal(pay)}
-                        className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-3 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 rounded-3xl font-bold text-sm border border-emerald-100 transition-all"
+                        className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-3 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 rounded-xl font-bold text-sm border border-emerald-100 transition-all"
                       >
                         <CheckCircle className="w-4 h-4" />
                         Terverifikasi
@@ -834,7 +834,7 @@ function VerifikasiPembayaranContent() {
                     {statusFilter === "rejected" && (
                       <button
                         onClick={() => openModal(pay)}
-                        className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-3 bg-red-50 hover:bg-red-100 text-red-700 rounded-3xl font-bold text-sm border border-red-100 transition-all"
+                        className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-3 bg-red-50 hover:bg-red-100 text-red-700 rounded-xl font-bold text-sm border border-red-100 transition-all"
                       >
                         <XCircle className="w-4 h-4" />
                         Ditolak
@@ -850,8 +850,8 @@ function VerifikasiPembayaranContent() {
 
       {/* Modal */}
       {showModal && selectedPembayaran && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-start md:items-center pt-10 md:pt-0 pb-20 md:pb-0 justify-center z-50 p-4 animate-in fade-in duration-200 overflow-y-auto overflow-x-hidden overscroll-contain custom-scrollbar">
-          <div className="bg-white rounded-[2rem] shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
+        <div className="fixed inset-0 bg-black/60  flex items-start md:items-center pt-10 md:pt-0 pb-20 md:pb-0 justify-center z-50 p-4 animate-in fade-in duration-200 overflow-y-auto overflow-x-hidden overscroll-contain custom-scrollbar">
+          <div className="bg-white rounded-[2rem] shadow-lg max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
             {/* Header - Fixed */}
             <div className="p-6 border-b border-stone-100 bg-stone-50/50 flex justify-between items-center">
               <div>
@@ -876,8 +876,8 @@ function VerifikasiPembayaranContent() {
 
             {/* Scrollable Content */}
             <div className="flex-1 overflow-y-auto p-6 space-y-6 overscroll-contain custom-scrollbar">
-              <div className="flex gap-4 p-4 bg-primary-50 rounded-3xl border border-primary-100">
-                <div className="p-3 bg-white rounded-3xl shadow-xl shadow-emerald-900/20 h-fit">
+              <div className="flex gap-4 p-4 bg-primary-50 rounded-xl border border-primary-100">
+                <div className="p-3 bg-white rounded-xl shadow-lg shadow-emerald-900/20 h-fit">
                   <DollarSign className="w-6 h-6 text-primary-700" />
                 </div>
                 <div>
@@ -903,7 +903,7 @@ function VerifikasiPembayaranContent() {
               </div>
 
               {activeTab === "DAFTAR_ULANG" && (
-                <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-violet-50 rounded-3xl border border-violet-100">
+                <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-violet-50 rounded-xl border border-violet-100">
                   <div>
                     <label className="block text-[10px] font-black text-violet-700 uppercase tracking-widest mb-2">
                       Tipe Pembayaran
@@ -911,7 +911,7 @@ function VerifikasiPembayaranContent() {
                     <div className="flex gap-2">
                       <button
                         onClick={() => setEditTipeCicilan("LUNAS")}
-                        className={`flex-1 py-2 rounded-3xl text-xs font-black transition-all ${
+                        className={`flex-1 py-2 rounded-xl text-xs font-black transition-all ${
                           editTipeCicilan === "LUNAS"
                             ? "bg-violet-600 text-white shadow-md"
                             : "bg-white text-violet-600 border border-violet-200"
@@ -926,7 +926,7 @@ function VerifikasiPembayaranContent() {
                             setEditCicilanKe((selectedPembayaran.verified_count || 0) + 1);
                           }
                         }}
-                        className={`flex-1 py-2 rounded-3xl text-xs font-black transition-all ${
+                        className={`flex-1 py-2 rounded-xl text-xs font-black transition-all ${
                           editTipeCicilan === "CICILAN"
                             ? "bg-violet-600 text-white shadow-md"
                             : "bg-white text-violet-600 border border-violet-200"
@@ -950,7 +950,7 @@ function VerifikasiPembayaranContent() {
                           onChange={(e) =>
                             setEditCicilanKe(parseInt(e.target.value) || 1)
                           }
-                          className="w-full px-4 py-2 bg-white border border-violet-200 rounded-3xl focus:outline-none focus:ring-2 focus:ring-violet-500 font-black text-violet-900"
+                          className="w-full px-4 py-2 bg-white border border-violet-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-500 font-black text-violet-900"
                         />
                       </div>
                       <p className="text-[9px] text-violet-500 mt-1 font-bold italic">
@@ -962,14 +962,14 @@ function VerifikasiPembayaranContent() {
               )}
 
               {selectedPembayaran.keringanan_reason && (
-                <div className="p-5 bg-secondary-50 border-2 border-secondary-100 rounded-3xl space-y-3 shadow-xl shadow-emerald-900/20">
+                <div className="p-5 bg-secondary-50 border-2 border-secondary-100 rounded-xl space-y-3 shadow-lg shadow-emerald-900/20">
                   <div className="flex items-center gap-2 text-secondary-800">
                     <AlertCircle className="w-5 h-5" />
                     <span className="font-black text-xs uppercase tracking-widest">
                       Permohonan Keringanan Khusus
                     </span>
                   </div>
-                  <p className="text-sm text-secondary-900 leading-relaxed font-bold italic bg-white/50 p-4 rounded-3xl border border-secondary-200/50">
+                  <p className="text-sm text-secondary-900 leading-relaxed font-bold italic bg-white/50 p-4 rounded-xl border border-secondary-200/50">
                     "{selectedPembayaran.keringanan_reason}"
                   </p>
                   <p className="text-[11px] text-secondary-700 font-medium px-1">
@@ -987,7 +987,7 @@ function VerifikasiPembayaranContent() {
                     <button
                       onClick={handleUploadClick}
                       disabled={uploadingProof === selectedPembayaran.id}
-                      className="flex items-center gap-1.5 px-3 py-1.5 bg-primary-50 text-primary-600 hover:bg-primary-100 rounded-lg text-xs font-bold transition-colors disabled:opacity-50"
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-primary-50 text-primary-600 hover:bg-primary-100 rounded-xl text-xs font-bold transition-colors disabled:opacity-50"
                     >
                       {uploadingProof === selectedPembayaran.id ? (
                         <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -997,13 +997,13 @@ function VerifikasiPembayaranContent() {
                       Ubah Bukti
                     </button>
                   </div>
-                  <div className="border-2 border-stone-100 rounded-3xl overflow-hidden bg-stone-50 relative group">
+                  <div className="border-2 border-stone-100 rounded-xl overflow-hidden bg-stone-50 relative group">
                     {selectedPembayaran.bukti_transfer_url
                       ?.toLowerCase()
                       .endsWith(".pdf") ? (
                       <iframe
                         src={selectedPembayaran.bukti_transfer_url}
-                        className="w-full h-[500px] rounded-3xl border-none"
+                        className="w-full h-[500px] rounded-xl border-none"
                         title="PDF Preview"
                       />
                     ) : (
@@ -1018,7 +1018,7 @@ function VerifikasiPembayaranContent() {
                         href={selectedPembayaran.bukti_transfer_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-6 py-3 bg-white rounded-full font-bold text-stone-900 shadow-xl hover:scale-105 transition-transform flex items-center gap-2"
+                        className="px-6 py-3 bg-white rounded-full font-bold text-stone-900 shadow-lg hover:scale-105 transition-transform flex items-center gap-2"
                       >
                         <Eye className="w-4 h-4" />
                         Lihat Full Size
@@ -1027,14 +1027,14 @@ function VerifikasiPembayaranContent() {
                   </div>
                 </div>
               ) : (
-                <div className="p-5 md:p-8 border-2 border-dashed border-stone-200 rounded-3xl text-center space-y-4">
+                <div className="p-5 md:p-8 border-2 border-dashed border-stone-200 rounded-xl text-center space-y-4">
                   <p className="text-stone-500 font-medium">
                     Tidak ada bukti transfer yang diupload.
                   </p>
                   <button
                     onClick={handleUploadClick}
                     disabled={uploadingProof === selectedPembayaran.id}
-                    className="mx-auto flex items-center justify-center gap-2 px-4 py-2 bg-primary-50 text-primary-600 hover:bg-primary-100 rounded-3xl text-sm font-bold transition-colors disabled:opacity-50"
+                    className="mx-auto flex items-center justify-center gap-2 px-4 py-2 bg-primary-50 text-primary-600 hover:bg-primary-100 rounded-xl text-sm font-bold transition-colors disabled:opacity-50"
                   >
                     {uploadingProof === selectedPembayaran.id ? (
                       <Loader2 className="w-4 h-4 animate-spin" />
@@ -1054,7 +1054,7 @@ function VerifikasiPembayaranContent() {
                   value={catatan}
                   onChange={(e) => setCatatan(e.target.value)}
                   placeholder="Contoh: Bukti transfer buram, mohon upload ulang..."
-                  className="w-full px-4 py-3 border border-stone-200 rounded-3xl focus:border-primary-600 focus:ring-2 focus:ring-primary-600/20 focus:outline-none resize-none transition-all font-bold text-stone-800"
+                  className="w-full px-4 py-3 border border-stone-200 rounded-xl focus:border-primary-600 focus:ring-2 focus:ring-primary-600/20 focus:outline-none resize-none transition-all font-bold text-stone-800"
                   rows={3}
                 />
               </div>
@@ -1068,7 +1068,7 @@ function VerifikasiPembayaranContent() {
                     handleVerify(selectedPembayaran.id, "verified")
                   }
                   disabled={processing || (activeTab === "DAFTAR_ULANG" && !editTipeCicilan)}
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-3xl font-bold transition-all hover:shadow-lg hover:shadow-emerald-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-emerald-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {processing ? (
                     <Loader2 className="w-5 h-5 animate-spin" />
@@ -1085,7 +1085,7 @@ function VerifikasiPembayaranContent() {
                     handleVerify(selectedPembayaran.id, "rejected")
                   }
                   disabled={processing}
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-4 bg-rose-500 hover:bg-rose-600 text-white rounded-3xl font-bold transition-all hover:shadow-lg hover:shadow-rose-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-4 bg-rose-500 hover:bg-rose-600 text-white rounded-xl font-bold transition-all hover:shadow-lg hover:shadow-rose-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {processing ? (
                     <Loader2 className="w-5 h-5 animate-spin" />
@@ -1102,7 +1102,7 @@ function VerifikasiPembayaranContent() {
                 <button
                   onClick={() => handleVerify(selectedPembayaran.id, "pending")}
                   disabled={processing}
-                  className="px-6 py-4 bg-stone-100 hover:bg-stone-200 text-stone-600 rounded-3xl font-bold transition-all disabled:opacity-50 border border-stone-200"
+                  className="px-6 py-4 bg-stone-100 hover:bg-stone-200 text-stone-600 rounded-xl font-bold transition-all disabled:opacity-50 border border-stone-200"
                 >
                   {processing ? (
                     <Loader2 className="w-5 h-5 animate-spin mx-auto" />

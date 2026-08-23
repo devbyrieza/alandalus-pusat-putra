@@ -9,7 +9,7 @@ export default function JadwalLayout({ children }: { children: React.ReactNode }
 
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
-      <div className="bg-white rounded-2xl shadow-sm p-4 border border-slate-100 flex gap-2 overflow-x-auto hide-scrollbar">
+      <div className="bg-white rounded-xl shadow-sm p-4 border border-slate-100 flex gap-2 overflow-x-auto hide-scrollbar">
         <Link 
           href="/dashboard/admin/jadwal/monitoring"
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm transition-all whitespace-nowrap ${

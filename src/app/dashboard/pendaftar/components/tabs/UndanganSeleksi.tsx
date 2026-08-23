@@ -248,7 +248,7 @@ export default function UndanganSeleksiTab() {
   if (data.locked && !isTestingAccount) {
     return (
       <div className="space-y-6">
-        <div className="bg-linear-to-r from-stone-600 to-stone-800 rounded-2xl p-6 md:p-8 text-white shadow-lg relative overflow-hidden">
+        <div className="bg-linear-to-r from-stone-600 to-stone-800 rounded-xl p-6 md:p-8 text-white shadow-lg relative overflow-hidden">
           <div className="relative z-10">
             <h1 className="text-2xl font-black mb-2 text-white flex items-center gap-3">
               <svg
@@ -274,7 +274,7 @@ export default function UndanganSeleksiTab() {
           </div>
         </div>
 
-        <div className={`border-2 rounded-3xl p-5 md:p-8 md:p-12 text-center shadow-sm ${data.current_status?.includes('reject') || data.current_status?.includes('incomplete') ? 'border-red-200 bg-red-50' : 'bg-secondary-50 border-secondary-200'}`}>
+        <div className={`border-2 rounded-xl p-5 md:p-8 md:p-12 text-center shadow-sm ${data.current_status?.includes('reject') || data.current_status?.includes('incomplete') ? 'border-red-200 bg-red-50' : 'bg-secondary-50 border-secondary-200'}`}>
           <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 ${data.current_status?.includes('reject') || data.current_status?.includes('incomplete') ? 'bg-red-100' : 'bg-secondary-100'}`}>
             {data.current_status?.includes('reject') || data.current_status?.includes('incomplete') ? (
               <AlertCircle className="w-10 h-10 text-red-600" />
@@ -320,7 +320,7 @@ export default function UndanganSeleksiTab() {
     return (
       <div className="space-y-6">
         {/* Header */}
-        <div className="bg-linear-to-r from-emerald-700 to-emerald-900 rounded-2xl p-6 md:p-8 text-white shadow-lg relative overflow-hidden">
+        <div className="bg-linear-to-r from-emerald-700 to-emerald-900 rounded-xl p-6 md:p-8 text-white shadow-lg relative overflow-hidden">
           <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-2">
@@ -350,7 +350,7 @@ export default function UndanganSeleksiTab() {
           {/* Card Pengumuman */}
           <Link
             href="/dashboard/pendaftar/pengumuman"
-            className="bg-white rounded-2xl border-2 border-primary-100 hover:border-primary-300 p-6 shadow-sm hover:shadow-md transition-all group"
+            className="bg-white rounded-xl border-2 border-primary-100 hover:border-primary-300 p-6 shadow-sm hover:shadow-md transition-all group"
           >
             <div className="flex items-center gap-3 mb-3">
               <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center group-hover:bg-primary-100 transition-colors">
@@ -371,7 +371,7 @@ export default function UndanganSeleksiTab() {
 
           {/* Card Daftar Ulang */}
           {data.current_status === "enrolled" ? (
-            <div className="bg-emerald-50 rounded-2xl border-2 border-emerald-200 p-6 shadow-sm">
+            <div className="bg-emerald-50 rounded-xl border-2 border-emerald-200 p-6 shadow-sm">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
                   <CheckCircle className="w-6 h-6 text-emerald-600" />
@@ -388,7 +388,7 @@ export default function UndanganSeleksiTab() {
           ) : (
             <Link
               href="/dashboard/pendaftar/daftar-ulang"
-              className="bg-white rounded-2xl border-2 border-gold-200 hover:border-gold-400 p-6 shadow-sm hover:shadow-md transition-all group"
+              className="bg-white rounded-xl border-2 border-gold-200 hover:border-gold-400 p-6 shadow-sm hover:shadow-md transition-all group"
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-12 h-12 bg-gold-50 rounded-xl flex items-center justify-center group-hover:bg-gold-100 transition-colors">
@@ -415,7 +415,7 @@ export default function UndanganSeleksiTab() {
   return (
     <div className="space-y-6">
       {/* ========== HEADER ========== */}
-      <div className="bg-linear-to-r from-primary-700 to-primary-900 rounded-2xl p-6 md:p-8 text-white shadow-lg relative overflow-hidden">
+      <div className="bg-linear-to-r from-primary-700 to-primary-900 rounded-xl p-6 md:p-8 text-white shadow-lg relative overflow-hidden">
         <div className="relative z-10">
           <h1 className="text-2xl font-black mb-2 text-white">
             Jadwal Seleksi
@@ -432,7 +432,7 @@ export default function UndanganSeleksiTab() {
           <a
             href="/dashboard/pendaftar/kartu-ujian"
             target="_blank"
-            className="bg-white/20 hover:bg-white/30 text-white border border-white/50 px-4 py-2 rounded-xl flex items-center gap-2 transition-all font-black backdrop-blur-sm text-sm"
+            className="bg-white/20 hover:bg-white/30 text-white border border-white/50 px-4 py-2 rounded-xl flex items-center gap-2 transition-all font-black  text-sm"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -477,7 +477,7 @@ export default function UndanganSeleksiTab() {
       {/* ========== GRUP A: TES ONLINE INSTAN ========== */}
       <div className="space-y-4">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-primary-100 rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-primary-100 rounded-xl flex items-center justify-center">
             <BookOpen className="w-4 h-4 text-primary-600" />
           </div>
           <div>
@@ -535,7 +535,7 @@ export default function UndanganSeleksiTab() {
                 ) : (
                   <Link
                     href={`/dashboard/pendaftar/ujian/${key}`}
-                    className="inline-flex items-center gap-2 mt-2 px-4 py-2 bg-gold-400 hover:bg-gold-300 text-primary-950 text-xs font-black rounded-lg transition-colors shadow-sm border border-gold-500"
+                    className="inline-flex items-center gap-2 mt-2 px-4 py-2 bg-gold-400 hover:bg-gold-300 text-primary-950 text-xs font-black rounded-xl transition-colors shadow-sm border border-gold-500"
                   >
                     Mulai Tes
                   </Link>
@@ -549,7 +549,7 @@ export default function UndanganSeleksiTab() {
       {/* ========== GRUP B: TES TERJADWAL ========== */}
       <div className="space-y-4">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-gold-100 rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-gold-100 rounded-xl flex items-center justify-center">
             <Calendar className="w-4 h-4 text-primary-700" />
           </div>
           <div>
@@ -700,7 +700,7 @@ export default function UndanganSeleksiTab() {
                 );
 
                 return (
-                  <div className="text-center py-12 bg-white rounded-2xl border-2 border-dashed border-stone-200">
+                  <div className="text-center py-12 bg-white rounded-xl border-2 border-dashed border-stone-200">
                     {isAllBooked ? (
                       <>
                         <CheckCircle className="w-12 h-12 text-emerald-500 mx-auto mb-4" />
@@ -786,7 +786,7 @@ export default function UndanganSeleksiTab() {
                         <button
                           onClick={() => handleBooking(slot.id)}
                           disabled={slot.isFull || bookingId !== null}
-                          className="w-full py-2.5 bg-gold-400 hover:bg-gold-300 text-primary-950 font-black rounded-lg disabled:bg-surface-200 disabled:text-ink-400 disabled:cursor-not-allowed transition-all shadow-sm flex justify-center items-center gap-2 text-sm border border-gold-500"
+                          className="w-full py-2.5 bg-gold-400 hover:bg-gold-300 text-primary-950 font-black rounded-xl disabled:bg-surface-200 disabled:text-ink-400 disabled:cursor-not-allowed transition-all shadow-sm flex justify-center items-center gap-2 text-sm border border-gold-500"
                         >
                           {bookingId === slot.id && (
                             <Loader2 className="animate-spin w-4 h-4" />

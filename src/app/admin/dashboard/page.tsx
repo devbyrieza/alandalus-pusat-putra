@@ -50,8 +50,8 @@ export default function DashboardEksekutifPage() {
 
       {/* METRIC CARDS */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-xl shadow-emerald-900/20 flex items-center gap-4">
-          <div className="w-14 h-14 rounded-3xl bg-amber-100 flex items-center justify-center text-amber-600 shrink-0">
+        <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-lg shadow-emerald-900/20 flex items-center gap-4">
+          <div className="w-14 h-14 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 shrink-0">
             <Wallet className="w-7 h-7" />
           </div>
           <div>
@@ -60,8 +60,8 @@ export default function DashboardEksekutifPage() {
           </div>
         </div>
         
-        <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-xl shadow-emerald-900/20 flex items-center gap-4">
-          <div className="w-14 h-14 rounded-3xl bg-green-100 flex items-center justify-center text-green-600 shrink-0">
+        <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-lg shadow-emerald-900/20 flex items-center gap-4">
+          <div className="w-14 h-14 rounded-xl bg-green-100 flex items-center justify-center text-green-600 shrink-0">
             <TrendingUp className="w-7 h-7" />
           </div>
           <div>
@@ -70,8 +70,8 @@ export default function DashboardEksekutifPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-xl shadow-emerald-900/20 flex items-center gap-4">
-          <div className="w-14 h-14 rounded-3xl bg-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
+        <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-lg shadow-emerald-900/20 flex items-center gap-4">
+          <div className="w-14 h-14 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
             <ShoppingBag className="w-7 h-7" />
           </div>
           <div>
@@ -80,8 +80,8 @@ export default function DashboardEksekutifPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-xl shadow-emerald-900/20 flex items-center gap-4">
-          <div className="w-14 h-14 rounded-3xl bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+        <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-lg shadow-emerald-900/20 flex items-center gap-4">
+          <div className="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
             <Users className="w-7 h-7" />
           </div>
           <div>
@@ -93,7 +93,7 @@ export default function DashboardEksekutifPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* CHART: Revenue Trend */}
-        <div className="lg:col-span-2 bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-xl shadow-emerald-900/20">
+        <div className="lg:col-span-2 bg-white p-6 md:p-8 rounded-xl border border-slate-200 shadow-lg shadow-emerald-900/20">
           <h3 className="text-lg font-bold text-slate-800 mb-6">Tren Penerimaan Mingguan</h3>
           <div className="h-[300px] w-full">
             <ResponsiveContainer width="100%" height="100%">
@@ -115,7 +115,7 @@ export default function DashboardEksekutifPage() {
         </div>
 
         {/* CHART: SPP Status */}
-        <div className="lg:col-span-1 bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-xl shadow-emerald-900/20 flex flex-col">
+        <div className="lg:col-span-1 bg-white p-6 md:p-8 rounded-xl border border-slate-200 shadow-lg shadow-emerald-900/20 flex flex-col">
           <h3 className="text-lg font-bold text-slate-800 mb-2">Status SPP Juli 2026</h3>
           <div className="flex-1 min-h-[250px] relative">
             <ResponsiveContainer width="100%" height="100%">

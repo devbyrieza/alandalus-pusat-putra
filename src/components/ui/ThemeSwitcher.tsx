@@ -34,7 +34,7 @@ export default function ThemeSwitcher() {
         className="flex items-center gap-2 p-2 sm:p-2.5 rounded-xl bg-surface-50 border border-surface-200 text-ink-700 hover:bg-surface-100 transition-all duration-300 min-h-[40px] border-none !bg-transparent sm:!bg-surface-50 sm:border-solid lg:hover:shadow-premium-sm relative z-[71]"
         aria-label="Ganti tema"
       >
-        <div className="p-1 rounded-lg bg-white sm:bg-transparent shadow-sm sm:shadow-none pointer-events-none">
+        <div className="p-1 rounded-xl bg-white sm:bg-transparent shadow-sm sm:shadow-none pointer-events-none">
           {resolvedTheme === "dark" ? (
             <Moon className="w-4.5 h-4.5 text-gold-500" />
           ) : (
@@ -62,7 +62,7 @@ export default function ThemeSwitcher() {
               initial={{ opacity: 0, y: 10, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 10, scale: 0.95 }}
-              className="absolute right-0 mt-2 w-40 bg-white dark:bg-ink-900 rounded-2xl shadow-premium-xl border border-surface-200 dark:border-white/10 p-1.5 z-[70] overflow-hidden"
+              className="absolute right-0 mt-2 w-40 bg-white dark:bg-ink-900 rounded-xl shadow-premium-xl border border-surface-200 dark:border-white/10 p-1.5 z-[70] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               {modes.map((mode) => {

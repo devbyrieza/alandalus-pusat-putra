@@ -144,7 +144,7 @@ export default function ProgramPage() {
       </section>
 
       {/* 2. Navigation Tabs (Sticky) - Refined */}
-      <div className="sticky top-[72px] z-40 bg-white/60 backdrop-blur-xl border-y border-surface-100 py-4">
+      <div className="sticky top-[72px] z-40 bg-white/60  border-y border-surface-100 py-4">
         <Container>
           <div className="flex flex-wrap justify-center gap-3">
             {PROGRAMS.map((program) => (
@@ -203,7 +203,7 @@ export default function ProgramPage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
                       <div className="absolute bottom-10 left-10 right-10 z-20">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-black uppercase tracking-widest mb-3">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-white/20  border border-white/30 text-white text-[10px] font-black uppercase tracking-widest mb-3">
                           <Star className="w-3.5 h-3.5 fill-gold-400 text-gold-400" />
                           <span>Program Unggulan</span>
                         </div>
@@ -246,7 +246,7 @@ export default function ProgramPage() {
                         className={`app-card bg-white p-5 rounded-[2rem] border border-primary-50 shadow-md hover:shadow-lg transition-all text-center group`}
                       >
                         <div
-                          className={`w-10 h-10 rounded-3xl mx-auto mb-3 flex items-center justify-center transition-transform group-hover:scale-110 border border-primary-100
+                          className={`w-10 h-10 rounded-xl mx-auto mb-3 flex items-center justify-center transition-transform group-hover:scale-110 border border-primary-100
                                                     ${program.theme === "maroon" ? "bg-primary-50 text-primary-600" : "bg-secondary-100 text-gold-700"}
                                                 `}
                         >

@@ -43,7 +43,7 @@ export default function MobileBottomCTA() {
             {/* Primary CTA */}
             <Link
               href="/ppdb"
-              className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl text-white text-sm font-black shadow-lg active:scale-95 transition-transform"
+              className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-xl text-white text-sm font-black shadow-lg active:scale-95 transition-transform"
               style={{ backgroundColor: primaryBg }}
             >
               <GraduationCap className="w-4 h-4 shrink-0" />
@@ -54,7 +54,7 @@ export default function MobileBottomCTA() {
               href={waHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-1.5 px-5 py-3.5 rounded-2xl text-white text-sm font-black shadow-lg active:scale-95 transition-transform shrink-0"
+              className="flex items-center justify-center gap-1.5 px-5 py-3.5 rounded-xl text-white text-sm font-black shadow-lg active:scale-95 transition-transform shrink-0"
               style={{ backgroundColor: "#25D366" }}
             >
               <FaWhatsapp className="w-4.5 h-4.5" />

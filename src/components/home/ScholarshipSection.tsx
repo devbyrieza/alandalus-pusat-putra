@@ -90,7 +90,7 @@ export default function ScholarshipSection({ variant = "maroon" }: ScholarshipSe
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 + (i * 0.1), duration: 0.5 }}
-                    className="flex gap-4 p-4 rounded-2xl border border-gray-100 hover:border-gray-200 hover:bg-gray-50/50 transition-all duration-300 group"
+                    className="flex gap-4 p-4 rounded-xl border border-gray-100 hover:border-gray-200 hover:bg-gray-50/50 transition-all duration-300 group"
                   >
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110" style={{ backgroundColor: colors.primaryLight, color: colors.primary }}>
                       <item.icon className="w-6 h-6" />
@@ -104,7 +104,7 @@ export default function ScholarshipSection({ variant = "maroon" }: ScholarshipSe
               </div>
 
               <Link href="/ppdb">
-                <button className={`inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-95`} style={{ backgroundColor: colors.primary }}>
+                <button className={`inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white shadow-lg hover:shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-95`} style={{ backgroundColor: colors.primary }}>
                   Daftar Jalur Beasiswa
                   <ArrowRight className="w-4 h-4" />
                 </button>
@@ -126,7 +126,7 @@ export default function ScholarshipSection({ variant = "maroon" }: ScholarshipSe
 
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-10">
-                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-xl" style={{ backgroundColor: colors.primary }}>
+                    <div className="w-16 h-16 rounded-xl flex items-center justify-center text-white shadow-lg" style={{ backgroundColor: colors.primary }}>
                       <Trophy className="w-8 h-8" />
                     </div>
                     <div className="text-right">
@@ -181,7 +181,7 @@ export default function ScholarshipSection({ variant = "maroon" }: ScholarshipSe
                       </div>
                     </div>
 
-                    <div className="mt-8 p-5 rounded-2xl bg-gray-50 border border-dashed border-gray-200">
+                    <div className="mt-8 p-5 rounded-xl bg-gray-50 border border-dashed border-gray-200">
                       <div className="flex gap-3 items-start">
                         <AlertCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
                         <div>

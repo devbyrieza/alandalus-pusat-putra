@@ -122,7 +122,7 @@ export default function TentangPage() {
               viewport={{ once: true }}
               className="relative order-2 lg:order-1"
             >
-              <div className="aspect-[4/5] max-h-[520px] min-h-[350px] w-full rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-xl relative z-10 bg-white p-3 border border-primary-100">
+              <div className="aspect-[4/5] max-h-[520px] min-h-[350px] w-full rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-lg relative z-10 bg-white p-3 border border-primary-100">
                 <div className="relative w-full h-full min-h-[330px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-primary-950 to-primary-900">
                   <Image
                     src="/images/tentang.webp"
@@ -141,10 +141,10 @@ export default function TentangPage() {
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
-                className="absolute -bottom-6 right-0 sm:-bottom-10 sm:-right-6 md:-bottom-12 md:-right-10 z-20 bg-white p-5 md:p-8 rounded-2xl md:rounded-[2rem] shadow-lg border border-primary-100 max-w-[85vw] sm:max-w-[90vw] md:max-w-none"
+                className="absolute -bottom-6 right-0 sm:-bottom-10 sm:-right-6 md:-bottom-12 md:-right-10 z-20 bg-white p-5 md:p-8 rounded-xl md:rounded-[2rem] shadow-lg border border-primary-100 max-w-[85vw] sm:max-w-[90vw] md:max-w-none"
               >
                 <div className="flex items-center gap-4 md:gap-5">
-                  <div className="w-12 h-12 md:w-16 md:h-16 bg-linear-to-br from-primary-600 to-primary-800 rounded-3xl md:rounded-2xl flex items-center justify-center text-white shadow-md shrink-0">
+                  <div className="w-12 h-12 md:w-16 md:h-16 bg-linear-to-br from-primary-600 to-primary-800 rounded-xl md:rounded-xl flex items-center justify-center text-white shadow-md shrink-0">
                     <Award className="w-6 h-6 md:w-8 md:h-8" />
                   </div>
                   <div>
@@ -154,7 +154,7 @@ export default function TentangPage() {
                     <p className="text-primary-700 font-bold text-[9px] md:text-[10px] uppercase tracking-widest mb-1.5 md:mb-2">
                       Era Baru
                     </p>
-                    <div className="text-[9px] md:text-[10px] font-bold text-primary-900 bg-primary-50 px-2.5 py-1.5 rounded-2xl border border-primary-100 leading-tight">
+                    <div className="text-[9px] md:text-[10px] font-bold text-primary-900 bg-primary-50 px-2.5 py-1.5 rounded-xl border border-primary-100 leading-tight">
                       Managed by Al Andalus IIBS
                     </div>
                   </div>
@@ -209,7 +209,7 @@ export default function TentangPage() {
                   kepengurusan yang profesional, sistem pendidikan tahfidz
                   intensif, dan pengasuhan berbasis adab.
                 </p>
-                <p className="font-bold text-primary-800 bg-primary-50/50 p-6 sm:p-8 rounded-3xl border border-primary-100 italic text-center text-lg mt-6">
+                <p className="font-bold text-primary-800 bg-primary-50/50 p-6 sm:p-8 rounded-xl border border-primary-100 italic text-center text-lg mt-6">
                   "Standar Internasional, Kini Hadir di Sukabumi"
                 </p>
               </motion.div>
@@ -222,7 +222,7 @@ export default function TentangPage() {
                 className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 pt-4 md:pt-6"
               >
                 <div className="app-card bg-white p-5 md:p-6 flex flex-col items-start group">
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-3xl bg-orange-50 flex items-center justify-center mb-4 text-orange-600 group-hover:scale-110 transition-transform shadow-md">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-orange-50 flex items-center justify-center mb-4 text-orange-600 group-hover:scale-110 transition-transform shadow-md">
                     <Sparkles className="w-5 h-5 md:w-6 md:h-6" />
                   </div>
                   <h4 className="font-black text-ink-950 text-xl md:text-2xl mb-1">
@@ -233,7 +233,7 @@ export default function TentangPage() {
                   </p>
                 </div>
                 <div className="app-card bg-white p-5 md:p-6 flex flex-col items-start group">
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-3xl bg-primary-50 flex items-center justify-center mb-4 text-primary-600 group-hover:scale-110 transition-transform shadow-md">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary-50 flex items-center justify-center mb-4 text-primary-600 group-hover:scale-110 transition-transform shadow-md">
                     <ShieldCheck className="w-5 h-5 md:w-6 md:h-6" />
                   </div>
                   <h4 className="font-black text-ink-950 text-lg md:text-xl tracking-tighter mb-1">
@@ -291,7 +291,7 @@ export default function TentangPage() {
               viewport={{ once: true }}
               className="app-card bg-white p-5 md:p-8 flex flex-col group h-full hover:-translate-y-1 transition-transform duration-500"
             >
-              <div className="w-14 h-14 bg-primary-50 rounded-2xl flex items-center justify-center mb-6 text-primary-600 group-hover:scale-110 transition-transform duration-500 shadow-md">
+              <div className="w-14 h-14 bg-primary-50 rounded-xl flex items-center justify-center mb-6 text-primary-600 group-hover:scale-110 transition-transform duration-500 shadow-md">
                 <Target className="w-7 h-7" />
               </div>
               <h3 className="text-xl md:text-2xl font-black text-ink-950 mb-5">
@@ -311,7 +311,7 @@ export default function TentangPage() {
               transition={{ delay: 0.2 }}
               className="app-card bg-linear-to-br from-secondary-50 to-white p-5 md:p-8 flex flex-col group h-full hover:-translate-y-1 transition-transform duration-500"
             >
-              <div className="w-14 h-14 bg-yellow-50 rounded-2xl flex items-center justify-center mb-6 text-yellow-600 group-hover:scale-110 transition-transform duration-500 shadow-md">
+              <div className="w-14 h-14 bg-yellow-50 rounded-xl flex items-center justify-center mb-6 text-yellow-600 group-hover:scale-110 transition-transform duration-500 shadow-md">
                 <Compass className="w-7 h-7" />
               </div>
               <h3 className="text-xl md:text-2xl font-black text-ink-950 mb-6">
@@ -344,7 +344,7 @@ export default function TentangPage() {
               className="md:col-span-2 app-card bg-secondary-100/50 p-5 md:p-8 lg:p-6 hover:-translate-y-1 transition-transform duration-500 group"
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mb-8">
-                <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-primary-700 group-hover:scale-110 transition-transform duration-500 border border-primary-100 shadow-md shrink-0">
+                <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-primary-700 group-hover:scale-110 transition-transform duration-500 border border-primary-100 shadow-md shrink-0">
                   <BookOpen className="w-7 h-7" />
                 </div>
                 <h3 className="text-xl md:text-2xl font-black text-ink-950">
@@ -361,7 +361,7 @@ export default function TentangPage() {
                 ].map((item, idx) => (
                   <li
                     key={idx}
-                    className="flex gap-4 items-start group/item bg-white p-5 rounded-2xl border border-primary-50 shadow-md"
+                    className="flex gap-4 items-start group/item bg-white p-5 rounded-xl border border-primary-50 shadow-md"
                   >
                     <div className="w-6 h-6 rounded-full bg-primary-600 text-white flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5 shadow-md">
                       <CheckCircle2 className="w-3.5 h-3.5" />
@@ -415,7 +415,7 @@ export default function TentangPage() {
 
               {/* Trust microcopy */}
               <div className="mt-8 mb-4">
-                <span className="inline-block px-4 py-1.5 rounded-pill bg-white/10 backdrop-blur-sm border border-white/10 text-[10px] sm:text-xs text-white/80 font-bold uppercase tracking-widest">
+                <span className="inline-block px-4 py-1.5 rounded-pill bg-white/10  border border-white/10 text-[10px] sm:text-xs text-white/80 font-bold uppercase tracking-widest">
                   ✦ Pendaftaran Gratis • Proses Mudah • Langsung Konfirmasi
                 </span>
               </div>

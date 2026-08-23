@@ -148,7 +148,7 @@ const FeatureCard = ({
     {/* Content Side */}
     <div className="flex flex-col justify-center">
       <div
-        className={`w-16 h-16 ${item.bgColor} rounded-2xl flex items-center justify-center shadow-md mb-8 transition-transform hover:scale-110`}
+        className={`w-16 h-16 ${item.bgColor} rounded-xl flex items-center justify-center shadow-md mb-8 transition-transform hover:scale-110`}
       >
         <item.icon className="w-8 h-8 text-white" />
       </div>
@@ -213,7 +213,7 @@ const StatsCard = ({ icon: Icon, value, label, sublabel }: HeroStat) => (
     whileHover={{ y: -5 }}
     className="app-card bg-white p-6 sm:p-8 md:p-6 rounded-[2rem] md:rounded-[2.5rem] border border-primary-100 shadow-md text-center min-w-[140px] md:min-w-[160px] flex flex-col items-center"
   >
-    <div className="w-10 h-10 md:w-12 md:h-12 rounded-3xl md:rounded-2xl bg-primary-50 flex items-center justify-center text-primary-600 mb-3 md:mb-4 border border-primary-100">
+    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-xl bg-primary-50 flex items-center justify-center text-primary-600 mb-3 md:mb-4 border border-primary-100">
       <Icon className="w-5 h-5 md:w-6 md:h-6" />
     </div>
     <div className="text-2xl md:text-3xl font-black text-ink-950 mb-1">
@@ -244,7 +244,7 @@ const ScheduleCard = ({
   >
     <div className="flex flex-col h-full">
       <div className="flex items-center justify-between mb-8">
-        <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform border border-primary-100">
+        <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform border border-primary-100">
           <schedule.icon className={`${schedule.iconColor} w-8 h-8`} />
         </div>
         <div className="text-lg font-black text-primary-700 bg-white/50 px-4 py-1.5 rounded-pill border border-primary-100">
@@ -260,7 +260,7 @@ const ScheduleCard = ({
         {schedule.detail}
       </p>
 
-      <div className="mt-auto inline-flex items-center gap-3 bg-white/60 p-6 sm:p-8 rounded-2xl border border-primary-100 shadow-md">
+      <div className="mt-auto inline-flex items-center gap-3 bg-white/60 p-6 sm:p-8 rounded-xl border border-primary-100 shadow-md">
         <Zap className="w-5 h-5 text-primary-600 flex-shrink-0" />
         <span className="text-sm font-black text-ink-950 uppercase tracking-tight">
           {schedule.benefit}
@@ -285,7 +285,7 @@ const WeeklyActivityCard = ({
     className={`app-card group p-8 rounded-[2.5rem] bg-white border border-primary-50 shadow-md hover:shadow-lg transition-all hover:-translate-y-2 text-center`}
   >
     <div
-      className={`w-14 h-14 ${activity.bg} rounded-2xl flex items-center justify-center ${activity.color} mx-auto mb-6 group-hover:scale-110 transition-transform border border-primary-100`}
+      className={`w-14 h-14 ${activity.bg} rounded-xl flex items-center justify-center ${activity.color} mx-auto mb-6 group-hover:scale-110 transition-transform border border-primary-100`}
     >
       <activity.icon className="w-8 h-8" />
     </div>
@@ -302,7 +302,7 @@ const WeeklyActivityCard = ({
       <p className="text-base text-ink-600 font-medium">{activity.detail}</p>
     </div>
 
-    <div className="bg-primary-50 rounded-3xl px-4 py-3 border border-primary-100">
+    <div className="bg-primary-50 rounded-xl px-4 py-3 border border-primary-100">
       <p className="text-xs font-black text-primary-800 uppercase tracking-tight">
         {activity.benefit}
       </p>
@@ -324,7 +324,7 @@ const EkskulCard = ({
     transition={{ delay: index * 0.05 }}
     className="app-card group p-6 sm:p-8 md:p-8 rounded-[2rem] md:rounded-[2.5rem] bg-white border border-primary-50 shadow-md hover:shadow-lg hover:border-primary-200 transition-all hover:-translate-y-2 text-center h-full flex flex-col justify-between"
   >
-    <div className="w-12 h-12 md:w-16 md:h-16 bg-primary-50 rounded-3xl md:rounded-2xl flex items-center justify-center text-primary-600 mx-auto mb-4 md:mb-6 group-hover:scale-110 transition-all duration-300 border border-primary-100">
+    <div className="w-12 h-12 md:w-16 md:h-16 bg-primary-50 rounded-xl md:rounded-xl flex items-center justify-center text-primary-600 mx-auto mb-4 md:mb-6 group-hover:scale-110 transition-all duration-300 border border-primary-100">
       <ekskul.icon className="w-6 h-6 md:w-8 md:h-8" />
     </div>
 
@@ -750,7 +750,7 @@ export default function KegiatanPage() {
                   whileHover={{ scale: 1.02 }}
                   className="bg-white p-5 md:p-6 rounded-[2rem] flex items-center gap-4 border border-primary-100 group transition-all h-full text-left"
                 >
-                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-primary-50 shadow-md flex items-center justify-center text-primary-600 shrink-0 group-hover:bg-primary-600 group-hover:text-white transition-colors border border-primary-100">
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary-50 shadow-md flex items-center justify-center text-primary-600 shrink-0 group-hover:bg-primary-600 group-hover:text-white transition-colors border border-primary-100">
                     <item.icon className="w-5 h-5 md:w-6 md:h-6" />
                   </div>
                   <span className="font-black text-ink-900 text-sm md:text-lg leading-tight">

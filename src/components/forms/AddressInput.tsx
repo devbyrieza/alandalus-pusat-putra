@@ -208,10 +208,10 @@ export default function AddressInput({
   };
 
   const inputClass =
-    "w-full px-4 py-2.5 border-2 border-stone-200 rounded-lg focus:border-primary-500 focus:outline-none transition-colors disabled:bg-stone-100 disabled:text-stone-500";
+    "w-full px-4 py-2.5 border-2 border-stone-200 rounded-xl focus:border-primary-500 focus:outline-none transition-colors disabled:bg-stone-100 disabled:text-stone-500";
 
   const selectClass =
-    "w-full px-4 py-2.5 border-2 border-stone-200 rounded-lg focus:border-primary-500 focus:outline-none transition-colors disabled:bg-stone-100 disabled:text-stone-500";
+    "w-full px-4 py-2.5 border-2 border-stone-200 rounded-xl focus:border-primary-500 focus:outline-none transition-colors disabled:bg-stone-100 disabled:text-stone-500";
 
   return (
     <div className="space-y-4">

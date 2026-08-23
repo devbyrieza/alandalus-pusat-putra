@@ -219,7 +219,7 @@ export default function DaftarUlangTab() {
   return (
     <div className="space-y-8 max-w-4xl mx-auto pb-12">
       {/* Header */}
-      <div className="bg-linear-to-br from-primary-700 to-primary-900 rounded-2xl p-5 md:p-8 text-white shadow-lg relative overflow-hidden">
+      <div className="bg-linear-to-br from-primary-700 to-primary-900 rounded-xl p-5 md:p-8 text-white shadow-lg relative overflow-hidden">
         <div className="absolute top-0 right-0 p-4 opacity-10">
           <CheckCircle className="w-32 h-32" />
         </div>
@@ -232,7 +232,7 @@ export default function DaftarUlangTab() {
       </div>
 
       {/* Sub-Tab Switcher: Uang Pangkal / SPP */}
-      <div className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100">
+      <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-100">
         <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">
           Pilih Jenis Pembayaran Daftar Ulang
         </p>
@@ -316,7 +316,7 @@ export default function DaftarUlangTab() {
 
       {/* Dashboard Status (per-tab) */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between">
+        <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm flex flex-col justify-between">
           <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-1">
             Status{" "}
             {subTab === "uang_pangkal" ? "Uang Pangkal" : "SPP Bulan Pertama"}
@@ -336,7 +336,7 @@ export default function DaftarUlangTab() {
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between">
+        <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm flex flex-col justify-between">
           <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-1">
             Sudah Dibayarkan
           </span>
@@ -348,7 +348,7 @@ export default function DaftarUlangTab() {
           </p>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between">
+        <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm flex flex-col justify-between">
           <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-1">
             Sisa Tagihan
           </span>
@@ -363,7 +363,7 @@ export default function DaftarUlangTab() {
 
       {/* Riwayat Pembayaran (filter per tab) */}
       {activeTabPayments.length > 0 && (
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+        <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
           <h3 className="font-black text-slate-900 mb-4 flex items-center gap-2 text-base">
             <History className="w-5 h-5 text-slate-400" />
             Riwayat Pembayaran{" "}
@@ -392,7 +392,7 @@ export default function DaftarUlangTab() {
                     {formatCurrency(Number(p.jumlah))}
                   </p>
                   {p.catatan && p.status_pembayaran === "rejected" && (
-                    <p className="text-xs text-rose-600 mt-1 font-semibold bg-rose-50 p-2 rounded-lg border border-rose-100">
+                    <p className="text-xs text-rose-600 mt-1 font-semibold bg-rose-50 p-2 rounded-xl border border-rose-100">
                       Alasan Ditolak: {p.catatan}
                     </p>
                   )}
@@ -466,7 +466,7 @@ export default function DaftarUlangTab() {
             <div className="grid grid-cols-1 sm:grid-cols-1 gap-2 mb-4 bg-white p-1 rounded-xl shadow-sm border border-primary-100">
               <button
                 onClick={() => setPaymentMethod("transfer")}
-                className={`py-2 px-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 ${
+                className={`py-2 px-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 ${
                   paymentMethod === "transfer"
                     ? "bg-primary-600 text-white shadow-md"
                     : "text-slate-500 hover:bg-slate-50"
@@ -474,7 +474,7 @@ export default function DaftarUlangTab() {
               >
                 <Building2 className="w-4 h-4" /> Transfer Bank
               </button>
-              <div className="py-2 px-2 rounded-lg text-xs font-bold flex flex-col items-center justify-center gap-0.5 bg-slate-50 border border-slate-100 text-slate-400 opacity-70 cursor-not-allowed">
+              <div className="py-2 px-2 rounded-xl text-xs font-bold flex flex-col items-center justify-center gap-0.5 bg-slate-50 border border-slate-100 text-slate-400 opacity-70 cursor-not-allowed">
                 <div className="flex items-center gap-1.5">
                   <CreditCardIcon className="w-4 h-4" /> Virtual Account
                 </div>
@@ -485,7 +485,7 @@ export default function DaftarUlangTab() {
             </div>
 
             {paymentMethod === "transfer" && (
-              <div className="mb-4 p-3 bg-white border border-primary-100 rounded-lg">
+              <div className="mb-4 p-3 bg-white border border-primary-100 rounded-xl">
                 <div className="flex items-start justify-between">
                   <div>
                     <p className="text-[10px] font-bold text-ink-400 uppercase tracking-widest mb-2 text-left">
@@ -508,7 +508,7 @@ export default function DaftarUlangTab() {
                   </div>
                   <button
                     onClick={() => handleCopy("4222224441")}
-                    className="p-2 hover:bg-primary-50 text-primary-600 rounded-lg transition-colors flex flex-col items-center gap-1 group"
+                    className="p-2 hover:bg-primary-50 text-primary-600 rounded-xl transition-colors flex flex-col items-center gap-1 group"
                   >
                     {copied ? (
                       <CheckCircle className="w-5 h-5 text-emerald-500" />
@@ -590,7 +590,7 @@ export default function DaftarUlangTab() {
 
       {message && message.type === "success" && (
         <div className="p-5 bg-emerald-50 border border-emerald-200 rounded-xl flex flex-col sm:flex-row items-center sm:items-start gap-4 shadow-sm">
-          <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+          <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center shrink-0 mt-0.5">
             <MessageCircle className="w-6 h-6 text-emerald-600" />
           </div>
           <div className="text-center sm:text-left flex-1">
@@ -615,7 +615,7 @@ export default function DaftarUlangTab() {
 
       {/* Form Upload — Sembunyikan jika tab sudah LUNAS */}
       {isTabLunas ? (
-        <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-8 text-center shadow-sm">
+        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-8 text-center shadow-sm">
           <CheckCircle className="w-14 h-14 text-emerald-500 mx-auto mb-3" />
           <h3 className="font-black text-emerald-900 text-xl mb-2">
             {subTab === "uang_pangkal" ? "Uang Pangkal" : "SPP Bulan Pertama"}{" "}
@@ -638,7 +638,7 @@ export default function DaftarUlangTab() {
           )}
         </div>
       ) : (
-        <div className="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden">
+        <div className="bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden">
           <div
             className={`p-6 border-b border-ink-100 flex justify-between items-center ${
               subTab === "uang_pangkal" ? "bg-primary-50" : "bg-violet-50"
@@ -832,7 +832,7 @@ export default function DaftarUlangTab() {
                       value={keringananReason}
                       onChange={(e) => setKeringananReason(e.target.value)}
                       placeholder="Contoh: Sedang ada musibah keluarga, mohon keringanan cicilan pertama 1jt dulu..."
-                      className="w-full p-3 text-xs border border-secondary-300 rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 transition-all bg-white font-medium min-h-[80px]"
+                      className="w-full p-3 text-xs border border-secondary-300 rounded-xl focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 transition-all bg-white font-medium min-h-[80px]"
                       required
                     />
                   </div>
@@ -899,7 +899,7 @@ export default function DaftarUlangTab() {
             <button
               type="submit"
               disabled={submitting || !pernyataan || !file || !nominal}
-              className="w-full py-4 bg-gold-400 hover:bg-gold-300 text-primary-950 font-black rounded-xl shadow-xl shadow-gold-400/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 border border-gold-500"
+              className="w-full py-4 bg-gold-400 hover:bg-gold-300 text-primary-950 font-black rounded-xl shadow-lg shadow-gold-400/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 border border-gold-500"
             >
               {submitting ? (
                 <Loader2 className="animate-spin" />

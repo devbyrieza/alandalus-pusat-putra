@@ -356,7 +356,7 @@ export default function PengajuanBeasiswaTab() {
     const missingCount = requiredBerkas.filter((b) => !b.path).length;
 
     return (
-      <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6 md:p-8 animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-2xl mx-auto space-y-6">
+      <div className="bg-white rounded-xl shadow-sm border border-stone-200 p-6 md:p-8 animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-2xl mx-auto space-y-6">
         {/* Status Header */}
         <div className="text-center">
           <div
@@ -443,7 +443,7 @@ export default function PengajuanBeasiswaTab() {
             ))}
           </div>
           {missingCount > 0 && (
-            <p className="text-xs text-amber-700 mt-3 bg-amber-50 border border-amber-100 rounded-lg p-2.5 font-medium">
+            <p className="text-xs text-amber-700 mt-3 bg-amber-50 border border-amber-100 rounded-xl p-2.5 font-medium">
               ℹ️ Berkas yang belum ada dapat dilengkapi oleh Admin. Silakan hubungi tim administrasi.
             </p>
           )}
@@ -458,7 +458,7 @@ export default function PengajuanBeasiswaTab() {
   );
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6 md:p-8 animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-3xl mx-auto">
+    <div className="bg-white rounded-xl shadow-sm border border-stone-200 p-6 md:p-8 animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-3xl mx-auto">
       <div className="text-center mb-8">
         <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <FileText className="w-8 h-8 text-primary-600" />

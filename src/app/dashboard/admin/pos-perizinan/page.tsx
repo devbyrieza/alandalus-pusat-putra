@@ -137,7 +137,7 @@ export default function POSPerizinan() {
       <div className="flex space-x-4 mb-8">
         <button
           onClick={() => { setMode("KELUAR"); resetForm(); }}
-          className={`flex-1 flex items-center justify-center gap-2 py-4 rounded-3xl font-bold text-lg transition-all ${
+          className={`flex-1 flex items-center justify-center gap-2 py-4 rounded-xl font-bold text-lg transition-all ${
             mode === "KELUAR" 
               ? "bg-[#550000] text-white shadow-lg scale-105" 
               : "bg-white text-gray-500 hover:bg-red-50 border"
@@ -147,7 +147,7 @@ export default function POSPerizinan() {
         </button>
         <button
           onClick={() => { setMode("KEMBALI"); resetForm(); }}
-          className={`flex-1 flex items-center justify-center gap-2 py-4 rounded-3xl font-bold text-lg transition-all ${
+          className={`flex-1 flex items-center justify-center gap-2 py-4 rounded-xl font-bold text-lg transition-all ${
             mode === "KEMBALI" 
               ? "bg-[#ddc192] text-[#550000] shadow-lg scale-105" 
               : "bg-white text-gray-500 hover:bg-yellow-50 border"
@@ -159,7 +159,7 @@ export default function POSPerizinan() {
       
       <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-8">
         {/* Kolom Scan */}
-        <div className="bg-white p-6 rounded-3xl shadow-md border border-gray-100">
+        <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
           <h2 className="text-xl font-semibold mb-4">
             {mode === "KELUAR" ? "1. Scan Kartu" : "Silakan Scan Kartu"}
           </h2>
@@ -171,7 +171,7 @@ export default function POSPerizinan() {
                 type="text"
                 value={qrCode}
                 onChange={(e) => setQrCode(e.target.value)}
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent outline-none transition ${
+                className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:border-transparent outline-none transition ${
                   mode === "KELUAR" ? "focus:ring-[#550000] border-gray-300" : "focus:ring-[#ddc192] border-yellow-300 bg-yellow-50"
                 }`}
                 placeholder="Scan di sini..."
@@ -182,7 +182,7 @@ export default function POSPerizinan() {
             {mode === "KELUAR" && !santriData && (
               <button 
                 type="submit" 
-                className="w-full bg-gray-800 text-white py-3 rounded-lg font-medium hover:bg-gray-900 transition disabled:opacity-50"
+                className="w-full bg-gray-800 text-white py-3 rounded-xl font-medium hover:bg-gray-900 transition disabled:opacity-50"
                 disabled={loading || !qrCode}
               >
                 {loading ? "Memeriksa..." : "Lanjut Verifikasi"}
@@ -196,11 +196,11 @@ export default function POSPerizinan() {
 
         {/* Kolom Input Izin (Hanya muncul saat Keluar) */}
         {mode === "KELUAR" && (
-          <div className={`bg-white p-6 rounded-3xl shadow-md border border-gray-100 transition-opacity ${santriData ? 'opacity-100' : 'opacity-50 pointer-events-none'}`}>
+          <div className={`bg-white p-6 rounded-xl shadow-md border border-gray-100 transition-opacity ${santriData ? 'opacity-100' : 'opacity-50 pointer-events-none'}`}>
             <h2 className="text-xl font-semibold mb-4">2. Detail Perizinan</h2>
             
             {santriData && (
-              <div className="bg-red-50 p-3 rounded-lg border border-red-100 mb-4">
+              <div className="bg-red-50 p-3 rounded-xl border border-red-100 mb-4">
                 <p className="font-bold text-[#550000]">{santriData.nama}</p>
                 <p className="text-sm text-gray-600">NIS: {santriData.nis}</p>
               </div>
@@ -213,7 +213,7 @@ export default function POSPerizinan() {
                   <select 
                     value={jenisIzin}
                     onChange={(e) => setJenisIzin(e.target.value)}
-                    className="w-full p-2 border border-gray-300 rounded-lg"
+                    className="w-full p-2 border border-gray-300 rounded-xl"
                   >
                     <option value="KELUAR_PONDOK">Keluar Pondok (Belanja/Tugas)</option>
                     <option value="PULANG">Pulang Kampung / Liburan</option>
@@ -226,7 +226,7 @@ export default function POSPerizinan() {
                     type="text"
                     value={alasan}
                     onChange={(e) => setAlasan(e.target.value)}
-                    className="w-full p-2 border border-gray-300 rounded-lg"
+                    className="w-full p-2 border border-gray-300 rounded-xl"
                     placeholder="Contoh: Beli sabun di depan"
                     required
                   />
@@ -237,7 +237,7 @@ export default function POSPerizinan() {
                     type="datetime-local"
                     value={batasKembali}
                     onChange={(e) => setBatasKembali(e.target.value)}
-                    className="w-full p-2 border border-gray-300 rounded-lg"
+                    className="w-full p-2 border border-gray-300 rounded-xl"
                   />
                 </div>
               </div>
@@ -246,13 +246,13 @@ export default function POSPerizinan() {
                 <button 
                   type="button" 
                   onClick={resetForm}
-                  className="flex-1 bg-gray-100 text-gray-700 py-3 rounded-lg font-medium hover:bg-gray-200 transition"
+                  className="flex-1 bg-gray-100 text-gray-700 py-3 rounded-xl font-medium hover:bg-gray-200 transition"
                 >
                   Batal
                 </button>
                 <button 
                   type="submit" 
-                  className="flex-[2] bg-[#550000] text-white py-3 rounded-lg font-bold hover:bg-red-900 transition disabled:opacity-50"
+                  className="flex-[2] bg-[#550000] text-white py-3 rounded-xl font-bold hover:bg-red-900 transition disabled:opacity-50"
                   disabled={loading || !alasan}
                 >
                   {loading ? "Memproses..." : "Izinkan Keluar"}

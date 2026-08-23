@@ -133,7 +133,7 @@ export default function SeragamPage() {
 
   if (!isAuthorized) {
     return (
-      <div className="max-w-3xl mx-auto mt-8 bg-white p-10 rounded-3xl shadow-xl shadow-emerald-900/20 border border-red-100 flex flex-col items-center justify-center text-center">
+      <div className="max-w-3xl mx-auto mt-8 bg-white p-10 rounded-xl shadow-lg shadow-emerald-900/20 border border-red-100 flex flex-col items-center justify-center text-center">
         <div className="w-20 h-20 bg-red-50 text-red-500 rounded-full flex items-center justify-center mb-6">
           <Lock className="w-10 h-10" />
         </div>
@@ -147,9 +147,9 @@ export default function SeragamPage() {
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
-      <div className="bg-white p-6 rounded-3xl shadow-xl shadow-emerald-900/20 border border-ink-100 flex items-start gap-4 relative overflow-hidden">
+      <div className="bg-white p-6 rounded-xl shadow-lg shadow-emerald-900/20 border border-ink-100 flex items-start gap-4 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-32 h-32 bg-primary-50 rounded-bl-[100px] -z-0"></div>
-        <div className="w-12 h-12 bg-primary-100 text-primary-700 rounded-3xl flex items-center justify-center flex-shrink-0 relative z-10">
+        <div className="w-12 h-12 bg-primary-100 text-primary-700 rounded-xl flex items-center justify-center flex-shrink-0 relative z-10">
           <Shirt className="w-6 h-6" />
         </div>
         <div className="relative z-10">
@@ -161,7 +161,7 @@ export default function SeragamPage() {
       </div>
 
       {message.text && (
-        <div className={`p-4 rounded-3xl border flex items-center gap-3 text-sm font-bold ${
+        <div className={`p-4 rounded-xl border flex items-center gap-3 text-sm font-bold ${
           message.type === 'success' ? 'bg-green-50 border-green-200 text-green-700' : 'bg-red-50 border-red-200 text-red-700'
         }`}>
           {message.type === 'success' && <CheckCircle2 className="w-5 h-5" />}
@@ -172,7 +172,7 @@ export default function SeragamPage() {
       <div className="grid grid-cols-1 lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
         {/* Kolom Kiri: Form Input / Summary */}
         {isEditing ? (
-          <div className="bg-white p-6 rounded-3xl shadow-xl shadow-emerald-900/20 border border-ink-100">
+          <div className="bg-white p-6 rounded-xl shadow-lg shadow-emerald-900/20 border border-ink-100">
             <h2 className="text-lg font-black text-ink-950 mb-6 flex items-center gap-2">
               <Ruler className="w-5 h-5 text-ink-400" />
               Form Pemilihan Ukuran
@@ -186,7 +186,7 @@ export default function SeragamPage() {
                 <select
                   value={formData.ukuran_seragam_baju}
                   onChange={(e) => setFormData({ ...formData, ukuran_seragam_baju: e.target.value })}
-                  className="w-full bg-ink-50 border border-ink-200 px-4 py-3 rounded-3xl focus:ring-2 focus:ring-primary-500 outline-none font-bold"
+                  className="w-full bg-ink-50 border border-ink-200 px-4 py-3 rounded-xl focus:ring-2 focus:ring-primary-500 outline-none font-bold"
                 >
                   <option value="">-- Pilih Ukuran Baju --</option>
                   <option value="S">Ukuran S</option>
@@ -205,7 +205,7 @@ export default function SeragamPage() {
                 <select
                   value={formData.ukuran_seragam_celana}
                   onChange={(e) => setFormData({ ...formData, ukuran_seragam_celana: e.target.value })}
-                  className="w-full bg-ink-50 border border-ink-200 px-4 py-3 rounded-3xl focus:ring-2 focus:ring-primary-500 outline-none font-bold"
+                  className="w-full bg-ink-50 border border-ink-200 px-4 py-3 rounded-xl focus:ring-2 focus:ring-primary-500 outline-none font-bold"
                 >
                   <option value="">-- Pilih Ukuran Celana --</option>
                   <option value="S">Ukuran S</option>
@@ -224,7 +224,7 @@ export default function SeragamPage() {
                 <select
                   value={formData.ukuran_seragam_almamater}
                   onChange={(e) => setFormData({ ...formData, ukuran_seragam_almamater: e.target.value })}
-                  className="w-full bg-ink-50 border border-ink-200 px-4 py-3 rounded-3xl focus:ring-2 focus:ring-primary-500 outline-none font-bold"
+                  className="w-full bg-ink-50 border border-ink-200 px-4 py-3 rounded-xl focus:ring-2 focus:ring-primary-500 outline-none font-bold"
                 >
                   <option value="">-- Pilih Ukuran Almamater --</option>
                   <option value="S">Ukuran S</option>
@@ -240,7 +240,7 @@ export default function SeragamPage() {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-primary-700 text-white rounded-3xl font-black text-sm shadow-lg shadow-primary-200 hover:bg-primary-800 disabled:opacity-50 transition-all cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-primary-700 text-white rounded-xl font-black text-sm shadow-lg shadow-primary-200 hover:bg-primary-800 disabled:opacity-50 transition-all cursor-pointer"
                 >
                   {saving ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5" />}
                   {saving ? "Menyimpan..." : "Simpan Ukuran Seragam"}
@@ -249,7 +249,7 @@ export default function SeragamPage() {
             </form>
           </div>
         ) : (
-          <div className="bg-white p-6 rounded-3xl shadow-xl shadow-emerald-900/20 border border-ink-100 flex flex-col justify-between">
+          <div className="bg-white p-6 rounded-xl shadow-lg shadow-emerald-900/20 border border-ink-100 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <span className="flex h-2.5 w-2.5 relative">
@@ -270,9 +270,9 @@ export default function SeragamPage() {
 
               <div className="space-y-4">
                 {/* Item 1: Baju */}
-                <div className="flex items-center justify-between p-4 bg-ink-50 border border-ink-100 rounded-3xl">
+                <div className="flex items-center justify-between p-4 bg-ink-50 border border-ink-100 rounded-xl">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-primary-50 text-primary-700 rounded-3xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 bg-primary-50 text-primary-700 rounded-xl flex items-center justify-center flex-shrink-0">
                       <Shirt className="w-5 h-5" />
                     </div>
                     <div>
@@ -280,15 +280,15 @@ export default function SeragamPage() {
                       <p className="text-sm font-bold text-ink-800">Santri / Siswa</p>
                     </div>
                   </div>
-                  <div className="px-4 py-2 bg-white border border-ink-200 text-ink-950 font-black text-lg rounded-3xl min-w-16 text-center shadow-xl shadow-emerald-900/20">
+                  <div className="px-4 py-2 bg-white border border-ink-200 text-ink-950 font-black text-lg rounded-xl min-w-16 text-center shadow-lg shadow-emerald-900/20">
                     {formData.ukuran_seragam_baju}
                   </div>
                 </div>
 
                 {/* Item 2: Celana */}
-                <div className="flex items-center justify-between p-4 bg-ink-50 border border-ink-100 rounded-3xl">
+                <div className="flex items-center justify-between p-4 bg-ink-50 border border-ink-100 rounded-xl">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-primary-50 text-primary-700 rounded-3xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 bg-primary-50 text-primary-700 rounded-xl flex items-center justify-center flex-shrink-0">
                       <Ruler className="w-5 h-5" />
                     </div>
                     <div>
@@ -296,15 +296,15 @@ export default function SeragamPage() {
                       <p className="text-sm font-bold text-ink-800">Santri / Siswa</p>
                     </div>
                   </div>
-                  <div className="px-4 py-2 bg-white border border-ink-200 text-ink-950 font-black text-lg rounded-3xl min-w-16 text-center shadow-xl shadow-emerald-900/20">
+                  <div className="px-4 py-2 bg-white border border-ink-200 text-ink-950 font-black text-lg rounded-xl min-w-16 text-center shadow-lg shadow-emerald-900/20">
                     {formData.ukuran_seragam_celana}
                   </div>
                 </div>
 
                 {/* Item 3: Almamater */}
-                <div className="flex items-center justify-between p-4 bg-ink-50 border border-ink-100 rounded-3xl">
+                <div className="flex items-center justify-between p-4 bg-ink-50 border border-ink-100 rounded-xl">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-primary-50 text-primary-700 rounded-3xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 bg-primary-50 text-primary-700 rounded-xl flex items-center justify-center flex-shrink-0">
                       <Shirt className="w-5 h-5 animate-pulse" />
                     </div>
                     <div>
@@ -312,7 +312,7 @@ export default function SeragamPage() {
                       <p className="text-sm font-bold text-ink-800">Santri / Siswa</p>
                     </div>
                   </div>
-                  <div className="px-4 py-2 bg-white border border-ink-200 text-ink-950 font-black text-lg rounded-3xl min-w-16 text-center shadow-xl shadow-emerald-900/20">
+                  <div className="px-4 py-2 bg-white border border-ink-200 text-ink-950 font-black text-lg rounded-xl min-w-16 text-center shadow-lg shadow-emerald-900/20">
                     {formData.ukuran_seragam_almamater}
                   </div>
                 </div>
@@ -325,7 +325,7 @@ export default function SeragamPage() {
                   setIsEditing(true);
                   setMessage({ type: "", text: "" });
                 }}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-white border border-primary-600 text-primary-700 rounded-3xl font-black text-sm hover:bg-primary-50 active:scale-[0.98] transition-all shadow-xl shadow-emerald-900/20 cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-white border border-primary-600 text-primary-700 rounded-xl font-black text-sm hover:bg-primary-50 active:scale-[0.98] transition-all shadow-lg shadow-emerald-900/20 cursor-pointer"
               >
                 <Edit className="w-4 h-4" />
                 Ubah Pilihan Ukuran
@@ -335,14 +335,14 @@ export default function SeragamPage() {
         )}
 
         {/* Kolom Kanan: Panduan Ukuran */}
-        <div className="bg-ink-50 p-6 rounded-3xl border border-ink-200 space-y-6">
+        <div className="bg-ink-50 p-6 rounded-xl border border-ink-200 space-y-6">
           <h2 className="text-sm font-black text-ink-950 uppercase tracking-widest border-b border-ink-200 pb-2">
             Panduan Ukuran (Size Chart)
           </h2>
           
           <div className="space-y-4 text-sm font-medium text-ink-700">
             {/* S */}
-            <div className="bg-white p-4 rounded-3xl shadow-xl shadow-emerald-900/20">
+            <div className="bg-white p-4 rounded-xl shadow-lg shadow-emerald-900/20">
               <h3 className="font-black text-primary-700 mb-2">Ukuran S</h3>
               <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                 <div>
@@ -369,7 +369,7 @@ export default function SeragamPage() {
             </div>
 
             {/* M */}
-            <div className="bg-white p-4 rounded-3xl shadow-xl shadow-emerald-900/20">
+            <div className="bg-white p-4 rounded-xl shadow-lg shadow-emerald-900/20">
               <h3 className="font-black text-primary-700 mb-2">Ukuran M</h3>
               <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                 <div>
@@ -396,7 +396,7 @@ export default function SeragamPage() {
             </div>
 
             {/* L */}
-            <div className="bg-white p-4 rounded-3xl shadow-xl shadow-emerald-900/20">
+            <div className="bg-white p-4 rounded-xl shadow-lg shadow-emerald-900/20">
               <h3 className="font-black text-primary-700 mb-2">Ukuran L</h3>
               <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                 <div>
@@ -423,7 +423,7 @@ export default function SeragamPage() {
             </div>
 
             {/* XL */}
-            <div className="bg-white p-4 rounded-3xl shadow-xl shadow-emerald-900/20">
+            <div className="bg-white p-4 rounded-xl shadow-lg shadow-emerald-900/20">
               <h3 className="font-black text-primary-700 mb-2">Ukuran XL</h3>
               <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                 <div>
@@ -450,7 +450,7 @@ export default function SeragamPage() {
             </div>
 
             {/* XXL */}
-            <div className="bg-white p-4 rounded-3xl shadow-xl shadow-emerald-900/20">
+            <div className="bg-white p-4 rounded-xl shadow-lg shadow-emerald-900/20">
               <h3 className="font-black text-primary-700 mb-2">Ukuran XXL</h3>
               <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                 <div>
@@ -477,7 +477,7 @@ export default function SeragamPage() {
             </div>
 
             {/* 3XL */}
-            <div className="bg-white p-4 rounded-3xl shadow-xl shadow-emerald-900/20">
+            <div className="bg-white p-4 rounded-xl shadow-lg shadow-emerald-900/20">
               <h3 className="font-black text-primary-700 mb-2">Ukuran 3XL</h3>
               <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                 <div>

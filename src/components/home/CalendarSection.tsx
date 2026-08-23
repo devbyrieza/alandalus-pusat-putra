@@ -96,7 +96,7 @@ export default function CalendarSection() {
                       {/* Number Bubble */}
                       <div
                         className={[
-                          "w-11 h-11 rounded-2xl flex items-center justify-center relative z-10 shrink-0 shadow-xs",
+                          "w-11 h-11 rounded-xl flex items-center justify-center relative z-10 shrink-0 shadow-xs",
                           "transition-transform duration-400 group-hover:scale-110",
                           colors.number,
                         ].join(" ")}
@@ -107,7 +107,7 @@ export default function CalendarSection() {
                       </div>
 
                       {/* Content Card */}
-                      <div className="bg-white p-6 md:p-7 rounded-2xl border border-secondary-100 shadow-premium-sm hover:shadow-premium-md hover:border-primary-100 transition-all duration-400 flex-grow relative overflow-hidden">
+                      <div className="bg-white p-6 md:p-7 rounded-xl border border-secondary-100 shadow-premium-sm hover:shadow-premium-md hover:border-primary-100 transition-all duration-400 flex-grow relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-primary-50/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
 
                         <div className="relative z-10">
@@ -150,7 +150,7 @@ export default function CalendarSection() {
               <div className="absolute -top-24 -left-24 w-64 h-64 bg-primary-50/80 rounded-full blur-[60px] pointer-events-none transition-transform duration-700 group-hover:scale-110" />
 
               <div className="relative z-10 flex flex-col items-center">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-secondary-50 rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-secondary-100 group-hover:scale-105 group-hover:border-primary-100 transition-all duration-400">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-secondary-50 rounded-xl flex items-center justify-center mb-6 shadow-sm border border-secondary-100 group-hover:scale-105 group-hover:border-primary-100 transition-all duration-400">
                   <Clock
                     className="w-8 h-8 sm:w-10 sm:h-10 text-primary-600"
                     strokeWidth={1.5}

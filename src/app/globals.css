@@ -297,28 +297,33 @@
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @layer base {
   :root {
-  /* Dashboard Gold Standard Vars */
-  --primary:        #064e3b;
-  --primary-dark:   #022c22;
-  --primary-light:  #059669;
-  --secondary:      #fbbf24;
-  --secondary-light: #fcd34d;
-  --secondary-pale:     #fffbeb;
-  --bg:            #f8f7f4;
-  --bg-card:       #ffffff;
-  --text-main:     #1a1a1a;
-  --text-muted:    #6b7280;
-  --border:        #e5e2db;
-  --success:       #16a34a;
-  --warning:       #d97706;
-  --danger:        #dc2626;
-  --info:          #059669;
-  --radius:        14px;
-  --shadow-sm:     0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
-  --shadow-md:     0 4px 16px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
-  --shadow-lg:     0 12px 40px rgba(0,0,0,.12);
-  --font-sans:     'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-arabic:   'Amiri', serif;
+  /* TIER GOLD: Corporate Professional */
+  --primary:        #0f172a; /* Slate 900 - Corporate Navy */
+  --primary-dark:   #020617;
+  --primary-light:  #334155;
+  --secondary:      #d97706; /* Solid Professional Gold */
+  --secondary-light: #f59e0b;
+  --secondary-pale: #f8fafc;
+  --bg:             #f1f5f9; /* Slate 100 Background */
+  --bg-card:        #ffffff;
+  --text-main:      #0f172a;
+  --text-muted:     #475569;
+  --border:         #cbd5e1;
+  --success:        #16a34a;
+  --warning:        #d97706;
+  --danger:         #dc2626;
+  --info:           #2563eb;
+  
+  /* GEOMETRY: Standard Corporate Rounded */
+  --radius:         12px;
+  
+  /* ELEVATION: Soft Apple-like Shadows (No Glow) */
+  --shadow-sm:      0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:      0 4px 12px rgba(0,0,0,.06), 0 2px 4px rgba(0,0,0,.04);
+  --shadow-lg:      0 10px 32px rgba(15,23,42,.08);
+  
+  --font-sans:      'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-arabic:    'Amiri', serif;
 
     color-scheme: light;
   }

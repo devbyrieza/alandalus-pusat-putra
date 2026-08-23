@@ -26,8 +26,7 @@ import {
   FileText,
   Eye,
   Share2,
-  Sparkles,
-} from "lucide-react";
+  Sparkles } from "lucide-react";
 
 // Removed basic xlsx imports in favor of professional utility
 
@@ -86,8 +85,7 @@ export default function ExaminerDashboard() {
     teman: "",
     rokok: "",
     pornografi: "",
-    hobi: "",
-  });
+    hobi: "" });
   const [woForm, setWoForm] = useState({
     q1: "",
     q2: "",
@@ -98,8 +96,7 @@ export default function ExaminerDashboard() {
     q7: "",
     q8: "",
     q9: "",
-    q10: "",
-  });
+    q10: "" });
   const [catatan, setCatatan] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isBroadcasting, setIsBroadcasting] = useState(false);
@@ -164,8 +161,7 @@ export default function ExaminerDashboard() {
         setQueueStats({
           pending: statsJson.stats.queue.pending || 0,
           sent: statsJson.stats.queue.sent || 0,
-          failed: statsJson.stats.queue.failed || 0,
-        });
+          failed: statsJson.stats.queue.failed || 0 });
       }
     } catch (error) {
       console.error(error);
@@ -188,8 +184,7 @@ export default function ExaminerDashboard() {
       teman: "",
       rokok: "",
       pornografi: "",
-      hobi: "",
-    });
+      hobi: "" });
     setWoForm({
       q1: "",
       q2: "",
@@ -200,8 +195,7 @@ export default function ExaminerDashboard() {
       q7: "",
       q8: "",
       q9: "",
-      q10: "",
-    });
+      q10: "" });
     setCatatan("");
     setSelectedExaminerId("");
   };
@@ -249,14 +243,12 @@ export default function ExaminerDashboard() {
         type: inputType,
         score: finalScore,
         details: { catatan },
-        examiner_id: isAdminSuper ? selectedExaminerId : (currentUserId || "mock-examiner-id"),
-      };
+        examiner_id: isAdminSuper ? selectedExaminerId : (currentUserId || "mock-examiner-id") };
 
       const res = await fetch("/api/penilaian/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+        body: JSON.stringify(payload) });
 
       if (!res.ok) throw new Error("Failed to submit");
 
@@ -310,8 +302,7 @@ export default function ExaminerDashboard() {
       Swal.fire({
         title: "Antrean Diproses",
         text: `${processedInLoop} pesan telah dikirim ke Wablas.`,
-        icon: "success",
-      });
+        icon: "success" });
       fetchStudents();
     } catch (error) {
       console.error(error);
@@ -362,9 +353,7 @@ export default function ExaminerDashboard() {
         body: JSON.stringify({
           pendaftar_id: assignStudent.id,
           type: assignType,
-          examiner_id: assignExaminerId,
-        }),
-      });
+          examiner_id: assignExaminerId }) });
 
       if (res.ok) {
         Swal.fire("Berhasil", "Penugasan penguji berhasil diperbarui", "success");
@@ -439,8 +428,7 @@ export default function ExaminerDashboard() {
           }
         });
         return selected;
-      },
-    });
+      } });
 
     if (result.isConfirmed) {
       const skipped_stages = result.value || [];
@@ -450,17 +438,14 @@ export default function ExaminerDashboard() {
           allowOutsideClick: false,
           didOpen: () => {
             Swal.showLoading();
-          },
-        });
+          } });
 
         const res = await fetch("/api/penilaian/skip", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             pendaftar_id: student.id,
-            skipped_stages,
-          }),
-        });
+            skipped_stages }) });
 
         if (!res.ok) {
           const errorJson = await res.json();
@@ -470,8 +455,7 @@ export default function ExaminerDashboard() {
         Swal.fire({
           title: "Sukses!",
           text: "Konfigurasi bypass berhasil disimpan dan nilai telah dikalkulasi ulang.",
-          icon: "success",
-        });
+          icon: "success" });
 
         fetchStudents();
       } catch (err: any) {
@@ -567,8 +551,7 @@ export default function ExaminerDashboard() {
         title: "REKAPITULASI HASIL SELEKSI PENDAFTAR (SEMUA JENJANG)",
         subTitle: `Tanggal Ekspor: ${new Date().toLocaleDateString("id-ID")}`,
         header,
-        data: students.map(formatStudentForExport),
-      },
+        data: students.map(formatStudentForExport) },
     ];
 
     // Add sheets for each Jenjang
@@ -580,14 +563,12 @@ export default function ExaminerDashboard() {
           title: `REKAPITULASI HASIL SELEKSI - ${j}`,
           subTitle: `Jenjang: ${j} | Total: ${jenjangGroups[j].length} Peserta`,
           header,
-          data: jenjangGroups[j].map(formatStudentForExport),
-        });
+          data: jenjangGroups[j].map(formatStudentForExport) });
       });
 
     await exportToExcelProfessional({
       fileName: `Rekap_Nilai_PPDB_Professional_${new Date().toISOString().split("T")[0]}`,
-      sheets,
-    });
+      sheets });
   };
 
   return (
@@ -749,8 +730,7 @@ export default function ExaminerDashboard() {
                   onClick={async () => {
                     try {
                       const res = await fetch("/api/penilaian/recalculate", {
-                        method: "POST",
-                      });
+                        method: "POST" });
                       if (!res.ok) throw new Error("Failed");
                       const result = await res.json();
                       Swal.fire(
@@ -886,8 +866,7 @@ export default function ExaminerDashboard() {
                               DITOLAK: "bg-red-100 text-red-700 border-red-200",
                               "BELUM LENGKAP":
                                 "bg-orange-100 text-orange-700 border-orange-200",
-                              pending: "bg-ink-100 text-ink-500 border-ink-200",
-                            };
+                              pending: "bg-ink-100 text-ink-500 border-ink-200" };
                             const color =
                               colors[examStatus || "pending"] ||
                               "bg-ink-100 text-ink-500 border-ink-200";
@@ -1243,8 +1222,7 @@ export default function ExaminerDashboard() {
                         DITOLAK: "bg-red-100 text-red-700 border-red-200",
                         "BELUM LENGKAP":
                           "bg-orange-100 text-orange-700 border-orange-200",
-                        pending: "bg-ink-100 text-ink-500 border-ink-200",
-                      };
+                        pending: "bg-ink-100 text-ink-500 border-ink-200" };
                       const color =
                         colors[examStatus || "pending"] ||
                         "bg-ink-100 text-ink-500 border-ink-200";
@@ -1263,33 +1241,27 @@ export default function ExaminerDashboard() {
                         {
                           label: "Akademik",
                           value: s.nilai_ujian?.score_akademik,
-                          stageKey: "AKADEMIK",
-                        },
+                          stageKey: "AKADEMIK" },
                         {
                           label: "Kepribadian",
                           value: s.nilai_ujian?.score_kepribadian,
-                          stageKey: "KEPRIBADIAN",
-                        },
+                          stageKey: "KEPRIBADIAN" },
                         {
                           label: "Kesiapan",
                           value: s.nilai_ujian?.score_kesiapan,
-                          stageKey: "KESIAPAN",
-                        },
+                          stageKey: "KESIAPAN" },
                         {
                           label: "Al-Qur'an",
                           value: s.nilai_ujian?.score_quran,
-                          stageKey: "QURAN",
-                        },
+                          stageKey: "QURAN" },
                         {
                           label: "W. Santri",
                           value: s.nilai_ujian?.nilai_wawancara_santri,
-                          stageKey: "WAWANCARA_SANTRI",
-                        },
+                          stageKey: "WAWANCARA_SANTRI" },
                         {
                           label: "W. Orang Tua",
                           value: s.nilai_ujian?.nilai_wawancara_ortu,
-                          stageKey: "WAWANCARA_ORTU",
-                        },
+                          stageKey: "WAWANCARA_ORTU" },
                       ].map((item) => (
                         <div
                           key={item.label}
@@ -1509,8 +1481,7 @@ export default function ExaminerDashboard() {
                         showCancelButton: true,
                         confirmButtonColor: "#2563eb",
                         confirmButtonText: "Ya, Siarkan!",
-                        cancelButtonText: "Batal",
-                      });
+                        cancelButtonText: "Batal" });
                       if (result.isConfirmed) {
                         try {
                           setIsBroadcasting(true);
@@ -1519,8 +1490,7 @@ export default function ExaminerDashboard() {
                             {
                               method: "POST",
                               headers: { "Content-Type": "application/json" },
-                              body: JSON.stringify({ reset_flags: false }),
-                            },
+                              body: JSON.stringify({ reset_flags: false }) },
                           );
                           if (!res.ok) throw new Error("Failed");
                           const data = await res.json();
@@ -1754,8 +1724,7 @@ export default function ExaminerDashboard() {
                           onChange={(e) =>
                             setQuranForm({
                               ...quranForm,
-                              tajwid: e.target.value,
-                            })
+                              tajwid: e.target.value })
                           }
                           placeholder="0-100"
                           className="w-full bg-ink-50 border border-ink-100 rounded-xl px-4 py-3 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
@@ -1771,8 +1740,7 @@ export default function ExaminerDashboard() {
                           onChange={(e) =>
                             setQuranForm({
                               ...quranForm,
-                              kelancaran: e.target.value,
-                            })
+                              kelancaran: e.target.value })
                           }
                           placeholder="0-100"
                           className="w-full bg-ink-50 border border-ink-100 rounded-xl px-4 py-3 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
@@ -1830,8 +1798,7 @@ export default function ExaminerDashboard() {
                             onChange={(e) =>
                               setWoForm({
                                 ...woForm,
-                                [`q${idx + 1}`]: e.target.value,
-                              })
+                                [`q${idx + 1}`]: e.target.value })
                             }
                             className="w-full bg-ink-50 border border-ink-100 rounded-xl px-3 py-2 text-sm font-bold text-ink-900 focus:ring-2 focus:ring-primary-600/10 outline-none"
                           >

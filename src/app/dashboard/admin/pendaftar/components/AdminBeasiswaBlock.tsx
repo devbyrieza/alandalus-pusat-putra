@@ -19,8 +19,7 @@ import {
   File,
   RefreshCw,
   FolderOpen,
-  AlertTriangle,
-} from "lucide-react";
+  AlertTriangle } from "lucide-react";
 import Swal from "sweetalert2";
 
 // --------------------------------------------------------------------------
@@ -77,43 +76,37 @@ const BERKAS_CONFIG: BerkasConfigItem[] = [
     label: "SKTM (Surat Keterangan Tidak Mampu)",
     desc: "Dari RT/RW atau Kelurahan setempat.",
     requiredFor: "BOTH",
-    required: true,
-  },
+    required: true },
   {
     fieldKey: "file_slip_gaji_path",
     label: "Surat Keterangan / Bukti Penghasilan",
     desc: "Slip gaji atau surat keterangan penghasilan Orangtua (Ayah & Ibu).",
     requiredFor: "BEASISWA",
-    required: true,
-  },
+    required: true },
   {
     fieldKey: "file_ktp_path",
     label: "KTP Orangtua Ayah",
     desc: "Scan/foto KTP Ayah yang jelas.",
     requiredFor: "BEASISWA",
-    required: true,
-  },
+    required: true },
   {
     fieldKey: "file_ktp_ibu_path",
     label: "KTP Orangtua Ibu",
     desc: "Scan/foto KTP Ibu yang jelas.",
     requiredFor: "BEASISWA",
-    required: true,
-  },
+    required: true },
   {
     fieldKey: "file_permohonan_path",
     label: "Surat Permohonan Keringanan Biaya",
     desc: "Menyebutkan jenis biaya, jumlah sanggup bayar, dan/atau potongan yang diminta.",
     requiredFor: "KERINGANAN",
-    required: true,
-  },
+    required: true },
   {
     fieldKey: "file_prestasi_path",
     label: "Bukti Memiliki Hafalan Al-Qur'an / Ranking 3 Besar",
     desc: "Sertifikat hafalan Qur'an, piagam lomba, atau sertifikat tahfizh.",
     requiredFor: "BEASISWA",
-    required: true,
-  },
+    required: true },
 ];
 
 // --------------------------------------------------------------------------
@@ -153,8 +146,7 @@ function getBerkasForJenis(jenisPengajuan?: string | null): BerkasConfigItem[] {
 function AdminBerkasSection({
   pendaftarId,
   pengajuan,
-  onRefresh,
-}: {
+  onRefresh }: {
   pendaftarId: string;
   pengajuan: PengajuanBerkas;
   onRefresh: () => void;
@@ -178,8 +170,7 @@ function AdminBerkasSection({
       showCancelButton: true,
       confirmButtonText: "Ya, Upload",
       cancelButtonText: "Batal",
-      confirmButtonColor: "#16a34a",
-    });
+      confirmButtonColor: "#16a34a" });
 
     if (!confirmed.isConfirmed) return;
 
@@ -192,8 +183,7 @@ function AdminBerkasSection({
 
       const res = await fetch("/api/admin/beasiswa/upload", {
         method: "POST",
-        body: formData,
-      });
+        body: formData });
       const result = await res.json();
       if (!res.ok || !result.success) throw new Error(result.error || "Gagal upload");
 
@@ -202,8 +192,7 @@ function AdminBerkasSection({
         text: result.message,
         icon: "success",
         timer: 2000,
-        showConfirmButton: false,
-      });
+        showConfirmButton: false });
       onRefresh();
     } catch (err: any) {
       Swal.fire("Gagal", err.message || "Terjadi kesalahan saat upload", "error");
@@ -225,8 +214,7 @@ function AdminBerkasSection({
       showCancelButton: true,
       confirmButtonColor: "#ef4444",
       cancelButtonText: "Batal",
-      confirmButtonText: "Ya, Hapus",
-    });
+      confirmButtonText: "Ya, Hapus" });
 
     if (!confirmed.isConfirmed) return;
 
@@ -235,8 +223,7 @@ function AdminBerkasSection({
       const res = await fetch("/api/admin/beasiswa/upload", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pendaftar_id: pendaftarId, field_key: fieldKey }),
-      });
+        body: JSON.stringify({ pendaftar_id: pendaftarId, field_key: fieldKey }) });
       const result = await res.json();
       if (!res.ok || !result.success) throw new Error(result.error || "Gagal hapus");
 
@@ -245,8 +232,7 @@ function AdminBerkasSection({
         text: result.message,
         icon: "success",
         timer: 2000,
-        showConfirmButton: false,
-      });
+        showConfirmButton: false });
       onRefresh();
     } catch (err: any) {
       Swal.fire("Gagal", err.message || "Terjadi kesalahan saat hapus", "error");
@@ -411,8 +397,7 @@ function AdminBerkasSection({
 export default function AdminBeasiswaBlock({
   pendaftarId,
   dataLengkap,
-  onUpdate,
-}: {
+  onUpdate }: {
   pendaftarId: string;
   dataLengkap?: any;
   onUpdate?: () => void;
@@ -511,8 +496,7 @@ export default function AdminBeasiswaBlock({
       const res = await fetch("/api/admin/pendaftar/keringanan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pendaftar_id: pendaftarId, ...payload }),
-      });
+        body: JSON.stringify({ pendaftar_id: pendaftarId, ...payload }) });
       const result = await res.json();
       if (!res.ok || !result.success) throw new Error(result.error || "Gagal menyimpan");
       Swal.fire("Berhasil!", "Bantuan biaya berhasil disimpan.", "success");
@@ -563,8 +547,7 @@ export default function AdminBeasiswaBlock({
       cakupan,
       potongan_uang_pangkal: pUP,
       potongan_spp: pSPP,
-      catatan: catatan || null,
-    });
+      catatan: catatan || null });
   };
 
   const handleDelete = async () => {
@@ -575,15 +558,13 @@ export default function AdminBeasiswaBlock({
       showCancelButton: true,
       confirmButtonText: "Ya, Hapus!",
       cancelButtonText: "Batal",
-      confirmButtonColor: "#dc2626",
-    });
+      confirmButtonColor: "#dc2626" });
     if (!res.isConfirmed) return;
 
     setSubmitting(true);
     try {
       const resp = await fetch(`/api/admin/pendaftar/keringanan?pendaftar_id=${pendaftarId}`, {
-        method: "DELETE",
-      });
+        method: "DELETE" });
       const data = await resp.json();
       if (!resp.ok || !data.success) throw new Error(data.error || "Gagal menghapus data");
 

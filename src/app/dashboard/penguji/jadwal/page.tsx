@@ -22,8 +22,7 @@ import {
   Square,
   Layers,
   Sparkles,
-  Check,
-} from "lucide-react";
+  Check } from "lucide-react";
 import Swal from "sweetalert2";
 
 // --- Types ---
@@ -110,8 +109,7 @@ const ROLE_TO_JADWAL_TYPES: Record<string, string[]> = {
     "Seleksi Wawancara Calon Santri",
     "Seleksi Wawancara Orang Tua",
     "Seleksi Wawancara Calon Orangtua/Wali Santri",
-  ],
-};
+  ] };
 
 // Auto-map role to session title (for specific examiner roles)
 const ROLE_TO_SESSION_TITLE: Record<string, string> = {
@@ -119,8 +117,7 @@ const ROLE_TO_SESSION_TITLE: Record<string, string> = {
   penguji_hafalan: "Tes Hafalan Al-Qur'an",
   penguji_bahasa_arab: "Tes Lisan Bahasa Arab",
   pewawancara_calsan: "Seleksi Wawancara Calon Santri",
-  pewawancara_cawalsan: "Seleksi Wawancara Orang Tua",
-};
+  pewawancara_cawalsan: "Seleksi Wawancara Orang Tua" };
 
 // Roles that can choose any session type (need dropdown)
 const ADMIN_ROLES = ["admin", "admin_super"];
@@ -251,8 +248,7 @@ export default function JadwalPengujiPage() {
     end_time: "09:00",
     quota: 1,
     location: "", // Default empty, falls back to "Online" on submit if empty
-    notes: "",
-  });
+    notes: "" });
   const [submittingSlot, setSubmittingSlot] = useState(false);
 
   // Edit Modal State
@@ -263,8 +259,7 @@ export default function JadwalPengujiPage() {
     start_time: "08:00",
     end_time: "09:00",
     location: "",
-    notes: "",
-  });
+    notes: "" });
   const [submittingEdit, setSubmittingEdit] = useState(false);
 
   // Multi-Select / Bulk Edit State
@@ -283,8 +278,7 @@ export default function JadwalPengujiPage() {
     notes: "",
     changeTime: false,
     changeLocation: false,
-    changeNotes: false,
-  });
+    changeNotes: false });
   const [submittingBulkEdit, setSubmittingBulkEdit] = useState(false);
 
   // Bulk Create Modal State
@@ -297,8 +291,7 @@ export default function JadwalPengujiPage() {
     endDate: "",
     selectedDays: [] as number[], // 0=Sun, 1=Mon, etc.
     daySlots: {} as Record<number, { start: string; end: string }[]>,
-    notes: "",
-  });
+    notes: "" });
 
   // Grouping Logic
   const displaySlots = useMemo(() => {
@@ -311,8 +304,7 @@ export default function JadwalPengujiPage() {
           ...slot,
           ids: [slot.id],
           totalBookings: slot._count?.bookings || 0,
-          totalQuota: slot.quota,
-        };
+          totalQuota: slot.quota };
       } else {
         groups[key].ids.push(slot.id);
         groups[key].totalBookings += slot._count?.bookings || 0;
@@ -422,8 +414,7 @@ export default function JadwalPengujiPage() {
       setSlotForm((prev) => ({
         ...prev,
         title: autoTitle,
-        end_time: calculateEndTime(prev.start_time, autoTitle),
-      }));
+        end_time: calculateEndTime(prev.start_time, autoTitle) }));
       setBulkForm((prev) => ({ ...prev, title: autoTitle }));
     }
   }, [activeRole]);
@@ -433,8 +424,7 @@ export default function JadwalPengujiPage() {
     if (slotForm.title) {
       setSlotForm((prev) => ({
         ...prev,
-        end_time: calculateEndTime(prev.start_time, prev.title),
-      }));
+        end_time: calculateEndTime(prev.start_time, prev.title) }));
     }
   }, [slotForm.title]);
 
@@ -446,8 +436,7 @@ export default function JadwalPengujiPage() {
           const dayId = Number(day);
           newDaySlots[dayId] = newDaySlots[dayId].map((slot) => ({
             ...slot,
-            end: calculateEndTime(slot.start, prev.title),
-          }));
+            end: calculateEndTime(slot.start, prev.title) }));
         });
         return { ...prev, daySlots: newDaySlots };
       });
@@ -465,11 +454,8 @@ export default function JadwalPengujiPage() {
             [activeDay]: [
               {
                 start: "08:00",
-                end: calculateEndTime("08:00", prev.title),
-              },
-            ],
-          },
-        }));
+                end: calculateEndTime("08:00", prev.title) },
+            ] } }));
       }
     }
   }, [isBulkModalOpen, activeDay, activeRole]);
@@ -494,16 +480,14 @@ export default function JadwalPengujiPage() {
       if (diffMinutes <= 0) {
         setMessage({
           type: "error",
-          text: "Jam selesai harus lebih besar dari jam mulai.",
-        });
+          text: "Jam selesai harus lebih besar dari jam mulai." });
         setSubmittingSlot(false);
         return;
       }
       if (diffMinutes > 60) {
         setMessage({
           type: "error",
-          text: "Durasi maksimal 1 jam (60 menit).",
-        });
+          text: "Durasi maksimal 1 jam (60 menit)." });
         setSubmittingSlot(false);
         return;
       }
@@ -514,8 +498,7 @@ export default function JadwalPengujiPage() {
         end_time: endDateTime.toISOString(),
         quota: 1, // Fixed quota to 1 as per requirement (Private/1-on-1)
         location: "Online",
-        notes: slotForm.notes,
-      };
+        notes: slotForm.notes };
 
       if (["admin_super", "admin"].includes(activeRole) && selectedCreatorId) {
         payload.creator_id = selectedCreatorId;
@@ -524,8 +507,7 @@ export default function JadwalPengujiPage() {
       const response = await fetch("/api/exam-sessions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+        body: JSON.stringify(payload) });
 
       const result = await response.json();
 
@@ -570,9 +552,7 @@ export default function JadwalPengujiPage() {
         body: JSON.stringify({
           ...bulkForm,
           daySlots: daySlotsToSend,
-          creator_id: (["admin_super", "admin"].includes(activeRole) && selectedCreatorId) ? selectedCreatorId : undefined,
-        }),
-      });
+          creator_id: (["admin_super", "admin"].includes(activeRole) && selectedCreatorId) ? selectedCreatorId : undefined }) });
       const result = await res.json();
       if (res.ok) {
         Swal.fire("Berhasil!", result.message, "success");
@@ -610,11 +590,8 @@ export default function JadwalPengujiPage() {
           ...currentSlots,
           {
             start: newStart,
-            end: calculateEndTime(newStart, bulkForm.title),
-          },
-        ],
-      },
-    });
+            end: calculateEndTime(newStart, bulkForm.title) },
+        ] } });
   };
 
   const removeTimeSlot = (index: number) => {
@@ -626,9 +603,7 @@ export default function JadwalPengujiPage() {
       ...bulkForm,
       daySlots: {
         ...bulkForm.daySlots,
-        [activeDay]: newSlots,
-      },
-    });
+        [activeDay]: newSlots } });
   };
 
   const toggleDay = (day: number) => {
@@ -650,11 +625,8 @@ export default function JadwalPengujiPage() {
               : [
                   {
                     start: "08:00",
-                    end: calculateEndTime("08:00", prev.title),
-                  },
-                ],
-          },
-        }));
+                    end: calculateEndTime("08:00", prev.title) },
+                ] } }));
       } else {
         setBulkForm((prev) => ({ ...prev, selectedDays: newSelected }));
       }
@@ -691,8 +663,7 @@ export default function JadwalPengujiPage() {
       icon: "success",
       title: "Disalin ke semua hari terpilih",
       showConfirmButton: false,
-      timer: 1500,
-    });
+      timer: 1500 });
   };
 
   const handleOpenEdit = (slot: ExamSession) => {
@@ -712,8 +683,7 @@ export default function JadwalPengujiPage() {
       start_time: toLocalTime(start),
       end_time: toLocalTime(end),
       location: slot.location || "",
-      notes: slot.notes || "",
-    });
+      notes: slot.notes || "" });
     setIsEditModalOpen(true);
   };
 
@@ -731,8 +701,7 @@ export default function JadwalPengujiPage() {
       if (diffMinutes <= 0) {
         setMessage({
           type: "error",
-          text: "Jam selesai harus lebih besar dari jam mulai.",
-        });
+          text: "Jam selesai harus lebih besar dari jam mulai." });
         setSubmittingEdit(false);
         return;
       }
@@ -744,9 +713,7 @@ export default function JadwalPengujiPage() {
           start_time: startDateTime.toISOString(),
           end_time: endDateTime.toISOString(),
           location: editForm.location || "Online",
-          notes: editForm.notes,
-        }),
-      });
+          notes: editForm.notes }) });
       const result = await response.json();
       if (response.ok) {
         setMessage({ type: "success", text: "Sesi berhasil diperbarui!" });
@@ -860,8 +827,7 @@ export default function JadwalPengujiPage() {
       const payload: Record<string, any> = {
         title: slot.title,
         start_time: newStart.toISOString(),
-        end_time: newEnd.toISOString(),
-      };
+        end_time: newEnd.toISOString() };
       if (bulkEditForm.changeLocation)
         payload.location = bulkEditForm.location || "Online";
       if (bulkEditForm.changeNotes) payload.notes = bulkEditForm.notes;
@@ -870,8 +836,7 @@ export default function JadwalPengujiPage() {
         const res = await fetch(`/api/exam-sessions?id=${slotId}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
+          body: JSON.stringify(payload) });
         if (res.ok) successCount++;
         else errorCount++;
       } catch {
@@ -891,8 +856,7 @@ export default function JadwalPengujiPage() {
         icon: "success",
         title: `${successCount} sesi berhasil diperbarui!`,
         showConfirmButton: false,
-        timer: 2500,
-      });
+        timer: 2500 });
     } else {
       Swal.fire(
         "Selesai",
@@ -934,8 +898,7 @@ export default function JadwalPengujiPage() {
       confirmButtonColor: "#d33",
       cancelButtonColor: "#3085d6",
       confirmButtonText: "Ya, Hapus!",
-      cancelButtonText: "Batal",
-    });
+      cancelButtonText: "Batal" });
 
     if (!isConfirmed) return;
 
@@ -943,8 +906,7 @@ export default function JadwalPengujiPage() {
     Swal.fire({
       title: "Menghapus...",
       allowOutsideClick: false,
-      didOpen: () => Swal.showLoading(),
-    });
+      didOpen: () => Swal.showLoading() });
 
     let successCount = 0;
     let errorCount = 0;
@@ -952,8 +914,7 @@ export default function JadwalPengujiPage() {
     for (const slot of emptySlots) {
       try {
         const res = await fetch(`/api/exam-sessions?id=${slot.id}`, {
-          method: "DELETE",
-        });
+          method: "DELETE" });
         if (res.ok) successCount++;
         else errorCount++;
       } catch {
@@ -997,23 +958,20 @@ export default function JadwalPengujiPage() {
       confirmButtonColor: "#d33",
       cancelButtonColor: "#3085d6",
       confirmButtonText: "Ya, Hapus!",
-      cancelButtonText: "Batal",
-    });
+      cancelButtonText: "Batal" });
 
     if (!isConfirmed) return;
 
     Swal.fire({
       title: "Menghapus...",
       allowOutsideClick: false,
-      didOpen: () => Swal.showLoading(),
-    });
+      didOpen: () => Swal.showLoading() });
 
     let successCount = 0;
     for (const id of ids) {
       try {
         const response = await fetch(`/api/exam-sessions?id=${id}`, {
-          method: "DELETE",
-        });
+          method: "DELETE" });
         if (response.ok) successCount++;
       } catch (error: any) {}
     }
@@ -1034,8 +992,7 @@ export default function JadwalPengujiPage() {
       confirmButtonColor: "#059669", // green-600
       cancelButtonColor: "#94a3b8",
       confirmButtonText: "Ya, Tandai Selesai!",
-      cancelButtonText: "Batal",
-    });
+      cancelButtonText: "Batal" });
 
     if (!isConfirmed) return;
 
@@ -1043,8 +1000,7 @@ export default function JadwalPengujiPage() {
       const response = await fetch("/api/penguji/jadwal/complete", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ jadwal_id: jadwalId }),
-      });
+        body: JSON.stringify({ jadwal_id: jadwalId }) });
 
       const result = await response.json();
       if (response.ok) {
@@ -1053,8 +1009,7 @@ export default function JadwalPengujiPage() {
           Swal.fire({
             title: "Selesai!",
             text: "Semua rangkaian ujian santri ini telah SELESAI! Notifikasi telah dikirim.",
-            icon: "success",
-          });
+            icon: "success" });
         }
         fetchAssignments(); // Refresh data
       } else {
@@ -1080,8 +1035,7 @@ export default function JadwalPengujiPage() {
       confirmButtonColor: "#d33",
       cancelButtonColor: "#3085d6",
       confirmButtonText: "Ya, Batalkan!",
-      cancelButtonText: "Kembali",
-    });
+      cancelButtonText: "Kembali" });
 
     if (reason === undefined) return; // User cancelled the modal
 
@@ -1092,9 +1046,7 @@ export default function JadwalPengujiPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           jadwal_id: jadwalId,
-          alasan: reason || "Ustadz Berhalangan Hadir",
-        }),
-      });
+          alasan: reason || "Ustadz Berhalangan Hadir" }) });
 
       const result = await response.json();
       if (response.ok) {
@@ -1118,16 +1070,14 @@ export default function JadwalPengujiPage() {
         weekday: "long",
         day: "numeric",
         month: "long",
-        year: "numeric",
-      })
+        year: "numeric" })
       .replace("Minggu", "Ahad");
   };
 
   const formatTime = (dateString: string) => {
     return new Date(dateString).toLocaleTimeString("id-ID", {
       hour: "2-digit",
-      minute: "2-digit",
-    });
+      minute: "2-digit" });
   };
 
   const isToday = (dateString: string) => {
@@ -1690,8 +1640,7 @@ export default function JadwalPengujiPage() {
                     notes: "",
                     changeTime: false,
                     changeLocation: false,
-                    changeNotes: false,
-                  });
+                    changeNotes: false });
                   setIsBulkEditModalOpen(true);
                 }}
                 className="flex items-center gap-2 px-5 py-2.5 bg-amber-400 text-primary-950 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-amber-300 transition-all active:scale-95"
@@ -1751,8 +1700,7 @@ export default function JadwalPengujiPage() {
                     onChange={(e) =>
                       setBulkEditForm({
                         ...bulkEditForm,
-                        changeTime: e.target.checked,
-                      })
+                        changeTime: e.target.checked })
                     }
                     className="w-4 h-4 accent-primary-600"
                   />
@@ -1789,8 +1737,7 @@ export default function JadwalPengujiPage() {
                     onChange={(e) =>
                       setBulkEditForm({
                         ...bulkEditForm,
-                        changeLocation: e.target.checked,
-                      })
+                        changeLocation: e.target.checked })
                     }
                     className="w-4 h-4 accent-primary-600"
                   />
@@ -1807,8 +1754,7 @@ export default function JadwalPengujiPage() {
                     onChange={(e) =>
                       setBulkEditForm({
                         ...bulkEditForm,
-                        location: e.target.value,
-                      })
+                        location: e.target.value })
                     }
                   />
                 )}
@@ -1825,8 +1771,7 @@ export default function JadwalPengujiPage() {
                     onChange={(e) =>
                       setBulkEditForm({
                         ...bulkEditForm,
-                        changeNotes: e.target.checked,
-                      })
+                        changeNotes: e.target.checked })
                     }
                     className="w-4 h-4 accent-primary-600"
                   />
@@ -1843,8 +1788,7 @@ export default function JadwalPengujiPage() {
                     onChange={(e) =>
                       setBulkEditForm({
                         ...bulkEditForm,
-                        notes: e.target.value,
-                      })
+                        notes: e.target.value })
                     }
                   />
                 )}
@@ -1949,8 +1893,7 @@ export default function JadwalPengujiPage() {
                         end_time: calculateEndTime(
                           newStart,
                           editingSlot?.title || "",
-                        ),
-                      });
+                        ) });
                     }}
                   />
                 </div>
@@ -2172,8 +2115,7 @@ export default function JadwalPengujiPage() {
                       setSlotForm({
                         ...slotForm,
                         start_time: newStart,
-                        end_time: calculateEndTime(newStart, slotForm.title),
-                      });
+                        end_time: calculateEndTime(newStart, slotForm.title) });
                     }}
                   />
                 </div>

@@ -22,14 +22,12 @@ import SplashScreen from "@/components/ui/SplashScreen";
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-plus-jakarta",
-});
+  variable: "--font-plus-jakarta" });
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
-});
+  variable: "--font-inter" });
 
 // Playfair Display — font serif prestisius untuk hero headline
 const playfairDisplay = Playfair_Display({
@@ -37,8 +35,7 @@ const playfairDisplay = Playfair_Display({
   display: "swap",
   variable: "--font-playfair",
   style: ["normal", "italic"],
-  weight: ["700", "800", "900"],
-});
+  weight: ["700", "800", "900"] });
 
 // METADATA CONFIGURATION
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -47,8 +44,7 @@ export const metadata: Metadata = {
 
   title: {
     default: `${BRANDING.schoolName} | PPDB 2027/2028`,
-    template: `%s | ${BRANDING.schoolName}`,
-  },
+    template: `%s | ${BRANDING.schoolName}` },
   description: `Pendaftaran Santri Baru ${BRANDING.schoolName}. Pendidikan berbasis Al-Qur'an dan As-Sunnah sesuai pemahaman salafush shalih.`,
   keywords: [
     BRANDING.schoolName,
@@ -67,8 +63,7 @@ export const metadata: Metadata = {
   formatDetection: {
     email: false,
     address: false,
-    telephone: false,
-  },
+    telephone: false },
 
   robots: {
     index: true,
@@ -78,15 +73,12 @@ export const metadata: Metadata = {
       follow: true,
       "max-video-preview": -1,
       "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+      "max-snippet": -1 } },
 
   icons: {
     icon: BRANDING.faviconPath,
     apple: "/apple-touch-icon.png",
-    shortcut: BRANDING.faviconPath,
-  },
+    shortcut: BRANDING.faviconPath },
 
   openGraph: {
     title: `${BRANDING.schoolName} | PPDB 2027/2028`,
@@ -99,12 +91,10 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: BRANDING.schoolName,
-      },
+        alt: BRANDING.schoolName },
     ],
     locale: "id_ID",
-    type: "website",
-  },
+    type: "website" },
 
   twitter: {
     card: "summary_large_image",
@@ -112,30 +102,24 @@ export const metadata: Metadata = {
     description:
       "Pendidikan berbasis Al-Qur'an dan As-Sunnah sesuai pemahaman salafush shalih.",
     images: ["/twitter-image.jpg"],
-    creator: "@alandalus_ppdb",
-  },
+    creator: "@alandalus_ppdb" },
 
   verification: {
-    google: "your-google-verification-code",
-  },
+    google: "your-google-verification-code" },
 
   alternates: {
     canonical: BRANDING.websiteUrl,
     languages: {
-      "id-ID": BRANDING.websiteUrl,
-    },
-  },
+      "id-ID": BRANDING.websiteUrl } },
 
   category: "education",
-  classification: "Islamic Education",
-};
+  classification: "Islamic Education" };
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // ROOT LAYOUT COMPONENT
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 export default function RootLayout({
-  children,
-}: Readonly<{
+  children }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
@@ -160,8 +144,7 @@ export default function RootLayout({
             --brand-primary: ${BRANDING.primaryColor};
             --brand-secondary: ${BRANDING.secondaryColor};
           }
-        `,
-          }}
+        ` }}
         />
       </head>
       <body

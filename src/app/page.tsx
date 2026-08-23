@@ -30,8 +30,7 @@ import {
   FileText,
   CreditCard,
   BellRing,
-  ClipboardCheck,
-} from "lucide-react";
+  ClipboardCheck } from "lucide-react";
 import {
   FaMosque,
   FaQuran,
@@ -49,18 +48,15 @@ import {
   FaBullseye,
   FaHandshake,
   FaTrophy,
-  FaMapMarkerAlt,
-} from "react-icons/fa";
+  FaMapMarkerAlt } from "react-icons/fa";
 import {
   PiBookOpenTextBold,
   PiCertificateBold,
-  PiPlantBold,
-} from "react-icons/pi";
+  PiPlantBold } from "react-icons/pi";
 import {
   HiAcademicCap,
   HiOutlineBookOpen,
-  HiOutlineCpuChip,
-} from "react-icons/hi2";
+  HiOutlineCpuChip } from "react-icons/hi2";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -90,8 +86,7 @@ function StatCard({
   label,
   icon: Icon,
   started,
-  delay = 0,
-}: {
+  delay = 0 }: {
   value: number;
   suffix?: string;
   label: string;
@@ -210,8 +205,7 @@ export default function Home() {
     bg50:       IS_PUTRA ? "bg-primary-50"     : "bg-pink-50",
     bgDark:     IS_PUTRA ? "bg-primary-950"    : "bg-sky-950",
     bg950:      IS_PUTRA ? "bg-primary-950"    : "bg-sky-950",
-    ring:       IS_PUTRA ? "ring-primary-500/30" : "ring-sky-500/30",
-  };
+    ring:       IS_PUTRA ? "ring-primary-500/30" : "ring-sky-500/30" };
 
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
@@ -246,8 +240,7 @@ export default function Home() {
             className="absolute inset-0 opacity-[0.03]"
             style={{
               backgroundImage: `linear-gradient(#ffffff 1px,transparent 1px),linear-gradient(90deg,#ffffff 1px,transparent 1px)`,
-              backgroundSize: "60px 60px",
-            }}
+              backgroundSize: "60px 60px" }}
           />
         </div>
 

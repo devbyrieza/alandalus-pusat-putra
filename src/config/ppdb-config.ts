@@ -6,8 +6,7 @@ export const PPDB_CONFIG = {
     telepon: "+62 838-1151-5951",
     email: "info@pesantren-alandalus.com",
     emailPpdb: "ppdb@pesantren-alandalus.com",
-    website: "https://pesantren-alandalus-putra.com",
-  },
+    website: "https://pesantren-alandalus-putra.com" },
   colors: {
     primary: {
       50: "#ecfdf5",
@@ -19,22 +18,17 @@ export const PPDB_CONFIG = {
       600: "#059669",
       700: "#047857",
       800: "#065f46",
-      900: "#064e3b",
-    },
+      900: "#064e3b" },
     secondary: {
       50: "#fffbeb",
       100: "#fef3c7",
       200: "#fde68a",
       300: "#fcd34d",
-      400: "#fbbf24",
-    },
+      400: "#fbbf24" },
     accent: {
       gold: "#fbbf24",
       teal: "#14b8a6",
-      red: "#ef4444",
-    },
-  },
+      red: "#ef4444" } },
   tahunAjaran: "2027/2028",
-  angkatan: "Angkatan IX",
-};
+  angkatan: "Angkatan IX" };
 

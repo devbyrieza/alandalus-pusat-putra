@@ -14,8 +14,7 @@ import ScrollProgressBar from "@/components/ui/ScrollProgressBar";
 import MobileBottomCTA from "@/components/ui/MobileBottomCTA";
 
 export default function LayoutWrapper({
-  children,
-}: {
+  children }: {
   children: React.ReactNode;
 }) {
   const pathname = usePathname();

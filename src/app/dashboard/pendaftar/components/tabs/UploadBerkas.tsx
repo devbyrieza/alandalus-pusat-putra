@@ -22,8 +22,7 @@ import {
   Lock,
   ShieldCheck,
   Download,
-  MessageCircle,
-} from "lucide-react";
+  MessageCircle } from "lucide-react";
 
 // ============================================
 // TYPES
@@ -120,8 +119,7 @@ async function compressImage(file: File): Promise<File> {
             if (blob) {
               const compressedFile = new File([blob], file.name, {
                 type: "image/jpeg",
-                lastModified: Date.now(),
-              });
+                lastModified: Date.now() });
               // Hanya gunakan hasil kompresi jika ukurannya lebih kecil
               resolve(compressedFile.size < file.size ? compressedFile : file);
             } else {
@@ -206,8 +204,7 @@ function DokumenCard({
   onUpload,
   onPreview,
   onDownload,
-  isLocked,
-}: DokumenCardProps) {
+  isLocked }: DokumenCardProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -480,8 +477,7 @@ function DokumenCard({
                               month: "short",
                               year: "numeric",
                               hour: "2-digit",
-                              minute: "2-digit",
-                            },
+                              minute: "2-digit" },
                           )
                         : "-"}
                     </span>
@@ -519,8 +515,7 @@ function DokumenCard({
                         {
                           day: "numeric",
                           month: "long",
-                          year: "numeric",
-                        },
+                          year: "numeric" },
                       )}
                     </p>
                   </div>
@@ -642,16 +637,14 @@ export default function UploadBerkasTab() {
       confirmButtonColor: "#0066ff", // primary-600
       cancelButtonColor: "#ef4444", // red-500
       reverseButtons: true,
-      focusConfirm: false,
-    });
+      focusConfirm: false });
 
     if (!result.isConfirmed) return;
 
     try {
       setIsSubmitting(true);
       const response = await fetch("/api/pendaftar/submit-dokumen", {
-        method: "POST",
-      });
+        method: "POST" });
       const apiResult = await response.json();
 
       if (!apiResult.success) {
@@ -664,8 +657,7 @@ export default function UploadBerkasTab() {
         text: "Dokumen Anda sedang dalam antrian verifikasi admin. Halaman Seleksi akan terbuka jika sudah disetujui.",
         icon: "success",
         confirmButtonColor: "#0066ff",
-        confirmButtonText: "Dimengerti",
-      });
+        confirmButtonText: "Dimengerti" });
 
       // Refresh data untuk update isLocked
       await fetchDokumenStatus();
@@ -677,8 +669,7 @@ export default function UploadBerkasTab() {
         title: "Gagal Mengunci",
         text: err.message || "Terjadi kesalahan sistem",
         icon: "error",
-        confirmButtonColor: "#ef4444",
-      });
+        confirmButtonColor: "#ef4444" });
     } finally {
       setIsSubmitting(false);
     }
@@ -789,8 +780,7 @@ export default function UploadBerkasTab() {
       // Upload
       const response = await fetch("/api/upload/dokumen", {
         method: "POST",
-        body: formData,
-      });
+        body: formData });
 
       clearInterval(progressInterval);
       setUploadProgress((prev) => ({ ...prev, [key]: 100 }));
@@ -1036,8 +1026,7 @@ export default function UploadBerkasTab() {
                   <div
                     className="h-full bg-linear-to-r from-primary-500 to-primary-700 rounded-full transition-all duration-500 shadow-lg shadow-primary-500/20"
                     style={{
-                      width: `${summary.progress.required.percentage}%`,
-                    }}
+                      width: `${summary.progress.required.percentage}%` }}
                   />
                 </div>
               </div>

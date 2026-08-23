@@ -111,8 +111,7 @@ export default function KartuJajanPage() {
       const res = await fetch("/api/dompet/topup/midtrans/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nominal: topupAmount }),
-      });
+        body: JSON.stringify({ nominal: topupAmount }) });
 
       const data = await res.json();
 
@@ -136,8 +135,7 @@ export default function KartuJajanPage() {
         },
         onClose: function () {
           fetchDompet();
-        },
-      });
+        } });
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -151,8 +149,7 @@ export default function KartuJajanPage() {
       const res = await fetch("/api/dompet/limit", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ limit: newLimit }),
-      });
+        body: JSON.stringify({ limit: newLimit }) });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Gagal mengubah limit");
       

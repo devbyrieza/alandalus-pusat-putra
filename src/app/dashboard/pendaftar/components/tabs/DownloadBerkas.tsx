@@ -6,15 +6,13 @@ import {
   FileText,
   AlertCircle,
   CheckCircle,
-  Loader2,
-} from "lucide-react";
+  Loader2 } from "lucide-react";
 import {
   generateBuktiPendaftaran,
   generateKartuUjian,
   generateSuratKesehatan,
   generatePaktaIntegritas,
-  generateSuratPernyataan,
-} from "@/lib/utils/pdf-generator";
+  generateSuratPernyataan } from "@/lib/utils/pdf-generator";
 
 export default function DownloadBerkasTab() {
   const [data, setData] = useState<any>(null);
@@ -77,32 +75,27 @@ export default function DownloadBerkasTab() {
       name: "Bukti Pendaftaran",
       description: "Bukti sudah terdaftar di sistem",
       status: isDataCompleted ? "available" : "pending",
-      action: async () => await generateBuktiPendaftaran(data),
-    },
+      action: async () => await generateBuktiPendaftaran(data) },
     {
       name: "kartu seleksi",
       description: "Kartu identitas ujian seleksi",
       status: isScheduled ? "available" : "pending",
-      action: async () => await generateKartuUjian(data),
-    },
+      action: async () => await generateKartuUjian(data) },
     {
       name: "Template Surat Sehat",
       description: "Format resmi surat keterangan sehat panitia",
       status: "available",
-      action: () => window.open("/templates/surat-kesehatan.pdf", "_blank"),
-    },
+      action: () => window.open("/templates/surat-kesehatan.pdf", "_blank") },
     {
       name: "Pakta Integritas",
       description: "Format resmi pakta integritas santri & orang tua panitia",
       status: "available",
-      action: () => window.open("/templates/pakta-integritas.pdf", "_blank"),
-    },
+      action: () => window.open("/templates/pakta-integritas.pdf", "_blank") },
     {
       name: "Surat Pernyataan",
       description: "Format resmi surat pernyataan orang tua / wali panitia",
       status: "available",
-      action: () => window.open("/templates/surat-pernyataan.pdf", "_blank"),
-    },
+      action: () => window.open("/templates/surat-pernyataan.pdf", "_blank") },
   ];
 
   return (

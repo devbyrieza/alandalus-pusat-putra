@@ -14,8 +14,7 @@ if (useRedis) {
     retryStrategy(times) {
       if (times > 3) return null;
       return Math.min(times * 50, 2000);
-    },
-  });
+    } });
   
   // Attach error handler to prevent unhandled error event crash
   redisClient.on('error', (err: any) => {
@@ -32,8 +31,7 @@ if (useRedis) {
     sadd: async () => 1,
     sismember: async () => 0,
     keys: async () => [],
-    on: () => {},
-  };
+    on: () => {} };
 }
 
 export const redis = redisClient;

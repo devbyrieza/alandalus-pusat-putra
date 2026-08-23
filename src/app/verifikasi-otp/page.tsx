@@ -9,8 +9,7 @@ import {
   Clock,
   Smartphone,
   ArrowLeft,
-  RefreshCw,
-} from "lucide-react";
+  RefreshCw } from "lucide-react";
 
 function VerifikasiOTPContent() {
   const router = useRouter();
@@ -158,9 +157,7 @@ function VerifikasiOTPContent() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           no_hp,
-          otp_code: code,
-        }),
-      });
+          otp_code: code }) });
 
       const data = await response.json();
 
@@ -179,8 +176,7 @@ function VerifikasiOTPContent() {
         nomor_pendaftaran: data.data.nomor_pendaftaran,
         nama_lengkap: data.data.nama_lengkap,
         nik: data.data.nik,
-        jenjang: data.data.jenjang,
-      });
+        jenjang: data.data.jenjang });
 
       router.push(`/daftar-sukses?${successParams.toString()}`);
     } catch (error: any) {
@@ -213,9 +209,7 @@ function VerifikasiOTPContent() {
           asal_institusi,
           nisn,
             npsn,
-          catatan_pindahan,
-        }),
-      });
+          catatan_pindahan }) });
 
       const data = await response.json();
 

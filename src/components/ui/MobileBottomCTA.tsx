@@ -36,8 +36,7 @@ export default function MobileBottomCTA() {
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
             borderTop: "1px solid rgba(255,255,255,0.08)",
-            paddingBottom: "env(safe-area-inset-bottom, 4px)",
-          }}
+            paddingBottom: "env(safe-area-inset-bottom, 4px)" }}
         >
           <div className="flex items-center gap-3 px-4 pt-3 pb-2">
             {/* Primary CTA */}

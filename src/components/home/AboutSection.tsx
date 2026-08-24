@@ -15,17 +15,14 @@ const SPRING: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 const misi = [
   {
-    label: "Hanif",
-    text: "Membentuk pribadi yang lurus akidahnya, benar ibadahnya, dan baik akhlaqnya." },
+    label: "TICE",
+    text: "Menyelenggarakan pendidikan berbasis TICE (Tahfizh, International Curriculum dan Entrepreneurship)." },
   {
-    label: "Kontributif",
-    text: "Membentuk pribadi yang memiliki karya, gagasan, dan peran nyata bagi lingkungannya." },
+    label: "Hamalatul Qur'an",
+    text: "Mencetak hamalatul Qur'an dengan bekal ilmu syar'i yang mumpuni." },
   {
-    label: "Adaptif",
-    text: "Membentuk pribadi yang terbuka terhadap kritik, cerdas membaca realitas, kuat menjaga prinsip." },
-  {
-    label: "Dakwah",
-    text: "Menanamkan jiwa dakwah melalui keteladanan para pendidik serta bimbingan tanpa kekerasan dan luka pengasuhan." },
+    label: "Entrepreneurship",
+    text: "Menanamkan jiwa entrepreneurship yang berwawasan global." }
 ];
 
 const containerVariants: Variants = {
@@ -95,7 +92,7 @@ export default function AboutSection() {
               <span className="font-semibold text-primary-800">
                 Bukan sekadar tempat belajar agama.
               </span>{" "}
-              Sistem pembentukan karakter yang mengedepankan keteladanan para pendidik serta mendidik tanpa kekerasan dan luka pengasuhan — untuk mengusung visi Kaderisasi Ummat Hanif, Kontributif, dan Adaptif.
+              Sistem pembentukan karakter yang mengedepankan keteladanan para pendidik serta mendidik tanpa kekerasan dan luka pengasuhan — untuk mengusung visi Kaderisasi Umat Rabbani, Cendekia, dan Mandiri.
             </motion.p>
           </motion.div>
 
@@ -127,8 +124,7 @@ export default function AboutSection() {
 
                   <blockquote className="max-w-2xl mx-auto">
                     <p className="font-display font-black text-2xl md:text-[2.15rem] leading-[1.2] tracking-tight text-primary-900 italic">
-                      &ldquo;Kaderisasi Ummat Hanif,
-                      Kontributif, dan Adaptif.&rdquo;
+                      &ldquo;Kaderisasi Umat Rabbani, Cendekia, dan Mandiri.&rdquo;
                     </p>
                   </blockquote>
 
@@ -166,7 +162,7 @@ export default function AboutSection() {
                       Misi Kami
                     </h3>
                     <p className="text-[13px] text-ink-400 mt-0.5">
-                      Empat langkah strategis pembentukan karakter
+                      Tiga langkah strategis pembentukan karakter
                     </p>
                   </div>
                   <div className="ml-auto hidden sm:block">

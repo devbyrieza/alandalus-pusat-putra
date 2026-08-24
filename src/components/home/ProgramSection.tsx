@@ -28,34 +28,50 @@ interface ProgramItem {
 
 const PROGRAMS: ProgramItem[] = [
   {
-    title: "Madrasah Tsanawiyah (MTs)",
-    subtitle: "Tingkat Menengah · Setara SMP",
-    desc: "Memadukan tahfizh Al-Qur'an, kurikulum pendidikan nasional, kurikulum khas Andalus berbasis Kitab Turots, Leadership, dan Entrepreneurship. Bahasa pengantar Bahasa Arab.",
+    title: "SMP IT",
+    subtitle: "Sekolah Menengah Pertama Islam Terpadu",
+    desc: "Jenjang SMPIT selama 3 tahun untuk lulusan SD/sederajat. Kurikulum menginduk ke Kemendikbud, menyelenggarakan pendidikan dengan perpaduan antara Kurikulum Pendidikan Nasional dengan kurikulum khas Pesantren Al-Andalus.",
     features: [
-      "Target Hafalan Al-Qur'an Minimal 12 Juz",
-      "Kitab Turots & Ilmu Syar'i",
-      "Bahasa Arab Aktif sebagai Pengantar",
-      "Perpaduan Kurikulum Nasional & Kurikulum Khas Andalus",
-      "Islamic Leadership & Entrepreneurship",
+      "Ijazah Negara Resmi",
+      "Kurikulum Al Manhaj An Nabawiy",
+      "Tahfizh Al-Qur'an (Takhosus/Reguler)",
+      "Bahasa Arab & Inggris",
+      "Entrepreneurship & Leadership"
     ],
-    quotaLabel: "Putra 25 · Putri Belum Dibuka",
+    quotaLabel: "Terbatas",
     icon: School,
-    variant: "maroon" },
+    variant: "pink"
+  },
   {
-    title: "I'dad Lughowi (IL)",
-    subtitle: "Persiapan + Menengah Atas · Total 4 Tahun",
-    desc: "Untuk santri yang belum lancar berbahasa Arab. Tahun pertama: persiapan Bahasa Arab intensif. Dilanjutkan 3 tahun SMA berbasis pesantren. Total durasi pendidikan: 4 tahun.",
+    title: "SMA IT",
+    subtitle: "Sekolah Menengah Atas Islam Terpadu",
+    desc: "Jenjang SMAIT selama 3 tahun untuk lulusan SMPIT dan I'dad Lughawiy. Pendidikan dengan perpaduan Kurikulum Nasional dengan kurikulum khas Pesantren. Lulusan mendapat Ijazah Negara dan Ijazah Pesantren.",
     features: [
-      "Target Hafalan Al-Qur'an Minimal 16 Juz",
-      "Kitab Turots & Ilmu Syar'i",
-      "Bahasa Arab Aktif sebagai Pengantar",
-      "Perpaduan Kurikulum Nasional & Kurikulum Khas Andalus",
-      "Islamic Leadership & Entrepreneurship",
-      "Persiapan PTN & Universitas Timur Tengah",
+      "2 Ijazah (Negara & Pesantren)",
+      "Muadalah Universitas Islam Madinah",
+      "Muadalah Universitas Al-Azhar",
+      "Kurikulum Berbasis TICE",
+      "Program Penyiapan Kuliah Global"
     ],
-    quotaLabel: "Putra 25 · Putri Belum Dibuka",
+    quotaLabel: "Terbatas",
+    icon: GraduationCap,
+    variant: "gold"
+  },
+  {
+    title: "I'dad Lughawiy",
+    subtitle: "Persiapan Bahasa (1 Tahun)",
+    desc: "Jenjang untuk lulusan SMP selain SMPIT Al-Andalus. Program Bahasa Arab, Al-Quran, dan Pengenalan Dasar Agama intensif selama 1 tahun sebagai syarat mutlak melanjutkan ke SMAIT Al-Andalus.",
+    features: [
+      "Fokus Utama Bahasa Arab",
+      "Tahsin & Tahfizh Al-Qur'an",
+      "Dasar-Dasar Ilmu Syar'i (Aqidah/Fiqih)",
+      "Pembinaan Adab dan Karakter",
+      "Persiapan Masuk SMAIT Al-Andalus"
+    ],
+    quotaLabel: "Wajib Lulusan SMP Luar",
     icon: BookOpen,
-    variant: "gold" },
+    variant: "cream"
+  }
 ];
 
 const containerVariants: Variants = {

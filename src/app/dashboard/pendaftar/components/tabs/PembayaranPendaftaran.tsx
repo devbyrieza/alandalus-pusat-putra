@@ -879,7 +879,7 @@ export default function PembayaranPendaftaranTab({
                   <p className="text-emerald-700 text-sm leading-relaxed">
                     Anda bisa menghubungi CS di nomor{" "}
                     <a
-                      href="https://wa.me/6285111524441"
+                      href="https://wa.me/6283811515951"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="font-black underline hover:text-emerald-900 transition-colors"

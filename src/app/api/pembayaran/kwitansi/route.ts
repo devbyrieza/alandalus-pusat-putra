@@ -251,7 +251,7 @@ export async function GET(request: NextRequest) {
     <div class="header">
       <h1>Pesantren Islam Internasional Al-Andalus Putra</h1>
       <p>Jl. Raya Menteng, KM.13 RT.03/04, Dusun Cijurey, Desa Sukadamai, Kec. Sukamakmur, Kab. Bogor 16830</p>
-      <p>Telp: +62 851-1152-4441 | Email: info@pesantren-alandalus.com</p>
+      <p>Telp: +62 838-1151-5951 | Email: info@pesantren-alandalus.com</p>
     </div>
 
     <div class="kwitansi-title">

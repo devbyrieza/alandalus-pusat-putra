@@ -560,7 +560,7 @@ export default function DaftarUlangTab() {
                 <span>Finance</span>
               </a>
               <a
-                href="https://wa.me/6285111524441?text=Assalamualaikum%20Admin%20CS%2C%20saya%20wali%20dari%20calon%20santri%20ingin%20bertanya%20terkait%20biaya%20Daftar%20Ulang."
+                href="https://wa.me/6283811515951?text=Assalamualaikum%20Admin%20CS%2C%20saya%20wali%20dari%20calon%20santri%20ingin%20bertanya%20terkait%20biaya%20Daftar%20Ulang."
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 bg-cyan-600 hover:bg-cyan-700 text-white rounded-xl font-bold text-[11px] sm:text-xs transition-all shadow-md hover:shadow-lg active:scale-95 group"
@@ -595,7 +595,7 @@ export default function DaftarUlangTab() {
             <p className="text-emerald-700 text-sm leading-relaxed">
               Hubungi CS di nomor{" "}
               <a
-                href="https://wa.me/6285111524441"
+                href="https://wa.me/6283811515951"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-black underline hover:text-emerald-900 transition-colors"

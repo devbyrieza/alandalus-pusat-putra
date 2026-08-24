@@ -15,7 +15,7 @@ const CONTACT_INFO = [
   {
     icon: Phone,
     title: "Layanan Telepon",
-    content: "+62 851-1152-4441",
+    content: "+62 838-1151-5951",
     detail: "Senin-Sabtu (08.00 - 16.00)",
     accent: "maroon" as const },
   {

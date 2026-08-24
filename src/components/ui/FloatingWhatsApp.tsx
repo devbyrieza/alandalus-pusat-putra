@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { BRANDING } from "@/config/branding";
 
-const WA_NUMBER = "6285111524441";
+const WA_NUMBER = "6283811515951";
 const WA_MESSAGE = `Assalamu'alaikum, saya ingin bertanya tentang PPDB ${BRANDING.schoolName} Tahun Ajaran 2027/2028.`;
 
 const SPRING = { type: "spring", stiffness: 400, damping: 28 } as const;

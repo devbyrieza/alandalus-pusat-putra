@@ -30,7 +30,7 @@ const FAQS = [
 ] as const;
 
 const EASE = [0.16, 1, 0.3, 1] as const;
-const WA_URL = "https://wa.me/6285111524441";
+const WA_URL = "https://wa.me/6283811515951";
 
 // ─── FAQ Item ─────────────────────────────────────────
 function FaqItem({

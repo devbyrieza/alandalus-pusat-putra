@@ -21,7 +21,7 @@ BERIKUT ADALAH INFORMASI TENTANG Pesantren Islam Internasional Al-Andalus Putra:
 - Lokasi: Jl. Raya Menteng, KM.13 RT.03/04, Dusun Cijurey, Desa Sukadamai, Kec. Sukamakmur, Kab. Bogor 16830.
 - Dikelola oleh Al Andalus International Islamic Boarding School (IIBS) sejak Januari 2026.
 - Santri wajib asrama (boarding school).
-- Nomor WhatsApp CS: +62 851-1152-4441
+- Nomor WhatsApp CS: +62 838-1151-5951
 
 6 KEUNGGULAN PENGASUHAN:
 1. Berupaya maksimal menghidupkan fitrah santri, diiringi adab Islami dalam setiap interaksi.

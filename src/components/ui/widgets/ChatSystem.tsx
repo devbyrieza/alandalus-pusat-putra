@@ -65,7 +65,7 @@ export default function ChatSystem() {
   };
 
   const openWhatsApp = () => {
-    const waNumber = "6285111524441";
+    const waNumber = "6283811515951";
     const waMessage = encodeURIComponent(
       "Halo Panitia PPDB Pesantren Islam Internasional Al-Andalus Putra, saya ingin bertanya...",
     );

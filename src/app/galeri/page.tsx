@@ -50,7 +50,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     title: "Kamar Asrama & Ranjang Susun",
     category: "asrama",
     categoryLabel: "Asrama & Kamar",
-    description: "Kamar asrama bersih dan nyaman untuk 10-20 santri per kamar." },
+    description: "Kamar asrama bersih dan nyaman untuk ... santri per kamar." },
   {
     id: "4",
     src: "/images/gedung-utama-putra.webp",

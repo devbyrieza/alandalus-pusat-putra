@@ -224,7 +224,7 @@ export default function Home() {
       {/* â•â•â• Â§1 HERO SECTION — SPLIT DARK â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <section
         id="hero"
-        className="relative min-h-[auto] md:min-h-[85vh] flex items-start bg-[#020617] pt-12 sm:pt-16 md:pt-24 lg:pt-32 pb-10 md:pb-20 overflow-hidden"
+        className="relative min-h-[auto] md:min-h-[85vh] flex items-start bg-[#020617] pt-12 sm:pt-16 md:pt-16 lg:pt-4 xl:pt-8 pb-10 md:pb-20 overflow-hidden"
       >
         {/* Animated glows */}
         <div className="absolute inset-0 pointer-events-none">
@@ -244,7 +244,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-4 md:py-8 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-4 md:py-4 lg:py-4 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-10 lg:gap-16 items-center lg:items-start">
 
             {/* LEFT */}

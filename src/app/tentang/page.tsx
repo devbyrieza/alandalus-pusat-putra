@@ -99,7 +99,7 @@ export default function TentangPage() {
             className="relative aspect-video md:aspect-[21/9] max-h-[480px] w-full rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-lg border border-primary-100 group bg-gradient-to-br from-primary-950 to-primary-900"
           >
             <Image
-              src="/images/welcome-selamat-datang.webp"
+              src="/images/gedung-utama-putra.webp"
               alt="Selamat Datang di Al Imam Al Islami"
               fill
               priority
@@ -124,7 +124,7 @@ export default function TentangPage() {
               <div className="aspect-[4/5] max-h-[520px] min-h-[350px] w-full rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-lg relative z-10 bg-white p-3 border border-primary-100">
                 <div className="relative w-full h-full min-h-[330px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-primary-950 to-primary-900">
                   <Image
-                    src="/images/tentang.webp"
+                    src="/images/lapangan-basket.webp"
                     alt="Pesantren Al Imam Al Islami"
                     fill
                     priority

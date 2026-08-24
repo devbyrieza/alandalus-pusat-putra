@@ -320,7 +320,7 @@ export default function Home() {
                 {/* Image Container */}
                 <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-lg shadow-black/50 w-full">
                   <Image
-                    src="/images/halaman-dekat-masjid.webp"
+                    src="/images/lapangan-basket.webp"
                     alt="Kampus Pesantren Al-Andalus Jonggol"
                     width={600}
                     height={420}
@@ -757,12 +757,12 @@ export default function Home() {
           </header>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
-              { src: "/images/halaman-dekat-masjid.webp", label: "Area Masjid" },
-              { src: "/images/asrama.webp", label: "Asrama Santri" },
-              { src: "/images/tahfidz.webp", label: "Halaqah Tahfizh" },
-              { src: "/images/kelas-dari-dalam.webp", label: "Kelas Modern" },
-              { src: "/images/lapangan-minisoccer.webp", label: "Lapangan Olahraga" },
-              { src: "/images/gedung-utama-dan-lapangan-basket.webp", label: "Gedung Utama" },
+              { src: "/images/lapangan-basket.webp", label: "Area Masjid" },
+              { src: "/images/gedung-utama-putra.webp", label: "Asrama Santri" },
+              { src: "/images/gedung-utama-putra.webp", label: "Halaqah Tahfizh" },
+              { src: "/images/lapangan-basket.webp", label: "Kelas Modern" },
+              { src: "/images/lapangan-futsal.webp", label: "Lapangan Olahraga" },
+              { src: "/images/gedung-utama-putra.webp", label: "Gedung Utama" },
             ].map((photo, i) => (
               <div key={i} className="relative group overflow-hidden rounded-xl aspect-video">
                 <Image

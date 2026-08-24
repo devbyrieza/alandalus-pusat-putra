@@ -18,7 +18,7 @@ const FEATURES = [
       "Matematika & Sains modern",
       "Program bahasa Arab & Inggris aktif"
     ],
-    image: "/images/pembelajaran-kitab-turotz.webp" },
+    image: "/images/lapangan-futsal.webp" },
   {
     id: "pengasuhan",
     title: "Pengasuhan Berbasis Keteladanan",
@@ -30,7 +30,7 @@ const FEATURES = [
       "Konseling psikologi berkala",
       "Pengembangan kecerdasan emosional"
     ],
-    image: "/images/tahfidz.webp" },
+    image: "/images/gedung-utama-putra.webp" },
   {
     id: "fasilitas",
     title: "Fasilitas Modern & Nyaman",
@@ -42,7 +42,7 @@ const FEATURES = [
       "Asrama bersih standar hotel",
       "Area olahraga lengkap"
     ],
-    image: "/images/gedung-utama-dan-lapangan-basket.webp" }
+    image: "/images/gedung-utama-putra.webp" }
 ];
 
 export default function StickyFeatureSection() {

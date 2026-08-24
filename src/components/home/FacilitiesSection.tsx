@@ -38,31 +38,31 @@ const FACILITIES = [
 
 const FACILITY_IMAGES = [
   {
-    src: "/images/masjid.webp",
+    src: "/images/gedung-utama-putra.webp",
     label: "Masjid Jami'",
     sub: "Kapasitas 1.000 Jamaah",
     span: "col-span-2 row-span-2",
     priority: true },
   {
-    src: "/images/gedung-utama-dan-lapangan-basket.webp",
+    src: "/images/gedung-utama-putra.webp",
     label: "Gedung Utama",
     sub: "& Lapangan Basket",
     span: "col-span-1 row-span-1",
     priority: true },
   {
-    src: "/images/gedung-kelas.webp",
+    src: "/images/gedung-utama-putra.webp",
     label: "Gedung Kelas",
     sub: "Modern & Representatif",
     span: "col-span-1 row-span-1",
     priority: false },
   {
-    src: "/images/asrama.webp",
+    src: "/images/gedung-utama-putra.webp",
     label: "Asrama Santri",
     sub: "Nyaman & Teratur",
     span: "col-span-1 row-span-1",
     priority: false },
   {
-    src: "/images/kelas-dari-dalam.webp",
+    src: "/images/lapangan-basket.webp",
     label: "Ruang Kelas",
     sub: "Kondusif & Lengkap",
     span: "col-span-1 row-span-1",

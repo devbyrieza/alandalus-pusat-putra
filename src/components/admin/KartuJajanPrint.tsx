@@ -33,14 +33,14 @@ export default function KartuJajanPrint({ santri, fotoUrl }: KartuJajanPrintProp
         <div 
           className="absolute inset-0 z-0 opacity-[0.03] mt-[35%]"
           style={{ 
-            backgroundImage: "url('/images/pattern.svg')", 
+             
             backgroundSize: '15mm' 
           }}
         ></div>
 
         {/* Logo & Title */}
         <div className="flex flex-col items-center mb-3 drop-shadow-md relative z-10">
-          <img src="/images/logo.png" alt="Logo Al-Andalus Putra" className="w-8 h-8 rounded-full object-cover border-[1.5px] border-gold-500/80 mb-1.5" onError={(e) => e.currentTarget.style.display = 'none'} />
+          <img src="/images/logo-putra.png" alt="Logo Al-Andalus Putra" className="w-8 h-8 rounded-full object-cover border-[1.5px] border-gold-500/80 mb-1.5" onError={(e) => e.currentTarget.style.display = 'none'} />
           <h1 className="text-white text-[10px] font-black tracking-widest uppercase">Pesantren Islam Internasional Al-Andalus Putra</h1>
         </div>
         
@@ -91,7 +91,7 @@ export default function KartuJajanPrint({ santri, fotoUrl }: KartuJajanPrintProp
         <div 
           className="absolute inset-0 z-0 opacity-10"
           style={{ 
-            backgroundImage: "url('/images/gedung-utama-dan-lapangan-basket.webp')", 
+            backgroundImage: "url('/images/gedung-utama-putra.webp')", 
             backgroundSize: 'cover', 
             backgroundPosition: 'center' 
           }}

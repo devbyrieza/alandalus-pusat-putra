@@ -7,19 +7,13 @@ import Image from "next/image";
 
 // ─── Data ────────────────────────────────────────────
 const BOARD_MEMBERS = [
-  {
-    name: "Ustadz Dr. Muhammad Arifin Badri, Lc, M.A",
-    image: "/images/muhammad-arifin-badri.webp" },
-  {
-    name: "Ustadz Nurdin Apud Sarbini, Lc, M.Pd",
-    image: "/images/nurdin-apud-sabrini.webp" },
-  { name: "H. Tarmen Tascha, SE", image: "/images/tarmen-tascha.webp" },
-  {
-    name: "Ustadz Aminullah Yasin, Lc, M.Pd",
-    image: "/images/aminullah-yasin.webp" },
-  { name: "Ustadz Wahab Rajasam, M.Pd", image: "/images/wahab-rajasam.webp" },
-  { name: "Ustadz Thoriq Ziyad, Lc", image: "/images/thoriq-ziyad.webp" },
-] as const;
+  { name: "Ustadz Yusuf Utsman Baisi, Lc.", image: "" },
+  { name: "Ustadz Dr. Muhammad Amin Baisi, Lc., M.A.", image: "" },
+  { name: "Ustadz Abu Yahya Badrussalam, Lc.", image: "" },
+  { name: "Ustadz Nafi' Zainuddin, Lc., M.H.I.", image: "" },
+  { name: "Bapak H. Tarmen Tascha, S.E.", image: "/images/tarmen-tascha.webp" },
+  { name: "Bapak H. Ir. Eridman Tascha", image: "" }
+];
 
 // ─── Animation ───────────────────────────────────────
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -49,9 +43,12 @@ function MemberCard({
             alt={name}
             fill
             sizes="80px"
-            priority={index < 4}
             className="object-cover"
           />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-secondary-100">
+            <User className="w-8 h-8 text-secondary-400" />
+          </div>
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-secondary-100 group-hover:bg-primary-50 transition-colors duration-400">
             <User className="w-7 h-7 text-primary-300" />

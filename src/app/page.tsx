@@ -319,7 +319,7 @@ export default function Home() {
                 {/* Image Container */}
                 <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-lg shadow-black/50 w-full">
                   <Image
-                    src="/images/lapangan-basket.webp"
+                    src="/images/Gedung Utama Andalus Putra.jpeg"
                     alt="Kampus Pesantren Al-Andalus Jonggol"
                     width={600}
                     height={420}
@@ -758,7 +758,7 @@ export default function Home() {
             {[
               { src: "/images/gedung-utama-putra.webp", label: "Gedung Utama & Asrama" },
                 { src: "/images/lapangan-futsal.webp", label: "Lapangan Futsal" },
-                { src: "/images/lapangan-basket.webp", label: "Lapangan Basket" },
+                { src: "/images/Gedung Utama Andalus Putra.jpeg", label: "Lapangan Basket" },
             ].map((photo, i) => (
               <div key={i} className="relative group overflow-hidden rounded-xl aspect-video">
                 <Image

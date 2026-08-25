@@ -302,7 +302,7 @@ export default function HeroSection() {
                 overflow: "hidden" }}
             >
               <Image
-                src="/images/gedung-utama-putra.webp"
+                src="/images/Gedung Utama Andalus Putra.jpeg"
                 alt={`${BRANDING.schoolName} — Pesantren Al Fath`}
                 width={800}
                 height={600}

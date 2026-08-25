@@ -38,33 +38,33 @@ const FACILITIES = [
 
 const FACILITY_IMAGES = [
   {
-    src: "/images/gedung-utama-putra.webp",
+    src: "/images/MASJID-1.jpg",
     label: "Masjid Jami'",
-    sub: "Kapasitas 1.000 Jamaah",
+    sub: "Pusat Ibadah & Tahfidz",
     span: "col-span-2 row-span-2",
     priority: true },
   {
-    src: "/images/gedung-utama-putra.webp",
+    src: "/images/Gedung Utama Andalus Putra.jpeg",
     label: "Gedung Utama",
-    sub: "& Lapangan Basket",
+    sub: "Administrasi & Pembelajaran",
     span: "col-span-1 row-span-1",
     priority: true },
   {
-    src: "/images/gedung-utama-putra.webp",
-    label: "Gedung Kelas",
-    sub: "Modern & Representatif",
+    src: "/images/LAPANGAN-FUTSAL-1.jpeg",
+    label: "Lapangan Futsal",
+    sub: "Fasilitas Olahraga Santri",
     span: "col-span-1 row-span-1",
     priority: false },
   {
-    src: "/images/gedung-utama-putra.webp",
-    label: "Asrama Santri",
-    sub: "Nyaman & Teratur",
+    src: "/images/SUASANA PESANTREN & LAPANGAN DARI ATAS-1.jpeg",
+    label: "Panorama Kampus",
+    sub: "Asri & Terpadu (Drone)",
     span: "col-span-1 row-span-1",
     priority: false },
   {
-    src: "/images/lapangan-basket.webp",
-    label: "Ruang Kelas",
-    sub: "Kondusif & Lengkap",
+    src: "/images/LAPANGAN-BASKET-1.jpeg",
+    label: "Lapangan Basket",
+    sub: "Sarana Olahraga Outdoor",
     span: "col-span-1 row-span-1",
     priority: false },
 ] as const;

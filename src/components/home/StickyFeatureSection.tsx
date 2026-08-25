@@ -18,7 +18,7 @@ const FEATURES = [
       "Matematika & Sains modern",
       "Program bahasa Arab & Inggris aktif"
     ],
-    image: "/images/lapangan-futsal.webp" },
+    image: "/images/LAPANGAN-FUTSAL-1.jpeg" },
   {
     id: "pengasuhan",
     title: "Pengasuhan Berbasis Keteladanan",
@@ -30,7 +30,7 @@ const FEATURES = [
       "Konseling psikologi berkala",
       "Pengembangan kecerdasan emosional"
     ],
-    image: "/images/gedung-utama-putra.webp" },
+    image: "/images/Gedung Utama Andalus Putra.jpeg" },
   {
     id: "fasilitas",
     title: "Fasilitas Modern & Nyaman",
@@ -42,7 +42,7 @@ const FEATURES = [
       "Asrama bersih standar hotel",
       "Area olahraga lengkap"
     ],
-    image: "/images/gedung-utama-putra.webp" }
+    image: "/images/Gedung Utama Andalus Putra.jpeg" }
 ];
 
 export default function StickyFeatureSection() {

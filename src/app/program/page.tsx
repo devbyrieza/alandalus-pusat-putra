@@ -18,32 +18,33 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const PROGRAMS = [
   {
-    id: "mts",
-    name: "Madrasah Tsanawiyah",
-    buttonLabel: "Daftar MTs",
-    fullName: "Program Madrasah Tsanawiyah (SMP)",
-    badge: "Jenjang Formal Terpadu (SMP / MTs)",
+    id: "smpit",
+    name: "SMPIT",
+    buttonLabel: "Daftar SMPIT",
+    fullName: "Program SMPIT (Sekolah Menengah Pertama Islam Terpadu)",
+    badge: "Jenjang Formal Terpadu (SMPIT)",
     heroTitle: "Pondasi Rabbani, Cendekia & Mandiri",
-    graduateProfile: "Membentuk karakter akhlak mulia, hafalan Al-Qur'an mutqin, serta kesiapan akademik prima menuju jenjang Aliyah / SMA unggulan.",
+    graduateProfile: "Membentuk karakter santri berakhlak mulia, hafalan Al-Qur'an mutqin (pilihan Takhassus 30 Juz atau Reguler 5 Juz), serta kesiapan akademik prima menuju jenjang Aliyah / SMA unggulan.",
     description:
-      "Kami menerapkan Kurikulum Terpadu yang menggabungkan standar Nasional Kemenag dengan ciri khas Pesantren Al-Andalus, berfokus pada penguasaan Tahfidz Al-Qur'an serta pembentukan karakter Leadership yang kokoh sejak usia dini.",
+      "Kami menerapkan Kurikulum Terpadu yang menggabungkan standar Nasional Kemendikbudristek dengan ciri khas Pesantren Al-Andalus, berfokus pada penguasaan Tahfidz Al-Qur'an (Program Takhassus 30 Juz & Reguler 5 Juz) serta pembentukan karakter Leadership yang kokoh sejak usia dini.",
     stats: [
-      { label: "Tahfidz", value: "Target 12 Juz", icon: BookOpen },
+      { label: "Tahfidz", value: "30 Juz / 5 Juz", icon: BookOpen },
       { label: "Prioritas", value: "Leadership", icon: ShieldCheck },
       { label: "Bahasa", value: "Dwi-Bahasa", icon: Globe },
     ],
     highlights: [
-      { icon: BookOpen, title: "Tahfidz 12 Juz Mutqin", desc: "Bimbingan intensif hafalan Al-Qur'an dengan metode mutqin bersanad." },
+      { icon: BookOpen, title: "Tahfidz Takhassus & Reguler", desc: "Pilihan program Tahfidz Takhassus 30 Juz Mutqin atau Tahfidz Reguler 5 Juz dengan sanad tajwid." },
       { icon: ShieldCheck, title: "Karakter & Adab", desc: "Penanaman adab islami dan kemandirian melalui pembinaan asrama 24 jam." },
       { icon: Globe, title: "Bahasa Arab & Inggris", desc: "Pembiasaan percakapan dwi-bahasa aktif dalam aktivitas keseharian." },
-      { icon: Award, title: "Ijazah Formal & Syahadah", desc: "Lulusan memperoleh Ijazah Resmi Kemenag & Syahadah Pesantren Al-Andalus." },
+      { icon: Award, title: "Ijazah Formal & Syahadah", desc: "Lulusan memperoleh Ijazah Resmi SMPIT Kemendikbudristek & Syahadah Pesantren Al-Andalus." },
     ],
     curriculum: [
-      "Target Hafalan 12 Juz Mutqin & Bersanad",
+      "Program Tahfidz Takhassus (Target 30 Juz Mutqin)",
+      "Program Tahfidz Reguler (Target 5 Juz Berstandar)",
       "Leadership & Character Building santri",
       "Bahasa Arab & Inggris Yaumiyah (Active Speaking)",
       "Kajian Kitab Turots Dasar & Aqidah Ahlussunnah",
-      "Kurikulum Nasional Terakreditasi Lengkap",
+      "Kurikulum Nasional SMPIT Terakreditasi Lengkap",
     ],
     theme: "emerald",
     accent: "text-emerald-600",
@@ -58,21 +59,21 @@ const PROGRAMS = [
     heroTitle: "Kaderisasi Dai & Cendekia Muslim",
     graduateProfile: "Mencetak santri berkemampuan bahasa Arab fasih, pemahaman syar'i mendalam, dan siap bersaing di PTN maupun Universitas Luar Negeri.",
     description:
-      "Program persiapan intensif menuju jenjang Aliyah, berfokus pada percepatan pemantapan Bahasa Arab, penguasaan Turots, Tahfidz Al-Qur'an, dan kematangan leadership organisasi untuk mencetak kader ulama yang kontributif.",
+      "Program persiapan intensif menuju jenjang Aliyah, berfokus pada percepatan pemantapan Bahasa Arab, penguasaan Turots, Tahfidz Al-Qur'an (Takhassus 30 Juz & Reguler 5 Juz), dan kematangan leadership organisasi untuk mencetak kader ulama yang kontributif.",
     stats: [
-      { label: "Tahfidz", value: "Target 16 Juz", icon: BookOpen },
+      { label: "Tahfidz", value: "30 Juz / 5 Juz", icon: BookOpen },
       { label: "Kekhasan", value: "Kader Leadership", icon: Users },
       { label: "Fokus", value: "Bahasa & Syar'i", icon: Sparkles },
     ],
     highlights: [
-      { icon: BookOpen, title: "Tahfidz 16 Juz", desc: "Penguatan hafalan dan mutqin dengan standar kualitas dan tahsin tinggi." },
+      { icon: BookOpen, title: "Tahfidz Takhassus & Reguler", desc: "Penguatan hafalan Tahfidz Takhassus 30 Juz atau Reguler 5 Juz dengan sanad tajwid." },
       { icon: Sparkles, title: "Intensif Bahasa & Turots", desc: "Pendalaman nahwu, shorof, balaghah, dan pengkajian kitab para ulama." },
       { icon: Users, title: "Manajemen & Leadership", desc: "Pengasuhan kepemimpinan organisasi dan dakwah kemasyarakatan." },
       { icon: Award, title: "Akses Studi Lanjut Global", desc: "Jalur persiapan studi ke Timur Tengah (Madinah, Al-Azhar) & PTN Favorit." },
     ],
     curriculum: [
       "Tahun I'dad: Intensif Bahasa Arab & Qowaid",
-      "Target Hafalan 16 Juz dengan Sanad Tajwid",
+      "Program Tahfidz Takhassus 30 Juz & Tahfidz Reguler 5 Juz",
       "Manajemen Organisasi & Kepemimpinan Dakwah",
       "Kajian Kitab Turots Lanjutan & Fiqih Perbandingan",
       "Bimbingan Persiapan Masuk Perguruan Tinggi Favorit",
@@ -88,7 +89,7 @@ export default function ProgramPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  const [activeSection, setActiveSection] = useState("mts");
+  const [activeSection, setActiveSection] = useState("smpit");
 
   useEffect(() => {
     const handleScroll = () => {

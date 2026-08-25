@@ -395,7 +395,7 @@ export default function DaftarPindahanPage() {
                   {[
                     {
                       value: "MTs",
-                      title: "Madrasah Tsanawiyah",
+                      title: "SMPIT",
                       subtitle: "Pindahan tingkat SMP/MTs" },
                     {
                       value: "MA",

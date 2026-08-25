@@ -1499,7 +1499,7 @@ function AdminPendaftarContent() {
               className="w-full px-4 py-3 bg-amber-50/50 border border-amber-100 rounded-xl focus:border-primary-500 focus:bg-white focus:outline-none font-bold text-primary-950"
             >
               <option value="">Semua Jenjang</option>
-              <option value="MTs">MTs (Madrasah Tsanawiyah)</option>
+              <option value="MTs">SMPIT (Sekolah Menengah Pertama Islam Terpadu)</option>
               <option value="IL">I'dadiyah Lughawiy</option>
             </select>
           </div>

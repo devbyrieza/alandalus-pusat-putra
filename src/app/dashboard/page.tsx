@@ -574,7 +574,7 @@ export default function DashboardPage() {
                 <Star className="w-6 h-6 text-amber-500 fill-amber-500 animate-pulse" />
                 <span className="font-black text-sm text-primary-700 uppercase tracking-widest leading-none">
                   {pendaftar.jenjang === "MTs"
-                    ? "Madrasah Tsanawiyah"
+                    ? "SMPIT"
                     : "I'dad Lughowi"}
                 </span>
               </div>

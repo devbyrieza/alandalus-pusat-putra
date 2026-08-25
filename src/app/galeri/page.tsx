@@ -41,28 +41,21 @@ const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "2",
-    src: "/images/tangga-selasar.jpeg",
-    title: "Akses Tangga & Selasar Pembelajaran",
-    category: "gedung",
-    categoryLabel: "Gedung & Fasilitas",
-    description: "Arsitektur tangga dan selasar pesantren yang bersih, representatif, dan tertata rapi bernuansa islami."
-  },
-  {
-    id: "3",
     src: "/images/masjid-1.jpg",
     title: "Masjid Area Putra",
     category: "masjid",
     categoryLabel: "Masjid Pesantren",
-    description: "Sentra spiritual dan halaqoh tahfidz santri dengan kubah megah, tata cahaya alami sejuk, pelataran luas, dan sarana wudhu yang higienis.",
+    description: "Sentra spiritual dan halaqoh tahfidz santri dengan kubah megah, tangga akses utama, pelataran luas, tata cahaya alami sejuk, dan sarana wudhu yang higienis.",
     angles: [
       "/images/masjid-1.jpg",
       "/images/masjid-2.jpg",
       "/images/masjid-3.jpg",
-      "/images/masjid-4.jpg"
+      "/images/masjid-4.jpg",
+      "/images/tangga-selasar.jpeg"
     ]
   },
   {
-    id: "4",
+    id: "3",
     src: "/images/drone-pesantren-1.jpeg",
     title: "Panorama Udara Kawasan Pesantren (Foto Drone)",
     category: "drone",
@@ -74,7 +67,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     ]
   },
   {
-    id: "5",
+    id: "4",
     src: "/images/lapangan-futsal-1.jpeg",
     title: "Lapangan Futsal Pesantren Putra",
     category: "olahraga",
@@ -88,7 +81,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     ]
   },
   {
-    id: "6",
+    id: "5",
     src: "/images/lapangan-basket-1.jpeg",
     title: "Lapangan Basket Santri Putra",
     category: "olahraga",

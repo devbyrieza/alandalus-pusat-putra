@@ -229,7 +229,7 @@ export default function AboutSection() {
             className="flex flex-col items-center"
           >
             <a
-              href="https://pesantren-alandalus.com"
+              href="https://pesantren-alandalus.com/profile/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto"

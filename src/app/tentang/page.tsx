@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 export default function TentangRedirect() {
   useEffect(() => {
-    window.location.replace("https://pesantren-alandalus.com");
+    window.location.replace("https://pesantren-alandalus.com/profile/");
   }, []);
 
   return (

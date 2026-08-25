@@ -62,7 +62,7 @@ export default function Footer() {
             </h4>
             <nav className="space-y-3">
               {[
-                { href: "https://pesantren-alandalus.com", label: "Profil Pesantren", isExternal: true },
+                { href: "https://pesantren-alandalus.com/profile/", label: "Profil Pesantren", isExternal: true },
                 { href: "/program", label: "Program Pendidikan" },
                 { href: "/fasilitas", label: "Fasilitas"          },
                 { href: "/kegiatan",  label: "Kegiatan"           },

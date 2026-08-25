@@ -38,31 +38,31 @@ const FACILITIES = [
 
 const FACILITY_IMAGES = [
   {
-    src: "/images/MASJID-1.jpg",
+    src: "/images/masjid-1.jpg",
     label: "Masjid Jami'",
     sub: "Pusat Ibadah & Tahfidz",
     span: "col-span-2 row-span-2",
     priority: true },
   {
-    src: "/images/Gedung Utama Andalus Putra.jpeg",
+    src: "/images/gedung-utama-putra.jpeg",
     label: "Gedung Utama",
     sub: "Administrasi & Pembelajaran",
     span: "col-span-1 row-span-1",
     priority: true },
   {
-    src: "/images/LAPANGAN-FUTSAL-1.jpeg",
+    src: "/images/lapangan-futsal-1.jpeg",
     label: "Lapangan Futsal",
     sub: "Fasilitas Olahraga Santri",
     span: "col-span-1 row-span-1",
     priority: false },
   {
-    src: "/images/SUASANA PESANTREN & LAPANGAN DARI ATAS-1.jpeg",
-    label: "Panorama Kampus",
+    src: "/images/drone-pesantren-1.jpeg",
+    label: "Panorama Pesantren",
     sub: "Asri & Terpadu (Drone)",
     span: "col-span-1 row-span-1",
     priority: false },
   {
-    src: "/images/LAPANGAN-BASKET-1.jpeg",
+    src: "/images/lapangan-basket-1.jpeg",
     label: "Lapangan Basket",
     sub: "Sarana Olahraga Outdoor",
     span: "col-span-1 row-span-1",

@@ -50,7 +50,7 @@ export default function KontakPage() {
             <div className="w-14 h-14 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center mx-auto font-bold">
               <MapPin className="w-7 h-7" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900">Alamat Kampus</h3>
+            <h3 className="text-xl font-bold text-slate-900">Alamat Pesantren</h3>
             <p className="text-slate-600 text-sm leading-relaxed">{BRANDING.address}</p>
           </div>
 

@@ -45,25 +45,25 @@ const ACTIVITIES: Activity[] = [
     badge: "Akademik & Syar'i",
     description:
       "Metode pembelajaran interaktif yang memadukan keunggulan akademik umum dengan pendalaman bahasa Arab dan ilmu syar'i secara komprehensif.",
-    image: "/images/LAPANGAN-FUTSAL-1.jpeg" },
+    image: "/images/lapangan-futsal-1.jpeg" },
   {
     name: "Kegiatan Rutin Harian",
     badge: "Spiritual",
     description:
       "Pembiasaan ibadah melalui sholat berjamaah tepat waktu dan halaqah tahfidz Al-Qur'an setiap hari secara konsisten.",
-    image: "/images/Gedung Utama Andalus Putra.jpeg" },
+    image: "/images/gedung-utama-putra.jpeg" },
   {
     name: "Ekstrakurikuler Unggulan",
     badge: "15+ Pilihan",
     description:
       "Tersedia 15+ pilihan kegiatan mulai dari beladiri hingga Desain Grafis untuk mengasah minat dan bakat santri.",
-    image: "/images/LAPANGAN-BASKET-1.jpeg" },
+    image: "/images/lapangan-basket-1.jpeg" },
   {
     name: "Kemandirian, Skill & Leadership",
     badge: "Life Skills",
     description:
       "Program pelatihan entrepreneurship, leadership, dan keterampilan hidup mandiri guna mencetak santri yang siap berdikari di masa depan.",
-    image: "/images/LAPANGAN-FUTSAL-1.jpeg" },
+    image: "/images/lapangan-futsal-1.jpeg" },
 ];
 
 const EXTRA_ACTIVITIES: ExtraActivity[] = [

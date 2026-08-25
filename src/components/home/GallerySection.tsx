@@ -22,22 +22,22 @@ import { Container } from "@/components/layout/Container";
 
 const GALLERY_ITEMS = [
   {
-    image: "/images/LAPANGAN-FUTSAL-1.jpeg",
+    image: "/images/lapangan-futsal-1.jpeg",
     title: "Kajian Kitab Turots",
     description: "Mengkaji Kitab Turots & Ulama Salaf",
     icon: BookOpen },
   {
-    image: "/images/Gedung Utama Andalus Putra.jpeg",
+    image: "/images/gedung-utama-putra.jpeg",
     title: "Halaqoh Tahfidz",
     description: "Setoran Hafalan & Muroja'ah",
     icon: BookMarked },
   {
-    image: "/images/LAPANGAN-BASKET-1.jpeg",
+    image: "/images/lapangan-basket-1.jpeg",
     title: "Ekstrakurikuler",
     description: "Bela Diri, Panahan & Lifeskill",
     icon: Target },
   {
-    image: "/images/Gedung Utama Andalus Putra.jpeg",
+    image: "/images/gedung-utama-putra.jpeg",
     title: "Masjid Jami'",
     description: "Pusat Ibadah & Tarbiyah Santri",
     icon: School },

@@ -319,8 +319,8 @@ export default function Home() {
                 {/* Image Container */}
                 <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-lg shadow-black/50 w-full">
                   <Image
-                    src="/images/Gedung Utama Andalus Putra.jpeg"
-                    alt="Kampus Pesantren Al-Andalus Jonggol"
+                    src="/images/gedung-utama-putra.jpeg"
+                    alt="Pesantren Al-Andalus Jonggol"
                     width={600}
                     height={420}
                     className="object-cover object-top w-full h-[280px] sm:h-[360px] md:h-[420px]"
@@ -691,7 +691,7 @@ export default function Home() {
               { Icon: FaShieldAlt, title: "Asrama Premium", desc: "Lingkungan asrama bersih, aman, nyaman dengan pengawasan 24 jam penuh oleh ustadz pengasuh." },
               { Icon: Award, title: "Tenaga Didik Expert", desc: "Asatidz lulusan Universitas Islam Madinah, Al-Azhar Mesir, LIPIA, dan perguruan tinggi terkemuka." },
               { Icon: Globe, title: "Jaringan Global", desc: "Alumni tersebar di 3 benua: Asia, Afrika (Mesir), dan Oseania (New Zealand, Hong Kong)." },
-              { Icon: Microscope, title: "Lab dan Fasilitas Modern", desc: "Laboratorium IPA, lab bahasa, perpustakaan digital, lapangan olahraga, dan masjid kampus." },
+              { Icon: Microscope, title: "Lab dan Fasilitas Modern", desc: "Laboratorium IPA, lab bahasa, perpustakaan digital, lapangan olahraga, dan masjid pesantren." },
             ].map((feat, i) => (
               <div
                 key={i}
@@ -752,13 +752,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="text-center mb-12">
             <span className={`text-xs font-bold uppercase tracking-widest ${c.text600}`}>Galeri</span>
-            <h2 className="text-3xl font-black text-slate-900 mt-2">Lihat Langsung Kampus Kami</h2>
+            <h2 className="text-3xl font-black text-slate-900 mt-2">Lihat Langsung Pesantren Kami</h2>
           </header>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
               { src: "/images/gedung-utama-putra.webp", label: "Gedung Utama & Asrama" },
                 { src: "/images/lapangan-futsal.webp", label: "Lapangan Futsal" },
-                { src: "/images/Gedung Utama Andalus Putra.jpeg", label: "Lapangan Basket" },
+                { src: "/images/gedung-utama-putra.jpeg", label: "Lapangan Basket" },
             ].map((photo, i) => (
               <div key={i} className="relative group overflow-hidden rounded-xl aspect-video">
                 <Image

@@ -25,7 +25,7 @@ export default function BentoGridSection() {
             viewport={{ once: true }}
             className="md:col-span-2 lg:col-span-2 row-span-2 bento-card relative group"
           >
-            <Image src="/images/Gedung Utama Andalus Putra.jpeg" alt="Gedung" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+            <Image src="/images/gedung-utama-putra.jpeg" alt="Gedung" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="absolute inset-0 p-8 flex flex-col justify-end">
               <div className="w-12 h-12 bg-white/20  rounded-xl flex items-center justify-center mb-4 text-white">

@@ -13,7 +13,9 @@ import {
   Globe,
   Trophy,
   Sparkles,
-  Maximize2
+  Maximize2,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { BRANDING } from "@/config/branding";
@@ -25,139 +27,107 @@ interface GalleryItem {
   category: "gedung" | "masjid" | "drone" | "olahraga";
   categoryLabel: string;
   description: string;
+  angles?: string[];
 }
 
 const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: "1",
-    src: "/images/Gedung Utama Andalus Putra.jpeg",
-    title: "Gedung Utama & Kompleks Kampus Putra",
+    src: "/images/gedung-utama-putra.jpeg",
+    title: "Gedung Utama & Kompleks Pesantren Putra",
     category: "gedung",
-    categoryLabel: "Gedung & Kampus",
-    description: "Bangunan megah dan modern pusat administrasi serta pembelajaran santri Al-Andalus Putra."
+    categoryLabel: "Gedung & Fasilitas",
+    description: "Bangunan megah dan modern pusat administrasi serta kegiatan pembelajaran santri Al-Andalus Putra."
   },
   {
     id: "2",
-    src: "/images/TANGGA.jpeg",
-    title: "Akses Tangga & Koridor Pembelajaran",
+    src: "/images/tangga-selasar.jpeg",
+    title: "Akses Tangga & Selasar Pembelajaran",
     category: "gedung",
-    categoryLabel: "Gedung & Kampus",
-    description: "Arsitektur tangga dan selasar kampus yang bersih, representatif, dan bernuansa islami."
+    categoryLabel: "Gedung & Fasilitas",
+    description: "Arsitektur tangga dan selasar pesantren yang bersih, representatif, dan tertata rapi bernuansa islami."
   },
   {
     id: "3",
-    src: "/images/MASJID-1.jpg",
-    title: "Masjid Area Putra (Tampak Depan)",
+    src: "/images/masjid-1.jpg",
+    title: "Masjid Area Putra",
     category: "masjid",
-    categoryLabel: "Masjid Area Putra",
-    description: "Fasad depan Masjid Pesantren Putra yang megah sebagai sentra spiritual dan halaqoh tahfidz."
+    categoryLabel: "Masjid Pesantren",
+    description: "Sentra spiritual dan halaqoh tahfidz santri dengan kubah megah, tata cahaya alami sejuk, pelataran luas, dan sarana wudhu yang higienis.",
+    angles: [
+      "/images/masjid-1.jpg",
+      "/images/masjid-2.jpg",
+      "/images/masjid-3.jpg",
+      "/images/masjid-4.jpg"
+    ]
   },
   {
     id: "4",
-    src: "/images/MASJID-2.jpg",
-    title: "Arsitektur & Kubah Masjid Putra",
-    category: "masjid",
-    categoryLabel: "Masjid Area Putra",
-    description: "Keindahan kubah dan tata cahaya alami masjid yang menyejukkan hati santri dalam beribadah."
+    src: "/images/drone-pesantren-1.jpeg",
+    title: "Panorama Udara Kawasan Pesantren (Foto Drone)",
+    category: "drone",
+    categoryLabel: "Panorama Udara",
+    description: "Tampak atas keasrian kawasan hijau Pesantren Al-Andalus Putra dengan fasilitas gedung dan sarana olahraga terpadu di Jonggol Bogor.",
+    angles: [
+      "/images/drone-pesantren-1.jpeg",
+      "/images/drone-pesantren-2.jpeg"
+    ]
   },
   {
     id: "5",
-    src: "/images/MASJID-3.jpg",
-    title: "Pelataran & Serambi Masjid",
-    category: "masjid",
-    categoryLabel: "Masjid Area Putra",
-    description: "Area serambi masjid yang lapang untuk kegiatan dzikir, tilawah, dan pertemuan ilmiah."
+    src: "/images/lapangan-futsal-1.jpeg",
+    title: "Lapangan Futsal Pesantren Putra",
+    category: "olahraga",
+    categoryLabel: "Sarana Olahraga",
+    description: "Fasilitas olahraga futsal outdoor dengan rumput berkualitas dan pagar pengaman modern untuk kebugaran jasmani santri.",
+    angles: [
+      "/images/lapangan-futsal-1.jpeg",
+      "/images/lapangan-futsal-2.jpeg",
+      "/images/lapangan-futsal-3.jpeg",
+      "/images/lapangan-futsal-4.jpeg"
+    ]
   },
   {
     id: "6",
-    src: "/images/MASJID-4.jpg",
-    title: "Area Wudhu & Fasilitas Ibadah",
-    category: "masjid",
-    categoryLabel: "Masjid Area Putra",
-    description: "Fasilitas bersuci yang bersih, higienis, dan mengalir deras untuk kenyamanan shalat berjamaah."
-  },
-  {
-    id: "7",
-    src: "/images/SUASANA PESANTREN & LAPANGAN DARI ATAS-1.jpeg",
-    title: "Panorama Kawasan Pesantren & Lapangan Olahraga (Drone 1)",
-    category: "drone",
-    categoryLabel: "Panorama Udara (Drone)",
-    description: "Tampak atas keasrian lingkungan kampus hijau Al-Andalus Putra dengan fasilitas olahraga terpadu."
-  },
-  {
-    id: "8",
-    src: "/images/SUASANA PESANTREN & LAPANGAN DARI ATAS-2.jpeg",
-    title: "Lanskap Terpadu Kawasan Kampus Putra (Drone 2)",
-    category: "drone",
-    categoryLabel: "Panorama Udara (Drone)",
-    description: "Tata ruang kampus yang terencana rapi, asri, dan aman di dataran sejuk Jonggol Bogor."
-  },
-  {
-    id: "9",
-    src: "/images/LAPANGAN-FUTSAL-1.jpeg",
-    title: "Lapangan Futsal Outdoor Santri (Sudut 1)",
+    src: "/images/lapangan-basket-1.jpeg",
+    title: "Lapangan Basket Santri Putra",
     category: "olahraga",
     categoryLabel: "Sarana Olahraga",
-    description: "Sarana olahraga futsal outdoor dengan rumput sintetis/lapangan standar untuk pembinaan fisik santri."
-  },
-  {
-    id: "10",
-    src: "/images/LAPANGAN-FUTSAL-2.jpeg",
-    title: "Lapangan Futsal & Suasana Asri (Sudut 2)",
-    category: "olahraga",
-    categoryLabel: "Sarana Olahraga",
-    description: "Area lapangan futsal yang dikelilingi pepohonan hijau dan lingkungan belajar yang menyegarkan."
-  },
-  {
-    id: "11",
-    src: "/images/LAPANGAN-FUTSAL-3.jpeg",
-    title: "Fasilitas Futsal & Aktivitas Jasmani (Sudut 3)",
-    category: "olahraga",
-    categoryLabel: "Sarana Olahraga",
-    description: "Fasilitas latihan tim futsal santri untuk turnamen internal dan kejuaraan antar pesantren."
-  },
-  {
-    id: "12",
-    src: "/images/LAPANGAN-FUTSAL-4.jpeg",
-    title: "Lapangan Futsal dengan Pagar Pengaman (Sudut 4)",
-    category: "olahraga",
-    categoryLabel: "Sarana Olahraga",
-    description: "Keamanan dan kenyamanan olahraga santri dengan instalasi jaring pengaman modern."
-  },
-  {
-    id: "13",
-    src: "/images/LAPANGAN-BASKET-1.jpeg",
-    title: "Lapangan Basket Santri Putra (Sudut 1)",
-    category: "olahraga",
-    categoryLabel: "Sarana Olahraga",
-    description: "Sarana olahraga basket outdoor serbaguna untuk latihan teknik dan kompetisi basket santri."
-  },
-  {
-    id: "14",
-    src: "/images/LAPANGAN-BASKET-2.jpeg",
-    title: "Lapangan Basket & Area Latihan (Sudut 2)",
-    category: "olahraga",
-    categoryLabel: "Sarana Olahraga",
-    description: "Fasilitas basket santri dengan ring standar dan permukaan lapangan yang terawat prima."
+    description: "Sarana olahraga basket outdoor serbaguna pendukung pembinaan fisik, sportivitas, dan kebersamaan santri.",
+    angles: [
+      "/images/lapangan-basket-1.jpeg",
+      "/images/lapangan-basket-2.jpeg"
+    ]
   }
 ];
 
 const CATEGORIES = [
   { key: "semua", label: "Semua Foto", icon: Images },
-  { key: "gedung", label: "Gedung & Kampus", icon: Building },
-  { key: "masjid", label: "Masjid Area Putra", icon: Building2 },
-  { key: "drone", label: "Panorama Udara (Drone)", icon: Globe },
+  { key: "gedung", label: "Gedung & Fasilitas", icon: Building },
+  { key: "masjid", label: "Masjid Pesantren", icon: Building2 },
+  { key: "drone", label: "Panorama Udara", icon: Globe },
   { key: "olahraga", label: "Sarana Olahraga", icon: Trophy },
 ];
 
 export default function GaleriPage() {
   const [activeCategory, setActiveCategory] = useState<string>("semua");
   const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
+  const [activeAngleIndex, setActiveAngleIndex] = useState<number>(0);
 
   const filteredItems =
     activeCategory === "semua"
       ? GALLERY_ITEMS
       : GALLERY_ITEMS.filter((item) => item.category === activeCategory);
+
+  const handleOpenLightbox = (item: GalleryItem) => {
+    setSelectedImage(item);
+    setActiveAngleIndex(0);
+  };
+
+  const currentDisplaySrc =
+    selectedImage && selectedImage.angles && selectedImage.angles.length > 0
+      ? selectedImage.angles[activeAngleIndex]
+      : selectedImage?.src || "";
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 py-16 md:py-24">
@@ -191,7 +161,7 @@ export default function GaleriPage() {
             transition={{ delay: 0.2 }}
             className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-medium"
           >
-            Koleksi dokumentasi visual resmi kawasan kampus, masjid, asrama, sarana olahraga, dan panorama udara Al-Andalus Putra.
+            Koleksi dokumentasi visual resmi kawasan pesantren, masjid, asrama, sarana olahraga, dan panorama udara Al-Andalus Putra.
           </motion.p>
         </div>
 
@@ -231,7 +201,7 @@ export default function GaleriPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
-                onClick={() => setSelectedImage(item)}
+                onClick={() => handleOpenLightbox(item)}
                 className="group relative cursor-pointer rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-slate-200/90 hover:border-emerald-400 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
@@ -253,8 +223,11 @@ export default function GaleriPage() {
                       </p>
                     </div>
                   </div>
-                  <div className="absolute top-3 right-3 p-2 rounded-full bg-slate-900/60 backdrop-blur-sm text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Maximize2 className="w-4 h-4" />
+                  <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/70 backdrop-blur-sm text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <Maximize2 className="w-3.5 h-3.5" />
+                    {item.angles && item.angles.length > 1 && (
+                      <span>{item.angles.length} Sudut Foto</span>
+                    )}
                   </div>
                 </div>
 
@@ -263,6 +236,11 @@ export default function GaleriPage() {
                     <span className="text-[11px] font-black uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">
                       {item.categoryLabel}
                     </span>
+                    {item.angles && item.angles.length > 1 && (
+                      <span className="text-[11px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">
+                        {item.angles.length} Foto
+                      </span>
+                    )}
                   </div>
                   <h3 className="text-sm sm:text-base font-bold text-slate-900 line-clamp-1 group-hover:text-emerald-700 transition-colors">
                     {item.title}
@@ -276,7 +254,7 @@ export default function GaleriPage() {
           </AnimatePresence>
         </motion.div>
 
-        {/* LIGHTBOX MODAL */}
+        {/* LIGHTBOX MODAL WITH MULTI-ANGLE SELECTOR */}
         <AnimatePresence>
           {selectedImage && (
             <motion.div
@@ -302,18 +280,60 @@ export default function GaleriPage() {
 
                 <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full bg-black">
                   <Image
-                    src={selectedImage.src}
+                    src={currentDisplaySrc}
                     alt={selectedImage.title}
                     fill
                     className="object-contain"
                   />
+                  
+                  {/* Prev/Next arrows if multiple angles */}
+                  {selectedImage.angles && selectedImage.angles.length > 1 && (
+                    <>
+                      <button
+                        onClick={() => setActiveAngleIndex((prev) => (prev > 0 ? prev - 1 : selectedImage.angles!.length - 1))}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white transition-all cursor-pointer border border-white/10"
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                      </button>
+                      <button
+                        onClick={() => setActiveAngleIndex((prev) => (prev < selectedImage.angles!.length - 1 ? prev + 1 : 0))}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white transition-all cursor-pointer border border-white/10"
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </button>
+                    </>
+                  )}
                 </div>
+
+                {/* Thumbnails row if multiple angles */}
+                {selectedImage.angles && selectedImage.angles.length > 1 && (
+                  <div className="flex items-center gap-2 p-3 bg-slate-950/80 border-t border-slate-800 overflow-x-auto justify-center">
+                    {selectedImage.angles.map((angleSrc, aIdx) => (
+                      <button
+                        key={aIdx}
+                        onClick={() => setActiveAngleIndex(aIdx)}
+                        className={"relative w-16 h-12 rounded-lg overflow-hidden border-2 transition-all cursor-pointer " + (
+                          activeAngleIndex === aIdx
+                            ? "border-emerald-500 scale-105"
+                            : "border-transparent opacity-60 hover:opacity-100"
+                        )}
+                      >
+                        <Image src={angleSrc} alt="" fill className="object-cover" />
+                      </button>
+                    ))}
+                  </div>
+                )}
 
                 <div className="p-6 sm:p-8 bg-slate-900 border-t border-slate-800 text-white">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-600/30 text-emerald-400 border border-emerald-500/30">
                       {selectedImage.categoryLabel}
                     </span>
+                    {selectedImage.angles && selectedImage.angles.length > 1 && (
+                      <span className="text-xs text-slate-400">
+                        Foto {activeAngleIndex + 1} dari {selectedImage.angles.length}
+                      </span>
+                    )}
                   </div>
                   <h3 className="text-xl sm:text-2xl font-black text-white mb-2">
                     {selectedImage.title}
@@ -332,7 +352,7 @@ export default function GaleriPage() {
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-800 via-teal-900 to-slate-900 text-white p-8 sm:p-12 shadow-xl border border-emerald-700/40 text-center space-y-6">
             <div className="max-w-2xl mx-auto space-y-3">
               <h2 className="text-2xl sm:text-3xl font-black text-white">
-                Ingin Mengunjungi Kampus Al-Andalus Putra Langsung?
+                Ingin Mengunjungi Pesantren Al-Andalus Putra Langsung?
               </h2>
               <p className="text-slate-200 text-sm sm:text-base leading-relaxed">
                 Kami menyambut hangat kunjungan silaturahmi calon santri dan wali santri untuk melihat langsung lingkungan belajar, asrama, dan fasilitas pesantren.

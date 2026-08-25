@@ -757,12 +757,9 @@ export default function Home() {
           </header>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
-              { src: "/images/lapangan-basket.webp", label: "Area Masjid" },
-              { src: "/images/gedung-utama-putra.webp", label: "Asrama Santri" },
-              { src: "/images/gedung-utama-putra.webp", label: "Halaqah Tahfizh" },
-              { src: "/images/lapangan-basket.webp", label: "Kelas Modern" },
-              { src: "/images/lapangan-futsal.webp", label: "Lapangan Olahraga" },
-              { src: "/images/gedung-utama-putra.webp", label: "Gedung Utama" },
+              { src: "/images/gedung-utama-putra.webp", label: "Gedung Utama & Asrama" },
+                { src: "/images/lapangan-futsal.webp", label: "Lapangan Futsal" },
+                { src: "/images/lapangan-basket.webp", label: "Lapangan Basket" },
             ].map((photo, i) => (
               <div key={i} className="relative group overflow-hidden rounded-xl aspect-video">
                 <Image
@@ -897,6 +894,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 

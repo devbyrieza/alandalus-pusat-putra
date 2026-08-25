@@ -25,13 +25,13 @@ export default function BentoGridSection() {
             viewport={{ once: true }}
             className="md:col-span-2 lg:col-span-2 row-span-2 bento-card relative group"
           >
-            <Image src="/images/gedung-utama-putra.webp" alt="Masjid" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+            <Image src="/images/gedung-utama-putra.webp" alt="Gedung" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="absolute inset-0 p-8 flex flex-col justify-end">
               <div className="w-12 h-12 bg-white/20  rounded-xl flex items-center justify-center mb-4 text-white">
                 <BookOpen className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-2">Masjid Jami' Pusat Hafalan</h3>
+              <h3 className="text-2xl font-bold text-white mb-2">Gedung Pusat Pembelajaran</h3>
               <p className="text-white/80 max-w-md">Pusat kegiatan ibadah dan halaqah tahfidz Al-Qur'an dengan suasana yang tenang dan kondusif.</p>
             </div>
           </motion.div>
@@ -52,9 +52,7 @@ export default function BentoGridSection() {
               <h3 className="text-xl font-bold text-ink-900 mb-2 group-hover:text-primary-700 transition-colors">Lab Komputer & Multimedia</h3>
               <p className="text-ink-600 text-sm">Fasilitas modern untuk mendukung pembelajaran IT dan kemampuan digital santri.</p>
             </div>
-            <div className="w-32 h-32 relative rounded-xl overflow-hidden shrink-0 shadow-md">
-              <Image src="/images/gedung-utama-putra.webp" alt="Lab" fill className="object-cover" />
-            </div>
+            
           </motion.div>
 
           {/* Card 3: Small Feature */}
@@ -99,3 +97,4 @@ export default function BentoGridSection() {
     </section>
   );
 }
+

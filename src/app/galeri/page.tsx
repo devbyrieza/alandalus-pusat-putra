@@ -214,8 +214,9 @@ export default function GaleriPage() {
                     src={item.src}
                     alt={item.title}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    unoptimized
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
 
@@ -296,8 +297,9 @@ export default function GaleriPage() {
                   src={selectedImage.src}
                   alt={selectedImage.title}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 1024px"
                   className="object-contain"
-                  unoptimized
+                  priority
                 />
               </div>
 

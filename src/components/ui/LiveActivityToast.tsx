@@ -69,7 +69,7 @@ export default function LiveActivityToast() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -60 }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          className="fixed bottom-16 sm:bottom-6 left-3 sm:left-6 z-40 bg-white/85 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/50 px-4 py-3 flex items-center gap-3.5 max-w-[min(280px,calc(100vw-4.5rem))]"
+          className="fixed bottom-20 sm:bottom-6 left-3 sm:left-6 z-30 bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-slate-100 px-4 py-3 flex items-center gap-3.5 max-w-[min(280px,calc(100vw-4.5rem))]"
         >
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-50 to-green-100 shadow-inner border border-green-200/50 flex items-center justify-center shrink-0">
             <Users className="w-4.5 h-4.5 text-green-600" />

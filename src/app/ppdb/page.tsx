@@ -33,29 +33,30 @@ import { motion, AnimatePresence } from "framer-motion";
 // ========================================
 
 const StatCard = ({
-  icon: Icon,
-  value,
   label,
-  delay = 0 }: {
-  icon: any;
-  value: string;
+  value,
+  icon: Icon,
+  delay,
+}: {
   label: string;
-  delay?: number;
+  value: string;
+  icon: any;
+  delay: number;
 }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ delay, duration: 0.5 }}
-    className="bg-white p-6 sm:p-5 md:p-8 rounded-xl sm:rounded-[2rem] border border-surface-100 shadow-premium-sm hover:shadow-premium-md transition-all text-center group"
+    className="bg-white/90 backdrop-blur-sm p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-100/80 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all text-center group relative overflow-hidden"
   >
-    <div className="w-14 h-14 mx-auto bg-surface-50 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-premium-xs">
-      <Icon className="w-7 h-7 text-primary-600" />
+    <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto bg-emerald-50/80 rounded-2xl flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-inner border border-emerald-100/50">
+      <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-emerald-600" />
     </div>
-    <div className="font-display font-black text-lg sm:text-2xl md:text-3xl text-ink-950 mb-1 leading-tight break-words">
+    <div className="font-display font-black text-base sm:text-xl md:text-2xl text-slate-900 mb-1 leading-snug tracking-tight">
       {value}
     </div>
-    <div className="text-[10px] font-black text-ink-400 uppercase tracking-widest leading-tight">
+    <div className="text-[11px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider leading-tight">
       {label}
     </div>
   </motion.div>
@@ -216,47 +217,47 @@ function PPDBContent() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-2xl md:text-4xl sm:text-3xl lg:text-5xl font-display font-black mb-8 md:mb-10 tracking-tight leading-[0.9] text-ink-950"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-black mb-6 md:mb-8 tracking-tight text-slate-950"
             >
-              Siapkan Generasi <br />
-              <span className="text-gradient-primary">Terbaik Kita</span>
+              <span className="block leading-tight text-slate-900">Siapkan Generasi</span>
+              <span className="block mt-1 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 via-teal-600 to-emerald-800">
+                Terbaik Kita
+              </span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-xl md:text-2xl text-ink-600 max-w-3xl mx-auto leading-relaxed font-medium mb-10"
+              className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-medium mb-10"
             >
               Bergabunglah dengan Pesantren Islam Internasional Al-Andalus Putra. Lingkungan yang
               kondusif untuk mencetak Hafidz Qur'an yang berwawasan luas dan
               berakhlak mulia.
             </motion.p>
 
-
-
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-6 justify-center"
+              className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               <Link
                 href={`/daftar${jenjang ? `?jenjang=${jenjang}` : ""}`}
-                className="inline-flex items-center justify-center gap-3 px-6 md:px-10 py-5 rounded-pill bg-primary-900 text-white font-black text-xl hover:bg-primary-800 shadow-premium-lg transition-all"
+                className="inline-flex items-center justify-center gap-3 px-8 md:px-10 py-4.5 rounded-full bg-emerald-700 text-white font-black text-lg hover:bg-emerald-800 shadow-xl shadow-emerald-700/25 transition-all hover:-translate-y-0.5"
               >
                 Daftar PPDB Baru
               </Link>
               <a
                 href="#alur"
-                className="inline-flex items-center justify-center gap-3 px-6 md:px-10 py-5 rounded-pill bg-white border border-surface-200 text-ink-950 font-black text-xl hover:bg-surface-50 transition-all shadow-premium-sm"
+                className="inline-flex items-center justify-center gap-3 px-8 md:px-10 py-4.5 rounded-full bg-white border border-slate-200 text-slate-800 font-bold text-lg hover:bg-slate-50 transition-all shadow-sm hover:-translate-y-0.5"
               >
                 Lihat Alur Seleksi
               </a>
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-24">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5 md:gap-6 mt-12 sm:mt-16 md:mt-20">
             {stats.map((stat, idx) => (
               <StatCard key={idx} {...stat} delay={0.4 + idx * 0.1} />
             ))}

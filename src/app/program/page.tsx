@@ -370,7 +370,7 @@ export default function ProgramPage() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-emerald-800 to-teal-950 rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-16 lg:p-20 text-center text-white relative overflow-hidden shadow-2xl"
+            className="bg-gradient-to-br from-emerald-800 via-teal-800 to-slate-900 rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-16 lg:p-20 text-center text-white relative overflow-hidden shadow-2xl"
           >
             <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-white/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />

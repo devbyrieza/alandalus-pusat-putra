@@ -62,17 +62,19 @@ export default function Footer() {
             </h4>
             <nav className="space-y-3">
               {[
-                { href: "/tentang",   label: "Tentang Pesantren" },
-                { href: "/program",   label: "Program TICE"       },
+                { href: "https://pesantren-alandalus.com", label: "Profil Pesantren", isExternal: true },
+                { href: "/program", label: "Program Pendidikan" },
                 { href: "/fasilitas", label: "Fasilitas"          },
                 { href: "/kegiatan",  label: "Kegiatan"           },
                 { href: "/galeri",    label: "Galeri"             },
                 { href: "/berita",    label: "Berita & Pengumuman"},
                 { href: "/kontak",    label: "Kontak"             },
-              ].map(({ href, label }) => (
+              ].map(({ href, label, isExternal }) => (
                 <Link
                   key={href}
                   href={href}
+                  target={isExternal || href.startsWith("http") ? "_blank" : undefined}
+                  rel={isExternal || href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-200 transition-colors group"
                 >
                   <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />

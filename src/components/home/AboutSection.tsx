@@ -6,30 +6,36 @@ import {
   Target,
   Rocket,
   ArrowRight,
-  Sparkles } from "lucide-react";
+  Sparkles
+} from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { motion, Variants } from "framer-motion";
-import { navigateToDetail } from "@/lib/navigation-scroll";
 
 const SPRING: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 const misi = [
   {
     label: "TICE",
-    text: "Menyelenggarakan pendidikan berbasis TICE (Tahfizh, International Curriculum dan Entrepreneurship)." },
+    text: "Menyelenggarakan pendidikan berbasis TICE (Tahfizh, International Curriculum dan Entrepreneurship)."
+  },
   {
     label: "Hamalatul Qur'an",
-    text: "Mencetak hamalatul Qur'an dengan bekal ilmu syar'i yang mumpuni." },
+    text: "Mencetak hamalatul Qur'an dengan bekal ilmu syar'i yang mumpuni."
+  },
   {
     label: "Entrepreneurship",
-    text: "Menanamkan jiwa entrepreneurship yang berwawasan global." }
+    text: "Menanamkan jiwa entrepreneurship yang berwawasan global."
+  }
 ];
 
 const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.08 } } };
+      staggerChildren: 0.08
+    }
+  }
+};
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 18 },
@@ -39,13 +45,12 @@ const itemVariants: Variants = {
     transition: {
       type: "tween",
       duration: 0.55,
-      ease: SPRING } } };
+      ease: SPRING
+    }
+  }
+};
 
 export default function AboutSection() {
-  const handleNavigateToDetail = () => {
-    navigateToDetail("/tentang", "#about");
-  };
-
   return (
     <section id="about" className="section-alt relative overflow-hidden">
       {/* Ambient background blobs */}
@@ -146,7 +151,8 @@ export default function AboutSection() {
                 type: "tween",
                 duration: 0.6,
                 ease: SPRING,
-                delay: 0.08 }}
+                delay: 0.08
+              }}
             >
               <div className="rounded-xl border border-primary-100 bg-white shadow-premium-sm overflow-hidden">
                 {/* Header */}
@@ -218,19 +224,21 @@ export default function AboutSection() {
               type: "tween",
               duration: 0.5,
               ease: SPRING,
-              delay: 0.1 }}
+              delay: 0.1
+            }}
             className="flex flex-col items-center"
           >
-            <Link
-              href="/tentang"
-              onClick={handleNavigateToDetail}
+            <a
+              href="https://pesantren-alandalus.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto"
             >
-              <button className="btn-secondary w-full px-10 py-3.5 group">
-                Lanjut Baca Profil
+              <button className="btn-secondary w-full px-10 py-3.5 group cursor-pointer">
+                Kunjungi Profil Pesantren Utama
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
-            </Link>
+            </a>
           </motion.div>
         </div>
       </Container>

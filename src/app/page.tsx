@@ -286,13 +286,15 @@ export default function Home() {
                   Daftar Sekarang
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link
-                  href="/tentang"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white text-base bg-white/10 hover:bg-white/20 border border-white/20 transition-all hover:-translate-y-1 "
+                <a
+                  href="https://pesantren-alandalus.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white text-base bg-white/10 hover:bg-white/20 border border-white/20 transition-all hover:-translate-y-1"
                 >
                   <PiBookOpenTextBold className="w-5 h-5" />
                   Profil Pesantren
-                </Link>
+                </a>
               </div>
 
               {/* Stat Row */}

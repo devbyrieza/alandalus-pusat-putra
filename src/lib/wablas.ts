@@ -29,8 +29,8 @@ const WABLAS_DOMAIN = process.env.WABLAS_DOMAIN || "";
 const WABLAS_TOKEN = process.env.WABLAS_TOKEN || "";
 const WABLAS_SECRET_KEY = process.env.WABLAS_SECRET_KEY || "";
 
-const DEFAULT_APP_URL = "https://pesantren-alimam.com";
-const DEFAULT_CONTACT = "0851-1152-4441";
+const DEFAULT_APP_URL = process.env.NEXT_PUBLIC_APP_URL || BRANDING.websiteUrl || "https://pesantren-alandalus.com";
+const DEFAULT_CONTACT = BRANDING.contact?.whatsapp || "0811-2802-1035";
 
 if (!WABLAS_DOMAIN || !WABLAS_TOKEN) {
   console.warn(

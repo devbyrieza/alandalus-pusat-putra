@@ -1,74 +1,86 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import {
   BookOpen,
   GraduationCap,
-  CheckCircle,
   Users,
-  Clock,
-  Calendar,
-  ArrowRight,
   Star,
   Sparkles,
   CheckCircle2,
-  Trophy,
   Globe,
-  ShieldCheck } from "lucide-react";
+  ShieldCheck,
+  Award
+} from "lucide-react";
 import { Container } from "@/components/layout/Container";
-import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Program Data with Refined Info
 const PROGRAMS = [
   {
     id: "mts",
     name: "Madrasah Tsanawiyah",
     buttonLabel: "Daftar MTs",
     fullName: "Program Madrasah Tsanawiyah (SMP)",
+    badge: "Jenjang Formal Terpadu (SMP / MTs)",
+    heroTitle: "Pondasi Rabbani, Cendekia & Mandiri",
+    graduateProfile: "Membentuk karakter akhlak mulia, hafalan Al-Qur'an mutqin, serta kesiapan akademik prima menuju jenjang Aliyah / SMA unggulan.",
     description:
-      "Kami menerapkan Kurikulum Terpadu yang menggabungkan standar Nasional dengan khas Andalus, berfokus pada penguasaan Tahfidz Al-Qur'an serta pembentukan karakter Leadership yang kokoh sejak dini.",
+      "Kami menerapkan Kurikulum Terpadu yang menggabungkan standar Nasional Kemenag dengan ciri khas Pesantren Al-Andalus, berfokus pada penguasaan Tahfidz Al-Qur'an serta pembentukan karakter Leadership yang kokoh sejak usia dini.",
     stats: [
       { label: "Tahfidz", value: "Target 12 Juz", icon: BookOpen },
       { label: "Prioritas", value: "Leadership", icon: ShieldCheck },
       { label: "Bahasa", value: "Dwi-Bahasa", icon: Globe },
     ],
-    curriculum: [
-      "Target Hafalan 12 Juz Mutqin",
-      "Leadership & Character Building",
-      "Bahasa Arab & Inggris Yaumiyah",
-      "Kajian Kitab Turots Dasar",
-      "Kurikulum Nasional Lengkap",
+    highlights: [
+      { icon: BookOpen, title: "Tahfidz 12 Juz Mutqin", desc: "Bimbingan intensif hafalan Al-Qur'an dengan metode mutqin bersanad." },
+      { icon: ShieldCheck, title: "Karakter & Adab", desc: "Penanaman adab islami dan kemandirian melalui pembinaan asrama 24 jam." },
+      { icon: Globe, title: "Bahasa Arab & Inggris", desc: "Pembiasaan percakapan dwi-bahasa aktif dalam aktivitas keseharian." },
+      { icon: Award, title: "Ijazah Formal & Syahadah", desc: "Lulusan memperoleh Ijazah Resmi Kemenag & Syahadah Pesantren Al-Andalus." },
     ],
-    image: "/images/gedung-utama-putra.webp",
-    theme: "maroon",
-    accent: "text-primary-600",
-    bg: "bg-primary-50" },
+    curriculum: [
+      "Target Hafalan 12 Juz Mutqin & Bersanad",
+      "Leadership & Character Building santri",
+      "Bahasa Arab & Inggris Yaumiyah (Active Speaking)",
+      "Kajian Kitab Turots Dasar & Aqidah Ahlussunnah",
+      "Kurikulum Nasional Terakreditasi Lengkap",
+    ],
+    theme: "emerald",
+    accent: "text-emerald-600",
+    bg: "bg-emerald-50"
+  },
   {
     id: "il",
     name: "I'dad Lughowi",
     buttonLabel: "Daftar IL",
     fullName: "Program I'dad Lughowi (SMA)",
+    badge: "Persiapan Intensif Aliyah & Jamiah (SMA)",
+    heroTitle: "Kaderisasi Dai & Cendekia Muslim",
+    graduateProfile: "Mencetak santri berkemampuan bahasa Arab fasih, pemahaman syar'i mendalam, dan siap bersaing di PTN maupun Universitas Luar Negeri.",
     description:
-      "Program persiapan intensif menuju jenjang Aliyah, berfokus pada pemantapan Bahasa Arab, Tahfidz, dan kematangan leadership organisasi untuk mencetak kader ulama yang kontributif.",
+      "Program persiapan intensif menuju jenjang Aliyah, berfokus pada percepatan pemantapan Bahasa Arab, penguasaan Turots, Tahfidz Al-Qur'an, dan kematangan leadership organisasi untuk mencetak kader ulama yang kontributif.",
     stats: [
       { label: "Tahfidz", value: "Target 16 Juz", icon: BookOpen },
       { label: "Kekhasan", value: "Kader Leadership", icon: Users },
       { label: "Fokus", value: "Bahasa & Syar'i", icon: Sparkles },
     ],
-    curriculum: [
-      "Tahun I'dad: Intensif Bahasa Arab",
-      "Target Hafalan 16 Juz",
-      "Manajemen Organisasi & Leadership",
-      "Kajian Kitab Turots Lanjutan",
-      "Pembinaan Dakwah Lapangan",
+    highlights: [
+      { icon: BookOpen, title: "Tahfidz 16 Juz", desc: "Penguatan hafalan dan mutqin dengan standar kualitas dan tahsin tinggi." },
+      { icon: Sparkles, title: "Intensif Bahasa & Turots", desc: "Pendalaman nahwu, shorof, balaghah, dan pengkajian kitab para ulama." },
+      { icon: Users, title: "Manajemen & Leadership", desc: "Pengasuhan kepemimpinan organisasi dan dakwah kemasyarakatan." },
+      { icon: Award, title: "Akses Studi Lanjut Global", desc: "Jalur persiapan studi ke Timur Tengah (Madinah, Al-Azhar) & PTN Favorit." },
     ],
-    image: "/images/lapangan-basket.webp",
+    curriculum: [
+      "Tahun I'dad: Intensif Bahasa Arab & Qowaid",
+      "Target Hafalan 16 Juz dengan Sanad Tajwid",
+      "Manajemen Organisasi & Kepemimpinan Dakwah",
+      "Kajian Kitab Turots Lanjutan & Fiqih Perbandingan",
+      "Bimbingan Persiapan Masuk Perguruan Tinggi Favorit",
+    ],
     theme: "gold",
     accent: "text-gold-600",
-    bg: "bg-secondary-50" },
+    bg: "bg-secondary-50"
+  },
 ];
 
 export default function ProgramPage() {
@@ -76,7 +88,7 @@ export default function ProgramPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  const [activeSection, setActiveSection] = useState<string>("mts");
+  const [activeSection, setActiveSection] = useState("mts");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -112,20 +124,20 @@ export default function ProgramPage() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill bg-primary-50 border border-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest mb-8 shadow-md"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-widest mb-8 shadow-xs"
           >
             <GraduationCap className="w-3.5 h-3.5" />
-            <span>Jenjang Pendidikan</span>
+            <span>Jenjang Pendidikan Pesantren</span>
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl lg:text-8xl font-display font-black mb-10 tracking-tight leading-[0.9] text-ink-950"
+            className="text-3xl md:text-5xl lg:text-7xl font-display font-black mb-8 tracking-tight leading-[1.05] text-ink-950"
           >
-            Program <br />
-            <span className="text-gradient-primary">Terbaik Kita</span>
+            Program Pendidikan <br />
+            <span className="text-gradient-primary">Al-Andalus Putra</span>
           </motion.h1>
 
           <motion.p
@@ -135,13 +147,13 @@ export default function ProgramPage() {
             className="text-lg md:text-xl text-ink-600 max-w-2xl mx-auto leading-relaxed font-medium"
           >
             Kurikulum terintegrasi komprehensif yang menyelaraskan standar
-            Nasional dengan khas Andalus.
+            Nasional dengan nilai-nilai unggul kepesantrenan Ahlussunnah.
           </motion.p>
         </Container>
       </section>
 
       {/* 2. Navigation Tabs (Sticky) - Refined */}
-      <div className="sticky top-[72px] z-40 bg-white/60  border-y border-surface-100 py-4">
+      <div className="sticky top-[72px] z-40 bg-white/80 backdrop-blur-md border-y border-surface-100 py-4 shadow-xs">
         <Container>
           <div className="flex flex-wrap justify-center gap-3">
             {PROGRAMS.map((program) => (
@@ -152,14 +164,13 @@ export default function ProgramPage() {
                     .getElementById(program.id)
                     ?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className={`px-8 py-3 rounded-pill font-black text-sm transition-all border shadow-md
-                                ${
-                                  activeSection === program.id
-                                    ? program.theme === "maroon"
-                                      ? "bg-primary-700 text-white border-primary-700"
-                                      : "bg-gold-500 text-white border-gold-500"
-                                    : "bg-white text-ink-500 border-primary-100 hover:border-primary-300 hover:text-primary-700"
-                                }`}
+                className={`px-8 py-3 rounded-full font-black text-sm transition-all border shadow-xs cursor-pointer ${
+                  activeSection === program.id
+                    ? program.theme === "emerald"
+                      ? "bg-emerald-700 text-white border-emerald-700 shadow-emerald-700/20"
+                      : "bg-gold-500 text-white border-gold-500 shadow-gold-500/20"
+                    : "bg-white text-ink-500 border-primary-100 hover:border-primary-300 hover:text-primary-700"
+                }`}
               >
                 {program.name}
               </button>
@@ -174,48 +185,79 @@ export default function ProgramPage() {
           <section
             key={program.id}
             id={program.id}
-            className="py-24 md:py-32 scroll-mt-32 overflow-hidden"
+            className="py-20 md:py-28 scroll-mt-32 overflow-hidden"
           >
             <Container>
               <div
-                className={`grid lg:grid-cols-2 gap-16 lg:gap-24 items-center ${idx % 2 === 1 ? "lg:grid-flow-dense" : ""}`}
+                className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${idx % 2 === 1 ? "lg:grid-flow-dense" : ""}`}
               >
-                {/* Image Side */}
+                {/* Infographic Bento Highlight Card */}
                 <motion.div
                   initial={{ opacity: 0, x: idx % 2 === 0 ? -40 : 40 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   className={`relative ${idx % 2 === 1 ? "lg:col-start-2" : ""}`}
                 >
-                  <div className="aspect-[4/5] max-h-[520px] min-h-[350px] md:min-h-[440px] w-full rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-lg relative z-10 p-2.5 md:p-3 bg-white border border-primary-100">
-                    <div className="relative w-full h-full min-h-[330px] md:min-h-[420px] rounded-[2rem] md:rounded-[2.8rem] overflow-hidden bg-gradient-to-br from-primary-950 via-primary-900 to-primary-950">
-                      <Image
-                        src={program.image}
-                        alt={program.fullName}
-                        fill
-                        priority={idx === 0}
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover transition-transform duration-700 hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-
-                      <div className="absolute bottom-10 left-10 right-10 z-20">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-white/20  border border-white/30 text-white text-[10px] font-black uppercase tracking-widest mb-3">
-                          <Star className="w-3.5 h-3.5 fill-gold-400 text-gold-400" />
-                          <span>Program Unggulan</span>
-                        </div>
-                        <h3 className="text-3 font-display font-black text-white md:text-4xl leading-none">
-                          Pengalaman Terbaik
-                        </h3>
+                  <div className={`rounded-[2.5rem] md:rounded-[3rem] p-6 sm:p-8 md:p-10 shadow-2xl relative z-10 border ${
+                    program.theme === "emerald"
+                      ? "bg-gradient-to-br from-emerald-950 via-teal-900 to-emerald-950 border-emerald-800/50 text-white shadow-emerald-950/30"
+                      : "bg-gradient-to-br from-amber-950 via-stone-900 to-primary-950 border-gold-800/40 text-white shadow-stone-950/30"
+                  }`}>
+                    {/* Header Badge */}
+                    <div className="flex items-center justify-between gap-4 mb-6">
+                      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-wider text-secondary-300">
+                        <Sparkles className="w-3.5 h-3.5 text-gold-400" />
+                        <span>{program.badge}</span>
                       </div>
+                      <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center border border-white/15">
+                        <GraduationCap className="w-5 h-5 text-gold-300" />
+                      </div>
+                    </div>
+
+                    {/* Card Title */}
+                    <h3 className="text-2xl md:text-3xl font-display font-black text-white mb-3">
+                      {program.heroTitle}
+                    </h3>
+                    <p className="text-sm text-white/80 leading-relaxed mb-8 font-medium">
+                      {program.graduateProfile}
+                    </p>
+
+                    {/* 2x2 Feature Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-8">
+                      {program.highlights.map((hl, hIdx) => {
+                        const HlIcon = hl.icon;
+                        return (
+                          <div
+                            key={hIdx}
+                            className="bg-white/5 hover:bg-white/10 transition-colors p-4 rounded-2xl border border-white/10"
+                          >
+                            <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center text-gold-400 mb-2.5">
+                              <HlIcon className="w-4 h-4" />
+                            </div>
+                            <h4 className="font-bold text-sm text-white mb-1">{hl.title}</h4>
+                            <p className="text-xs text-white/70 leading-relaxed">{hl.desc}</p>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {/* Trust Banner / Akreditasi Footer */}
+                    <div className="pt-5 border-t border-white/15 flex flex-wrap items-center justify-between gap-2 text-xs text-white/80">
+                      <span className="flex items-center gap-1.5 font-medium">
+                        <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                        Ijazah Formal & Syahadah Pesantren
+                      </span>
+                      <span className="font-bold text-gold-300">
+                        Al-Andalus Standard
+                      </span>
                     </div>
                   </div>
 
-                  {/* Decorative Blob */}
+                  {/* Decorative Glow Blob */}
                   <div
-                    className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] rounded-full blur-[120px] -z-10 opacity-30
-                                        ${program.theme === "maroon" ? "bg-primary-100" : "bg-secondary-200"}
-                                    `}
+                    className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] rounded-full blur-[100px] -z-10 opacity-30 ${
+                      program.theme === "emerald" ? "bg-emerald-600" : "bg-gold-600"
+                    }`}
                   />
                 </motion.div>
 
@@ -227,25 +269,25 @@ export default function ProgramPage() {
                     viewport={{ once: true }}
                     className="text-center lg:text-left"
                   >
-                    <h2 className="text-2xl md:text-4xl lg:text-6xl font-display font-black text-ink-950 leading-[0.95] mb-8">
+                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-display font-black text-ink-950 leading-[1.05] mb-6">
                       {program.fullName}
                     </h2>
-                    <p className="text-xl text-ink-600 font-medium leading-relaxed mb-10 text-center lg:text-left">
+                    <p className="text-lg text-ink-600 font-medium leading-relaxed mb-8 text-center lg:text-left">
                       {program.description}
                     </p>
                   </motion.div>
 
                   {/* Stats Grid - Modern Design */}
-                  <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                     {program.stats.map((stat, sIdx) => (
                       <div
                         key={sIdx}
-                        className={`app-card bg-white p-5 rounded-[2rem] border border-primary-50 shadow-md hover:shadow-lg transition-all text-center group`}
+                        className="app-card bg-white p-5 rounded-[2rem] border border-primary-50 shadow-xs hover:shadow-md transition-all text-center group"
                       >
                         <div
-                          className={`w-10 h-10 rounded-xl mx-auto mb-3 flex items-center justify-center transition-transform group-hover:scale-110 border border-primary-100
-                                                    ${program.theme === "maroon" ? "bg-primary-50 text-primary-600" : "bg-secondary-100 text-gold-700"}
-                                                `}
+                          className={`w-10 h-10 rounded-xl mx-auto mb-3 flex items-center justify-center transition-transform group-hover:scale-110 border border-primary-100 ${
+                            program.theme === "emerald" ? "bg-emerald-50 text-emerald-600" : "bg-secondary-100 text-gold-700"
+                          }`}
                         >
                           <stat.icon className="w-5 h-5" />
                         </div>
@@ -253,7 +295,7 @@ export default function ProgramPage() {
                           {stat.label}
                         </p>
                         <p
-                          className={`font-black text-ink-950 ${stat.value.length > 20 ? "text-sm leading-tight" : "text-lg"}`}
+                          className={`font-black text-ink-950 ${stat.value.length > 20 ? "text-sm leading-tight" : "text-base"}`}
                         >
                           {stat.value}
                         </p>
@@ -266,33 +308,33 @@ export default function ProgramPage() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className={`app-card rounded-[3rem] p-10 mb-10 border ${program.bg} border-primary-100 shadow-md relative overflow-hidden`}
+                    className={`app-card rounded-[2.5rem] p-8 md:p-10 mb-8 border ${program.bg} border-primary-100 shadow-xs relative overflow-hidden`}
                   >
                     <div className="absolute top-0 right-0 p-5 md:p-8 opacity-5">
                       <BookOpen className="w-32 h-32 text-primary-900" />
                     </div>
 
-                    <h3 className="text-2xl font-black text-ink-950 mb-8 flex items-center gap-3">
+                    <h3 className="text-xl md:text-2xl font-black text-ink-950 mb-6 flex items-center gap-3">
                       <div
-                        className={`w-3 h-10 rounded-full ${program.theme === "maroon" ? "bg-primary-600" : "bg-gold-500"}`}
+                        className={`w-2.5 h-8 rounded-full ${program.theme === "emerald" ? "bg-emerald-600" : "bg-gold-500"}`}
                       />
-                      Kurikulum & Fokus
+                      Kurikulum & Fokus Pembinaan
                     </h3>
 
-                    <ul className="space-y-5 relative z-10">
+                    <ul className="space-y-4 relative z-10">
                       {program.curriculum.map((item, cIdx) => (
                         <li
                           key={cIdx}
-                          className="flex items-start gap-4 group/item"
+                          className="flex items-start gap-3.5 group/item"
                         >
                           <div
-                            className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5 shadow-md
-                                                        ${program.theme === "maroon" ? "bg-primary-600 text-white" : "bg-gold-500 text-white"}
-                                                    `}
+                            className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 shadow-xs ${
+                              program.theme === "emerald" ? "bg-emerald-600 text-white" : "bg-gold-500 text-white"
+                            }`}
                           >
-                            <CheckCircle2 className="w-4 h-4" />
+                            <CheckCircle2 className="w-3.5 h-3.5" />
                           </div>
-                          <span className="text-ink-800 font-bold text-lg leading-tight tracking-tight group-hover/item:text-ink-950 transition-colors">
+                          <span className="text-ink-800 font-bold text-base leading-tight tracking-tight group-hover/item:text-ink-950 transition-colors">
                             {item}
                           </span>
                         </li>
@@ -307,11 +349,9 @@ export default function ProgramPage() {
                   >
                     <Link href={`/daftar?program=${program.id}`}>
                       <button
-                        className={`w-full sm:w-auto px-14 py-5 rounded-pill font-black text-white text-lg shadow-lg transition-all hover:-translate-y-1
-                                                ${program.theme === "maroon" ? "bg-primary-700 hover:bg-primary-800" : "bg-gold-600 hover:bg-gold-700"}
-                                            `}
+                        className={`w-full sm:w-auto px-10 py-4 rounded-full font-black text-white text-base shadow-lg transition-all hover:-translate-y-1 cursor-pointer bg-emerald-700 hover:bg-emerald-800 shadow-emerald-700/25`}
                       >
-                        Daftarkan Sekarang
+                        {program.buttonLabel} Sekarang
                       </button>
                     </Link>
                   </motion.div>
@@ -323,35 +363,34 @@ export default function ProgramPage() {
       </div>
 
       {/* Bottom CTA - Impactful */}
-      <section className="py-16 md:py-24 lg:py-32 bg-surface-50">
+      <section className="py-16 md:py-24 bg-surface-50">
         <Container>
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-primary-900 bg-linear-to-br from-primary-800 to-primary-950 rounded-[2rem] md:rounded-[3rem] lg:rounded-[4rem] p-6 sm:p-5 md:p-8 lg:p-24 text-center text-white relative overflow-hidden"
+            className="bg-gradient-to-br from-emerald-800 to-teal-950 rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-16 lg:p-20 text-center text-white relative overflow-hidden shadow-2xl"
           >
-            <div className="absolute top-0 right-0 w-32 h-32 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-white/5 rounded-full blur-[60px] md:blur-[100px] -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-white/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />
 
             <div className="relative z-10">
-              <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-3xl xl:text-6xl font-display font-black mb-4 sm:mb-6 md:mb-8 text-white leading-tight">
-                Mulai Perjalanan <br />{" "}
-                <span className="text-secondary-300">Terbaik</span> Mereka
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-display font-black mb-6 text-white leading-tight">
+                Mulai Perjalanan Pendidikan <br />
+                <span className="text-secondary-300">Terbaik Putra Anda</span>
               </h2>
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-50 max-w-2xl mx-auto mb-6 sm:mb-8 md:mb-10 lg:mb-12 font-medium px-2">
-                Konsultasikan rencana pendidikan putra-putri Anda dengan tim
-                kami untuk mendapatkan pilihan program yang paling tepat.
+              <p className="text-sm sm:text-base md:text-lg text-primary-50 max-w-2xl mx-auto mb-10 font-medium px-2 leading-relaxed">
+                Konsultasikan rencana pendidikan santri dengan tim penerimaan kami untuk mendapatkan pilihan jenjang yang paling tepat.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center px-4">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
                 <Link href="/daftar">
-                  <button className="w-full sm:w-auto px-6 sm:px-6 md:px-10 py-3.5 sm:py-4 md:py-5 rounded-pill bg-white text-primary-900 font-black text-sm sm:text-base md:text-lg hover:bg-primary-50 shadow-lg transition-all min-h-[48px] sm:min-h-[52px]">
+                  <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-primary-900 font-black text-base hover:bg-primary-50 shadow-lg transition-all cursor-pointer">
                     Pendaftaran Online
                   </button>
                 </Link>
                 <Link href="/kontak">
-                  <button className="w-full sm:w-auto px-6 sm:px-6 md:px-10 py-3.5 sm:py-4 md:py-5 rounded-pill bg-white/10 text-white font-bold border border-white/20 hover:bg-white/20 transition-all text-sm sm:text-base md:text-lg min-h-[48px] sm:min-h-[52px]">
-                    Hubungi Admissions
+                  <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 text-white font-bold border border-white/20 hover:bg-white/20 transition-all text-base cursor-pointer">
+                    Hubungi Panitia PSB
                   </button>
                 </Link>
               </div>

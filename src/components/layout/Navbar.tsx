@@ -50,7 +50,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Beranda", href: "/" },
-    { name: "Program & Biaya", href: "/program" },
+    { name: "Program Pendidikan", href: "/program" },
     { name: "Galeri Pesantren", href: "/galeri" },
     { name: "Kontak Panitia", href: "/kontak" },
     { name: "Alur Seleksi", href: "/ppdb" },

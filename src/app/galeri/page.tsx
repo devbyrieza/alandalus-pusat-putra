@@ -203,42 +203,30 @@ export default function GaleriPage() {
                     alt={item.title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-                    <div className="text-white space-y-1">
-                      <span className="inline-block text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-600 text-white mb-1 shadow-xs">
-                        {item.categoryLabel}
-                      </span>
-                      <h3 className="text-base font-bold leading-snug drop-shadow-sm">{item.title}</h3>
-                      <p className="text-xs text-slate-200 line-clamp-2 drop-shadow-sm">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/70 backdrop-blur-sm text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Maximize2 className="w-3.5 h-3.5" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+
+                  <div className="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 text-xs font-bold text-slate-800 shadow-xs">
+                    <span>{item.categoryLabel}</span>
                     {item.angles && item.angles.length > 1 && (
-                      <span>{item.angles.length} Sudut Foto</span>
+                      <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded-full border border-emerald-200">
+                        {item.angles.length} Sudut Foto
+                      </span>
                     )}
+                  </div>
+
+                  <div className="absolute top-3 right-3 p-2 rounded-full bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity shadow-sm">
+                    <Maximize2 className="w-4 h-4" />
                   </div>
                 </div>
 
-                <div className="p-4 sm:p-5">
-                  <div className="flex items-center justify-between gap-2 mb-1.5">
-                    <span className="text-[11px] font-black uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">
-                      {item.categoryLabel}
-                    </span>
-                    {item.angles && item.angles.length > 1 && (
-                      <span className="text-[11px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">
-                        {item.angles.length} Foto
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="text-sm sm:text-base font-bold text-slate-900 line-clamp-1 group-hover:text-emerald-700 transition-colors">
+                <div className="p-5 sm:p-6 space-y-1.5 bg-white">
+                  <h3 className="font-bold text-base sm:text-lg text-slate-900 group-hover:text-emerald-700 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                  <p className="text-slate-500 text-xs sm:text-sm line-clamp-2 leading-relaxed">
                     {item.description}
                   </p>
                 </div>

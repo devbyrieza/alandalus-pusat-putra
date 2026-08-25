@@ -6,7 +6,6 @@ import {
   BookOpen,
   GraduationCap,
   Users,
-  Star,
   Sparkles,
   CheckCircle2,
   Globe,
@@ -14,7 +13,7 @@ import {
   Award
 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const PROGRAMS = [
   {
@@ -85,15 +84,17 @@ const PROGRAMS = [
 ];
 
 export default function ProgramPage() {
+  const [activeSection, setActiveSection] = useState("smpit");
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [activeSection, setActiveSection] = useState("smpit");
-
   useEffect(() => {
     const handleScroll = () => {
-      const viewportMiddle = window.scrollY + window.innerHeight / 2;
+      const scrollPosition = window.scrollY;
+      const viewportMiddle = scrollPosition + window.innerHeight / 3;
+
       for (const program of PROGRAMS) {
         const element = document.getElementById(program.id);
         if (element) {
@@ -116,7 +117,7 @@ export default function ProgramPage() {
 
   return (
     <main className="bg-white min-h-screen">
-      {/* 1. Hero Section - Airy & Clean */}
+      {/* 1. Hero Section */}
       <section className="relative py-24 md:py-32 overflow-hidden bg-white">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] pointer-events-none" />
@@ -153,7 +154,7 @@ export default function ProgramPage() {
         </Container>
       </section>
 
-      {/* 2. Navigation Tabs (Sticky) - Refined */}
+      {/* 2. Navigation Tabs (Sticky) */}
       <div className="sticky top-[72px] z-40 bg-white/80 backdrop-blur-md border-y border-surface-100 py-4 shadow-xs">
         <Container>
           <div className="flex flex-wrap justify-center gap-3">
@@ -167,7 +168,38 @@ export default function ProgramPage() {
                 }}
                 className={`px-8 py-3 rounded-full font-black text-sm transition-all border shadow-xs cursor-pointer ${
                   activeSection === program.id
-                    ? program.theme === "emerald"
+                    ? "bg-emerald-700 text-white border-emerald-700 shadow-emerald-700/20"
+                    : "bg-white text-ink-500 border-surface-200 hover:border-primary-300 hover:text-primary-700"
+                }`}
+              >
+                {program.name}
+              </button>
+            ))}
+          </div>
+        </Container>
+      </div>
+
+      {/* 3. Program Content Sections */}
+      <div className="py-12">
+        {PROGRAMS.map((program, idx) => (
+          <section
+            key={program.id}
+            id={program.id}
+            className="py-20 md:py-28 scroll-mt-32 overflow-hidden"
+          >
+            <Container>
+              <div
+                className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${idx % 2 === 1 ? "lg:grid-flow-dense" : ""}`}
+              >
+                {/* Infographic Bento Highlight Card */}
+                <motion.div
+                  initial={{ opacity: 0, x: idx % 2 === 0 ? -40 : 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className={`relative ${idx % 2 === 1 ? "lg:col-start-2" : ""}`}
+                >
+                  <div className={`rounded-[2.5rem] md:rounded-[3rem] p-6 sm:p-8 md:p-10 shadow-2xl relative z-10 border ${
+                    program.theme === "emerald"
                       ? "bg-gradient-to-br from-[#064e3b] via-[#047857] to-[#022c22] border-emerald-400/30 text-white shadow-2xl shadow-emerald-950/30"
                       : "bg-gradient-to-br from-[#047857] via-[#064e3b] to-[#0f3d2e] border-emerald-400/30 text-white shadow-2xl shadow-emerald-950/30"
                   }`}>
@@ -271,7 +303,7 @@ export default function ProgramPage() {
                     ))}
                   </div>
 
-                  {/* Curriculum Card - Refined */}
+                  {/* Curriculum Card */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -317,7 +349,7 @@ export default function ProgramPage() {
                   >
                     <Link href={`/daftar?program=${program.id}`}>
                       <button
-                        className={`w-full sm:w-auto px-10 py-4 rounded-full font-black text-white text-base shadow-lg transition-all hover:-translate-y-1 cursor-pointer bg-emerald-700 hover:bg-emerald-800 shadow-emerald-700/25`}
+                        className="w-full sm:w-auto px-10 py-4 rounded-full font-black text-base shadow-lg transition-all hover:-translate-y-1 cursor-pointer bg-emerald-700 hover:bg-emerald-800 text-white shadow-emerald-700/25"
                       >
                         {program.buttonLabel} Sekarang
                       </button>
@@ -330,14 +362,14 @@ export default function ProgramPage() {
         ))}
       </div>
 
-      {/* Bottom CTA - Impactful */}
+      {/* Bottom CTA */}
       <section className="py-16 md:py-24 bg-surface-50">
         <Container>
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-emerald-800 via-teal-800 to-slate-900 rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-16 lg:p-20 text-center text-white relative overflow-hidden shadow-2xl"
+            className="bg-gradient-to-br from-emerald-800 via-teal-800 to-slate-900 shadow-emerald-950/20 rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-16 lg:p-20 text-center text-white relative overflow-hidden shadow-2xl"
           >
             <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-white/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />

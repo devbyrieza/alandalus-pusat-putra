@@ -1,5 +1,8 @@
 "use client";
 
+import Link from "next/link";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { BRANDING, IS_PUTRA } from "@/config/branding";
 import {
   ArrowRight,
@@ -18,7 +21,8 @@ import {
   Languages,
   Briefcase,
   Heart,
-  AlertTriangle, XCircle,
+  AlertTriangle,
+  XCircle,
   Microscope,
   Star,
   ChevronRight,
@@ -30,7 +34,8 @@ import {
   FileText,
   CreditCard,
   BellRing,
-  ClipboardCheck } from "lucide-react";
+  ClipboardCheck,
+} from "lucide-react";
 import {
   FaMosque,
   FaQuran,
@@ -45,23 +50,15 @@ import {
   FaCheckCircle,
   FaTimesCircle,
   FaShieldAlt,
-  FaBullseye,
   FaHandshake,
+  FaMapMarkerAlt,
   FaTrophy,
-  FaMapMarkerAlt } from "react-icons/fa";
-import {
-  PiBookOpenTextBold,
-  PiCertificateBold,
-  PiPlantBold } from "react-icons/pi";
-import {
-  HiAcademicCap,
-  HiOutlineBookOpen,
-  HiOutlineCpuChip } from "react-icons/hi2";
-import Link from "next/link";
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+} from "react-icons/fa";
+import { HiAcademicCap, HiOutlineBookOpen } from "react-icons/hi";
+import { HiOutlineCpuChip } from "react-icons/hi2";
+import { PiCertificateBold, PiPlantBold, PiBookOpenTextBold } from "react-icons/pi";
 
-// â”€â”€â”€ Animated Counter Hook â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ————————————————————————————————————————————————————————————————————————————————————
 function useCountUp(target: number, duration = 2000, start = false) {
   const [count, setCount] = useState(0);
   useEffect(() => {
@@ -120,22 +117,22 @@ function StatCard({
 
 // â”€â”€â”€ Infinite Marquee â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const alumniItems = [
-  { label: "Universitas Islam Madinah", Icon: FaMosque },
-  { label: "Yarmouk University, Jordan", Icon: FaUniversity },
-  { label: "Universitas di Syiria", Icon: FaMosque },
+  { label: "Universitas Islam Madinah", Icon: Building2 },
+  { label: "Yarmouk University, Jordan", Icon: Building2 },
+  { label: "Universitas di Syiria", Icon: Building2 },
   { label: "STIBA Ar Raayah", Icon: FaQuran },
-  { label: "Al-Azhar University, Mesir", Icon: FaUniversity },
-  { label: "Universiti Utara Malaysia", Icon: FaGlobeAsia },
+  { label: "Al-Azhar University, Mesir", Icon: Building2 },
+  { label: "Universiti Utara Malaysia", Icon: Globe },
   { label: "HK Polytechnic University", Icon: Building2 },
   { label: "University of Auckland, NZ", Icon: Globe },
-  { label: "Universitas Indonesia (UI)", Icon: HiAcademicCap },
-  { label: "Universitas Gadjah Mada", Icon: HiAcademicCap },
+  { label: "Universitas Indonesia (UI)", Icon: GraduationCap },
+  { label: "Universitas Gadjah Mada", Icon: GraduationCap },
   { label: "Institut Teknologi Bandung", Icon: HiOutlineCpuChip },
-  { label: "Universitas Diponegoro", Icon: FaUniversity },
-  { label: "Universitas Brawijaya", Icon: FaUniversity },
-  { label: "Universitas Airlangga", Icon: FaUniversity },
+  { label: "Universitas Diponegoro", Icon: Building2 },
+  { label: "Universitas Brawijaya", Icon: Building2 },
+  { label: "Universitas Airlangga", Icon: Building2 },
   { label: "LIPIA Jakarta", Icon: FaQuran },
-  { label: "UIN Syarif Hidayatullah", Icon: FaMosque },
+  { label: "UIN Syarif Hidayatullah", Icon: Building2 },
   { label: "IPB University", Icon: PiPlantBold },
 ];
 
@@ -255,7 +252,7 @@ export default function Home() {
                   <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${IS_PUTRA ? "bg-primary-400" : "bg-pink-400"}`} />
                   <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${IS_PUTRA ? "bg-primary-400" : "bg-pink-400"}`} />
                 </span>
-                <FaMosque className={`w-3.5 h-3.5 ${c.text400}`} />
+                <Building2 className={`w-3.5 h-3.5 ${c.text400}`} />
                 <span className="text-white/90 text-xs font-bold uppercase tracking-widest">
                   Pesantren Islam Internasional · Jonggol, Bogor
                 </span>
@@ -300,10 +297,10 @@ export default function Home() {
               {/* Stat Row */}
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-2 border-t border-white/10">
                 {[
-                  { val: "2013", label: "Tahun Berdiri", Icon: FaStar },
-                  { val: "A", label: "Akreditasi", Icon: HiAcademicCap },
+                  { val: "2013", label: "Tahun Berdiri", Icon: Star },
+                  { val: "A", label: "Akreditasi", Icon: GraduationCap },
                   { val: "1000+", label: "Santri & Alumni", Icon: Users },
-                  { val: "Jejaring", label: "3 Benua", Icon: FaGlobeAsia },
+                  { val: "Jejaring", label: "3 Benua", Icon: Globe },
                 ].map((s, i) => (
                   <div key={i} className="flex items-center gap-2">
                     {i > 0 && <span className="text-slate-700">·</span>}
@@ -354,7 +351,7 @@ export default function Home() {
 
                 {/* Floating top-right badge - Also slightly adjusted to pop out */}
                 <div className="absolute -top-4 right-0 md:-right-6 bg-slate-900/80  border border-white/30 rounded-xl p-3 flex items-center gap-2.5 shadow-lg ring-1 ring-white/10 z-20">
-                  <PiCertificateBold className={`w-6 h-6 ${c.text400} shrink-0`} />
+                  <Award className={`w-6 h-6 ${c.text400} shrink-0`} />
                   <div>
                     <p className="text-white text-[11px] font-bold leading-tight">Terakreditasi Muadalah</p>
                     <p className="text-amber-300 text-xs font-black tracking-wide drop-shadow-lg shadow-emerald-900/20">Setara Internasional</p>
@@ -399,7 +396,7 @@ export default function Home() {
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 mt-3 mb-4 text-balance">
               Kurikulum{" "}
-              <span className="box-decoration-clone text-transparent bg-clip-text bg-gradient-to-r from-[#059669] to-[#064e3b] pr-1">
+              <span className="box-decoration-clone text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-teal-600 to-emerald-800 pr-1">
                 TICE
               </span>
               <span className="block mt-1 text-2xl sm:text-3xl md:text-4xl font-bold text-slate-500">Empat Pilar Pendidikan Unggul</span>
@@ -411,9 +408,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* T — Tahfizh (large) */}
-            <div className="md:col-span-2 rounded-xl p-8 bg-gradient-to-br from-[#059669] to-[#064e3b] text-white relative overflow-hidden group hover:-translate-y-2 hover:shadow-lg transition-all duration-300">
+            <div className="md:col-span-2 rounded-xl p-8 bg-gradient-to-br from-[#064e3b] via-[#047857] to-[#022c22] border border-emerald-400/30 text-white relative overflow-hidden group hover:-translate-y-2 hover:shadow-lg transition-all duration-300">
               <div className="absolute top-0 right-0 w-56 h-56 rounded-full bg-white/10 -translate-y-1/2 translate-x-1/2 blur-2xl" />
-              <FaQuran className="w-10 h-10 mb-6 opacity-90" />
+              <BookOpen className="w-10 h-10 mb-6 opacity-90" />
               <h3 className="text-2xl font-black mb-3 text-white">T — Tahfizh Al-Qur'an</h3>
               <p className="text-white/80 leading-relaxed mb-6">
                 Program hafalan Al-Qur'an 30 juz dengan metode Itqan yang teruji. Setiap santri mendapatkan
@@ -466,9 +463,9 @@ export default function Home() {
               </p>
               <div className="flex gap-2 flex-wrap">
                 {[
-                  { label: "Arab", Icon: FaMosque },
+                  { label: "Arab", Icon: Building2 },
                   { label: "Inggris", Icon: Globe },
-                  { label: "Indonesia", Icon: FaGlobeAsia },
+                  { label: "Indonesia", Icon: Globe },
                 ].map(({ label, Icon }) => (
                   <span key={label} className="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-200 rounded-full text-xs font-bold text-slate-700">
                     <Icon className="w-3.5 h-3.5" /> {label}
@@ -499,11 +496,11 @@ export default function Home() {
             {/* Table header */}
             <div className="grid grid-cols-1 sm:grid-cols-2 bg-[#0f172a] border-b border-[#1e293b]">
               <div className="p-5 flex items-center gap-2 text-slate-500 text-sm font-bold uppercase tracking-widest border-r border-slate-800">
-                <FaTimesCircle className="w-4 h-4 text-red-500 shrink-0" />
+                <XCircle className="w-4 h-4 text-red-500 shrink-0" />
                 Kekhawatiran Orang Tua
               </div>
               <div className={`p-5 flex items-center gap-2 text-sm font-bold uppercase tracking-widest ${c.text400}`}>
-                <FaCheckCircle className={`w-4 h-4 shrink-0 ${c.text400}`} />
+                <CheckCircle2 className={`w-4 h-4 shrink-0 ${c.text400}`} />
                 Jaminan Al-Andalus
               </div>
             </div>
@@ -553,7 +550,7 @@ export default function Home() {
                   { num: "02", title: "Pembayaran", desc: "Membayar biaya pendaftaran seleksi calon santri baru.", Icon: CreditCard },
                   { num: "03", title: "Lengkapi Data", desc: "Mengisi data lengkap calon santri dan orangtua/wali.", Icon: FileText },
                   { num: "04", title: "Upload Berkas", desc: "Upload berkas persyaratan (Rapor, KK, Akte, dll).", Icon: ClipboardCheck },
-                  { num: "05", title: "Tes Seleksi", desc: "Mengikuti ujian tes tertulis dan wawancara.", Icon: HiAcademicCap },
+                  { num: "05", title: "Tes Seleksi", desc: "Mengikuti ujian tes tertulis dan wawancara.", Icon: GraduationCap },
                   { num: "06", title: "Pengumuman", desc: "Pengumuman hasil kelulusan seleksi PPDB.", Icon: BellRing },
                   { num: "07", title: "Daftar Ulang", desc: "Membayar uang pangkal dan SPP bulan pertama.", Icon: CheckCircle2 },
                 ].map((step, i) => (
@@ -666,7 +663,7 @@ export default function Home() {
             Jejak Alumni
           </span>
           <h2 className="text-2xl font-black text-white mt-2 flex items-center justify-center gap-2">
-            <FaGlobeAsia className={`w-6 h-6 ${c.text400}`} />
+            <Globe className={`w-6 h-6 ${c.text400}`} />
             Tersebar di 3 Benua, 50+ Perguruan Tinggi
           </h2>
         </div>
@@ -693,7 +690,7 @@ export default function Home() {
               { Icon: HiOutlineBookOpen, title: "Kurikulum Internasional", desc: "Perpaduan kurikulum nasional dan khas Andalus dengan pengakuan Muadalah setara internasional." },
               { Icon: FaShieldAlt, title: "Asrama Premium", desc: "Lingkungan asrama bersih, aman, nyaman dengan pengawasan 24 jam penuh oleh ustadz pengasuh." },
               { Icon: Award, title: "Tenaga Didik Expert", desc: "Asatidz lulusan Universitas Islam Madinah, Al-Azhar Mesir, LIPIA, dan perguruan tinggi terkemuka." },
-              { Icon: FaGlobeAsia, title: "Jaringan Global", desc: "Alumni tersebar di 3 benua: Asia, Afrika (Mesir), dan Oseania (New Zealand, Hong Kong)." },
+              { Icon: Globe, title: "Jaringan Global", desc: "Alumni tersebar di 3 benua: Asia, Afrika (Mesir), dan Oseania (New Zealand, Hong Kong)." },
               { Icon: Microscope, title: "Lab dan Fasilitas Modern", desc: "Laboratorium IPA, lab bahasa, perpustakaan digital, lapangan olahraga, dan masjid kampus." },
             ].map((feat, i) => (
               <div
@@ -715,27 +712,27 @@ export default function Home() {
       <section className="py-20 bg-[#052e16]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-slate-500 text-xs font-bold uppercase tracking-widest mb-10 flex items-center justify-center gap-2">
-            <FaTrophy className={`w-4 h-4 ${c.text400}`} />
+            <Award className={`w-4 h-4 ${c.text400}`} />
             Alumni Diterima di Perguruan Tinggi Terkemuka Dunia
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
             {[
-              { label: "Univ. Islam Madinah", Icon: FaMosque },
-              { label: "Yarmouk, Jordan", Icon: FaUniversity },
-              { label: "Univ. di Syiria", Icon: FaMosque },
+              { label: "Univ. Islam Madinah", Icon: Building2 },
+              { label: "Yarmouk, Jordan", Icon: Building2 },
+              { label: "Univ. di Syiria", Icon: Building2 },
               { label: "STIBA Ar Raayah", Icon: FaQuran },
-              { label: "Al-Azhar, Mesir", Icon: FaUniversity },
+              { label: "Al-Azhar, Mesir", Icon: Building2 },
               { label: "Auckland, NZ", Icon: Globe },
               { label: "HK Polytechnic", Icon: Building2 },
               { label: "LIPIA Jakarta", Icon: FaQuran },
-              { label: "UI", Icon: HiAcademicCap },
-              { label: "UGM", Icon: HiAcademicCap },
+              { label: "UI", Icon: GraduationCap },
+              { label: "UGM", Icon: GraduationCap },
               { label: "ITB", Icon: HiOutlineCpuChip },
-              { label: "Univ. Brawijaya", Icon: FaUniversity },
-              { label: "Univ. Airlangga", Icon: FaUniversity },
-              { label: "Undip", Icon: FaUniversity },
-              { label: "UUM Malaysia", Icon: FaGlobeAsia },
-              { label: "UIN Jakarta", Icon: FaMosque },
+              { label: "Univ. Brawijaya", Icon: Building2 },
+              { label: "Univ. Airlangga", Icon: Building2 },
+              { label: "Undip", Icon: Building2 },
+              { label: "UUM Malaysia", Icon: Globe },
+              { label: "UIN Jakarta", Icon: Building2 },
               { label: "IPB University", Icon: PiPlantBold },
             ].map(({ label, Icon }, i) => (
               <div
@@ -825,7 +822,7 @@ export default function Home() {
                 </div>
                 <div className="flex gap-0.5 mb-3">
                   {[...Array(5)].map((_, j) => (
-                    <FaStar key={j} className="w-3.5 h-3.5 text-amber-400" />
+                    <Star key={j} className="w-3.5 h-3.5 text-amber-400" />
                   ))}
                 </div>
                 <p className="text-slate-300 text-sm leading-relaxed">

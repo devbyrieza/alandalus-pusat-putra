@@ -210,7 +210,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
 
-      {/* â•â•â• ANNOUNCEMENT BAR â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      {/* ——— ANNOUNCEMENT BAR —————————————————————————————————————————————————————————— */}
       <div className={`w-full py-2 sm:py-2.5 text-xs font-bold text-white ${c.bg600} flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 px-8`}>
         <Zap className="w-3.5 h-3.5 shrink-0" />
         <span className="sm:hidden">PPDB 2027/2028 — Kuota Terbatas!</span>
@@ -221,10 +221,10 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* â•â•â• Â§1 HERO SECTION — SPLIT DARK â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      {/* ——— §1 HERO SECTION — SPLIT DARK ————————————————————————————————————————————— */}
       <section
         id="hero"
-        className="relative min-h-[auto] md:min-h-[85vh] flex items-start bg-[#020617] pt-12 sm:pt-16 md:pt-16 lg:pt-4 xl:pt-8 pb-10 md:pb-20 overflow-hidden"
+        className="relative flex items-center bg-[#020617] pt-8 sm:pt-12 md:pt-14 pb-12 sm:pb-16 md:pb-16 overflow-hidden"
       >
         {/* Animated glows */}
         <div className="absolute inset-0 pointer-events-none">
@@ -245,7 +245,7 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-4 md:py-4 lg:py-4 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-10 lg:gap-16 items-center lg:items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-8 lg:gap-12 items-center">
 
             {/* LEFT */}
             <div className="space-y-4 sm:space-y-8">
@@ -316,7 +316,7 @@ export default function Home() {
             </div>
 
             {/* RIGHT: Image + floating cards */}
-            <div className="relative flex justify-center lg:justify-end mt-12 lg:mt-0 pb-10">
+            <div className="relative flex justify-center lg:justify-end mt-8 lg:mt-0">
               <div className="relative w-full max-w-lg">
                 
                 {/* Image Container */}

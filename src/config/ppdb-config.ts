@@ -30,5 +30,12 @@ export const PPDB_CONFIG = {
       teal: "#14b8a6",
       red: "#ef4444" } },
   tahunAjaran: "2027/2028",
-  angkatan: "Angkatan ke-15" };
+  angkatan: "Angkatan ke-15",
+  bank: {
+    nama: "Bank Syariah Indonesia (BSI)",
+    nomorRekening: "7667777783",
+    atasNama: "Yayasan Darul Iman Wattaqwa",
+    kodeBank: "451"
+  }
+};
 

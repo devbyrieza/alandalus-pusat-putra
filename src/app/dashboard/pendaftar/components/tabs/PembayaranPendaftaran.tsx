@@ -76,8 +76,8 @@ interface PaymentStatusResponse {
 
 const BANK_INFO = {
   nama_bank: "BSI (Bank Syariah Indonesia)",
-  nomor_rekening: "4222224441",
-  atas_nama: "PP Al-Andalus Putra",
+  nomor_rekening: "7667777783",
+  atas_nama: "Yayasan Darul Iman Wattaqwa",
   kode_bank: "451" };
 
 const STATUS_CONFIG: Record<

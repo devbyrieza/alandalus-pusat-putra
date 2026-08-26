@@ -495,14 +495,14 @@ export default function DaftarUlangTab() {
                       </span>
                     </div>
                     <p className="font-black text-primary-950 text-2xl tracking-tight leading-none mb-2">
-                      4222224441
+                      7667777783
                     </p>
                     <p className="text-xs font-bold text-primary-700/70 text-left italic">
-                      a.n PP Al-Andalus Putra
+                      a.n Yayasan Darul Iman Wattaqwa
                     </p>
                   </div>
                   <button
-                    onClick={() => handleCopy("4222224441")}
+                    onClick={() => handleCopy("7667777783")}
                     className="p-2 hover:bg-primary-50 text-primary-600 rounded-xl transition-colors flex flex-col items-center gap-1 group"
                   >
                     {copied ? (

@@ -55,12 +55,12 @@ const PROGRAMS = [
     id: "il",
     name: "I'dad Lughowi",
     buttonLabel: "Daftar IL",
-    fullName: "Program I'dad Lughowi (SMA)",
-    badge: "Persiapan Intensif Aliyah & Jamiah (SMA)",
+    fullName: "Program I'dad Lughowi (IL)",
+    badge: "Persiapan Bahasa Arab (1 Tahun)",
     heroTitle: "Kaderisasi Ulama & Cendekia Muslim",
     graduateProfile: "Mencetak santri berkemampuan bahasa Arab fasih, pemahaman syar'i mendalam, dan siap bersaing di PTN maupun Universitas Luar Negeri (Madinah, Al-Azhar, dll).",
     description:
-      "Program persiapan intensif menuju jenjang Aliyah, berfokus pada percepatan pemantapan Bahasa Arab, penguasaan Turots, Tahfidz Al-Qur'an (Takhassus 30 Juz & Reguler 5 Juz), dan pembinaan kader ulama yang beradab dan kontributif bagi umat.",
+      "Program pendalaman dan pemantapan Bahasa Arab intensif selama 1 tahun bagi santri lulusan SMP/MTs umum sebelum melanjutkan ke jenjang tingkat atas (SMA/MA) selama 3 tahun di pesantren. Program ini membekali santri agar mampu menggunakan bahasa Arab secara aktif sebagai bahasa pengantar di kelas maupun percakapan harian. Bagi calon santri yang sudah lancar berbahasa Arab aktif dan memiliki hafalan Al-Qur'an minimal 4 Juz mutqin, dapat langsung masuk jenjang SMA/MA tanpa melalui kelas persiapan I'dad Lughowi.",
     stats: [
       { label: "Tahfidz", value: "30 Juz / 5 Juz", icon: BookOpen },
       { label: "Kekhasan", value: "Kader Ulama", icon: Users },

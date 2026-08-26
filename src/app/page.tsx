@@ -338,7 +338,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-white font-bold text-sm sm:text-base">PPDB 2027/2028 Dibuka</p>
-                      <p className="text-amber-300 text-[11px] sm:text-xs font-bold tracking-wide drop-shadow-lg shadow-emerald-900/20">Angkatan IX · Kuota Terbatas</p>
+                      <p className="text-amber-300 text-[11px] sm:text-xs font-bold tracking-wide drop-shadow-lg shadow-emerald-900/20">Angkatan ke-15 · Kuota Terbatas</p>
                     </div>
                     <Link
                       href="/ppdb"

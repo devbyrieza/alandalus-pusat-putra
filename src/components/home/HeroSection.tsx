@@ -1,4 +1,4 @@
-// src/components/home/HeroSection.tsx — alfath-template-demo
+// src/components/home/HeroSection.tsx — andalus-pusat-putra
 // FIXED: reduced motion badge, tablet breakpoint, touch hover, explicit font sizing
 "use client";
 
@@ -68,7 +68,7 @@ export default function HeroSection() {
   return (
     <section
       ref={ref}
-      aria-label="Hero — Beranda Al Fath"
+      aria-label="Hero — Beranda Al-Andalus Putra"
       className="relative pt-24 pb-16 lg:pt-12 xl:pt-16 lg:pb-20 overflow-hidden"
       style={{
         background:
@@ -253,15 +253,15 @@ export default function HeroSection() {
                     className="font-bold uppercase tracking-wide"
                     style={{ color: "var(--color-primary-700)" }}
                   >
-                    Angkatan Pertama
+                    Angkatan ke-15
                   </span>
-                  {" • "}Pesantren Al Fath
+                  {" • "}Pesantren Al-Andalus Putra
                 </p>
               </div>
 
               <div className="flex flex-wrap gap-x-5 gap-y-2 justify-center lg:justify-start mt-1">
                 {[
-                  "MTs & IL tersedia",
+                  "SMP IT, IL & SMA IT tersedia",
                   "Proses PPDB Cepat & Transparan",
                   "Sistem Boarding (Asrama)",
                 ].map((point) => (
@@ -303,7 +303,7 @@ export default function HeroSection() {
             >
               <Image
                 src="/images/gedung-utama-putra.jpeg"
-                alt={`${BRANDING.schoolName} — Pesantren Al Fath`}
+                alt={`${BRANDING.schoolName} — Pesantren Al-Andalus Putra`}
                 width={800}
                 height={600}
                 priority

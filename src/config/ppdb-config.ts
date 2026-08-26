@@ -30,5 +30,5 @@ export const PPDB_CONFIG = {
       teal: "#14b8a6",
       red: "#ef4444" } },
   tahunAjaran: "2027/2028",
-  angkatan: "Angkatan IX" };
+  angkatan: "Angkatan ke-15" };
 

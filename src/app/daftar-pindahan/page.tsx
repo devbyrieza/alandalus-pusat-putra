@@ -399,7 +399,7 @@ export default function DaftarPindahanPage() {
                       subtitle: "Pindahan tingkat SMP/MTs" },
                     {
                       value: "MA",
-                      title: "Madrasah Aliyah",
+                      title: "SMA IT",
                       subtitle: "Pindahan tingkat SMA/MA" },
                   ].map((option) => {
                     return (

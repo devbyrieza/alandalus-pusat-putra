@@ -181,7 +181,7 @@ export default function AdminTambahPendaftar() {
                   <option value="">Pilih Jenjang...</option>
                   <option value="MTs">SMPIT (Sekolah Menengah Pertama Islam Terpadu)</option>
                   <option value="IL">I'dad Lughowi (IL)</option>
-                  <option value="MA">Madrasah Aliyah (MA)</option>
+                  <option value="MA">SMA IT (Sekolah Menengah Atas IT)</option>
                 </select>
               </div>
                <div className="space-y-2">

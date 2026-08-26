@@ -756,18 +756,21 @@ export default function Home() {
           </header>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
-              { src: "/images/gedung-utama-putra.webp", label: "Gedung Utama & Asrama" },
-                { src: "/images/lapangan-futsal.webp", label: "Lapangan Futsal" },
-                { src: "/images/gedung-utama-putra.jpeg", label: "Lapangan Basket" },
+              { src: "/images/gedung-utama-putra.jpeg", label: "Gedung Utama & Kompleks Pesantren" },
+              { src: "/images/masjid-1.jpg", label: "Masjid Area Putra" },
+              { src: "/images/lapangan-futsal-1.jpeg", label: "Lapangan Futsal Pesantren" },
+              { src: "/images/lapangan-basket-1.jpeg", label: "Lapangan Basket Santri" },
+              { src: "/images/drone-pesantren-1.jpeg", label: "Panorama Udara Pesantren" },
+              { src: "/images/tangga-selasar.jpeg", label: "Akses Tangga Masjid & Selasar" },
             ].map((photo, i) => (
-              <div key={i} className="relative group overflow-hidden rounded-xl aspect-video">
+              <div key={i} className="relative group overflow-hidden rounded-xl aspect-video bg-slate-200 shadow-sm border border-slate-200">
                 <Image
                   src={photo.src}
                   alt={photo.label}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                   <span className="text-white text-sm font-bold">{photo.label}</span>
                 </div>
               </div>

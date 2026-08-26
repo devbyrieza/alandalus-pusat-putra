@@ -1,362 +1,421 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import {
+  Camera,
   Images,
   ArrowRight,
-  X,
-  Building,
-  Building2,
-  Globe,
-  Trophy,
   Sparkles,
-  Maximize2,
+  X,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Maximize2,
+  Layers
 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
-import { BRANDING } from "@/config/branding";
+import { motion, AnimatePresence } from "framer-motion";
 
-interface GalleryItem {
-  id: string;
+interface AlbumItem {
   src: string;
-  title: string;
-  category: "gedung" | "masjid" | "drone" | "olahraga";
-  categoryLabel: string;
-  description: string;
-  angles?: string[];
+  label: string;
 }
 
-const GALLERY_ITEMS: GalleryItem[] = [
-  {
-    id: "1",
-    src: "/images/gedung-utama-putra.jpeg",
-    title: "Gedung Utama & Kompleks Pesantren Putra",
-    category: "gedung",
-    categoryLabel: "Gedung & Fasilitas",
-    description: "Bangunan megah dan modern pusat administrasi serta kegiatan pembelajaran santri Al-Andalus Putra."
-  },
-  {
-    id: "2",
-    src: "/images/masjid-1.jpg",
-    title: "Masjid Area Putra",
-    category: "masjid",
-    categoryLabel: "Masjid Pesantren",
-    description: "Sentra spiritual dan halaqoh tahfidz santri dengan kubah megah, tangga akses utama, pelataran luas, tata cahaya alami sejuk, dan sarana wudhu yang higienis.",
-    angles: [
-      "/images/masjid-1.jpg",
-      "/images/masjid-2.jpg",
-      "/images/masjid-3.jpg",
-      "/images/masjid-4.jpg",
-      "/images/tangga-selasar.jpeg"
-    ]
-  },
-  {
-    id: "3",
-    src: "/images/drone-pesantren-1.jpeg",
-    title: "Panorama Udara Kawasan Pesantren (Foto Drone)",
-    category: "drone",
-    categoryLabel: "Panorama Udara",
-    description: "Tampak atas keasrian kawasan hijau Pesantren Al-Andalus Putra dengan fasilitas gedung dan sarana olahraga terpadu di Jonggol Bogor.",
-    angles: [
-      "/images/drone-pesantren-1.jpeg",
-      "/images/drone-pesantren-2.jpeg"
-    ]
-  },
-  {
-    id: "4",
-    src: "/images/lapangan-futsal-1.jpeg",
-    title: "Lapangan Futsal Pesantren Putra",
-    category: "olahraga",
-    categoryLabel: "Sarana Olahraga",
-    description: "Fasilitas olahraga futsal outdoor dengan rumput berkualitas dan pagar pengaman modern untuk kebugaran jasmani santri.",
-    angles: [
-      "/images/lapangan-futsal-1.jpeg",
-      "/images/lapangan-futsal-2.jpeg",
-      "/images/lapangan-futsal-3.jpeg",
-      "/images/lapangan-futsal-4.jpeg"
-    ]
-  },
-  {
-    id: "5",
-    src: "/images/lapangan-basket-1.jpeg",
-    title: "Lapangan Basket Santri Putra",
-    category: "olahraga",
-    categoryLabel: "Sarana Olahraga",
-    description: "Sarana olahraga basket outdoor serbaguna pendukung pembinaan fisik, sportivitas, dan kebersamaan santri.",
-    angles: [
-      "/images/lapangan-basket-1.jpeg",
-      "/images/lapangan-basket-2.jpeg"
-    ]
-  }
-];
+interface Album {
+  id: string;
+  title: string;
+  category: string;
+  desc: string;
+  cover: string;
+  items: AlbumItem[];
+}
 
-const CATEGORIES = [
-  { key: "semua", label: "Semua Foto", icon: Images },
-  { key: "gedung", label: "Gedung & Fasilitas", icon: Building },
-  { key: "masjid", label: "Masjid Pesantren", icon: Building2 },
-  { key: "drone", label: "Panorama Udara", icon: Globe },
-  { key: "olahraga", label: "Sarana Olahraga", icon: Trophy },
+const ALBUMS: Album[] = [
+  {
+    id: "masjid",
+    title: "Masjid Pesantren Putra",
+    category: "Ibadah & Spiritual",
+    desc: "Sentra spiritual dan halaqoh tahfidz santri dengan arsitektur megah dan tata ruang wudhu higienis.",
+    cover: "/images/masjid-1.jpg",
+    items: [
+      { src: "/images/masjid-1.jpg", label: "Tampak Depan & Kubah Masjid" },
+      { src: "/images/masjid-2.jpg", label: "Interior Ruang Utama Ibadah & Halaqoh" },
+      { src: "/images/masjid-3.jpg", label: "Pelataran & Selasar Masjid" },
+      { src: "/images/masjid-4.jpg", label: "Pintu Masuk & Tata Cahaya Alami" },
+      { src: "/images/tangga-selasar.jpeg", label: "Tangga Akses & Selasar Masjid" },
+    ],
+  },
+  {
+    id: "gedung",
+    title: "Gedung Utama & Kompleks Kampus",
+    category: "Kawasan Kampus",
+    desc: "Bangunan megah dan modern pusat administrasi serta kegiatan pembelajaran santri Al-Andalus Putra.",
+    cover: "/images/gedung-utama-putra.jpeg",
+    items: [
+      { src: "/images/gedung-utama-putra.jpeg", label: "Gedung Utama & Kompleks Pesantren Putra" },
+    ],
+  },
+  {
+    id: "drone",
+    title: "Panorama Udara Kawasan Kampus",
+    category: "Panorama Udara",
+    desc: "Tampak atas keasrian kawasan hijau Pesantren Al-Andalus Putra di Jonggol Bogor.",
+    cover: "/images/drone-pesantren-1.jpeg",
+    items: [
+      { src: "/images/drone-pesantren-1.jpeg", label: "Lanskap Kawasan Hijau Pesantren Putra" },
+      { src: "/images/drone-pesantren-2.jpeg", label: "Area Gedung & Fasilitas dari Udara" },
+    ],
+  },
+  {
+    id: "futsal",
+    title: "Lapangan Minisoccer & Futsal",
+    category: "Kebugaran & Olahraga",
+    desc: "Fasilitas olahraga outdoor dengan rumput sintetis premium untuk kesehatan fisik dan turnamen santri.",
+    cover: "/images/lapangan-futsal-1.jpeg",
+    items: [
+      { src: "/images/lapangan-futsal-1.jpeg", label: "Lapangan Minisoccer & Futsal Utama" },
+      { src: "/images/lapangan-futsal-2.jpeg", label: "Perspektif Lapangan Sisi Gawang" },
+      { src: "/images/lapangan-futsal-3.jpeg", label: "Area Lapangan Rumput Sintetis" },
+      { src: "/images/lapangan-futsal-4.jpeg", label: "Garis Pembatas & Jaring Pengaman" },
+    ],
+  },
+  {
+    id: "basket",
+    title: "Lapangan Basket & Olahraga",
+    category: "Kebugaran & Olahraga",
+    desc: "Lapangan basket dan voli berstandar untuk pembinaan stamina, kerjasama tim, dan ekskul santri.",
+    cover: "/images/lapangan-basket-1.jpeg",
+    items: [
+      { src: "/images/lapangan-basket-1.jpeg", label: "Lapangan Basket & Tiang Ring Utama" },
+      { src: "/images/lapangan-basket-2.jpeg", label: "Sudut Lapangan Basket & Multifungsi" },
+    ],
+  },
 ];
 
 export default function GaleriPage() {
-  const [activeCategory, setActiveCategory] = useState<string>("semua");
-  const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
-  const [activeAngleIndex, setActiveAngleIndex] = useState<number>(0);
+  const [activeAlbum, setActiveAlbum] = useState<Album | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const filteredItems =
-    activeCategory === "semua"
-      ? GALLERY_ITEMS
-      : GALLERY_ITEMS.filter((item) => item.category === activeCategory);
+  // Body Scroll Lock when modal is open
+  useEffect(() => {
+    if (activeAlbum) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [activeAlbum]);
 
-  const handleOpenLightbox = (item: GalleryItem) => {
-    setSelectedImage(item);
-    setActiveAngleIndex(0);
+  const openAlbum = (album: Album, startIdx = 0) => {
+    setActiveAlbum(album);
+    setCurrentIndex(startIdx);
   };
 
-  const currentDisplaySrc =
-    selectedImage && selectedImage.angles && selectedImage.angles.length > 0
-      ? selectedImage.angles[activeAngleIndex]
-      : selectedImage?.src || "";
+  const closeAlbum = () => {
+    setActiveAlbum(null);
+    setCurrentIndex(0);
+  };
+
+  const nextPhoto = useCallback(() => {
+    if (!activeAlbum) return;
+    setCurrentIndex((prev) => (prev + 1) % activeAlbum.items.length);
+  }, [activeAlbum]);
+
+  const prevPhoto = useCallback(() => {
+    if (!activeAlbum) return;
+    setCurrentIndex((prev) => (prev - 1 + activeAlbum.items.length) % activeAlbum.items.length);
+  }, [activeAlbum]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!activeAlbum) return;
+      if (e.key === "Escape") closeAlbum();
+      if (e.key === "ArrowRight") nextPhoto();
+      if (e.key === "ArrowLeft") prevPhoto();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeAlbum, nextPhoto, prevPhoto]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 py-16 md:py-24">
-      {/* HEADER SECTION */}
-      <Container>
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+    <main className="bg-white min-h-screen">
+      {/* Hero Header */}
+      <section className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-b from-slate-50 to-white border-b border-slate-100">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] pointer-events-none" />
+
+        <Container className="relative z-10 text-center">
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-black tracking-widest uppercase shadow-xs"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest mb-6 shadow-xs"
           >
-            <Sparkles className="w-4 h-4" />
-            <span>DOKUMENTASI FOTO RESMI AL-ANDALUS PUTRA</span>
+            <Camera className="w-3.5 h-3.5" />
+            <span>Dokumentasi Resmi Pesantren</span>
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-display font-black tracking-tight text-slate-950"
+            className="text-3xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tight text-slate-900"
           >
-            Galeri Pesantren & Fasilitas <br />
-            <span className="bg-gradient-to-r from-emerald-700 via-teal-600 to-emerald-800 bg-clip-text text-transparent">
-              {BRANDING.schoolName}
-            </span>
+            Galeri &amp; Fasilitas <br />
+            <span className="text-primary-700">Pesantren Al-Andalus Putra</span>
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-medium"
+            className="text-base md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed"
           >
-            Koleksi dokumentasi visual resmi kawasan pesantren, masjid, asrama, sarana olahraga, dan panorama udara Al-Andalus Putra.
+            Klik pada setiap album fasilitas di bawah untuk melihat kumpulan foto dokumentasi lengkap secara interaktif.
           </motion.p>
-        </div>
+        </Container>
+      </section>
 
-        {/* CATEGORY FILTER TABS */}
-        <div className="flex flex-wrap justify-center gap-2.5 sm:gap-3 mb-12">
-          {CATEGORIES.map((cat) => {
-            const Icon = cat.icon;
-            const isActive = activeCategory === cat.key;
-            return (
-              <button
-                key={cat.key}
-                onClick={() => setActiveCategory(cat.key)}
-                className={"flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-2xl font-bold text-xs sm:text-sm transition-all duration-300 border cursor-pointer " + (
-                  isActive
-                    ? "bg-emerald-700 text-white border-emerald-700 shadow-lg shadow-emerald-700/25 scale-105"
-                    : "bg-white text-slate-700 border-slate-200 hover:border-slate-300 hover:bg-slate-100 shadow-xs"
-                )}
-              >
-                <Icon className="w-4 h-4" />
-                <span>{cat.label}</span>
-              </button>
-            );
-          })}
-        </div>
+      {/* Grid of Albums */}
+      <section className="py-14 md:py-20 bg-slate-50/50">
+        <Container>
+          <div className="flex items-center justify-between mb-10">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center text-primary-700 border border-primary-100 shadow-xs">
+                <Images className="w-5 h-5" />
+              </div>
+              <div>
+                <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">
+                  Katalog Album Fasilitas
+                </h2>
+                <p className="text-xs md:text-sm text-slate-500 mt-0.5">
+                  Tersedia {ALBUMS.length} album fasilitas &amp; kawasan pesantren
+                </p>
+              </div>
+            </div>
+          </div>
 
-        {/* GALLERY GRID */}
-        <motion.div
-          layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          <AnimatePresence>
-            {filteredItems.map((item) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {ALBUMS.map((album, idx) => (
               <motion.div
-                key={item.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                onClick={() => handleOpenLightbox(item)}
-                className="group relative cursor-pointer rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-slate-200/90 hover:border-emerald-400 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                key={album.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: (idx % 3) * 0.08, duration: 0.5 }}
+                onClick={() => openAlbum(album, 0)}
+                className="group relative bg-white rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden cursor-pointer flex flex-col"
               >
-                <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+                {/* Image Cover */}
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
                   <Image
-                    src={item.src}
-                    alt={item.title}
+                    src={album.cover}
+                    alt={album.title}
                     fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
 
-                  <div className="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 text-xs font-bold text-slate-800 shadow-xs">
-                    <span>{item.categoryLabel}</span>
-                    {item.angles && item.angles.length > 1 && (
-                      <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded-full border border-emerald-200">
-                        {item.angles.length} Sudut Foto
-                      </span>
-                    )}
+                  {/* Badges Overlay */}
+                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
+                    <span className="text-[11px] font-bold text-white bg-slate-900/70 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 uppercase tracking-wider">
+                      {album.category}
+                    </span>
+
+                    {/* Photo count badge */}
+                    <span className="inline-flex items-center gap-1.5 text-xs font-black text-amber-300 bg-emerald-950/80 backdrop-blur-md px-3 py-1 rounded-full border border-amber-400/20 shadow-xs">
+                      <Layers className="w-3.5 h-3.5" />
+                      {album.items.length} Foto
+                    </span>
                   </div>
 
-                  <div className="absolute top-3 right-3 p-2 rounded-full bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity shadow-sm">
-                    <Maximize2 className="w-4 h-4" />
+                  {/* Click to open indicator */}
+                  <div className="absolute bottom-3.5 right-3.5 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white text-slate-900 text-xs font-black shadow-lg">
+                      <Maximize2 className="w-3.5 h-3.5 text-primary-600" />
+                      Lihat Album
+                    </div>
                   </div>
                 </div>
 
-                <div className="p-5 sm:p-6 space-y-1.5 bg-white">
-                  <h3 className="font-bold text-base sm:text-lg text-slate-900 group-hover:text-emerald-700 transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-slate-500 text-xs sm:text-sm line-clamp-2 leading-relaxed">
-                    {item.description}
-                  </p>
+                {/* Card Content */}
+                <div className="p-5 grow flex flex-col justify-between border-t border-slate-100 bg-white">
+                  <div>
+                    <h3 className="text-lg font-black text-slate-900 group-hover:text-primary-700 transition-colors line-clamp-1 mb-1.5">
+                      {album.title}
+                    </h3>
+                    <p className="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                      {album.desc}
+                    </p>
+                  </div>
+
+                  <div className="mt-4 pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-primary-700 group-hover:text-primary-800">
+                    <span>Buka Galeri Foto</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
               </motion.div>
             ))}
-          </AnimatePresence>
-        </motion.div>
-
-        {/* LIGHTBOX MODAL WITH MULTI-ANGLE SELECTOR */}
-        <AnimatePresence>
-          {selectedImage && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedImage(null)}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/90 backdrop-blur-md p-4 sm:p-6"
-            >
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                onClick={(e) => e.stopPropagation()}
-                className="relative max-w-4xl w-full bg-slate-900 border border-slate-700/80 rounded-3xl overflow-hidden shadow-2xl"
-              >
-                <button
-                  onClick={() => setSelectedImage(null)}
-                  className="absolute top-4 right-4 z-10 p-2.5 rounded-full bg-slate-800/80 text-white hover:bg-slate-700 transition-colors cursor-pointer border border-white/10"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-
-                <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full bg-black">
-                  <Image
-                    src={currentDisplaySrc}
-                    alt={selectedImage.title}
-                    fill
-                    className="object-contain"
-                  />
-                  
-                  {/* Prev/Next arrows if multiple angles */}
-                  {selectedImage.angles && selectedImage.angles.length > 1 && (
-                    <>
-                      <button
-                        onClick={() => setActiveAngleIndex((prev) => (prev > 0 ? prev - 1 : selectedImage.angles!.length - 1))}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white transition-all cursor-pointer border border-white/10"
-                      >
-                        <ChevronLeft className="w-5 h-5" />
-                      </button>
-                      <button
-                        onClick={() => setActiveAngleIndex((prev) => (prev < selectedImage.angles!.length - 1 ? prev + 1 : 0))}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white transition-all cursor-pointer border border-white/10"
-                      >
-                        <ChevronRight className="w-5 h-5" />
-                      </button>
-                    </>
-                  )}
-                </div>
-
-                {/* Thumbnails row if multiple angles */}
-                {selectedImage.angles && selectedImage.angles.length > 1 && (
-                  <div className="flex items-center gap-2 p-3 bg-slate-950/80 border-t border-slate-800 overflow-x-auto justify-center">
-                    {selectedImage.angles.map((angleSrc, aIdx) => (
-                      <button
-                        key={aIdx}
-                        onClick={() => setActiveAngleIndex(aIdx)}
-                        className={"relative w-16 h-12 rounded-lg overflow-hidden border-2 transition-all cursor-pointer " + (
-                          activeAngleIndex === aIdx
-                            ? "border-emerald-500 scale-105"
-                            : "border-transparent opacity-60 hover:opacity-100"
-                        )}
-                      >
-                        <Image src={angleSrc} alt="" fill className="object-cover" />
-                      </button>
-                    ))}
-                  </div>
-                )}
-
-                <div className="p-6 sm:p-8 bg-slate-900 border-t border-slate-800 text-white">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-600/30 text-emerald-400 border border-emerald-500/30">
-                      {selectedImage.categoryLabel}
-                    </span>
-                    {selectedImage.angles && selectedImage.angles.length > 1 && (
-                      <span className="text-xs text-slate-400">
-                        Foto {activeAngleIndex + 1} dari {selectedImage.angles.length}
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-black text-white mb-2">
-                    {selectedImage.title}
-                  </h3>
-                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                    {selectedImage.description}
-                  </p>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* CTA BOTTOM BANNER */}
-        <div className="mt-20">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-800 via-teal-900 to-slate-900 text-white p-8 sm:p-12 shadow-xl border border-emerald-700/40 text-center space-y-6">
-            <div className="max-w-2xl mx-auto space-y-3">
-              <h2 className="text-2xl sm:text-3xl font-black text-white">
-                Ingin Mengunjungi Pesantren Al-Andalus Putra Langsung?
-              </h2>
-              <p className="text-slate-200 text-sm sm:text-base leading-relaxed">
-                Kami menyambut hangat kunjungan silaturahmi calon santri dan wali santri untuk melihat langsung lingkungan belajar, asrama, dan fasilitas pesantren.
-              </p>
-            </div>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href="/ppdb"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm transition-all duration-300 shadow-lg shadow-emerald-950/40 hover:-translate-y-0.5"
-              >
-                <span>Daftar PPDB Sekarang</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/kontak"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm transition-all duration-300 border border-white/20 hover:-translate-y-0.5"
-              >
-                <span>Hubungi Layanan Informasi</span>
-              </Link>
-            </div>
           </div>
-        </div>
-      </Container>
-    </div>
+        </Container>
+      </section>
+
+      {/* Interactive Lightbox Modal */}
+      <AnimatePresence>
+        {activeAlbum && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-md flex flex-col justify-between overscroll-contain overflow-hidden"
+          >
+            {/* Modal Header */}
+            <div className="p-4 md:px-8 md:py-4 flex items-center justify-between text-white border-b border-white/10 z-20 shrink-0">
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-400 bg-white/10 px-2.5 py-0.5 rounded-full">
+                    {activeAlbum.category}
+                  </span>
+                  <h3 className="text-base md:text-lg font-black text-white truncate max-w-xs sm:max-w-md md:max-w-xl">
+                    {activeAlbum.title}
+                  </h3>
+                </div>
+                <p className="text-xs text-slate-400 mt-0.5">
+                  Foto {currentIndex + 1} dari {activeAlbum.items.length}
+                </p>
+              </div>
+
+              {/* Close Button */}
+              <button
+                onClick={closeAlbum}
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors shrink-0 cursor-pointer"
+                title="Tutup (Esc)"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Main Photo Viewport */}
+            <div className="relative grow flex items-center justify-center p-4 md:p-8 select-none">
+              {/* Previous Button */}
+              {activeAlbum.items.length > 1 && (
+                <button
+                  onClick={prevPhoto}
+                  className="absolute left-4 md:left-8 z-30 w-12 h-12 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center backdrop-blur-md transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-lg"
+                  title="Foto Sebelumnya (Panah Kiri)"
+                >
+                  <ChevronLeft className="w-7 h-7" />
+                </button>
+              )}
+
+              {/* Active Image */}
+              <div className="relative w-full h-full max-w-5xl max-h-[70vh] flex items-center justify-center">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentIndex}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    className="relative w-full h-full flex flex-col items-center justify-center"
+                  >
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={activeAlbum.items[currentIndex].src}
+                        alt={activeAlbum.items[currentIndex].label}
+                        fill
+                        className="object-contain"
+                        priority
+                        sizes="(max-width: 1200px) 100vw, 1200px"
+                      />
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* Next Button */}
+              {activeAlbum.items.length > 1 && (
+                <button
+                  onClick={nextPhoto}
+                  className="absolute right-4 md:right-8 z-30 w-12 h-12 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center backdrop-blur-md transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-lg"
+                  title="Foto Selanjutnya (Panah Kanan)"
+                >
+                  <ChevronRight className="w-7 h-7" />
+                </button>
+              )}
+            </div>
+
+            {/* Modal Bottom Caption & Thumbnail Strip */}
+            <div className="p-4 md:px-8 md:py-4 bg-black/60 border-t border-white/10 shrink-0 flex flex-col items-center gap-3 z-20">
+              {/* Caption */}
+              <p className="text-center text-sm md:text-base font-semibold text-slate-200 max-w-3xl truncate px-4">
+                {activeAlbum.items[currentIndex].label}
+              </p>
+
+              {/* Thumbnail Strip (if multi-photo) */}
+              {activeAlbum.items.length > 1 && (
+                <div className="flex items-center gap-2 overflow-x-auto max-w-full pb-1 custom-scrollbar">
+                  {activeAlbum.items.map((it, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentIndex(idx)}
+                      className={`relative w-16 h-12 rounded-lg overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${
+                        idx === currentIndex
+                          ? "border-primary-400 scale-105 shadow-md shadow-primary-500/50"
+                          : "border-white/20 opacity-50 hover:opacity-100"
+                      }`}
+                    >
+                      <Image
+                        src={it.src}
+                        alt={it.label}
+                        fill
+                        className="object-cover"
+                        sizes="64px"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* CTA Footer */}
+      <section className="py-20 bg-primary-950 text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary-800/30 rounded-full blur-3xl pointer-events-none" />
+        <Container className="relative z-10 text-center">
+          <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tight">
+            Ingin Berkunjung Langsung ke Kampus?
+          </h2>
+          <p className="text-primary-200/80 max-w-xl mx-auto mb-8 text-base md:text-lg">
+            Kami menyambut kunjungan silaturahmi calon santri dan orang tua untuk melihat sarana pendidikan dan asrama di Pesantren Al-Andalus Putra.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/fasilitas"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary-600 hover:bg-primary-500 text-white font-bold text-base shadow-lg shadow-primary-600/30 transition-all hover:-translate-y-0.5"
+            >
+              Rincian Fasilitas Lengkap <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/daftar"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-slate-900 hover:bg-slate-100 font-bold text-base transition-all hover:-translate-y-0.5"
+            >
+              Daftar PPDB Sekarang
+            </Link>
+          </div>
+        </Container>
+      </section>
+    </main>
   );
 }

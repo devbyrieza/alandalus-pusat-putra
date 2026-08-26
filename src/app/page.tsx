@@ -417,7 +417,7 @@ export default function Home() {
                 bimbingan intensif 26 jam/pekan bersama ustadz hafizh berpengalaman lulusan luar negeri.
               </p>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 text-sm font-bold">
-                <Star className="w-4 h-4" /> Target 30 Juz
+                <Star className="w-4 h-4 text-amber-300 fill-amber-300" /> Target 30 Juz
               </div>
             </div>
 
@@ -825,7 +825,7 @@ export default function Home() {
                 </div>
                 <div className="flex gap-0.5 mb-3">
                   {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="w-3.5 h-3.5 text-amber-400" />
+                    <Star key={j} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
                   ))}
                 </div>
                 <p className="text-slate-300 text-sm leading-relaxed">

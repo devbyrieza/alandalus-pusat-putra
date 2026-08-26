@@ -687,10 +687,10 @@ export function buildMessageRegistrationSuccess(
 ): string {
     let jenjangStr = jenjang;
     const normJ = (jenjang || "").toUpperCase().replace(/[\s\-_]/g, "");
-    if (normJ.includes("SMP") || normJ === "SMPIT" || normJ.includes("MTS")) jenjangStr = "SMP IT (Sekolah Menengah Pertama Islam Terpadu)";
-    else if (normJ.includes("SMA") || normJ === "SMAIT" || (normJ.includes("MA") && !normJ.includes("IMAM"))) jenjangStr = "SMA IT (Sekolah Menengah Atas Islam Terpadu)";
-    else if (normJ.includes("IL") || normJ.includes("IDAD") || normJ.includes("LUGHAW")) jenjangStr = "I'dad Lughowi (Persiapan Bahasa & Kepesantrenan)";
-    else jenjangStr = jenjang || "SMP IT";
+    if (normJ.includes("SMP") || normJ.includes("MTS")) jenjangStr = "SMP IT (Sekolah Menengah Pertama IT Putra)";
+    else if (normJ.includes("IL") || normJ.includes("IDAD") || normJ.includes("LUGHAW")) jenjangStr = "I'dad Lughowi (Persiapan Bahasa & Kepesantrenan Putra)";
+    else if (normJ.includes("SMA") || normJ.includes("MA")) jenjangStr = "SMA IT Langsung Putra (Tanpa IL)";
+    else jenjangStr = jenjang || "SMP IT Putra";
 
     return `🎉 *Pendaftaran Berhasil!*
 

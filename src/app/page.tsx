@@ -396,9 +396,7 @@ export default function Home() {
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 mt-3 mb-4 text-balance">
               Kurikulum{" "}
-              <span className="box-decoration-clone text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-teal-600 to-emerald-800 pr-1">
-                TICE
-              </span>
+              <span className="text-emerald-700 font-black">TICE</span>
               <span className="block mt-1 text-2xl sm:text-3xl md:text-4xl font-bold text-slate-500">Empat Pilar Pendidikan Unggul</span>
             </h2>
             <p className="text-slate-500 max-w-xl mx-auto text-base md:text-lg">
@@ -408,7 +406,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* T — Tahfizh (large) */}
-            <div className="md:col-span-2 rounded-xl p-8 bg-gradient-to-br from-[#064e3b] via-[#047857] to-[#022c22] border border-emerald-400/30 text-white relative overflow-hidden group hover:-translate-y-2 hover:shadow-lg transition-all duration-300">
+            <div className="md:col-span-2 rounded-xl p-8 bg-emerald-900 border border-emerald-500/30 text-white relative overflow-hidden group hover:-translate-y-2 hover:shadow-lg transition-all duration-300 shadow-md" style={{ background: "linear-gradient(135deg, #064e3b 0%, #047857 50%, #022c22 100%)" }}>
               <div className="absolute top-0 right-0 w-56 h-56 rounded-full bg-white/10 -translate-y-1/2 translate-x-1/2 blur-2xl" />
               <BookOpen className="w-10 h-10 mb-6 opacity-90" />
               <h3 className="text-2xl font-black mb-3 text-white">T — Tahfizh Al-Qur'an</h3>
@@ -539,9 +537,7 @@ export default function Home() {
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mt-3 mb-8 md:mb-12">
                 Daftar dalam{" "}
-                <span className="box-decoration-clone text-transparent bg-clip-text bg-gradient-to-r from-[#166534] to-[#14532d]">
-                  7 Langkah
-                </span>{" "}Mudah
+                <span className="text-emerald-700 font-black">7 Langkah</span>{" "}Mudah
               </h2>
 
               <ol className="space-y-0">
@@ -679,9 +675,7 @@ export default function Home() {
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 mt-3">
               Semua yang Dibutuhkan Santri,{" "}
-              <span className="box-decoration-clone text-transparent bg-clip-text bg-gradient-to-r from-[#166534] to-[#14532d]">
-                Tersedia
-              </span>
+              <span className="text-emerald-700 font-black">Tersedia</span>
             </h2>
           </header>
 
@@ -796,9 +790,7 @@ export default function Home() {
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-white mt-3 mb-4 text-balance px-4 sm:px-0">
               Mereka Sudah{" "}
-              <span className="box-decoration-clone text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706] pr-1">
-                Membuktikannya
-              </span>
+              <span className="text-amber-400 font-black pr-1">Membuktikannya</span>
             </h2>
             <p className="text-slate-400 max-w-xl mx-auto">
               Dengarkan langsung dari para orang tua yang telah mempercayakan pendidikan {IS_PUTRA ? "putra" : "putri"} mereka kepada Al-Andalus.
@@ -852,9 +844,7 @@ export default function Home() {
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-6">
             Siapkan {IS_PUTRA ? "Putra" : "Putri"} Anda untuk{" "}
-            <span className="box-decoration-clone text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706]">
-              Masa Depan Gemilang
-            </span>
+            <span className="text-amber-400 font-black">Masa Depan Gemilang</span>
           </h2>
           <p className="text-slate-400 text-lg mb-10 max-w-xl mx-auto">
             Bergabunglah bersama ratusan keluarga yang telah mempercayakan pendidikan {IS_PUTRA ? "putra" : "putri"} mereka

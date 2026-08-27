@@ -15,7 +15,7 @@ const stafList = [
     full_name: 'Fatik Jundullah',
     role: 'admin_super',
     phone: '085883410653',
-    plain_password: 'Andalus2026!'
+    plain_password: "Andalus2026!"
   },
   {
     username: 'lalutegar',
@@ -23,7 +23,7 @@ const stafList = [
     full_name: 'Lalu Tegar Dwiki Putra',
     role: 'admin_super',
     phone: '081296869854',
-    plain_password: 'Andalus2026!'
+    plain_password: "Andalus2026!"
   },
   // === ADMIN KEUANGAN ===
   {
@@ -32,7 +32,7 @@ const stafList = [
     full_name: 'Muhammad Hidayatullah',
     role: 'admin_keuangan',
     phone: '085894111050',
-    plain_password: 'Andalus2026!'
+    plain_password: "Andalus2026!"
   },
   // === ADMIN BERKAS ===
   {
@@ -41,7 +41,7 @@ const stafList = [
     full_name: 'Aldiansyah',
     role: 'admin_berkas',
     phone: '08113920135',
-    plain_password: 'Andalus2026!'
+    plain_password: "Andalus2026!"
   },
   // === PENGUJI QURAN ===
   {
@@ -50,7 +50,7 @@ const stafList = [
     full_name: 'Abdul Haris',
     role: 'penguji',
     phone: '081934852737',
-    plain_password: 'Andalus2026!'
+    plain_password: "Andalus2026!"
   },
   // === PEWAWANCARA CALON SANTRI ===
   {
@@ -59,7 +59,7 @@ const stafList = [
     full_name: 'Aldiansyah',
     role: 'pewawancara_calsan',
     phone: '08113920135',
-    plain_password: 'Andalus2026!'
+    plain_password: "Andalus2026!"
   },
   // === PEWAWANCARA CALON WALI SANTRI ===
   {
@@ -68,7 +68,7 @@ const stafList = [
     full_name: 'Lalu Tegar Dwiki Putra',
     role: 'pewawancara_cawalsan',
     phone: '081296869854',
-    plain_password: 'Andalus2026!'
+    plain_password: "Andalus2026!"
   },
 ];
 

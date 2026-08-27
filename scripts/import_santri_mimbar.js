@@ -86,7 +86,7 @@ async function importFromBendaharaFile() {
       const noUrut = (count + 1).toString().padStart(4, '0');
       const nomorPendaftaran = `PSB${new Date().getFullYear()}${jenjang}${noUrut}`;
 
-      const password = await bcrypt.hash('123456', 10);
+      const password = await bcrypt.hash("Andalus2026!", 10);
       let user = await prisma.profile.findFirst({ where: { phone: hpOrtu } });
       
       if (!user) {

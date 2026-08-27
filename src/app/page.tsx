@@ -318,7 +318,7 @@ export default function Home() {
                 
                 {/* Image Container */}
                 <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-lg shadow-black/50 w-full">
-                  <Image
+                  <Image unoptimized 
                     src="/images/gedung-utama-putra.jpeg"
                     alt="Pesantren Al-Andalus Jonggol"
                     width={600}
@@ -758,7 +758,7 @@ export default function Home() {
               { src: "/images/tangga-selasar.jpeg", label: "Akses Tangga Masjid & Selasar" },
             ].map((photo, i) => (
               <div key={i} className="relative group overflow-hidden rounded-xl aspect-video bg-slate-200 shadow-sm border border-slate-200">
-                <Image
+                <Image unoptimized 
                   src={photo.src}
                   alt={photo.label}
                   fill

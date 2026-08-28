@@ -135,7 +135,7 @@ function PPDBContent() {
   const timeline = [
     {
       phase: "Registrasi Online",
-      date: "25 Jan - 7 Feb 2026",
+      date: "28 Agt - 30 Nov 2026",
       desc: "Buat akun pendaftar dan isi formulir awal melalui website resmi.",
       status: "active" },
     {
@@ -502,7 +502,7 @@ function PPDBContent() {
                       a: "Ya, seluruh santri di Pesantren Islam Internasional Al-Andalus Putra wajib tinggal di asrama untuk mengikuti seluruh rangkaian kegiatan tarbiyah, halaqah tahfidz, dan pembelajaran kitab turots secara maksimal." },
                     {
                       q: "Kapan batas akhir pendaftaran?",
-                      a: "Pendaftaran SPMB Tahun Ajaran 2027/2028 dibuka mulai tanggal 28 Agustus 2026 sampai dengan 1 Desember 2026. Namun, pendaftaran dapat ditutup lebih awal jika kuota santri baru sudah terpenuhi." },
+                      a: "Pendaftaran SPMB Tahun Ajaran 2027/2028 dibuka mulai tanggal 28 Agustus 2026 sampai dengan 30 November 2026. Namun, pendaftaran dapat ditutup lebih awal jika kuota santri baru sudah terpenuhi." },
                     {
                       q: "Bagaimana sistem kurikulumnya?",
                       a: "Kami menerapkan Kurikulum Terpadu yang menggabungkan kurikulum Nasional dengan kurikulum khas Andalus yang berfokus pada penguasaan Bahasa Arab, Tahfidz Al-Qur'an, dan Kitab Turots." },

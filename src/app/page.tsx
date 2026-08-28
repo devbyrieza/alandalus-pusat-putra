@@ -210,7 +210,7 @@ export default function Home() {
       {/* ——— ANNOUNCEMENT BAR —————————————————————————————————————————————————————————— */}
       <div className={`w-full py-2 sm:py-2.5 text-xs font-bold text-white ${c.bg600} flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 px-8`}>
         <Zap className="w-3.5 h-3.5 shrink-0" />
-        <span className="sm:hidden">PPDB 2027/2028 — Kuota Terbatas!</span>
+        <span className="sm:hidden">SPMB 2027/2028 — Kuota Terbatas!</span>
         <span className="hidden sm:inline">Pendaftaran Santri Baru 2027/2028 Telah Dibuka — Kuota Terbatas!</span>
         <Link href="/ppdb" className="inline-flex items-center gap-1.5 ml-2 px-4 py-1 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-black uppercase tracking-wider shadow-md hover:scale-105 transition-all shrink-0">
           <span>Daftar</span>
@@ -337,7 +337,7 @@ export default function Home() {
                       <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <div>
-                      <p className="text-white font-bold text-sm sm:text-base">PPDB 2027/2028 Dibuka</p>
+                      <p className="text-white font-bold text-sm sm:text-base">SPMB 2027/2028 Dibuka</p>
                       <p className="text-amber-300 text-[11px] sm:text-xs font-bold tracking-wide drop-shadow-lg shadow-emerald-900/20">Angkatan ke-15 · Kuota Terbatas</p>
                     </div>
                     <Link
@@ -592,7 +592,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="p-6 font-mono text-sm space-y-2">
-                  <p className="text-slate-600">$ cek status PPDB 2027/2028...</p>
+                  <p className="text-slate-600">$ cek status SPMB 2027/2028...</p>
                   <p>
                     <span className={c.text400}>â–¸</span>{" "}
                     <span className="text-white">Status Pendaftaran</span>{" "}

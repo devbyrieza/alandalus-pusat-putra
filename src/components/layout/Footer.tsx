@@ -126,7 +126,7 @@ export default function Footer() {
               className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl text-white text-sm font-bold ${primaryBg} ${primaryBgHov} transition-all mt-2`}
             >
               <HiAcademicCap className="w-4 h-4" />
-              Daftar PPDB Online
+              Daftar SPMB Online
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -140,7 +140,7 @@ export default function Footer() {
             © {new Date().getFullYear()} {BRANDING.schoolName}. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <Link href="/ppdb"  className="text-xs text-slate-600 hover:text-slate-400 transition-colors">Info PPDB</Link>
+            <Link href="/ppdb"  className="text-xs text-slate-600 hover:text-slate-400 transition-colors">Info SPMB</Link>
             <Link href="/login" className="text-xs text-slate-600 hover:text-slate-400 transition-colors">Login Santri</Link>
             <span className={`text-xs font-bold ${primaryColor} flex items-center gap-1`}>
               <PiHandHeartBold className="w-3.5 h-3.5" />

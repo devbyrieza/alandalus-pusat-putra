@@ -190,7 +190,7 @@ Alhamdulillah, pendaftaran Anda di Pesantren Islam Internasional Al-Andalus Putr
 Hubungi kami di {{kontak}}
 
 Jazakumullahu khairan,
-Panitia PPDB Al-Andalus Putra`,
+Panitia SPMB Al-Andalus Putra`,
 
   // Dokumen diverifikasi - Approved
   document_verified: `✅ *Dokumen Diverifikasi*
@@ -208,7 +208,7 @@ Silakan pilih jadwal seleksi masuk melalui dashboard Anda (Menu Jadwal Seleksi).
 Dashboard: {{dashboard_url}}
 
 Jazakumullahu khairan,
-Panitia PPDB Al-Andalus Putra`,
+Panitia SPMB Al-Andalus Putra`,
 
   // Dokumen ditolak
   document_rejected: `❌ *Dokumen Perlu Diperbaiki*
@@ -232,7 +232,7 @@ Mohon maaf, dokumen Anda perlu diperbaiki.
 Hubungi kami di {{kontak}}
 
 Jazakumullahu khairan,
-Panitia PPDB Al-Andalus Putra`,
+Panitia SPMB Al-Andalus Putra`,
 
   // Pembayaran diverifikasi - Approved
   payment_verified: `✅ *Pembayaran Diterima*
@@ -253,7 +253,7 @@ Setelah data lengkap, Anda bisa memilih jadwal tes.
 Dashboard: {{dashboard_url}}
 
 Jazakumullahu khairan,
-Panitia PPDB Al-Andalus Putra`,
+Panitia SPMB Al-Andalus Putra`,
 
   // Pembayaran ditolak
   payment_rejected: `❌ *Pembayaran Perlu Diperbaiki*
@@ -274,7 +274,7 @@ Mohon maaf, bukti pembayaran Anda perlu diperbaiki.
 Hubungi kami di {{kontak}}
 
 Jazakumullahu khairan,
-Panitia PPDB Al-Andalus Putra`,
+Panitia SPMB Al-Andalus Putra`,
 
   // Reminder deadline
   deadline_reminder: `⏰ *Pengingat Deadline*
@@ -294,7 +294,7 @@ Ini adalah pengingat bahwa deadline {{jenis_deadline}} akan berakhir pada:
 Dashboard: {{dashboard_url}}
 
 Jazakumullahu khairan,
-Panitia PPDB Al-Andalus Putra`,
+Panitia SPMB Al-Andalus Putra`,
 
   // Jadwal seleksi masuk
   test_schedule: `📅 *Jadwal seleksi masuk*
@@ -319,7 +319,7 @@ Berikut jadwal seleksi masuk Anda:
 Dashboard: {{dashboard_url}}
 
 Jazakumullahu khairan,
-Panitia PPDB Al-Andalus Putra`,
+Panitia SPMB Al-Andalus Putra`,
 
   // Pengumuman kelulusan - Diterima
   announcement_accepted: `🎉 *SELAMAT! Anda DITERIMA*
@@ -342,14 +342,14 @@ Dashboard: {{dashboard_url}}
 Selamat bergabung di keluarga besar Al-Andalus Putra! 🎓
 
 Jazakumullahu khairan,
-Panitia PPDB Al-Andalus Putra`,
+Panitia SPMB Al-Andalus Putra`,
 
   // Pengumuman kelulusan - Cadangan
   announcement_reserve: `📋 *PENGUMUMAN HASIL SELEKSI*
 
 Assalamu'alaikum {{nama}},
 
-Berdasarkan hasil seleksi PPDB Pesantren Islam Internasional Al-Andalus Putra, kami informasikan bahwa Anda dinyatakan *CADANGAN*.
+Berdasarkan hasil seleksi SPMB Pesantren Islam Internasional Al-Andalus Putra, kami informasikan bahwa Anda dinyatakan *CADANGAN*.
 
 📋 *Detail:*
 • Jenjang: {{jenjang}}
@@ -362,14 +362,14 @@ Pantau terus dashboard Anda untuk update terbaru.
 Dashboard: {{dashboard_url}}
 
 Jazakumullahu khairan,
-Panitia PPDB Al-Andalus Putra`,
+Panitia SPMB Al-Andalus Putra`,
 
   // Pengumuman kelulusan - Ditolak
   announcement_rejected: `📋 *PENGUMUMAN HASIL SELEKSI*
 
 Assalamu'alaikum {{nama}},
 
-Berdasarkan hasil seleksi PPDB Pesantren Islam Internasional Al-Andalus Putra, kami informasikan bahwa Anda *BELUM DITERIMA* pada periode ini.
+Berdasarkan hasil seleksi SPMB Pesantren Islam Internasional Al-Andalus Putra, kami informasikan bahwa Anda *BELUM DITERIMA* pada periode ini.
 
 📋 *Detail:*
 • Jenjang: {{jenjang}}
@@ -378,7 +378,7 @@ Berdasarkan hasil seleksi PPDB Pesantren Islam Internasional Al-Andalus Putra, k
 Kami mengapresiasi semangat dan usaha Anda. Semoga dimudahkan jalannya untuk menuntut ilmu di manapun.
 
 Jazakumullahu khairan,
-Panitia PPDB Al-Andalus Putra`,
+Panitia SPMB Al-Andalus Putra`,
 
   // Google Form Link
   google_form_link: `📝 *LINK FORMULIR TAMBAHAN*
@@ -397,7 +397,7 @@ Pastikan mengisi dengan data yang benar dan lengkap.
 Dashboard: {{dashboard_url}}
 
 Jazakumullahu khairan,
-Panitia PPDB Al-Andalus Putra`,
+Panitia SPMB Al-Andalus Putra`,
 
   // Zoom/Online Meeting Link
   zoom_meeting: `🎥 *UNDANGAN TES ONLINE*
@@ -419,7 +419,7 @@ Berikut jadwal {{jenis_ujian}} secara online:
 Dashboard: {{dashboard_url}}
 
 Jazakumullahu khairan,
-Panitia PPDB Al-Andalus Putra`,
+Panitia SPMB Al-Andalus Putra`,
 
   // Data Lengkap -> Unlock Upload Berkas
   data_complete: `✅ *DATA LENGKAP*
@@ -436,7 +436,7 @@ Silakan login ke dashboard dan unggah dokumen yang diperlukan (KK, Akta, dll).
 Dashboard: {{dashboard_url}}
 
 Jazakumullahu khairan,
-Panitia PPDB Al-Andalus Putra`,
+Panitia SPMB Al-Andalus Putra`,
 
   // Semua Ujian Selesai
   all_exams_complete: `🎉 *RANGKAIAN SELEKSI SELESAI*
@@ -454,7 +454,7 @@ Pengumuman kelulusan belum tersedia saat ini. Mohon menunggu update selanjutnya 
 Dashboard: {{dashboard_url}}
 
 Jazakumullahu khairan,
-Panitia PPDB Al-Andalus Putra` };
+Panitia SPMB Al-Andalus Putra` };
 
 // ============================================
 // NOTIFICATION HELPERS
@@ -1020,11 +1020,11 @@ export async function notifyNewStaffAccess(data: {
   const cleanPhone = data.phone.replace(/\D/g, "");
   const pin = cleanPhone.slice(-4) || "1234";
 
-  const message = `🔑 *Akses Masuk Baru Staf PPDB ${BRANDING.schoolName}*
+  const message = `🔑 *Akses Masuk Baru Staf SPMB ${BRANDING.schoolName}*
 
 Assalamu'alaikum *${data.nama}*,
 
-Selamat, Anda telah didaftarkan/diperbarui aksesnya sebagai *${roleLabel}* pada sistem PPDB ${BRANDING.schoolName}.
+Selamat, Anda telah didaftarkan/diperbarui aksesnya sebagai *${roleLabel}* pada sistem SPMB ${BRANDING.schoolName}.
 
 Berikut adalah tautan masuk cepat Anda:
 🔗 ${shortUrl}
@@ -1035,7 +1035,7 @@ PIN Keamanan Anda adalah: *${pin}* (4 digit terakhir nomor WhatsApp Anda).
 
 Jazakumullahu khairan.
 ---
-*Panitia PPDB ${BRANDING.schoolName}*`;
+*Panitia SPMB ${BRANDING.schoolName}*`;
 
   return sendMessage({ phone: data.phone, message });
 }

@@ -39,7 +39,7 @@ export default function KontakPage() {
           </h1>
 
           <p className="text-slate-600 text-lg">
-            Hubungi panitia PPDB & sekretariat {BRANDING.schoolName} untuk informasi pendaftaran, kunjungan pesantren, dan pertanyaan lainnya.
+            Hubungi panitia SPMB & sekretariat {BRANDING.schoolName} untuk informasi pendaftaran, kunjungan pesantren, dan pertanyaan lainnya.
           </p>
         </div>
 

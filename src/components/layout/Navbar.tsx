@@ -116,7 +116,7 @@ export default function Navbar() {
               Al-Andalus Putra
             </div>
             <div className="text-[11px] font-bold text-amber-300 tracking-wide drop-shadow-sm">
-              PPDB Online 2027/2028
+              SPMB Online 2027/2028
             </div>
           </div>
         </Link>
@@ -177,7 +177,7 @@ export default function Navbar() {
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-amber-500/30 hover:scale-105 active:scale-95 transition-all border border-amber-300"
               >
                 <GraduationCap className="w-4 h-4" />
-                <span>Daftar PPDB</span>
+                <span>Daftar SPMB</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>
@@ -196,7 +196,7 @@ export default function Navbar() {
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-amber-500/30 hover:scale-105 active:scale-95 transition-all border border-amber-300"
               >
                 <GraduationCap className="w-4 h-4" />
-                <span>Daftar PPDB</span>
+                <span>Daftar SPMB</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>
@@ -252,7 +252,7 @@ export default function Navbar() {
                 onClick={(e) => handleNavClick(e, "/ppdb", () => setIsMenuOpen(false))}
                 className="w-full text-center py-3 rounded-xl bg-andalus-green-700 text-white font-bold text-sm shadow-lg"
               >
-                Daftar PPDB Online Sekarang
+                Daftar SPMB Online Sekarang
               </a>
               <a
                 href="/login"

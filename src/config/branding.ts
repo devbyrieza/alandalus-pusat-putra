@@ -14,7 +14,7 @@ export const BRANDING = {
   logoPath: "/images/logo-putra.png",
   faviconPath: "/favicon.ico",
   websiteUrl: "https://pesantren-alandalus.com",
-  dashboardTitle: "Panel Admin PPDB",
+  dashboardTitle: "Panel Admin SPMB",
   
   contact: {
     whatsapp: "+62 838-1151-5951",
@@ -25,7 +25,7 @@ export const BRANDING = {
     tiktok: "https://www.tiktok.com/@pp.alandalus",
     address: "Jl. Raya Menteng, KM. 13 RT.03/04, Dusun Cijurey, Desa Sukadamai, Kec. Sukamakmur, Kab. Bogor." },
   
-  // Properties required by PPDB dashboard & layout backward compatibility
+  // Properties required by SPMB dashboard & layout backward compatibility
   address: "Jl. Raya Menteng, KM. 13 RT.03/04, Dusun Cijurey, Desa Sukadamai, Kec. Sukamakmur, Kab. Bogor.",
   phone: "+62 838-1151-5951",
   email: "info@pesantren-alandalus.com",

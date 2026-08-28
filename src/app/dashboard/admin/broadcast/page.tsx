@@ -34,7 +34,7 @@ export default function BroadcastPage() {
 
   const [header, setHeader] = useState("Assalamu'alaikum");
   const [message, setMessage] = useState("");
-  const [footer, setFooter] = useState("Panitia PPDB Al-Andalus Putra");
+  const [footer, setFooter] = useState("Panitia SPMB Al-Andalus Putra");
   const [includeName, setIncludeName] = useState(true);
 
   // Autosave broadcast draft

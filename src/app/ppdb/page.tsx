@@ -246,7 +246,7 @@ function PPDBContent() {
                 href={`/daftar${jenjang ? `?jenjang=${jenjang}` : ""}`}
                 className="inline-flex items-center justify-center gap-3 px-8 md:px-10 py-4.5 rounded-full bg-emerald-700 text-white font-black text-lg hover:bg-emerald-800 shadow-xl shadow-emerald-700/25 transition-all hover:-translate-y-0.5"
               >
-                Daftar PPDB
+                Daftar SPMB
               </Link>
               <a
                 href="#alur"
@@ -502,7 +502,7 @@ function PPDBContent() {
                       a: "Ya, seluruh santri di Pesantren Islam Internasional Al-Andalus Putra wajib tinggal di asrama untuk mengikuti seluruh rangkaian kegiatan tarbiyah, halaqah tahfidz, dan pembelajaran kitab turots secara maksimal." },
                     {
                       q: "Kapan batas akhir pendaftaran?",
-                      a: "Pendaftaran PPDB Tahun Ajaran 2027/2028 dibuka mulai tanggal 28 Agustus 2026 sampai dengan 1 Desember 2026. Namun, pendaftaran dapat ditutup lebih awal jika kuota santri baru sudah terpenuhi." },
+                      a: "Pendaftaran SPMB Tahun Ajaran 2027/2028 dibuka mulai tanggal 28 Agustus 2026 sampai dengan 1 Desember 2026. Namun, pendaftaran dapat ditutup lebih awal jika kuota santri baru sudah terpenuhi." },
                     {
                       q: "Bagaimana sistem kurikulumnya?",
                       a: "Kami menerapkan Kurikulum Terpadu yang menggabungkan kurikulum Nasional dengan kurikulum khas Andalus yang berfokus pada penguasaan Bahasa Arab, Tahfidz Al-Qur'an, dan Kitab Turots." },
@@ -564,7 +564,7 @@ function PPDBContent() {
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-5 md:px-8 py-3.5 sm:py-4 md:py-5 rounded-pill bg-white/10 text-white font-bold border border-white/20 hover:bg-white/20 transition-all text-sm sm:text-base md:text-lg min-h-[48px] sm:min-h-[52px]"
                 >
                   <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
-                  Hubungi Admin PPDB
+                  Hubungi Admin SPMB
                 </a>
               </div>
 
@@ -614,7 +614,7 @@ function LoadingFallback() {
         <Loader2 className="w-12 h-12" />
       </motion.div>
       <p className="text-ink-500 font-black uppercase tracking-widest text-xs animate-pulse">
-        Memuat Info PPDB...
+        Memuat Info SPMB...
       </p>
     </div>
   );

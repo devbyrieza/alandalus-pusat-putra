@@ -208,13 +208,13 @@ export default function Home() {
     <div className="min-h-screen flex flex-col overflow-x-hidden">
 
       {/* ——— ANNOUNCEMENT BAR —————————————————————————————————————————————————————————— */}
-      <div className={`w-full py-2 sm:py-2.5 text-xs font-bold text-white ${c.bg600} flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 px-8`}>
-        <Zap className="w-3.5 h-3.5 shrink-0" />
+      <div className={`w-full py-2.5 sm:py-3 text-xs sm:text-sm font-bold text-white ${c.bg600} flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 px-4 sm:px-8 border-b border-white/10`}>
+        <Zap className="w-4 h-4 shrink-0 text-amber-300" />
         <span className="sm:hidden">SPMB 2027/2028 — Kuota Terbatas!</span>
         <span className="hidden sm:inline">Pendaftaran Santri Baru 2027/2028 Telah Dibuka — Kuota Terbatas!</span>
-        <Link href="/ppdb" className="inline-flex items-center gap-1.5 ml-2 px-4 py-1 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-black uppercase tracking-wider shadow-md hover:scale-105 transition-all shrink-0">
+        <Link href="/ppdb" className="inline-flex items-center gap-1.5 ml-2 px-4 py-1.5 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-black uppercase tracking-wider shadow-md hover:scale-105 transition-all shrink-0">
           <span>Daftar</span>
-          <ChevronRight className="w-3 h-3 stroke-[3]" />
+          <ChevronRight className="w-3.5 h-3.5 stroke-[3]" />
         </Link>
       </div>
 

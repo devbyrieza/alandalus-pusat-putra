@@ -182,7 +182,8 @@ export async function POST(request: NextRequest) {
       }
     } else {
       // Default PENDAFTARAN
-      biaya = Number(pendaftar.tahun_ajaran.biaya_pendaftaran);
+      const rawBiaya = Number(pendaftar.tahun_ajaran?.biaya_pendaftaran || 0);
+      biaya = rawBiaya >= 500000 ? rawBiaya : 500000;
       tipeCicilan = "LUNAS";
     }
 

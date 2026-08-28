@@ -93,7 +93,8 @@ export async function POST(request: NextRequest) {
     // 6. Generate unique order ID
     const timestamp = Date.now();
     const orderId = `PPDB-${pendaftar.nomor_pendaftaran}-${timestamp}`;
-    const grossAmount = Number(tahunAjaran.biaya_pendaftaran);
+    const rawGross = Number(tahunAjaran.biaya_pendaftaran || 0);
+    const grossAmount = rawGross >= 500000 ? rawGross : 500000;
 
     // 7. Prepare Midtrans transaction data
     const transactionData = {

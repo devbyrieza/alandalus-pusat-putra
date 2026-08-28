@@ -62,7 +62,7 @@ export async function GET(request: NextRequest) {
     const tahunAjaran = {
       id: pendaftar.tahun_ajaran.id,
       nama: pendaftar.tahun_ajaran.nama,
-      biaya_pendaftaran: Number(pendaftar.tahun_ajaran.biaya_pendaftaran),
+      biaya_pendaftaran: Number(pendaftar.tahun_ajaran.biaya_pendaftaran) >= 500000 ? Number(pendaftar.tahun_ajaran.biaya_pendaftaran) : 500000,
       tanggal_tutup_pendaftaran:
         pendaftar.tahun_ajaran.tanggal_tutup_pendaftaran };
 
@@ -99,7 +99,7 @@ export async function GET(request: NextRequest) {
           // Convert Date to string for JSON serialization compatibility
           id: tahunAjaran.id,
           nama: tahunAjaran.nama,
-          biaya_pendaftaran: tahunAjaran.biaya_pendaftaran,
+          biaya_pendaftaran: tahunAjaran.biaya_pendaftaran >= 500000 ? tahunAjaran.biaya_pendaftaran : 500000,
           tanggal_tutup_pendaftaran: tahunAjaran.tanggal_tutup_pendaftaran },
         pembayaran: pembayaran
           ? {

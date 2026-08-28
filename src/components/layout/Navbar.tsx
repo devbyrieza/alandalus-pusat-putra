@@ -14,7 +14,8 @@ import {
   BookOpen,
   UserCheck,
   ExternalLink,
-  Sparkles
+  Zap,
+  ChevronRight
 } from "lucide-react";
 import Image from "next/image";
 import { BRANDING } from "@/config/branding";
@@ -66,7 +67,6 @@ export default function Navbar() {
     
     if (isPpdbHost) {
       if (isPpdbRoute) {
-        // Subdomain -> Subdomain (SPA)
         let target = href;
         if (target.startsWith("/ppdb")) {
           target = target.replace("/ppdb", "/");
@@ -79,17 +79,14 @@ export default function Navbar() {
            window.location.href = target;
         }
       } else {
-        // Subdomain -> Main Domain (Hard Redirect)
         const mainDomain = host.replace("ppdb.", "");
         const port = window.location.port ? `:${window.location.port}` : "";
         window.location.href = `${window.location.protocol}//${mainDomain}${port}${href}`;
       }
     } else {
       if (isPpdbRoute) {
-        // Main Domain -> Subdomain (Hard Redirect to let Middleware catch it)
         window.location.href = href;
       } else {
-        // Main Domain -> Main Domain (SPA or Hard navigation)
         window.location.href = href;
       }
     }
@@ -97,130 +94,148 @@ export default function Navbar() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary-950/95 border-b border-primary-800 shadow-lg py-3"
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-xl"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 lg:gap-8">
-        {/* LOGO & BRAND */}
-        <Link href="/" className="flex items-center gap-3 group shrink-0">
-          <div className="relative w-10 h-10 overflow-hidden rounded-xl bg-primary-900 border border-primary-700 flex items-center justify-center p-1 group-hover:scale-105 transition-transform">
-            <Image
-              src={BRANDING.logoPath}
-              alt={BRANDING.schoolShortName}
-              width={36}
-              height={36}
-              className="object-contain"
-            />
-          </div>
-          <div>
-            <div className="font-extrabold text-white text-base leading-tight tracking-tight group-hover:text-emerald-300 transition-colors">
-              Al-Andalus Putra
+      {/* ── 1. MAIN NAVBAR ROW ── */}
+      <div className="bg-primary-950/95 backdrop-blur-md border-b border-primary-800/80 py-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 lg:gap-8">
+          {/* LOGO & BRAND */}
+          <Link href="/" className="flex items-center gap-3 group shrink-0">
+            <div className="relative w-10 h-10 overflow-hidden rounded-xl bg-primary-900 border border-primary-700 flex items-center justify-center p-1 group-hover:scale-105 transition-transform">
+              <Image
+                src={BRANDING.logoPath}
+                alt={BRANDING.schoolShortName}
+                width={36}
+                height={36}
+                className="object-contain"
+              />
             </div>
-            <div className="text-[11px] font-bold text-amber-300 tracking-wide drop-shadow-sm">
-              SPMB Online 2027/2028
+            <div>
+              <div className="font-extrabold text-white text-base leading-tight tracking-tight group-hover:text-emerald-300 transition-colors">
+                Al-Andalus Putra
+              </div>
+              <div className="text-[11px] font-bold text-amber-300 tracking-wide drop-shadow-sm">
+                SPMB Online 2027/2028
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
 
-        {/* DESKTOP NAV LINKS */}
-        <nav className="hidden lg:flex items-center gap-1 bg-primary-900/60 p-1.5 rounded-xl border border-primary-800 shrink-0">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            
-            return (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer ${
-                  isActive
-                    ? "bg-primary-600 text-white font-bold shadow-md shadow-primary-500/20"
-                    : "text-slate-300 hover:text-white hover:bg-primary-800/80"
-                }`}
-              >
-                {link.name}
-              </a>
-            );
-          })}
-        </nav>
+          {/* DESKTOP NAV LINKS */}
+          <nav className="hidden lg:flex items-center gap-1 bg-primary-900/60 p-1.5 rounded-xl border border-primary-800 shrink-0">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer ${
+                    isActive
+                      ? "bg-primary-600 text-white font-bold shadow-md shadow-primary-500/20"
+                      : "text-slate-300 hover:text-white hover:bg-primary-800/80"
+                  }`}
+                >
+                  {link.name}
+                </a>
+              );
+            })}
+          </nav>
 
-        {/* RIGHT ACTION BUTTONS */}
-        <div className="hidden md:flex items-center gap-3 shrink-0 ml-auto lg:ml-4">
-          {/* External Link to Main Corporate Website */}
-          <a
-            href="https://pesantren-alandalus.com"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-primary-900/90 hover:bg-primary-800 border border-primary-700 text-xs font-semibold text-slate-300 hover:text-white transition-all shadow-sm"
-            title="Kunjungi Website Utama Pesantren Al-Andalus"
-          >
-            <Globe className="w-3.5 h-3.5 text-amber-300" />
-            <span>Web Utama</span>
-            <ExternalLink className="w-3 h-3 text-slate-500" />
-          </a>
+          {/* RIGHT ACTION BUTTONS */}
+          <div className="hidden md:flex items-center gap-3 shrink-0 ml-auto lg:ml-4">
+            {/* External Link to Main Corporate Website */}
+            <a
+              href="https://pesantren-alandalus.com"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-primary-900/90 hover:bg-primary-800 border border-primary-700 text-xs font-semibold text-slate-300 hover:text-white transition-all shadow-sm"
+              title="Kunjungi Website Utama Pesantren Al-Andalus"
+            >
+              <Globe className="w-3.5 h-3.5 text-amber-300" />
+              <span>Web Utama</span>
+              <ExternalLink className="w-3 h-3 text-slate-500" />
+            </a>
 
-          {/* Session check: Login or Dashboard */}
-          {session ? (
-            <div className="flex items-center gap-3">
-              <a
-                href="/dashboard"
-                onClick={(e) => handleNavClick(e, "/dashboard")}
-                className="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center gap-1.5 transition-all"
-              >
-                <UserCheck className="w-4 h-4 text-emerald-300" />
-                <span>Masuk ke Akun</span>
-              </a>
-              <a
-                href="/ppdb"
-                onClick={(e) => handleNavClick(e, "/ppdb")}
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-amber-400/30 hover:scale-105 active:scale-95 transition-all border border-amber-200"
-              >
-                <GraduationCap className="w-4 h-4" />
-                <span>Daftar SPMB</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-          ) : (
-            <div className="flex items-center gap-3">
-              <a
-                href="/login"
-                onClick={(e) => handleNavClick(e, "/login")}
-                className="px-4 py-2 rounded-xl text-sm font-bold text-slate-200 hover:text-white transition-colors"
-              >
-                Masuk
-              </a>
-              <a
-                href="/ppdb"
-                onClick={(e) => handleNavClick(e, "/ppdb")}
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-amber-400/30 hover:scale-105 active:scale-95 transition-all border border-amber-200"
-              >
-                <GraduationCap className="w-4 h-4" />
-                <span>Daftar SPMB</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-          )}
-
-          {/* Language Switcher */}
-          <div className="border-l border-primary-800 pl-3">
-            <LanguageSwitcher />
-          </div>
-        </div>
-
-        {/* MOBILE MENU TOGGLE */}
-        <div className="flex items-center gap-2 lg:hidden">
-          <LanguageSwitcher />
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-primary-900 focus:outline-none"
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? (
-              <X className="w-6 h-6" />
+            {/* Session check: Login or Dashboard */}
+            {session ? (
+              <div className="flex items-center gap-3">
+                <a
+                  href="/dashboard"
+                  onClick={(e) => handleNavClick(e, "/dashboard")}
+                  className="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center gap-1.5 transition-all"
+                >
+                  <UserCheck className="w-4 h-4 text-emerald-300" />
+                  <span>Masuk ke Akun</span>
+                </a>
+                <a
+                  href="/ppdb"
+                  onClick={(e) => handleNavClick(e, "/ppdb")}
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-amber-400/30 hover:scale-105 active:scale-95 transition-all border border-amber-200"
+                >
+                  <GraduationCap className="w-4 h-4" />
+                  <span>Daftar SPMB</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
             ) : (
-              <Menu className="w-6 h-6" />
+              <div className="flex items-center gap-3">
+                <a
+                  href="/login"
+                  onClick={(e) => handleNavClick(e, "/login")}
+                  className="px-4 py-2 rounded-xl text-sm font-bold text-slate-200 hover:text-white transition-colors"
+                >
+                  Masuk
+                </a>
+                <a
+                  href="/ppdb"
+                  onClick={(e) => handleNavClick(e, "/ppdb")}
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-amber-400/30 hover:scale-105 active:scale-95 transition-all border border-amber-200"
+                >
+                  <GraduationCap className="w-4 h-4" />
+                  <span>Daftar SPMB</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
             )}
-          </button>
+
+            {/* Language Switcher */}
+            <div className="border-l border-primary-800 pl-3">
+              <LanguageSwitcher />
+            </div>
+          </div>
+
+          {/* MOBILE MENU TOGGLE */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <LanguageSwitcher />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-primary-900 focus:outline-none"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
         </div>
+      </div>
+
+      {/* ── 2. SEAMLESS ANNOUNCEMENT TICKER (ZERO GAP) ── */}
+      <div className="w-full py-2 sm:py-2.5 text-xs sm:text-sm font-bold text-white bg-emerald-600 flex flex-wrap items-center justify-center gap-x-2.5 gap-y-0.5 px-4 sm:px-8 shadow-sm">
+        <Zap className="w-3.5 h-3.5 shrink-0 text-amber-300" />
+        <span className="sm:hidden">SPMB 2027/2028 — Kuota Terbatas!</span>
+        <span className="hidden sm:inline">Pendaftaran Santri Baru 2027/2028 Telah Dibuka — Kuota Terbatas!</span>
+        <Link
+          href="/ppdb"
+          onClick={(e) => handleNavClick(e, "/ppdb")}
+          className="inline-flex items-center gap-1.5 ml-2 px-3.5 py-1 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-black uppercase tracking-wider shadow-sm hover:scale-105 transition-all shrink-0"
+        >
+          <span>Daftar</span>
+          <ChevronRight className="w-3.5 h-3.5 stroke-[3]" />
+        </Link>
       </div>
 
       {/* MOBILE MENU DROPDOWN */}

@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
       is_active = false,
       tanggal_buka_pendaftaran,
       tanggal_tutup_pendaftaran,
-      biaya_pendaftaran = 200000 } = body;
+      biaya_pendaftaran = 500000 } = body;
 
     // Validate required fields
     if (

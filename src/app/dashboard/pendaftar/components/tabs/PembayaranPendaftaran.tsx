@@ -739,8 +739,8 @@ export default function PembayaranPendaftaranTab({
   const effectiveStatus =
     data.status === "expired" ? ("unpaid" as PaymentStatus) : data.status;
 
-  // Hard-set biaya pendaftaran sesuai ketentuan (Rp 200.000)
-  const biayaPendaftaran = 200_000;
+  // Biaya pendaftaran sesuai ketentuan (Rp 500.000)
+  const biayaPendaftaran = data?.tahun_ajaran?.biaya_pendaftaran ? Number(data.tahun_ajaran.biaya_pendaftaran) : 500_000;
 
   const statusConfig = STATUS_CONFIG[effectiveStatus];
   const StatusIcon = statusConfig.icon;

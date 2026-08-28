@@ -43,11 +43,11 @@ export async function POST() {
             is_active: true,
             tanggal_buka_pendaftaran: new Date("2026-08-01"),
             tanggal_tutup_pendaftaran: new Date("2027-01-31"),
-            biaya_pendaftaran: 250000 } });
+            biaya_pendaftaran: 500000 } });
       } else {
         await tx.tahunAjaran.update({
           where: { id: ta2027.id },
-          data: { is_active: true, biaya_pendaftaran: 250000, nama: "2027/2028" } });
+          data: { is_active: true, biaya_pendaftaran: 500000, nama: "2027/2028" } });
       }
 
       // 2. Nonaktifkan yang lain

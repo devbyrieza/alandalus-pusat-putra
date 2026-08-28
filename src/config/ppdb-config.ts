@@ -31,6 +31,11 @@ export const PPDB_CONFIG = {
       red: "#ef4444" } },
   tahunAjaran: "2027/2028",
   angkatan: "Angkatan ke-15",
+  biaya: {
+    pendaftaran: 500000,
+    uangPangkal: 30000000,
+    spp: 3000000,
+  },
   bank: {
     nama: "Bank Syariah Indonesia (BSI)",
     nomorRekening: "7667777783",

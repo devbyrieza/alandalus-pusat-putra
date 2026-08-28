@@ -13,7 +13,8 @@ export const BRANDING = {
   secondaryColor: "#fbbf24",
   logoPath: "/images/logo-putra.png",
   faviconPath: "/favicon.ico",
-  websiteUrl: "https://pesantren-alandalus.com",
+  websiteUrl: process.env.NEXT_PUBLIC_APP_URL || "https://pesantren-alandalus-putra.com",
+  mainPortalUrl: "https://pesantren-alandalus.com",
   dashboardTitle: "Panel Admin SPMB",
   
   contact: {

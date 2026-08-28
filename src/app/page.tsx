@@ -263,7 +263,7 @@ export default function Home() {
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif italic font-black text-white leading-[1.1] tracking-tight">
                   Cetak Generasi{" "}
                   <span className="box-decoration-clone text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706] pr-2 md:pr-4">
-                    Rabbani
+                    Umat Rabbani
                   </span>{" "}
                   Berkelas Dunia.
                 </h1>

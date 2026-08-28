@@ -574,24 +574,30 @@ function PPDBContent() {
                 <span>Pendaftaran Gratis&nbsp;&nbsp;•&nbsp;&nbsp;Proses Mudah&nbsp;&nbsp;•&nbsp;&nbsp;Langsung Konfirmasi</span>
               </p>
 
-              {/* Legalitas badges */}
-              <div className="mt-8 pt-8 border-t border-white/10 flex flex-wrap items-center justify-center gap-6">
-                <div className="flex items-center gap-2 text-primary-100/70">
+                            {/* Legalitas badges */}
+              <div className="mt-8 pt-8 border-t border-white/10 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+                <div className="flex items-center gap-2 text-primary-100/80">
                   <Shield className="w-4 h-4 text-green-400" />
-                  <span className="text-xs font-bold uppercase tracking-widest">
-                    Terakreditasi B — BAN-PDM
+                  <span className="text-xs font-bold uppercase tracking-wider">
+                    Terakreditasi A
                   </span>
                 </div>
-                <div className="flex items-center gap-2 text-primary-100/70">
-                  <Award className="w-4 h-4 text-amber-400" />
-                  <span className="text-xs font-bold uppercase tracking-widest">
-                    Sejak 1995 • 30 Tahun Melayani
+                <div className="flex items-center gap-2 text-primary-100/80">
+                  <Award className="w-4 h-4 text-gold-400" />
+                  <span className="text-xs font-bold uppercase tracking-wider">
+                    Akreditasi Univ. Islam Madinah
                   </span>
                 </div>
-                <div className="flex items-center gap-2 text-primary-100/70">
-                  <GraduationCap className="w-4 h-4 text-primary-400" />
-                  <span className="text-xs font-bold uppercase tracking-widest">
-                    Resmi Kemendikdasmen
+                <div className="flex items-center gap-2 text-primary-100/80">
+                  <GraduationCap className="w-4 h-4 text-primary-300" />
+                  <span className="text-xs font-bold uppercase tracking-wider">
+                    Akreditasi Univ. Al-Azhar Mesir
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 text-primary-100/80">
+                  <Sparkles className="w-4 h-4 text-amber-300" />
+                  <span className="text-xs font-bold uppercase tracking-wider">
+                    Sejak 2013 • 13 Tahun Melayani
                   </span>
                 </div>
               </div>

@@ -260,7 +260,7 @@ export default function StatsSection() {
             {/* Badge 2 — Akreditasi */}
             <div className="section-label section-label-maroon border-secondary-200 text-ink-700 bg-secondary-50/50 hover:bg-secondary-100/50 cursor-default">
               <ShieldCheck className="w-3 h-3 shrink-0 text-primary-600" strokeWidth={2} />
-              <span>Terakreditasi B — BAN-PDM</span>
+              <span>Terakreditasi A — BAN-PDM</span>
             </div>
 
             {/* Badge 3 — School Network */}

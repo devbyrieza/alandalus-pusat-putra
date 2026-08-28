@@ -162,28 +162,40 @@ export default function Navbar() {
 
           {/* Session check: Login or Dashboard */}
           {session ? (
-            <a
-              href="/dashboard"
-              onClick={(e) => handleNavClick(e, "/dashboard")}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-andalus-green-700 hover:bg-andalus-green-600 text-white font-bold text-sm shadow-lg shadow-andalus-green-700/30 transition-all"
-            >
-              <UserCheck className="w-4 h-4" />
-              <span>Masuk ke Akun</span>
-            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href="/dashboard"
+                onClick={(e) => handleNavClick(e, "/dashboard")}
+                className="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center gap-1.5 transition-all"
+              >
+                <UserCheck className="w-4 h-4 text-emerald-300" />
+                <span>Masuk ke Akun</span>
+              </a>
+              <a
+                href="/ppdb"
+                onClick={(e) => handleNavClick(e, "/ppdb")}
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-amber-500/30 hover:scale-105 active:scale-95 transition-all border border-amber-300"
+              >
+                <GraduationCap className="w-4 h-4" />
+                <span>Daftar PPDB</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
           ) : (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <a
                 href="/login"
                 onClick={(e) => handleNavClick(e, "/login")}
-                className="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white transition-colors"
+                className="px-4 py-2 rounded-xl text-sm font-bold text-slate-200 hover:text-white transition-colors"
               >
                 Masuk
               </a>
               <a
                 href="/ppdb"
                 onClick={(e) => handleNavClick(e, "/ppdb")}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-andalus-green-700 hover:bg-andalus-green-600 text-white font-bold text-sm shadow-lg shadow-andalus-green-700/30 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-amber-500/30 hover:scale-105 active:scale-95 transition-all border border-amber-300"
               >
+                <GraduationCap className="w-4 h-4" />
                 <span>Daftar PPDB</span>
                 <ArrowRight className="w-4 h-4" />
               </a>

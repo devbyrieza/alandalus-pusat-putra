@@ -436,7 +436,7 @@ export default function DaftarUlangTab() {
           <div className="space-y-1 text-sm">
             <div className="flex justify-between">
               <span className="text-ink-500">Uang Pangkal Normal:</span>
-              <span className="font-bold text-ink-800">Rp 30.000.000</span>
+              <span className="font-bold text-ink-800">Rp 35.000.000</span>
             </div>
             {potonganUP > 0 && (
               <div className="flex justify-between items-center text-sm text-emerald-600">

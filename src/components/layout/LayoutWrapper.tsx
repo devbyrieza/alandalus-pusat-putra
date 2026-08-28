@@ -34,7 +34,7 @@ export default function LayoutWrapper({
       {!hideNavbarFooter && <Navbar />}
 
       {/* ✅ MAIN CONTENT */}
-      <main className={hideNavbarFooter ? "flex-1" : "flex-1 pt-[67px]"}>
+      <main className={hideNavbarFooter ? "flex-1" : "flex-1 pt-[76px] lg:pt-[82px]"}>
         {!hideNavbarFooter && <UrgencyBar />}
         {hideNavbarFooter ? (
           children

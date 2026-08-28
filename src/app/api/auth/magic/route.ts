@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
       select: { phone: true } });
 
     const baseUrl =
-      process.env.NEXT_PUBLIC_APP_URL || "https://pesantren-alimam.com";
+      process.env.NEXT_PUBLIC_APP_URL || "https://pesantren-alandalus-putra.com";
 
     // If user has a valid phone number, they MUST verify PIN
     if (user && user.phone && user.phone !== "-" && user.phone.length > 5) {

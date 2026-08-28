@@ -105,7 +105,7 @@ export function getPermanentAuthUrl(
  * Otherwise, it tries is.gd/TinyURL as a fallback.
  */
 export async function generateShortLink(longUrl: string): Promise<string> {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://pesantren-alimam.com";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://pesantren-alandalus-putra.com";
 
   try {
     // 1. Check if it's an internal magic link

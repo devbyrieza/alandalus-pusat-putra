@@ -59,7 +59,7 @@ export async function GET(
 
     // Redirect to the actual auth magic handler
     const baseUrl =
-      process.env.NEXT_PUBLIC_APP_URL || "https://pesantren-alimam.com";
+      process.env.NEXT_PUBLIC_APP_URL || "https://pesantren-alandalus-putra.com";
     const targetUrl = `${baseUrl}/api/auth/magic?token=${token}`;
 
     return NextResponse.redirect(new URL(targetUrl, baseUrl));

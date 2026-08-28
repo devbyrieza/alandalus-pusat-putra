@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
 
     // Create full URL wrapper
     const baseUrl =
-      process.env.NEXT_PUBLIC_APP_URL || "https://pesantren-alimam.com";
+      process.env.NEXT_PUBLIC_APP_URL || "https://pesantren-alandalus-putra.com";
     const magicLinkUrl = `${baseUrl}/api/auth/magic?token=${token}`;
 
     // Generate automatic tinyurl for the magic link
@@ -131,7 +131,7 @@ export async function GET(request: NextRequest) {
       orderBy: { full_name: "asc" } });
 
     const baseUrl =
-      process.env.NEXT_PUBLIC_APP_URL || "https://pesantren-alimam.com";
+      process.env.NEXT_PUBLIC_APP_URL || "https://pesantren-alandalus-putra.com";
 
     const results = await Promise.all(
       examiners.map(async (user) => {

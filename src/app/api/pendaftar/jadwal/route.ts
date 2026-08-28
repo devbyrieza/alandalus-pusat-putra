@@ -300,7 +300,7 @@ export async function POST(request: Request) {
             72, // 3 days expiry
             redirectPathPath,
           );
-          const magicLink = `${process.env.NEXT_PUBLIC_APP_URL || "https://pesantren-alimam.com"}/api/auth/magic?token=${token}`;
+          const magicLink = `${process.env.NEXT_PUBLIC_APP_URL || "https://pesantren-alandalus-putra.com"}/api/auth/magic?token=${token}`;
 
           // Use manual tinyurl if available, otherwise generate automatic
           const { generateShortLink } = await import("@/lib/utils/magic-link");

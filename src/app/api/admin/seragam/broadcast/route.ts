@@ -41,7 +41,7 @@ export async function POST(req: Request) {
     let successCount = 0;
     let failCount = 0;
 
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://pesantren-alimam.com";
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://pesantren-alandalus-putra.com";
 
     for (const pendaftar of pendaftarList) {
       // Determine the phone number to use

@@ -172,10 +172,10 @@ export default function LanguageSwitcher() {
       {/* Custom Premium UI */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 bg-white hover:border-primary-300 hover:bg-primary-50/30 transition-all duration-300 group"
+        className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-primary-700/80 bg-primary-900/80 hover:bg-primary-800 text-slate-200 hover:text-white transition-all duration-300 group text-xs font-bold shrink-0 shadow-xs"
       >
-        <Globe className="w-4 h-4 text-slate-400 group-hover:text-primary-600 transition-colors" />
-        <span className="text-[11px] font-black text-slate-600 uppercase tracking-wider hidden sm:block">
+        <Globe className="w-3.5 h-3.5 text-amber-300 group-hover:text-amber-200 transition-colors" />
+        <span className="text-[11px] font-black text-slate-200 uppercase tracking-wider hidden sm:block">
           {LANGUAGES.find((l) => l.code === currentLang)?.code}
         </span>
         <ChevronDown

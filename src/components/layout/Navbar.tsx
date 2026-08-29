@@ -98,7 +98,7 @@ export default function Navbar() {
     >
       {/* ── 1. MAIN NAVBAR ROW ── */}
       <div className="bg-primary-950/95 backdrop-blur-md border-b border-primary-800/80 py-3">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 lg:gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 xl:gap-4">
           {/* LOGO & BRAND */}
           <Link href="/" className="flex items-center gap-3 group shrink-0">
             <div className="relative w-10 h-10 overflow-hidden rounded-xl bg-primary-900 border border-primary-700 flex items-center justify-center p-1 group-hover:scale-105 transition-transform">
@@ -121,7 +121,7 @@ export default function Navbar() {
           </Link>
 
           {/* DESKTOP NAV LINKS */}
-          <nav className="hidden lg:flex items-center gap-1 bg-primary-900/60 p-1.5 rounded-xl border border-primary-800 shrink-0">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 bg-primary-900/60 p-1 xl:p-1.5 rounded-xl border border-primary-800 shrink-0">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               
@@ -130,7 +130,7 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer ${
+                  className={`px-2.5 xl:px-4 py-1.5 xl:py-2 rounded-xl text-xs xl:text-sm font-medium transition-all duration-200 cursor-pointer ${
                     isActive
                       ? "bg-primary-600 text-white font-bold shadow-md shadow-primary-500/20"
                       : "text-slate-300 hover:text-white hover:bg-primary-800/80"
@@ -143,13 +143,13 @@ export default function Navbar() {
           </nav>
 
           {/* RIGHT ACTION BUTTONS */}
-          <div className="hidden md:flex items-center gap-3 shrink-0 ml-auto lg:ml-4">
+          <div className="hidden md:flex items-center gap-1.5 xl:gap-2.5 shrink-0 ml-auto">
             {/* External Link to Main Corporate Website */}
             <a
               href="https://pesantren-alandalus.com"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-primary-900/90 hover:bg-primary-800 border border-primary-700 text-xs font-semibold text-slate-300 hover:text-white transition-all shadow-sm"
+              className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-primary-900/90 hover:bg-primary-800 border border-primary-700 text-xs font-semibold text-slate-300 hover:text-white transition-all shadow-sm"
               title="Kunjungi Website Utama Pesantren Al-Andalus"
             >
               <Globe className="w-3.5 h-3.5 text-amber-300" />
@@ -163,7 +163,7 @@ export default function Navbar() {
                 <a
                   href="/dashboard"
                   onClick={(e) => handleNavClick(e, "/dashboard")}
-                  className="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center gap-1.5 transition-all"
+                  className="px-2.5 xl:px-3.5 py-1.5 xl:py-2 rounded-xl text-xs xl:text-sm font-bold bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center gap-1.5 transition-all"
                 >
                   <UserCheck className="w-4 h-4 text-emerald-300" />
                   <span>Masuk ke Akun</span>
@@ -171,7 +171,7 @@ export default function Navbar() {
                 <a
                   href="/ppdb"
                   onClick={(e) => handleNavClick(e, "/ppdb")}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-amber-400/30 hover:scale-105 active:scale-95 transition-all border border-amber-200"
+                  className="inline-flex items-center gap-1.5 px-3 xl:px-4 py-1.5 xl:py-2 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-xs xl:text-sm shadow-lg shadow-amber-400/20 hover:scale-105 active:scale-95 transition-all border border-amber-200 shrink-0"
                 >
                   <GraduationCap className="w-4 h-4" />
                   <span>Daftar SPMB</span>
@@ -190,7 +190,7 @@ export default function Navbar() {
                 <a
                   href="/ppdb"
                   onClick={(e) => handleNavClick(e, "/ppdb")}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-amber-400/30 hover:scale-105 active:scale-95 transition-all border border-amber-200"
+                  className="inline-flex items-center gap-1.5 px-3 xl:px-4 py-1.5 xl:py-2 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-xs xl:text-sm shadow-lg shadow-amber-400/20 hover:scale-105 active:scale-95 transition-all border border-amber-200 shrink-0"
                 >
                   <GraduationCap className="w-4 h-4" />
                   <span>Daftar SPMB</span>
@@ -200,7 +200,7 @@ export default function Navbar() {
             )}
 
             {/* Language Switcher */}
-            <div className="border-l border-primary-800 pl-3">
+            <div className="border-l border-primary-800 pl-1.5 xl:pl-2.5 shrink-0">
               <LanguageSwitcher />
             </div>
           </div>

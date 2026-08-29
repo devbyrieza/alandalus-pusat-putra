@@ -169,7 +169,7 @@ Kode OTP: ${item.otp}
 Untuk: ${item.nama}
 
 Jangan bagikan kode ini.
-Hubungi 0851-1152-4441 jika ada masalah.`}
+Hubungi 0838-1151-5951 jika ada masalah.`}
                   </pre>
                 </div>
 

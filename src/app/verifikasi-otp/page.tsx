@@ -427,7 +427,7 @@ function VerifikasiOTPContent() {
           Tidak Menerima Kode?
         </p>
         <a
-          href="https://wa.me/622667345601"
+          href="https://wa.me/6283811515951"
           target="_blank"
           rel="noopener noreferrer"
           className="text-xs bg-amber-50 text-primary-700 px-4 py-1.5 rounded-full font-black border border-amber-200 hover:bg-amber-100 transition-colors inline-block"

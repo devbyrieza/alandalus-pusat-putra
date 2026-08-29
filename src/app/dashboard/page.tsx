@@ -604,7 +604,7 @@ export default function DashboardPage() {
                 </p>
 
                 <a
-                  href="https://wa.me/6281285300800"
+                  href="https://wa.me/6283811515951"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-5 p-6 rounded-[2rem] bg-white hover:bg-amber-400 transition-all group/btn shadow-lg active:scale-95"
@@ -617,7 +617,7 @@ export default function DashboardPage() {
                       WhatsApp CS
                     </p>
                     <p className="font-black text-lg text-primary-950">
-                      0851-1152-4441
+                      0838-1151-5951
                     </p>
                   </div>
                 </a>

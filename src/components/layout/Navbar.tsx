@@ -51,10 +51,10 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Beranda", href: "/" },
-    { name: "Program Pendidikan", href: "/program" },
-    { name: "Galeri Pesantren", href: "/galeri" },
-    { name: "Kontak Panitia", href: "/kontak" },
+    { name: "Program", href: "/program" },
+    { name: "Galeri", href: "/galeri" },
     { name: "Alur Seleksi", href: "/ppdb" },
+    { name: "Kontak", href: "/kontak" },
   ];
 
   const handleNavClick = (e: any, href: string, closeMenu?: () => void) => {
@@ -143,13 +143,13 @@ export default function Navbar() {
           </nav>
 
           {/* RIGHT ACTION BUTTONS */}
-          <div className="hidden md:flex items-center gap-1.5 xl:gap-2.5 shrink-0 ml-auto">
+          <div className="hidden md:flex items-center gap-2 shrink-0 ml-auto">
             {/* External Link to Main Corporate Website */}
             <a
               href="https://pesantren-alandalus.com"
               target="_blank"
               rel="noreferrer"
-              className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-primary-900/90 hover:bg-primary-800 border border-primary-700 text-xs font-semibold text-slate-300 hover:text-white transition-all shadow-sm"
+              className="hidden 2xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-primary-900/90 hover:bg-primary-800 border border-primary-700 text-xs font-semibold text-slate-300 hover:text-white transition-all shadow-sm shrink-0"
               title="Kunjungi Website Utama Pesantren Al-Andalus"
             >
               <Globe className="w-3.5 h-3.5 text-amber-300" />
@@ -159,48 +159,48 @@ export default function Navbar() {
 
             {/* Session check: Login or Dashboard */}
             {session ? (
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 shrink-0">
                 <a
                   href="/dashboard"
                   onClick={(e) => handleNavClick(e, "/dashboard")}
-                  className="px-2.5 xl:px-3.5 py-1.5 xl:py-2 rounded-xl text-xs xl:text-sm font-bold bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center gap-1.5 transition-all"
+                  className="px-3 py-1.5 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center gap-1.5 transition-all shrink-0"
                 >
-                  <UserCheck className="w-4 h-4 text-emerald-300" />
+                  <UserCheck className="w-3.5 h-3.5 text-emerald-300" />
                   <span>Masuk ke Akun</span>
                 </a>
                 <a
                   href="/ppdb"
                   onClick={(e) => handleNavClick(e, "/ppdb")}
-                  className="inline-flex items-center gap-1.5 px-3 xl:px-4 py-1.5 xl:py-2 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-xs xl:text-sm shadow-lg shadow-amber-400/20 hover:scale-105 active:scale-95 transition-all border border-amber-200 shrink-0"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-xs shadow-md hover:scale-105 active:scale-95 transition-all border border-amber-200 shrink-0"
                 >
-                  <GraduationCap className="w-4 h-4" />
+                  <GraduationCap className="w-3.5 h-3.5" />
                   <span>Daftar SPMB</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </div>
             ) : (
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 shrink-0">
                 <a
                   href="/login"
                   onClick={(e) => handleNavClick(e, "/login")}
-                  className="px-4 py-2 rounded-xl text-sm font-bold text-slate-200 hover:text-white transition-colors"
+                  className="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-200 hover:text-white transition-colors shrink-0"
                 >
                   Masuk
                 </a>
                 <a
                   href="/ppdb"
                   onClick={(e) => handleNavClick(e, "/ppdb")}
-                  className="inline-flex items-center gap-1.5 px-3 xl:px-4 py-1.5 xl:py-2 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-xs xl:text-sm shadow-lg shadow-amber-400/20 hover:scale-105 active:scale-95 transition-all border border-amber-200 shrink-0"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-xs shadow-md hover:scale-105 active:scale-95 transition-all border border-amber-200 shrink-0"
                 >
-                  <GraduationCap className="w-4 h-4" />
+                  <GraduationCap className="w-3.5 h-3.5" />
                   <span>Daftar SPMB</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </div>
             )}
 
             {/* Language Switcher */}
-            <div className="border-l border-primary-800 pl-1.5 xl:pl-2.5 shrink-0">
+            <div className="border-l border-primary-800 pl-2 shrink-0">
               <LanguageSwitcher />
             </div>
           </div>

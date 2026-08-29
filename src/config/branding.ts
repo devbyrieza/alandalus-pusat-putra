@@ -20,11 +20,13 @@ export const BRANDING = {
   contact: {
     whatsapp: "+62 838-1151-5951",
     whatsapp2: "+62 811-3920-135",
+    finance: "+62 858-9411-1050",
     facebook: "https://www.facebook.com/pp.alandalus",
     instagram: "https://www.instagram.com/pp_alandalus/",
     youtube: "https://www.youtube.com/andalustv",
     tiktok: "https://www.tiktok.com/@pp.alandalus",
-    address: "Jl. Raya Menteng, KM. 13 RT.03/04, Dusun Cijurey, Desa Sukadamai, Kec. Sukamakmur, Kab. Bogor." },
+    address: "Jl. Raya Menteng, KM. 13 RT.03/04, Dusun Cijurey, Desa Sukadamai, Kec. Sukamakmur, Kab. Bogor."
+  },
   
   // Properties required by SPMB dashboard & layout backward compatibility
   address: "Jl. Raya Menteng, KM. 13 RT.03/04, Dusun Cijurey, Desa Sukadamai, Kec. Sukamakmur, Kab. Bogor.",

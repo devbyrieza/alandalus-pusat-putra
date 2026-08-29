@@ -878,14 +878,14 @@ export default function PembayaranPendaftaranTab({
                     Ingin Verifikasi Lebih Cepat?
                   </h4>
                   <p className="text-emerald-700 text-sm leading-relaxed">
-                    Anda bisa menghubungi CS di nomor{" "}
+                    Anda bisa menghubungi Tim Finance di nomor{" "}
                     <a
-                      href="https://wa.me/6283811515951"
+                      href="https://wa.me/6285894111050?text=Assalamualaikum%20Admin%20Finance%2C%20saya%20mengalami%20kendala%20saat%20melakukan%20pembayaran%20pendaftaran."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="font-black underline hover:text-emerald-900 transition-colors"
                     >
-                      0838-1151-5951
+                      0858-9411-1050
                     </a>{" "}
                     jika ingin cepat diverifikasi oleh tim panitia.
                   </p>
@@ -1273,7 +1273,7 @@ export default function PembayaranPendaftaranTab({
               kami.
             </p>
             <a
-              href="https://wa.me/6283811515951"
+              href="https://wa.me/6285894111050?text=Assalamualaikum%20Admin%20Finance%2C%20saya%20mengalami%20kendala%20saat%20melakukan%20pembayaran%20pendaftaran."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 p-3 bg-white rounded-xl border border-ink-100 hover:border-secondary-200 transition-colors group"
@@ -1283,9 +1283,9 @@ export default function PembayaranPendaftaranTab({
               </div>
               <div>
                 <p className="text-xs font-bold text-ink-400 uppercase">
-                  WhatsApp Admin
+                  WhatsApp Finance
                 </p>
-                <p className="font-bold text-ink-900 text-sm">0838-1151-5951</p>
+                <p className="font-bold text-ink-900 text-sm">0858-9411-1050</p>
               </div>
             </a>
           </div>

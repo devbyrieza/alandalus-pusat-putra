@@ -252,9 +252,9 @@ export default function Home() {
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif italic font-black text-white leading-[1.1] tracking-tight">
                   Cetak Generasi{" "}
                   <span className="box-decoration-clone text-transparent bg-clip-text bg-gradient-to-r from-[#fbbf24] to-[#d97706] pr-2 md:pr-4">
-                    Umat Rabbani
+                    Umat Rabbani,
                   </span>{" "}
-                  Berkelas Dunia.
+                  Cendikia dan Mandiri.
                 </h1>
                 <p className="text-base md:text-lg text-slate-400 max-w-xl leading-relaxed text-left">
                   Kurikulum <strong className="text-white">TICE</strong> — Tahfizh Al-Qur'an, Internasional,

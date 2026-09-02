@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import {
@@ -99,7 +99,7 @@ export default function BankSoalPanitiaPage() {
               className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#3a0000] rounded-full text-xs font-bold text-[#ddc192] border border-[#ddc192]/40 shadow-inner"
               style={{ backgroundColor: "#3a0000" }}
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#ddc192] animate-pulse" /> PORTAL EKSKLUSIF PANITIA & PENGUJI SPMB
+              <Sparkles className="w-3.5 h-3.5 text-[#ddc192] animate-pulse" /> PORTAL EKSKLUSIF PANITIA & PENGUJI PPDB
             </span>
             <span
               className="inline-flex items-center gap-1.5 px-3.5 py-1 bg-[#ddc192] text-[#550000] rounded-full text-xs font-black shadow-md border border-[#ddc192]"
@@ -111,7 +111,7 @@ export default function BankSoalPanitiaPage() {
 
           <div className="space-y-1.5">
             <h1 className="text-xl sm:text-2xl md:text-4xl font-black tracking-tight text-white drop-shadow-md">
-              Bank Soal Seleksi & Form Penilaian SPMB
+              Bank Soal Seleksi & Form Penilaian PPDB
             </h1>
             <p className="text-[#ddc192] text-xs md:text-sm max-w-3xl leading-relaxed font-medium">
               Pusat peninjauan instrumen tes seleksi (Akademik, Kesiapan, Kepribadian) dan rubrik penilaian resmi penguji (Al-Qur'an, Wawancara Santri & Orang Tua) Pesantren Al-Andalus Al-Andalus Sukabumi.
@@ -124,14 +124,14 @@ export default function BankSoalPanitiaPage() {
               style={{ backgroundColor: "#3b0000" }}
             >
               <Clock className="w-4 h-4 text-[#ddc192]" />
-              <span className="text-white text-xs">Ujian Online: <strong className="text-[#ddc192]">45–60 Menit</strong></span>
+              <span className="text-white text-xs">Ujian Online: <strong className="text-[#ddc192]">45â€“60 Menit</strong></span>
             </div>
             <div
               className="flex items-center gap-2 bg-[#3b0000] px-3.5 py-2 rounded-xl border border-[#ddc192]/30 shadow-sm text-white"
               style={{ backgroundColor: "#3b0000" }}
             >
               <BookOpenCheck className="w-4 h-4 text-[#ddc192]" />
-              <span className="text-white text-xs">Lisan & Wawancara: <strong className="text-[#ddc192]">15–20 Menit</strong></span>
+              <span className="text-white text-xs">Lisan & Wawancara: <strong className="text-[#ddc192]">15â€“20 Menit</strong></span>
             </div>
             <div
               className="flex items-center gap-2 bg-[#3b0000] px-3.5 py-2 rounded-xl border border-[#ddc192]/30 shadow-sm text-white"
@@ -221,7 +221,7 @@ export default function BankSoalPanitiaPage() {
                 Durasi Pengerjaan: <strong className="text-white">45 Menit</strong> | Total Soal: <strong className="text-white">20 Butir Multiple Choice (A/B/C/D)</strong>
               </p>
               <p className="text-slate-200 text-xs mt-1 font-medium flex items-center gap-1.5">
-                <Pin className="w-3.5 h-3.5 text-[#ddc192]" /> Pembagian Mata Pelajaran: PAI (1–5), Bahasa Indonesia (6–10), IPA (11–15), Matematika (16–20).
+                <Pin className="w-3.5 h-3.5 text-[#ddc192]" /> Pembagian Mata Pelajaran: PAI (1â€“5), Bahasa Indonesia (6â€“10), IPA (11â€“15), Matematika (16â€“20).
               </p>
             </div>
           </div>
@@ -426,7 +426,7 @@ export default function BankSoalPanitiaPage() {
                       </div>
                       <div className="flex items-center gap-2 text-xs font-bold bg-[#550000]/10 text-[#550000] px-3 py-1.5 rounded-xl border border-[#550000]/20">
                         <span>{item.labelMin}</span>
-                        <span>➔</span>
+                        <span>âž”</span>
                         <span>{item.labelMax}</span>
                       </div>
                     </div>
@@ -485,7 +485,7 @@ export default function BankSoalPanitiaPage() {
             <div className="space-y-1">
               <p className="font-extrabold text-sm text-white">Rubrik Penilaian Wawancara Calon Santri (Calsan Putra & Putri):</p>
               <p className="text-xs text-[#ddc192]">
-                Waktu Wawancara: <strong className="text-white">15–20 Menit/Santri</strong> | Diisi oleh Penguji Calsan di Dashboard Input Nilai
+                Waktu Wawancara: <strong className="text-white">15â€“20 Menit/Santri</strong> | Diisi oleh Penguji Calsan di Dashboard Input Nilai
               </p>
             </div>
           </div>
@@ -538,7 +538,7 @@ export default function BankSoalPanitiaPage() {
             <div className="space-y-1">
               <p className="font-extrabold text-sm text-white">Form Penilaian Wawancara Orang Tua (Cawalsan - 12 Pertanyaan Lengkap):</p>
               <p className="text-xs text-[#ddc192]">
-                Waktu Wawancara: <strong className="text-white">15–20 Menit/Wali</strong> | Poin Sistem: <strong className="text-white">A = 100, B = 75, C = 50</strong>
+                Waktu Wawancara: <strong className="text-white">15â€“20 Menit/Wali</strong> | Poin Sistem: <strong className="text-white">A = 100, B = 75, C = 50</strong>
               </p>
             </div>
           </div>
@@ -550,10 +550,10 @@ export default function BankSoalPanitiaPage() {
                 { id: "Q2", text: "2. Bagaimana pandangan Abu/Ummu tentang sistem pendidikan berbasis pesantren?", a: "Pilihan utama untuk agama, akhlak, dan karakter (100)", b: "Pilihan utama untuk akhlak (75)", c: "Pesantren juga mengajarkan pelajaran umum (50)" },
                 { id: "Q3", text: "3. Ananda mau bersekolah di Pesantren atas keinginan siapa?", a: "Orang tua & anak (100)", b: "Anak saja (75)", c: "Orang tua / ikut teman (50)" },
                 { id: "Q4", text: "4. Apa yang Abu/Ummu lakukan sehingga ananda mau sekolah di pesantren?", a: "Memberikan pengertian (100)", b: "Memberikan hadiah/iming-iming (75)", c: "Memaksa (50)" },
-                { id: "Q5", text: "5. Sejauh apa pendidikan agama/Al-Qur’an ananda sebelumnya?", a: "Intensif (tahfizh, sekolah Islam) (100)", b: "Non intensif (swasta biasa) (75)", c: "Seadanya (sekolah negeri) (50)" },
+                { id: "Q5", text: "5. Sejauh apa pendidikan agama/Al-Qurâ€™an ananda sebelumnya?", a: "Intensif (tahfizh, sekolah Islam) (100)", b: "Non intensif (swasta biasa) (75)", c: "Seadanya (sekolah negeri) (50)" },
                 { id: "Q6", text: "6. Keberhasilan proses pendidikan anak merupakan tanggung jawab siapa?", a: "Bersama (Pesantren & Ortu) (100)", b: "Orang Tua saja (75)", c: "Sekolah saja (50)" },
                 { id: "Q7", text: "7. Sejauh apa kesiapan Abu/Ummu memenuhi kewajiban SPP?", a: "Yakin (100)", b: "Ragu-ragu (75)", c: "Tidak tahu (50)" },
-                { id: "Q8", text: "8. Bagaimana pandangan Abu/Ummu tentang pendidikan agama & tahfizh Al-Qur’an?", a: "Sangat penting (100)", b: "Cukup penting (75)", c: "Penting (50)" },
+                { id: "Q8", text: "8. Bagaimana pandangan Abu/Ummu tentang pendidikan agama & tahfizh Al-Qurâ€™an?", a: "Sangat penting (100)", b: "Cukup penting (75)", c: "Penting (50)" },
                 { id: "Q9", text: "9. Dukungan terhadap program Pesantren?", a: "Mendukung & evaluasi positif (100)", b: "Menyerahkan semua ke sekolah (75)", c: "Tidak tahu (50)" },
                 { id: "Q10", text: "10. Seberapa sering Abu/Ummu akan menjenguk ananda?", a: "Berkala (sesuai aturan) (100)", b: "Tidak menjenguk karena jauh (75)", c: "Sesempatnya saja (50)" },
                 { id: "Q11", text: "11. Langkah jika ananda diganggu teman (iseng/jail/bully)?", a: "Klarifikasi & beri semangat pada anak (100)", b: "Serahkan ke pesantren (75)", c: "Komplain ke pesantren (50)" },
@@ -590,7 +590,7 @@ export default function BankSoalPanitiaPage() {
             <div className="space-y-1">
               <p className="font-extrabold text-sm text-white">Form Penilaian Penguji Al-Qur'an, Hafalan & Lisan Bahasa Arab:</p>
               <p className="text-xs text-[#ddc192]">
-                Waktu Tes: <strong className="text-white">15–20 Menit/Santri</strong> | Nilai diinput langsung dari HP/Tablet penguji di Dashboard Input Nilai
+                Waktu Tes: <strong className="text-white">15â€“20 Menit/Santri</strong> | Nilai diinput langsung dari HP/Tablet penguji di Dashboard Input Nilai
               </p>
             </div>
           </div>
@@ -627,7 +627,7 @@ export default function BankSoalPanitiaPage() {
                 <li className="flex items-center gap-2.5 font-medium"><CheckCircle2 className="w-4 h-4 text-[#550000] flex-shrink-0" /> Kekuatan Muraja'ah (Lama)</li>
                 <li className="flex items-center gap-2.5 font-medium"><CheckCircle2 className="w-4 h-4 text-[#550000] flex-shrink-0" /> Sambung Ayat Al-Qur'an (Min 4 Juz Mutqin)</li>
                 <li className="flex items-center gap-2 font-bold text-[#550000] pt-3 border-t border-slate-100">
-                  Skor Nilai: 0 – 100 & Catatan Penguji Hafalan
+                  Skor Nilai: 0 â€“ 100 & Catatan Penguji Hafalan
                 </li>
               </ul>
             </div>
@@ -648,7 +648,7 @@ export default function BankSoalPanitiaPage() {
                 <li className="flex items-center gap-2.5 font-medium"><CheckCircle2 className="w-4 h-4 text-[#550000] flex-shrink-0" /> Kafa'ah Lughawiyyah (Grammar/Nahwu)</li>
                 <li className="flex items-center gap-2.5 font-medium"><CheckCircle2 className="w-4 h-4 text-[#550000] flex-shrink-0" /> Fahmul Maqru' (Pemahaman Bacaan Kitab)</li>
                 <li className="flex items-center gap-2 font-bold text-[#550000] pt-3 border-t border-slate-100">
-                  Skor Nilai: 0 – 100 & Catatan Penguji Bahasa Arab
+                  Skor Nilai: 0 â€“ 100 & Catatan Penguji Bahasa Arab
                 </li>
               </ul>
             </div>
@@ -661,10 +661,10 @@ export default function BankSoalPanitiaPage() {
         <div className="bg-white p-6 md:p-8 rounded-xl border border-slate-200 shadow-sm space-y-6">
           <div className="space-y-2 border-b border-slate-100 pb-4">
             <h3 className="font-black text-xl text-[#550000] flex items-center gap-2">
-              <Settings className="w-6 h-6 text-[#550000]" /> Bobot Rumus Nilai Akhir & Penentuan Kelulusan Sistem SPMB
+              <Settings className="w-6 h-6 text-[#550000]" /> Bobot Rumus Nilai Akhir & Penentuan Kelulusan Sistem PPDB
             </h3>
             <p className="text-xs md:text-sm text-slate-600 font-medium">
-              Sistem SPMB mengkalkulasi nilai secara otomatis begitu penguji memasukkan nilai pada portal penguji.
+              Sistem PPDB mengkalkulasi nilai secara otomatis begitu penguji memasukkan nilai pada portal penguji.
             </p>
           </div>
 
@@ -674,12 +674,12 @@ export default function BankSoalPanitiaPage() {
                 <BarChart3 className="w-4 h-4 text-[#550000]" /> Bobot Komponen Penilaian (100%):
               </h4>
               <ul className="text-xs md:text-sm space-y-2 text-slate-800 font-medium">
-                <li className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200"><span>• Tes Akademik (Online):</span> <strong className="text-[#550000]">30%</strong></li>
-                <li className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200"><span>• Tes Al-Qur'an (Tahfizh & Tajwid):</span> <strong className="text-[#550000]">30%</strong></li>
-                <li className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200"><span>• Wawancara Calon Santri:</span> <strong className="text-[#550000]">10%</strong></li>
-                <li className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200"><span>• Wawancara Orang Tua:</span> <strong className="text-[#550000]">10%</strong></li>
-                <li className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200"><span>• Tes Kepribadian Santri:</span> <strong className="text-[#550000]">10%</strong></li>
-                <li className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200"><span>• Tes Kesiapan Santri:</span> <strong className="text-[#550000]">10%</strong></li>
+                <li className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200"><span>â€¢ Tes Akademik (Online):</span> <strong className="text-[#550000]">30%</strong></li>
+                <li className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200"><span>â€¢ Tes Al-Qur'an (Tahfizh & Tajwid):</span> <strong className="text-[#550000]">30%</strong></li>
+                <li className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200"><span>â€¢ Wawancara Calon Santri:</span> <strong className="text-[#550000]">10%</strong></li>
+                <li className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200"><span>â€¢ Wawancara Orang Tua:</span> <strong className="text-[#550000]">10%</strong></li>
+                <li className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200"><span>â€¢ Tes Kepribadian Santri:</span> <strong className="text-[#550000]">10%</strong></li>
+                <li className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200"><span>â€¢ Tes Kesiapan Santri:</span> <strong className="text-[#550000]">10%</strong></li>
               </ul>
             </div>
 
@@ -694,7 +694,7 @@ export default function BankSoalPanitiaPage() {
                 </div>
                 <div className="p-3 bg-[#ddc192]/20 text-[#550000] rounded-xl border border-[#ddc192] space-y-1">
                   <strong className="block text-[#550000] font-black">CADANGAN:</strong>
-                  <span>Jika Nilai Akhir 65–74 atau kuota gelombang penuh.</span>
+                  <span>Jika Nilai Akhir 65â€“74 atau kuota gelombang penuh.</span>
                 </div>
                 <div className="p-3 bg-rose-50 text-rose-950 rounded-xl border border-rose-200 space-y-1">
                   <strong className="block text-rose-800 font-black">DITOLAK:</strong>
@@ -708,4 +708,5 @@ export default function BankSoalPanitiaPage() {
     </div>
   );
 }
+
 

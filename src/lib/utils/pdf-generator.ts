@@ -1,4 +1,4 @@
-import { jsPDF } from "jspdf";
+﻿import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { PDF_BRANDING } from "@/config/pdf-branding";
 
@@ -110,7 +110,7 @@ const drawFullImageBackground = async (doc: jsPDF) => {
 };
 
 // ============================================================
-// TEMPLATE: PROGRAMMATIC (Kop Generik — jsPDF Elements)
+// TEMPLATE: PROGRAMMATIC (Kop Generik â€” jsPDF Elements)
 // ============================================================
 
 /**
@@ -185,7 +185,7 @@ const drawProgrammaticHeader = async (doc: jsPDF) => {
 };
 
 // ============================================================
-// UNIFIED HEADER / FOOTER / SIGNATURE — otomatis pilih template
+// UNIFIED HEADER / FOOTER / SIGNATURE â€” otomatis pilih template
 // ============================================================
 
 /**
@@ -230,7 +230,7 @@ const drawFooterSync = (doc: jsPDF, institutionName?: string) => {
     : pageHeight - 5;
 
   doc.text(
-    `Dicetak secara sistem melalui website SPMB ${name} pada: ${new Date().toLocaleString("id-ID")}`,
+    `Dicetak secara sistem melalui website PPDB ${name} pada: ${new Date().toLocaleString("id-ID")}`,
     pageWidth / 2,
     yPos,
     { align: "center" },
@@ -805,7 +805,7 @@ export const generateSuratKesehatan = async (data: PendaftarPdfData) => {
   // Menggunakan perataan "justify" dan maxWidth agar rata kiri-kanan sejajar dengan tabel
   doc.text(closingText, leftColX, finalY2, { align: "justify", maxWidth: contentW });
  
-  // TTD Dokter — diposisikan di kanan bawah (right-aligned block) dan digeser naik
+  // TTD Dokter â€” diposisikan di kanan bawah (right-aligned block) dan digeser naik
   const xRightSig = pageWidth - margin - 65; // Bergeser ke sisi kanan
   // Jika teks berbungkus, biasanya akan mengambil 2 baris (kurang lebih 5-6 unit per baris)
   const sigY = finalY2 + 10; 
@@ -1235,4 +1235,5 @@ export const generatePaktaIntegritas = async (data: PendaftarPdfData) => {
   }
   return doc;
 };
+
 

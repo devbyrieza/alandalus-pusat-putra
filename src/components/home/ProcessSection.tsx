@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import {
@@ -13,7 +13,7 @@ import {
 import { Container } from "@/components/layout/Container";
 import { motion } from "framer-motion";
 
-// ─── Data ────────────────────────────────────────────
+// â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const STEPS = [
   {
     icon: UserPlus,
@@ -68,7 +68,7 @@ const ACCENT_MAP = {
     badge: "bg-primary-700 text-white",
     title: "group-hover:text-primary-700" } };
 
-// ─── Step Card ────────────────────────────────────────
+// â”€â”€â”€ Step Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function StepCard({
   icon: Icon,
   title,
@@ -116,7 +116,7 @@ function StepCard({
         </p>
       </motion.div>
 
-      {/* Connector line — only between steps, not after last */}
+      {/* Connector line â€” only between steps, not after last */}
       {!isLast && (
         <div className="hidden lg:block absolute top-[28px] left-[calc(50%+44px)] right-[calc(-50%+44px)] h-px bg-gradient-to-r from-secondary-300 to-secondary-200 z-0" />
       )}
@@ -129,7 +129,7 @@ function StepCard({
   );
 }
 
-// ─── Main ─────────────────────────────────────────────
+// â”€â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export default function ProcessSection() {
   return (
     <section
@@ -151,7 +151,7 @@ export default function ProcessSection() {
       />
 
       <Container className="relative z-10">
-        {/* ── Header ── */}
+        {/* â”€â”€ Header â”€â”€ */}
         <div className="text-center mb-14 md:mb-18 max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -161,7 +161,7 @@ export default function ProcessSection() {
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-gold-200 text-primary-700 text-[0.65rem] font-bold uppercase tracking-[0.12em] mb-5 shadow-xs"
           >
             <CheckCircle2 className="w-3 h-3 shrink-0" strokeWidth={2} />
-            <span>Prosedur SPMB</span>
+            <span>Prosedur PPDB</span>
           </motion.div>
 
           <motion.h2
@@ -186,7 +186,7 @@ export default function ProcessSection() {
           </motion.p>
         </div>
 
-        {/* ── Steps ── */}
+        {/* â”€â”€ Steps â”€â”€ */}
         <div className="relative grid grid-cols-1 lg:grid-cols-6 gap-1 md:gap-0 max-w-5xl mx-auto">
           {STEPS.map((step, idx) => (
             <StepCard
@@ -198,7 +198,7 @@ export default function ProcessSection() {
           ))}
         </div>
 
-        {/* ── CTA ── */}
+        {/* â”€â”€ CTA â”€â”€ */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -220,3 +220,4 @@ export default function ProcessSection() {
     </section>
   );
 }
+

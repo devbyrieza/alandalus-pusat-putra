@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -96,7 +96,7 @@ export default function Navbar() {
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-xl"
     >
-      {/* ── 1. MAIN NAVBAR ROW ── */}
+      {/* â”€â”€ 1. MAIN NAVBAR ROW â”€â”€ */}
       <div className="bg-primary-950/95 backdrop-blur-md border-b border-primary-800/80 py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 xl:gap-4">
           {/* LOGO & BRAND */}
@@ -115,7 +115,7 @@ export default function Navbar() {
                 Al-Andalus Putra
               </div>
               <div className="text-[11px] font-bold text-amber-300 tracking-wide drop-shadow-sm">
-                SPMB Online 2027/2028
+                PPDB Online 2027/2028
               </div>
             </div>
           </Link>
@@ -174,7 +174,7 @@ export default function Navbar() {
                   className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-xs shadow-md hover:scale-105 active:scale-95 transition-all border border-amber-200 shrink-0"
                 >
                   <GraduationCap className="w-3.5 h-3.5" />
-                  <span>Daftar SPMB</span>
+                  <span>Daftar PPDB</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </div>
@@ -193,7 +193,7 @@ export default function Navbar() {
                   className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-xs shadow-md hover:scale-105 active:scale-95 transition-all border border-amber-200 shrink-0"
                 >
                   <GraduationCap className="w-3.5 h-3.5" />
-                  <span>Daftar SPMB</span>
+                  <span>Daftar PPDB</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </div>
@@ -283,7 +283,7 @@ export default function Navbar() {
                     className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 text-slate-950 font-black text-sm shadow-md"
                   >
                     <GraduationCap className="w-4 h-4" />
-                    <span>Daftar SPMB</span>
+                    <span>Daftar PPDB</span>
                   </a>
                 </div>
               ) : (
@@ -301,7 +301,7 @@ export default function Navbar() {
                     className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 text-slate-950 font-black text-sm shadow-md"
                   >
                     <GraduationCap className="w-4 h-4" />
-                    <span>Daftar SPMB</span>
+                    <span>Daftar PPDB</span>
                   </a>
                 </div>
               )}
@@ -312,3 +312,4 @@ export default function Navbar() {
     </header>
   );
 }
+

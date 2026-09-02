@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -6,7 +6,7 @@ import { X } from "lucide-react";
 import { BRANDING } from "@/config/branding";
 
 const WA_NUMBER = "6283811515951";
-const WA_MESSAGE = `Assalamu'alaikum, saya ingin bertanya tentang SPMB ${BRANDING.schoolName} Tahun Ajaran 2027/2028.`;
+const WA_MESSAGE = `Assalamu'alaikum, saya ingin bertanya tentang PPDB ${BRANDING.schoolName} Tahun Ajaran 2027/2028.`;
 
 const SPRING = { type: "spring", stiffness: 400, damping: 28 } as const;
 
@@ -17,7 +17,7 @@ export default function FloatingWhatsApp() {
 
   useEffect(() => {
     setMounted(true);
-    // Delay 18s — user perlu waktu membaca hero sebelum popup muncul
+    // Delay 18s â€” user perlu waktu membaca hero sebelum popup muncul
     const t = setTimeout(() => setShowTooltip(true), 18000);
     return () => clearTimeout(t);
   }, []);
@@ -35,7 +35,7 @@ export default function FloatingWhatsApp() {
 
   return (
     <div className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end gap-3">
-      {/* ── Tooltip ── */}
+      {/* â”€â”€ Tooltip â”€â”€ */}
       <AnimatePresence>
         {showTooltip && !dismissed && (
           <motion.div
@@ -60,7 +60,7 @@ export default function FloatingWhatsApp() {
               </span>
             </div>
             <p className="text-[0.75rem] font-bold text-ink-800 leading-snug pr-3">
-              Ada pertanyaan seputar PPDB? Chat kami! 😊
+              Ada pertanyaan seputar PPDB? Chat kami! ðŸ˜Š
             </p>
             <p className="text-[0.65rem] text-ink-500 mt-1">
               Biasanya membalas dalam beberapa menit
@@ -73,7 +73,7 @@ export default function FloatingWhatsApp() {
         )}
       </AnimatePresence>
 
-      {/* ── WA Button ── */}
+      {/* â”€â”€ WA Button â”€â”€ */}
       <motion.a
         href={href}
         target="_blank"
@@ -101,4 +101,5 @@ export default function FloatingWhatsApp() {
     </div>
   );
 }
+
 

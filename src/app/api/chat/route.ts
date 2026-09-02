@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+﻿import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
 
 // Initialize Gemini API
@@ -6,7 +6,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
 const SYSTEM_PROMPT = `
 Kamu adalah asisten virtual Pesantren Islam Internasional Al-Andalus Putra bernama "Al-Andalus Putra Assistant".
-Tugasmu adalah membantu menjawab pertanyaan calon santri atau orang tua seputar Pesantren Islam Internasional Al-Andalus Putra dan SPMB (Sistem Penerimaan Murid Baru) T.A 2027/2028 dengan ramah, sopan, dan informatif dalam Bahasa Indonesia.
+Tugasmu adalah membantu menjawab pertanyaan calon santri atau orang tua seputar Pesantren Islam Internasional Al-Andalus Putra dan PPDB (Sistem Penerimaan Murid Baru) T.A 2027/2028 dengan ramah, sopan, dan informatif dalam Bahasa Indonesia.
 
 Gunakan salam Islami seperti "Assalamu'alaikum" jika sesuai.
 Gunakan kata sapaan sopan seperti "Bapak/Ibu" atau "Kakak" atau "Adik".
@@ -48,7 +48,7 @@ PROGRAM PENDIDIKAN:
    - Program intensif Bahasa dan Syari'at untuk mencetak kader ulama.
    - Target Hafalan 16 Juz, Penguasaan Kitab Turots, Bahasa Arab Aktif & Formal. Persiapan Universitas Timur Tengah & Dalam Negeri.
 
-INFORMASI SPMB T.A 2027/2028:
+INFORMASI PPDB T.A 2027/2028:
 - Pendaftaran: 28 Agustus - 30 November 2026 (Online via website).
 - BIAYA PENDIDIKAN PENTING:
   - Biaya Pendaftaran: Rp 500.000 (Non-refundable)
@@ -109,10 +109,11 @@ export async function POST(req: Request) {
       errMsg.includes("RESOURCE_EXHAUSTED") ||
       errMsg.includes("retryDelay");
     const reply = isRateLimit
-      ? "Asisten AI sedang ramai sebentar. Silakan coba lagi dalam beberapa detik, atau klik 'Live Chat CS' untuk langsung bicara dengan panitia kami ya. 😊"
+      ? "Asisten AI sedang ramai sebentar. Silakan coba lagi dalam beberapa detik, atau klik 'Live Chat CS' untuk langsung bicara dengan panitia kami ya. ðŸ˜Š"
       : "Maaf, terjadi kesalahan. Silakan coba lagi atau hubungi Live Chat CS kami.";
 
     return NextResponse.json({ error: "server_error", reply }, { status: 500 });
   }
 }
+
 

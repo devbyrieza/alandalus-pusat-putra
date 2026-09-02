@@ -1,16 +1,16 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { HelpCircle, ChevronDown, MessageCircleMore } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { motion, AnimatePresence } from "framer-motion";
 
-// ─── Data ────────────────────────────────────────────
+// â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const FAQS = [
   {
     question: "Kapan pendaftaran santri baru angkatan 2027/2028 dibuka?",
     answer:
-      "Pendaftaran SPMB Tahun Ajaran 2027/2028 dibuka mulai tanggal 28 Agustus 2026 sampai dengan 30 November 2026. Namun, pendaftaran dapat ditutup lebih awal jika kuota santri baru sudah terpenuhi." },
+      "Pendaftaran PPDB Tahun Ajaran 2027/2028 dibuka mulai tanggal 28 Agustus 2026 sampai dengan 30 November 2026. Namun, pendaftaran dapat ditutup lebih awal jika kuota santri baru sudah terpenuhi." },
   {
     question: "Apakah santri diwajibkan untuk tinggal di asrama?",
     answer:
@@ -32,7 +32,7 @@ const FAQS = [
 const EASE = [0.16, 1, 0.3, 1] as const;
 const WA_URL = "https://wa.me/6283811515951";
 
-// ─── FAQ Item ─────────────────────────────────────────
+// â”€â”€â”€ FAQ Item â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function FaqItem({
   question,
   answer,
@@ -113,13 +113,13 @@ function FaqItem({
   );
 }
 
-// ─── Main ─────────────────────────────────────────────
+// â”€â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
     <section id="faq" className="section-std relative overflow-hidden">
-      {/* Background glow — gold kiri tengah */}
+      {/* Background glow â€” gold kiri tengah */}
       <div
         className="absolute top-1/2 -left-32 -translate-y-1/2 w-[380px] h-[380px] pointer-events-none"
         style={{
@@ -134,7 +134,7 @@ export default function FaqSection() {
       />
 
       <Container className="relative z-10">
-        {/* ── Header ── */}
+        {/* â”€â”€ Header â”€â”€ */}
         <div className="text-center mb-14 md:mb-16 max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -169,7 +169,7 @@ export default function FaqSection() {
           </motion.p>
         </div>
 
-        {/* ── Accordion ── */}
+        {/* â”€â”€ Accordion â”€â”€ */}
         <div className="max-w-3xl mx-auto space-y-3">
           {FAQS.map((faq, idx) => (
             <FaqItem
@@ -183,7 +183,7 @@ export default function FaqSection() {
           ))}
         </div>
 
-        {/* ── WhatsApp CTA ── */}
+        {/* â”€â”€ WhatsApp CTA â”€â”€ */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -233,4 +233,5 @@ export default function FaqSection() {
     </section>
   );
 }
+
 

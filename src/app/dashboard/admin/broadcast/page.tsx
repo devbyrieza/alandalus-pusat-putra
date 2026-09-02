@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import {
@@ -34,7 +34,7 @@ export default function BroadcastPage() {
 
   const [header, setHeader] = useState("Assalamu'alaikum");
   const [message, setMessage] = useState("");
-  const [footer, setFooter] = useState("Panitia SPMB Al-Andalus Putra");
+  const [footer, setFooter] = useState("Panitia PPDB Al-Andalus Putra");
   const [includeName, setIncludeName] = useState(true);
 
   // Autosave broadcast draft
@@ -244,9 +244,9 @@ export default function BroadcastPage() {
                       </p>
                       <div className="flex items-center gap-2 text-xs font-medium text-ink-500">
                         <span className="font-mono">{p.nomor_pendaftaran}</span>
-                        <span>•</span>
+                        <span>â€¢</span>
                         <span>{p.no_hp || "Tanpa No. HP"}</span>
-                        <span>•</span>
+                        <span>â€¢</span>
                         <span className="px-2 py-0.5 bg-secondary-200 rounded-full">
                           {p.status_pendaftaran}
                         </span>
@@ -387,3 +387,4 @@ export default function BroadcastPage() {
     </div>
   );
 }
+

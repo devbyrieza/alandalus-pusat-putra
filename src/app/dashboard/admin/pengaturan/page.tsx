@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import {
@@ -157,7 +157,7 @@ export default function PengaturanPage() {
             </div>
             <div>
               <h2 className="text-2xl font-black text-stone-900">Pengaturan</h2>
-              <p className="text-stone-600">Konfigurasi sistem SPMB</p>
+              <p className="text-stone-600">Konfigurasi sistem PPDB</p>
             </div>
           </div>
           <button
@@ -467,6 +467,7 @@ export default function PengaturanPage() {
     </div>
   );
 }
+
 
 
 

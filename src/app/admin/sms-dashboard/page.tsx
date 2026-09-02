@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { RefreshCw, Check, Smartphone, User, Key, ClipboardList, CheckCircle2, FileText, BarChart3, Calendar, Sparkles, Send } from "lucide-react";
@@ -164,7 +164,7 @@ export default function AdminSMSDashboard() {
                     <FileText className="w-4 h-4" /> Pesan yang Dikirim
                   </p>
                   <pre className="font-mono text-sm leading-relaxed text-slate-200 whitespace-pre-wrap">
-                    {`SPMB AL-IMAM
+                    {`PPDB AL-IMAM
 Kode OTP: ${item.otp}
 Untuk: ${item.nama}
 
@@ -228,3 +228,4 @@ Hubungi 0838-1151-5951 jika ada masalah.`}
     </div>
   );
 }
+

@@ -1,4 +1,4 @@
-export type AppMode = "PUTRA" | "PUTRI";
+﻿export type AppMode = "PUTRA" | "PUTRI";
 export const APP_MODE: AppMode = "PUTRA";
 export const IS_PUTRA = true;
 export const IS_PUTRI = false;
@@ -15,7 +15,7 @@ export const BRANDING = {
   faviconPath: "/favicon.ico",
   websiteUrl: process.env.NEXT_PUBLIC_APP_URL || "https://pesantren-alandalus-putra.com",
   mainPortalUrl: "https://pesantren-alandalus.com",
-  dashboardTitle: "Panel Admin SPMB",
+  dashboardTitle: "Panel Admin PPDB",
   
   contact: {
     whatsapp: "+62 838-1151-5951",
@@ -28,7 +28,7 @@ export const BRANDING = {
     address: "Jl. Raya Menteng, KM. 13 RT.03/04, Dusun Cijurey, Desa Sukadamai, Kec. Sukamakmur, Kab. Bogor."
   },
   
-  // Properties required by SPMB dashboard & layout backward compatibility
+  // Properties required by PPDB dashboard & layout backward compatibility
   address: "Jl. Raya Menteng, KM. 13 RT.03/04, Dusun Cijurey, Desa Sukadamai, Kec. Sukamakmur, Kab. Bogor.",
   phone: "+62 838-1151-5951",
   email: "info@pesantren-alandalus.com",
@@ -36,3 +36,4 @@ export const BRANDING = {
   ytUrl: "https://www.youtube.com/andalustv",
   fbUrl: "https://www.facebook.com/pp.alandalus",
   twitterUrl: "#" };
+

@@ -1,4 +1,4 @@
-// lib/verification/sms.ts
+﻿// lib/verification/sms.ts
 import { normalizePhone } from "./multi-channel";
 import { sendMessage } from "@/lib/wablas";
 
@@ -10,7 +10,7 @@ export async function sendSms(
     const phone = normalizePhone(to);
 
     // Kirim via Wablas (WhatsApp message, lebih reliable dari SMS)
-    const message = `Kode verifikasi SPMB Pesantren Islam Internasional Al-Andalus Putra: ${otp}`;
+    const message = `Kode verifikasi PPDB Pesantren Islam Internasional Al-Andalus Putra: ${otp}`;
     const result = await sendMessage({ phone, message });
 
     if (result.status) {
@@ -21,7 +21,7 @@ export async function sendSms(
 
     // Fallback untuk development
     if (process.env.NODE_ENV === "development") {
-      console.log(`📨 [DEV] SMS OTP ${otp} untuk ${phone}`);
+      console.log(`ðŸ“¨ [DEV] SMS OTP ${otp} untuk ${phone}`);
       return { success: true, messageId: "dev-sms-" + Date.now() };
     }
 
@@ -31,3 +31,4 @@ export async function sendSms(
     return { success: false, error: error.message };
   }
 }
+

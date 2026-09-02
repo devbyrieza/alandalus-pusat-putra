@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { prisma } from "@/lib/prisma";
 
@@ -106,7 +106,7 @@ export async function POST(request: NextRequest) {
           id: "BIAYA_PENDAFTARAN",
           price: grossAmount,
           quantity: 1,
-          name: `Biaya Pendaftaran SPMB ${tahunAjaran.nama}` },
+          name: `Biaya Pendaftaran PPDB ${tahunAjaran.nama}` },
       ],
       customer_details: {
         first_name: pendaftar.nama_lengkap,
@@ -185,4 +185,5 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
 

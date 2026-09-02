@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Suspense, useEffect } from "react";
 import Link from "next/link";
@@ -246,7 +246,7 @@ function PPDBContent() {
                 href={`/daftar${jenjang ? `?jenjang=${jenjang}` : ""}`}
                 className="inline-flex items-center justify-center gap-3 px-8 md:px-10 py-4.5 rounded-full bg-emerald-700 text-white font-black text-lg hover:bg-emerald-800 shadow-xl shadow-emerald-700/25 transition-all hover:-translate-y-0.5"
               >
-                Daftar SPMB
+                Daftar PPDB
               </Link>
               <a
                 href="#alur"
@@ -502,7 +502,7 @@ function PPDBContent() {
                       a: "Ya, seluruh santri di Pesantren Islam Internasional Al-Andalus Putra wajib tinggal di asrama untuk mengikuti seluruh rangkaian kegiatan tarbiyah, halaqah tahfidz, dan pembelajaran kitab turots secara maksimal." },
                     {
                       q: "Kapan batas akhir pendaftaran?",
-                      a: "Pendaftaran SPMB Tahun Ajaran 2027/2028 dibuka mulai tanggal 28 Agustus 2026 sampai dengan 30 November 2026. Namun, pendaftaran dapat ditutup lebih awal jika kuota santri baru sudah terpenuhi." },
+                      a: "Pendaftaran PPDB Tahun Ajaran 2027/2028 dibuka mulai tanggal 28 Agustus 2026 sampai dengan 30 November 2026. Namun, pendaftaran dapat ditutup lebih awal jika kuota santri baru sudah terpenuhi." },
                     {
                       q: "Bagaimana sistem kurikulumnya?",
                       a: "Kami menerapkan Kurikulum Terpadu yang menggabungkan kurikulum Nasional dengan kurikulum khas Andalus yang berfokus pada penguasaan Bahasa Arab, Tahfidz Al-Qur'an, dan Kitab Turots." },
@@ -564,14 +564,14 @@ function PPDBContent() {
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-5 md:px-8 py-3.5 sm:py-4 md:py-5 rounded-pill bg-white/10 text-white font-bold border border-white/20 hover:bg-white/20 transition-all text-sm sm:text-base md:text-lg min-h-[48px] sm:min-h-[52px]"
                 >
                   <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
-                  Hubungi Admin SPMB
+                  Hubungi Admin PPDB
                 </a>
               </div>
 
               {/* Trust microcopy */}
               <p className="mt-6 text-[11px] text-primary-300 font-bold uppercase tracking-widest flex items-center justify-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                <span>Pendaftaran Gratis&nbsp;&nbsp;•&nbsp;&nbsp;Proses Mudah&nbsp;&nbsp;•&nbsp;&nbsp;Langsung Konfirmasi</span>
+                <span>Pendaftaran Gratis&nbsp;&nbsp;â€¢&nbsp;&nbsp;Proses Mudah&nbsp;&nbsp;â€¢&nbsp;&nbsp;Langsung Konfirmasi</span>
               </p>
 
                             {/* Legalitas badges */}
@@ -597,7 +597,7 @@ function PPDBContent() {
                 <div className="flex items-center gap-2 text-primary-100/80">
                   <Sparkles className="w-4 h-4 text-amber-300" />
                   <span className="text-xs font-bold uppercase tracking-wider">
-                    Sejak 2013 • 13 Tahun Melayani
+                    Sejak 2013 â€¢ 13 Tahun Melayani
                   </span>
                 </div>
               </div>
@@ -620,7 +620,7 @@ function LoadingFallback() {
         <Loader2 className="w-12 h-12" />
       </motion.div>
       <p className="text-ink-500 font-black uppercase tracking-widest text-xs animate-pulse">
-        Memuat Info SPMB...
+        Memuat Info PPDB...
       </p>
     </div>
   );
@@ -633,5 +633,6 @@ export default function PPDBPage() {
     </Suspense>
   );
 }
+
 
 

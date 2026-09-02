@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect } from "react";
 import Link from "next/link";
@@ -39,7 +39,7 @@ export default function KontakPage() {
           </h1>
 
           <p className="text-slate-600 text-lg">
-            Hubungi panitia SPMB & sekretariat {BRANDING.schoolName} untuk informasi pendaftaran, kunjungan pesantren, dan pertanyaan lainnya.
+            Hubungi panitia PPDB & sekretariat {BRANDING.schoolName} untuk informasi pendaftaran, kunjungan pesantren, dan pertanyaan lainnya.
           </p>
         </div>
 
@@ -124,3 +124,4 @@ export default function KontakPage() {
     </main>
   );
 }
+

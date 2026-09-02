@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
@@ -411,7 +411,7 @@ export default function GaleriPage() {
               href="/daftar"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-slate-900 hover:bg-slate-100 font-bold text-base transition-all hover:-translate-y-0.5"
             >
-              Daftar SPMB Sekarang
+              Daftar PPDB Sekarang
             </Link>
           </div>
         </Container>
@@ -419,3 +419,4 @@ export default function GaleriPage() {
     </main>
   );
 }
+

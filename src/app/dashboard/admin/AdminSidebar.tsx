@@ -155,6 +155,13 @@ export default function AdminSidebar({
       badge: badgeCount };
   });
 
+  const currentMenuItem = menuItems.find((item) => item.isActive || (item.href !== "/dashboard/admin" && pathname.startsWith(item.href)));
+  const currentTitle = currentMenuItem
+    ? currentMenuItem.name
+    : pathname.includes("bank-soal")
+      ? "Bank Soal"
+      : "Ikhtisar Dashboard";
+
   /**
    * handleLogout
    * Menampilkan konfirmasi gaya premium sebelum menghapus sesi user.
@@ -528,7 +535,7 @@ export default function AdminSidebar({
                 Admin Portal
               </Link>
               <ChevronRight className="w-3.5 h-3.5 text-ink-300" />
-              <span className="text-primary-950 italic">Ikhtisar Dashboard</span>
+              <span className="text-primary-950 italic">{currentTitle}</span>
             </div>
           </div>
 

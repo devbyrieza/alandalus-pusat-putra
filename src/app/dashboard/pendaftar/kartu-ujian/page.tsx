@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
@@ -63,7 +63,7 @@ export default function ExamCardPage() {
                 "id-ID",
               ),
               waktu: j.waktu_mulai.substring(0, 5),
-              lokasi: j.lokasi || "Pesantren Al-Andalus Al-Andalus Putra" })) || [] };
+              lokasi: j.lokasi || "Pesantren Islam Internasional Al-Andalus Putra" })) || [] };
 
         setData(student);
       } catch (e) {

@@ -15,7 +15,7 @@ export async function sendWhatsAppOTP(
 ): Promise<{ success: boolean; messageId?: string; error?: string }> {
   try {
     // OTP Message Template
-    const message = `ðŸ” *Kode Verifikasi PPDB Al-Andalus Putra*
+    const message = `🔐 *Kode Verifikasi PPDB Al-Andalus Putra*
 
 Assalamu'alaikum *${nama}*,
 
@@ -25,9 +25,9 @@ Kode OTP Anda adalah:
 
 Kode ini berlaku selama *5 menit*.
 
-âš ï¸ *PENTING:*
-â€¢ Jangan berikan kode ini kepada siapapun
-â€¢ Tim Al-Andalus Putra tidak akan pernah meminta kode OTP Anda
+⚠️ *PENTING:*
+• Jangan berikan kode ini kepada siapapun
+• Tim Al-Andalus Putra tidak akan pernah meminta kode OTP Anda
 
 Jazakumullahu khairan
 ---
@@ -47,7 +47,7 @@ Jazakumullahu khairan
           error_message: result.status ? null : result.message,
           response_data: JSON.stringify(result) } });
     } catch (dbError) {
-      console.error("âŒ Failed to log WhatsApp OTP to DB:", dbError);
+      console.error("❌ Failed to log WhatsApp OTP to DB:", dbError);
     }
 
     if (result.status) {
@@ -58,7 +58,7 @@ Jazakumullahu khairan
 
     // Fallback: only if explicitly skipped
     if (process.env.SKIP_WHATSAPP_OTP === "true") {
-      console.log("ðŸ“± [SKIP] WhatsApp OTP (Simulated):", otp, "untuk", phone);
+      console.log("📱 [SKIP] WhatsApp OTP (Simulated):", otp, "untuk", phone);
       return {
         success: true,
         messageId: `wa_sim_${Date.now()}` };
@@ -68,7 +68,7 @@ Jazakumullahu khairan
       success: false,
       error: result.message || "Gagal mengirim WhatsApp OTP" };
   } catch (error: any) {
-    console.error("âŒ WhatsApp error:", error.message);
+    console.error("❌ WhatsApp error:", error.message);
 
     // Also log exception to DB
     try {
@@ -83,7 +83,7 @@ Jazakumullahu khairan
 
     // Fallback simulation only if explicitly requested
     if (process.env.SKIP_WHATSAPP_OTP === "true") {
-      console.log("ðŸ“± [SKIP] WhatsApp gagal, mode simulasi");
+      console.log("📱 [SKIP] WhatsApp gagal, mode simulasi");
       console.log(`OTP untuk ${nama} (${phone}): ${otp}`);
       return {
         success: true,

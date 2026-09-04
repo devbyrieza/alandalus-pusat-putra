@@ -110,7 +110,7 @@ const drawFullImageBackground = async (doc: jsPDF) => {
 };
 
 // ============================================================
-// TEMPLATE: PROGRAMMATIC (Kop Generik â€” jsPDF Elements)
+// TEMPLATE: PROGRAMMATIC (Kop Generik — jsPDF Elements)
 // ============================================================
 
 /**
@@ -185,7 +185,7 @@ const drawProgrammaticHeader = async (doc: jsPDF) => {
 };
 
 // ============================================================
-// UNIFIED HEADER / FOOTER / SIGNATURE â€” otomatis pilih template
+// UNIFIED HEADER / FOOTER / SIGNATURE — otomatis pilih template
 // ============================================================
 
 /**
@@ -805,7 +805,7 @@ export const generateSuratKesehatan = async (data: PendaftarPdfData) => {
   // Menggunakan perataan "justify" dan maxWidth agar rata kiri-kanan sejajar dengan tabel
   doc.text(closingText, leftColX, finalY2, { align: "justify", maxWidth: contentW });
  
-  // TTD Dokter â€” diposisikan di kanan bawah (right-aligned block) dan digeser naik
+  // TTD Dokter — diposisikan di kanan bawah (right-aligned block) dan digeser naik
   const xRightSig = pageWidth - margin - 65; // Bergeser ke sisi kanan
   // Jika teks berbungkus, biasanya akan mengambil 2 baris (kurang lebih 5-6 unit per baris)
   const sigY = finalY2 + 10; 

@@ -11,9 +11,9 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import ProgressBarProvider from "@/components/providers/ProgressBarProvider";
 
-// â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // FONT CONFIGURATIONS
-// â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 import { Plus_Jakarta_Sans, Inter, Playfair_Display } from "next/font/google";
 import { BRANDING } from "@/config/branding";
 import SplashScreen from "@/components/ui/SplashScreen";
@@ -29,7 +29,7 @@ const inter = Inter({
   display: "swap",
   variable: "--font-inter" });
 
-// Playfair Display â€” font serif prestisius untuk hero headline
+// Playfair Display — font serif prestisius untuk hero headline
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   display: "swap",
@@ -38,7 +38,7 @@ const playfairDisplay = Playfair_Display({
   weight: ["700", "800", "900"] });
 
 // METADATA CONFIGURATION
-// â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 export const metadata: Metadata = {
   metadataBase: new URL(BRANDING.websiteUrl),
 
@@ -115,9 +115,9 @@ export const metadata: Metadata = {
   category: "education",
   classification: "Islamic Education" };
 
-// â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // ROOT LAYOUT COMPONENT
-// â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 export default function RootLayout({
   children }: Readonly<{
   children: React.ReactNode;

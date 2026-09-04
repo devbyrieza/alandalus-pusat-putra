@@ -10,13 +10,13 @@ export async function sendWhatsAppMessage(
     const phone = normalizePhone(to);
 
     // Create OTP message
-    const message = `ðŸ” *Kode Verifikasi PPDB Al-Andalus Putra*
+    const message = `🔐 *Kode Verifikasi PPDB Al-Andalus Putra*
 
 Kode OTP Anda adalah: *${otp}*
 
 Kode ini berlaku selama 5 menit.
 
-âš ï¸ Jangan berikan kode ini kepada siapapun!
+⚠️ Jangan berikan kode ini kepada siapapun!
 
 Jazakumullahu khairan,
 Panitia PPDB Al-Andalus Putra`;
@@ -32,7 +32,7 @@ Panitia PPDB Al-Andalus Putra`;
 
     // Fallback untuk development
     if (process.env.NODE_ENV === "development") {
-      console.log(`ðŸ“± [DEV] WhatsApp OTP ${otp} untuk ${phone}`);
+      console.log(`📱 [DEV] WhatsApp OTP ${otp} untuk ${phone}`);
       return { success: true, messageId: "dev-" + Date.now() };
     }
 

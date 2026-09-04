@@ -1,4 +1,4 @@
-﻿// src/components/home/HeroSection.tsx â€” andalus-pusat-putra
+﻿// src/components/home/HeroSection.tsx — andalus-pusat-putra
 // FIXED: reduced motion badge, tablet breakpoint, touch hover, explicit font sizing
 "use client";
 
@@ -60,7 +60,7 @@ export default function HeroSection() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.08 });
   const animate = inView ? "visible" : "hidden";
 
-  // FIX #4: Badge animate computed correctly â€” no scale jump when reduced motion is on
+  // FIX #4: Badge animate computed correctly — no scale jump when reduced motion is on
   const badgeAnimate = inView
     ? { opacity: 1, scale: 1, rotate: -6 }
     : { opacity: 0, scale: shouldReduceMotion ? 1 : 0.5, rotate: -25 };
@@ -68,7 +68,7 @@ export default function HeroSection() {
   return (
     <section
       ref={ref}
-      aria-label="Hero â€” Beranda Al-Andalus Putra"
+      aria-label="Hero — Beranda Al-Andalus Putra"
       className="relative pt-24 pb-16 lg:pt-12 xl:pt-16 lg:pb-20 overflow-hidden"
       style={{
         background:
@@ -110,7 +110,7 @@ export default function HeroSection() {
               </span>
             </motion.div>
 
-            {/* Headline â€” FIX #1: explicit clamp for 360px safety */}
+            {/* Headline — FIX #1: explicit clamp for 360px safety */}
             <motion.div
               variants={fadeUp}
               initial="hidden"
@@ -147,7 +147,7 @@ export default function HeroSection() {
               className="text-base lg:text-[1.075rem] leading-[1.85] max-w-[42rem] mx-auto lg:mx-0 text-center lg:text-left text-pretty"
               style={{ color: "var(--color-ink-600)", fontWeight: 450 }}
             >
-              Bukan sekadar tempat belajar â€” sebuah sistem pembentukan karakter
+              Bukan sekadar tempat belajar — sebuah sistem pembentukan karakter
               yang{" "}
               <strong
                 className="font-bold"
@@ -255,7 +255,7 @@ export default function HeroSection() {
                   >
                     Angkatan ke-15
                   </span>
-                  {" â€¢ "}Pesantren Al-Andalus Putra
+                  {" • "}Pesantren Al-Andalus Putra
                 </p>
               </div>
 
@@ -282,7 +282,7 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* VISUAL SIDE â€” FIX #2: overflow visible + md breakpoints */}
+          {/* VISUAL SIDE — FIX #2: overflow visible + md breakpoints */}
           <motion.div
             variants={fadeIn}
             initial="hidden"
@@ -303,7 +303,7 @@ export default function HeroSection() {
             >
               <Image
                 src="/images/gedung-utama-putra.jpeg"
-                alt={`${BRANDING.schoolName} â€” Pesantren Al-Andalus Putra`}
+                alt={`${BRANDING.schoolName} — Pesantren Al-Andalus Putra`}
                 width={800}
                 height={600}
                 priority
@@ -328,7 +328,7 @@ export default function HeroSection() {
               />
             </div>
 
-            {/* Floating Card: Tersedia â€” FIX #2 md breakpoint */}
+            {/* Floating Card: Tersedia — FIX #2 md breakpoint */}
             <motion.div
               animate={shouldReduceMotion ? {} : { y: [0, -10, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -351,7 +351,7 @@ export default function HeroSection() {
               </div>
             </motion.div>
 
-            {/* Floating Card: Jaringan Global â€” FIX #2 md breakpoint */}
+            {/* Floating Card: Jaringan Global — FIX #2 md breakpoint */}
             <motion.div
               animate={shouldReduceMotion ? {} : { y: [0, 10, 0] }}
               transition={{
@@ -377,7 +377,7 @@ export default function HeroSection() {
               </div>
             </motion.div>
 
-            {/* Info Badge â€” FIX #4: proper reduced motion, FIX #2: md position */}
+            {/* Info Badge — FIX #4: proper reduced motion, FIX #2: md position */}
             <motion.div
               initial={{
                 opacity: 0,

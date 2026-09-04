@@ -96,7 +96,7 @@ export default function Navbar() {
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-xl"
     >
-      {/* â”€â”€ 1. MAIN NAVBAR ROW â”€â”€ */}
+      {/* ── 1. MAIN NAVBAR ROW ── */}
       <div className="bg-primary-950/95 backdrop-blur-md border-b border-primary-800/80 py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 xl:gap-4">
           {/* LOGO & BRAND */}

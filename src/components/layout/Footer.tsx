@@ -137,7 +137,7 @@ export default function Footer() {
       <div className="border-t border-andalus-green-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-600 text-xs">
-            Â© {new Date().getFullYear()} {BRANDING.schoolName}. All rights reserved.
+            © {new Date().getFullYear()} {BRANDING.schoolName}. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link href="/ppdb"  className="text-xs text-slate-600 hover:text-slate-400 transition-colors">Info PPDB</Link>

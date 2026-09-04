@@ -17,7 +17,7 @@ export default function FloatingWhatsApp() {
 
   useEffect(() => {
     setMounted(true);
-    // Delay 18s â€” user perlu waktu membaca hero sebelum popup muncul
+    // Delay 18s — user perlu waktu membaca hero sebelum popup muncul
     const t = setTimeout(() => setShowTooltip(true), 18000);
     return () => clearTimeout(t);
   }, []);
@@ -35,7 +35,7 @@ export default function FloatingWhatsApp() {
 
   return (
     <div className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end gap-3">
-      {/* â”€â”€ Tooltip â”€â”€ */}
+      {/* ── Tooltip ── */}
       <AnimatePresence>
         {showTooltip && !dismissed && (
           <motion.div
@@ -60,7 +60,7 @@ export default function FloatingWhatsApp() {
               </span>
             </div>
             <p className="text-[0.75rem] font-bold text-ink-800 leading-snug pr-3">
-              Ada pertanyaan seputar PPDB? Chat kami! ðŸ˜Š
+              Ada pertanyaan seputar PPDB? Chat kami!
             </p>
             <p className="text-[0.65rem] text-ink-500 mt-1">
               Biasanya membalas dalam beberapa menit
@@ -73,7 +73,7 @@ export default function FloatingWhatsApp() {
         )}
       </AnimatePresence>
 
-      {/* â”€â”€ WA Button â”€â”€ */}
+      {/* ── WA Button ── */}
       <motion.a
         href={href}
         target="_blank"

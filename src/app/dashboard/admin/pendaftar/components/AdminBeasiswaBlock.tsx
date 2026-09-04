@@ -678,7 +678,7 @@ export default function AdminBeasiswaBlock({
           </div>
 
           {current.catatan && (
-            <p className="text-xs text-stone-600 mt-3 italic">📝 {current.catatan}</p>
+            <p className="text-xs text-stone-600 mt-3 italic">{current.catatan}</p>
           )}
 
           <div className="flex gap-2 mt-4">

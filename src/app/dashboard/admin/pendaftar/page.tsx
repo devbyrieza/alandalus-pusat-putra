@@ -1262,7 +1262,7 @@ function AdminPendaftarContent() {
             <button
               onClick={() => {
                 Swal.fire({
-                  title: 'Fitur Terkunci 👑',
+                  title: 'Fitur Terkunci ',
                   text: 'Fitur Broadcast WhatsApp Massal Otomatis (Full Automation) eksklusif untuk kasta Platinum. Hubungi Tim Pusat untuk upgrade.',
                   icon: 'info',
                   confirmButtonColor: '#d97706',
@@ -1273,7 +1273,7 @@ function AdminPendaftarContent() {
               title="Broadcast WA Massal"
             >
               <Phone className="w-4 h-4" />
-              <span className="hidden sm:inline">Broadcast WA 👑</span>
+              <span className="hidden sm:inline">Broadcast WA </span>
             </button>
             <button
               onClick={() => handleExport("excel")}

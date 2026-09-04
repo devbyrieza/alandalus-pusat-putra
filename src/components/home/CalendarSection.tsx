@@ -5,7 +5,7 @@ import { Calendar, Download, Clock, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { motion } from "framer-motion";
 
-// â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Data ────────────────────────────────────────────
 const IMPORTANT_DATES = [
   {
     date: "28 Agt - 30 Nov 2026",
@@ -38,7 +38,7 @@ const ACCENT_MAP = {
     badge: "bg-gold-50 text-gold-700 border-gold-200",
     title: "group-hover:text-gold-700" } };
 
-// â”€â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Main ─────────────────────────────────────────────
 export default function CalendarSection() {
   return (
     <section
@@ -50,7 +50,7 @@ export default function CalendarSection() {
 
       <Container className="relative z-10">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center lg:items-start">
-          {/* â”€â”€ Timeline Side â”€â”€ */}
+          {/* ── Timeline Side ── */}
           <div className="lg:w-[55%] w-full">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -129,7 +129,7 @@ export default function CalendarSection() {
             </motion.div>
           </div>
 
-          {/* â”€â”€ Card Action Side â”€â”€ */}
+          {/* ── Card Action Side ── */}
           <div className="lg:w-[45%] w-full">
             <motion.div
               initial={{ opacity: 0, x: 20 }}

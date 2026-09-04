@@ -571,7 +571,7 @@ function PPDBContent() {
               {/* Trust microcopy */}
               <p className="mt-6 text-[11px] text-primary-300 font-bold uppercase tracking-widest flex items-center justify-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                <span>Pendaftaran Gratis&nbsp;&nbsp;â€¢&nbsp;&nbsp;Proses Mudah&nbsp;&nbsp;â€¢&nbsp;&nbsp;Langsung Konfirmasi</span>
+                <span>Pendaftaran Gratis&nbsp;&nbsp;•&nbsp;&nbsp;Proses Mudah&nbsp;&nbsp;•&nbsp;&nbsp;Langsung Konfirmasi</span>
               </p>
 
                             {/* Legalitas badges */}
@@ -597,7 +597,7 @@ function PPDBContent() {
                 <div className="flex items-center gap-2 text-primary-100/80">
                   <Sparkles className="w-4 h-4 text-amber-300" />
                   <span className="text-xs font-bold uppercase tracking-wider">
-                    Sejak 2013 â€¢ 13 Tahun Melayani
+                    Sejak 2013 • 13 Tahun Melayani
                   </span>
                 </div>
               </div>

@@ -5,7 +5,7 @@ import { HelpCircle, ChevronDown, MessageCircleMore } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { motion, AnimatePresence } from "framer-motion";
 
-// â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Data ────────────────────────────────────────────
 const FAQS = [
   {
     question: "Kapan pendaftaran santri baru angkatan 2027/2028 dibuka?",
@@ -32,7 +32,7 @@ const FAQS = [
 const EASE = [0.16, 1, 0.3, 1] as const;
 const WA_URL = "https://wa.me/6283811515951";
 
-// â”€â”€â”€ FAQ Item â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── FAQ Item ─────────────────────────────────────────
 function FaqItem({
   question,
   answer,
@@ -113,13 +113,13 @@ function FaqItem({
   );
 }
 
-// â”€â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Main ─────────────────────────────────────────────
 export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
     <section id="faq" className="section-std relative overflow-hidden">
-      {/* Background glow â€” gold kiri tengah */}
+      {/* Background glow — gold kiri tengah */}
       <div
         className="absolute top-1/2 -left-32 -translate-y-1/2 w-[380px] h-[380px] pointer-events-none"
         style={{
@@ -134,7 +134,7 @@ export default function FaqSection() {
       />
 
       <Container className="relative z-10">
-        {/* â”€â”€ Header â”€â”€ */}
+        {/* ── Header ── */}
         <div className="text-center mb-14 md:mb-16 max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -169,7 +169,7 @@ export default function FaqSection() {
           </motion.p>
         </div>
 
-        {/* â”€â”€ Accordion â”€â”€ */}
+        {/* ── Accordion ── */}
         <div className="max-w-3xl mx-auto space-y-3">
           {FAQS.map((faq, idx) => (
             <FaqItem
@@ -183,7 +183,7 @@ export default function FaqSection() {
           ))}
         </div>
 
-        {/* â”€â”€ WhatsApp CTA â”€â”€ */}
+        {/* ── WhatsApp CTA ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

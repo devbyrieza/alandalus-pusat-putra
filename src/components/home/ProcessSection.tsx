@@ -13,7 +13,7 @@ import {
 import { Container } from "@/components/layout/Container";
 import { motion } from "framer-motion";
 
-// â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Data ────────────────────────────────────────────
 const STEPS = [
   {
     icon: UserPlus,
@@ -68,7 +68,7 @@ const ACCENT_MAP = {
     badge: "bg-primary-700 text-white",
     title: "group-hover:text-primary-700" } };
 
-// â”€â”€â”€ Step Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Step Card ────────────────────────────────────────
 function StepCard({
   icon: Icon,
   title,
@@ -116,7 +116,7 @@ function StepCard({
         </p>
       </motion.div>
 
-      {/* Connector line â€” only between steps, not after last */}
+      {/* Connector line — only between steps, not after last */}
       {!isLast && (
         <div className="hidden lg:block absolute top-[28px] left-[calc(50%+44px)] right-[calc(-50%+44px)] h-px bg-gradient-to-r from-secondary-300 to-secondary-200 z-0" />
       )}
@@ -129,7 +129,7 @@ function StepCard({
   );
 }
 
-// â”€â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Main ─────────────────────────────────────────────
 export default function ProcessSection() {
   return (
     <section
@@ -151,7 +151,7 @@ export default function ProcessSection() {
       />
 
       <Container className="relative z-10">
-        {/* â”€â”€ Header â”€â”€ */}
+        {/* ── Header ── */}
         <div className="text-center mb-14 md:mb-18 max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -186,7 +186,7 @@ export default function ProcessSection() {
           </motion.p>
         </div>
 
-        {/* â”€â”€ Steps â”€â”€ */}
+        {/* ── Steps ── */}
         <div className="relative grid grid-cols-1 lg:grid-cols-6 gap-1 md:gap-0 max-w-5xl mx-auto">
           {STEPS.map((step, idx) => (
             <StepCard
@@ -198,7 +198,7 @@ export default function ProcessSection() {
           ))}
         </div>
 
-        {/* â”€â”€ CTA â”€â”€ */}
+        {/* ── CTA ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -181,7 +181,7 @@ export default function DataPendaftaranTab() {
       {/* Data Diri Card */}
       <div className="bg-white rounded-xl p-6 border-2 border-stone-200 shadow-sm">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-bold text-stone-900">ðŸ“‹ Data Pribadi</h2>
+          <h2 className="text-xl font-bold text-stone-900">📋 Data Pribadi</h2>
           <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-secondary-100 text-primary-900">
             <Clock className="w-3 h-3 mr-1" />
             Perlu dilengkapi
@@ -245,7 +245,7 @@ export default function DataPendaftaranTab() {
         </div>
       </div>
 
-      {/* Action Cards - Flow PPDB: Pembayaran â†’ Data Pribadi â†’ Upload Dokumen */}
+      {/* Action Cards - Flow PPDB: Pembayaran → Data Pribadi → Upload Dokumen */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Step 1: Pembayaran */}
         <Link
@@ -333,7 +333,7 @@ export default function DataPendaftaranTab() {
       {/* Progress Section */}
       <div className="bg-white rounded-xl p-6 border-2 border-stone-200 shadow-sm">
         <h2 className="text-xl font-bold text-stone-900 mb-4">
-          ðŸ“Š Progress Pendaftaran
+          📊 Progress Pendaftaran
         </h2>
         <div className="space-y-4">
           {[

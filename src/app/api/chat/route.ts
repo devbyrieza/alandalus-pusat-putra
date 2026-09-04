@@ -109,7 +109,7 @@ export async function POST(req: Request) {
       errMsg.includes("RESOURCE_EXHAUSTED") ||
       errMsg.includes("retryDelay");
     const reply = isRateLimit
-      ? "Asisten AI sedang ramai sebentar. Silakan coba lagi dalam beberapa detik, atau klik 'Live Chat CS' untuk langsung bicara dengan panitia kami ya. ðŸ˜Š"
+      ? "Asisten AI sedang ramai sebentar. Silakan coba lagi dalam beberapa detik, atau klik 'Live Chat CS' untuk langsung bicara dengan panitia kami ya. 😊"
       : "Maaf, terjadi kesalahan. Silakan coba lagi atau hubungi Live Chat CS kami.";
 
     return NextResponse.json({ error: "server_error", reply }, { status: 500 });

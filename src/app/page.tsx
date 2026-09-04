@@ -58,7 +58,7 @@ import { HiAcademicCap, HiOutlineBookOpen } from "react-icons/hi";
 import { HiOutlineCpuChip } from "react-icons/hi2";
 import { PiCertificateBold, PiPlantBold, PiBookOpenTextBold } from "react-icons/pi";
 
-// â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+// ————————————————————————————————————————————————————————————————————————————————————
 function useCountUp(target: number, duration = 2000, start = false) {
   const [count, setCount] = useState(0);
   useEffect(() => {
@@ -76,7 +76,7 @@ function useCountUp(target: number, duration = 2000, start = false) {
   return count;
 }
 
-// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Counter Card Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+// ─── Counter Card ─────────────────────────────────────────────────────────────
 function StatCard({
   value,
   suffix = "",
@@ -115,7 +115,7 @@ function StatCard({
   );
 }
 
-// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Infinite Marquee Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+// ─── Infinite Marquee ────────────────────────────────────────────────────────
 const alumniItems = [
   { label: "Universitas Islam Madinah", Icon: Building2 },
   { label: "Yarmouk University, Jordan", Icon: Building2 },
@@ -159,17 +159,17 @@ function InfiniteMarquee() {
   );
 }
 
-// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Testimonials Data Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+// ─── Testimonials Data ──────────────────────────────────────────────────
 const TESTIMONIALS = [
-  { initial: "I", name: "Bapak Irfan H.", role: "Orang Tua Santri Â· Jakarta", quote: "Awalnya khawatir anak jauh dari keluarga. Tapi setelah setahun, dia justru lebih mandiri dan hafalannya sudah 15 juz. Alhamdulillah." },
-  { initial: "R", name: "Ibu Rahmawati", role: "Orang Tua Santri Â· Bandung", quote: `Komunikasi dengan pihak pesantren sangat baik. Laporan perkembangan ${IS_PUTRA ? "putra" : "putri"} kami rutin dikirim via WhatsApp, jadi saya benar-benar tenang.` },
-  { initial: "D", name: "Bapak Dedy S.", role: "Orang Tua Santri Â· Surabaya", quote: "Anak saya yang dulu malas sholat, kini jadi imam masjid kampung saat liburan. Perubahan yang tidak pernah kami bayangkan sebelumnya." },
-  { initial: "F", name: "Ibu Fitri A.", role: "Orang Tua Santri Â· Bekasi", quote: "Kurikulum TICE ini memang berbeda. Anak hafal Qur'an sekaligus lancar berbahasa Arab dan Inggris. Dua kebaikan yang kami dapat sekaligus." },
-  { initial: "H", name: "Bapak Hendra P.", role: "Orang Tua Santri Â· Medan", quote: "Tahun pertama sempat ragu. Tapi melihat perubahan karakter dan prestasi anak dalam dua tahun ini, tidak ada yang kami sesalkan." },
-  { initial: "S", name: "Ibu Sari M.", role: "Orang Tua Santri Â· Bogor", quote: "Fasilitas asramanya bersih dan terjaga. Anak saya betah dan tidak minta pindah â€” itu saja sudah membuktikan kualitas pesantrennya." },
+  { initial: "I", name: "Bapak Irfan H.", role: "Orang Tua Santri · Jakarta", quote: "Awalnya khawatir anak jauh dari keluarga. Tapi setelah setahun, dia justru lebih mandiri dan hafalannya sudah 15 juz. Alhamdulillah." },
+  { initial: "R", name: "Ibu Rahmawati", role: "Orang Tua Santri · Bandung", quote: `Komunikasi dengan pihak pesantren sangat baik. Laporan perkembangan ${IS_PUTRA ? "putra" : "putri"} kami rutin dikirim via WhatsApp, jadi saya benar-benar tenang.` },
+  { initial: "D", name: "Bapak Dedy S.", role: "Orang Tua Santri · Surabaya", quote: "Anak saya yang dulu malas sholat, kini jadi imam masjid kampung saat liburan. Perubahan yang tidak pernah kami bayangkan sebelumnya." },
+  { initial: "F", name: "Ibu Fitri A.", role: "Orang Tua Santri · Bekasi", quote: "Kurikulum TICE ini memang berbeda. Anak hafal Qur'an sekaligus lancar berbahasa Arab dan Inggris. Dua kebaikan yang kami dapat sekaligus." },
+  { initial: "H", name: "Bapak Hendra P.", role: "Orang Tua Santri · Medan", quote: "Tahun pertama sempat ragu. Tapi melihat perubahan karakter dan prestasi anak dalam dua tahun ini, tidak ada yang kami sesalkan." },
+  { initial: "S", name: "Ibu Sari M.", role: "Orang Tua Santri · Bogor", quote: "Fasilitas asramanya bersih dan terjaga. Anak saya betah dan tidak minta pindah — itu saja sudah membuktikan kualitas pesantrennya." },
 ];
 
-// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Main Component Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+// ─── Main Component ────────────────────────────────────────────────────────
 export default function Home() {
   const statsRef = useRef<HTMLDivElement>(null);
   const [statsStarted, setStatsStarted] = useState(false);
@@ -207,7 +207,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
 
-      {/* â€”â€”â€” Â§1 HERO SECTION â€” SPLIT DARK â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€” */}
+      {/* ——— §1 HERO SECTION — SPLIT DARK ————————————————————————————————————————————— */}
       <section
         id="hero"
         className="relative flex items-center bg-[#020617] pt-8 sm:pt-12 md:pt-14 pb-12 sm:pb-16 md:pb-16 overflow-hidden"
@@ -243,7 +243,7 @@ export default function Home() {
                 </span>
                 <Building2 className={`w-3.5 h-3.5 ${c.text400}`} />
                 <span className="text-white/90 text-xs font-bold uppercase tracking-widest">
-                  Pesantren Islam Internasional Â· Jonggol, Bogor
+                  Pesantren Islam Internasional · Jonggol, Bogor
                 </span>
               </div>
 
@@ -257,7 +257,7 @@ export default function Home() {
                   Cendekia dan Mandiri.
                 </h1>
                 <p className="text-base md:text-lg text-slate-400 max-w-xl leading-relaxed text-left">
-                  Kurikulum <strong className="text-white">TICE</strong> â€” Tahfizh Al-Qur'an, Internasional,
+                  Kurikulum <strong className="text-white">TICE</strong> — Tahfizh Al-Qur'an, Internasional,
                   Karakter Mulia, dan Entrepreneurship. Bergabung bersama{" "}
                   <strong className="text-white">Ribuan santri berprestasi</strong> di lingkungan asrama terbaik.
                 </p>
@@ -292,7 +292,7 @@ export default function Home() {
                   { val: "Jejaring", label: "3 Benua", Icon: Globe },
                 ].map((s, i) => (
                   <div key={i} className="flex items-center gap-2">
-                    {i > 0 && <span className="text-slate-700">Â·</span>}
+                    {i > 0 && <span className="text-slate-700">·</span>}
                     <s.Icon className={`w-3.5 h-3.5 ${c.text400} shrink-0`} />
                     <span className="text-white font-black text-sm">{s.val}</span>
                     <span className="text-slate-300 text-[13px] font-medium tracking-wide">{s.label}</span>
@@ -327,7 +327,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-white font-bold text-sm sm:text-base">PPDB 2027/2028 Dibuka</p>
-                      <p className="text-amber-300 text-[11px] sm:text-xs font-bold tracking-wide drop-shadow-lg shadow-emerald-900/20">Angkatan ke-15 Â· Kuota Terbatas</p>
+                      <p className="text-amber-300 text-[11px] sm:text-xs font-bold tracking-wide drop-shadow-lg shadow-emerald-900/20">Angkatan ke-15 · Kuota Terbatas</p>
                     </div>
                     <Link
                       href="/ppdb"
@@ -353,7 +353,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â Ã‚Â§2 STATS BAND â€” Animated Counters Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â */}
+      {/* ═══ §2 STATS BAND — Animated Counters ══════════════════════════════ */}
       <section
         ref={statsRef}
         className="relative py-20 bg-[#0f172a] border-y border-white/5"
@@ -376,7 +376,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â Ã‚Â§3 BENTO GRID â€” Kurikulum TICE Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â */}
+      {/* ═══ §3 BENTO GRID — Kurikulum TICE ════════════════════════════════ */}
       <section id="program" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="text-center mb-16">
@@ -394,11 +394,11 @@ export default function Home() {
           </header>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* T â€” Tahfizh (large) */}
+            {/* T — Tahfizh (large) */}
             <div className="md:col-span-2 rounded-xl p-8 bg-emerald-900 border border-emerald-500/30 text-white relative overflow-hidden group hover:-translate-y-2 hover:shadow-lg transition-all duration-300 shadow-md" style={{ background: "linear-gradient(135deg, #064e3b 0%, #047857 50%, #022c22 100%)" }}>
               <div className="absolute top-0 right-0 w-56 h-56 rounded-full bg-white/10 -translate-y-1/2 translate-x-1/2 blur-2xl" />
               <BookOpen className="w-10 h-10 mb-6 opacity-90" />
-              <h3 className="text-2xl font-black mb-3 text-white">T â€” Tahfizh Al-Qur'an</h3>
+              <h3 className="text-2xl font-black mb-3 text-white">T — Tahfizh Al-Qur'an</h3>
               <p className="text-white/80 leading-relaxed mb-6">
                 Program hafalan Al-Qur'an 30 juz dengan metode Itqan yang teruji. Setiap santri mendapatkan
                 bimbingan intensif 26 jam/pekan bersama ustadz hafizh berpengalaman lulusan luar negeri.
@@ -408,10 +408,10 @@ export default function Home() {
               </div>
             </div>
 
-            {/* I â€” Internasional (small) */}
+            {/* I — Internasional (small) */}
             <div className="rounded-xl p-8 bg-slate-900 text-white border border-slate-700 group hover:-translate-y-2 hover:shadow-lg transition-all duration-300">
               <Globe className="w-10 h-10 mb-6 text-amber-400" />
-              <h3 className="text-xl font-black mb-3 text-white">I â€” Internasional</h3>
+              <h3 className="text-xl font-black mb-3 text-white">I — Internasional</h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
                 Kurikulum nasional + khas Andalus + persiapan kuliah ke luar negeri (Muadalah).
               </p>
@@ -419,10 +419,10 @@ export default function Home() {
               <div className="text-slate-500 text-xs">Perguruan Tinggi Alumni</div>
             </div>
 
-            {/* C â€” Karakter (small) */}
+            {/* C — Karakter (small) */}
             <div className="rounded-xl p-8 bg-emerald-50 border border-emerald-100 group hover:-translate-y-2 hover:shadow-lg transition-all duration-300">
               <Heart className="w-10 h-10 mb-6 text-emerald-600" />
-              <h3 className="text-xl font-black mb-3 text-slate-900">C â€” Karakter Rabbani</h3>
+              <h3 className="text-xl font-black mb-3 text-slate-900">C — Karakter Rabbani</h3>
               <p className="text-slate-500 text-sm leading-relaxed mb-4">
                 Pembentukan akhlak mulia berdasarkan Al-Qur'an dan As-Sunnah sesuai pemahaman Salafush Shalih.
               </p>
@@ -430,10 +430,10 @@ export default function Home() {
               <div className="text-slate-400 text-xs">Lingkungan Kondusif</div>
             </div>
 
-            {/* E â€” Entrepreneurship (small) */}
+            {/* E — Entrepreneurship (small) */}
             <div className="rounded-xl p-8 bg-amber-50 border border-amber-100 group hover:-translate-y-2 hover:shadow-lg transition-all duration-300">
               <Briefcase className="w-10 h-10 mb-6 text-amber-600" />
-              <h3 className="text-xl font-black mb-3 text-slate-900">E â€” Entrepreneurship</h3>
+              <h3 className="text-xl font-black mb-3 text-slate-900">E — Entrepreneurship</h3>
               <p className="text-slate-500 text-sm leading-relaxed mb-4">
                 Penanaman jiwa kewirausahaan berwawasan global agar santri mandiri dan berdaya sejak dini.
               </p>
@@ -464,7 +464,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â Ã‚Â§4 PAIN vs SOLUTION TABLE Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â */}
+      {/* ═══ §4 PAIN vs SOLUTION TABLE ══════════════════════════════════════ */}
       <section className="py-24 bg-[#020617]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="text-center mb-16">
@@ -494,7 +494,7 @@ export default function Home() {
 
             {[
               { pain: "Anak jauh dari keluarga dan tidak terpantau", fix: "Laporan berkala via WhatsApp + portal online orang tua" },
-              { pain: "Kurikulum pesantren vs persiapan kuliah?", fix: "Muadalah diakui setara â€” alumni masuk UI, UGM, ITB, Al-Azhar" },
+              { pain: "Kurikulum pesantren vs persiapan kuliah?", fix: "Muadalah diakui setara — alumni masuk UI, UGM, ITB, Al-Azhar" },
               { pain: "Hafalan Qur'an tapi akademik terbengkalai?", fix: "TICE memadukan tahfizh 30 juz + akademik internasional seimbang" },
               { pain: "Fasilitas asrama tidak layak dan tidak nyaman", fix: "Asrama modern, kamar bersih, fasilitas olahraga & lab lengkap" },
               { pain: "Khawatir bullying dan lingkungan teman negatif", fix: "Pembinaan karakter 24/7, guru pengasuh profesional bersertifikat" },
@@ -514,7 +514,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â Ã‚Â§5 CARA DAFTAR â€” Step-by-Step Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â */}
+      {/* ═══ §5 CARA DAFTAR — Step-by-Step ════════════════════════════════ */}
       <section id="cara-daftar" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
@@ -577,31 +577,31 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-2 ml-3">
                     <Wifi className="w-3.5 h-3.5 text-slate-500" />
-                    <span className="text-slate-500 text-sm">ppdb-alandalus â€” status realtime</span>
+                    <span className="text-slate-500 text-sm">ppdb-alandalus — status realtime</span>
                   </div>
                 </div>
                 <div className="p-6 font-mono text-sm space-y-2">
                   <p className="text-slate-600">$ cek status PPDB 2027/2028...</p>
                   <p>
-                    <span className={c.text400}>Ã¢â€“Â¸</span>{" "}
+                    <span className={c.text400}>▸</span>{" "}
                     <span className="text-white">Status Pendaftaran</span>{" "}
                     <span className="text-green-400 font-bold inline-flex items-center gap-1">
                       <Check className="w-3.5 h-3.5" /> DIBUKA
                     </span>
                   </p>
                   <p>
-                    <span className={c.text400}>Ã¢â€“Â¸</span>{" "}
+                    <span className={c.text400}>▸</span>{" "}
                     <span className="text-white">Tahun Ajaran</span>{" "}
                     <span className="text-amber-400">IX (2027/2028)</span>
                   </p>
                   <p>
-                    <span className={c.text400}>Ã¢â€“Â¸</span>{" "}
+                    <span className={c.text400}>▸</span>{" "}
                     <span className="text-white">Lokasi</span>{" "}
                     <span className="text-slate-400">Sukamakmur, Jonggol, Bogor</span>
                   </p>
                   <p>
-                    <span className={c.text400}>Ã¢â€“Â¸</span>{" "}
-                    <span className="text-slate-600">kuota terbatas â€” daftar segera...</span>
+                    <span className={c.text400}>▸</span>{" "}
+                    <span className="text-slate-600">kuota terbatas — daftar segera...</span>
                   </p>
                   <p className="flex items-center gap-1 text-slate-300">
                     <Check className="w-4 h-4 text-green-400 shrink-0" />{" "}
@@ -641,7 +641,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â Ã‚Â§6 ALUMNI MARQUEE Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â */}
+      {/* ═══ §6 ALUMNI MARQUEE ══════════════════════════════════════════════ */}
       <section className="py-16 bg-[#052e16] border-y border-white/5 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
           <span className={`text-xs font-bold uppercase tracking-widest ${c.text400}`}>
@@ -655,7 +655,7 @@ export default function Home() {
         <InfiniteMarquee />
       </section>
 
-      {/* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â Ã‚Â§7 FEATURE GRID Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â */}
+      {/* ═══ §7 FEATURE GRID ════════════════════════════════════════════════ */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="text-center mb-16">
@@ -691,7 +691,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â Ã‚Â§8 SOCIAL PROOF â€” University Grid Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â */}
+      {/* ═══ §8 SOCIAL PROOF — University Grid ══════════════════════════════ */}
       <section className="py-20 bg-[#052e16]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-slate-500 text-xs font-bold uppercase tracking-widest mb-10 flex items-center justify-center gap-2">
@@ -730,7 +730,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â Ã‚Â§9 GALERI FOTO PESANTREN Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â */}
+      {/* ═══ §9 GALERI FOTO PESANTREN ═══════════════════════════════════════ */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="text-center mb-12">
@@ -770,7 +770,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â Ã‚Â§9.5 TESTIMONIAL â€” Suara Orang Tua Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â */}
+      {/* ═══ §9.5 TESTIMONIAL — Suara Orang Tua ══════════════════════════════ */}
       <section className="py-24 bg-[#0f172a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="text-center mb-16">
@@ -818,7 +818,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â Ã‚Â§10 FINAL CTA Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â */}
+      {/* ═══ §10 FINAL CTA ══════════════════════════════════════════════════ */}
       <section className="py-24 bg-[#0f172a] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[400px] rounded-full opacity-20 blur-[100px] bg-[#166534]" />

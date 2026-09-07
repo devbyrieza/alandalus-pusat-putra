@@ -324,7 +324,7 @@ export default function LoginPage() {
         </Link>
         <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white/95 border border-slate-200/90 shadow-2xs text-xs font-bold text-slate-700">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span>Portal Resmi SPMB Putra 2027</span>
+          <span>Portal Resmi PPDB Putra 2027</span>
         </div>
       </div>
 
@@ -392,7 +392,7 @@ export default function LoginPage() {
           </div>
 
           <div className="relative z-10 pt-6 mt-6 border-t border-white/10 text-[11px] text-emerald-200/80 font-medium flex items-center justify-between">
-            <span>Panitia SPMB Putra &bull; Al-Andalus IIBS</span>
+            <span>Panitia PPDB Putra &bull; Al-Andalus IIBS</span>
             <span className="text-amber-300">&bull; Kampus Putra</span>
           </div>
         </div>
@@ -402,7 +402,7 @@ export default function LoginPage() {
           
           <div>
             <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug">
-              Masuk Portal SPMB Putra
+              Masuk Portal PPDB Putra
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 font-normal mt-1 leading-relaxed">
               Silakan masukkan NIK / No. Pendaftaran calon santri atau kredensial akun staf Anda.
@@ -697,7 +697,7 @@ export default function LoginPage() {
 
       <div className="text-center text-xs text-slate-400 mt-6 font-medium space-y-1">
         <p>&copy; 2026 {BRANDING.schoolLegalName}. Hak Cipta Dilindungi Undang-Undang.</p>
-        <p className="text-[11px] text-slate-400/80">Panitia SPMB Al-Andalus Putra v2.0</p>
+        <p className="text-[11px] text-slate-400/80">Panitia PPDB Al-Andalus Putra v2.0</p>
       </div>
     </main>
   );

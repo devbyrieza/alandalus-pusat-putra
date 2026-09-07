@@ -121,7 +121,7 @@ export default function Navbar() {
           </Link>
 
           {/* DESKTOP NAV LINKS */}
-          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 bg-primary-900/60 p-1 xl:p-1.5 rounded-xl border border-primary-800 shrink-0">
+          <nav className="hidden xl:flex items-center gap-0.5 xl:gap-1 bg-primary-900/60 p-1 xl:p-1.5 rounded-xl border border-primary-800 shrink-0">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               
@@ -206,7 +206,7 @@ export default function Navbar() {
           </div>
 
           {/* MOBILE MENU TOGGLE */}
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-2 xl:hidden">
             <LanguageSwitcher />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -231,7 +231,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden bg-primary-950 border-b border-primary-800 px-4 pt-2 pb-6 space-y-3"
+            className="xl:hidden bg-primary-950 border-b border-primary-800 px-4 pt-2 pb-6 space-y-3"
           >
             <div className="flex flex-col gap-1">
               {navLinks.map((link) => {

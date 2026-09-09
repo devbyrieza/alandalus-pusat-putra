@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -620,12 +620,12 @@ export default function LoginPage() {
                   onSubmit={handleLoginAdmin}
                   className="space-y-8"
                 >
-                  <AuthInput label="Email / Username Admin" icon={Mail}>
+                  <AuthInput label="Username / Email / No. WA" icon={Mail}>
                     <input
                       type="text"
                       value={emailAdmin}
                       onChange={(e) => setEmailAdmin(e.target.value)}
-                      placeholder="Username atau Email Admin"
+                      placeholder="Username / Email / No. WA"
                       className="w-full px-5 py-3 md:px-8 md:py-5 pl-14 md:pl-16 rounded-xl md:rounded-xl bg-white/50  border border-white/50 focus:bg-white focus:border-secondary-400 focus:ring-4 focus:ring-secondary-100 transition-all font-bold text-ink-950 placeholder:font-medium placeholder:text-ink-400 text-sm md:text-base shadow-inner"
                       disabled={isLoading}
                     />

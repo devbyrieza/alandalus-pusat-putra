@@ -358,7 +358,33 @@ function DokumenCard({
                 Download Format
               </button>
             )}
-            {(dokumen.key === "pakta_integritas_santri" || dokumen.key === "pakta_integritas_ortu" || dokumen.key === "pakta_integritas") && (
+            {dokumen.key === "pakta_integritas_santri" && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open("/api/dokumen/download/pakta-integritas-santri", "_blank");
+                }}
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-100 hover:bg-emerald-600 text-emerald-800 hover:text-white rounded-xl text-[10px] font-black border border-emerald-300 transition-colors shadow-sm"
+                title="Download Format Pakta Integritas Calon Santri"
+              >
+                <Download className="w-3.5 h-3.5" />
+                Download Format
+              </button>
+            )}
+            {dokumen.key === "pakta_integritas_ortu" && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open("/api/dokumen/download/pakta-integritas-ortu", "_blank");
+                }}
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-100 hover:bg-emerald-600 text-emerald-800 hover:text-white rounded-xl text-[10px] font-black border border-emerald-300 transition-colors shadow-sm"
+                title="Download Format Pakta Integritas Calon Orangtua/Wali"
+              >
+                <Download className="w-3.5 h-3.5" />
+                Download Format
+              </button>
+            )}
+            {dokumen.key === "pakta_integritas" && (
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -378,7 +404,7 @@ function DokumenCard({
                   window.open("/api/dokumen/download/surat-pernyataan", "_blank");
                 }}
                 className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-100 hover:bg-emerald-600 text-emerald-800 hover:text-white rounded-xl text-[10px] font-black border border-emerald-300 transition-colors shadow-sm"
-                title="Download Format Surat Pernyataan Orang Tua Panitia"
+                title="Download Format Surat Pernyataan Bebas Perilaku Buruk Panitia"
               >
                 <Download className="w-3.5 h-3.5" />
                 Download Format

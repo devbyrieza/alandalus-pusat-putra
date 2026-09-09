@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { prisma } from "@/lib/prisma";
+import fs from "fs";
+import path from "path";
 import {
   generateSuratKesehatan,
   generateSuratPernyataan,
@@ -47,7 +49,68 @@ export async function GET(
       }
     }
 
-    // Prepare PDF data (Filled if pendaftar exists, or official blank dots if downloading clean format)
+    const normType = (type || "").toLowerCase().replace(/_/g, "-");
+    const suffix = pendaftar?.nomor_pendaftaran && pendaftar.nomor_pendaftaran !== "-"
+      ? `_${pendaftar.nomor_pendaftaran}`
+      : "_Format_Panitia";
+
+    // 1. Prioritaskan Format Template Resmi dari public/templates
+    const tplDir = path.join(process.cwd(), "public/templates");
+    let fileBuffer: Buffer | null = null;
+    let filename = `Template_Dokumen${suffix}.pdf`;
+
+    if (normType.includes("kesehatan") || normType.includes("sehat")) {
+      const p = path.join(tplDir, "surat-kesehatan.pdf");
+      if (fs.existsSync(p)) {
+        fileBuffer = await fs.promises.readFile(p);
+        filename = `Format_Surat_Keterangan_Sehat${suffix}.pdf`;
+      }
+    } else if (normType === "pakta-integritas-santri" || normType === "pakta_integritas_santri") {
+      const p = path.join(tplDir, "pakta-integritas-santri.pdf");
+      if (fs.existsSync(p)) {
+        fileBuffer = await fs.promises.readFile(p);
+        filename = `Format_Pakta_Integritas_Calon_Santri${suffix}.pdf`;
+      }
+    } else if (normType === "pakta-integritas-ortu" || normType === "pakta_integritas_ortu" || normType === "pakta-integritas-wali") {
+      const p = path.join(tplDir, "pakta-integritas-ortu.pdf");
+      if (fs.existsSync(p)) {
+        fileBuffer = await fs.promises.readFile(p);
+        filename = `Format_Pakta_Integritas_Calon_OrangTua_Wali${suffix}.pdf`;
+      }
+    } else if (normType.includes("pakta") || normType.includes("integritas")) {
+      const p = path.join(tplDir, "pakta-integritas.pdf");
+      if (fs.existsSync(p)) {
+        fileBuffer = await fs.promises.readFile(p);
+        filename = `Format_Pakta_Integritas_Santri_dan_OrangTua${suffix}.pdf`;
+      }
+    } else if (
+      normType.includes("pernyataan") ||
+      normType.includes("bebas") ||
+      normType.includes("perilaku")
+    ) {
+      const p = path.join(tplDir, "surat-pernyataan.pdf");
+      if (fs.existsSync(p)) {
+        fileBuffer = await fs.promises.readFile(p);
+        filename = `Format_Surat_Pernyataan_Bebas_Perilaku_Buruk${suffix}.pdf`;
+      }
+    }
+
+    if (fileBuffer) {
+      const isDownload = searchParams.get("download") === "1" || searchParams.get("download") === "true";
+      const disposition = isDownload ? `attachment; filename="${filename}"` : `inline; filename="${filename}"`;
+
+      return new NextResponse(fileBuffer, {
+        headers: {
+          "Content-Type": "application/pdf",
+          "Content-Disposition": disposition,
+          "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+          "Pragma": "no-cache",
+          "Expires": "0",
+        },
+      });
+    }
+
+    // 2. Fallback ke generator PDF dinamis (untuk kartu ujian, bukti pendaftaran, dll)
     const pdfData: PendaftarPdfData = {
       nomor_pendaftaran: pendaftar?.nomor_pendaftaran || "..................................................",
       nama_lengkap: pendaftar?.nama_lengkap || "....................................................................",
@@ -62,15 +125,14 @@ export async function GET(
       tahun_ajaran: pendaftar?.tahun_ajaran?.nama || "2027/2028",
     };
 
-    const normType = (type || "").toLowerCase().replace(/_/g, "-");
-    const suffix = pendaftar?.nomor_pendaftaran && pendaftar.nomor_pendaftaran !== "-"
-      ? `_${pendaftar.nomor_pendaftaran}`
-      : "_Format_Panitia";
-
     let doc: any = null;
-    let filename = `Template_Dokumen${suffix}.pdf`;
-
-    if (normType.includes("kesehatan") || normType.includes("sehat")) {
+    if (normType.includes("bukti")) {
+      doc = await generateBuktiPendaftaran(pdfData);
+      filename = `Bukti_Pendaftaran${suffix}.pdf`;
+    } else if (normType.includes("kartu") || normType.includes("ujian") || normType.includes("seleksi")) {
+      doc = await generateKartuUjian(pdfData);
+      filename = `Kartu_Ujian_Seleksi${suffix}.pdf`;
+    } else if (normType.includes("kesehatan") || normType.includes("sehat")) {
       doc = await generateSuratKesehatan(pdfData);
       filename = `Format_Surat_Keterangan_Sehat${suffix}.pdf`;
     } else if (normType === "pakta-integritas-santri" || normType === "pakta_integritas_santri") {
@@ -82,22 +144,9 @@ export async function GET(
     } else if (normType.includes("pakta") || normType.includes("integritas")) {
       doc = await (generatePaktaIntegritas as any)(pdfData, "both");
       filename = `Format_Pakta_Integritas_Santri_dan_OrangTua${suffix}.pdf`;
-    } else if (
-      normType.includes("pernyataan") ||
-      normType.includes("bebas") ||
-      normType.includes("perilaku")
-    ) {
+    } else {
       doc = await generateSuratPernyataan(pdfData);
       filename = `Format_Surat_Pernyataan_Bebas_Perilaku_Buruk${suffix}.pdf`;
-    } else if (normType.includes("bukti")) {
-      doc = await generateBuktiPendaftaran(pdfData);
-      filename = `Bukti_Pendaftaran${suffix}.pdf`;
-    } else if (normType.includes("kartu") || normType.includes("ujian") || normType.includes("seleksi")) {
-      doc = await generateKartuUjian(pdfData);
-      filename = `Kartu_Ujian_Seleksi${suffix}.pdf`;
-    } else {
-      doc = await (generatePaktaIntegritas as any)(pdfData, "both");
-      filename = `Format_Dokumen${suffix}.pdf`;
     }
 
     if (!doc) {

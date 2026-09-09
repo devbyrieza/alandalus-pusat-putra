@@ -87,13 +87,23 @@ export default function DownloadBerkasTab() {
       status: "available",
       action: () => window.open("/templates/surat-kesehatan.pdf", "_blank") },
     {
-      name: "Pakta Integritas",
-      description: "Format resmi pakta integritas santri & orang tua panitia",
+      name: "Pakta Integritas (Santri & Ortu)",
+      description: "Format resmi pakta integritas lengkap (2 Halaman)",
       status: "available",
       action: () => window.open("/templates/pakta-integritas.pdf", "_blank") },
     {
-      name: "Surat Pernyataan",
-      description: "Format resmi surat pernyataan orang tua / wali panitia",
+      name: "Pakta Integritas Calon Santri",
+      description: "Format resmi pakta integritas khusus calon santri",
+      status: "available",
+      action: () => window.open("/templates/pakta-integritas-santri.pdf", "_blank") },
+    {
+      name: "Pakta Integritas Calon Orang Tua / Wali",
+      description: "Format resmi pakta integritas khusus orang tua / wali",
+      status: "available",
+      action: () => window.open("/templates/pakta-integritas-ortu.pdf", "_blank") },
+    {
+      name: "Surat Pernyataan Bebas Perilaku Buruk",
+      description: "Format resmi surat pernyataan panitia",
       status: "available",
       action: () => window.open("/templates/surat-pernyataan.pdf", "_blank") },
   ];

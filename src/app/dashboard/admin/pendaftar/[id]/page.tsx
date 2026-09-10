@@ -236,18 +236,6 @@ export default function PendaftarDetailPage() {
     jumlahMotor: 0 });
   const [savingWd, setSavingWd] = useState(false);
 
-  
-  useEffect(() => {
-    if (isEditModalOpen || isNilaiModalOpen || isWdModalOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isEditModalOpen, isNilaiModalOpen, isWdModalOpen]);
-
   useEffect(() => {
     const fetchSession = async () => {
       try {

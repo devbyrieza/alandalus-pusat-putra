@@ -68,7 +68,7 @@ export default function DaftarUlangPage() {
               <tr key={item.id} className="hover:bg-slate-50">
                 <td className="px-5 py-4">
                   <p className="font-bold text-slate-800">{item.nama}</p>
-                  <p className="text-xs text-slate-500">{item.jenjang === "MTs" ? "SMP" : item.jenjang}</p>
+                  <p className="text-xs text-slate-500">{item.jenjang === "MTs" ? "SMP IT" : item.jenjang}</p>
                 </td>
                 <td className="px-5 py-4 text-center">
                   {item.status === 'lunas' && <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">LUNAS</span>}

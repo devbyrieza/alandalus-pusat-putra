@@ -1499,7 +1499,7 @@ function AdminPendaftarContent() {
               className="w-full px-4 py-3 bg-amber-50/50 border border-amber-100 rounded-xl focus:border-primary-500 focus:bg-white focus:outline-none font-bold text-primary-950"
             >
               <option value="">Semua Jenjang</option>
-              <option value="MTs">SMP (Sekolah Menengah Pertama)</option>
+              <option value="MTs">SMP IT (Sekolah Menengah Pertama Islam Terpadu)</option>
               <option value="IL">I'dadiyah Lughawiy</option>
             </select>
           </div>
@@ -1869,7 +1869,7 @@ function AdminPendaftarContent() {
                           {item.nomor_pendaftaran}
                         </span>
                         <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 bg-purple-100 text-purple-700 rounded-full">
-                          {item.jenjang === "MTs" ? "SMP" : item.jenjang}
+                          {item.jenjang === "MTs" ? "SMP IT" : item.jenjang}
                         </span>
                       </div>
                       <p className="font-black text-primary-950 leading-tight text-sm flex items-center gap-1.5 flex-wrap">
@@ -2104,7 +2104,7 @@ function AdminPendaftarContent() {
                       )}
                       <td className="px-4 py-3">
                         <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-bold">
-                          {item.jenjang === "MTs" ? "SMP" : item.jenjang}
+                          {item.jenjang === "MTs" ? "SMP IT" : item.jenjang}
                         </span>
                       </td>
                       <td className="px-4 py-3">

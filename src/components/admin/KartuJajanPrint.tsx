@@ -63,7 +63,7 @@ export default function KartuJajanPrint({ santri, fotoUrl }: KartuJajanPrintProp
             {santri.nama_lengkap}
           </h2>
           <p className="text-[8px] font-bold mt-1 uppercase tracking-widest" style={{ color: '#ddc192' }}>
-            {santri.jenjang === 'MTs' ? 'SMP' : "I'dad Lughowi"}
+            {santri.jenjang === 'MTs' ? 'SMP IT' : "I'dad Lughowi"}
           </p>
         </div>
 

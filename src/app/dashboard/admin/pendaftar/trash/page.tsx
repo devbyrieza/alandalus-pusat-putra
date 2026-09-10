@@ -205,7 +205,7 @@ export default function TrashPage() {
               <option value="SD">SD</option>
               <option value="SMP">SMP</option>
               <option value="SMA">SMA</option>
-              <option value="MTs">SMP</option>
+              <option value="MTs">SMP IT</option>
               <option value="IL">IL</option>
             </select>
           </div>
@@ -283,7 +283,7 @@ export default function TrashPage() {
                       </td>
                       <td className="px-4 py-3">
                         <span className="px-3 py-1 bg-stone-100 text-stone-600 rounded-full text-xs font-bold">
-                          {item.jenjang === "MTs" ? "SMP" : item.jenjang}
+                          {item.jenjang === "MTs" ? "SMP IT" : item.jenjang}
                         </span>
                       </td>
                       <td className="px-4 py-3">

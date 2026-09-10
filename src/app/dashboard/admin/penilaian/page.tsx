@@ -843,7 +843,7 @@ export default function ExaminerDashboard() {
                         </td>
                         <td className="px-4 py-4 whitespace-nowrap">
                           <span className="text-xs font-bold text-ink-600 bg-ink-100 px-2 py-1 rounded-xl">
-                            {s.jenjang === "MTs" ? "SMP" : s.jenjang}
+                            {s.jenjang === "MTs" ? "SMP IT" : s.jenjang}
                           </span>
                         </td>
                         <td className="px-4 py-4 whitespace-nowrap">
@@ -1180,7 +1180,7 @@ export default function ExaminerDashboard() {
                             {s.nomor_pendaftaran || "-"}
                           </span>
                           <span className="text-[9px] font-black text-primary-700 bg-primary-50 px-2 py-0.5 rounded-xl uppercase">
-                            {s.jenjang === "MTs" ? "SMP" : s.jenjang}
+                            {s.jenjang === "MTs" ? "SMP IT" : s.jenjang}
                           </span>
                         </div>
                         <h3 className="text-sm font-black text-ink-900 uppercase leading-snug">

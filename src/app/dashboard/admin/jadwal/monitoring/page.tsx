@@ -303,7 +303,7 @@ export default function MonitoringJadwalPage() {
                             className="w-32 bg-white border border-slate-200 rounded-xl px-3 py-2 text-[11px] font-black text-ink-600 focus:ring-4 focus:ring-primary-500/5 focus:border-primary-500 outline-none h-12 shadow-lg shadow-emerald-900/20 appearance-none text-center uppercase tracking-wider"
                         >
                             <option value="ALL">SEMUA</option>
-                            <option value="MTs">SMP</option>
+                            <option value="MTs">SMP IT</option>
                             <option value="IL">IL</option>
                         </select>
                     </div>

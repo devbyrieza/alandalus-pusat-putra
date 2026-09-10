@@ -269,7 +269,7 @@ export default function PendaftarDetailPage() {
             "Nomor pendaftaran lama (<b>" + pendaftar.nomor_pendaftaran + "</b>) akan menjadi kosong dan bisa digunakan oleh pendaftar lain.</div>",
       input: "select",
       inputOptions: {
-        "MTs": "SMP",
+        "MTs": "SMP IT",
         "IL": "IL",
         "MA": "MA",
         "SD": "SD",
@@ -1108,7 +1108,7 @@ export default function PendaftarDetailPage() {
                   {pendaftar.nomor_pendaftaran}
                 </span>
                 <span className="px-2.5 py-1 bg-amber-400 text-primary-900 rounded-xl text-xs font-black uppercase shadow-lg shadow-emerald-900/20">
-                  {pendaftar.jenjang === "MTs" ? "SMP" : pendaftar.jenjang}
+                  {pendaftar.jenjang === "MTs" ? "SMP IT" : pendaftar.jenjang}
                 </span>
                 <span className="text-primary-100 font-bold">
                   {["L", "Laki-laki"].includes(pendaftar.jenis_kelamin)
@@ -2081,7 +2081,7 @@ export default function PendaftarDetailPage() {
                     : "Perempuan"
                 }
               />
-              <InfoItem label="Jenjang" value={pendaftar.jenjang === "MTs" ? "SMP" : pendaftar.jenjang} />
+              <InfoItem label="Jenjang" value={pendaftar.jenjang === "MTs" ? "SMP IT" : pendaftar.jenjang} />
               {/* Hide extensive personal details for Finance/Berkas/Penguji to reduce noise */}
               {!isKeuangan && !isBerkas && !isPenguji && (
                 <>

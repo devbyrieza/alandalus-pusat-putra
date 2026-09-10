@@ -622,7 +622,7 @@ function InputNilaiContent() {
                 <Hash className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> {p.nomor_pendaftaran}
               </span>
               <span className="inline-flex items-center px-3 py-1 sm:py-1.5 rounded-xl sm:rounded-xl bg-secondary-400 text-primary-950 text-[9px] sm:text-[10px] font-black uppercase tracking-widest shadow-lg shadow-emerald-900/20">
-                {p.jenjang === "MTs" ? "SMP" : p.jenjang}
+                {p.jenjang === "MTs" ? "SMP IT" : p.jenjang}
               </span>
             </div>
           </div>

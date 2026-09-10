@@ -1222,7 +1222,7 @@ export default function JadwalPengujiPage() {
                         <div className="flex-1 min-w-0">
                           <div className="flex flex-wrap items-center gap-2 mb-3">
                             <span className="px-3 py-1 bg-primary-50 text-primary-700 border border-primary-100 rounded-xl text-[9px] font-black uppercase tracking-[0.15em]">
-                              {item.pendaftar.jenjang === "MTs" ? "SMP" : item.pendaftar.jenjang}
+                              {item.pendaftar.jenjang === "MTs" ? "SMP IT" : item.pendaftar.jenjang}
                             </span>
                             <span className="px-3 py-1 bg-amber-400 text-primary-950 rounded-xl text-[9px] font-black uppercase tracking-[0.15em] flex items-center gap-1.5">
                               <Hash className="w-3.5 h-3.5" />{" "}
@@ -2254,7 +2254,7 @@ export default function JadwalPengujiPage() {
                     <label className="block text-secondary-500 text-xs">
                       Jenjang
                     </label>
-                    <p className="text-ink-700">{selectedPendaftar.jenjang === "MTs" ? "SMP" : selectedPendaftar.jenjang}</p>
+                    <p className="text-ink-700">{selectedPendaftar.jenjang === "MTs" ? "SMP IT" : selectedPendaftar.jenjang}</p>
                   </div>
                   <div className="col-span-1 sm:col-span-2">
                     <label className="block text-secondary-500 text-xs">

@@ -287,7 +287,7 @@ export default function AuditSeleksiPage() {
               className="bg-transparent text-xs font-bold text-ink-700 outline-none"
             >
               <option value="">Semua Jenjang</option>
-              <option value="MTs">MTs</option>
+              <option value="MTs">SMP</option>
               <option value="SMA">SMA</option>
               <option value="IL">I&apos;dad Lughowi</option>
             </select>

@@ -395,8 +395,8 @@ export default function DaftarPindahanPage() {
                   {[
                     {
                       value: "MTs",
-                      title: "SMPIT",
-                      subtitle: "Pindahan tingkat SMP/MTs" },
+                      title: "SMP",
+                      subtitle: "Pindahan tingkat SMP" },
                     {
                       value: "MA",
                       title: "SMA IT",

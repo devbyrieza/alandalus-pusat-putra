@@ -232,7 +232,7 @@ const PENGUJI_QURAN_LIST_PUTRI = ["Andi Fatimah Azzahra Rahman", "Testing"];
 const PEWAWANCARA_CALSAN_LIST_PUTRI = ["Halimah Fauziah", "Rima Maryani Putri Utami", "Testing"];
 const PEWAWANCARA_CAWALSAN_LIST_PUTRI = ["Maulidin Bachtiar", "Testing"];
 
-const JENJANG_OPTIONS = ["MTs Putra", "MTs Putri", "IL Putra", "IL Putri", "SMA Putra", "SMA Putri"];
+const JENJANG_OPTIONS = ["SMP Putra", "SMP Putri", "IL Putra", "IL Putri", "SMA Putra", "SMA Putri"];
 
 const KATEGORI_OPTIONS = ["Yatim/ah", "Memiliki keluarga/saudara/kerabat di Al-Andalus", "Memiliki teman/rekan/tetangga di Al-Andalus", "Baru"];
 
@@ -622,7 +622,7 @@ function InputNilaiContent() {
                 <Hash className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> {p.nomor_pendaftaran}
               </span>
               <span className="inline-flex items-center px-3 py-1 sm:py-1.5 rounded-xl sm:rounded-xl bg-secondary-400 text-primary-950 text-[9px] sm:text-[10px] font-black uppercase tracking-widest shadow-lg shadow-emerald-900/20">
-                {p.jenjang}
+                {p.jenjang === "MTs" ? "SMP" : p.jenjang}
               </span>
             </div>
           </div>

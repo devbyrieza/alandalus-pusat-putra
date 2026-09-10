@@ -128,7 +128,7 @@ const StatWidget = ({ label, value, icon: Icon, color, trend, breakdown, highlig
               <div className="flex flex-col">
                 <span className={`text-[9px] font-black uppercase tracking-widest mb-1 ${
                   highlighted ? "text-secondary-300" : "text-primary-400"
-                }`}>MTs Putra</span>
+                }`}>SMP Putra</span>
                 <span className={`text-base font-black leading-none ${
                   highlighted ? "text-white" : "text-primary-700"
                 }`}>{breakdown.mts_l || 0}</span>
@@ -136,7 +136,7 @@ const StatWidget = ({ label, value, icon: Icon, color, trend, breakdown, highlig
               <div className="flex flex-col">
                 <span className={`text-[9px] font-black uppercase tracking-widest mb-1 ${
                   highlighted ? "text-secondary-300" : "text-primary-400"
-                }`}>MTs Putri</span>
+                }`}>SMP Putri</span>
                 <span className={`text-base font-black leading-none ${
                   highlighted ? "text-pink-300" : "text-pink-500"
                 }`}>{breakdown.mts_p || 0}</span>

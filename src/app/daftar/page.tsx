@@ -372,7 +372,7 @@ export default function DaftarPage() {
                   ].map((option) => {
                     const isPutra = formData.jenis_kelamin === "L";
                     const isPutri = formData.jenis_kelamin === "P";
-                    // Al-Andalus Putra: Hanya MTs Putra dan IL Putra yang buka. MA Putra tutup, semua Putri tutup.
+                    // Al-Andalus Putra: Hanya SMP Putra dan IL Putra yang buka. MA Putra tutup, semua Putri tutup.
                     const isClosed = isPutri || option.value === "MA";
                     const closedLabel = isPutri
                       ? "Pendaftaran Putri Belum Dibuka"

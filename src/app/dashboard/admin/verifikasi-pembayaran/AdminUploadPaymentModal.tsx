@@ -180,7 +180,7 @@ export default function AdminUploadPaymentModal({
                         <div className="flex items-center justify-between mb-1">
                           <span className="font-bold text-stone-800">{p.nama_lengkap}</span>
                           <span className="text-xs font-black text-primary-600 bg-primary-100 px-2 py-0.5 rounded-xl">
-                            {p.jenjang}
+                            {p.jenjang === "MTs" ? "SMP" : p.jenjang}
                           </span>
                         </div>
                         <div className="flex items-center gap-2 text-xs text-stone-500">
@@ -203,7 +203,7 @@ export default function AdminUploadPaymentModal({
                 <div>
                   <p className="text-xs font-black text-primary-600 uppercase tracking-widest mb-1">Pendaftar Terpilih</p>
                   <p className="font-bold text-primary-950 text-lg">{selectedPendaftar.nama_lengkap}</p>
-                  <p className="text-sm text-primary-700">{selectedPendaftar.nomor_pendaftaran} • {selectedPendaftar.jenjang}</p>
+                  <p className="text-sm text-primary-700">{selectedPendaftar.nomor_pendaftaran} • {selectedPendaftar.jenjang === "MTs" ? "SMP" : selectedPendaftar.jenjang}</p>
                 </div>
                 <button 
                   type="button" 

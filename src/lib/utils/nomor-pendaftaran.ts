@@ -9,7 +9,7 @@ import { prisma } from "@/lib/prisma";
  * Format: [PREFIX][YY][NNNNN]
  *
  * Prefixes:
- * - MTA = MTs Putra (Laki-laki)
+ * - MTA = SMP Putra (Laki-laki)
  * - ILA = I'dad Lughowi Putra
  *
  * Example: MTI2600001, MTA2600045, ILI2600123
@@ -301,8 +301,8 @@ export function getPrefixLabel(prefix: string): string {
     SMI: "SMA IT Putri (Perempuan)",
     ILA: "I'dad Lughowi Putra (Laki-laki)",
     ILI: "I'dad Lughowi Putri (Perempuan)",
-    MTA: "SMP IT / MTs Putra (Laki-laki)",
-    MTI: "SMP IT / MTs Putri (Perempuan)",
+    MTA: "SMP IT / SMP Putra (Laki-laki)",
+    MTI: "SMP IT / SMP Putri (Perempuan)",
     MAA: "SMA IT / MA Putra (Laki-laki)",
     MAI: "SMA IT / MA Putri (Perempuan)",
   };

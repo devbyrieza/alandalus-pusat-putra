@@ -171,7 +171,7 @@ export default function BankSoalPanitiaPage() {
       {/* TABS NAVIGATION (MAROON & KREM EMAS) */}
       <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
         {[
-          { id: "mts", label: "Akademik MTs", count: AKADEMIK_MTS.length, icon: BookOpen },
+          { id: "mts", label: "Akademik SMP", count: AKADEMIK_MTS.length, icon: BookOpen },
           { id: "il", label: "Akademik IL", count: AKADEMIK_IL.length, icon: BookOpen },
           { id: "ma", label: "Akademik MA/SMA", count: AKADEMIK_MA.length, icon: GraduationCap },
           { id: "kesiapan", label: "Kesiapan Santri", count: 14, icon: Heart },
@@ -216,7 +216,7 @@ export default function BankSoalPanitiaPage() {
           >
             <Clock className="w-5 h-5 text-[#ddc192] flex-shrink-0 mt-0.5" />
             <div className="space-y-1">
-              <p className="font-extrabold text-sm text-white">Informasi Ujian Akademik MTs:</p>
+              <p className="font-extrabold text-sm text-white">Informasi Ujian Akademik SMP:</p>
               <p className="text-xs text-[#ddc192]">
                 Durasi Pengerjaan: <strong className="text-white">45 Menit</strong> | Total Soal: <strong className="text-white">20 Butir Multiple Choice (A/B/C/D)</strong>
               </p>

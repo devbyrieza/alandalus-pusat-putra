@@ -395,7 +395,7 @@ function VerifikasiDokumenContent() {
                               {pendaftar.nomor_pendaftaran}
                             </span>
                             <span className="text-[10px] font-black uppercase tracking-widest text-primary-700 bg-primary-50 border border-primary-100 px-2 py-0.5 rounded shadow-xs">
-                              {pendaftar.jenjang}
+                              {pendaftar.jenjang === "MTs" ? "SMP" : pendaftar.jenjang}
                             </span>
                           </div>
                         </div>

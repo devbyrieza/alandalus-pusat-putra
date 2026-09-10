@@ -341,7 +341,7 @@ export default function RekapSeragamPage() {
                           <div className="flex flex-col">
                             <span className="font-black text-ink-900">{item.nama_lengkap}</span>
                             <span className="text-xs text-ink-500 font-bold mt-0.5 font-mono">
-                              {item.nomor_pendaftaran} • {item.jenjang}
+                              {item.nomor_pendaftaran} • {item.jenjang === "MTs" ? "SMP" : item.jenjang}
                             </span>
                           </div>
                         </td>

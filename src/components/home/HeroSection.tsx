@@ -342,7 +342,7 @@ export default function HeroSection() {
                 <div>
                   <p className="stat-label mb-1">Tersedia</p>
                   <p className="text-sm font-black leading-tight text-[var(--color-primary-900)]">
-                    MTs &amp; IL
+                    SMP &amp; IL
                   </p>
                   <p className="text-[10px] font-semibold mt-0.5 text-[var(--color-ink-500)]">
                     Kuota terbatas

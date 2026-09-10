@@ -1,4 +1,6 @@
-﻿"use client";
+"use client";
+
+"use client";
 
 import { useState, useEffect } from "react";
 import { RefreshCw, Check, Smartphone, User, Key, ClipboardList, CheckCircle2, FileText, BarChart3, Calendar, Sparkles, Send } from "lucide-react";

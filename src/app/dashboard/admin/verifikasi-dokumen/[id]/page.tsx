@@ -535,7 +535,7 @@ export default function VerifikasiDokumenDetailPage() {
             }`}
           >
             {/* Document Preview */}
-            <div className="relative aspect-[4/3] bg-stone-100 whitespace-nowrap inline-block shrink-0">
+            <div className="w-full relative aspect-[4/3] bg-stone-100 overflow-hidden">
               {dok.file_url ? (
                 isImageFile(dok) ? (
                   <img
@@ -576,7 +576,7 @@ export default function VerifikasiDokumenDetailPage() {
                   href={dok.file_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute top-3 right-3 p-4 bg-white/90 hover:bg-white rounded-3xl text-stone-700 shadow-2xl shadow-primary/30  shadow-primary/20  shadow-primary/10 transition-all"
+                  className="absolute top-3 right-3 p-2 bg-white/90 hover:bg-white rounded-xl text-stone-700 shadow-md transition-all hover:scale-105 z-10"
                 >
                   <ExternalLink className="w-4 h-4" />
                 </a>

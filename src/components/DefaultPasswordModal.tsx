@@ -63,7 +63,7 @@ export function DefaultPasswordModal({ profileUrl = "/dashboard/admin/profil" }:
   return (
     <AnimatePresence>
       {isOpen && (
-        <div role="dialog" aria-modal="true" data-modal="true" className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-950/80  overscroll-contain">
+        <div onWheel={(e) => e.stopPropagation()} role="dialog" aria-modal="true" data-modal="true" className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-950/80  overscroll-contain">
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

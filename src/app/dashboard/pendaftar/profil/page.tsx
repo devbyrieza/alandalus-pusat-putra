@@ -281,7 +281,7 @@ export default function ProfilPage() {
           {/* Address Card */}
           <div className="glass-panel p-6 md:p-8 rounded-[2rem] shadow-clay-md">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center text-primary-600 shadow-lg shadow-emerald-900/20">
+              <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center text-primary-600 shadow-lg shadow-emerald-900/20 whitespace-nowrap inline-block shrink-0">
                 <MapPin className="w-6 h-6" />
               </div>
               <div>

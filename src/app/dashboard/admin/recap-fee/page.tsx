@@ -209,7 +209,7 @@ export default function RecapFeePage() {
           <div className="flex gap-2 md:gap-3">
             <Button
               onClick={exportToExcel}
-              className="flex-1 md:flex-none bg-emerald-50 text-emerald-700 border-emerald-100 hover:bg-emerald-100 rounded-xl h-11 md:h-12 px-4 md:px-6 font-black shadow-none transition-all text-sm"
+              className="flex-1 md:flex-none bg-emerald-50 text-emerald-700 border-emerald-100 hover:bg-emerald-100 rounded-xl h-11 md:h-12 px-4 md:px-6 font-black shadow-none transition-all text-sm whitespace-nowrap inline-block shrink-0"
             >
               <Download className="w-4 h-4 mr-1.5" /> Excel
             </Button>
@@ -286,7 +286,7 @@ export default function RecapFeePage() {
         <div className="lg:col-span-4 h-full">
           <div className="bg-white rounded-[2rem] p-6 shadow-clay-md border border-white/40 h-full">
             <div className="flex items-center gap-2 mb-4">
-              <div className="p-1.5 bg-amber-100 rounded-xl">
+              <div className="p-1.5 bg-amber-100 rounded-xl whitespace-nowrap inline-block shrink-0">
                 <DollarSign className="w-4 h-4 text-amber-700" />
               </div>
               <h3 className="text-sm font-black text-ink-900 uppercase tracking-tight">
@@ -395,7 +395,7 @@ export default function RecapFeePage() {
                   >
                     <td className="px-6 py-6">
                       <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-primary-900 font-black shadow-lg shadow-emerald-900/20 border border-amber-200">
+                        <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-primary-900 font-black shadow-lg shadow-emerald-900/20 border border-amber-200 whitespace-nowrap inline-block shrink-0">
                           {item.name.charAt(0)}
                         </div>
                         <div>
@@ -498,7 +498,7 @@ export default function RecapFeePage() {
               >
                 {/* Name + Honor Row */}
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-11 h-11 rounded-xl bg-amber-100 flex items-center justify-center text-primary-900 font-black text-lg border border-amber-200 shrink-0">
+                  <div className="w-11 h-11 rounded-xl bg-amber-100 flex items-center justify-center text-primary-900 font-black text-lg border border-amber-200 shrink-0 whitespace-nowrap inline-block shrink-0">
                     {item.name.charAt(0)}
                   </div>
                   <div className="flex-1 min-w-0">

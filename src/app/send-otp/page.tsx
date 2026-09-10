@@ -220,7 +220,7 @@ export default function SendOtpPage() {
                       className={`font-black ${selectedChannel === "email" ? "text-primary-900" : "text-ink-900"}`}
                     >
                       Email{" "}
-                      <span className="text-primary-600 bg-primary-100 px-2 py-0.5 rounded text-[10px] font-bold ml-1">
+                      <span className="text-primary-600 bg-primary-100 px-2 py-0.5 rounded text-[10px] font-bold ml-1 whitespace-nowrap inline-block shrink-0">
                         GRATIS
                       </span>
                     </span>
@@ -240,7 +240,7 @@ export default function SendOtpPage() {
                     Kode dikirim ke email orang tua
                   </p>
                   {selectedChannel === "email" && (
-                    <div className="mt-2 p-2 bg-amber-100 border border-amber-200 rounded-xl">
+                    <div className="mt-2 p-2 bg-amber-100 border border-amber-200 rounded-xl whitespace-nowrap inline-block shrink-0">
                       <p className="text-[11px] text-primary-800 font-bold flex items-center gap-1">
                         <Check className="w-3 h-3 text-primary-700" />
                         <span>Akan dikirim ke: {email}</span>

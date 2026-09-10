@@ -270,7 +270,7 @@ export async function GET(request: NextRequest) {
       </div>
       <div class="info-row">
         <div class="info-label">Jenjang Pendidikan</div>
-        <div class="info-value">${pendaftar.jenjang === "MTs" ? "SMP IT" : pendaftar.jenjang}</div>
+        <div class="info-value">${pendaftar.jenjang === "IL" ? "IL" : "SMP IT"}</div>
       </div>
       <div class="info-row">
         <div class="info-label">Tahun Ajaran</div>

@@ -257,7 +257,7 @@ export default function HasilSeleksiPage() {
                       {c.nomor_pendaftaran}
                     </p>
                   </div>
-                  <span className="px-2 py-0.5 bg-stone-100 text-stone-600 rounded text-[9px] font-black uppercase shrink-0 border border-stone-200 shadow-lg shadow-emerald-900/20">
+                  <span className="px-2 py-0.5 bg-stone-100 text-stone-600 rounded text-[9px] font-black uppercase shrink-0 border border-stone-200 shadow-lg shadow-emerald-900/20 whitespace-nowrap inline-block shrink-0">
                     {c.jenjang}
                   </span>
                 </div>
@@ -284,7 +284,7 @@ export default function HasilSeleksiPage() {
                         CADANGAN
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-100 text-rose-700 text-[10px] font-black uppercase border border-rose-200">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-100 text-rose-700 text-[10px] font-black uppercase border border-rose-200 whitespace-nowrap inline-block shrink-0">
                         DITOLAK
                       </span>
                     )}
@@ -298,7 +298,7 @@ export default function HasilSeleksiPage() {
         {/* Desktop View: Table */}
         <div className="hidden md:block overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-stone-100/50 border-b border-stone-200">
+            <thead className="bg-stone-100/50 border-b border-stone-200 whitespace-nowrap inline-block shrink-0">
               <tr>
                 <th className="px-6 py-4 text-left text-xs font-black text-stone-500 uppercase tracking-wider">
                   Nama & Detail Nilai
@@ -402,7 +402,7 @@ export default function HasilSeleksiPage() {
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <span className="px-2 py-1 bg-stone-100 text-stone-700 rounded-md text-xs font-bold border border-stone-200 shadow-lg shadow-emerald-900/20">
+                        <span className="px-2 py-1 bg-stone-100 text-stone-700 rounded-md text-xs font-bold border border-stone-200 shadow-lg shadow-emerald-900/20 whitespace-nowrap inline-block shrink-0">
                           {c.jenjang}
                         </span>
                       </td>
@@ -437,7 +437,7 @@ export default function HasilSeleksiPage() {
                             CADANGAN
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-100 text-rose-700 text-xs font-bold border border-rose-200">
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-100 text-rose-700 text-xs font-bold border border-rose-200 whitespace-nowrap inline-block shrink-0">
                             DITOLAK
                           </span>
                         )}

@@ -365,7 +365,7 @@ function VerifikasiOTPContent() {
           <button
             onClick={handleVerifyOTP}
             disabled={isVerifying || otpCode.join("").length !== 6}
-            className="w-full py-4 px-6 font-black text-lg md:text-xl rounded-pill transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-3 shadow-md border border-transparent hover:bg-amber-100 hover:text-primary-900 bg-primary-900 text-white hover:border-primary-900 active:scale-95 app-card tracking-wide"
+            className="w-full py-4 px-6 font-black text-lg md:text-xl rounded-pill transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-3 shadow-md border border-transparent hover:bg-amber-100 hover:text-primary-900 bg-primary-900 text-white hover:border-primary-900 active:scale-95 app-card tracking-wide whitespace-nowrap inline-block shrink-0"
           >
             <CheckCircle2 className="w-6 h-6" />
             Verifikasi Kode
@@ -430,7 +430,7 @@ function VerifikasiOTPContent() {
           href="https://wa.me/6283811515951"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs bg-amber-50 text-primary-700 px-4 py-1.5 rounded-full font-black border border-amber-200 hover:bg-amber-100 transition-colors inline-block"
+          className="text-xs bg-amber-50 text-primary-700 px-4 py-1.5 rounded-full font-black border border-amber-200 hover:bg-amber-100 transition-colors inline-block whitespace-nowrap inline-block shrink-0"
         >
           Hubungi Admin WhatsApp
         </a>

@@ -535,7 +535,7 @@ export default function VerifikasiDokumenDetailPage() {
             }`}
           >
             {/* Document Preview */}
-            <div className="relative aspect-[4/3] bg-stone-100">
+            <div className="relative aspect-[4/3] bg-stone-100 whitespace-nowrap inline-block shrink-0">
               {dok.file_url ? (
                 isImageFile(dok) ? (
                   <img
@@ -789,7 +789,7 @@ export default function VerifikasiDokumenDetailPage() {
 
             {/* Modal Content */}
             <div
-              className="flex-1 overflow-auto bg-stone-100 flex items-center justify-center p-4 relative"
+              className="flex-1 overflow-auto bg-stone-100 flex items-center justify-center p-4 relative whitespace-nowrap inline-block shrink-0"
               onClick={(e) => e.stopPropagation()}
             >
               {previewDoc.type === "application/pdf" ? (

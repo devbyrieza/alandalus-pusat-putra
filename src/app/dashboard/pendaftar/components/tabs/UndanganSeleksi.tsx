@@ -344,7 +344,7 @@ export default function UndanganSeleksiTab() {
             className="bg-white rounded-xl border-2 border-primary-100 hover:border-primary-300 p-6 shadow-sm hover:shadow-md transition-all group"
           >
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center group-hover:bg-primary-100 transition-colors">
+              <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center group-hover:bg-primary-100 transition-colors whitespace-nowrap inline-block shrink-0">
                 <CheckCircle className="w-6 h-6 text-primary-600" />
               </div>
               <div>
@@ -364,7 +364,7 @@ export default function UndanganSeleksiTab() {
           {data.current_status === "enrolled" ? (
             <div className="bg-emerald-50 rounded-xl border-2 border-emerald-200 p-6 shadow-sm">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center whitespace-nowrap inline-block shrink-0">
                   <CheckCircle className="w-6 h-6 text-emerald-600" />
                 </div>
                 <div>
@@ -468,7 +468,7 @@ export default function UndanganSeleksiTab() {
       {/* ========== GRUP A: TES ONLINE INSTAN ========== */}
       <div className="space-y-4">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-primary-100 rounded-xl flex items-center justify-center">
+          <div className="w-8 h-8 bg-primary-100 rounded-xl flex items-center justify-center whitespace-nowrap inline-block shrink-0">
             <BookOpen className="w-4 h-4 text-primary-600" />
           </div>
           <div>
@@ -505,11 +505,11 @@ export default function UndanganSeleksiTab() {
                     />
                   </div>
                   {item.completed ? (
-                    <span className="flex items-center gap-1 px-2.5 py-1 bg-emerald-100 text-emerald-700 text-xs font-black rounded-full">
+                    <span className="flex items-center gap-1 px-2.5 py-1 bg-emerald-100 text-emerald-700 text-xs font-black rounded-full whitespace-nowrap inline-block shrink-0">
                       <CheckCircle className="w-3 h-3" /> Selesai
                     </span>
                   ) : (
-                    <span className="px-2.5 py-1 bg-primary-100 text-primary-700 text-xs font-black rounded-full">
+                    <span className="px-2.5 py-1 bg-primary-100 text-primary-700 text-xs font-black rounded-full whitespace-nowrap inline-block shrink-0">
                       Tersedia
                     </span>
                   )}

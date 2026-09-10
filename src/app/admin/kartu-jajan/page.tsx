@@ -107,7 +107,7 @@ export default function AdminKartuJajanPage() {
 
         {/* Live Preview (Right Side) */}
         <div className="lg:col-span-1">
-          <div className="bg-slate-100 p-6 rounded-xl border border-slate-200 sticky top-6">
+          <div className="bg-slate-100 p-6 rounded-xl border border-slate-200 sticky top-6 whitespace-nowrap inline-block shrink-0">
             <h3 className="font-bold text-slate-700 mb-4 text-center text-sm uppercase tracking-widest">Preview Desain Cetak</h3>
             
             {/* The Print Area (Hidden during normal view, only shows during print, but we show a preview wrapper here) */}

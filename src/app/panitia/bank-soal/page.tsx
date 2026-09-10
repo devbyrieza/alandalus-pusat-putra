@@ -249,7 +249,7 @@ export default function BankSoalPanitiaPage() {
                     {(q.options || []).map((opt) => (
                       <div
                         key={opt.value}
-                        className="p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs font-medium text-slate-800 flex items-start gap-2.5 hover:bg-slate-100/80 transition-colors"
+                        className="p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs font-medium text-slate-800 flex items-start gap-2.5 hover:bg-slate-100/80 transition-colors whitespace-nowrap inline-block shrink-0"
                       >
                         <span className="font-black text-[#ddc192] bg-[#550000] px-2.5 py-0.5 rounded-md border border-[#550000]">
                           {opt.value}
@@ -307,7 +307,7 @@ export default function BankSoalPanitiaPage() {
                     {(q.options || []).map((opt) => (
                       <div
                         key={opt.value}
-                        className="p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs font-medium text-slate-800 flex items-start gap-2.5 hover:bg-slate-100/80 transition-colors"
+                        className="p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs font-medium text-slate-800 flex items-start gap-2.5 hover:bg-slate-100/80 transition-colors whitespace-nowrap inline-block shrink-0"
                       >
                         <span className="font-black text-[#ddc192] bg-[#550000] px-2.5 py-0.5 rounded-md border border-[#550000]">
                           {opt.value}
@@ -376,7 +376,7 @@ export default function BankSoalPanitiaPage() {
                     {(q.options || []).map((opt) => (
                       <div
                         key={opt.value}
-                        className="p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs font-medium text-slate-800 flex items-start justify-between gap-2.5 hover:bg-slate-100/80 transition-colors"
+                        className="p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs font-medium text-slate-800 flex items-start justify-between gap-2.5 hover:bg-slate-100/80 transition-colors whitespace-nowrap inline-block shrink-0"
                       >
                         <span className="font-black text-[#ddc192] bg-[#550000] px-2.5 py-0.5 rounded-md border border-[#550000]">
                           {opt.value}
@@ -411,7 +411,7 @@ export default function BankSoalPanitiaPage() {
           <div className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
             {KESIAPAN_QUESTIONS.map((sec, sIdx) => (
               <div key={sIdx} className="border-b border-slate-200 last:border-b-0">
-                <div className="bg-slate-100 px-5 py-3 font-extrabold text-slate-900 text-sm flex items-center gap-2.5 border-b border-slate-200">
+                <div className="bg-slate-100 px-5 py-3 font-extrabold text-slate-900 text-sm flex items-center gap-2.5 border-b border-slate-200 whitespace-nowrap inline-block shrink-0">
                   <span className="w-6 h-6 rounded-full bg-[#550000] text-[#ddc192] flex items-center justify-center text-xs font-black shadow-sm">
                     {sIdx + 1}
                   </span>

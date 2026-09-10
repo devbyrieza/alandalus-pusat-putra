@@ -51,7 +51,7 @@ export default function DashboardEksekutifPage() {
       {/* METRIC CARDS */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-lg shadow-emerald-900/20 flex items-center gap-4">
-          <div className="w-14 h-14 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 shrink-0">
+          <div className="w-14 h-14 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 shrink-0 whitespace-nowrap inline-block shrink-0">
             <Wallet className="w-7 h-7" />
           </div>
           <div>
@@ -71,7 +71,7 @@ export default function DashboardEksekutifPage() {
         </div>
 
         <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-lg shadow-emerald-900/20 flex items-center gap-4">
-          <div className="w-14 h-14 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
+          <div className="w-14 h-14 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600 shrink-0 whitespace-nowrap inline-block shrink-0">
             <ShoppingBag className="w-7 h-7" />
           </div>
           <div>
@@ -81,7 +81,7 @@ export default function DashboardEksekutifPage() {
         </div>
 
         <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-lg shadow-emerald-900/20 flex items-center gap-4">
-          <div className="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+          <div className="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 shrink-0 whitespace-nowrap inline-block shrink-0">
             <Users className="w-7 h-7" />
           </div>
           <div>

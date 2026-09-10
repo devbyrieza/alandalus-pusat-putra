@@ -145,7 +145,7 @@ export default function AdminUploadPaymentModal({
             <h3 className="text-xl font-black text-primary-950">Upload Atas Nama Pendaftar</h3>
             <p className="text-sm text-stone-500 font-medium">Upload bukti {activeTab === "PENDAFTARAN" ? "pendaftaran" : activeTab === "SPP" ? "SPP bulan pertama" : "uang pangkal (daftar ulang)"} untuk pendaftar</p>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-stone-100 rounded-full transition-colors text-stone-500">
+          <button onClick={onClose} className="p-2 hover:bg-stone-100 rounded-full transition-colors text-stone-500 whitespace-nowrap inline-block shrink-0">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -179,8 +179,8 @@ export default function AdminUploadPaymentModal({
                       >
                         <div className="flex items-center justify-between mb-1">
                           <span className="font-bold text-stone-800">{p.nama_lengkap}</span>
-                          <span className="text-xs font-black text-primary-600 bg-primary-100 px-2 py-0.5 rounded-xl">
-                            {p.jenjang === "MTs" ? "SMP IT" : p.jenjang}
+                          <span className="text-xs font-black text-primary-600 bg-primary-100 px-2 py-0.5 rounded-xl whitespace-nowrap inline-block shrink-0">
+                            {p.jenjang === "IL" ? "IL" : "SMP IT"}
                           </span>
                         </div>
                         <div className="flex items-center gap-2 text-xs text-stone-500">
@@ -203,7 +203,7 @@ export default function AdminUploadPaymentModal({
                 <div>
                   <p className="text-xs font-black text-primary-600 uppercase tracking-widest mb-1">Pendaftar Terpilih</p>
                   <p className="font-bold text-primary-950 text-lg">{selectedPendaftar.nama_lengkap}</p>
-                  <p className="text-sm text-primary-700">{selectedPendaftar.nomor_pendaftaran} • {selectedPendaftar.jenjang === "MTs" ? "SMP IT" : selectedPendaftar.jenjang}</p>
+                  <p className="text-sm text-primary-700">{selectedPendaftar.nomor_pendaftaran} • {selectedPendaftar.jenjang === "IL" ? "IL" : "SMP IT"}</p>
                 </div>
                 <button 
                   type="button" 
@@ -236,7 +236,7 @@ export default function AdminUploadPaymentModal({
                     <button
                       type="button"
                       onClick={() => fileInputRef.current?.click()}
-                      className="px-4 py-2.5 bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-xl font-bold transition-colors flex items-center gap-2 border border-stone-200"
+                      className="px-4 py-2.5 bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-xl font-bold transition-colors flex items-center gap-2 border border-stone-200 whitespace-nowrap inline-block shrink-0"
                     >
                       <UploadCloud className="w-4 h-4" />
                       Pilih File
@@ -302,7 +302,7 @@ export default function AdminUploadPaymentModal({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-6 py-2.5 rounded-xl font-bold text-stone-600 hover:bg-stone-100 transition-colors"
+                  className="px-6 py-2.5 rounded-xl font-bold text-stone-600 hover:bg-stone-100 transition-colors whitespace-nowrap inline-block shrink-0"
                   disabled={isSubmitting}
                 >
                   Batal

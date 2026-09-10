@@ -60,7 +60,7 @@ function MemberCard({
           {name}
         </h4>
         {/* Subtle accent bar */}
-        <div className="mt-2 h-[2px] w-5 rounded-full bg-primary-100 group-hover:w-10 group-hover:bg-primary-500 transition-all duration-500" />
+        <div className="mt-2 h-[2px] w-5 rounded-full bg-primary-100 group-hover:w-10 group-hover:bg-primary-500 transition-all duration-500 whitespace-nowrap inline-block shrink-0" />
       </div>
 
 

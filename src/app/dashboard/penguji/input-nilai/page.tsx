@@ -622,7 +622,7 @@ function InputNilaiContent() {
                 <Hash className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> {p.nomor_pendaftaran}
               </span>
               <span className="inline-flex items-center px-3 py-1 sm:py-1.5 rounded-xl sm:rounded-xl bg-secondary-400 text-primary-950 text-[9px] sm:text-[10px] font-black uppercase tracking-widest shadow-lg shadow-emerald-900/20">
-                {p.jenjang === "MTs" ? "SMP IT" : p.jenjang}
+                {p.jenjang === "IL" ? "IL" : "SMP IT"}
               </span>
             </div>
           </div>
@@ -672,7 +672,7 @@ function InputNilaiContent() {
                 <>
                   {isInputtedByAdmin && (
                     <div className="mb-4 sm:mb-6 p-4 sm:p-5 bg-amber-50 rounded-xl sm:rounded-xl border-2 border-amber-200 flex items-start gap-3 sm:gap-4">
-                      <div className="p-2 sm:p-2.5 bg-amber-100 rounded-xl sm:rounded-xl">
+                      <div className="p-2 sm:p-2.5 bg-amber-100 rounded-xl sm:rounded-xl whitespace-nowrap inline-block shrink-0">
                         <LockIcon className="w-5 h-5 sm:w-6 sm:h-6 text-amber-700" />
                       </div>
                       <div>
@@ -751,7 +751,7 @@ function InputNilaiContent() {
                 {isSaved ? "Edit Nilai" : "Input Nilai Hafalan"}
               </button>
             ) : (
-              <div className="inline-flex items-center gap-2 px-6 py-3.5 bg-stone-100 text-stone-400 rounded-xl sm:rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-widest border border-stone-200">
+              <div className="inline-flex items-center gap-2 px-6 py-3.5 bg-stone-100 text-stone-400 rounded-xl sm:rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-widest border border-stone-200 whitespace-nowrap inline-block shrink-0">
                 <LockIcon className="w-3.5 h-3.5" /> Edit Terkunci
               </div>
             )}
@@ -787,7 +787,7 @@ function InputNilaiContent() {
                 <>
                   {isInputtedByAdmin && (
                     <div className="mb-4 sm:mb-6 p-4 sm:p-5 bg-amber-50 rounded-xl sm:rounded-xl border-2 border-amber-200 flex items-start gap-3 sm:gap-4">
-                      <div className="p-2 sm:p-2.5 bg-amber-100 rounded-xl sm:rounded-xl">
+                      <div className="p-2 sm:p-2.5 bg-amber-100 rounded-xl sm:rounded-xl whitespace-nowrap inline-block shrink-0">
                         <LockIcon className="w-5 h-5 sm:w-6 sm:h-6 text-amber-700" />
                       </div>
                       <div>
@@ -866,7 +866,7 @@ function InputNilaiContent() {
                 {isSaved ? "Edit Nilai" : "Input Nilai B. Arab"}
               </button>
             ) : (
-              <div className="inline-flex items-center gap-2 px-6 py-3.5 bg-stone-100 text-stone-400 rounded-xl sm:rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-widest border border-stone-200">
+              <div className="inline-flex items-center gap-2 px-6 py-3.5 bg-stone-100 text-stone-400 rounded-xl sm:rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-widest border border-stone-200 whitespace-nowrap inline-block shrink-0">
                 <LockIcon className="w-3.5 h-3.5" /> Edit Terkunci
               </div>
             )}
@@ -892,7 +892,7 @@ function InputNilaiContent() {
     return (
       <div className="bg-emerald-50/50 border border-emerald-100 rounded-xl sm:rounded-xl p-5 sm:p-5 md:p-8 space-y-5 sm:space-y-6 shadow-lg shadow-emerald-900/20">
         <div className="flex items-center gap-3 mb-2">
-          <div className="p-2 sm:p-2.5 bg-emerald-100 rounded-xl">
+          <div className="p-2 sm:p-2.5 bg-emerald-100 rounded-xl whitespace-nowrap inline-block shrink-0">
             <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-700" />
           </div>
           <h3 className="text-lg sm:text-xl font-black text-emerald-900 tracking-tight">Tes Al-Qur&apos;an</h3>
@@ -911,7 +911,7 @@ function InputNilaiContent() {
                 <>
                   {isInputtedByAdmin && (
                     <div className="mb-4 sm:mb-6 p-4 sm:p-5 bg-amber-50 rounded-xl sm:rounded-xl border-2 border-amber-200 flex items-start gap-3 sm:gap-4">
-                      <div className="p-2 sm:p-2.5 bg-amber-100 rounded-xl sm:rounded-xl">
+                      <div className="p-2 sm:p-2.5 bg-amber-100 rounded-xl sm:rounded-xl whitespace-nowrap inline-block shrink-0">
                         <LockIcon className="w-5 h-5 sm:w-6 sm:h-6 text-amber-700" />
                       </div>
                       <div>
@@ -955,7 +955,7 @@ function InputNilaiContent() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
-              <button onClick={cancelEditing} className="w-full sm:w-auto px-5 md:px-8 py-4 bg-emerald-100 text-emerald-700 rounded-xl sm:rounded-xl font-black uppercase tracking-widest text-[10px] sm:text-xs hover:bg-emerald-200 transition-all active:scale-95">Batal</button>
+              <button onClick={cancelEditing} className="w-full sm:w-auto px-5 md:px-8 py-4 bg-emerald-100 text-emerald-700 rounded-xl sm:rounded-xl font-black uppercase tracking-widest text-[10px] sm:text-xs hover:bg-emerald-200 transition-all active:scale-95 whitespace-nowrap inline-block shrink-0">Batal</button>
               <button onClick={() => saveForm(p, "quran")} disabled={isInputtedByAdmin || !quranForm.tajwid || !quranForm.kelancaran || !quranForm.rekomendasi || !quranForm.nama_penguji || saving === p.id + "quran"} className="w-full sm:w-auto px-5 md:px-8 py-4 bg-emerald-600 text-white rounded-xl sm:rounded-xl font-black uppercase tracking-widest text-[10px] sm:text-xs hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-900/20 disabled:opacity-50 flex items-center justify-center gap-2 active:scale-95">
                 {saving === p.id + "quran" ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5" />} Simpan
               </button>
@@ -1011,7 +1011,7 @@ function InputNilaiContent() {
                 {isSaved ? "Edit Nilai" : "Input Nilai"}
               </button>
             ) : (
-              <div className="mt-5 sm:mt-6 inline-flex items-center gap-2 px-6 py-3.5 bg-stone-100 text-stone-400 rounded-xl sm:rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-widest border border-stone-200">
+              <div className="mt-5 sm:mt-6 inline-flex items-center gap-2 px-6 py-3.5 bg-stone-100 text-stone-400 rounded-xl sm:rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-widest border border-stone-200 whitespace-nowrap inline-block shrink-0">
                 <LockIcon className="w-3.5 h-3.5" /> Edit Terkunci
               </div>
             )}
@@ -1038,7 +1038,7 @@ function InputNilaiContent() {
     return (
       <div className="bg-primary-50/50 border border-primary-100 rounded-xl sm:rounded-xl p-5 sm:p-5 md:p-8 space-y-5 sm:space-y-6 shadow-lg shadow-emerald-900/20">
         <div className="flex items-center gap-3 mb-2">
-          <div className="p-2 sm:p-2.5 bg-primary-100 rounded-xl">
+          <div className="p-2 sm:p-2.5 bg-primary-100 rounded-xl whitespace-nowrap inline-block shrink-0">
             <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-primary-700" />
           </div>
           <h3 className="text-lg sm:text-xl font-black text-primary-900 tracking-tight">Seleksi Wawancara Calon Santri</h3>
@@ -1057,7 +1057,7 @@ function InputNilaiContent() {
                 <>
                   {isInputtedByAdmin && (
                     <div className="mb-4 sm:mb-6 p-4 sm:p-5 bg-amber-50 rounded-xl sm:rounded-xl border-2 border-amber-200 flex items-start gap-3 sm:gap-4">
-                      <div className="p-2 sm:p-2.5 bg-amber-100 rounded-xl sm:rounded-xl">
+                      <div className="p-2 sm:p-2.5 bg-amber-100 rounded-xl sm:rounded-xl whitespace-nowrap inline-block shrink-0">
                         <LockIcon className="w-5 h-5 sm:w-6 sm:h-6 text-amber-700" />
                       </div>
                       <div>
@@ -1154,7 +1154,7 @@ function InputNilaiContent() {
                 {isSaved ? "Edit Nilai" : "Input Nilai"}
               </button>
             ) : (
-              <div className="mt-5 sm:mt-6 inline-flex items-center gap-2 px-6 py-3.5 bg-stone-100 text-stone-400 rounded-xl sm:rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-widest border border-stone-200">
+              <div className="mt-5 sm:mt-6 inline-flex items-center gap-2 px-6 py-3.5 bg-stone-100 text-stone-400 rounded-xl sm:rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-widest border border-stone-200 whitespace-nowrap inline-block shrink-0">
                 <LockIcon className="w-3.5 h-3.5" /> Edit Terkunci
               </div>
             )}
@@ -1198,7 +1198,7 @@ function InputNilaiContent() {
                 <>
                   {isInputtedByAdmin && (
                     <div className="mb-4 sm:mb-6 p-4 sm:p-5 bg-amber-50 rounded-xl sm:rounded-xl border-2 border-amber-200 flex items-start gap-3 sm:gap-4">
-                      <div className="p-2 sm:p-2.5 bg-amber-100 rounded-xl sm:rounded-xl">
+                      <div className="p-2 sm:p-2.5 bg-amber-100 rounded-xl sm:rounded-xl whitespace-nowrap inline-block shrink-0">
                         <LockIcon className="w-5 h-5 sm:w-6 sm:h-6 text-amber-700" />
                       </div>
                       <div>
@@ -1343,7 +1343,7 @@ function InputNilaiContent() {
                 {isSaved ? "Edit Hasil" : "Input Hasil"}
               </button>
             ) : (
-              <div className="mt-5 sm:mt-6 inline-flex items-center gap-2 px-6 py-3.5 bg-stone-100 text-stone-400 rounded-xl sm:rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-widest border border-stone-200">
+              <div className="mt-5 sm:mt-6 inline-flex items-center gap-2 px-6 py-3.5 bg-stone-100 text-stone-400 rounded-xl sm:rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-widest border border-stone-200 whitespace-nowrap inline-block shrink-0">
                 <LockIcon className="w-3.5 h-3.5" /> Edit Terkunci
               </div>
             )}

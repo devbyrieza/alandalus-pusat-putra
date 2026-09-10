@@ -79,7 +79,7 @@ export default function LaporanHarianPage() {
         <div className="text-center border-b-2 border-slate-900 pb-6 mb-6">
           <h2 className="text-2xl font-black text-slate-900 uppercase tracking-widest">PESANTREN AL IMAM AL ISLAMI</h2>
           <p className="text-slate-600 font-medium">Laporan Keuangan & Operasional Kantin Harian</p>
-          <p className="text-sm font-bold mt-2 bg-slate-100 inline-block px-4 py-1 rounded-full">
+          <p className="text-sm font-bold mt-2 bg-slate-100 inline-block px-4 py-1 rounded-full whitespace-nowrap inline-block shrink-0">
             Tanggal: {new Date(date).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
           </p>
         </div>

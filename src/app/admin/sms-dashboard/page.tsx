@@ -127,7 +127,7 @@ export default function AdminSMSDashboard() {
               >
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
                   <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl">
-                    <div className="p-2.5 bg-primary-100 rounded-xl">
+                    <div className="p-2.5 bg-primary-100 rounded-xl whitespace-nowrap inline-block shrink-0">
                       <Smartphone className="w-5 h-5 text-primary-600" />
                     </div>
                     <div>
@@ -137,7 +137,7 @@ export default function AdminSMSDashboard() {
                   </div>
 
                   <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl">
-                    <div className="p-2.5 bg-emerald-100 rounded-xl">
+                    <div className="p-2.5 bg-emerald-100 rounded-xl whitespace-nowrap inline-block shrink-0">
                       <User className="w-5 h-5 text-emerald-600" />
                     </div>
                     <div>
@@ -147,7 +147,7 @@ export default function AdminSMSDashboard() {
                   </div>
 
                   <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl">
-                    <div className="p-2.5 bg-rose-100 rounded-xl">
+                    <div className="p-2.5 bg-rose-100 rounded-xl whitespace-nowrap inline-block shrink-0">
                       <Key className="w-5 h-5 text-rose-600" />
                     </div>
                     <div>

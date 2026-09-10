@@ -146,7 +146,7 @@ export default function PengujiDashboardPage() {
         <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-6">
           <Link
             href="/dashboard/penguji/jadwal"
-            className="flex items-center gap-6 p-7 bg-amber-50/50 hover:bg-amber-100/50 rounded-4xl transition-all duration-500 border border-amber-100 hover:shadow-lg hover:shadow-amber-400/10 group relative overflow-hidden"
+            className="flex items-center gap-6 p-7 bg-amber-50/50 hover:bg-amber-100/50 rounded-4xl transition-all duration-500 border border-amber-100 hover:shadow-lg hover:shadow-amber-400/10 group relative overflow-hidden whitespace-nowrap inline-block shrink-0"
           >
             <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
               <Calendar className="w-20 h-20 text-primary-900" />

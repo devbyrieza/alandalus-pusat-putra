@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, CalendarDays, ClipboardEdit } from "lucide-react";
+import { LayoutDashboard, CalendarDays, ClipboardEdit, CalendarPlus } from "lucide-react";
 
 export default function JadwalLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -42,6 +42,17 @@ export default function JadwalLayout({ children }: { children: React.ReactNode }
         >
           <CalendarDays className="w-4 h-4" />
           Manajemen & Ketersediaan
+        </Link>
+        <Link 
+          href="/dashboard/admin/jadwal/plotting"
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm transition-all whitespace-nowrap ${
+            pathname.includes('/plotting') 
+              ? 'bg-primary-50 text-primary-700 font-black' 
+              : 'text-slate-500 hover:bg-slate-50'
+          }`}
+        >
+          <CalendarPlus className="w-4 h-4 text-amber-600" />
+          Plotting / Jadwal Khusus
         </Link>
       </div>
       {children}

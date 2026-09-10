@@ -34,7 +34,7 @@ export default function DaftarUlangPage() {
           </div>
         </div>
         <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-lg shadow-emerald-900/20 flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 whitespace-nowrap inline-block shrink-0">
+          <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 whitespace-nowrap shrink-0">
             <UserCheck className="w-6 h-6" />
           </div>
           <div>

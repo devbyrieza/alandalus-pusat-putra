@@ -95,7 +95,7 @@ export default function StepGuard({
       <div className="flex items-center justify-center min-h-[400px]">
         <div className="max-w-md w-full mx-auto text-center px-4">
           {/* Lock Icon */}
-          <div className="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6 whitespace-nowrap inline-block shrink-0">
+          <div className="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6 whitespace-nowrap shrink-0">
             <Lock className="w-10 h-10 text-primary-600" />
           </div>
 

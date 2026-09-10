@@ -94,7 +94,7 @@ export default function KontakPage() {
               href={BRANDING.fbUrl}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-3 px-6 py-3 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold border border-blue-200 transition-colors whitespace-nowrap inline-block shrink-0"
+              className="flex items-center gap-3 px-6 py-3 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold border border-blue-200 transition-colors whitespace-nowrap shrink-0"
             >
               <Facebook className="w-5 h-5" />
               <span>Facebook</span>

@@ -397,7 +397,7 @@ export default function RecapFeePage() {
                   >
                     <td className="px-6 py-6">
                       <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-primary-900 font-black shadow-lg shadow-emerald-900/20 border border-amber-200 whitespace-nowrap inline-block shrink-0">
+                        <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-primary-900 font-black shadow-lg shadow-emerald-900/20 border border-amber-200 whitespace-nowrap shrink-0">
                           {item.name.charAt(0)}
                         </div>
                         <div>
@@ -500,7 +500,7 @@ export default function RecapFeePage() {
               >
                 {/* Name + Honor Row */}
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-11 h-11 rounded-xl bg-amber-100 flex items-center justify-center text-primary-900 font-black text-lg border border-amber-200 shrink-0 whitespace-nowrap inline-block shrink-0">
+                  <div className="w-11 h-11 rounded-xl bg-amber-100 flex items-center justify-center text-primary-900 font-black text-lg border border-amber-200 shrink-0 whitespace-nowrap shrink-0">
                     {item.name.charAt(0)}
                   </div>
                   <div className="flex-1 min-w-0">

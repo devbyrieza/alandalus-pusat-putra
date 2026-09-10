@@ -908,7 +908,7 @@ export default function DataLengkapForm({
       {isEditMode ? (
         <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 shadow-sm">
           <div className="flex items-start gap-4">
-            <div className="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center shrink-0 whitespace-nowrap inline-block shrink-0">
+            <div className="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center shrink-0 whitespace-nowrap shrink-0">
               <CheckCircle className="w-6 h-6 text-emerald-600" />
             </div>
             <div>
@@ -926,7 +926,7 @@ export default function DataLengkapForm({
       ) : isLocked ? (
         <div className="bg-primary-50 border border-primary-200 rounded-xl p-5 shadow-sm">
           <div className="flex items-start gap-4">
-            <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center shrink-0 whitespace-nowrap inline-block shrink-0">
+            <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center shrink-0 whitespace-nowrap shrink-0">
               <Info className="w-6 h-6 text-primary-600" />
             </div>
             <div className="flex-1">

@@ -122,7 +122,7 @@ export default function ManajemenTagihanPage() {
                         <CheckCircle2 className="w-3.5 h-3.5" /> Lunas
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700 whitespace-nowrap inline-block shrink-0">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700 whitespace-nowrap shrink-0">
                         <Clock className="w-3.5 h-3.5" /> Menunggu
                       </span>
                     )}

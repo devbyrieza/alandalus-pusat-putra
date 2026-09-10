@@ -789,7 +789,7 @@ export default function VerifikasiDokumenDetailPage() {
 
             {/* Modal Content */}
             <div
-              className="flex-1 overflow-auto bg-stone-100 flex items-center justify-center p-4 relative whitespace-nowrap inline-block shrink-0"
+              className="flex-1 overflow-auto bg-stone-100 flex items-center justify-center p-4 relative whitespace-nowrap shrink-0"
               onClick={(e) => e.stopPropagation()}
             >
               {previewDoc.type === "application/pdf" ? (

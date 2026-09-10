@@ -310,7 +310,7 @@ export default function ProgramPage() {
                           key={cIdx}
                           className="flex items-start gap-3"
                         >
-                          <div className="w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5 bg-emerald-100 text-emerald-700 whitespace-nowrap inline-block shrink-0">
+                          <div className="w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5 bg-emerald-100 text-emerald-700 whitespace-nowrap shrink-0">
                             <CheckCircle2 className="w-3.5 h-3.5" />
                           </div>
                           <span className="text-slate-700 font-medium text-xs sm:text-sm leading-normal">

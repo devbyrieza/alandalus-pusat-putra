@@ -291,7 +291,7 @@ export default function AkademikTestPage() {
                     terbaik adalah buah dari kejujuran dan usaha yang ikhlas."
                   </p>
                   <p className="text-xs text-primary-600 leading-relaxed mt-2 font-bold uppercase tracking-widest">
-                    - Ustadz Juju Junaedi, M.Pd.
+                    - Ustadz Fatik Jundullah, B.Sh. M.Pd.
                   </p>
                 </div>
               </div>

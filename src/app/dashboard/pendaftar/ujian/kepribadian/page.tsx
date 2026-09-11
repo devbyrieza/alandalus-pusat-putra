@@ -240,7 +240,7 @@ export default function KepribadianTestPage() {
               terbaik adalah buah dari kejujuran dan usaha yang ikhlas."
             </p>
             <p className="text-sm text-primary-600 leading-relaxed mt-1">
-              - Ustadz Juju Junaedi, M.Pd.
+              - Ustadz Fatik Jundullah, B.Sh. M.Pd.
             </p>
           </div>
         </div>

@@ -35,7 +35,7 @@ export const PDF_BRANDING = {
       margin_right: 95,
       y_offset_ttd: 5 } },
   authority: {
-    name: "Ustadz Nurdin, Lc",
+    name: "Ustadz Fatik Jundullah, B.Sh. M.Pd.",
     role: "Mudir Pesantren",
     city: "Bogor" } };
 

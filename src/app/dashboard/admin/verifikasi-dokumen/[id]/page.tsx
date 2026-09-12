@@ -95,10 +95,12 @@ export default function VerifikasiDokumenDetailPage() {
     docName: "",
     initialReason: "" });
   const [rejectReason, setRejectReason] = useState("");
+  const [imgErrors, setImgErrors] = useState<Record<string, boolean>>({});
 
   const fetchData = useCallback(async () => {
     try {
       setLoading(true);
+      setImgErrors({});
       // We use status=all but filter by pendaftar_id
       const response = await fetch(
         `/api/admin/verifikasi/dokumen?pendaftar_id=${id}&status=all`,
@@ -491,40 +493,47 @@ export default function VerifikasiDokumenDetailPage() {
         accept="image/jpeg, image/png, application/pdf"
       />
       {/* Header */}
-      <div className="bg-white rounded-3xl shadow-2xl shadow-primary/30  shadow-primary/20  shadow-primary/10 p-6 border border-gold-100">
-        <div className="flex items-center justify-between flex-wrap gap-4">
-          <div className="flex items-center gap-4">
+      <div className="bg-white rounded-3xl shadow-xl p-4 sm:p-6 border border-gold-100 overflow-hidden">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-start sm:items-center gap-3 sm:gap-4 min-w-0 flex-1">
             <button
               onClick={() => router.back()}
-              className="p-4 hover:bg-gold-50 rounded-2xl text-ink-300 transition-colors"
+              className="p-2 sm:p-3 hover:bg-gold-50 rounded-2xl text-ink-300 transition-colors shrink-0 mt-0.5 sm:mt-0"
               title="Kembali"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
-            <div className="p-6 sm:p-8 bg-linear-to-br from-primary-600 to-primary-900 rounded-2xl shadow-2xl shadow-primary/30  shadow-primary-900/20">
-              <User className="w-8 h-8 text-gold-300" />
+            <div className="p-3 sm:p-4 bg-linear-to-br from-primary-600 to-primary-900 rounded-2xl shadow-lg shrink-0">
+              <User className="w-5 h-5 sm:w-7 sm:h-7 text-gold-300" />
             </div>
-            <div>
-              <h2 className="text-3xl font-black text-primary-950 leading-none mb-1">
+            <div className="min-w-0 flex-1">
+              <h2 className="text-lg sm:text-2xl md:text-3xl font-black text-primary-950 leading-tight mb-1.5 break-words">
                 {toTitleCase(pendaftar?.nama_lengkap || "")}
               </h2>
-              <div className="flex items-center gap-3 text-ink-300">
-                <span className="font-mono bg-primary-50 px-2.5 py-1 rounded-2xl text-sm font-black text-primary-600 border border-primary-100">
+              <div className="flex flex-wrap items-center gap-2 text-ink-300">
+                <span className="font-mono bg-primary-50 px-2.5 py-0.5 sm:py-1 rounded-xl text-xs sm:text-sm font-black text-primary-600 border border-primary-100 shrink-0">
                   {pendaftar?.nomor_pendaftaran}
                 </span>
-                <span className="px-2.5 py-1 bg-gold-400 text-primary-900 rounded-2xl text-[10px] font-black uppercase shadow-xs">
+                <span className="px-2.5 py-0.5 sm:py-1 bg-gold-400 text-primary-900 rounded-xl text-[10px] sm:text-xs font-black uppercase shadow-xs shrink-0">
                   {pendaftar?.jenjang}
                 </span>
+                {pendaftar?.no_hp && (
+                  <span className="text-xs text-ink-300 font-medium hidden sm:inline">
+                    • {pendaftar.no_hp}
+                  </span>
+                )}
               </div>
             </div>
           </div>
-          <button
-            onClick={fetchData}
-            className="flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-2xl transition-colors"
-          >
-            <RefreshCw className="w-4 h-4" />
-            Muat Ulang
-          </button>
+          <div className="flex items-center justify-end sm:justify-center shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-gold-100/60">
+            <button
+              onClick={fetchData}
+              className="flex items-center gap-2 px-3.5 sm:px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-2xl transition-all shadow-md active:scale-95 text-xs sm:text-sm font-bold"
+            >
+              <RefreshCw className="w-4 h-4" />
+              Muat Ulang
+            </button>
+          </div>
         </div>
       </div>
 
@@ -545,18 +554,56 @@ export default function VerifikasiDokumenDetailPage() {
             <div className="w-full relative aspect-[4/3] bg-stone-100 overflow-hidden">
               {dok.file_url ? (
                 isImageFile(dok) ? (
-                  <img
-                    src={dok.file_url}
-                    alt={dok.jenis_dokumen}
-                    className="absolute inset-0 w-full h-full object-cover cursor-pointer"
-                    onClick={() =>
-                      openPreview(
-                        dok.file_url!,
-                        dok.file_type,
-                        dok.jenis_dokumen,
-                      )
-                    }
-                  />
+                  !imgErrors[dok.id] ? (
+                    <img
+                      src={dok.file_url}
+                      alt={dok.jenis_dokumen}
+                      className="absolute inset-0 w-full h-full object-cover cursor-pointer"
+                      onError={() =>
+                        setImgErrors((prev) => ({ ...prev, [dok.id]: true }))
+                      }
+                      onClick={() =>
+                        openPreview(
+                          dok.file_url!,
+                          dok.file_type,
+                          dok.jenis_dokumen,
+                        )
+                      }
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center bg-stone-50 border border-stone-200/70">
+                      <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-2 shadow-xs">
+                        <FileText className="w-6 h-6" />
+                      </div>
+                      <p className="text-xs font-bold text-stone-700 mb-1">
+                        Preview Gambar Tidak Tersedia
+                      </p>
+                      <p className="text-[11px] text-stone-500 mb-3 line-clamp-1 max-w-[200px]">
+                        {dok.jenis_dokumen}
+                      </p>
+                      <div className="flex items-center gap-2">
+                        <a
+                          href={dok.file_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold rounded-xl transition-all"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5" />
+                          Buka Tab
+                        </a>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            handleReplaceClick(dok.id, dok.jenis_dokumen)
+                          }
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary-600 hover:bg-primary-700 text-white text-xs font-semibold rounded-xl transition-all shadow-xs"
+                        >
+                          <UploadCloud className="w-3.5 h-3.5" />
+                          Upload Ulang
+                        </button>
+                      </div>
+                    </div>
+                  )
                 ) : (
                   <div 
                     className="absolute inset-0 w-full h-full overflow-hidden cursor-pointer group bg-white"
@@ -578,7 +625,7 @@ export default function VerifikasiDokumenDetailPage() {
               )}
 
               {/* View button overlay for images */}
-              {dok.file_url && isImageFile(dok) && (
+              {dok.file_url && isImageFile(dok) && !imgErrors[dok.id] && (
                 <a
                   href={dok.file_url}
                   target="_blank"

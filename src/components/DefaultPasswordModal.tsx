@@ -15,6 +15,18 @@ export function DefaultPasswordModal({ profileUrl = "/dashboard/admin/profil" }:
   const pathname = usePathname();
 
   useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
+
+  useEffect(() => {
     // Check if session has default password flag
     try {
       const cookies = document.cookie.split("; ");

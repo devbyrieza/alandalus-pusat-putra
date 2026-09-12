@@ -93,16 +93,16 @@ export async function GET() {
         // Admin can see all assignment types
         jenis_tugas.push(
           "Seleksi Al Qur'an",
+          "Tes Al-Qur'an (Bacaan & Hafalan)",
           "Seleksi Wawancara Calon Santri",
           "Seleksi Wawancara Calon Orangtua/Wali Santri",
+          "Tes Lisan Bahasa Arab",
         );
       } else {
         if (item.penguji_santri_id === userId)
           jenis_tugas.push("Seleksi Wawancara Calon Santri");
-        if (item.penguji_quran_id === userId)
-            jenis_tugas.push("Seleksi Al Qur'an");
-          if (item.penguji_hafalan_id === userId)
-            jenis_tugas.push("Tes Hafalan Al-Qur'an");
+        if (item.penguji_quran_id === userId || item.penguji_hafalan_id === userId)
+            jenis_tugas.push("Seleksi Al Qur'an", "Tes Al-Qur'an (Bacaan & Hafalan)");
           if (item.penguji_arab_id === userId)
             jenis_tugas.push("Tes Lisan Bahasa Arab");
         if (item.penguji_ortu_id === userId)
@@ -114,12 +114,10 @@ export async function GET() {
           item.exam_session?.created_by === userId
         ) {
           const title = (item.exam_session?.title || "").toLowerCase();
-          if (title.includes("hafalan"))
-              jenis_tugas.push("Tes Hafalan Al-Qur'an");
+          if (title.includes("hafalan") || title.includes("qur") || title.includes("quran"))
+              jenis_tugas.push("Seleksi Al Qur'an", "Tes Al-Qur'an (Bacaan & Hafalan)");
             else if (title.includes("arab") || title.includes("lisan"))
               jenis_tugas.push("Tes Lisan Bahasa Arab");
-            else if (title.includes("qur") || title.includes("quran"))
-              jenis_tugas.push("Seleksi Al Qur'an");
           else if (title.includes("calsan") || title.includes("santri"))
             jenis_tugas.push("Seleksi Wawancara Calon Santri");
           else if (

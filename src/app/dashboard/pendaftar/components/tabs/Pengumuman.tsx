@@ -9,7 +9,8 @@ import {
   Loader2,
   Calendar,
   FileText,
-  Download } from "lucide-react";
+  Download,
+  Clock } from "lucide-react";
 import { generateSuratKelulusan } from "@/lib/utils/pdf-generator";
 
 interface Pengumuman {
@@ -21,6 +22,7 @@ interface Pengumuman {
 
 export default function PengumumanTab() {
   const [pengumuman, setPengumuman] = useState<Pengumuman | null>(null);
+  const [statusPendaftar, setStatusPendaftar] = useState<string>("");
   const [docData, setDocData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -33,7 +35,7 @@ export default function PengumumanTab() {
     try {
       setLoading(true);
 
-      // Check session for testing account bypass
+      // Check session for testing account bypass & status pendaftar
       const sessionRes = await fetch("/api/auth/session");
       let currentRegNo = "";
       if (sessionRes.ok) {
@@ -45,6 +47,7 @@ export default function PengumumanTab() {
           if (statusRes.ok) {
             const statusData = await statusRes.json();
             currentRegNo = statusData.nomor_pendaftaran;
+            setStatusPendaftar(statusData.status_pendaftaran || "");
           }
         }
       }
@@ -143,41 +146,71 @@ export default function PengumumanTab() {
       </div>
 
       {!pengumuman ? (
-        <div className="bg-white rounded-[2rem] p-6 md:p-12 shadow-sm border border-primary-100 app-card">
-          <div className="text-center">
-            <div className="w-20 h-20 bg-primary-50 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
-              <Trophy className="w-10 h-10 text-primary-700" />
-            </div>
-            <h3 className="text-xl font-bold text-ink-900 mb-3 font-display">
-              Pengumuman Belum Tersedia
-            </h3>
-            <p className="text-ink-600 max-w-md mx-auto mb-6 leading-relaxed">
-              Hasil seleksi akan diumumkan setelah seluruh proses ujian selesai
-              dilakukan oleh panitia. Silakan cek kembali halaman ini secara
-              berkala.
-            </p>
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary-50 text-primary-800 rounded-full font-black border border-primary-200 shadow-sm">
-              <Calendar className="w-4 h-4 text-primary-600" />
-              <span className="text-sm">
-                Estimasi update: setelah ujian selesai
-              </span>
+        // Cek apakah statusnya "tested" — sudah selesai ujian, tapi pengumuman belum dipublikasikan
+        statusPendaftar === "tested" ? (
+          <div className="bg-white rounded-[2rem] p-6 md:p-12 shadow-sm border border-amber-200 app-card">
+            <div className="text-center">
+              <div className="w-20 h-20 bg-amber-50 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner border-2 border-amber-200">
+                <Clock className="w-10 h-10 text-amber-600" />
+              </div>
+              <h3 className="text-xl font-bold text-ink-900 mb-3 font-display">
+                Menunggu Rapat Kelulusan
+              </h3>
+              <p className="text-ink-600 max-w-lg mx-auto mb-6 leading-relaxed">
+                Seluruh rangkaian ujian seleksi Ananda telah selesai. Hasil
+                seleksi sedang dalam proses evaluasi dan{" "}
+                <strong>Rapat Kelulusan bersama Panitia dan Mudir
+                Pesantren</strong>. Pengumuman resmi akan dirilis sesuai jadwal
+                (estimasi 7 hari setelah ujian).
+              </p>
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-50 text-amber-800 rounded-full font-bold border border-amber-300 shadow-sm">
+                <Clock className="w-4 h-4 text-amber-600" />
+                <span className="text-sm">
+                  Estimasi: 7 hari setelah ujian selesai
+                </span>
+              </div>
+              <p className="text-xs text-ink-400 mt-4">
+                Notifikasi WhatsApp akan dikirimkan saat pengumuman resmi tersedia.
+              </p>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className="bg-white rounded-[2rem] p-6 md:p-12 shadow-sm border border-primary-100 app-card">
+            <div className="text-center">
+              <div className="w-20 h-20 bg-primary-50 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                <Trophy className="w-10 h-10 text-primary-700" />
+              </div>
+              <h3 className="text-xl font-bold text-ink-900 mb-3 font-display">
+                Pengumuman Belum Tersedia
+              </h3>
+              <p className="text-ink-600 max-w-md mx-auto mb-6 leading-relaxed">
+                Hasil seleksi akan diumumkan setelah seluruh proses ujian selesai
+                dilakukan oleh panitia. Silakan cek kembali halaman ini secara
+                berkala.
+              </p>
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary-50 text-primary-800 rounded-full font-black border border-primary-200 shadow-sm">
+                <Calendar className="w-4 h-4 text-primary-600" />
+                <span className="text-sm">
+                  Estimasi update: setelah ujian selesai
+                </span>
+              </div>
+            </div>
+          </div>
+        )
       ) : pengumuman.status_kelulusan === "diterima" ? (
         <div className="space-y-6">
           {/* Success Card */}
-          <div className="bg-linear-to-r from-emerald-500 to-emerald-700 rounded-[2rem] p-5 md:p-8 text-white shadow-lg shadow-emerald-500/20 relative overflow-hidden app-card">
+          <div className="bg-linear-to-r from-primary-500 to-primary-700 rounded-[2rem] p-5 md:p-8 text-white shadow-lg shadow-primary-500/20 relative overflow-hidden app-card">
             <div className="absolute -top-10 -right-10 p-5 md:p-8 opacity-10 transform rotate-12">
               <Trophy className="w-64 h-64" />
             </div>
             <div className="relative z-10">
               <div className="flex items-center gap-5 mb-8">
                 <div className="p-4 bg-white/20  rounded-[1.5rem] shadow-sm border border-white/20">
-                  <CheckCircle className="w-10 h-10 text-emerald-50" />
+                  <CheckCircle className="w-10 h-10 text-primary-50" />
                 </div>
                 <div>
-                  <p className="text-emerald-100 font-bold tracking-widest uppercase text-sm mb-1">
+                  <p className="text-primary-100 font-bold tracking-widest uppercase text-sm mb-1">
                     Alhamdulillah
                   </p>
                   <h2 className="text-3xl md:text-4xl font-black font-display tracking-tight text-white">
@@ -185,10 +218,10 @@ export default function PengumumanTab() {
                   </h2>
                 </div>
               </div>
-              <p className="text-emerald-50/90 mb-10 max-w-xl text-lg leading-relaxed">
+              <p className="text-primary-50/90 mb-10 max-w-xl text-lg leading-relaxed">
                 Berdasarkan hasil seleksi, Anda dinyatakan{" "}
                 <strong>DITERIMA</strong> sebagai santri baru PP Al
-                Andalus Al-Andalus Putra.
+                Andalus Al-Andalus Putri.
               </p>
 
               <button
@@ -251,7 +284,7 @@ export default function PengumumanTab() {
                 </h4>
                 <ul className="text-sm text-secondary-800 space-y-1">
                   <li>
-                    • Segera lakukan daftar ulang melalui tab "Daftar Ulang"
+                    • Segera lakukan daftar ulang melalui tab &quot;Daftar Ulang&quot;
                   </li>
                   <li>• Siapkan dokumen yang diperlukan untuk daftar ulang</li>
                   <li>• Ikuti petunjuk yang diberikan oleh panitia</li>
@@ -356,7 +389,7 @@ export default function PengumumanTab() {
       ) : (
         <div className="space-y-6">
           {/* Failed Card */}
-          <div className="bg-linear-to-r from-red-600 to-rose-700 rounded-[2rem] p-5 md:p-8 text-white shadow-lg shadow-red-600/20 app-card overflow-hidden relative">
+          <div className="bg-linear-to-r from-red-600 to-primary-700 rounded-[2rem] p-5 md:p-8 text-white shadow-lg shadow-red-600/20 app-card overflow-hidden relative">
             <div className="absolute -top-10 -right-10 p-5 md:p-8 opacity-10 transform rotate-12">
               <XCircle className="w-64 h-64" />
             </div>

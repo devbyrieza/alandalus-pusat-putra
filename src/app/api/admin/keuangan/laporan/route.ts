@@ -44,7 +44,7 @@ export async function GET(request: Request) {
     // Map to a simpler structure for the frontend
     const riwayat = transactions.map(tx => ({
       id: tx.id,
-      waktu: new Date(tx.created_at).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB',
+      waktu: new Date(tx.created_at).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Jakarta' }) + ' WIB',
       santri: tx.dompet.pendaftar.nama_lengkap,
       keterangan: tx.keterangan || 'Jajan Kantin',
       nominal: Number(tx.nominal)

@@ -143,7 +143,10 @@ export default function AkademikTestPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload) });
-      if (!res.ok) throw new Error("Gagal mengirim");
+      if (!res.ok) {
+          const errData = await res.json().catch(() => null);
+          throw new Error(errData?.error || "Gagal mengirim");
+        }
 
       if (typeof window !== "undefined") {
         localStorage.removeItem("alandalus_alimam_ujian_akademik_draft");

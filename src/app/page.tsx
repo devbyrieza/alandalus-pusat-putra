@@ -212,12 +212,12 @@ export default function Home() {
       {/* ——— §1 HERO SECTION — SPLIT DARK ————————————————————————————————————————————— */}
       <section
         id="hero"
-        className="relative flex items-center bg-[#020617] pt-8 sm:pt-12 md:pt-14 pb-12 sm:pb-16 md:pb-16 overflow-hidden"
+        className="relative flex items-center bg-emerald-950 pt-8 sm:pt-12 md:pt-14 pb-12 sm:pb-16 md:pb-16 overflow-hidden"
       >
         {/* Animated glows */}
         <div className="absolute inset-0 pointer-events-none">
           <div
-            className={`hidden md:block absolute top-0 left-1/3 w-full max-w-[600px] h-[600px] rounded-full opacity-20 blur-[120px] bg-[#166534]`}
+            className={`hidden md:block absolute top-0 left-1/3 w-full max-w-[600px] h-[600px] rounded-full opacity-20 blur-[120px] bg-emerald-800`}
             style={{ transform: `translateY(${scrollY * 0.08}px)` }}
           />
           <div
@@ -308,7 +308,7 @@ export default function Home() {
               <div className="relative w-full max-w-lg">
                 
                 {/* Image Container */}
-                <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-lg shadow-black/50 w-full">
+                <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-lg shadow-emerald-950/50 w-full">
                   <Image
                     src="/images/gedung-utama-putra.jpeg"
                     alt="Pesantren Al-Andalus Jonggol"
@@ -318,12 +318,12 @@ export default function Home() {
                     priority
                   />
                   {/* Lighter gradient since text is no longer inside */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/20 via-transparent to-transparent" />
                 </div>
 
                 {/* Floating bottom card - Now floating outside the image */}
                 <div className="relative -mt-6 sm:-mt-8 mx-4 sm:-mx-6 z-20">
-                  <div className="bg-slate-900/80  border border-white/20 rounded-xl p-4 sm:p-5 flex items-center gap-4 shadow-lg shadow-black/40 ring-1 ring-white/10">
+                  <div className="bg-emerald-900/80  border border-white/20 rounded-xl p-4 sm:p-5 flex items-center gap-4 shadow-lg shadow-emerald-950/40 ring-1 ring-white/10">
                     <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl ${c.bg600} flex items-center justify-center shrink-0`}>
                       <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
@@ -341,7 +341,7 @@ export default function Home() {
                 </div>
 
                 {/* Floating top-right badge - Also slightly adjusted to pop out */}
-                <div className="absolute -top-4 right-0 md:-right-6 bg-slate-900/80  border border-white/30 rounded-xl p-3 flex items-center gap-2.5 shadow-lg ring-1 ring-white/10 z-20">
+                <div className="absolute -top-4 right-0 md:-right-6 bg-emerald-900/80  border border-white/30 rounded-xl p-3 flex items-center gap-2.5 shadow-lg ring-1 ring-white/10 z-20">
                   <Award className={`w-6 h-6 ${c.text400} shrink-0`} />
                   <div>
                     <p className="text-white text-[11px] font-bold leading-tight">Terakreditasi Muadalah</p>
@@ -351,29 +351,6 @@ export default function Home() {
 
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ §2 STATS BAND — Animated Counters ══════════════════════════════ */}
-      <section
-        ref={statsRef}
-        className="relative py-20 bg-[#0f172a] border-y border-white/5"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <span className={`text-xs font-bold uppercase tracking-widest ${c.text400}`}>
-              Angka Bicara
-            </span>
-            <h2 className="text-3xl font-black text-white mt-2 px-6 sm:px-0 text-balance">
-              Capaian Nyata yang Kami Banggakan
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            <StatCard value={700} suffix="+" label="Alumni" icon={FaUserGraduate} started={statsStarted} delay={0} />
-            <StatCard value={500} suffix="+" label="Santri Aktif" icon={Users} started={statsStarted} delay={200} />
-            <StatCard value={13} suffix="" label="Tahun Pengalaman" icon={FaTrophy} started={statsStarted} delay={400} />
-            <StatCard value={50} suffix="+" label="Perguruan Tinggi" icon={FaUniversity} started={statsStarted} delay={600} />
           </div>
         </div>
       </section>
@@ -411,7 +388,7 @@ export default function Home() {
             </div>
 
             {/* I — Internasional (small) */}
-            <div className="rounded-xl p-8 bg-slate-900 text-white border border-slate-700 group hover:-translate-y-2 hover:shadow-lg transition-all duration-300">
+            <div className="rounded-xl p-8 bg-emerald-900 text-white border border-emerald-700 group hover:-translate-y-2 hover:shadow-lg transition-all duration-300">
               <Globe className="w-10 h-10 mb-6 text-amber-400" />
               <h3 className="text-xl font-black mb-3 text-white">I — Internasional</h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
@@ -467,7 +444,7 @@ export default function Home() {
       </section>
 
       {/* ═══ §4 PAIN vs SOLUTION TABLE ══════════════════════════════════════ */}
-      <section className="py-24 bg-[#020617]">
+      <section className="py-24 bg-emerald-950">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="text-center mb-16">
             <span className={`text-xs font-bold uppercase tracking-widest ${c.text400}`}>
@@ -481,10 +458,10 @@ export default function Home() {
             </p>
           </header>
 
-          <div className="rounded-xl overflow-hidden border border-slate-800">
+          <div className="rounded-xl overflow-hidden border border-emerald-800">
             {/* Table header */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 bg-[#0f172a] border-b border-[#1e293b]">
-              <div className="p-5 flex items-center gap-2 text-slate-500 text-sm font-bold uppercase tracking-widest border-r border-slate-800">
+            <div className="grid grid-cols-1 sm:grid-cols-2 bg-emerald-900 border-b border-emerald-800">
+              <div className="p-5 flex items-center gap-2 text-slate-500 text-sm font-bold uppercase tracking-widest border-r border-emerald-800">
                 <XCircle className="w-4 h-4 text-red-500 shrink-0" />
                 Kekhawatiran Orang Tua
               </div>
@@ -501,8 +478,8 @@ export default function Home() {
               { pain: "Fasilitas asrama tidak layak dan tidak nyaman", fix: "Asrama modern, kamar bersih, fasilitas olahraga & lab lengkap" },
               { pain: "Khawatir bullying dan lingkungan teman negatif", fix: "Pembinaan karakter 24/7, guru pengasuh profesional bersertifikat" },
             ].map((row, i) => (
-              <div key={i} className="grid grid-cols-1 sm:grid-cols-2 border-t border-slate-800 hover:bg-slate-900/60 transition-colors group">
-                <div className="p-5 flex items-start gap-3 text-slate-400 text-sm border-r border-slate-800">
+              <div key={i} className="grid grid-cols-1 sm:grid-cols-2 border-t border-emerald-800 hover:bg-emerald-900/60 transition-colors group">
+                <div className="p-5 flex items-start gap-3 text-slate-400 text-sm border-r border-emerald-800">
                   <XCircle className="w-4 h-4 text-red-500/70 mt-0.5 shrink-0" />
                   {row.pain}
                 </div>
@@ -570,8 +547,8 @@ export default function Home() {
 
             {/* Right: Terminal + Contact */}
             <div className="space-y-6">
-              <div className="rounded-xl bg-[#020617] border border-[#1e293b] overflow-hidden">
-                <div className="flex items-center gap-2 px-5 py-4 bg-[#0f172a] border-b border-[#1e293b]">
+              <div className="rounded-xl bg-emerald-950 border border-emerald-800 overflow-hidden">
+                <div className="flex items-center gap-2 px-5 py-4 bg-emerald-900 border-b border-emerald-800">
                   <div className="flex gap-1.5">
                     <div className="w-3 h-3 rounded-full bg-red-500" />
                     <div className="w-3 h-3 rounded-full bg-yellow-500" />
@@ -644,7 +621,7 @@ export default function Home() {
       </section>
 
       {/* ═══ §6 ALUMNI MARQUEE ══════════════════════════════════════════════ */}
-      <section className="py-16 bg-[#052e16] border-y border-white/5 overflow-hidden">
+      <section className="py-16 bg-emerald-950 border-y border-white/5 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
           <span className={`text-xs font-bold uppercase tracking-widest ${c.text400}`}>
             Jejak Alumni
@@ -694,7 +671,7 @@ export default function Home() {
       </section>
 
       {/* ═══ §8 SOCIAL PROOF — University Grid ══════════════════════════════ */}
-      <section className="py-20 bg-[#052e16]">
+      <section className="py-20 bg-emerald-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-slate-500 text-xs font-bold uppercase tracking-widest mb-10 flex items-center justify-center gap-2">
             <Award className={`w-4 h-4 ${c.text400}`} />
@@ -755,7 +732,7 @@ export default function Home() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-emerald-950/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                   <span className="text-white text-sm font-bold">{photo.label}</span>
                 </div>
               </div>
@@ -773,7 +750,7 @@ export default function Home() {
       </section>
 
       {/* ═══ §9.5 TESTIMONIAL — Suara Orang Tua ══════════════════════════════ */}
-      <section className="py-24 bg-[#0f172a]">
+      <section className="py-24 bg-emerald-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="text-center mb-16">
             <span className={`text-xs font-bold uppercase tracking-widest ${c.text400}`}>
@@ -821,9 +798,9 @@ export default function Home() {
       </section>
 
       {/* ═══ §10 FINAL CTA ══════════════════════════════════════════════════ */}
-      <section className="py-24 bg-[#0f172a] relative overflow-hidden">
+      <section className="py-24 bg-emerald-900 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[400px] rounded-full opacity-20 blur-[100px] bg-[#166534]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[400px] rounded-full opacity-20 blur-[100px] bg-emerald-800" />
         </div>
         <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
           <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 mb-6`}

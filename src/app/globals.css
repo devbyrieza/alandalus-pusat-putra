@@ -31,27 +31,28 @@
 
   
   /* ─── Andalus True Green (Dari Brosur) ─── */
-  --color-andalus-green-50: #edfbf3;
-  --color-andalus-green-100: #d3f4e1;
-  --color-andalus-green-200: #aceac6;
-  --color-andalus-green-300: #7cd8a4;
-  --color-andalus-green-400: #47bf7c;
-  --color-andalus-green-500: #22a35e;
-  --color-andalus-green-600: #168249;
-  --color-andalus-green-700: #087d3a;
-  --color-andalus-green-800: #11522f;
-  --color-andalus-green-900: #093c24;
-  --color-andalus-green-950: #052215;
+  --color-andalus-green-50: #ecfdf3;
+  --color-andalus-green-100: #d1fae2;
+  --color-andalus-green-200: #a7f3c4;
+  --color-andalus-green-300: #6ee79b;
+  --color-andalus-green-400: #34d375;
+  --color-andalus-green-500: #10b959;
+  --color-andalus-green-600: #0c9e4a;
+  --color-andalus-green-700: #08813c;
+  --color-andalus-green-800: #05682f;
+  --color-andalus-green-900: #035024;
+  --color-andalus-green-950: #013115;
 
   /* ─── Andalus True Gold (Dari Brosur) ─── */
-  --color-andalus-gold-50: #fefce8;
-  --color-andalus-gold-100: #fdf8c3;
-  --color-andalus-gold-200: #fceb8b;
-  --color-andalus-gold-300: #fadb4a;
-  --color-andalus-gold-400: #f6c342;
-  --color-andalus-gold-500: #eab308;
-  --color-andalus-gold-600: #ca8a04;
-  --color-andalus-gold-700: #a16207;
+  --color-andalus-gold-50: #fffdeb;
+  --color-andalus-gold-100: #fefacc;
+  --color-andalus-gold-200: #fcf48c;
+  --color-andalus-gold-300: #fbee4a;
+  --color-andalus-gold-400: #F5DD17;
+  --color-andalus-gold-500: #e5cc0f;
+  --color-andalus-gold-600: #ccb000;
+  --color-andalus-gold-700: #a18a00;
+    --color-andalus-red: #EF1D23;
   --color-andalus-gold-800: #854d0e;
   --color-andalus-gold-900: #713f12;
   --color-andalus-gold-950: #422006;
@@ -180,6 +181,7 @@
   --color-secondary-900: var(--color-andalus-gold-900);
   --color-secondary-950: var(--color-amber-900);
   --color-secondary: var(--color-andalus-gold-400);
+    --color-accent: var(--color-andalus-red);
   --color-secondary-light: var(--color-amber-50);
   --color-secondary-dark: var(--color-amber-700);
 
@@ -211,6 +213,7 @@
   --color-primary-light: var(--color-andalus-green-50);
   /* Hijau muda / background aksen */
   --color-secondary: var(--color-andalus-gold-400);
+    --color-accent: var(--color-andalus-red);
   /* Kuning Andalus Secondary */
   --color-background: #fafaf9; /* Warm white — lebih segar dari pure white */
   /* Background utama */

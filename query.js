@@ -1,13 +1,27 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-async function main() {
-  const logs = await prisma.whatsappLog.findMany({
-    where: { pendaftar_id: 'ILA2600018' },
-  });
-  console.log(JSON.stringify(logs, null, 2));
+
+async function run() {
+    const fathi = await prisma.jadwalUjian.findMany({
+        where: {
+            pendaftar: {
+                nama_lengkap: {
+                    contains: "Fathi Muhammad"
+                }
+            }
+        },
+        include: {
+            exam_session: true,
+            pendaftar: true
+        }
+    });
+
+    console.log("Fathi's Schedules:");
+    fathi.forEach(f => {
+        console.log(`- ID: ${f.id}`);
+        console.log(`  Exam Session Start: ${f.exam_session?.start_time}`);
+        console.log(`  Waktu Mulai: ${f.waktu_mulai_santri}`);
+        console.log(`  Quran: ${f.penguji_quran_id}, Santri: ${f.penguji_santri_id}`);
+    });
 }
-main()
-  .catch(e => console.error(e))
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+run();

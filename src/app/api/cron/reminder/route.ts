@@ -54,6 +54,7 @@ export async function GET(request: Request) {
                 penguji_santri: true,
                 penguji_quran: true,
                 penguji_ortu: true,
+                penguji_arab: true,
                 notif_reminders: true } });
 
         let enqueuedSantri = 0;
@@ -89,7 +90,8 @@ export async function GET(request: Request) {
                 jadwal.google_meet_link ||
                 jadwal.penguji_santri?.google_meet_link || 
                 jadwal.penguji_quran?.google_meet_link || 
-                jadwal.penguji_ortu?.google_meet_link;
+                jadwal.penguji_ortu?.google_meet_link || 
+                jadwal.penguji_arab?.google_meet_link;
 
             const sessionLoc = jadwal.exam_session?.location || "Pesantren Islam Internasional Al-Andalus Putra";
             const lokasi = googleMeetLink

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * WhatsApp Queue Service — 6-Layer Anti-BAN Protection
  *
  * Layer 1: Database flag check (anti-duplicate)
@@ -999,18 +999,66 @@ Jazakumullahu khairan
 *Panitia PPDB ${BRANDING.schoolName}*`;
 }
 
-export function buildMessageHasilTes(nama: string): string {
+export function buildMessageHasilTes(nama: string, jenjang: string = "", nomor_tes: string = "", status: string = ""): string {
+    const isPutri = BRANDING.schoolName.toLowerCase().includes('putri');
+    const sebutanAnak = isPutri ? 'santriwati' : 'santri';
+    const sifat = isPutri ? 'shalehah' : 'shaleh';
+
+    if (status === "Diterima" || status === "accepted") {
+        return `🌷 *PENGUMUMAN KELULUSAN SELEKSI* 🌷
+
+*Bismillāhirraḥmānirraḥīm*
+
+Assalāmu‘alaikum warahmatullāhi wabarakātuh.
+
+Alhamdulillāh, berdasarkan hasil seleksi Penerimaan Santri Baru (PSB), dengan ini kami sampaikan bahwa:
+
+*Nama:* ${nama}
+*Jenjang:* ${jenjang}
+*Nomor Tes:* *${nomor_tes}*
+
+🌸 *DINYATAKAN LULUS SELEKSI* 🌸
+
+*Māsyā Allāh, tabārakallāh.*
+
+Selamat kepada Ananda *${nama}* dan Abu serta Ummu. Semoga Allah ﷻ memberikan keberkahan dan kemudahan kepada Ananda dalam melanjutkan pendidikan di *${BRANDING.schoolName}*.
+
+📌 *TAHAP SELANJUTNYA – DAFTAR ULANG*
+
+Abu dan Ummu dapat melanjutkan proses *daftar ulang melalui Virtual Account (VA) yang telah terlampir* pada surat pengumuman kelulusan.
+
+Setelah melakukan pembayaran, mohon:
+
+1. Melakukan pembayaran daftar ulang melalui *VA yang terlampir*.
+2. Menyimpan *bukti transfer/pembayaran*.
+3. Mengirimkan *bukti pembayaran* kepada bagian *PPDB/Humas* sebagai konfirmasi daftar ulang.
+
+📱 *INFORMASI & KONFIRMASI*
+
+*Humas:* 0811 2802 1035
+*PSB/PPDB:* 0851 7527 5085
+
+Mohon bukti pembayaran dikirimkan kepada salah satu nomor di atas dengan jelas agar dapat segera dilakukan proses konfirmasi daftar ulang.
+
+Jazakumullāhu khairan atas kepercayaan Abu dan Ummu kepada *${BRANDING.schoolName}*.
+
+Semoga Allah ﷻ menjadikan Ananda ${sebutanAnak} yang *${sifat}, berilmu, berakhlak mulia, mandiri, dan bermanfaat bagi agama, keluarga, dan umat.*
+
+Wassalāmu‘alaikum warahmatullāhi wabarakātuh.
+
+*Panitia PSB/PPDB*
+*${BRANDING.schoolName}*`;
+    }
+
     return `📢 *Pengumuman Hasil Seleksi*
 
 Assalamu'alaikum Abu/Ummu,
 
-Alhamdulillah, hasil seleksi Ananda *${nama}* sudah tersedia dan dapat dilihat di dashboard PPDB.
+Alhamdulillah, hasil seleksi Ananda *${nama}* (Nomor Tes: ${nomor_tes}) sudah tersedia dan dapat dilihat di dashboard PPDB.
 
 🔗 *Lihat Hasil Seleksi:*
 ${BRANDING.websiteUrl}/dashboard/pendaftar/pengumuman
 
-*Panduan Daftar Ulang (bagi yang Diterima):*
-Silakan lakukan pembayaran Daftar Ulang minimal 50% paling lambat 7 hari setelah pengumuman ini.
 Untuk informasi lebih lanjut, hubungi kami di ${BRANDING.phone}.
 
 Jazakumullahu khairan

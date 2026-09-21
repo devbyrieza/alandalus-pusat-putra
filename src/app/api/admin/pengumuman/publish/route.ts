@@ -53,6 +53,7 @@ export async function POST(request: NextRequest) {
         nama_lengkap: true,
         no_hp: true,
         jenjang: true,
+        nomor_pendaftaran: true,
         tahun_ajaran_id: true } });
 
     // Use transaction for consistency
@@ -115,7 +116,7 @@ export async function POST(request: NextRequest) {
       }
 
       const message =
-        announcement_message || buildMessageHasilTes(user.nama_lengkap);
+        announcement_message || buildMessageHasilTes(user.nama_lengkap, user.jenjang, user.nomor_pendaftaran, displayStatus);
 
       const resultEnq = await enqueueWhatsapp({
         pendaftarId: user.id,

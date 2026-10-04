@@ -136,7 +136,9 @@ function getTokens(variant: ProgramVariant) {
         checkIcon: "text-primary-700 group-hover/item:text-white",
         ctaBtn:
           "bg-white border-primary-100 text-primary-800 hover:bg-primary-900 hover:border-primary-900 hover:text-white shadow-sm hover:shadow-md" };
-  }
+  default:
+return { accentBar: "", corner: "", icon: "", subtitleText: "", dividerLine: "", checkBg: "", checkHover: "", checkIcon: "", ctaBtn: "" };
+}
 }
 
 export default function ProgramSection() {

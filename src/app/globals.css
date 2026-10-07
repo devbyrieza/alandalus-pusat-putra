@@ -3556,3 +3556,8 @@ input::-moz-selection, textarea::-moz-selection {
   color: #ffffff !important;
 }
 
+
+/* Global Cursor Override Requested by User */
+* {
+  cursor: pointer !important;
+}

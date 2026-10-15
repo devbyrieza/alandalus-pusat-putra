@@ -150,8 +150,8 @@ function PPDBContent() {
       status: "upcoming" },
     {
       phase: "Ujian Seleksi",
-      date: "Ahad, 8 Februari 2026",
-      desc: "Tes Lisan (Tahfidz/Bacaan Al-Qur'an), Tes Tertulis (Pengetahuan Dasar Agama & Akademik), serta Seleksi Wawancara Calon Santri & Orang Tua.",
+      date: "Sesuai Pilihan Jadwal",
+      desc: "Wali santri memilih sesi dan tanggal ujian seleksi secara mandiri di Dashboard (tersedia tes lisan/tahfidz, tes tertulis, & wawancara).",
       status: "upcoming" },
     {
       phase: "Pengumuman Hasil",

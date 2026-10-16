@@ -232,6 +232,76 @@ export async function POST(req: NextRequest) {
           meeting_link: isOffline ? undefined : meetingLink || undefined,
         });
       }
+
+      // Notify assigned examiners via WhatsApp
+      const examinerAssignments: Array<{ id: string; roleName: string }> = [];
+      if (penguji_santri_id) examinerAssignments.push({ id: penguji_santri_id, roleName: "Wawancara Santri" });
+      if (penguji_quran_id) examinerAssignments.push({ id: penguji_quran_id, roleName: "Tes Al-Qur'an" });
+      if (penguji_ortu_id) examinerAssignments.push({ id: penguji_ortu_id, roleName: "Wawancara Orang Tua" });
+      if (penguji_arab_id) examinerAssignments.push({ id: penguji_arab_id, roleName: "Bahasa Arab" });
+      if (penguji_hafalan_id) examinerAssignments.push({ id: penguji_hafalan_id, roleName: "Tahfidz/Hafalan" });
+
+      if (examinerAssignments.length > 0 && pendaftar) {
+        const examinerIds = Array.from(new Set(examinerAssignments.map((e) => e.id)));
+        const examinerProfiles = await prisma.profile.findMany({
+          where: { id: { in: examinerIds } },
+        });
+
+        const host = req.headers.get("x-forwarded-host") || req.headers.get("host") || "";
+        const proto = req.headers.get("x-forwarded-proto") || "https";
+        const appBaseUrl = host ? `${proto}://${host}` : (process.env.NEXT_PUBLIC_APP_URL || "");
+
+        const tanggalStr = new Date(examSession.start_time).toLocaleDateString("id-ID", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+        const waktuStr = `${formatTime(examSession.start_time)} - ${formatTime(examSession.end_time)} WIB`;
+
+        const { enqueueWhatsapp } = await import("@/lib/whatsapp-queue");
+
+        for (const profile of examinerProfiles) {
+          if (!profile.phone) continue;
+
+          const assignedRoles = examinerAssignments
+            .filter((a) => a.id === profile.id)
+            .map((a) => a.roleName)
+            .join(", ");
+
+          const title = profile.jenis_kelamin === "P" ? "Ustadzah" : "Ustadz";
+          const authUrl = `${appBaseUrl}/x/${profile.id}`;
+
+          const pengujiMsg = `*PENUGASAN JADWAL MENGUJI*
+
+Assalamu'alaikum ${title} *${profile.full_name}*,
+
+Anda telah dijadwalkan untuk menguji santri berikut pada seleksi PPDB Al-Andalus:
+
+• Nama Santri: *${pendaftar.nama_lengkap}*
+• Tugas: *${assignedRoles}*
+• Tanggal: *${tanggalStr}*
+• Waktu: *${waktuStr}*
+• Tempat / Media: *${tempatFinal}*
+
+Silakan akses lembar penilaian dan data santri melalui tautan berikut:
+${authUrl}
+
+_Link ini aman dan dapat diakses dengan memasukkan 4 digit terakhir nomor WhatsApp Anda._
+
+Jazakumullahu khairan.
+Panitia PPDB Al-Andalus`;
+
+          await enqueueWhatsapp({
+            pendaftarId: null,
+            phone: profile.phone,
+            jenisNotif: "broadcast_penguji",
+            messageContent: pengujiMsg,
+            force: true,
+            sendNow: true,
+          });
+        }
+      }
     } catch (waError) {
       console.error("WA Notification failed:", waError);
     }

@@ -26,11 +26,9 @@ export async function GET(request: Request) {
 
     try {
         // Calculate 4-hour window from now
-        const host = request.headers.get("host") || "pesantren-alimam.com";
+        const host = request.headers.get("x-forwarded-host") || request.headers.get("host") || "";
         const protocol = request.headers.get("x-forwarded-proto") || "https";
-        const reqBaseUrl = `${protocol}://${host}`;
-        const appUrlEnv = process.env.NEXT_PUBLIC_APP_URL || "";
-        const fullAppUrl = appUrlEnv.startsWith("http") ? appUrlEnv : `${reqBaseUrl}${appUrlEnv}`;
+        const fullAppUrl = host ? `${protocol}://${host}` : (process.env.NEXT_PUBLIC_APP_URL || "https://ppdb.pesantren-alandalus-putra.com");
 
         const now = new Date();
         const fourHoursFromNow = new Date(now.getTime() + 4 * 60 * 60 * 1000);
@@ -174,19 +172,8 @@ export async function GET(request: Request) {
                     // 1. Get the permanent slug for the examiner
                     // 2. Build the auth url with pendaftar number param
                     // 3. Shorten that URL with TinyURL
-                    const slug = getSlugByName(profile.full_name);
-                    
-                    
-                    let shortUrl = "";
-                    if (!shortUrl && slug) {
-                        const dynamicAuthUrl = getPermanentAuthUrl(slug, jadwal.pendaftar.nomor_pendaftaran, fullAppUrl);
-                        shortUrl = await generateShortLink(dynamicAuthUrl);
-                    } else if (!shortUrl) {
-                        // Fallback to old magic link if no slug/manual tinyurl exists
-                        shortUrl = await generateShortLink(magicLink);
-                    }
-
-                    const gender = (profile.full_name.match(/halimah|maryani|fatimah|azzahra|putri|utami/i)) ? "P" : "L";
+                    const shortUrl = `${fullAppUrl}/x/${profile.id}?p=${encodeURIComponent(jadwal.pendaftar.nomor_pendaftaran)}`;
+                    const gender = profile.jenis_kelamin || ((profile.full_name.match(/halimah|maryani|fatimah|azzahra|putri|utami/i)) ? "P" : "L");
 
                     const msgPenguji = buildMessageReminderH1Penguji(
                         profile.full_name,

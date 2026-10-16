@@ -16,7 +16,6 @@ export async function GET(request: NextRequest) {
     const verification = verifyMagicToken(token);
 
     if (!verification.valid || !verification.data) {
-      // Decode URI components for safe passage
       const errReason = encodeURIComponent(
         verification.reason || "Token_tidak_valid",
       );
@@ -27,14 +26,18 @@ export async function GET(request: NextRequest) {
 
     const { id, role, full_name, redirect } = verification.data;
 
+    // 2. Determine base URL dynamically
+    const host = request.headers.get("x-forwarded-host") || request.headers.get("host") || "";
+    const proto = request.headers.get("x-forwarded-proto") || "https";
+    const baseUrl = host
+      ? `${proto}://${host}`
+      : (process.env.NEXT_PUBLIC_APP_URL || "https://ppdb.pesantren-alandalus-putra.com");
+
     // 3. Check if user needs PIN (has phone number)
     const { prisma } = await import("@/lib/prisma");
     const user = await prisma.profile.findUnique({
       where: { id },
       select: { phone: true } });
-
-    const baseUrl =
-      process.env.NEXT_PUBLIC_APP_URL || "https://pesantren-alandalus-putra.com";
 
     // If user has a valid phone number, they MUST verify PIN
     if (user && user.phone && user.phone !== "-" && user.phone.length > 5) {
@@ -58,9 +61,8 @@ export async function GET(request: NextRequest) {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "lax",
-      
         maxAge: 60 * 60 * 24 * 90,
-          expires: new Date(Date.now() + 60 * 60 * 24 * 90 * 1000), // 90 Days Persistent Session
+        expires: new Date(Date.now() + 60 * 60 * 24 * 90 * 1000), // 90 Days Persistent Session
       },
     );
 
@@ -72,4 +74,3 @@ export async function GET(request: NextRequest) {
     );
   }
 }
-

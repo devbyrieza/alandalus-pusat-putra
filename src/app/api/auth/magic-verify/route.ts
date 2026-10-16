@@ -42,17 +42,28 @@ export async function POST(request: NextRequest) {
 
     const redirectPath = p
       ? `/dashboard/penguji/input-nilai?search=${encodeURIComponent(p)}`
-      : `/dashboard/penguji`;
+      : `/dashboard/penguji/input-nilai`;
 
-    const token = generateMagicToken(
-      user.id,
-      activeRole,
-      user.full_name,
-      48,
-      redirectPath
+    const response = NextResponse.json({ url: redirectPath });
+
+    response.cookies.set(
+      "al_session",
+      JSON.stringify({
+        role: activeRole,
+        id: user.id,
+        full_name: user.full_name,
+      }),
+      {
+        path: "/",
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+        maxAge: 60 * 60 * 24 * 90,
+        expires: new Date(Date.now() + 60 * 60 * 24 * 90 * 1000), // 90 Days Persistent Session
+      }
     );
 
-    return NextResponse.json({ url: `/api/auth/magic?token=${token}` });
+    return response;
   } catch (error) {
     return NextResponse.json({ error: "Terjadi kesalahan sistem" }, { status: 500 });
   }

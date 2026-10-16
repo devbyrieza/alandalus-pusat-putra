@@ -38,12 +38,13 @@ export type NotifType =
     | "payment_rejected"
     | "daftar_ulang_verified"
     | "broadcast"
+    | "broadcast_penguji"
     | "pembatalan_jadwal";
 
 export interface EnqueueParams {
-    pendaftarId: string;
+    pendaftarId?: string | null;
     phone: string;
-    jenisNotif: NotifType;
+    jenisNotif: NotifType | string;
     messageContent: string;
     scheduledAt?: Date;
     force?: boolean;
@@ -73,45 +74,53 @@ const DEFAULT_APP_URL = BRANDING.websiteUrl;
  * Uses both the Pendaftar flag columns AND the WhatsappLog table.
  */
 async function isDuplicate(
-    pendaftarId: string,
-    jenisNotif: NotifType,
+    pendaftarId: string | null | undefined,
+    jenisNotif: NotifType | string,
     phone: string
 ): Promise<boolean> {
-    // Check Pendaftar flag columns for persistent flags
-    const flagMap: Partial<Record<NotifType, string>> = {
-        jadwal_belum: "notif_belum_jadwal_terkirim",
-        jadwal_tersedia: "notif_jadwal_tersedia_terkirim",
-        jadwal_langsung_tersedia: "notif_jadwal_tersedia_terkirim",
-        hasil_tes: "notif_hasil_tes_terkirim" };
+    const isRealPendaftar = !!(
+        pendaftarId &&
+        /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(pendaftarId)
+    );
 
-    const flagColumn = flagMap[jenisNotif];
-    if (flagColumn) {
-        const pendaftar = await prisma.pendaftar.findUnique({
-            where: { id: pendaftarId },
-            select: {
-                notif_belum_jadwal_terkirim: true,
-                notif_jadwal_tersedia_terkirim: true,
-                notif_hasil_tes_terkirim: true } });
+    if (isRealPendaftar) {
+        // Check Pendaftar flag columns for persistent flags
+        const flagMap: Partial<Record<string, string>> = {
+            jadwal_belum: "notif_belum_jadwal_terkirim",
+            jadwal_tersedia: "notif_jadwal_tersedia_terkirim",
+            jadwal_langsung_tersedia: "notif_jadwal_tersedia_terkirim",
+            hasil_tes: "notif_hasil_tes_terkirim" };
 
-        if (pendaftar) {
-            const flagValue =
-                pendaftar[flagColumn as keyof typeof pendaftar] as boolean;
-            if (flagValue) {
-                console.log(
-                    `🚫 [Layer 1] Duplicate blocked: ${jenisNotif} for ${pendaftarId} (flag already true)`
-                );
-                return true;
+        const flagColumn = flagMap[jenisNotif];
+        if (flagColumn) {
+            const pendaftar = await prisma.pendaftar.findUnique({
+                where: { id: pendaftarId! },
+                select: {
+                    notif_belum_jadwal_terkirim: true,
+                    notif_jadwal_tersedia_terkirim: true,
+                    notif_hasil_tes_terkirim: true } });
+
+            if (pendaftar) {
+                const flagValue =
+                    pendaftar[flagColumn as keyof typeof pendaftar] as boolean;
+                if (flagValue) {
+                    console.log(
+                        `🚫 [Layer 1] Duplicate blocked: ${jenisNotif} for ${pendaftarId} (flag already true)`
+                    );
+                    return true;
+                }
             }
         }
     }
 
-    // For non-flag types (konfirmasi_jadwal, reminder_h1), check WhatsappLog
-    // Added phone check & 48h limit to allow multiple examiners per student and re-tests
-    const recentWindow = new Date(Date.now() - 48 * 60 * 60 * 1000);
+    // For non-flag types or non-pendaftar (penguji broadcast, reminder), check WhatsappLog
+    // Use shorter 30-min window for penguji broadcasts to allow re-pulses, and 48h for pendaftar
+    const windowHours = isRealPendaftar ? 48 : 0.5;
+    const recentWindow = new Date(Date.now() - windowHours * 60 * 60 * 1000);
 
     const existingLog = await prisma.whatsappLog.findFirst({
         where: {
-            pendaftar_id: pendaftarId,
+            ...(isRealPendaftar ? { pendaftar_id: pendaftarId } : {}),
             phone: phone, // Check phone too!
             jenis_notif: jenisNotif,
             status: { in: ["pending", "processing", "sent"] },
@@ -120,7 +129,7 @@ async function isDuplicate(
 
     if (existingLog) {
         console.log(
-            `🚫 [Layer 1] Duplicate blocked: ${jenisNotif} for ${pendaftarId} (existing log: ${existingLog.status})`
+            `🚫 [Layer 1] Duplicate blocked: ${jenisNotif} for ${phone} (existing log: ${existingLog.status})`
         );
         return true;
     }
@@ -319,13 +328,20 @@ export async function enqueueWhatsapp(
     const { pendaftarId, phone, jenisNotif, messageContent, scheduledAt, force } =
         params;
 
-    // Verify that the pendaftar is active and not soft-deleted
-    const pendaftar = await prisma.pendaftar.findUnique({
-        where: { id: pendaftarId },
-        select: { deleted_at: true } });
-    if (!pendaftar || pendaftar.deleted_at !== null) {
-        console.log(`🚫 [Enqueue] Blocked: pendaftar ${pendaftarId} is deleted or not found.`);
-        return { queued: false, reason: "Pendaftar telah dihapus (soft-deleted atau tidak ditemukan)" };
+    const isRealPendaftar = !!(
+        pendaftarId &&
+        /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(pendaftarId)
+    );
+
+    // Verify that the pendaftar is active and not soft-deleted (only if a real pendaftar ID is provided)
+    if (isRealPendaftar) {
+        const pendaftar = await prisma.pendaftar.findUnique({
+            where: { id: pendaftarId! },
+            select: { deleted_at: true } });
+        if (!pendaftar || pendaftar.deleted_at !== null) {
+            console.log(`🚫 [Enqueue] Blocked: pendaftar ${pendaftarId} is deleted or not found.`);
+            return { queued: false, reason: "Pendaftar telah dihapus (soft-deleted atau tidak ditemukan)" };
+        }
     }
 
     // Layer 1: Duplicate check (skip if force is true)
@@ -345,7 +361,7 @@ export async function enqueueWhatsapp(
     // Create log entry (pending)
     const log = await prisma.whatsappLog.create({
         data: {
-            pendaftar_id: pendaftarId,
+            pendaftar_id: isRealPendaftar ? pendaftarId : null,
             phone,
             jenis_notif: jenisNotif,
             status: "pending",
@@ -353,7 +369,7 @@ export async function enqueueWhatsapp(
             scheduled_at: scheduledAt || new Date() } });
 
     console.log(
-        `📥 [Enqueue] ${jenisNotif} for ${pendaftarId} queued as ${log.id}`
+        `📥 [Enqueue] ${jenisNotif} for ${pendaftarId || phone} queued as ${log.id}`
     );
 
     // Trigger auto-flush in the background using Next.js after() to survive Vercel serverless freeze

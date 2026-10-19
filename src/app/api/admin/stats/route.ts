@@ -56,11 +56,14 @@ export async function GET(request: Request) {
     );
 
     // === REDIS CACHE CHECK ===
+    const isFresh = searchParams.get("refresh") === "true" || searchParams.get("fresh") === "true";
     const cacheKey = `admin_stats_${where.tahun_ajaran_id || "all"}`;
-    const cachedStats = await getCache<any>(cacheKey);
-    if (cachedStats) {
-      console.log("⚡ [API Stats] Mengembalikan data dari Redis Cache!");
-      return NextResponse.json(cachedStats);
+    if (!isFresh) {
+      const cachedStats = await getCache<any>(cacheKey);
+      if (cachedStats) {
+        console.log("⚡ [API Stats] Mengembalikan data dari Redis Cache!");
+        return NextResponse.json(cachedStats);
+      }
     }
     // =========================
 
@@ -73,7 +76,14 @@ export async function GET(request: Request) {
         jenjang: true,
         provinsi: true,
         jenis_kelamin: true,
-        created_at: true } });
+        created_at: true,
+        data_lengkap: true,
+        pembayaran: {
+          where: { status_pembayaran: "verified" },
+          select: { jenis_pembayaran: true, jumlah: true }
+        }
+      }
+    });
 
     // Fetch pembayaran data for the same year
     const pembayaranData = await prisma.pembayaran.findMany({
@@ -93,8 +103,33 @@ export async function GET(request: Request) {
       Perempuan: 0,
       "Belum Diisi": 0 };
 
-    pendaftarData.forEach((p) => {
-      const status = p.status_pendaftaran || "draft";
+    pendaftarData.forEach((p: any) => {
+      let status = p.status_pendaftaran || "draft";
+
+      // Auto-reconciliation: If student is enrolled (Proses Daftar Ulang) but their verified DU payment is complete, promote to enrolled_full
+      if (status === "enrolled" && p.pembayaran && p.pembayaran.length > 0) {
+        const verifiedDUPaid = p.pembayaran
+          .filter((pay: any) => pay.jenis_pembayaran === "DAFTAR_ULANG" || pay.jenis_pembayaran === "UANG_PANGKAL")
+          .reduce((sum: number, pay: any) => sum + Number(pay.jumlah), 0);
+        
+        let expectedDU = 35000000;
+        try {
+          const dl = (p.data_lengkap as any) || {};
+          const keringananJson = dl.keringanan_daftar_ulang || {};
+          const potonganUP = Number(keringananJson.potongan_uang_pangkal || 0) || Number(keringananJson.nominal_potongan || 0);
+          expectedDU -= potonganUP;
+        } catch {}
+
+        if (verifiedDUPaid >= Math.min(expectedDU, 30000000)) {
+          status = "enrolled_full";
+          // Self-heal DB in background
+          prisma.pendaftar.update({
+            where: { id: p.id },
+            data: { status_pendaftaran: "enrolled_full" }
+          }).catch((err: any) => console.warn("Auto-reconcile error for pendaftar:", p.id, err));
+        }
+      }
+
       statusCounts[status] = (statusCounts[status] || 0) + 1;
 
       // Normalize Jenjang: Handle common variations
@@ -380,7 +415,7 @@ export async function GET(request: Request) {
         .map(([provinsi, jumlah]) => ({ provinsi, jumlah })),
       stats_gender: genderCounts,
       pie_chart_status: {
-        diterima: (statusCounts.accepted || 0) + (statusCounts.enrolled || 0),
+        diterima: (statusCounts.accepted || 0) + (statusCounts.enrolled || 0) + (statusCounts.enrolled_full || 0),
         cadangan: statusCounts.announced || 0,
         menunggu:
           (statusCounts.tested || 0) +

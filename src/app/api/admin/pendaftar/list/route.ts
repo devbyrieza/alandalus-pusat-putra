@@ -113,11 +113,14 @@ export async function GET(request: NextRequest) {
         tested: ["tested", "passed", "announced", "accepted", "enrolled"],
         sudah_ujian: ["tested", "passed", "announced", "accepted", "enrolled"],
         hasil_ujian: ["passed", "announced", "accepted", "enrolled"],
-        diterima: ["accepted", "passed"],
+        diterima: ["accepted", "passed", "enrolled", "enrolled_full"],
         cadangan: ["cadangan"],
         ditolak: ["rejected", "docs_rejected"],
-        belum_daftar_ulang: ["accepted"],
-        sudah_daftar_ulang: ["enrolled"],
+        belum_daftar_ulang: ["accepted", "passed"],
+        sudah_daftar_ulang: ["enrolled", "enrolled_full"],
+        daftar_ulang_sedang: ["enrolled"],
+        daftar_ulang_selesai: ["enrolled_full"],
+        enrolled_full: ["enrolled_full"],
         mengundurkan_diri: ["mengundurkan_diri"],
       };
 

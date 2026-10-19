@@ -266,11 +266,11 @@ function VerifikasiPembayaranContent() {
       const data = Object.values(groups).map((g) => {
         let expectedTagihan = 0;
         if ((activeTab as string) === "UANG_PANGKAL" || activeTab === "DAFTAR_ULANG") {
-          expectedTagihan = 30000000 - g.beasiswa;
+          expectedTagihan = 35000000 - g.beasiswa;
         } else if (activeTab === "SPP") {
-          expectedTagihan = 1000000;
+          expectedTagihan = 3000000;
         } else if (activeTab === "PENDAFTARAN") {
-          expectedTagihan = 350000;
+          expectedTagihan = 500000;
         }
 
         const sisa = expectedTagihan - g.total_verified;

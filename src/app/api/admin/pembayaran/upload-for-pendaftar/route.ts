@@ -301,7 +301,7 @@ export async function POST(request: NextRequest) {
         } });
       const totalPaid = allVerified.reduce((acc, p) => acc + Number(p.jumlah), 0) + jumlah;
       
-      let expectedTagihanDaftarUlang = 8500000;
+      let expectedTagihanDaftarUlang = 35000000;
       let dataLengkap = pendaftar.data_lengkap as any || {};
       if (typeof dataLengkap === "string") {
         try { dataLengkap = JSON.parse(dataLengkap); } catch(e) {}
@@ -332,6 +332,16 @@ export async function POST(request: NextRequest) {
         data: {
           status_pendaftaran: newPendaftarStatus,
           updated_at: new Date() } });
+
+      try {
+        const { delCache } = await import("@/lib/redis");
+        await delCache("admin_stats_all");
+        if (pendaftar.tahun_ajaran_id) {
+          await delCache(`admin_stats_${pendaftar.tahun_ajaran_id}`);
+        }
+      } catch (cacheErr) {
+        console.warn("Failed to invalidate stats cache:", cacheErr);
+      }
     }
 
     // 12b. Kirim Notifikasi WhatsApp

@@ -239,7 +239,7 @@ export async function PATCH(request: NextRequest) {
         const pendaftarData = await prisma.pendaftar.findUnique({
           where: { id: pembayaran.pendaftar_id },
           select: { data_lengkap: true } });
-        let expectedDU = 30000000;
+        let expectedDU = 35000000;
         if (pendaftarData?.data_lengkap) {
           try {
             const dl = typeof pendaftarData.data_lengkap === "string"
@@ -257,7 +257,7 @@ export async function PATCH(request: NextRequest) {
         const duLunas = totalDUPaid >= expectedDU;
         const sppLunas = totalSPPPaid >= 1000000;
 
-        if (duLunas && sppLunas) {
+        if (duLunas) {
           newPendaftarStatus = "enrolled_full";
         } else if (totalDUPaid > 0 || totalSPPPaid > 0) {
           newPendaftarStatus = "enrolled";
@@ -284,6 +284,14 @@ export async function PATCH(request: NextRequest) {
           status_pendaftaran: newPendaftarStatus,
           updated_at: new Date() } });
     }
+
+    try {
+      const { redis } = await import("@/lib/redis");
+      if (redis && typeof redis.keys === "function") {
+        const keys = await redis.keys("admin_stats_*");
+        if (keys && keys.length > 0) await redis.del(...keys);
+      }
+    } catch (e) {}
 
     // Logging audit action
     logAdminAction({

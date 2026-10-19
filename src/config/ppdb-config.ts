@@ -33,7 +33,7 @@ export const PPDB_CONFIG = {
   angkatan: "Angkatan ke-15",
   biaya: {
     pendaftaran: 500000,
-    uangPangkal: 30000000,
+    uangPangkal: 35000000,
     spp: 3000000,
   },
   bank: {

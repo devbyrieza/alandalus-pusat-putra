@@ -123,7 +123,7 @@ export default function DaftarUlangTab() {
   const potonganSPP =
     keringanan?.potongan_spp ?? 0;
 
-  const expectedUangPangkal = 30000000 - potonganUP;
+  const expectedUangPangkal = 35000000 - potonganUP;
   const expectedSpp = 3000000 - potonganSPP;
   const expectedTagihan =
     subTab === "uang_pangkal" ? expectedUangPangkal : expectedSpp;

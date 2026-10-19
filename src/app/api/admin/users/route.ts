@@ -189,7 +189,7 @@ export async function POST(request: Request) {
         secondary_roles: Array.isArray(secondary_roles) ? secondary_roles : [],
         phone: phone || "-",
         username: username,
-        jenis_kelamin: jenis_kelamin || null,
+        jenis_kelamin: "L",
         google_meet_link: google_meet_link || null,
         password_hash } });
 

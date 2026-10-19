@@ -37,14 +37,11 @@ function PilihVerifikasiContent() {
   // Function untuk generate nomor pendaftaran (sama seperti di backend)
   const generateNomorPendaftaran = () => {
     const year = new Date().getFullYear();
-    const prefix =
-      jenis_kelamin === "L"
-        ? jenjang === "MTs"
-          ? "MTI"
-          : "ILI"
-        : jenjang === "MTs"
-          ? "MTA"
-          : "ILA";
+    const normJ = (jenjang || "").toUpperCase();
+    let prefix = "MTA";
+    if (normJ.includes("IL")) prefix = "ILA";
+    else if (normJ.includes("SMA") || normJ.includes("MA")) prefix = "SMA";
+    else prefix = "MTA";
 
     // Random 4 digit untuk demo
     const randomNum = Math.floor(1000 + Math.random() * 9000);

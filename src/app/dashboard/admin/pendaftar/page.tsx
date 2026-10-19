@@ -1475,25 +1475,7 @@ function AdminPendaftarContent() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
-          {/* Gender Filter */}
-          <div>
-            <label className="block text-[10px] font-black text-primary-900 mb-2 leading-none uppercase tracking-widest">
-              Filter Putra / Putri
-            </label>
-            <select
-              value={jenisKelaminFilter}
-              onChange={(e) => {
-                setJenisKelaminFilter(e.target.value);
-                setPagination((prev) => ({ ...prev, page: 1 }));
-              }}
-              className="w-full px-4 py-3 bg-amber-50/50 border border-amber-100 rounded-xl focus:border-primary-500 focus:bg-white focus:outline-none font-bold text-primary-950"
-            >
-              <option value="">Semua (Putra & Putri)</option>
-              <option value="L">Putra (Laki-laki)</option>
-              <option value="P">Putri (Perempuan)</option>
-            </select>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
 
           {/* Jenjang Filter */}
           <div>
@@ -1511,6 +1493,7 @@ function AdminPendaftarContent() {
               <option value="">Semua Jenjang</option>
               <option value="MTs">SMP IT (Sekolah Menengah Pertama Islam Terpadu)</option>
               <option value="IL">I'dadiyah Lughawiy</option>
+              <option value="SMA">SMA IT (Sekolah Menengah Atas Islam Terpadu)</option>
             </select>
           </div>
 
@@ -1560,8 +1543,7 @@ function AdminPendaftarContent() {
             statusFilter ||
             jenjangFilter ||
             tipePendaftaranFilter ||
-            tahunAjaranFilter ||
-            jenisKelaminFilter) && (
+            tahunAjaranFilter) && (
             <div className="flex items-end">
               <button
                 onClick={() => {
@@ -1878,27 +1860,32 @@ function AdminPendaftarContent() {
                     </button>
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-2 mb-1">
-                        <span className="font-mono text-xs font-bold text-primary-700 bg-primary-50 px-2 py-0.5 rounded">
+                        <Link
+                          href={`/dashboard/admin/pendaftar/${item.id}`}
+                          className="font-mono text-xs font-bold text-primary-700 bg-primary-50 hover:bg-primary-100 transition-colors px-2 py-0.5 rounded"
+                        >
                           {item.nomor_pendaftaran}
-                        </span>
+                        </Link>
                         <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 bg-purple-100 text-purple-700 rounded-full whitespace-nowrap inline-block shrink-0">
-                          {item.jenjang === "IL" ? "IL" : "SMP IT"}
+                          {item.jenjang === "IL" ? "IL" : item.jenjang === "SMA" ? "SMA IT" : "SMP IT"}
                         </span>
                       </div>
-                      <p className="font-black text-primary-950 leading-tight text-sm flex items-center gap-1.5 flex-wrap">
-                        <span>{toTitleCase(item.nama_lengkap)}</span>
+                      <Link
+                        href={`/dashboard/admin/pendaftar/${item.id}`}
+                        className="font-black text-primary-950 hover:text-primary-600 transition-colors leading-tight text-sm flex items-center gap-1.5 flex-wrap group"
+                      >
+                        <span className="group-hover:underline underline-offset-2">{toTitleCase(item.nama_lengkap)}</span>
                         {item.tipe_pendaftaran === "PINDAHAN" && (
                           <span className="px-1.5 py-0.5 bg-violet-100 text-violet-700 rounded-md text-[9px] font-black uppercase tracking-wider whitespace-nowrap inline-block shrink-0">
                             PINDAHAN
                           </span>
                         )}
-                      </p>
-                      <p className="text-xs text-stone-500 mt-0.5">
-                        {["L", "Laki-laki"].includes(item.jenis_kelamin)
-                          ? "Laki-laki"
-                          : "Perempuan"}
-                        {item.no_hp && <> &bull; {item.no_hp}</>}
-                      </p>
+                      </Link>
+                      {item.no_hp && (
+                        <p className="text-xs text-stone-500 mt-0.5">
+                          {item.no_hp}
+                        </p>
+                      )}
                       <div className="flex flex-wrap items-center gap-2 mt-2">
                         {formatStatus(item.status_pendaftaran, item.data_lengkap)}
                         <span className="text-[10px] text-stone-500">
@@ -1955,9 +1942,15 @@ function AdminPendaftarContent() {
                             </button>
                           )}
                       </div>
-                      <div className="flex justify-end mt-3 border-t border-amber-50 pt-3">
+                      <div className="flex items-center justify-between mt-3 border-t border-amber-50 pt-3">
+                        <Link
+                          href={`/dashboard/admin/pendaftar/${item.id}`}
+                          className="px-3 py-1.5 bg-primary-700 hover:bg-primary-800 text-white rounded-xl text-xs font-black uppercase tracking-wider flex items-center gap-1.5 shadow-sm transition-all active:scale-95"
+                        >
+                          <Eye className="w-3.5 h-3.5" /> Buka Detail
+                        </Link>
 
-                          <ActionDropdown 
+                        <ActionDropdown 
                             items={[
                               {
                                 label: "Buka Detail",
@@ -2069,25 +2062,26 @@ function AdminPendaftarContent() {
                         </button>
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap">
-                        <span className="font-mono text-sm font-bold text-primary-700 bg-primary-50 px-2 py-1 rounded">
+                        <Link
+                          href={`/dashboard/admin/pendaftar/${item.id}`}
+                          className="font-mono text-sm font-bold text-primary-700 bg-primary-50 hover:bg-primary-100 transition-colors px-2 py-1 rounded inline-block"
+                        >
                           {item.nomor_pendaftaran}
-                        </span>
+                        </Link>
                       </td>
                       <td className="px-4 py-3">
                         <div>
-                          <div className="font-bold text-stone-900 flex items-center gap-1.5 flex-wrap">
-                            <span>{toTitleCase(item.nama_lengkap)}</span>
+                          <Link
+                            href={`/dashboard/admin/pendaftar/${item.id}`}
+                            className="font-bold text-stone-900 hover:text-primary-600 transition-colors flex items-center gap-1.5 flex-wrap group"
+                          >
+                            <span className="group-hover:underline underline-offset-2">{toTitleCase(item.nama_lengkap)}</span>
                             {item.tipe_pendaftaran === "PINDAHAN" && (
                               <span className="px-1.5 py-0.5 bg-violet-100 text-violet-700 rounded-md text-[9px] font-black uppercase tracking-wider whitespace-nowrap inline-block shrink-0">
                                 PINDAHAN
                               </span>
                             )}
-                          </div>
-                          <div className="text-xs text-stone-600 font-medium">
-                            {["L", "Laki-laki"].includes(item.jenis_kelamin)
-                              ? "Laki-laki"
-                              : "Perempuan"}
-                          </div>
+                          </Link>
                         </div>
                       </td>
                       <td className="px-4 py-3">

@@ -210,18 +210,78 @@ const CALSAN_CRITERIA_PUTRI = [
 ];
 
 const CAWALSAN_QUESTIONS = [
-  { key: "q1", label: "1. Abu/Ummu ingin ananda menjadi seperti apa di masa depan?", options: ["A. Condong ke orientasi akhirat/agama", "B. Condong ke orientasi dunia/umum", "C. Hanya berorientasi dunia/umum"] },
-  { key: "q2", label: "2. Bagaimana pandangan  Abu/Ummu  tentang sistem pendidikan berbasis pesantren?", options: ["A. Pilihan utama untuk agama, akhlak, dan karakter", "B. Pilihan utama untuk akhlak", "C. Pesantren juga mengajarkan pelajaran umum"] },
-  { key: "q3", label: "3. Ananda mau bersekolah di Pondok Pesantren Al-Andalus atas keinginan siapa?", options: ["A. Orang tua & anak", "B. Anak", "C. Orang tua / ikut teman"] },
-  { key: "q4", label: "4. Apa yang  Abu/Ummu   lakukan sehingga ananda mau bersekolah di pesantren?", options: ["A. Memberikan pengertian", "B. Memberikan hadiah/iming-iming", "C. Memaksa"] },
-  { key: "q5", label: "5. Sejauh apa pendidikan agama/Al-Qur’an ananda sebelumnya?", options: ["A. Intensif (tahfizh, sekolah Islam)", "B. Non intensif (swasta biasa)", "C. Seadanya (sekolah negeri)"] },
-  { key: "q6", label: "6. Menurut Bapak/Ibu, keberhasilan proses pendidikan anak merupakan tanggung jawab siapa?", options: ["A. Bersama", "Orang Tua", "Sekolah"] },
-  { key: "q7", label: "7. Sejauh apa kesiapan  Abu/Ummu   memenuhi kewajiban SPP?", options: ["A. Yakin", "B. Ragu-ragu", "C. Tidak tahu"] },
-  { key: "q8", label: "8. Bagaimana pandangan  Abu/Ummu   tentang pendidikan agama & tahfizh Al-Qur’an?", options: ["A. Sangat penting", "B. Cukup penting", "C. Penting"] },
-  { key: "q9", label: "9. Apa saja yang akan dilakukan oleh Bapak/Ibu untuk mendukung program pendidikan Pesantren?", options: ["A. Mendukung semua program dan memberikan masukan positif/ memantau perkembangan anak", "B. Menyerahkan semua urusan ke Pesantren", "C. Tidak Tahu"] },
-  { key: "q10", label: "10. Seberapa sering  Abu/Ummu   akan menjenguk ananda?", options: ["A. Berkala", "B. Tidak menjenguk karena jauh", "C. Sesempatnya saja"] },
-  { key: "q11", label: "11. Jika ananda diganggu teman (iseng/jail/bully), apa langkah  Abu/Ummu?", options: ["A. Klarifikasi & beri semangat pada anak", "B. Serahkan ke pesantren", "C. Komplain ke pesantren"] },
-  { key: "q12", label: "12. Jika ananda terkena sanksi, apa reaksi  Abu/Ummu?", options: ["A. Menerima sebagai konsekuensi (selama bimbingan sudah maksimal)", "B. Menasehati anak", "C. Tidak terima"] },
+  { 
+    key: "q1", 
+    label: "1. Kebutuhan Khusus & Riwayat Medis / Psikologis", 
+    options: [
+      "A. Mandiri & Sehat (Tanpa ABK / Tanpa Penyakit Kronis)", 
+      "B. Terkontrol Ringan (Ada riwayat ringan bawa obat pribadi)", 
+      "C. Butuh Pengawasan Khusus (Riwayat kejang/asma/psikologis)"
+    ] 
+  },
+  { 
+    key: "q2", 
+    label: "2. Apa tujuan Abu/Ummu memondokkan ananda di pesantren?", 
+    options: [
+      "A. Visi Akhirat & Karakter (Fondasi Al-Qur'an & As-Sunnah)", 
+      "B. Keseimbangan Agama & Umum / Bahasa", 
+      "C. Menghindari Pergaulan Luar / Pasrah Penuh"
+    ] 
+  },
+  { 
+    key: "q3", 
+    label: "3. Bagaimana keseharian ananda di rumah (ibadah, kemandirian)?", 
+    options: [
+      "A. Mandiri & Tertib (Shalat 5 waktu di masjid, bangun subuh mandiri)", 
+      "B. Cukup Baik (Masih sesekali perlu diingatkan)", 
+      "C. Bergantung Penuh / Sering Membangkang"
+    ] 
+  },
+  { 
+    key: "q4", 
+    label: "4. Bagaimana riwayat sekolah lama ananda (perilaku & hubungan guru/teman)?", 
+    options: [
+      "A. Catatan Bersih & Positif (Prestasi baik, hormat guru, bebas bullying)", 
+      "B. Wajar / Normal (Pernah teguran kecil biasa)", 
+      "C. Pernah Mengalami Masalah Disiplin / Kasus Berat"
+    ] 
+  },
+  { 
+    key: "q5", 
+    label: "5. Apa kebiasaan ananda bersama teman-temannya di luar rumah?", 
+    options: [
+      "A. Lingkungan Positif & Terpantau (Masjid, pulang sebelum maghrib)", 
+      "B. Netral & Wajar (Teman sebaya biasa di komplek)", 
+      "C. Rentan Pengaruh / Sering Nongkrong Larut / Game Berlebihan"
+    ] 
+  },
+  { 
+    key: "q6", 
+    label: "6. Komitmen membayar segala pembayaran yang ditetapkan pesantren (Infaq, SPP, dll)?", 
+    options: [
+      "A. Sangat Siap & Berkomitmen Tertib Setiap Bulan", 
+      "B. Siap Berkomitmen dengan Perencanaan", 
+      "C. Memerlukan Skema Cicilan / Keringanan Resmi"
+    ] 
+  },
+  { 
+    key: "q7", 
+    label: "7. Sikap Abu/Ummu ketika ananda bermasalah atau dikenakan sanksi tata tertib?", 
+    options: [
+      "A. Kooperatif & Tabayyun Santun Bersama Asatidzah", 
+      "B. Mendukung Pembinaan setelah Klarifikasi", 
+      "C. Cenderung Defensif / Membela Anak Berlebihan"
+    ] 
+  },
+  { 
+    key: "q8", 
+    label: "8. Sikap jika melihat ananda beramaliyah sunnah berbeda dengan tradisi keluarga?", 
+    options: [
+      "A. Terbuka, Bahagia, & Siap Belajar Bersama Ananda", 
+      "B. Menghormati & Toleran terhadap Dalil Shahih", 
+      "C. Khawatir / Keberatan terhadap Perubahan Tradisi"
+    ] 
+  },
 ];
 
 const PENGUJI_QURAN_LIST_PUTRA = ["Agus Cahyono", "Jusman", "Testing"];
@@ -484,6 +544,32 @@ function InputNilaiContent() {
           detail_cawalsan: cawalsanForm,
           catatan_ortu: cawalsanForm.catatan || "",
           nilai_wawancara_ortu: 1, // Flag that form is filled
+        };
+      } else if (formType === "lisan_arab") {
+        const muhadatsah = parseFloat(lisanArabForm.muhadatsah) || 0;
+        const qiraah = parseFloat(lisanArabForm.qiraah) || 0;
+        const qawaid = parseFloat(lisanArabForm.qawaid) || 0;
+        const mufrodat = parseFloat(lisanArabForm.mufrodat) || 0;
+        const calcScore = Math.min(100, Math.max(0, muhadatsah + qiraah + qawaid + mufrodat));
+        const finalScore = lisanArabForm.score_override !== undefined && lisanArabForm.score_override !== ""
+          ? Math.min(100, Math.max(0, parseFloat(lisanArabForm.score_override)))
+          : calcScore;
+        const autoRekomendasi = finalScore >= 75 ? "Diterima" : (finalScore >= 60 ? "Cadangan" : "Ditolak");
+        const rekomendasi = lisanArabForm.rekomendasi || autoRekomendasi;
+
+        body = {
+          detail_arab: {
+            ...lisanArabForm,
+            muhadatsah,
+            qiraah,
+            qawaid,
+            mufrodat,
+            total_score: finalScore,
+            rekomendasi
+          },
+          score_arab: finalScore,
+          nilai_arab_total: finalScore,
+          catatan_arab: lisanArabForm.catatan_tambahan || ""
         };
       }
 

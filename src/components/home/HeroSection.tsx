@@ -11,11 +11,18 @@ import {
   GraduationCap,
   Globe,
   CheckCircle2,
-  Gift } from "lucide-react";
+  Gift,
+  ShieldCheck,
+  BookOpen,
+  MessageCircle,
+} from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { motion, useReducedMotion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { BRANDING } from "@/config/branding";
+
+const WA_CONSULT_URL =
+  "https://wa.me/6283811515951?text=Halo%20Admin%20PPDB%20Pesantren%20Al-Andalus%20Putra%2C%20saya%20ingin%20konsultasi%20pendaftaran%20santri%20baru";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28, filter: "blur(4px)" },
@@ -181,6 +188,45 @@ export default function HeroSection() {
               />
             </motion.div>
 
+            {/* Quick-Value Objection/Confidence Pills (Pusat Standard) */}
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate={animate}
+              transition={{ delay: 0.4 }}
+              className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 w-full max-w-xl mx-auto lg:mx-0 pt-1"
+            >
+              <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/80 border border-emerald-100 shadow-xs backdrop-blur-xs text-left">
+                <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-200">
+                  <ShieldCheck className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-slate-900 leading-tight">Mendidik Tanpa Luka</div>
+                  <div className="text-[10px] text-slate-500 font-medium leading-tight">Nol kekerasan &amp; perundungan</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/80 border border-emerald-100 shadow-xs backdrop-blur-xs text-left">
+                <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-200">
+                  <Globe className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-slate-900 leading-tight">Kurikulum Internasional</div>
+                  <div className="text-[10px] text-slate-500 font-medium leading-tight">Cambridge &amp; Nasional</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/80 border border-emerald-100 shadow-xs backdrop-blur-xs text-left">
+                <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 border border-amber-200">
+                  <BookOpen className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-slate-900 leading-tight">Tahfidz &amp; Bahasa Arab</div>
+                  <div className="text-[10px] text-slate-500 font-medium leading-tight">Sanad mutqin &amp; aktif harian</div>
+                </div>
+              </div>
+            </motion.div>
+
             {/* CTA Group */}
             <motion.div
               variants={fadeUp}
@@ -189,7 +235,7 @@ export default function HeroSection() {
               transition={{ delay: 0.45 }}
               className="flex flex-col gap-4 items-center lg:items-start"
             >
-              <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+              <div className="flex flex-wrap gap-3 w-full sm:w-auto justify-center lg:justify-start">
                 {session ? (
                   <Link href="/dashboard" className="w-full sm:w-auto">
                     <button
@@ -215,6 +261,17 @@ export default function HeroSection() {
                         <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                       </button>
                     </Link>
+
+                    <a
+                      href={WA_CONSULT_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-bold text-sm bg-emerald-50 text-emerald-700 border border-emerald-300 hover:bg-emerald-600 hover:text-white hover:border-emerald-600 shadow-sm transition-all duration-200"
+                    >
+                      <MessageCircle className="w-4 h-4 shrink-0" />
+                      <span>Konsultasi Panitia</span>
+                    </a>
+
                     <Link href="/program" className="w-full sm:w-auto">
                       <button className="btn-secondary w-full sm:w-auto px-8 lg:px-10 py-4 lg:py-[1.125rem] min-h-[56px] text-[0.9375rem] flex items-center justify-center gap-2 group">
                         Lihat Program Kami

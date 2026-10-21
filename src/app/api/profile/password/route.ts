@@ -63,7 +63,7 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!/(?=.*\\d)/.test(newPassword)) {
+    if (!/(?=.*\d)/.test(newPassword)) {
       return NextResponse.json(
         { error: "Password baru harus mengandung setidaknya satu angka." },
         { status: 400 },
@@ -93,9 +93,22 @@ export async function POST(request: Request) {
         must_change_password: false,
         updated_at: new Date() } });
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       success: true,
       message: "Password berhasil diperbarui." });
+
+    session.is_default_password = false;
+    response.cookies.set("al_session", JSON.stringify(session), {
+      path: "/",
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN || undefined,
+      maxAge: 60 * 60 * 24 * 90,
+      expires: new Date(Date.now() + 60 * 60 * 24 * 90 * 1000),
+    });
+
+    return response;
   } catch (error: any) {
     console.error("API /api/profile/password Error:", error);
     return NextResponse.json(
@@ -104,4 +117,3 @@ export async function POST(request: Request) {
     );
   }
 }
-

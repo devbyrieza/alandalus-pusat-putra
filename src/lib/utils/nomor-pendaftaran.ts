@@ -9,9 +9,9 @@ import { prisma } from "@/lib/prisma";
  * Format: [PREFIX][YY][NNNNN]
  *
  * Prefixes:
- * - SPA = SMP IT Putra (Laki-laki)
- * - ILA = I'dad Lughowi Putra
- * - SMA = SMA IT Putra
+ * - SPA = SMP IT Putra
+ * - ILA = IL Putra (I'dad Lughowi Putra)
+ * - SMA = SMA IT Putra (tapi Al-Andalus Pusat hanya membuka SMP IT dan IL)
  *
  * Example: SPA2700001, ILA2700045, SMA2700123
  *

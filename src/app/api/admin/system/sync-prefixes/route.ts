@@ -6,9 +6,9 @@ export const dynamic = "force-dynamic";
 /**
  * Endpoint Sinkronisasi Awalan Nomor Pendaftaran Al-Andalus Pusat Putra (Khusus Putra)
  * Standar Prefix:
- * - SMP IT Putra -> SPA
- * - IL Putra     -> ILA
- * - SMA Putra    -> SMA
+ * - SMP IT Putra   -> SPA
+ * - IL Putra       -> ILA
+ * - SMA IT Putra   -> SMA (tapi Al-Andalus Pusat hanya membuka SMP IT dan IL)
  */
 export async function GET(request: NextRequest) {
   try {

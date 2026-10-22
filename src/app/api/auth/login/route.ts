@@ -29,13 +29,13 @@ export async function POST(request: NextRequest) {
 
       const inputNomor = (nomor_pendaftaran || "").trim().toUpperCase();
       const putraMappedNomor = inputNomor
-        .replace(/^MTI/, "MTA")
+        .replace(/^MTA/, "SPA")
+        .replace(/^MTI/, "SPA")
+        .replace(/^SPI/, "SPA")
         .replace(/^ILI/, "ILA")
         .replace(/^MAI/, "SMA")
         .replace(/^MAA/, "SMA")
-        .replace(/^SMI/, "SMA")
-        .replace(/^SPA/, "MTA")
-        .replace(/^SPI/, "MTA");
+        .replace(/^SMI/, "SMA");
 
       const pendaftar = await prisma.pendaftar.findFirst({
         where: {

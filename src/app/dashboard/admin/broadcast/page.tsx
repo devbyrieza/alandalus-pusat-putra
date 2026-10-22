@@ -554,7 +554,7 @@ export default function BroadcastPage() {
       const first = selected || pendaftarList[0];
       return {
         nama: first ? first.nama_lengkap : "Ahmad Fulan",
-        nomor_pendaftaran: first ? first.nomor_pendaftaran : "MTA2700001",
+        nomor_pendaftaran: first ? first.nomor_pendaftaran : "SPA2700001",
         jenjang: first ? first.jenjang : "MTs",
         tahun_ajaran: first ? first.tahun_ajaran : "2027/2028",
         role: "Calon Santri",

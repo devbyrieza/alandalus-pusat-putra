@@ -6,21 +6,21 @@ export const dynamic = "force-dynamic";
 /**
  * Endpoint Sinkronisasi Awalan Nomor Pendaftaran Al-Andalus Pusat Putra (Khusus Putra)
  * Standar Prefix:
- * - MTs/SMP Putra -> MTA
- * - IL Putra      -> ILA
- * - SMA Putra     -> SMA
+ * - SMP IT Putra -> SPA
+ * - IL Putra     -> ILA
+ * - SMA Putra    -> SMA
  */
 export async function GET(request: NextRequest) {
   try {
     const list = await prisma.pendaftar.findMany({
       where: {
         OR: [
+          { nomor_pendaftaran: { startsWith: "MTA" } },
           { nomor_pendaftaran: { startsWith: "MTI" } },
           { nomor_pendaftaran: { startsWith: "ILI" } },
           { nomor_pendaftaran: { startsWith: "MAI" } },
           { nomor_pendaftaran: { startsWith: "MAA" } },
           { nomor_pendaftaran: { startsWith: "SMI" } },
-          { nomor_pendaftaran: { startsWith: "SPA" } },
           { nomor_pendaftaran: { startsWith: "SPI" } },
           { jenis_kelamin: "P" },
         ],
@@ -40,14 +40,14 @@ export async function GET(request: NextRequest) {
     const reservedNomor = new Set<string>();
 
     for (const item of list) {
-      let targetPrefix = "MTA";
+      let targetPrefix = "SPA";
       const normJ = (item.jenjang || "").toUpperCase();
       if (normJ.includes("IL")) targetPrefix = "ILA";
       else if (normJ.includes("SMA") || normJ.includes("MA")) targetPrefix = "SMA";
-      else targetPrefix = "MTA";
+      else targetPrefix = "SPA";
 
       let newNomor = item.nomor_pendaftaran;
-      if (item.nomor_pendaftaran && /^(MTI|ILI|MAI|MAA|SMI|SPA|SPI)/.test(item.nomor_pendaftaran)) {
+      if (item.nomor_pendaftaran && /^(MTA|MTI|ILI|MAI|MAA|SMI|SPI)/.test(item.nomor_pendaftaran)) {
         const tahun = item.nomor_pendaftaran.slice(3, 5);
         const candidate = `${targetPrefix}${item.nomor_pendaftaran.slice(3)}`;
 
@@ -104,7 +104,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       success: true,
       institution: "Al-Andalus Pusat Putra (Khusus Putra)",
-      message: `Berhasil menyinkronkan ${updates.length} data pendaftar ke format Putra (MTA, ILA, SMA)`,
+      message: `Berhasil menyinkronkan ${updates.length} data pendaftar ke format Putra (SPA, ILA, SMA)`,
       updated_count: updates.length,
       updates,
     });

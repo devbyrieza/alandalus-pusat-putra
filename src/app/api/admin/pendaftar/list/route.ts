@@ -34,18 +34,17 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
-    // Auto-sync pendaftar to Putra standards (MTA, ILA, SMA, gender L)
+    // Auto-restore pendaftar to Al-Andalus Pusat Putra standards (SPA for SMP IT, ILA for IL, SMA for SMA, gender L)
     try {
       const mismatched = await prisma.pendaftar.findMany({
         where: {
           OR: [
+            { nomor_pendaftaran: { startsWith: "MTA" } },
             { nomor_pendaftaran: { startsWith: "MTI" } },
+            { nomor_pendaftaran: { startsWith: "SPI" } },
             { nomor_pendaftaran: { startsWith: "ILI" } },
             { nomor_pendaftaran: { startsWith: "MAI" } },
-            { nomor_pendaftaran: { startsWith: "MAA" } },
             { nomor_pendaftaran: { startsWith: "SMI" } },
-            { nomor_pendaftaran: { startsWith: "SPA" } },
-            { nomor_pendaftaran: { startsWith: "SPI" } },
             { jenis_kelamin: "P" },
           ],
         },
@@ -58,14 +57,14 @@ export async function GET(request: NextRequest) {
         const reservedNomor = new Set<string>();
 
         for (const item of mismatched) {
-          let targetPrefix = "MTA";
+          let targetPrefix = "SPA";
           const normJ = (item.jenjang || "").toUpperCase();
           if (normJ.includes("IL")) targetPrefix = "ILA";
           else if (normJ.includes("SMA") || normJ.includes("MA")) targetPrefix = "SMA";
-          else targetPrefix = "MTA";
+          else targetPrefix = "SPA";
 
           let newNomor = item.nomor_pendaftaran;
-          if (item.nomor_pendaftaran && /^(MTI|ILI|MAI|MAA|SMI|SPA|SPI)/.test(item.nomor_pendaftaran)) {
+          if (item.nomor_pendaftaran && /^(MTA|MTI|SPI|ILI|MAI|SMI)/.test(item.nomor_pendaftaran)) {
             const tahun = item.nomor_pendaftaran.slice(3, 5);
             const candidate = `${targetPrefix}${item.nomor_pendaftaran.slice(3)}`;
 
@@ -114,7 +113,7 @@ export async function GET(request: NextRequest) {
         }
       }
     } catch (syncErr) {
-      console.error("AUTO_SYNC_PUTRA_MISMATCH_ERROR:", syncErr);
+      console.error("AUTO_RESTORE_PUTRA_PREFIX_ERROR:", syncErr);
     }
 
     // Get query params

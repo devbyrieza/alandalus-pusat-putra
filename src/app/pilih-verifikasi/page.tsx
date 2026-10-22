@@ -38,10 +38,10 @@ function PilihVerifikasiContent() {
   const generateNomorPendaftaran = () => {
     const year = new Date().getFullYear();
     const normJ = (jenjang || "").toUpperCase();
-    let prefix = "MTA";
+    let prefix = "SPA";
     if (normJ.includes("IL")) prefix = "ILA";
     else if (normJ.includes("SMA") || normJ.includes("MA")) prefix = "SMA";
-    else prefix = "MTA";
+    else prefix = "SPA";
 
     // Random 4 digit untuk demo
     const randomNum = Math.floor(1000 + Math.random() * 9000);

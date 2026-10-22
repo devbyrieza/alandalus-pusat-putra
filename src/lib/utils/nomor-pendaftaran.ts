@@ -9,10 +9,11 @@ import { prisma } from "@/lib/prisma";
  * Format: [PREFIX][YY][NNNNN]
  *
  * Prefixes:
- * - MTA = SMP Putra (Laki-laki)
+ * - SPA = SMP IT Putra (Laki-laki)
  * - ILA = I'dad Lughowi Putra
+ * - SMA = SMA IT Putra
  *
- * Example: MTI2600001, MTA2600045, ILI2600123
+ * Example: SPA2700001, ILA2700045, SMA2700123
  *
  * @param jenjang - MTs, IL, or SMA
  * @param jenis_kelamin - L (Laki-laki) or P (Perempuan)
@@ -105,10 +106,10 @@ export async function generateNomorPendaftaran(
  */
 export function generatePrefix(jenjang: string, jenis_kelamin?: string): string {
   const normJenjang = (jenjang || "").toUpperCase().replace(/[\s\-_]/g, "");
-  if (normJenjang.includes("SMP") || normJenjang.includes("MTS")) return "MTA";
+  if (normJenjang.includes("SMP") || normJenjang.includes("MTS")) return "SPA";
   if (normJenjang.includes("IL") || normJenjang.includes("IDAD") || normJenjang.includes("LUGHAW")) return "ILA";
   if (normJenjang.includes("SMA") || normJenjang.includes("MA")) return "SMA";
-  return "MTA";
+  return "SPA";
 }
 
 // ===================================

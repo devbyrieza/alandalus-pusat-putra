@@ -210,6 +210,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const midtransJson = { base64_image: buffer.toString("base64"), mime_type: detectedType };
+
     // 10. Tentukan tipe cicilan
     const tipeCicilan = tipeCicilanRaw || "LUNAS";
     const cicilanKe = cicilanKeRaw ? parseInt(cicilanKeRaw) : null;
@@ -235,13 +237,14 @@ export async function POST(request: NextRequest) {
           bukti_transfer_path: filePath,
           bukti_transfer_filename: safeFileName,
           status_pembayaran: "verified",
+          midtrans_response_json: midtransJson,
           catatan_verifikasi: catatan
             ? `Admin upload (Auto-Verified): ${catatan}`
             : "Diunggah dan diverifikasi otomatis oleh Admin",
           updated_at: new Date() } as any });
     } else {
       // Cek keringanan dari data_lengkap
-      let expectedTagihanDaftarUlang = 8500000;
+      let expectedTagihanDaftarUlang = 10900000;
       let dataLengkap = pendaftar.data_lengkap as any || {};
       if (typeof dataLengkap === "string") {
         try { dataLengkap = JSON.parse(dataLengkap); } catch(e) {}
@@ -282,6 +285,7 @@ export async function POST(request: NextRequest) {
           bukti_transfer_path: filePath,
           bukti_transfer_filename: safeFileName,
           status_pembayaran: "verified",
+          midtrans_response_json: midtransJson,
           catatan_verifikasi: catatan
             ? `Admin upload (Auto-Verified): ${catatan}`
             : "Diunggah dan diverifikasi otomatis oleh Admin" } as any });
@@ -301,7 +305,7 @@ export async function POST(request: NextRequest) {
         } });
       const totalPaid = allVerified.reduce((acc, p) => acc + Number(p.jumlah), 0) + jumlah;
       
-      let expectedTagihanDaftarUlang = 35000000;
+      let expectedTagihanDaftarUlang = 10900000;
       let dataLengkap = pendaftar.data_lengkap as any || {};
       if (typeof dataLengkap === "string") {
         try { dataLengkap = JSON.parse(dataLengkap); } catch(e) {}
@@ -332,16 +336,6 @@ export async function POST(request: NextRequest) {
         data: {
           status_pendaftaran: newPendaftarStatus,
           updated_at: new Date() } });
-
-      try {
-        const { delCache } = await import("@/lib/redis");
-        await delCache("admin_stats_all");
-        if (pendaftar.tahun_ajaran_id) {
-          await delCache(`admin_stats_${pendaftar.tahun_ajaran_id}`);
-        }
-      } catch (cacheErr) {
-        console.warn("Failed to invalidate stats cache:", cacheErr);
-      }
     }
 
     // 12b. Kirim Notifikasi WhatsApp
@@ -503,3 +497,5 @@ export async function GET(request: NextRequest) {
     );
   }
 }
+
+

@@ -138,7 +138,7 @@ export default function BroadcastPage() {
   // Message Form States
   const [header, setHeader] = useState("Assalamu'alaikum Warahmatullahi Wabarakatuh");
   const [message, setMessage] = useState("");
-  const [footer, setFooter] = useState("Panitia SPMB Pesantren Al-Andalus Putra");
+  const [footer, setFooter] = useState("Panitia PPDB Pesantren Al-Andalus Putra");
   const [includeName, setIncludeName] = useState(true);
 
   // Autosave draft from localStorage
@@ -479,12 +479,12 @@ export default function BroadcastPage() {
       case "penguji_quran":
         setHeader("Assalamu'alaikum Warahmatullahi Wabarakatuh");
         setMessage(
-          "Yth. Ustadz/Ustadzah *{nama}* (Tim Penguji Al-Qur'an SPMB).\n\n" +
+          "Yth. Ustadz/Ustadzah *{nama}* (Tim Penguji Al-Qur'an PPDB).\n\n" +
             "Diberitahukan bahwa jadwal pelaksanaan tes Al-Qur'an (Tahfidz & Tahsin) untuk calon santri baru telah tersedia di portal penguji.\n\n" +
             "Mohon kesediaan antum untuk membuka portal dan mengisi penilaian seleksi pada pendaftar yang telah ditugaskan.\n\n" +
             "Jazakumullahu khairan katsiran atas dedikasi dan khidmat antum.",
         );
-        setFooter("Panitia SPMB Pesantren Al-Andalus Putra");
+        setFooter("Panitia PPDB Pesantren Al-Andalus Putra");
         break;
 
       case "penguji_arab":
@@ -495,7 +495,7 @@ export default function BroadcastPage() {
             "Silakan mengakses dashboard penguji untuk memeriksa berkas dan melakukan pengujian lisan serta penginputan nilai.\n\n" +
             "Barakallahu fiikum.",
         );
-        setFooter("Panitia SPMB Pesantren Al-Andalus Putra");
+        setFooter("Panitia PPDB Pesantren Al-Andalus Putra");
         break;
 
       case "pewawancara_calsan":
@@ -506,7 +506,7 @@ export default function BroadcastPage() {
             "Daftar calon santri binaan dan form penilaian digital telah disiapkan di panel wawancara masing-masing.\n\n" +
             "Terima kasih atas kerja sama dan bimbingan antum.",
         );
-        setFooter("Panitia SPMB Pesantren Al-Andalus Putra");
+        setFooter("Panitia PPDB Pesantren Al-Andalus Putra");
         break;
 
       case "pewawancara_cawalsan":
@@ -514,10 +514,10 @@ export default function BroadcastPage() {
         setMessage(
           "Yth. Bapak/Ibu/Ustadz *{nama}* (Tim Pewawancara Calon Orang Tua / Wali).\n\n" +
             "Diberitahukan bahwa sesi wawancara kesiapan orang tua / wali santri baru siap dilaksanakan.\n\n" +
-            "Mohon kesediaannya untuk memverifikasi komitmen dan poin keselarasan visi wali di portal SPMB.\n\n" +
+            "Mohon kesediaannya untuk memverifikasi komitmen dan poin keselarasan visi wali di portal PPDB.\n\n" +
             "Jazakumullahu khair.",
         );
-        setFooter("Panitia SPMB Pesantren Al-Andalus Putra");
+        setFooter("Panitia PPDB Pesantren Al-Andalus Putra");
         break;
 
       case "pendaftar_jadwal":
@@ -525,10 +525,10 @@ export default function BroadcastPage() {
         setMessage(
           "Yth. Orang Tua / Wali dari Ananda *{nama}* (No. Reg: *{nomor_pendaftaran}* - Jenjang *{jenjang}*).\n\n" +
             "Kami informasikan bahwa jadwal pelaksanaan Ujian Seleksi Masuk Pesantren Al-Andalus Putra telah dijadwalkan.\n\n" +
-            "Mohon login ke website resmi SPMB untuk melihat rincian ruang ujian, sesi wawancara, dan link Google Meet/jadwal offline.\n\n" +
+            "Mohon login ke website resmi PPDB untuk melihat rincian ruang ujian, sesi wawancara, dan link Google Meet/jadwal offline.\n\n" +
             "Pastikan hadir 15 menit sebelum waktu yang ditentukan.",
         );
-        setFooter("Panitia SPMB Pesantren Al-Andalus Putra");
+        setFooter("Panitia PPDB Pesantren Al-Andalus Putra");
         break;
 
       case "pendaftar_pengumuman":
@@ -536,10 +536,10 @@ export default function BroadcastPage() {
         setMessage(
           "Yth. Orang Tua / Wali dari Ananda *{nama}* (No. Reg: *{nomor_pendaftaran}*).\n\n" +
             "Hasil Sidang Pleno Seleksi Masuk Pesantren Al-Andalus Putra Tahun Ajaran Baru telah resmi diumumkan!\n\n" +
-            "Silakan login ke akun pendaftaran Anda di portal SPMB untuk mengunduh Surat Keputusan (SK) Kelulusan dan informasi daftar ulang.\n\n" +
+            "Silakan login ke akun pendaftaran Anda di portal PPDB untuk mengunduh Surat Keputusan (SK) Kelulusan dan informasi daftar ulang.\n\n" +
             "Semoga Allah senantiasa memberikan keberkahan bagi pendidikan ananda.",
         );
-        setFooter("Panitia SPMB Pesantren Al-Andalus Putra");
+        setFooter("Panitia PPDB Pesantren Al-Andalus Putra");
         break;
 
       default:
@@ -1504,7 +1504,7 @@ export default function BroadcastPage() {
                 type="text"
                 value={footer}
                 onChange={(e) => setFooter(e.target.value)}
-                placeholder="Panitia SPMB Pesantren Al-Andalus Putra"
+                placeholder="Panitia PPDB Pesantren Al-Andalus Putra"
                 className="w-full px-3.5 py-2 bg-stone-50 border border-stone-200 rounded-xl text-xs font-medium text-stone-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all"
               />
             </div>

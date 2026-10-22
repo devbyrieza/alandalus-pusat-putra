@@ -326,7 +326,7 @@ export default function LoginPage() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse" />
               <span className="text-xs font-bold text-slate-700">
-                Portal SPMB 2026/2027
+                Portal PPDB 2026/2027
               </span>
             </div>
           </div>

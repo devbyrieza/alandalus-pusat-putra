@@ -1491,7 +1491,7 @@ function AdminPendaftarContent() {
               className="w-full px-4 py-3 bg-amber-50/50 border border-amber-100 rounded-xl focus:border-primary-500 focus:bg-white focus:outline-none font-bold text-primary-950"
             >
               <option value="">Semua Jenjang</option>
-              <option value="MTs">SMP IT (Sekolah Menengah Pertama Islam Terpadu)</option>
+              <option value="SMP">SMP IT (Sekolah Menengah Pertama Islam Terpadu)</option>
               <option value="IL">I'dadiyah Lughawiy</option>
               <option value="SMA">SMA IT (Sekolah Menengah Atas Islam Terpadu)</option>
             </select>

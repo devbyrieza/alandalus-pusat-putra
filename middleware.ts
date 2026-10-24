@@ -43,7 +43,7 @@ export async function middleware(request: NextRequest) {
     const ppdbPaths = [
       "/ppdb", "/login", "/daftar", "/daftar-pindahan", "/daftar-sukses", 
       "/dashboard", "/admin", "/auth", "/pilih-verifikasi", "/send-otp", "/verifikasi-otp",
-      "/panitia", "/bank-soal"
+      "/panitia", "/bank-soal", "/s", "/n"
     ];
     const isPpdbPath = ppdbPaths.some(p => pathname === p || pathname.startsWith(p + "/"));
     

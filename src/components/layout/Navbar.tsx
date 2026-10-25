@@ -50,15 +50,18 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
+  // Lock body scroll when mobile menu is open (termasuk Lenis smooth-scroll)
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
+      (window as any).lenis?.stop?.();
     } else {
       document.body.style.overflow = "unset";
+      (window as any).lenis?.start?.();
     }
     return () => {
       document.body.style.overflow = "unset";
+      (window as any).lenis?.start?.();
     };
   }, [isMenuOpen]);
 
@@ -245,7 +248,8 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="xl:hidden bg-primary-950 border-b border-primary-800 px-4 pt-2 pb-6 space-y-3"
+            data-lenis-prevent
+            className="xl:hidden bg-primary-950 border-b border-primary-800 px-4 pt-2 pb-6 space-y-3 max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain"
           >
             <div className="flex flex-col gap-1">
               {navLinks.map((link) => {

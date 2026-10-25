@@ -184,7 +184,7 @@ export default function AkademikTestPage() {
           </p>
           <button
             onClick={() =>
-              router.push("/dashboard/pendaftar?tab=undangan-seleksi")
+              router.push("/dashboard/pendaftar/undangan-seleksi")
             }
             className="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-xl transition-colors"
           >

@@ -17,6 +17,16 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
+  async redirects() {
+    return [
+      {
+        source: '/dashboard/pendaftar/ujian-online/:path*',
+        destination: '/dashboard/pendaftar/ujian/:path*',
+        permanent: false,
+      },
+    ];
+  },
+
   async headers() {
     return [
       {

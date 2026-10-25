@@ -264,7 +264,7 @@ function SupportCenter() {
             href="https://wa.me/6283811515951"
             target="_blank"
             className="flex items-center justify-center gap-3 px-6 py-4 bg-secondary-400 text-primary-950 font-black text-sm uppercase tracking-widest rounded-xl hover:bg-secondary-300 shadow-lg transition-all hover:scale-105 active:scale-95 w-full"
-          >
+           rel="noopener noreferrer">
             Chat di WhatsApp
             <ArrowRight className="w-4 h-4" />
           </a>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu,
@@ -25,6 +25,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const [session, setSession] = useState<any>(null);
 
   useEffect(() => {
@@ -72,11 +73,11 @@ export default function Navbar() {
   const handleNavClick = (e: any, href: string, closeMenu?: () => void) => {
     e.preventDefault();
     if (closeMenu) closeMenu();
-    
+
     const host = window.location.hostname;
     const isPpdbHost = host.startsWith("ppdb.");
     const isPpdbRoute = href.startsWith("/ppdb") || href.startsWith("/login") || href.startsWith("/dashboard") || href.startsWith("/daftar");
-    
+
     if (isPpdbHost) {
       if (isPpdbRoute) {
         let target = href;
@@ -85,22 +86,23 @@ export default function Navbar() {
           if (target === "") target = "/";
         }
         if (target.includes("#") && pathname === target.split("#")[0]) {
-           const id = target.split("#")[1];
-           document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+          const id = target.split("#")[1];
+          document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
         } else {
-           window.location.href = target;
+          router.push(target);
         }
       } else {
+        // Cross-domain: arahkan ke domain utama
         const mainDomain = host.replace("ppdb.", "");
         const port = window.location.port ? `:${window.location.port}` : "";
         window.location.href = `${window.location.protocol}//${mainDomain}${port}${href}`;
       }
+    } else if (isPpdbRoute) {
+      // Rute PPDB di-alihkan middleware ke subdomain -> tetap hard navigation
+      window.location.href = href;
     } else {
-      if (isPpdbRoute) {
-        window.location.href = href;
-      } else {
-        window.location.href = href;
-      }
+      // Satu domain: navigasi client-side
+      router.push(href);
     }
   };
 

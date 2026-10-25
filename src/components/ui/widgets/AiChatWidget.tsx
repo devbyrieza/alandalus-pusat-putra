@@ -169,7 +169,7 @@ export default function AiChatWidget({
             <div
               className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 mb-1 ${
                 msg.role === "user"
-                  ? "bg-primary-100 text-primary-700"
+                  ? "bg-primary-100 text-primary-900"
                   : "bg-primary-600 text-white shadow-premium-xs"
               }`}
             >

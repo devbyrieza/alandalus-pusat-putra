@@ -50,7 +50,7 @@ export default function FloatingWhatsApp() {
           >
             <button
               onClick={() => setDismissed(true)}
-              className="absolute top-1.5 right-1.5 w-5 h-5 flex items-center justify-center rounded-full text-ink-400 hover:text-ink-700 hover:bg-surface-100 transition-all duration-150"
+              className="absolute top-1.5 right-1.5 w-5 h-5 flex items-center justify-center rounded-full text-ink-600 hover:text-ink-700 hover:bg-surface-100 transition-all duration-150"
               aria-label="Tutup"
             >
               <X className="w-3 h-3" />

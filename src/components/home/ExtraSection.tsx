@@ -112,10 +112,10 @@ export default function ExtraSection() {
               <div
                 className={`w-12 h-12 rounded-[12px] flex items-center justify-center mb-4 shadow-xs group-hover:scale-105 transition-transform duration-400 relative z-10 ${
                   item.accent === "maroon"
-                    ? "bg-primary-50 text-primary-600"
+                    ? "bg-primary-50 text-primary-900"
                     : item.accent === "gold"
                       ? "bg-gold-50 text-gold-700"
-                      : "bg-secondary-50 text-primary-600"
+                      : "bg-secondary-50 text-primary-900"
                 }`}
               >
                 <item.icon className="w-6 h-6" strokeWidth={1.8} />

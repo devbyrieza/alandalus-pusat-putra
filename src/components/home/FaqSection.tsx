@@ -81,7 +81,7 @@ function FaqItem({
               "w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300",
               isOpen
                 ? "bg-primary-600 text-white rotate-180"
-                : "bg-secondary-100 text-primary-500 hover:bg-primary-50",
+                : "bg-secondary-100 text-primary-900 hover:bg-primary-50",
             ].join(" ")}
           >
             <ChevronDown className="w-4 h-4" strokeWidth={2.5} />
@@ -137,7 +137,7 @@ export default function FaqSection() {
           {/* ═════════ LEFT COLUMN (Sticky Header & Helpdesk) ═════════ */}
           <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-xs font-bold uppercase tracking-wider mb-4 shadow-2xs">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-900 text-xs font-bold uppercase tracking-wider mb-4 shadow-2xs">
                 <HelpCircle className="w-3.5 h-3.5 text-primary-600" />
                 <span>Pusat Bantuan &amp; Tanya Jawab</span>
               </div>
@@ -174,7 +174,7 @@ export default function FaqSection() {
                 href={WA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl font-bold text-sm text-white bg-[#25D366] hover:bg-[#20ba59] shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-0.5 transition-all duration-300"
+                className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl font-bold text-sm text-ink-950 bg-[#25D366] hover:bg-[#20ba59] shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-0.5 transition-all duration-300"
               >
                 <svg
                   viewBox="0 0 24 24"

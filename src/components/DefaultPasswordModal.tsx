@@ -74,7 +74,7 @@ export function DefaultPasswordModal({ profileUrl = "/dashboard/admin/profil" }:
             <div className="absolute top-0 right-0 w-32 h-32 bg-amber-400/10 rounded-full blur-2xl pointer-events-none" />
 
             {/* Icon Header */}
-            <div className="w-14 h-14 bg-amber-50 rounded-xl border border-amber-200 flex items-center justify-center mb-5 text-amber-600 shadow-inner">
+            <div className="w-14 h-14 bg-amber-50 rounded-xl border border-amber-200 flex items-center justify-center mb-5 text-amber-700 shadow-inner">
               <ShieldAlert className="w-8 h-8 animate-pulse" />
             </div>
 
@@ -91,7 +91,7 @@ export function DefaultPasswordModal({ profileUrl = "/dashboard/admin/profil" }:
               <Link
                 href={profileUrl}
                 onClick={() => setIsOpen(false)}
-                className="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold text-sm shadow-lg shadow-amber-500/25 border border-amber-400 flex items-center justify-center gap-2 transition-all group"
+                className="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-ink-950 font-bold text-sm shadow-lg shadow-amber-500/25 border border-amber-400 flex items-center justify-center gap-2 transition-all group"
               >
                 <KeyRound className="w-4 h-4" />
                 <span>Ganti Kata Sandi Sekarang</span>

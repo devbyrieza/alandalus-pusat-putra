@@ -208,7 +208,7 @@ export default function LanguageSwitcher() {
                     onClick={() => changeLanguage(lang.code)}
                     className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm transition-all ${
                       currentLang === lang.code
-                        ? "bg-primary-50 text-primary-700 font-bold"
+                        ? "bg-primary-50 text-primary-900 font-bold"
                         : "text-slate-600 hover:bg-slate-50"
                     }`}
                   >

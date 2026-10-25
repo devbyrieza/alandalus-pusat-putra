@@ -142,7 +142,7 @@ export default function ScholarshipSection({ variant = "maroon" }: ScholarshipSe
                   <div className="grid gap-6">
                     <div className="space-y-5">
                       <div className="flex items-start gap-4">
-                        <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mt-1">
+                        <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center shrink-0 mt-1">
                           <CheckCircle2 className="w-4 h-4" />
                         </div>
                         <div>
@@ -154,7 +154,7 @@ export default function ScholarshipSection({ variant = "maroon" }: ScholarshipSe
                       <div className="h-px bg-gray-100" />
 
                       <div className="flex items-start gap-4">
-                        <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mt-1">
+                        <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center shrink-0 mt-1">
                           <CheckCircle2 className="w-4 h-4" />
                         </div>
                         <div>
@@ -170,7 +170,7 @@ export default function ScholarshipSection({ variant = "maroon" }: ScholarshipSe
                       </div>
 
                       <div className="flex items-start gap-4">
-                        <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mt-1">
+                        <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center shrink-0 mt-1">
                           <CheckCircle2 className="w-4 h-4" />
                         </div>
                         <div>

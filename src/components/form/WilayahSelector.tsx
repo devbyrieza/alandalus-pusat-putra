@@ -121,7 +121,7 @@ function WilayahSelect({
               ${
                 isFilled
                   ? "bg-primary-700 text-secondary-100"
-                  : "bg-primary-100 text-primary-500"
+                  : "bg-primary-100 text-primary-900"
               }
             `}
           >
@@ -158,7 +158,7 @@ function WilayahSelect({
                 ? "bg-white border-primary-300 text-ink-900 shadow-[var(--shadow-premium-sm)] cursor-pointer"
                 : open
                   ? "bg-white border-primary-500 text-ink-900 shadow-[0_0_0_3px_rgba(128,0,0,0.08)] cursor-pointer"
-                  : "bg-white border-primary-100 text-ink-400 hover:border-primary-300 hover:bg-primary-50/40 cursor-pointer"
+                  : "bg-white border-primary-100 text-ink-600 hover:border-primary-300 hover:bg-primary-50/40 cursor-pointer"
           }
           ${disabled ? "!bg-surface-100 !border-primary-100 !text-ink-300 !cursor-not-allowed !opacity-60" : ""}
         `}
@@ -527,7 +527,7 @@ export default function WilayahSelector({
                 ${
                   value.kode_pos
                     ? "bg-primary-700 text-secondary-100"
-                    : "bg-primary-100 text-primary-500"
+                    : "bg-primary-100 text-primary-900"
                 }
               `}
             >

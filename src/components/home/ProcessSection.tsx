@@ -58,15 +58,15 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 const ACCENT_MAP = {
   maroon: {
-    icon: "bg-primary-50 text-primary-600 border-primary-100 group-hover:bg-primary-100 group-hover:border-primary-200",
+    icon: "bg-primary-50 text-primary-900 border-primary-100 group-hover:bg-primary-100 group-hover:border-primary-200",
     badge: "bg-primary-600 text-white",
     title: "group-hover:text-primary-700" },
   gold: {
     icon: "bg-gold-50 text-gold-700 border-gold-100 group-hover:bg-gold-100 group-hover:border-gold-200",
-    badge: "bg-gold-500 text-white",
+    badge: "bg-gold-500 text-ink-950",
     title: "group-hover:text-gold-700" },
   cream: {
-    icon: "bg-secondary-50 text-primary-600 border-secondary-200 group-hover:bg-secondary-100 group-hover:border-primary-100",
+    icon: "bg-secondary-50 text-primary-900 border-secondary-200 group-hover:bg-secondary-100 group-hover:border-primary-100",
     badge: "bg-primary-700 text-white",
     title: "group-hover:text-primary-700" } };
 

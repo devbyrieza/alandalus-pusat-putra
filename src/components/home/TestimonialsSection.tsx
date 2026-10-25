@@ -72,7 +72,7 @@ function TestimonialCard({
       <div className="relative z-10 flex flex-col h-full p-6 md:p-7">
         {/* Top row — number badge + quote icon */}
         <div className="flex items-center justify-between mb-5">
-          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-secondary-50 border border-secondary-200 text-[0.6rem] font-black text-primary-700 tracking-wide shadow-xs group-hover:bg-primary-50 group-hover:border-primary-100 transition-all duration-300">
+          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-secondary-50 border border-secondary-200 text-[0.6rem] font-black text-primary-900 tracking-wide shadow-xs group-hover:bg-primary-50 group-hover:border-primary-100 transition-all duration-300">
             #{no}
           </span>
           <Quote
@@ -114,7 +114,7 @@ function TestimonialCard({
               </p>
             </div>
 
-            <span className="text-[0.575rem] font-black text-primary-600 uppercase tracking-widest bg-primary-50 px-2 py-1 rounded-full border border-primary-100 shadow-xs whitespace-nowrap">
+            <span className="text-[0.575rem] font-black text-primary-900 uppercase tracking-widest bg-primary-50 px-2 py-1 rounded-full border border-primary-100 shadow-xs whitespace-nowrap">
               {date}
             </span>
           </div>

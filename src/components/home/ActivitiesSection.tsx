@@ -148,10 +148,10 @@ function ExtraChip({ item, index }: { item: ExtraActivity; index: number }) {
   const Icon = item.icon;
   const colorMap = {
     maroon:
-      "bg-primary-50 text-primary-600 group-hover:bg-primary-100 ring-primary-200",
+      "bg-primary-50 text-primary-900 group-hover:bg-primary-100 ring-primary-200",
     cream:
-      "bg-secondary-100 text-primary-700 group-hover:bg-secondary-200 ring-secondary-300",
-    gold: "bg-gold-50 text-gold-600 group-hover:bg-gold-100 ring-gold-200" };
+      "bg-secondary-100 text-primary-900 group-hover:bg-secondary-200 ring-secondary-300",
+    gold: "bg-gold-50 text-gold-700 group-hover:bg-gold-100 ring-gold-200" };
 
   return (
     <motion.div
@@ -257,7 +257,7 @@ export default function ActivitiesSection() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mb-10 md:mb-12"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary-50 border border-secondary-200 text-primary-700 text-[0.65rem] font-bold uppercase tracking-[0.12em] mb-5 shadow-xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary-50 border border-secondary-200 text-primary-900 text-[0.65rem] font-bold uppercase tracking-[0.12em] mb-5 shadow-xs">
               <Sparkles className="w-3 h-3 shrink-0" strokeWidth={2} />
               <span>Minat & Bakat</span>
             </div>
@@ -287,7 +287,7 @@ export default function ActivitiesSection() {
                   transition={{ delay: 0.1 + idx * 0.05 }}
                   className="flex flex-col items-center gap-3 p-4 bg-white rounded-xl border border-primary-50 shadow-sm hover:border-primary-100 hover:shadow-md transition-all group text-center"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-secondary-50 flex items-center justify-center text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-colors">
+                  <div className="w-10 h-10 rounded-xl bg-secondary-50 flex items-center justify-center text-primary-900 group-hover:bg-primary-600 group-hover:text-white transition-colors">
                     <Icon className="w-5 h-5" />
                   </div>
                   <span className="text-[11px] font-bold text-ink-950 uppercase tracking-wider">

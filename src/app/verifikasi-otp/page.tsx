@@ -283,7 +283,7 @@ function VerifikasiOTPContent() {
                 {sim_code}
               </span>
             </p>
-            <p className="text-[10px] text-primary-600 mt-2 font-bold bg-primary-50 inline-block px-2 py-1 rounded-md">
+            <p className="text-[10px] text-primary-900 mt-2 font-bold bg-primary-50 inline-block px-2 py-1 rounded-md">
               Layanan WhatsApp sedang dalam proses aktivasi
             </p>
           </div>
@@ -351,7 +351,7 @@ function VerifikasiOTPContent() {
             </strong>
           </p>
         ) : (
-          <p className="text-sm text-red-600 flex items-center justify-center gap-2 font-bold bg-red-50 inline-flex px-3 py-1.5 rounded-full border border-red-100">
+          <p className="text-sm text-red-700 flex items-center justify-center gap-2 font-bold bg-red-50 inline-flex px-3 py-1.5 rounded-full border border-red-100">
             <AlertCircle className="w-4 h-4" />
             Kode OTP sudah kadaluarsa
           </p>

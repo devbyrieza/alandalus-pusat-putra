@@ -217,7 +217,7 @@ export default function HeroSection() {
               </div>
 
               <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/80 border border-emerald-100 shadow-xs backdrop-blur-xs text-left">
-                <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 border border-amber-200">
+                <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 border border-amber-200">
                   <BookOpen className="w-4 h-4" />
                 </div>
                 <div>

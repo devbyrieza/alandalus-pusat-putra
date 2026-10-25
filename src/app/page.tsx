@@ -305,7 +305,7 @@ export default function Home() {
                   href="https://wa.me/6283811515951?text=Halo%20Panitia%20PPDB%20Pesantren%20Al-Andalus%20Putra%2C%20saya%20ingin%20konsultasi%20pendaftaran%20santri%20baru"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-4 rounded-xl font-bold text-white text-base bg-[#25D366] hover:bg-[#20ba59] shadow-lg shadow-emerald-500/20 transition-all hover:-translate-y-1"
+                  className="inline-flex items-center gap-2 px-6 py-4 rounded-xl font-bold text-ink-950 text-base bg-[#25D366] hover:bg-[#20ba59] shadow-lg shadow-emerald-500/20 transition-all hover:-translate-y-1"
                 >
                   <FaWhatsapp className="w-5 h-5" />
                   Konsultasi Panitia

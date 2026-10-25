@@ -33,7 +33,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const ACCENT_MAP = {
   maroon: {
     number: "bg-primary-700 text-white",
-    badge: "bg-primary-50 text-primary-700 border-primary-100",
+    badge: "bg-primary-50 text-primary-900 border-primary-100",
     title: "group-hover:text-primary-700" },
   gold: {
     number: "bg-gold-50 text-gold-700 border border-gold-200",
@@ -60,7 +60,7 @@ export default function CalendarSection() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.6, ease: EASE }}
             >
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary-50 border border-secondary-200 text-primary-700 text-[0.65rem] font-bold uppercase tracking-[0.12em] mb-5 shadow-xs">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary-50 border border-secondary-200 text-primary-900 text-[0.65rem] font-bold uppercase tracking-[0.12em] mb-5 shadow-xs">
                 <Calendar className="w-3 h-3 shrink-0" strokeWidth={2} />
                 <span>Agenda Penting</span>
               </div>

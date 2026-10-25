@@ -325,7 +325,7 @@ export default function DaftarPindahanPage() {
                   exit={{ opacity: 0, height: 0, marginBottom: 0 }}
                   className="bg-primary-50 border border-primary-100/50 rounded-xl p-6 flex items-start gap-4 relative z-10 overflow-hidden"
                 >
-                  <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-premium-xs">
+                  <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center text-ink-950 shrink-0 shadow-premium-xs">
                     <CheckCircle className="w-6 h-6" />
                   </div>
                   <div className="flex-1">
@@ -382,7 +382,7 @@ export default function DaftarPindahanPage() {
                 transition={{ delay: 0.4 }}
               >
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="w-10 h-10 rounded-xl bg-secondary-50 flex items-center justify-center text-primary-600 shadow-lg shadow-emerald-900/20 border border-secondary-200">
+                  <div className="w-10 h-10 rounded-xl bg-secondary-50 flex items-center justify-center text-primary-900 shadow-lg shadow-emerald-900/20 border border-secondary-200">
                     <GraduationCap className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-display font-black text-ink-950">
@@ -463,7 +463,7 @@ export default function DaftarPindahanPage() {
                 className="space-y-8"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-secondary-50 flex items-center justify-center text-primary-600 shadow-lg shadow-emerald-900/20 border border-secondary-200">
+                  <div className="w-10 h-10 rounded-xl bg-secondary-50 flex items-center justify-center text-primary-900 shadow-lg shadow-emerald-900/20 border border-secondary-200">
                     <User className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-display font-black text-ink-950">
@@ -530,7 +530,7 @@ export default function DaftarPindahanPage() {
                 className="space-y-8"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-secondary-50 flex items-center justify-center text-primary-600 shadow-lg shadow-emerald-900/20 border border-secondary-200">
+                  <div className="w-10 h-10 rounded-xl bg-secondary-50 flex items-center justify-center text-primary-900 shadow-lg shadow-emerald-900/20 border border-secondary-200">
                     <BookOpen className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-display font-black text-ink-950">
@@ -639,7 +639,7 @@ export default function DaftarPindahanPage() {
                 className="space-y-8"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-secondary-50 flex items-center justify-center text-primary-600 shadow-lg shadow-emerald-900/20 border border-secondary-200">
+                  <div className="w-10 h-10 rounded-xl bg-secondary-50 flex items-center justify-center text-primary-900 shadow-lg shadow-emerald-900/20 border border-secondary-200">
                     <Phone className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-display font-black text-ink-950">

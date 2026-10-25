@@ -81,7 +81,7 @@ export default function ContactSection() {
                   <div
                     className={`w-11 h-11 rounded-[12px] flex items-center justify-center mb-4 transition-transform shadow-xs group-hover:scale-105 duration-400 shrink-0 ${
                       item.accent === "maroon"
-                        ? "bg-primary-50 text-primary-600"
+                        ? "bg-primary-50 text-primary-900"
                         : "bg-gold-50 text-gold-700"
                     }`}
                   >

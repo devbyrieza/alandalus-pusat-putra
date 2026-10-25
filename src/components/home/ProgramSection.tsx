@@ -114,7 +114,7 @@ function getTokens(variant: ProgramVariant) {
       return {
         accentBar: "bg-gradient-to-r from-primary-600 via-primary-400 to-primary-200",
         corner: "bg-primary-50/50",
-        icon: "bg-primary-500 text-white ring-1 ring-primary-100",
+        icon: "bg-primary-500 text-ink-950 ring-1 ring-primary-100",
         subtitleText: "text-primary-600",
         dividerLine: "bg-primary-300",
         checkBg: "bg-primary-50 border-primary-200",
@@ -122,7 +122,7 @@ function getTokens(variant: ProgramVariant) {
           "group-hover/item:bg-primary-500 group-hover/item:border-primary-500",
         checkIcon: "text-primary-600 group-hover/item:text-white",
         ctaBtn:
-          "bg-white border-primary-300 text-primary-800 hover:bg-primary-500 hover:border-primary-500 hover:text-white shadow-sm hover:shadow-md" };
+          "bg-white border-primary-300 text-primary-800 hover:bg-primary-500 hover:border-primary-500 hover:text-ink-950 shadow-sm hover:shadow-md" };
     case "cream":
       return {
         accentBar: "bg-gradient-to-r from-primary-800 via-primary-600 to-primary-400",

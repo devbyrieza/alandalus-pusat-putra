@@ -119,7 +119,7 @@ export default function ProgramPage() {
   }, []);
 
   return (
-    <main className="bg-slate-50/50 min-h-screen text-slate-900">
+    <main className="bg-slate-50/50 min-h-dvh text-slate-900">
       {/* 1. Hero Section */}
       <section className="relative py-20 md:py-28 overflow-hidden bg-white border-b border-slate-100">
         <Container className="relative z-10 text-center">

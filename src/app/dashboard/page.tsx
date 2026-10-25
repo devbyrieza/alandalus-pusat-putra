@@ -296,7 +296,7 @@ export default function DashboardPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-dvh bg-white flex items-center justify-center">
         <div className="text-center">
           <motion.div
             animate={{ rotate: 360 }}
@@ -324,7 +324,7 @@ export default function DashboardPage() {
   const StatusIcon = statusInfo.icon;
 
   return (
-    <main className="min-h-screen bg-white relative overflow-hidden pb-24">
+    <main className="min-h-dvh bg-white relative overflow-hidden pb-24">
       <BackToHomeButton position="top-left" />
 
       {/* Background Decor */}

@@ -24,7 +24,7 @@ export default function LayoutWrapper({
     pathname.startsWith("/daftar");
 
   return (
-    <div className="relative min-h-screen flex flex-col font-sans">
+    <div className="relative min-h-dvh flex flex-col font-sans">
       {/* ✅ SCROLL PROGRESS BAR — fixed at very top */}
       {!hideNavbarFooter && <ScrollProgressBar height={3} />}
 

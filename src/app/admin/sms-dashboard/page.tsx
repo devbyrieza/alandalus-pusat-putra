@@ -55,7 +55,7 @@ export default function AdminSMSDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+      <div className="min-h-dvh bg-slate-50 flex items-center justify-center">
         <div className="text-center">
           <RefreshCw className="w-8 h-8 animate-spin mx-auto text-primary-600" />
           <p className="mt-4 text-slate-600 font-bold">Memuat data SMS...</p>
@@ -65,7 +65,7 @@ export default function AdminSMSDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 p-6 md:p-8 max-w-7xl mx-auto space-y-8">
+    <div className="min-h-dvh bg-slate-50 p-6 md:p-8 max-w-7xl mx-auto space-y-8">
       <div className="bg-white rounded-xl shadow-lg shadow-slate-200/50 border border-slate-100 p-6 md:p-8 space-y-6">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-xl bg-primary-50 text-primary-600 flex items-center justify-center">

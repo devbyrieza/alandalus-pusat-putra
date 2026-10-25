@@ -27,7 +27,7 @@ export default function KontakPage() {
   }, []);
 
   return (
-    <main className="bg-slate-50 min-h-screen py-16">
+    <main className="bg-slate-50 min-h-dvh py-16">
       <Container>
         {/* HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">

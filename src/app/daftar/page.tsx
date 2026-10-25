@@ -232,7 +232,7 @@ export default function DaftarPage() {
   };
 
   return (
-    <main className="min-h-screen bg-white py-12 md:py-24 relative overflow-hidden">
+    <main className="min-h-dvh bg-white py-12 md:py-24 relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-full max-w-[600px] h-[600px] bg-secondary-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-full max-w-[600px] h-[600px] bg-amber-100/30 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />

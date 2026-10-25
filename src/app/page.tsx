@@ -209,7 +209,7 @@ export default function Home() {
     ring:       IS_PUTRA ? "ring-primary-500/30" : "ring-sky-500/30" };
 
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden">
+    <div className="min-h-dvh flex flex-col overflow-x-hidden">
 
       {/* ——— §1 HERO SECTION — SPLIT DARK ————————————————————————————————————————————— */}
       <section

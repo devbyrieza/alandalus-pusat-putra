@@ -565,7 +565,50 @@ const handlePublish = async (new_status: "accepted" | "cadangan" | "rejected") =
                         </div>
                       </td>
                       <td className="px-6 py-4 text-center">
-                        {renderStatusBadge(c, true)}
+                        {renderStatusBadge(c, false)}
+                      </td>
+                      <td className="px-6 py-4 text-center" onClick={(e) => e.stopPropagation()}>
+                        <div className="flex items-center justify-center gap-1.5">
+                          <button
+                            onClick={() => handlePublishSingle(c.id, c.nama_lengkap, "accepted")}
+                            disabled={isPublishing || c.status_pendaftaran === "accepted"}
+                            title="Luluskan (Diterima)"
+                            className={`px-2.5 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1 transition-all ${
+                              c.status_pendaftaran === "accepted"
+                                ? "bg-green-100 text-green-700 opacity-60 cursor-default"
+                                : "bg-green-600 hover:bg-green-700 text-white shadow-xs hover:scale-105 active:scale-95"
+                            }`}
+                          >
+                            <CheckCircle2 className="w-3.5 h-3.5" />
+                            <span>Lulus</span>
+                          </button>
+                          <button
+                            onClick={() => handlePublishSingle(c.id, c.nama_lengkap, "cadangan")}
+                            disabled={isPublishing || c.status_pendaftaran === "cadangan" || c.status_pendaftaran === "announced"}
+                            title="Jadikan Cadangan"
+                            className={`px-2.5 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1 transition-all ${
+                              c.status_pendaftaran === "cadangan" || c.status_pendaftaran === "announced"
+                                ? "bg-amber-100 text-amber-700 opacity-60 cursor-default"
+                                : "bg-amber-500 hover:bg-amber-600 text-white shadow-xs hover:scale-105 active:scale-95"
+                            }`}
+                          >
+                            <Clock className="w-3.5 h-3.5" />
+                            <span>Cadangan</span>
+                          </button>
+                          <button
+                            onClick={() => handlePublishSingle(c.id, c.nama_lengkap, "rejected")}
+                            disabled={isPublishing || c.status_pendaftaran === "rejected"}
+                            title="Tolak"
+                            className={`px-2.5 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1 transition-all ${
+                              c.status_pendaftaran === "rejected"
+                                ? "bg-red-100 text-red-700 opacity-60 cursor-default"
+                                : "bg-red-600 hover:bg-red-700 text-white shadow-xs hover:scale-105 active:scale-95"
+                            }`}
+                          >
+                            <XCircle className="w-3.5 h-3.5" />
+                            <span>Tolak</span>
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   );

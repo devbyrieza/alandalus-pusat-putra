@@ -258,7 +258,10 @@ export async function PATCH(request: NextRequest) {
         const totalDUPaid = allDaftarUlangVerified.reduce((acc, p) => acc + Number(p.jumlah), 0);
         const totalSPPPaid = allSppVerified.reduce((acc, p) => acc + Number(p.jumlah), 0);
 
-        const duLunas = totalDUPaid >= expectedDU;
+        const hasDiskonPameran = allDaftarUlangVerified.some(
+          (p: any) => p.keringanan_reason?.includes("Diskon Pameran") || Number(p.jumlah) === 30000000
+        );
+        const duLunas = totalDUPaid >= expectedDU || (hasDiskonPameran && totalDUPaid >= 30000000);
         const sppLunas = totalSPPPaid >= 1000000;
 
         if (duLunas) {

@@ -134,7 +134,7 @@ export default function DaftarUlangTab() {
   const numericNominal = parseInt(nominal.replace(/\D/g, "") || "0");
   const isLunas =
     subTab === "uang_pangkal"
-      ? totalDaftarUlangPaid + numericNominal >= expectedUangPangkal
+      ? (totalDaftarUlangPaid + numericNominal >= expectedUangPangkal || (totalDaftarUlangPaid + numericNominal >= 30000000 && (numericNominal === 30000000 || paymentHistory.some((p: any) => p.keringanan_reason?.includes("Diskon Pameran")))))
       : totalSppPaid + numericNominal >= expectedSpp;
 
   let tipeBayar = "";
@@ -155,7 +155,8 @@ export default function DaftarUlangTab() {
   const hasExistingVerifiedPayment = activeTabPayments.some(
     (p: any) => p.status_pembayaran === "verified"
   );
-  const isTabLunas = totalPaid >= expectedTagihan;
+  const isDULunasWithPameran = totalDaftarUlangPaid >= 30000000 && paymentHistory.some((p: any) => p.keringanan_reason?.includes("Diskon Pameran") || Number(p.jumlah) === 30000000);
+  const isTabLunas = subTab === "uang_pangkal" ? (totalPaid >= expectedTagihan || isDULunasWithPameran) : (totalPaid >= expectedTagihan);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -174,7 +175,9 @@ export default function DaftarUlangTab() {
       formData.append("jumlah", String(numericNominal));
       formData.append("jenis_pembayaran", activeTabType);
       formData.append("cicilan_ke", cicilanKe);
-      if (keringananReason.trim()) {
+      if (subTab === "uang_pangkal" && numericNominal === 30000000) {
+        formData.append("keringanan_reason", "Diskon Pameran (Rp 30.000.000)");
+      } else if (keringananReason.trim()) {
         formData.append("keringanan_reason", keringananReason);
       }
 
@@ -243,7 +246,7 @@ export default function DaftarUlangTab() {
                 : "border-slate-200 bg-white hover:bg-slate-50"
             }`}
           >
-            {totalDaftarUlangPaid >= expectedUangPangkal && (
+            {((totalDaftarUlangPaid >= expectedUangPangkal) || (totalDaftarUlangPaid >= 30000000 && paymentHistory.some((p: any) => p.keringanan_reason?.includes("Diskon Pameran") || Number(p.jumlah) === 30000000))) && (
               <span className="absolute top-2 right-2 bg-emerald-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded-full">
                 ✓ LUNAS
               </span>
@@ -665,7 +668,8 @@ export default function DaftarUlangTab() {
                 <label className="block text-sm font-bold text-slate-700 mb-3">
                   Metode Pelunasan Uang Pangkal
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-1 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-1 gap-3 mt-3">
+                  {/* Option 1: Bayar Lunas (Normal) */}
                   <button
                     type="button"
                     onClick={() =>
@@ -674,29 +678,75 @@ export default function DaftarUlangTab() {
                       )
                     }
                     className={`p-4 rounded-xl border-2 transition-all text-left flex flex-col ${
-                      numericNominal === expectedTagihan
+                      numericNominal === expectedTagihan && numericNominal !== 30000000
                         ? "border-primary-500 bg-primary-50/50 ring-2 ring-primary-500/20 shadow-md"
                         : "border-slate-200 bg-white hover:bg-slate-50"
                     }`}
                   >
                     <div className="flex items-center justify-between w-full mb-1">
                       <span className="font-black text-slate-900">
-                        Bayar Lunas
+                        Bayar Lunas (Normal)
                       </span>
-                      {numericNominal === expectedTagihan ? (
+                      {numericNominal === expectedTagihan && numericNominal !== 30000000 ? (
                         <CheckCircle className="w-5 h-5 text-primary-600" />
                       ) : (
                         <div className="w-5 h-5 rounded-full border-2 border-slate-300" />
                       )}
                     </div>
                     <span className="text-[11px] text-slate-500 leading-tight">
-                      Pelunasan sekaligus seluruh biaya masuk.
+                      Pelunasan sekaligus seluruh biaya masuk normal.
                     </span>
                     <span className="text-sm font-black text-primary-600 mt-2">
                       {formatCurrency(expectedTagihan)}
                     </span>
                   </button>
 
+                  {/* Option 2: Diskon Pameran (Rp 30.000.000) */}
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setNominal(
+                        new Intl.NumberFormat("id-ID").format(30000000)
+                      )
+                    }
+                    className={`p-4 rounded-xl border-2 transition-all text-left flex flex-col relative overflow-hidden ${
+                      numericNominal === 30000000
+                        ? "border-primary-500 bg-primary-50/50 ring-2 ring-primary-500/20 shadow-md"
+                        : "border-slate-200 bg-white hover:bg-slate-50"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between w-full mb-1">
+                      <div className="flex items-center gap-2">
+                        <span className="font-black text-slate-900">
+                          Diskon Pameran
+                        </span>
+                        <span className="text-[9px] font-black uppercase tracking-wider bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full border border-amber-200">
+                          Promo Pameran
+                        </span>
+                      </div>
+                      {numericNominal === 30000000 ? (
+                        <CheckCircle className="w-5 h-5 text-primary-600" />
+                      ) : (
+                        <div className="w-5 h-5 rounded-full border-2 border-slate-300" />
+                      )}
+                    </div>
+                    <span className="text-[11px] text-slate-500 leading-tight">
+                      Pelunasan khusus santri pemegang voucher / promo pameran pendidikan (Expo).
+                    </span>
+                    <div className="flex items-baseline gap-2 mt-2">
+                      <span className="text-sm font-black text-primary-600">
+                        Rp 30.000.000
+                      </span>
+                      <span className="text-[11px] text-slate-400 line-through">
+                        Rp 35.000.000
+                      </span>
+                      <span className="text-[11px] text-emerald-600 font-bold">
+                        (Hemat Rp 5.000.000)
+                      </span>
+                    </div>
+                  </button>
+
+                  {/* Option 3: Bayar Dicicil */}
                   <button
                     type="button"
                     onClick={() =>
@@ -706,7 +756,8 @@ export default function DaftarUlangTab() {
                     }
                     className={`p-4 rounded-xl border-2 transition-all text-left flex flex-col ${
                       numericNominal >= halfTagihan &&
-                      numericNominal < expectedTagihan
+                      numericNominal < expectedTagihan &&
+                      numericNominal !== 30000000
                         ? "border-primary-500 bg-primary-50/50 ring-2 ring-primary-500/20 shadow-md"
                         : "border-slate-200 bg-white hover:bg-slate-50"
                     }`}
@@ -716,7 +767,8 @@ export default function DaftarUlangTab() {
                         Bayar Dicicil
                       </span>
                       {numericNominal >= halfTagihan &&
-                      numericNominal < expectedTagihan ? (
+                      numericNominal < expectedTagihan &&
+                      numericNominal !== 30000000 ? (
                         <CheckCircle className="w-5 h-5 text-primary-600" />
                       ) : (
                         <div className="w-5 h-5 rounded-full border-2 border-slate-300" />

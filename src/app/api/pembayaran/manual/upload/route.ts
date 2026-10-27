@@ -110,6 +110,7 @@ export async function POST(request: NextRequest) {
       (formData.get("jenis_pembayaran") as string) || "PENDAFTARAN";
     let biaya = 0;
     let tipeCicilan = "LUNAS";
+    let expectedTagihan = 35000000;
 
     // Logic khusus Daftar Ulang
     // Logic khusus Daftar Ulang (Uang Pangkal & SPP)
@@ -159,7 +160,7 @@ export async function POST(request: NextRequest) {
       const totalPaid = existingPayments.reduce((acc, p) => acc + Number(p.jumlah), 0);
       const totalAccumulated = totalPaid + biaya;
 
-      let expectedTagihan = jenisPembayaran === "DAFTAR_ULANG" ? 35000000 : 3000000;
+      expectedTagihan = jenisPembayaran === "DAFTAR_ULANG" ? 35000000 : 3000000;
       let dataLengkap: any = {};
       if (pendaftar.data_lengkap) {
         try {
@@ -168,6 +169,8 @@ export async function POST(request: NextRequest) {
       }
       if (jenisPembayaran === "DAFTAR_ULANG" && dataLengkap?.keringanan_daftar_ulang?.nominal_potongan) {
         expectedTagihan -= Number(dataLengkap.keringanan_daftar_ulang.nominal_potongan);
+      } else if (jenisPembayaran === "DAFTAR_ULANG" && (keringananReason?.includes("Diskon Pameran") || biaya === 30000000)) {
+        expectedTagihan = 30000000;
       }
 
       // Tentukan Tipe Cicilan
@@ -280,7 +283,7 @@ export async function POST(request: NextRequest) {
           cicilan_ke: cicilanKe,
           keringanan_reason: keringananReason as any,
           jumlah: biaya,
-          total_tagihan: jenisPembayaran === "DAFTAR_ULANG" ? 35000000 : (jenisPembayaran === "SPP" ? 3000000 : biaya),
+          total_tagihan: jenisPembayaran === "DAFTAR_ULANG" ? expectedTagihan : (jenisPembayaran === "SPP" ? 3000000 : biaya),
           bukti_transfer_path: filePath,
           bukti_transfer_filename: safeFileName,
           status_pembayaran: "pending",

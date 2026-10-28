@@ -188,7 +188,7 @@ export default function Navbar() {
                 <a
                   href="/ppdb"
                   onClick={(e) => handleNavClick(e, "/ppdb")}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-xs shadow-md hover:scale-105 active:scale-95 transition-all border border-amber-200 shrink-0"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs border border-amber-300 shrink-0"
                 >
                   <GraduationCap className="w-3.5 h-3.5" />
                   <span>Daftar PPDB</span>
@@ -207,7 +207,7 @@ export default function Navbar() {
                 <a
                   href="/ppdb"
                   onClick={(e) => handleNavClick(e, "/ppdb")}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-xs shadow-md hover:scale-105 active:scale-95 transition-all border border-amber-200 shrink-0"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs border border-amber-300 shrink-0"
                 >
                   <GraduationCap className="w-3.5 h-3.5" />
                   <span>Daftar PPDB</span>

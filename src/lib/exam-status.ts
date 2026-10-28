@@ -9,12 +9,13 @@ export async function markExamComponentAsComplete({
   componentType }: {
   jadwalId: string;
   userId: string;
-  componentType?: "santri" | "quran" | "ortu";
+  componentType?: "santri" | "quran" | "ortu" | "hafalan" | "arab";
 }) {
   // 1. Get Jadwal
   const jadwal = await prisma.jadwalUjian.findUnique({
     where: { id: jadwalId },
     include: {
+      exam_session: true,
       pendaftar: {
         select: {
           id: true,
@@ -23,6 +24,13 @@ export async function markExamComponentAsComplete({
           orang_tua: { select: { no_hp_ayah: true, no_hp_ibu: true } } } } } });
 
   if (!jadwal) throw new Error("Jadwal not found");
+
+  const sessionTitle = (jadwal.exam_session?.title || "").toLowerCase();
+  const isSessionOrtu =
+    sessionTitle.includes("cawalsan") ||
+    sessionTitle.includes("ortu") ||
+    sessionTitle.includes("orang") ||
+    sessionTitle.includes("wali");
 
   // 2. Determine what to update
   const updates: any = {};
@@ -39,21 +47,43 @@ export async function markExamComponentAsComplete({
     } else if (componentType === "ortu") {
       updates.status_ortu = "completed";
       updatedField = "Seleksi Wawancara Orang Tua";
+      if (!jadwal.penguji_ortu_id && jadwal.penguji_santri_id === userId) {
+        updates.penguji_ortu_id = userId;
+        updates.penguji_santri_id = null;
+        updates.status_santri = null;
+      }
+    } else if (componentType === "hafalan") {
+      updates.status_hafalan = "completed";
+      updatedField = "Tes Hafalan Al-Qur'an";
+    } else if (componentType === "arab") {
+      updates.status_arab = "completed";
+      updatedField = "Tes Lisan Bahasa Arab";
     }
   } else {
-    // Fallback to manual check (logic from original /complete endpoint)
-    if (jadwal.penguji_santri_id === userId) {
+    // Fallback to manual check
+    if (jadwal.penguji_ortu_id === userId || (isSessionOrtu && jadwal.penguji_santri_id === userId)) {
+      updates.status_ortu = "completed";
+      if (!jadwal.penguji_ortu_id && jadwal.penguji_santri_id === userId) {
+        updates.penguji_ortu_id = userId;
+        updates.penguji_santri_id = null;
+        updates.status_santri = null;
+      }
+      updatedField = "Seleksi Wawancara Orang Tua";
+    } else if (jadwal.penguji_santri_id === userId) {
       updates.status_santri = "completed";
       updatedField = "Seleksi Wawancara Calon Santri";
     } else if (jadwal.penguji_quran_id === userId) {
       updates.status_quran = "completed";
       updatedField = "Seleksi Al Qur'an";
-    } else if (jadwal.penguji_ortu_id === userId) {
-      updates.status_ortu = "completed";
-      updatedField = "Seleksi Wawancara Orang Tua";
+    } else if (jadwal.penguji_hafalan_id === userId) {
+      updates.status_hafalan = "completed";
+      updatedField = "Tes Hafalan Al-Qur'an";
+    } else if (jadwal.penguji_arab_id === userId) {
+      updates.status_arab = "completed";
+      updatedField = "Tes Lisan Bahasa Arab";
     } else {
       // Check session creator fallback
-      const sess = await prisma.examSession.findFirst({
+      const sess = jadwal.exam_session || await prisma.examSession.findFirst({
         where: { id: jadwal.exam_session_id ?? undefined },
         select: { created_by: true, title: true } });
       if (sess && sess.created_by === userId) {
@@ -75,6 +105,14 @@ export async function markExamComponentAsComplete({
           updates.status_santri = "completed";
           updates.penguji_santri_id = userId;
           updatedField = "Seleksi Wawancara Calon Santri";
+        } else if (title.includes("hafalan")) {
+          updates.status_hafalan = "completed";
+          updates.penguji_hafalan_id = userId;
+          updatedField = "Tes Hafalan Al-Qur'an";
+        } else if (title.includes("arab")) {
+          updates.status_arab = "completed";
+          updates.penguji_arab_id = userId;
+          updatedField = "Tes Lisan Bahasa Arab";
         }
       }
     }
@@ -100,8 +138,12 @@ export async function markExamComponentAsComplete({
     updatedJadwal.status_quran === "completed";
   const isOrtuDone =
     !updatedJadwal.penguji_ortu_id || updatedJadwal.status_ortu === "completed";
+  const isHafalanDone =
+    !updatedJadwal.penguji_hafalan_id || updatedJadwal.status_hafalan === "completed";
+  const isArabDone =
+    !updatedJadwal.penguji_arab_id || updatedJadwal.status_arab === "completed";
 
-  const isAllDone = isSantriDone && isQuranDone && isOrtuDone;
+  const isAllDone = isSantriDone && isQuranDone && isOrtuDone && isHafalanDone && isArabDone;
 
   if (isAllDone) {
     // Recalculate scores — this will set status_pendaftaran to 'tested' only if ALL 6 score components are present

@@ -741,3 +741,12 @@ model PengajuanBeasiswa {
 
 
 
+
+/// Key-value store untuk konfigurasi aplikasi (mis. penerima digest jadwal harian)
+model AppSetting {
+  key        String   @id
+  value      String
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+
+  @@map("app_settings")
+}

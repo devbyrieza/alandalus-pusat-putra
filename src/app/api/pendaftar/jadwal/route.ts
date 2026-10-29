@@ -333,6 +333,7 @@ export async function POST(request: Request) {
         pengujiFields.penguji_quran_id ||
         pengujiFields.penguji_santri_id ||
         pengujiFields.penguji_ortu_id ||
+        pengujiFields.penguji_arab_id ||
         examSession.created_by;
       if (finalId) {
         const interviewer = await prisma.profile.findUnique({

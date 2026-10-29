@@ -5,9 +5,12 @@ import { logAdminAction } from "@/lib/audit";
 
 function formatTime(dateStr: string | Date) {
   const d = new Date(dateStr);
-  const h = d.getHours().toString().padStart(2, '0');
-  const m = d.getMinutes().toString().padStart(2, '0');
-  return h + '.' + m;
+  return d.toLocaleTimeString("id-ID", {
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "Asia/Jakarta",
+    hour12: false,
+  }).replace(":", ".");
 }
 
 export async function POST(req: NextRequest) {
@@ -256,6 +259,7 @@ export async function POST(req: NextRequest) {
           year: "numeric",
           month: "long",
           day: "numeric",
+          timeZone: "Asia/Jakarta",
         });
         const waktuStr = `${formatTime(examSession.start_time)} - ${formatTime(examSession.end_time)} WIB`;
 

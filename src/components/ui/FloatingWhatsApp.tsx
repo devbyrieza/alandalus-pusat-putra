@@ -20,7 +20,7 @@ export default function FloatingWhatsApp() {
   useEffect(() => {
     setMounted(true);
     // Delay 18s — user perlu waktu membaca hero sebelum popup muncul
-    const t = setTimeout(() => setShowTooltip(true), 18000);
+    const t = setTimeout(() => setShowTooltip(false), 18000);
     return () => clearTimeout(t);
   }, []);
 

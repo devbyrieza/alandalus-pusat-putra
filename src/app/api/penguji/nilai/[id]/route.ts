@@ -40,6 +40,8 @@ export async function PATCH(
           { penguji_santri_id: userId },
           { penguji_quran_id: userId },
           { penguji_ortu_id: userId },
+          { penguji_hafalan_id: userId },
+          { penguji_arab_id: userId },
           { exam_session: { created_by: userId } },
         ] },
       include: {
@@ -290,7 +292,12 @@ export async function PATCH(
     }
 
     // 5. Lisan Arab Update
-    if (canEditLisanArab && body.detail_lisan_arab !== undefined) {
+    // Terima kedua konvensi nama field (detail_lisan_arab dari API lama & detail_arab dari halaman input-nilai)
+    const arabDetail = body.detail_lisan_arab !== undefined ? body.detail_lisan_arab : body.detail_arab;
+    const arabScore = body.score_lisan_arab !== undefined ? body.score_lisan_arab : body.score_arab;
+    const arabNilai = body.nilai_tes_lisan_arab !== undefined ? body.nilai_tes_lisan_arab : body.nilai_arab_total;
+    const arabCatatan = body.catatan_lisan_arab !== undefined ? body.catatan_lisan_arab : body.catatan_arab;
+    if (canEditLisanArab && arabDetail !== undefined) {
       if (existing?.input_at_arab && !isAdmin) {
         const diff = now.getTime() - new Date(existing.input_at_arab).getTime();
         if (diff > LOCK_TIME) {
@@ -301,10 +308,10 @@ export async function PATCH(
         }
       }
 
-      if (body.nilai_tes_lisan_arab !== undefined) updateData.nilai_arab_total = body.nilai_tes_lisan_arab;
-      if (body.catatan_lisan_arab !== undefined) updateData.catatan_arab = body.catatan_lisan_arab;
-      if (body.detail_lisan_arab !== undefined) updateData.detail_arab = body.detail_lisan_arab;
-      if (body.score_lisan_arab !== undefined) updateData.score_arab = body.score_lisan_arab;
+      if (arabNilai !== undefined) updateData.nilai_arab_total = arabNilai;
+      if (arabCatatan !== undefined) updateData.catatan_arab = arabCatatan;
+      if (arabDetail !== undefined) updateData.detail_arab = arabDetail;
+      if (arabScore !== undefined) updateData.score_arab = arabScore;
       if (!existing?.input_by_arab || !isAdmin) {
         updateData.input_by_arab = userId;
       }
@@ -341,7 +348,7 @@ export async function PATCH(
         else if (body.detail_wawancara) componentType = "santri";
         else if (body.detail_cawalsan) componentType = "ortu";
         else if (body.detail_hafalan) componentType = "hafalan" as any;
-        else if (body.detail_lisan_arab) componentType = "lisan_arab" as any;
+        else if (body.detail_lisan_arab || body.detail_arab) componentType = "lisan_arab" as any;
 
         if (componentType) {
           await markExamComponentAsComplete({

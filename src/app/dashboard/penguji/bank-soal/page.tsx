@@ -588,7 +588,7 @@ export default function BankSoalPanitiaPage() {
           >
             <BookOpenCheck className="w-5 h-5 text-[#ddc192] flex-shrink-0 mt-0.5" />
             <div className="space-y-1">
-              <p className="font-extrabold text-sm text-white">Form Penilaian Penguji Al-Qur'an, Hafalan & Lisan Bahasa Arab:</p>
+              <p className="font-extrabold text-sm text-white">Form Penilaian Penguji Tes Al-Qur'an, Hafalan & Lisan Bahasa Arab:</p>
               <p className="text-xs text-[#ddc192]">
                 Waktu Tes: <strong className="text-white">15–20 Menit/Santri</strong> | Nilai diinput langsung dari HP/Tablet penguji di Dashboard Input Nilai
               </p>

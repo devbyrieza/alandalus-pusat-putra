@@ -29,7 +29,7 @@ const JENIS_DOKUMEN = [
     required: true },
   {
     key: "pakta_integritas_ortu",
-    label: "Scan Pakta Integritas Calon Orangtua/Wali Santri (Download format)",
+    label: "Scan Pakta Integritas Calon Orang Tua/Wali Santri (Download format)",
     required: true },
   {
     key: "pernyataan_bebas_negatif",

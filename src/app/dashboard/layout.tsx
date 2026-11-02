@@ -5,15 +5,16 @@
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 import IdleTimeoutTracker from "@/components/auth/IdleTimeoutTracker";
+import ToastProvider from "@/components/common/ToastProvider";
 
-export default function DashboardLayout({
-  children }: {
-  children: React.ReactNode;
-}) {
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       {/* 🚨 Idle Timeout Tracker - Auto logout setelah 24 jam */}
       <IdleTimeoutTracker />
+
+      {/* Notifikasi toast global (react-hot-toast) untuk semua halaman dashboard */}
+      <ToastProvider />
 
       {/* Dashboard Content */}
       {children}

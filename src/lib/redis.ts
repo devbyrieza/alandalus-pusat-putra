@@ -1,6 +1,6 @@
-import Redis from 'ioredis';
+import Redis from "ioredis";
 
-const useRedis = process.env.REDIS_HOST && process.env.REDIS_HOST !== '';
+const useRedis = process.env.REDIS_HOST && process.env.REDIS_HOST !== "";
 
 let redisClient: any;
 
@@ -14,11 +14,12 @@ if (useRedis) {
     retryStrategy(times) {
       if (times > 3) return null;
       return Math.min(times * 50, 2000);
-    } });
-  
+    },
+  });
+
   // Attach error handler to prevent unhandled error event crash
-  redisClient.on('error', (err: any) => {
-    console.warn('Redis Connection Error:', err.message);
+  redisClient.on("error", (err: any) => {
+    console.warn("Redis Connection Error:", err.message);
   });
 } else {
   // Mock Redis
@@ -31,7 +32,8 @@ if (useRedis) {
     sadd: async () => 1,
     sismember: async () => 0,
     keys: async () => [],
-    on: () => {} };
+    on: () => {},
+  };
 }
 
 export const redis = redisClient;
@@ -40,10 +42,10 @@ export async function setCache(key: string, data: any, ttlSeconds: number = 3600
   if (!useRedis) return true;
   try {
     const stringData = JSON.stringify(data);
-    await redis.set(key, stringData, 'EX', ttlSeconds);
+    await redis.set(key, stringData, "EX", ttlSeconds);
     return true;
   } catch (error) {
-    console.error('Redis Set Error:', error);
+    console.error("Redis Set Error:", error);
     return false;
   }
 }
@@ -55,7 +57,7 @@ export async function getCache<T>(key: string): Promise<T | null> {
     if (!data) return null;
     return JSON.parse(data) as T;
   } catch (error) {
-    console.error('Redis Get Error:', error);
+    console.error("Redis Get Error:", error);
     return null;
   }
 }
@@ -63,12 +65,21 @@ export async function getCache<T>(key: string): Promise<T | null> {
 export async function invalidateAdminPendaftarCache() {
   if (!useRedis) return true;
   try {
-    const keys = await redis.keys('admin_pendaftar_list_*');
+    const keys = await redis.keys("admin_pendaftar_list_*");
     if (keys.length > 0) {
       await redis.del(...keys);
     }
   } catch (error) {
-    console.error('Redis Invalidate Error:', error);
+    console.error("Redis Invalidate Error:", error);
+  }
+}
+
+export async function delCache(key: string) {
+  try {
+    await redis.del(key);
+    return true;
+  } catch (error) {
+    return false;
   }
 }
 

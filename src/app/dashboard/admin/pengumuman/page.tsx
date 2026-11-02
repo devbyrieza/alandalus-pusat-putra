@@ -10,6 +10,7 @@ import {
   Search,
   Send,
   Upload,
+  X,
   XCircle,
 } from "lucide-react";
 import { useSearchParams } from "next/navigation";
@@ -34,6 +35,16 @@ function PengumumanContent() {
     nomor_pendaftaran: string;
   } | null>(null);
 
+  const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearch(searchQuery);
+    }, 400);
+    return () => clearTimeout(handler);
+  }, [searchQuery]);
+
   const sortedCandidates = useMemo(() => {
     return [...candidates].sort((a, b) => {
       const nA = a.nilai_ujian?.nilai_total ?? -1;
@@ -41,6 +52,21 @@ function PengumumanContent() {
       return nB - nA;
     });
   }, [candidates]);
+
+  const filteredCandidates = useMemo(() => {
+    let list = sortedCandidates;
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase().trim();
+      list = list.filter(
+        (c) =>
+          c.nama_lengkap?.toLowerCase().includes(q) ||
+          c.nomor_pendaftaran?.toLowerCase().includes(q) ||
+          c.nik?.includes(q) ||
+          c.asal_sekolah?.toLowerCase().includes(q)
+      );
+    }
+    return list;
+  }, [sortedCandidates, searchQuery]);
   const [filter, setFilter] = useState({
     jenjang: "",
     status: "tested", // Default to those who have completed ALL 6 exams
@@ -91,6 +117,7 @@ function PengumumanContent() {
       if (filter.jenjang) params.append("jenjang", filter.jenjang);
       if (filter.status) params.append("status", filter.status);
       if (filter.tahun_ajaran) params.append("tahun_ajaran", filter.tahun_ajaran);
+      if (debouncedSearch.trim()) params.append("search", debouncedSearch.trim());
       params.append("limit", "100"); // Fetch ample amount
 
       const res = await fetch(`/api/admin/pendaftar/list?${params.toString()}`);
@@ -117,11 +144,11 @@ function PengumumanContent() {
 
   useEffect(() => {
     fetchCandidates();
-  }, [filter]);
+  }, [filter, debouncedSearch]);
 
   const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
-      setSelectedIds(sortedCandidates.map((c, rankIdx) => c.id));
+      setSelectedIds(filteredCandidates.map((c) => c.id));
     } else {
       setSelectedIds([]);
     }
@@ -379,6 +406,28 @@ function PengumumanContent() {
               <option value="all">Semua Status</option>
             </select>
           </div>
+
+          {/* Search Box */}
+          <div className="flex items-center gap-2 px-3 py-2 bg-stone-50 rounded-xl border border-stone-200 focus-within:border-primary-500 focus-within:bg-white transition-all w-full sm:w-64">
+            <Search className="w-4 h-4 text-stone-400 shrink-0" />
+            <input
+              type="text"
+              placeholder="Cari nama / no. daftar..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="bg-transparent text-sm w-full focus:outline-none placeholder:text-stone-400 font-medium text-stone-800"
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery("")}
+                className="text-stone-400 hover:text-stone-600 transition-colors"
+                title="Hapus pencarian"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
         </div>
 
         <div className="flex items-center gap-2">
@@ -410,12 +459,12 @@ function PengumumanContent() {
       <div className="bg-white rounded-xl shadow-lg border border-stone-200 overflow-hidden">
         {/* Mobile View: Cards */}
         <div className="md:hidden divide-y divide-stone-100 select-none">
-          {candidates.length === 0 ? (
+          {filteredCandidates.length === 0 ? (
             <div className="px-6 py-12 text-center text-stone-500 italic">
-              Tidak ada data kandidat sesuai filter
+              Tidak ada data kandidat sesuai pencarian / filter
             </div>
           ) : (
-            sortedCandidates.map((c, rankIdx) => {
+            filteredCandidates.map((c, rankIdx) => {
               const nu = c.nilai_ujian;
               const getGradeBadge = (score: number | null | undefined, type: string) => {
                 if (score == null) return null;
@@ -533,14 +582,14 @@ function PengumumanContent() {
               </tr>
             </thead>
             <tbody className="divide-y divide-stone-100">
-              {candidates.length === 0 ? (
+              {filteredCandidates.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-8 text-center text-stone-500">
-                    Tidak ada data kandidat sesuai filter
+                    Tidak ada data kandidat sesuai pencarian / filter
                   </td>
                 </tr>
               ) : (
-                sortedCandidates.map((c, rankIdx) => {
+                filteredCandidates.map((c, rankIdx) => {
                   const nu = c.nilai_ujian;
                   const getGradeBadge = (score: number | null | undefined, type: string) => {
                     if (score == null) return null;

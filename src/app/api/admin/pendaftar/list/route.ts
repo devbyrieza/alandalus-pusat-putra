@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 import { type NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getCache, setCache } from "@/lib/redis";
-import { getAdminWhereClause } from "@/lib/utils/admin";
+import { getAdminWhereClause, resolveTahunAjaranId } from "@/lib/utils/admin";
 
 export async function GET(request: NextRequest) {
   try {
@@ -241,7 +241,14 @@ export async function GET(request: NextRequest) {
     if (jenisKelamin) {
       where.jenis_kelamin = { contains: jenisKelamin, mode: "insensitive" };
     }
-    if (tahunAjaran && tahunAjaran !== "all") where.tahun_ajaran_id = tahunAjaran;
+    if (tahunAjaran === "all" || tahunAjaran === "ALL") {
+      delete where.tahun_ajaran_id;
+    } else if (tahunAjaran) {
+      const resolvedTaId = await resolveTahunAjaranId(tahunAjaran);
+      if (resolvedTaId) {
+        where.tahun_ajaran_id = resolvedTaId;
+      }
+    }
     if (provinsi) where.provinsi = provinsi;
     if (kabupaten) where.kabupaten = kabupaten;
     if (kecamatan) where.kecamatan = kecamatan;

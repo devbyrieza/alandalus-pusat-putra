@@ -20,6 +20,7 @@ interface Pengumuman {
   status_kelulusan: string;
   catatan: string | null;
   tanggal_pengumuman: string;
+  surat_pengumuman_path?: string | null;
 }
 
 export default function PengumumanTab() {
@@ -238,21 +239,25 @@ export default function PengumumanTab() {
               </div>
               <p className="text-primary-50/90 mb-10 max-w-xl text-lg leading-relaxed">
                 Berdasarkan hasil seleksi, Anda dinyatakan <strong>DITERIMA</strong> sebagai santri
-                baru PP Al Andalus Al-Andalus Putri.
+                baru Pesantren Islam Internasional Al-Andalus Putra.
               </p>
 
-              <button
-                onClick={handleDownloadSurat}
-                disabled={isGenerating}
-                className="inline-flex items-center justify-center gap-3 px-5 md:px-8 py-3.5 bg-gold-400 text-primary-950 rounded-full font-black hover:bg-gold-300 transition-all shadow-lg shadow-gold-400/20 active:scale-95 disabled:opacity-50 border border-gold-500"
-              >
-                {isGenerating ? (
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                ) : (
+              {pengumuman?.surat_pengumuman_path ? (
+                <a
+                  href={`/api/files/${pengumuman.surat_pengumuman_path}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-3 px-5 md:px-8 py-3.5 bg-gold-400 text-primary-950 rounded-full font-black hover:bg-gold-300 transition-all shadow-lg shadow-gold-400/20 active:scale-95 border border-gold-500"
+                >
                   <Download className="w-5 h-5" />
-                )}
-                Download Surat Kelulusan
-              </button>
+                  Unduh Surat Pengumuman Hasil (Resmi)
+                </a>
+              ) : (
+                <div className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-white/15 backdrop-blur-md text-white rounded-2xl font-bold border border-white/20 text-sm shadow-sm">
+                  <Clock className="w-4 h-4 text-gold-300 animate-pulse shrink-0" />
+                  <span>Surat Pengumuman Resmi sedang disiapkan oleh Panitia PSB.</span>
+                </div>
+              )}
             </div>
           </div>
 
@@ -326,7 +331,8 @@ export default function PengumumanTab() {
               </div>
               <p className="text-secondary-50/90 mb-10 max-w-xl text-lg leading-relaxed">
                 Berdasarkan hasil seleksi, Anda dinyatakan masuk dalam{" "}
-                <strong>DAFTAR CADANGAN</strong> santri baru PP Al Andalus Al Imam.
+                <strong>DAFTAR CADANGAN</strong> santri baru Pesantren Islam Internasional
+                Al-Andalus Putra.
               </p>
 
               <div className="inline-flex items-center justify-center gap-3 px-5 md:px-8 py-3.5 bg-white text-secondary-900 rounded-full font-black shadow-lg transition-all border border-secondary-100">

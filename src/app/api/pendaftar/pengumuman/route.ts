@@ -86,6 +86,7 @@ export async function GET(request: NextRequest) {
             pengumuman?.catatan || "Hasil seleksi telah diumumkan. Silakan cek detail di atas.",
           tanggal_pengumuman:
             pengumuman?.published_at?.toISOString() || pendaftar.updated_at.toISOString(),
+          surat_pengumuman_path: pengumuman?.surat_pengumuman_path || null,
         },
       };
 
@@ -110,6 +111,7 @@ export async function GET(request: NextRequest) {
           catatan: pengumuman.catatan,
           tanggal_pengumuman:
             pengumuman.published_at?.toISOString() || pengumuman.created_at.toISOString(),
+          surat_pengumuman_path: pengumuman.surat_pengumuman_path || null,
         },
       };
 

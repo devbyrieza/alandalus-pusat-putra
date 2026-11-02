@@ -252,7 +252,7 @@ function PengumumanContent() {
         <span
           className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-green-100 text-green-700 ${textSize} font-black uppercase whitespace-nowrap shrink-0`}
         >
-          <CheckCircle2 className="w-3 h-3" /> Lulus
+          <CheckCircle2 className="w-3 h-3" /> Diterima
         </span>
       );
     }
@@ -296,7 +296,7 @@ function PengumumanContent() {
           <h3 className="text-2xl font-bold text-primary-700">{stats.ready}</h3>
         </div>
         <div className="bg-green-50 p-6 rounded-xl shadow-sm border border-green-100">
-          <p className="text-green-600 text-sm font-medium">Sudah Lulus</p>
+          <p className="text-green-600 text-sm font-medium">Sudah Diterima</p>
           <h3 className="text-2xl font-bold text-green-700">{stats.accepted}</h3>
         </div>
       </div>
@@ -314,7 +314,7 @@ function PengumumanContent() {
               <option value="sedang_seleksi">Semua Proses Seleksi (Siap Diluluskan)</option>
               <option value="tested">Sudah Selesai Ujian (Tested)</option>
               <option value="scheduled">Terjadwal Ujian</option>
-              <option value="accepted">Sudah Lulus / Diterima</option>
+              <option value="accepted">Diterima</option>
               <option value="cadangan">Cadangan</option>
               <option value="rejected">Ditolak</option>
               <option value="all">Semua Status</option>

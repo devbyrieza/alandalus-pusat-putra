@@ -86,6 +86,7 @@ export default function SesiKetersediaanSection({
     location: "Online",
     notes: "",
     creator_id: "",
+    duration: 30,
   });
 
   // Edit Slot Form
@@ -137,6 +138,7 @@ export default function SesiKetersediaanSection({
     location: "Online",
     notes: "",
     creator_id: "",
+    duration: 30,
   });
 
   // Body scroll lock effect for modals
@@ -154,19 +156,29 @@ export default function SesiKetersediaanSection({
   }, [isSlotModalOpen, isBulkModalOpen, isEditModalOpen, isBulkEditModalOpen]);
 
   // Duration Helper
-  const getDurationFromTitle = (title: string) => {
+  const getDurationFromTitle = (title: string, customDuration?: number) => {
+    if (customDuration && customDuration > 0) return customDuration;
     const t = (title || "").toLowerCase();
+    // Khusus Wawancara Calon Orang Tua / Wali: Default 60 Menit
+    if (
+      t.includes("orang tua") ||
+      t.includes("ortu") ||
+      t.includes("wali") ||
+      t.includes("cawalsan")
+    ) {
+      return 60;
+    }
+    // Tes Al-Qur'an, Wawancara Calon Santri, Tes Lisan Bahasa Arab, Hafalan: Default 30 Menit
     if (t.includes("quran") || t.includes("qur'an")) return 30;
     if (t.includes("santri") || t.includes("calsan")) return 30;
-    if (t.includes("orang tua") || t.includes("ortu") || t.includes("wali")) return 30;
     if (t.includes("hafalan")) return 30;
-    if (t.includes("arab")) return 30;
-    return 60;
+    if (t.includes("arab") || t.includes("lisan")) return 30;
+    return 30;
   };
 
-  const calculateEndTime = (startTime: string, title: string) => {
+  const calculateEndTime = (startTime: string, title: string, customDuration?: number) => {
     if (!startTime) return "";
-    const duration = getDurationFromTitle(title);
+    const duration = getDurationFromTitle(title, customDuration);
     const [h, m] = startTime.split(":").map(Number);
     const date = new Date();
     date.setHours(h, m + duration, 0, 0);
@@ -1080,7 +1092,7 @@ export default function SesiKetersediaanSection({
                           value={s.start}
                           onChange={(e) => {
                             const newStart = e.target.value;
-                            const newEnd = calculateEndTime(newStart, slotForm.title);
+                            const newEnd = calculateEndTime(newStart, slotForm.title, slotForm.duration);
                             const newSlots = [...slotForm.slots];
                             newSlots[idx] = { start: newStart, end: newEnd };
                             setSlotForm({ ...slotForm, slots: newSlots });
@@ -1120,7 +1132,7 @@ export default function SesiKetersediaanSection({
                     onClick={() => {
                       const lastSlot = slotForm.slots[slotForm.slots.length - 1];
                       const nextStart = lastSlot ? lastSlot.end : "08:00";
-                      const nextEnd = calculateEndTime(nextStart, slotForm.title);
+                      const nextEnd = calculateEndTime(nextStart, slotForm.title, slotForm.duration);
                       setSlotForm({
                         ...slotForm,
                         slots: [...slotForm.slots, { start: nextStart, end: nextEnd }]
@@ -1362,7 +1374,7 @@ export default function SesiKetersediaanSection({
                           value={slot.start}
                           onChange={(e) => {
                             const newStart = e.target.value;
-                            const newEnd = calculateEndTime(newStart, bulkForm.title);
+                            const newEnd = calculateEndTime(newStart, bulkForm.title, bulkForm.duration);
                             const current = [...(bulkForm.daySlots[activeDay] || [])];
                             current[idx] = { start: newStart, end: newEnd };
                             setBulkForm({
@@ -1410,7 +1422,7 @@ export default function SesiKetersediaanSection({
                         const current = bulkForm.daySlots[activeDay] || [];
                         const lastSlot = current[current.length - 1];
                         const nextStart = lastSlot ? lastSlot.end : "08:00";
-                        const nextEnd = calculateEndTime(nextStart, bulkForm.title);
+                        const nextEnd = calculateEndTime(nextStart, bulkForm.title, bulkForm.duration);
                         setBulkForm({
                           ...bulkForm,
                           daySlots: {

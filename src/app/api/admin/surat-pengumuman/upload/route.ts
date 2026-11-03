@@ -6,7 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { delCache, invalidateAdminPendaftarCache } from "@/lib/redis";
 import { saveFileLocal } from "@/lib/storage/local";
 import { signFilePath } from "@/lib/storage/file-signing";
-import { enqueueWhatsapp } from "@/lib/whatsapp-queue";
+import { enqueueWhatsapp, buildMessageHasilTes } from "@/lib/whatsapp-queue";
 import { sendDocumentMessage } from "@/lib/wablas";
 
 export const runtime = "nodejs";
@@ -163,31 +163,12 @@ export async function POST(request: Request) {
         const santriWord = b.santri || "Santri";
         const shalehWord = b.shaleh || "sholeh";
 
-        const messageContent = `📋 *PENGUMUMAN HASIL KELULUSAN SELEKSI PSB*
-*${(b.schoolName || "PESANTREN AL-ANDALUS").toUpperCase()}*
-
-Assalamu'alaikum Warahmatullahi Wabarakatuh,
-
-Yth. Bapak/Ibu Orang Tua / Wali dari:
-👤 *${pendaftar.nama_lengkap}*
-No. Pendaftaran: *${pendaftar.nomor_pendaftaran}*
-
-Alhamdulillah, ananda dinyatakan *DITERIMA* sebagai ${santriWord} Baru di ${b.schoolName || "Pesantren Al-Andalus"}:
-🎓 *Jenjang / Kelas:* ${targetKelas}
-${nomorSurat ? `📜 *No. Surat Keputusan:* ${nomorSurat}\n` : ""}
-📄 *Unduh Surat Keputusan Resmi (PDF):*
-${suratDownloadUrl}
-
-📝 *Tahap Selanjutnya (Daftar Ulang):*
-Silakan masuk ke portal pendaftar untuk melihat rincian pengumuman dan panduan daftar ulang:
-🔗 ${appUrl}/login
-
-Semoga Allah ﷻ memberkahi ananda dan menjadikannya ${santriWord.toLowerCase()} yang ${shalehWord}, berilmu, dan berakhlak mulia. Aamiin.
-
-Jazakumullahu khairan katsiran.
-Wassalamu'alaikum Warahmatullahi Wabarakatuh.
----
-*Panitia PSB ${b.schoolName || "Pesantren Al-Andalus"}*`;
+        const messageContent = buildMessageHasilTes({
+          namaPeserta: pendaftar.nama_lengkap,
+          nomorPendaftaran: pendaftar.nomor_pendaftaran,
+          jenjang: pendaftar.jenjang,
+          tahunAjaran: (pendaftar as any).tahun_ajaran?.nama,
+        });
 
         const enqResult = await enqueueWhatsapp({
           pendaftarId: pendaftar.id,

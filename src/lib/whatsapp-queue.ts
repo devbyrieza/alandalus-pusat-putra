@@ -1042,72 +1042,71 @@ Jazakumullahu khairan
 *Panitia PPDB ${BRANDING.schoolName}*`;
 }
 
-export function buildMessageHasilTes(nama: string, jenjang: string = "", nomor_tes: string = "", status: string = ""): string {
-    const isPutri = BRANDING.schoolName.toLowerCase().includes('putri');
-    const sebutanAnak = isPutri ? 'santriwati' : 'santri';
-    const sifat = isPutri ? 'shalehah' : 'shaleh';
+export interface BuildMessageHasilSeleksiParams {
+    namaPeserta: string;
+    nomorPendaftaran?: string | null;
+    jenjang?: string | null;
+    tahunAjaran?: string | null;
+}
 
-    if (status === "Diterima" || status === "accepted") {
-        return `🌷 *PENGUMUMAN KELULUSAN SELEKSI* 🌷
+export function buildMessageHasilTes(
+    param: string | BuildMessageHasilSeleksiParams,
+    jenjangFallback: string = "",
+    nomorFallback: string = "",
+    statusFallback: string = ""
+): string {
+    const data: BuildMessageHasilSeleksiParams =
+        typeof param === "string"
+            ? {
+                  namaPeserta: param,
+                  jenjang: jenjangFallback,
+                  nomorPendaftaran: nomorFallback,
+              }
+            : param;
 
-*Bismillāhirraḥmānirraḥīm*
+    const lembaga = (BRANDING.schoolName || "PESANTREN AL-ANDALUS").toUpperCase();
+    const tahunAjaran = data.tahunAjaran || (BRANDING as any).academicYear || "2027/2028";
+    const namaPeserta = data.namaPeserta || "-";
+    const nomorPendaftaran = data.nomorPendaftaran || "-";
+    const jenjang = data.jenjang ? data.jenjang.toUpperCase() : "-";
 
-Assalāmu‘alaikum warahmatullāhi wabarakātuh.
+    const linkPortal = `${(BRANDING as any).websiteUrl || "https://spmb.pesantren-alandalus.com"}/login`;
+    const phoneCs = (BRANDING as any).phone || "0812-9686-9854";
+    const website = (BRANDING as any).websiteUrl || "https://pesantren-alandalus.com";
 
-Alhamdulillāh, berdasarkan hasil seleksi Penerimaan Santri Baru (PSB), dengan ini kami sampaikan bahwa:
+    const panitia = `Panitia SPMB ${BRANDING.schoolName}`;
 
-*Nama:* ${nama}
-*Jenjang:* ${jenjang}
-*Nomor Tes:* *${nomor_tes}*
-
-🌸 *DINYATAKAN LULUS SELEKSI* 🌸
-
-*Māsyā Allāh, tabārakallāh.*
-
-Selamat kepada Ananda *${nama}* dan Abu serta Ummu. Semoga Allah ﷻ memberikan keberkahan dan kemudahan kepada Ananda dalam melanjutkan pendidikan di *${BRANDING.schoolName}*.
-
-📌 *TAHAP SELANJUTNYA – DAFTAR ULANG*
-
-Abu dan Ummu dapat melanjutkan proses *daftar ulang melalui Virtual Account (VA) yang telah terlampir* pada surat pengumuman kelulusan.
-
-Setelah melakukan pembayaran, mohon:
-
-1. Melakukan pembayaran daftar ulang melalui *VA yang terlampir*.
-2. Menyimpan *bukti transfer/pembayaran*.
-3. Mengirimkan *bukti pembayaran* kepada bagian *PPDB/Humas* sebagai konfirmasi daftar ulang.
-
-📱 *INFORMASI & KONFIRMASI*
-
-*Humas:* 0811 2802 1035
-*PSB/PPDB:* 0851 7527 5085
-
-Mohon bukti pembayaran dikirimkan kepada salah satu nomor di atas dengan jelas agar dapat segera dilakukan proses konfirmasi daftar ulang.
-
-Jazakumullāhu khairan atas kepercayaan Abu dan Ummu kepada *${BRANDING.schoolName}*.
-
-Semoga Allah ﷻ menjadikan Ananda ${sebutanAnak} yang *${sifat}, berilmu, berakhlak mulia, mandiri, dan bermanfaat bagi agama, keluarga, dan umat.*
-
-Wassalāmu‘alaikum warahmatullāhi wabarakātuh.
-
-*Panitia PSB/PPDB*
-*${BRANDING.schoolName}*`;
+    let footerName = BRANDING.schoolName || "Pesantren";
+    if (!footerName.toLowerCase().includes("al-andalus")) {
+        footerName = `${footerName} Managed by Al-Andalus IIBS`;
     }
 
-    return `📢 *Pengumuman Hasil Seleksi*
-
-Assalamu'alaikum Abu/Ummu,
-
-Alhamdulillah, hasil seleksi Ananda *${nama}* (Nomor Tes: ${nomor_tes}) sudah tersedia dan dapat dilihat di dashboard PPDB.
-
-🔗 *Lihat Hasil Seleksi:*
-${BRANDING.websiteUrl}/dashboard/pendaftar/pengumuman
-
-Untuk informasi lebih lanjut, hubungi kami di ${BRANDING.phone}.
-
-Jazakumullahu khairan
-
----
-*Panitia PPDB ${BRANDING.schoolName}*`;
+    return (
+        `📋 *PENGUMUMAN HASIL SELEKSI PSB*\n` +
+        `*${lembaga}*\n` +
+        `Tahun Ajaran ${tahunAjaran}\n\n` +
+        `Bismillāhirraḥmānirraḥīm\n` +
+        `Assalāmu'alaikum warahmatullāhi wabarakātuh.\n\n` +
+        `Yth. Abu/Ummu Wali Calon Santri:\n` +
+        `👤 *${namaPeserta}*\n` +
+        `🆔 No. Pendaftaran: *${nomorPendaftaran}*\n` +
+        `🎓 Jenjang: *${jenjang}*\n\n` +
+        `Alhamdulillāh, proses seleksi Penerimaan Santri Baru telah selesai. *Hasil seleksi ananda sudah dapat dilihat* melalui akun pendaftar.\n\n` +
+        `📌 *CARA MELIHAT HASIL*\n` +
+        `1. Buka portal pendaftar:\n` +
+        `🔗 ${linkPortal}\n` +
+        `2. Masuk dengan akun yang digunakan saat mendaftar.\n` +
+        `3. Buka menu *Pengumuman* di dashboard.\n` +
+        `4. Surat Keputusan resmi dan panduan tahap selanjutnya tersedia di sana.\n\n` +
+        `📱 *INFORMASI & BANTUAN*\n` +
+        `WhatsApp CS: ${phoneCs}\n` +
+        `Website: ${website}\n\n` +
+        `Apa pun hasilnya, semoga Allah ﷻ memberikan yang terbaik bagi ananda dan keluarga. Aamiin.\n\n` +
+        `Jazākumullāhu khairan katsīran atas kepercayaan Abu dan Ummu kepada *${lembaga}*.\n\n` +
+        `Wassalāmu'alaikum warahmatullāhi wabarakātuh.\n\n` +
+        `*${panitia}*\n` +
+        `_Sistem SPMB ${footerName}_`
+    );
 }
 
 /** Alias baru — sama dengan buildMessageHasilTes */

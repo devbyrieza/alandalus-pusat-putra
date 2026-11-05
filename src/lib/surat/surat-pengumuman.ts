@@ -155,7 +155,7 @@ async function generateSuratDariTemplate(
   });
 
   const tampil = async (page: number) => {
-    if (page > 1) doc.addPage([TEMPLATE_PAGE.w, TEMPLATE_PAGE.h], "pt");
+    if (page > 1) doc.addPage([TEMPLATE_PAGE.w, TEMPLATE_PAGE.h]);
     const img = await loadImage(`/images/template-surat-pengumuman-${page}.jpg`);
     if (img) doc.addImage(img, "JPEG", 0, 0, TEMPLATE_PAGE.w, TEMPLATE_PAGE.h);
   };

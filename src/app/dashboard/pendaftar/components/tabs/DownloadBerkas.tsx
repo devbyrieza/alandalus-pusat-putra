@@ -12,7 +12,8 @@ import {
   generateKartuUjian,
   generateSuratKesehatan,
   generatePaktaIntegritas,
-  generateSuratPernyataan } from "@/lib/utils/pdf-generator";
+  generateSuratPernyataan,
+  generateSuratPengunduranDiri } from "@/lib/utils/pdf-generator";
 
 export default function DownloadBerkasTab() {
   const [data, setData] = useState<any>(null);
@@ -82,30 +83,35 @@ export default function DownloadBerkasTab() {
       status: isScheduled ? "available" : "pending",
       action: async () => await generateKartuUjian(data) },
     {
-      name: "Template Surat Sehat",
-      description: "Format resmi surat keterangan sehat panitia",
+      name: "Surat Kesehatan (Pengantar + Formulir)",
+      description: "Format resmi panitia PSB 2027-2028 untuk pemeriksaan kesehatan",
       status: "available",
-      action: () => window.open("/templates/surat-kesehatan.pdf", "_blank") },
+      action: async () => await generateSuratKesehatan(data) },
     {
-      name: "Pakta Integritas (Santri & Ortu)",
-      description: "Format resmi pakta integritas lengkap (2 Halaman)",
+      name: "Pakta Integritas (Santri & Orangtua/Wali)",
+      description: "Format resmi pakta integritas lengkap (2 Halaman) PSB 2027-2028",
       status: "available",
-      action: () => window.open("/templates/pakta-integritas.pdf", "_blank") },
+      action: async () => await generatePaktaIntegritas(data, "both") },
     {
       name: "Pakta Integritas Calon Santri",
       description: "Format resmi pakta integritas khusus calon santri",
       status: "available",
-      action: () => window.open("/templates/pakta-integritas-santri.pdf", "_blank") },
+      action: async () => await generatePaktaIntegritas(data, "santri") },
     {
-      name: "Pakta Integritas Calon Orang Tua / Wali",
+      name: "Pakta Integritas Orang Tua / Wali",
       description: "Format resmi pakta integritas khusus orang tua / wali",
       status: "available",
-      action: () => window.open("/templates/pakta-integritas-ortu.pdf", "_blank") },
+      action: async () => await generatePaktaIntegritas(data, "ortu") },
     {
       name: "Surat Pernyataan Bebas Perilaku Buruk",
-      description: "Format resmi surat pernyataan panitia",
+      description: "Format resmi surat pernyataan panitia PSB 2027-2028",
       status: "available",
-      action: () => window.open("/templates/surat-pernyataan.pdf", "_blank") },
+      action: async () => await generateSuratPernyataan(data) },
+    {
+      name: "Surat Permohonan Pengunduran Diri",
+      description: "Format resmi permohonan pengunduran diri panitia PSB 2027-2028",
+      status: "available",
+      action: async () => await generateSuratPengunduranDiri(data) },
   ];
 
   return (

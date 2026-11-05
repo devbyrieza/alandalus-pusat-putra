@@ -80,6 +80,8 @@ export async function POST(request: Request) {
         where: { pendaftar_id: pendaftarId },
         update: {
           status_kelulusan: "Diterima",
+          ...(nomorSurat ? { nomor_surat: nomorSurat } : {}),
+          ...(kelasDiterima ? { kelas_diterima: kelasDiterima } : {}),
           surat_pengumuman_path: suratPath,
           is_published: true,
           published_at: new Date(),
@@ -90,6 +92,8 @@ export async function POST(request: Request) {
           pendaftar_id: pendaftarId,
           tahun_ajaran_id: pendaftar.tahun_ajaran_id,
           status_kelulusan: "Diterima",
+          ...(nomorSurat ? { nomor_surat: nomorSurat } : {}),
+          ...(kelasDiterima ? { kelas_diterima: kelasDiterima } : {}),
           surat_pengumuman_path: suratPath,
           is_published: true,
           published_at: new Date(),

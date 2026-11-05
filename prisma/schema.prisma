@@ -413,6 +413,9 @@ model Pengumuman {
   ranking               Int?
   catatan               String?
   surat_pengumuman_path String?
+  nomor_surat           String?     @unique
+  kelas_diterima        String?
+  tanggal_terbit        DateTime?   @db.Timestamptz(6)
   is_published          Boolean     @default(false)
   published_at          DateTime?   @db.Timestamptz(6)
   published_by          String?     @db.Uuid

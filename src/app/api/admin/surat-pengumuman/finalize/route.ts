@@ -1,0 +1,294 @@
+import { cookies } from "next/headers";
+import { NextResponse } from "next/server";
+import { SURAT_PENGUMUMAN_CONFIG } from "@/config/surat-pengumuman";
+import { logAdminAction } from "@/lib/audit";
+import { prisma } from "@/lib/prisma";
+import { delCache, invalidateAdminPendaftarCache } from "@/lib/redis";
+import { signFilePath } from "@/lib/storage/file-signing";
+import { saveFileLocal } from "@/lib/storage/local";
+import {
+  generateSuratPengumumanHasil,
+  getSeqTerpakai,
+  parseNomorSurat,
+  type AspekPenilaian,
+} from "@/lib/surat/surat-pengumuman";
+import { sendDocumentMessage } from "@/lib/wablas";
+
+export const runtime = "nodejs";
+
+async function checkSuperAdmin() {
+  const cookieStore = await cookies();
+  const sessionCookie = cookieStore.get("al_session");
+  if (!sessionCookie) return null;
+  try {
+    const session = JSON.parse(sessionCookie.value);
+    return session.role === "admin_super" || session.role === "admin" ? session : null;
+  } catch {
+    return null;
+  }
+}
+
+function parseAspek(body: any): AspekPenilaian[] {
+  const raw = Array.isArray(body.aspek) ? body.aspek : [];
+  return [0, 1, 2, 3, 4].map((i) => ({
+    nilai: String(raw[i]?.nilai ?? "A").trim() || "A",
+    keterangan: String(raw[i]?.keterangan ?? "").trim(),
+  }));
+}
+
+/**
+ * POST — FINALISASI surat: generate PDF final, simpan ke storage, lock nomor surat
+ * (unique constraint), publish Pengumuman, set pendaftar accepted, kirim WA + dokumen.
+ * Body: { pendaftar_id, nomor_surat, tanggal_terbit?, kelas_diterima?, gelombang?,
+ *         hari_tanggal_tes?, virtual_account?, aspek?, kirim_wa?: boolean }
+ */
+export async function POST(request: Request) {
+  const admin = await checkSuperAdmin();
+  if (!admin) {
+    return NextResponse.json({ error: "Unauthorized. Hanya Admin." }, { status: 403 });
+  }
+
+  try {
+    const body = await request.json();
+    const pendaftarId = body.pendaftar_id as string;
+    const nomorSurat = ((body.nomor_surat as string) || "").trim();
+    if (!pendaftarId || !nomorSurat) {
+      return NextResponse.json({ error: "pendaftar_id dan nomor_surat wajib." }, { status: 400 });
+    }
+
+    const tanggalTerbit = body.tanggal_terbit ? new Date(body.tanggal_terbit) : new Date();
+    const kelasDiterima: string =
+      body.kelas_diterima || SURAT_PENGUMUMAN_CONFIG.kelasDiterimaDefault;
+    const gelombang: number = Number(body.gelombang) || SURAT_PENGUMUMAN_CONFIG.gelombangDefault;
+    const jenjang: string = body.jenjang || SURAT_PENGUMUMAN_CONFIG.jenjangDefault;
+    const hariTanggalTes: string =
+      body.hari_tanggal_tes || "(hari/tanggal pelaksanaan tes)";
+    const virtualAccount: string = String(body.virtual_account || "").trim();
+
+    // Validasi format nomor
+    const parsed = parseNomorSurat(nomorSurat);
+    if (!parsed) {
+      return NextResponse.json(
+        {
+          error: `Format nomor surat tidak valid. Harusnya 001/PSB/G${gelombang}/X/${SURAT_PENGUMUMAN_CONFIG.taCompact}.`,
+        },
+        { status: 400 }
+      );
+    }
+
+    const pendaftar = await prisma.pendaftar.findFirst({
+      where: { id: pendaftarId, deleted_at: null },
+      select: {
+        id: true,
+        nama_lengkap: true,
+        nomor_pendaftaran: true,
+        no_hp: true,
+        jenjang: true,
+        status_pendaftaran: true,
+        tahun_ajaran: { select: { nama: true } },
+      },
+    });
+    if (!pendaftar) {
+      return NextResponse.json({ error: "Pendaftar tidak ditemukan." }, { status: 404 });
+    }
+
+    // Lock: nomor sudah dipakai pendaftar lain?
+    const bentrok = await prisma.pengumuman.findFirst({
+      where: { nomor_surat: nomorSurat, pendaftar_id: { not: pendaftarId } },
+      select: { pendaftar_id: true },
+    });
+    if (bentrok) {
+      return NextResponse.json(
+        {
+          error: `Nomor surat ${nomorSurat} sudah dipakai pendaftar lain. Muat ulang preview untuk dapat nomor berikutnya.`,
+        },
+        { status: 409 }
+      );
+    }
+
+    // Validasi SEQ: tidak boleh melompat ke bawah SEQ terakhir yang terbit.
+    const existing = await getSeqTerpakai();
+    const maxTerpakai = existing.filter((s) => s !== parsed.seq).length
+      ? Math.max(...existing.filter((s) => s !== parsed.seq))
+      : 0;
+    if (parsed.seq <= maxTerpakai) {
+      return NextResponse.json(
+        {
+          error: `Nomor ${nomorSurat} tidak boleh dipakai (sudah lewat urutan). Gunakan nomor setelah yang terakhir terbit.`,
+        },
+        { status: 409 }
+      );
+    }
+
+    // Generate PDF final
+    const { buffer, filename } = await generateSuratPengumumanHasil({
+      nomorSurat,
+      tanggalTerbit,
+      namaLengkap: pendaftar.nama_lengkap,
+      nomorPendaftaran: pendaftar.nomor_pendaftaran,
+      jenjang,
+      gelombang,
+      hariTanggalTes,
+      aspek: parseAspek(body),
+      virtualAccount,
+    });
+
+    const safeName = filename.replace(/[^a-zA-Z0-9 .-]/g, "-");
+    const suratPath = await saveFileLocal(buffer, "pengumuman", pendaftarId, safeName);
+
+    // Publish Pengumuman + update status pendaftar (transaksi)
+    const pengumuman = await prisma.$transaction(async (tx) => {
+      const p = await tx.pengumuman.upsert({
+        where: { pendaftar_id: pendaftarId },
+        update: {
+          status_kelulusan: "Diterima",
+          nomor_surat: nomorSurat,
+          kelas_diterima: kelasDiterima,
+          tanggal_terbit: tanggalTerbit,
+          surat_pengumuman_path: suratPath,
+          is_published: true,
+          published_at: new Date(),
+          published_by: admin.id,
+          updated_at: new Date(),
+        },
+        create: {
+          pendaftar_id: pendaftarId,
+          tahun_ajaran_id: (
+            await tx.pendaftar.findUniqueOrThrow({
+              where: { id: pendaftarId },
+              select: { tahun_ajaran_id: true },
+            })
+          ).tahun_ajaran_id,
+          status_kelulusan: "Diterima",
+          nomor_surat: nomorSurat,
+          kelas_diterima: kelasDiterima,
+          tanggal_terbit: tanggalTerbit,
+          surat_pengumuman_path: suratPath,
+          is_published: true,
+          published_at: new Date(),
+          published_by: admin.id,
+        },
+      });
+
+      await tx.pendaftar.update({
+        where: { id: pendaftarId },
+        data: { status_pendaftaran: "accepted" },
+      });
+
+      // Persistensi permanen binary PDF ke tabel Dokumen (BYTEA)
+      const existingDoc = await tx.dokumen.findFirst({
+        where: {
+          pendaftar_id: pendaftarId,
+          jenis_dokumen: "surat_pengumuman",
+        },
+      });
+
+      if (existingDoc) {
+        await tx.dokumen.update({
+          where: { id: existingDoc.id },
+          data: {
+            file_name: safeName,
+            file_path: suratPath,
+            file_size: buffer.length,
+            file_type: "application/pdf",
+            file_data: buffer,
+            is_verified: true,
+            updated_at: new Date(),
+          },
+        });
+      } else {
+        await tx.dokumen.create({
+          data: {
+            pendaftar_id: pendaftarId,
+            jenis_dokumen: "surat_pengumuman",
+            file_name: safeName,
+            file_path: suratPath,
+            file_size: buffer.length,
+            file_type: "application/pdf",
+            file_data: buffer,
+            is_verified: true,
+          },
+        });
+      }
+
+      return p;
+    });
+
+    await delCache(`pengumuman_${pendaftarId}`);
+    await invalidateAdminPendaftarCache();
+
+    logAdminAction({
+      action: "TERBIT_SURAT_PENGUMUMAN",
+      adminId: admin.id,
+      adminName: admin.name || admin.username || "admin",
+      targetId: pendaftarId,
+      targetName: pendaftar.nama_lengkap,
+      details: { nomor_surat: nomorSurat, surat_path: suratPath },
+    });
+
+    // Kirim WA: teks selamat + link dokumen PDF signed (tercatat di whatsapp_log)
+    let waSent = false;
+    if (body.kirim_wa !== false && pendaftar.no_hp) {
+      try {
+        const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://ppdb.pesantren-alandalus-putra.com";
+        const token = signFilePath(suratPath);
+        const suratDownloadUrl = `${appUrl}/api/files/${encodeURI(suratPath)}?k=${token}`;
+
+        const { buildMessageHasilTes, enqueueWhatsapp } = await import("@/lib/whatsapp-queue");
+        const messageContent = buildMessageHasilTes({
+          namaPeserta: pendaftar.nama_lengkap,
+          nomorPendaftaran: pendaftar.nomor_pendaftaran,
+          jenjang: pendaftar.jenjang,
+          tahunAjaran: (pendaftar as any).tahun_ajaran?.nama,
+        });
+
+        const enqResult = await enqueueWhatsapp({
+          pendaftarId: pendaftar.id,
+          phone: pendaftar.no_hp,
+          jenisNotif: "hasil_seleksi",
+          messageContent,
+          force: true,
+          sendNow: true,
+        });
+        waSent = !!enqResult.queued;
+
+        // Kirim lampiran PDF jika paket Wablas mendukung (non-blocking)
+        try {
+          await sendDocumentMessage({
+            phone: pendaftar.no_hp,
+            message: `📄 Surat Pengumuman Kelulusan — ${pendaftar.nama_lengkap} (${nomorSurat})`,
+            documentUrl: suratDownloadUrl,
+          });
+        } catch {
+          // Ignored jika paket Wablas tidak support send-document
+        }
+
+        await prisma.pengumuman.update({
+          where: { id: pengumuman.id },
+          data: { wa_blast_sent: waSent, wa_blast_sent_at: waSent ? new Date() : null },
+        });
+      } catch (waErr) {
+        console.error("[SuratPengumuman] Kirim WA gagal (surat tetap terbit):", waErr);
+      }
+    }
+
+    return NextResponse.json({
+      success: true,
+      data: {
+        pengumuman_id: pengumuman.id,
+        nomor_surat: nomorSurat,
+        surat_path: suratPath,
+        wa_sent: waSent,
+      },
+    });
+  } catch (error: any) {
+    if (error?.code === "P2002") {
+      return NextResponse.json(
+        { error: "Nomor surat sudah dipakai (race). Muat ulang preview untuk nomor berikutnya." },
+        { status: 409 }
+      );
+    }
+    console.error("POST /api/admin/surat-pengumuman/finalize error:", error);
+    return NextResponse.json({ error: error.message || "Gagal finalisasi surat" }, { status: 500 });
+  }
+}

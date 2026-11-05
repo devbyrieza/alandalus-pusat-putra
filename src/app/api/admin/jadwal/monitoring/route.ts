@@ -459,7 +459,7 @@ export async function PATCH(request: NextRequest) {
             location: true,
             start_time: true,
             end_time: true,
-            date: true,
+
           },
         },
       },

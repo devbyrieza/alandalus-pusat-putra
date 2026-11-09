@@ -39,7 +39,9 @@ export function BulkPengumumanDialog({
   const [candidateClasses, setCandidateClasses] = useState<Record<string, string>>(() => {
     const map: Record<string, string> = {};
     candidates.forEach((c) => {
-      map[c.id] = c.kelas_diterima || c.jenjang || "Reguler";
+      const j = (c.jenjang || "").toUpperCase();
+      const defaultKelas = j.includes("IL") || j.includes("IDAD") ? "IL" : "VII";
+      map[c.id] = c.kelas_diterima || defaultKelas;
     });
     return map;
   });

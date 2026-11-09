@@ -85,8 +85,13 @@ export function SuratPengumumanDialog({
   // Auto-detect jenjang dari data pendaftar
   useEffect(() => {
     const j = (pendaftar.jenjang || "").toUpperCase();
-    if (j.includes("I'DAD") || j.includes("IDAD")) setJenjang("I'dad Lughawiy");
-    else if (j.includes("SMP")) setJenjang("SMP IT");
+    if (j === "IL" || j.includes("IL") || j.includes("I'DAD") || j.includes("IDAD")) {
+      setJenjang("I'dad Lughawiy");
+      setKelas("IL");
+    } else {
+      setJenjang("SMP IT");
+      setKelas("VII");
+    }
   }, [pendaftar.jenjang]);
 
   async function loadPreview() {
@@ -414,6 +419,41 @@ export function SuratPengumumanDialog({
                     berikutnya (001, 002, ...). Nomor baru terkunci saat finalisasi. Isi dulu data
                     penilaian di bawah, lalu generate draft untuk dicek.
                   </p>
+
+                  {/* Quick Preset Buttons */}
+                  <div className="flex items-center gap-2 my-2 p-2.5 bg-stone-50 rounded-xl border border-stone-200">
+                    <span className="text-[11px] font-bold text-stone-500 uppercase tracking-wider shrink-0">
+                      Pilihan Cepat:
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setJenjang("SMP IT");
+                        setKelas("VII");
+                      }}
+                      className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
+                        jenjang === "SMP IT"
+                          ? "bg-primary-600 text-white shadow-xs"
+                          : "bg-white text-stone-700 hover:bg-stone-100 border border-stone-200"
+                      }`}
+                    >
+                      VII SMP IT
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setJenjang("I'dad Lughawiy");
+                        setKelas("IL");
+                      }}
+                      className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
+                        jenjang.includes("I'dad") || jenjang === "IL"
+                          ? "bg-amber-600 text-white shadow-xs"
+                          : "bg-white text-stone-700 hover:bg-stone-100 border border-stone-200"
+                      }`}
+                    >
+                      IL (I&apos;dad Lughawiy)
+                    </button>
+                  </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                     <label className="block">
                       Tanggal Terbit:

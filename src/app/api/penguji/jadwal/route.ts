@@ -127,27 +127,42 @@ export async function GET() {
         if (item.penguji_arab_id === userId)
           jenis_tugas.push("Tes Lisan Bahasa Arab");
 
-        // Fallback: if matched via exam_session.created_by, derive from session title
+        // Fallback: if matched via exam_session.created_by, derive from session title ONLY when not reassigned to another examiner
         if (
           jenis_tugas.length === 0 &&
           item.exam_session?.created_by === userId
         ) {
           const title = sessionTitle;
-          if (title.includes("hafalan") || title.includes("qur") || title.includes("quran"))
-            jenis_tugas.push("Seleksi Al Qur'an", "Tes Al-Qur'an (Bacaan & Hafalan)");
-          else if (title.includes("arab") || title.includes("lisan"))
-            jenis_tugas.push("Tes Lisan Bahasa Arab");
-          else if (
-            title.includes("cawalsan") ||
-            title.includes("ortu") ||
-            title.includes("orang") ||
-            title.includes("wali")
-          )
-            jenis_tugas.push("Seleksi Wawancara Calon Orang Tua/Wali Santri");
-          else if (title.includes("calsan") || title.includes("santri"))
-            jenis_tugas.push("Seleksi Wawancara Calon Santri");
-          else jenis_tugas.push(item.exam_session?.title || "Ujian");
+          if (title.includes("hafalan") || title.includes("qur") || title.includes("quran") || title.includes("bacaan")) {
+            if (!item.penguji_quran_id && !item.penguji_hafalan_id) {
+              jenis_tugas.push("Seleksi Al Qur'an", "Tes Al-Qur'an (Bacaan & Hafalan)");
+            }
+          } else if (title.includes("arab") || title.includes("lisan")) {
+            if (!item.penguji_arab_id) {
+              jenis_tugas.push("Tes Lisan Bahasa Arab");
+            }
+          } else if (isSessionOrtu) {
+            if (!item.penguji_ortu_id && !item.penguji_santri_id) {
+              jenis_tugas.push("Seleksi Wawancara Calon Orang Tua/Wali Santri");
+            }
+          } else if (title.includes("calsan") || title.includes("santri") || title.includes("wawancara")) {
+            if (!item.penguji_santri_id) {
+              jenis_tugas.push("Seleksi Wawancara Calon Santri");
+            }
+          } else if (
+            !item.penguji_quran_id &&
+            !item.penguji_hafalan_id &&
+            !item.penguji_santri_id &&
+            !item.penguji_ortu_id &&
+            !item.penguji_arab_id
+          ) {
+            jenis_tugas.push(item.exam_session?.title || "Ujian");
+          }
         }
+      }
+
+      if (jenis_tugas.length === 0) {
+        return null;
       }
 
       const hasScoreQuran = item.nilai_ujian?.some((n: any) => {
@@ -189,7 +204,8 @@ export async function GET() {
           zoom_link_arab: item.zoom_link_arab,
         // Also pass created_by so frontend can check
         session_created_by: item.exam_session?.created_by };
-    });
+    })
+    .filter(Boolean);
 
     return NextResponse.json({ data: formattedJadwal });
   } catch (error: any) {

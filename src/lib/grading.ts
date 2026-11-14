@@ -69,9 +69,14 @@ export const ANSWER_KEYS = {
 
 export function calculateAkademikScore(
   answers: Record<string, string>,
-  jenjang: "MTs" | "IL" | "SMA",
+  jenjang: "SMP IT" | "SMP" | "MTs" | "IL" | "SMA" | string,
 ): number {
-  const key = ANSWER_KEYS[jenjang];
+  let normalizedKey: "MTs" | "IL" | "SMA" = "MTs";
+  if (jenjang === "IL") normalizedKey = "IL";
+  else if (jenjang === "SMA" || jenjang === "MA") normalizedKey = "SMA";
+  else normalizedKey = "MTs";
+
+  const key = ANSWER_KEYS[normalizedKey];
   if (!key) return 0;
 
   let correct = 0;

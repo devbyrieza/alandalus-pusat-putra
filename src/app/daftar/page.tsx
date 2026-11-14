@@ -27,7 +27,7 @@ interface FormData {
   tanggal_lahir: string;
   no_hp: string;
   jenis_kelamin: "L" | "P" | "";
-  jenjang: "MTs" | "IL" | "MA" | "";
+  jenjang: "SMP IT" | "SMP" | "MTs" | "IL" | "MA" | "";
 }
 
 // ========================================
@@ -69,14 +69,17 @@ export default function DaftarPage() {
   }, []);
 
   const router = useRouter();
-  const [jenjangFromUrl, setJenjangFromUrl] = useState<"MTs" | "IL" | "MA" | "">("");
+  const [jenjangFromUrl, setJenjangFromUrl] = useState<"SMP IT" | "SMP" | "MTs" | "IL" | "MA" | "">("");
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
-      const jenjang = params.get("jenjang") as "MTs" | "IL" | "MA" | null;
-      if (jenjang) {
-        setJenjangFromUrl(jenjang);
+      const rawJenjang = params.get("jenjang");
+      if (rawJenjang) {
+        const norm = rawJenjang.toUpperCase();
+        if (norm.includes("SMP") || norm.includes("MTS")) setJenjangFromUrl("SMP IT");
+        else if (norm.includes("IL") || norm.includes("IDAD")) setJenjangFromUrl("IL");
+        else if (norm.includes("SMA") || norm.includes("MA")) setJenjangFromUrl("MA");
       }
     }
   }, []);
@@ -355,14 +358,14 @@ export default function DaftarPage() {
                 >
                   {[
                     {
-                      value: "MTs",
-                      title: "Sekolah Menengah Pertama (SMP)",
-                      subtitle: "Lulusan SD/Sederajat",
-                      desc: "Jenjang pendidikan dasar setingkat SMP." },
+                      value: "SMP IT",
+                      title: "Sekolah Menengah Pertama Islam Terpadu (SMP IT)",
+                      subtitle: "Lulusan SD/MI/Sederajat",
+                      desc: "Jenjang pendidikan dasar setingkat SMP IT." },
                     {
                       value: "IL",
                       title: "I'dad Lughowi",
-                      subtitle: "Lulusan SMP/Sederajat",
+                      subtitle: "Lulusan SMP/MTs/Sederajat",
                       desc: "Kelas persiapan bahasa Arab sebelum masuk MA." },
                     {
                       value: "MA",

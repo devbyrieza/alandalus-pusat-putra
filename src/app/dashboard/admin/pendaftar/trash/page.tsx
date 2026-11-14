@@ -201,12 +201,8 @@ export default function TrashPage() {
               className="px-4 py-2 border-2 border-stone-200 rounded-xl text-sm focus:border-red-500 focus:ring-4 focus:ring-red-500/10 outline-hidden bg-white appearance-none pr-10"
             >
               <option value="">Semua Jenjang</option>
-              <option value="TK">TK</option>
-              <option value="SD">SD</option>
-              <option value="SMP">SMP</option>
-              <option value="SMA">SMA</option>
-              <option value="MTs">SMP IT</option>
-              <option value="IL">IL</option>
+              <option value="SMP IT">SMP IT</option>
+              <option value="IL">I&apos;dad Lughowi</option>
             </select>
           </div>
         </div>

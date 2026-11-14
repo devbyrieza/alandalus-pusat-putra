@@ -197,8 +197,8 @@ export default function HasilSeleksiPage() {
               }
             >
               <option value="">Semua Jenjang</option>
-              <option value="MTs">SMP IT</option>
-              <option value="SMA">SMA</option>
+              <option value="SMP IT">SMP IT</option>
+              <option value="IL">I&apos;dad Lughowi</option>
             </select>
           </div>
 

@@ -19,10 +19,10 @@ import {
 const DUMMY_DATA = {
   id: "dummy-id",
   nik: "3201010120100001",
-  nomor_pendaftaran: "MTI20260006",
+  nomor_pendaftaran: "SPA2700001",
   nama_lengkap: "Ahmad Zaki Mubarak",
   jenis_kelamin: "Laki-laki",
-  jenjang: "MTs",
+  jenjang: "SMP IT",
   tempat_lahir: "Bogor",
   tanggal_lahir: "2010-08-15",
   alamat: "Jl. Pesantren No. 123",
@@ -224,7 +224,7 @@ export default function DataPendaftaranTab() {
                 Jenjang
               </label>
               <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-secondary-100 text-secondary-800">
-                {pendaftarData?.jenjang || "MTs"}
+                {pendaftarData?.jenjang === "MTs" || pendaftarData?.jenjang === "SMP" ? "SMP IT" : (pendaftarData?.jenjang || "SMP IT")}
               </span>
             </div>
             <div>

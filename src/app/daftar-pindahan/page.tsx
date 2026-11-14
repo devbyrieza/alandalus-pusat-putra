@@ -31,10 +31,10 @@ interface FormData {
   tanggal_lahir: string;
   no_hp: string;
   jenis_kelamin: "L" | "P" | "";
-  jenjang: "MTs" | "MA" | "";
+  jenjang: "SMP IT" | "SMP" | "MTs" | "MA" | "";
   kelas_masuk: string;
   asal_institusi: string;
-  nomor_induk_lama: string;
+  nomor_induk_lama?: string;
   catatan_pindahan: string;
 }
 
@@ -69,14 +69,16 @@ export default function DaftarPindahanPage() {
   }, []);
 
   const router = useRouter();
-  const [jenjangFromUrl, setJenjangFromUrl] = useState<"MTs" | "MA" | "">("");
+  const [jenjangFromUrl, setJenjangFromUrl] = useState<"SMP IT" | "SMP" | "MTs" | "MA" | "">("");
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
-      const jenjang = params.get("jenjang") as "MTs" | "MA" | null;
-      if (jenjang) {
-        setJenjangFromUrl(jenjang);
+      const rawJenjang = params.get("jenjang");
+      if (rawJenjang) {
+        const norm = rawJenjang.toUpperCase();
+        if (norm.includes("SMP") || norm.includes("MTS")) setJenjangFromUrl("SMP IT");
+        else if (norm.includes("SMA") || norm.includes("MA")) setJenjangFromUrl("MA");
       }
     }
   }, []);
@@ -133,7 +135,7 @@ export default function DaftarPindahanPage() {
 
   // Handle class default options based on Jenjang
   useEffect(() => {
-    if (formData.jenjang === "MTs") {
+    if (formData.jenjang === "SMP IT" || formData.jenjang === "SMP" || formData.jenjang === "MTs") {
       setFormData((p) => ({ ...p, kelas_masuk: "8" }));
     } else if (formData.jenjang === "MA") {
       setFormData((p) => ({ ...p, kelas_masuk: "11" }));
@@ -396,13 +398,13 @@ export default function DaftarPindahanPage() {
                 >
                   {[
                     {
-                      value: "MTs",
-                      title: "SMP",
-                      subtitle: "Pindahan tingkat SMP" },
+                      value: "SMP IT",
+                      title: "SMP IT",
+                      subtitle: "Pindahan tingkat SMP IT" },
                     {
                       value: "MA",
                       title: "SMA IT",
-                      subtitle: "Pindahan tingkat SMA/MA" },
+                      subtitle: "Pindahan tingkat SMA IT" },
                   ].map((option) => {
                     return (
                       <motion.div
@@ -549,7 +551,7 @@ export default function DaftarPindahanPage() {
                         className="w-full px-5 py-3 md:px-8 md:py-5 rounded-xl md:rounded-xl bg-secondary-50 border border-transparent focus:bg-white focus:border-primary-200 focus:ring-4 focus:ring-secondary-50 transition-all font-bold text-sm md:text-base text-ink-950 appearance-none cursor-pointer"
                       >
                         <option value="">Pilih Jenjang Terlebih Dahulu</option>
-                        {formData.jenjang === "MTs" && (
+                        {(formData.jenjang === "SMP IT" || formData.jenjang === "SMP" || formData.jenjang === "MTs") && (
                           <>
                             <option value="8">Kelas 8</option>
                             <option value="9">Kelas 9</option>

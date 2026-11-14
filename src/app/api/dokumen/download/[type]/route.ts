@@ -115,7 +115,7 @@ export async function GET(
       nomor_pendaftaran: pendaftar?.nomor_pendaftaran || "..................................................",
       nama_lengkap: pendaftar?.nama_lengkap || "....................................................................",
       nik: pendaftar?.nik || "..................................................",
-      jenjang: pendaftar?.jenjang || "MTs / I'dad Lughawiy / MA",
+      jenjang: pendaftar?.jenjang === "MTs" || pendaftar?.jenjang === "SMP" ? "SMP IT" : (pendaftar?.jenjang || "SMP IT / I'dad Lughawi"),
       tempat_lahir: pendaftar?.tempat_lahir || "........................................",
       tanggal_lahir: pendaftar?.tanggal_lahir
         ? new Date(pendaftar.tanggal_lahir).toLocaleDateString("id-ID")

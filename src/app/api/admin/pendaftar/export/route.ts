@@ -97,9 +97,33 @@ export async function GET(req: NextRequest) {
       ];
     }
 
-    if (status) query_status(status, where);
+    if (status) {
+      if (status === "mengundurkan_diri") {
+        where.OR = [
+          { status_pendaftaran: "mengundurkan_diri" },
+          { nomor_pendaftaran: { startsWith: "WD_" } },
+        ];
+      } else {
+        query_status(status, where);
+        where.AND = [
+          { nomor_pendaftaran: { not: { startsWith: "WD_" } } },
+          { nomor_pendaftaran: { not: { startsWith: "DEL_" } } },
+        ];
+      }
+    } else {
+      where.status_pendaftaran = { notIn: ["mengundurkan_diri", "deleted"] };
+      where.AND = [
+        { nomor_pendaftaran: { not: { startsWith: "WD_" } } },
+        { nomor_pendaftaran: { not: { startsWith: "DEL_" } } },
+      ];
+    }
+
     if (jenjang) {
-      where.jenjang = { contains: jenjang, mode: "insensitive" };
+      if (jenjang.toUpperCase().includes("SMP") || jenjang.toUpperCase().includes("MTS")) {
+        where.jenjang = { in: ["SMP IT", "SMP", "MTs"] };
+      } else {
+        where.jenjang = { contains: jenjang, mode: "insensitive" };
+      }
     }
     if (jenisKelamin) {
       where.jenis_kelamin = { contains: jenisKelamin, mode: "insensitive" };
@@ -176,7 +200,7 @@ export async function GET(req: NextRequest) {
         ? new Date(item.tanggal_lahir).toLocaleDateString("id-ID")
         : "-",
       Jalur: item.tipe_pendaftaran === "PINDAHAN" ? "Pindahan" : "Reguler",
-      Jenjang: item.jenjang || "-",
+      Jenjang: item.jenjang === "MTs" || item.jenjang === "SMP" ? "SMP IT" : (item.jenjang || "-"),
       "Asal Sekolah": item.asal_sekolah || "-",
       Alamat: item.alamat || "-",
       Kelurahan: item.kelurahan || "-",

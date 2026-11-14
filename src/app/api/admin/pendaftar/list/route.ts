@@ -208,7 +208,12 @@ export async function GET(request: NextRequest) {
         mengundurkan_diri: ["mengundurkan_diri"],
       };
 
-      if (status.includes(",")) {
+      if (status === "mengundurkan_diri") {
+        where.OR = [
+          { status_pendaftaran: "mengundurkan_diri" },
+          { nomor_pendaftaran: { startsWith: "WD_" } },
+        ];
+      } else if (status.includes(",")) {
         const parts = status
           .split(",")
           .map((s) => s.trim())
@@ -222,6 +227,10 @@ export async function GET(request: NextRequest) {
           }
         }
         where.status_pendaftaran = { in: Array.from(new Set(allMapped)) };
+        where.AND = [
+          { nomor_pendaftaran: { not: { startsWith: "WD_" } } },
+          { nomor_pendaftaran: { not: { startsWith: "DEL_" } } },
+        ];
       } else {
         const statusValues = filterMapping[status];
         if (statusValues && statusValues.length > 0) {
@@ -229,14 +238,26 @@ export async function GET(request: NextRequest) {
         } else {
           where.status_pendaftaran = status;
         }
+        where.AND = [
+          { nomor_pendaftaran: { not: { startsWith: "WD_" } } },
+          { nomor_pendaftaran: { not: { startsWith: "DEL_" } } },
+        ];
       }
     } else {
-      where.status_pendaftaran = { not: "mengundurkan_diri" };
+      where.status_pendaftaran = { notIn: ["mengundurkan_diri", "deleted"] };
+      where.AND = [
+        { nomor_pendaftaran: { not: { startsWith: "WD_" } } },
+        { nomor_pendaftaran: { not: { startsWith: "DEL_" } } },
+      ];
     }
 
     // Other filters
     if (jenjang) {
-      where.jenjang = { contains: jenjang, mode: "insensitive" };
+      if (jenjang.toUpperCase().includes("SMP") || jenjang.toUpperCase().includes("MTS")) {
+        where.jenjang = { in: ["SMP IT", "SMP", "MTs"] };
+      } else {
+        where.jenjang = { contains: jenjang, mode: "insensitive" };
+      }
     }
     if (jenisKelamin) {
       where.jenis_kelamin = { contains: jenisKelamin, mode: "insensitive" };

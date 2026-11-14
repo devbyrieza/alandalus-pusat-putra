@@ -56,28 +56,42 @@ export async function generateNomorPendaftaran(
   // Get year from tahun ajaran (last 2 digits)
   const tahun = String(tahunAjaranData.tahun_mulai).slice(-2);
 
-  // Fetch all used valid sequences for this prefix + year
+  // Fetch all used sequences for this prefix + year (including archived/withdrawn/deleted)
   const existingPendaftars = await prisma.pendaftar.findMany({
     where: {
       tahun_ajaran_id: tahunAjaranData.id,
       nomor_pendaftaran: {
-        startsWith: `${prefix}${tahun}` } },
+        contains: `${prefix}${tahun}` } },
     select: { nomor_pendaftaran: true } });
 
-  // Extract used sequences
+  // Extract all numeric sequences that belong to this prefix + year
+  const seqRegex = new RegExp(`${prefix}${tahun}(\\d{5})`);
   const usedSequences = existingPendaftars
-    .map((p) => p.nomor_pendaftaran)
-    .filter((n) => n.length === 10) // Strict length to ignore renamed/deleted ones like WD_MTA...
-    .map((n) => parseInt(n.slice(5), 10))
-    .sort((a, b) => a - b);
+    .map((p) => {
+      const match = p.nomor_pendaftaran.match(seqRegex);
+      return match ? parseInt(match[1], 10) : null;
+    })
+    .filter((seq): seq is number => seq !== null && !isNaN(seq));
 
-  let nextNumber = 1;
-  for (const seq of usedSequences) {
-    if (seq === nextNumber) {
-      nextNumber++;
-    } else if (seq > nextNumber) {
-      break; // Gap found!
-    }
+  // Determine next number strictly as MAX + 1 (strictly NO gap-filling to prevent recycling numbers)
+  const maxSeq = usedSequences.length > 0 ? Math.max(...usedSequences) : 0;
+  let nextNumber = maxSeq + 1;
+
+  // Collision safety loop: ensure candidate does NOT exist anywhere in database
+  let candidate = `${prefix}${tahun}${String(nextNumber).padStart(5, "0")}`;
+  while (true) {
+    const existing = await prisma.pendaftar.findFirst({
+      where: {
+        OR: [
+          { nomor_pendaftaran: candidate },
+          { nomor_pendaftaran: { endsWith: candidate } }
+        ]
+      },
+      select: { id: true }
+    });
+    if (!existing) break;
+    nextNumber++;
+    candidate = `${prefix}${tahun}${String(nextNumber).padStart(5, "0")}`;
   }
 
   // Check if reached maximum (99999)
@@ -87,10 +101,7 @@ export async function generateNomorPendaftaran(
     );
   }
 
-  // Format: MTI2600001
-  const nomorPendaftaran = `${prefix}${tahun}${String(nextNumber).padStart(5, "0")}`;
-
-  return nomorPendaftaran;
+  return candidate;
 }
 
 // ===================================
@@ -165,11 +176,11 @@ export function parseNomorPendaftaran(nomorPendaftaran: string): {
   } else if (prefix.startsWith("SM")) {
     jenjang = "SMA IT";
   } else if (prefix.startsWith("MT")) {
-    jenjang = "MTs";
+    jenjang = "SMP IT";
   } else if (prefix.startsWith("IL")) {
     jenjang = "IL";
   } else if (prefix.startsWith("MA")) {
-    jenjang = "MA";
+    jenjang = "SMA IT";
   }
 
   if (prefix.endsWith("A")) {

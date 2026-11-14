@@ -269,12 +269,8 @@ export default function PendaftarDetailPage() {
             "Nomor pendaftaran lama (<b>" + pendaftar.nomor_pendaftaran + "</b>) akan menjadi kosong dan bisa digunakan oleh pendaftar lain.</div>",
       input: "select",
       inputOptions: {
-        "MTs": "SMP IT",
-        "IL": "IL",
-        "MA": "MA",
-        "SD": "SD",
-        "SMP": "SMP",
-        "SMA": "SMA"
+        "SMP IT": "SMP IT",
+        "IL": "I'dad Lughowi"
       },
       inputValue: pendaftar.jenjang,
       inputPlaceholder: "Pilih Jenjang Baru",

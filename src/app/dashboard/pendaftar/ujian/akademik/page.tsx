@@ -49,7 +49,7 @@ export default function AkademikTestPage() {
       }
     }
   }, [answers]);
-  const [jenjang, setJenjang] = useState<"MTs" | "IL">("MTs");
+  const [jenjang, setJenjang] = useState<string>("SMP IT");
   const [questions, setQuestions] = useState<Question[]>(AKADEMIK_MTS);
   const [timeLeft, setTimeLeft] = useState(3600); // 60 minutes
   const [timerActive, setTimerActive] = useState(false);
@@ -84,7 +84,7 @@ export default function AkademikTestPage() {
             setJenjang("IL");
             setQuestions(AKADEMIK_IL);
           } else {
-            setJenjang("MTs");
+            setJenjang("SMP IT");
             setQuestions(AKADEMIK_MTS);
           }
         }
@@ -256,7 +256,7 @@ export default function AkademikTestPage() {
             <div className="grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-4 bg-stone-50 p-4 rounded-xl text-sm">
               <div>
                 <span className="text-stone-500">Jenjang:</span>{" "}
-                <strong>{jenjang}</strong>
+                <strong>{jenjang === "MTs" || jenjang === "SMP" ? "SMP IT" : jenjang}</strong>
               </div>
               <div>
                 <span className="text-stone-500">Jumlah Soal:</span>{" "}
@@ -323,7 +323,7 @@ export default function AkademikTestPage() {
       <div className="mt-2 space-y-6">
         <div className="bg-gradient-to-r from-indigo-600 to-primary-700 rounded-xl p-6">
           <h2 className="text-xl font-bold text-white">
-            Seleksi Akademik — {jenjang}
+            Seleksi Akademik — {jenjang === "MTs" || jenjang === "SMP" ? "SMP IT" : jenjang}
           </h2>
           <p className="text-indigo-100 text-sm mt-1">
             {Object.keys(answers).length}/{questions.length} soal terjawab

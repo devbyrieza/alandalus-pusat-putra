@@ -11,8 +11,8 @@ export default function DaftarUlangPage() {
     // Dummy data for presentation
     setData([
       { id: 1, nama: "Khubaib Abdul Aziz", jenjang: "I'dad Lughowi", status: "lunas", cicilan: 0, sisa: 0, total: 15000000 },
-      { id: 2, nama: "Ahmad Fulan", jenjang: "MTs", status: "cicilan", cicilan: 2, sisa: 10000000, total: 15000000 },
-      { id: 3, nama: "Budi Santoso", jenjang: "MTs", status: "belum", cicilan: 0, sisa: 15000000, total: 15000000 },
+      { id: 2, nama: "Ahmad Fulan", jenjang: "SMP IT", status: "cicilan", cicilan: 2, sisa: 10000000, total: 15000000 },
+      { id: 3, nama: "Budi Santoso", jenjang: "SMP IT", status: "belum", cicilan: 0, sisa: 15000000, total: 15000000 },
     ]);
   }, []);
 

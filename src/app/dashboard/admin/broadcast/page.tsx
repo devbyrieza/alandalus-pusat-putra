@@ -555,7 +555,7 @@ export default function BroadcastPage() {
       return {
         nama: first ? first.nama_lengkap : "Ahmad Fulan",
         nomor_pendaftaran: first ? first.nomor_pendaftaran : "SPA2700001",
-        jenjang: first ? first.jenjang : "MTs",
+        jenjang: first ? (first.jenjang === "MTs" || first.jenjang === "SMP" ? "SMP IT" : first.jenjang) : "SMP IT",
         tahun_ajaran: first ? first.tahun_ajaran : "2027/2028",
         role: "Calon Santri",
         phone: first && first.phone ? first.phone : "6281234567890",

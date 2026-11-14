@@ -38,7 +38,7 @@ export const registrationSchema = z.object({
     .refine((val) => val !== undefined, "Pilih jenis kelamin (L/P)"),
 
   jenjang: z
-    .enum(["MTs", "IL"])
+    .enum(["SMP IT", "SMP", "MTs", "IL"])
     .refine((val) => val !== undefined, "Pilih jenjang pendidikan") });
 
 export type RegistrationFormData = z.infer<typeof registrationSchema>;

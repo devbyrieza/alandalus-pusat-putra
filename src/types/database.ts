@@ -1,7 +1,7 @@
 // TypeScript types untuk database
 
 export type JenisKelamin = "L" | "P";
-export type Jenjang = "MTs" | "IL" | "SMA"; // UPDATED: Tambah IL (I'dad Lughowi), MA renamed to SMA
+export type Jenjang = "SMP IT" | "SMP" | "MTs" | "IL" | "SMA";
 export type Role =
   | "pendaftar"
   | "admin"

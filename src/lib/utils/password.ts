@@ -17,8 +17,10 @@ export function generatePasswordDefault(nik: string, jenjang: string): string {
   let jenjangCode = "";
 
   switch (jenjang) {
+    case "SMP IT":
+    case "SMP":
     case "MTs":
-      jenjangCode = "MT";
+      jenjangCode = "SP";
       break;
     case "IL":
       jenjangCode = "IL";

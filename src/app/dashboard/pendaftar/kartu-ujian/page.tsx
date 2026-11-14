@@ -52,7 +52,9 @@ export default function ExamCardPage() {
           jenjang:
             profileData.role === "admin"
               ? "ADMIN"
-              : profileData.jenjang || "MTs", // Fallback
+              : profileData.jenjang === "MTs" || profileData.jenjang === "SMP"
+              ? "SMP IT"
+              : profileData.jenjang || "SMP IT", // Fallback
           // Mocking some details if not available in session
           tempat_lahir: "-",
           tanggal_lahir: "-",
@@ -170,7 +172,7 @@ export default function ExamCardPage() {
                 </div>
                 <div className="grid grid-cols-12 gap-2">
                   <span className="col-span-3 font-bold">Jenjang</span>
-                  <span className="col-span-9">: {data.jenjang}</span>
+                  <span className="col-span-9">: {data.jenjang === "MTs" || data.jenjang === "SMP" ? "SMP IT" : data.jenjang}</span>
                 </div>
               </div>
             </div>

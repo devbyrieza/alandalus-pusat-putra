@@ -86,6 +86,7 @@ export default function RekapSeragamPage() {
     "TK": 1,
     "SD": 2,
     "MI": 2,
+    "SMP IT": 3,
     "SMP": 3,
     "MTs": 3,
     "IL": 4,

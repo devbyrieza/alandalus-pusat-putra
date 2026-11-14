@@ -34,8 +34,7 @@ const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-playfair",
-  style: ["normal", "italic"],
-  weight: ["700", "800", "900"] });
+});
 
 // METADATA CONFIGURATION
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

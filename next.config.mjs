@@ -2,7 +2,6 @@
 const nextConfig = {
   output: 'standalone',
   typescript: { ignoreBuildErrors: true },
-  eslint: { ignoreDuringBuilds: true },
   experimental: {
     // Turbopack (default di Next 16) memakai CA sistem agar fetch Google Fonts
     // tidak gagal TLS saat build di Docker/CI.

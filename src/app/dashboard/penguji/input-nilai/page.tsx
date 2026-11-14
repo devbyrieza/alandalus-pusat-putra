@@ -404,7 +404,9 @@ function InputNilaiContent() {
   const isAdmin = allRoles.some(r => ["admin", "admin_super", "head_of_it"].includes(r));
   const rawFormTypes = isAdmin
     ? ['quran', 'wawancara', 'ortu', 'lisan_arab']
-    : [...new Set(allRoles.flatMap(r => ROLE_TO_FORM_TYPES[r] || []))];
+    : (activeRole && ROLE_TO_FORM_TYPES[activeRole])
+      ? ROLE_TO_FORM_TYPES[activeRole]
+      : [...new Set(allRoles.flatMap(r => ROLE_TO_FORM_TYPES[r] || []))];
   const visibleFormTypes = rawFormTypes.length > 0
     ? rawFormTypes
     : ['quran', 'wawancara', 'ortu', 'lisan_arab'];
@@ -433,17 +435,21 @@ function InputNilaiContent() {
         setActiveName(name);
         const roles = [role, ...(data.availableRoles || []), ...(data.session?.secondary_roles || [])].filter(Boolean);
         setUserRoles([...new Set(roles)]);
+        fetchPeserta(true, role);
       })
-      .catch((err) => console.error("Error fetching session:", err));
-
-    fetchPeserta();
+      .catch((err) => {
+        console.error("Error fetching session:", err);
+        fetchPeserta();
+      });
   }, []);
 
-  const fetchPeserta = async (showLoading = true) => {
+  const fetchPeserta = async (showLoading = true, roleOverride?: string) => {
     try {
       if (showLoading) setLoading(true);
+      const targetRole = roleOverride !== undefined ? roleOverride : activeRole;
+      const roleParam = targetRole ? `&role=${encodeURIComponent(targetRole)}` : "";
       // Use no-store and timestamp to prevent caching issues after saving
-      const response = await fetch(`/api/penguji/peserta?t=${Date.now()}`, {
+      const response = await fetch(`/api/penguji/peserta?t=${Date.now()}${roleParam}`, {
         cache: 'no-store'
       });
       if (response.ok) {

@@ -176,9 +176,9 @@ export function determineStatus(
   finalScore: number,
   quranScore: number,
 ): "LULUS" | "CADANGAN" | "DITOLAK" {
-  // Standar KKM Baru Al-Qur'an: Minimal 75 untuk Lulus Murni
-  if (quranScore < 60) return "DITOLAK";
-  if (quranScore < 75) return "CADANGAN"; // Lulus bersyarat / wajib matrikulasi
+  // Hard Gate Al-Qur'an: Minimal 70 untuk peluang kelulusan
+  if (quranScore < 70) return "DITOLAK";
+  if (quranScore < 75) return "CADANGAN"; // Lulus bersyarat (skor 70-74)
 
   if (finalScore >= 70) return "LULUS";
   if (finalScore >= 55) return "CADANGAN";
@@ -205,17 +205,22 @@ export function gradeToScore(grade: string): number {
 export function scoreToGrade(score: number): string {
   if (score >= 85) return "A";
   if (score >= 75) return "B";
-  if (score >= 60) return "C";
+  if (score >= 70) return "C";
   if (score >= 40) return "D";
   return "E";
 }
 
 export function evaluateQuranGrade(score: number): "A" | "B" | "C" | "D" | "E" {
-  // Standar KKM Baru Resmi Ujian Al-Qur'an: Minimal 75
-  if (score >= 85) return "A"; // Lulus predikat Baik Sekali
-  if (score >= 75) return "B"; // Lulus predikat Baik (Memenuhi KKM)
-  if (score >= 60) return "C"; // Lulus Bersyarat (Di bawah KKM, wajib matrikulasi)
-  if (score >= 40) return "D"; // Tidak Lulus
+  // Standar KKM Resmi Ujian Bacaan Al-Qur'an:
+  // >= 85: A (Sangat Baik / Lulus Murni)
+  // 75 - 84: B (Baik / Lulus Murni - Memenuhi KKM 75)
+  // 70 - 74: C (Cukup / Lulus Bersyarat - Wajib Matrikulasi Tahsin)
+  // 40 - 69: D (Kurang / Tidak Lulus - Hard Gate Fail)
+  // < 40: E (Sangat Kurang / Tidak Lulus)
+  if (score >= 85) return "A";
+  if (score >= 75) return "B";
+  if (score >= 70) return "C";
+  if (score >= 40) return "D";
   return "E";
 }
 
@@ -294,18 +299,15 @@ export function determineFinalDecision(grades: {
 }): "DITERIMA" | "CADANGAN" | "DITOLAK" {
   const vals = Object.values(grades);
 
-  // 1. CRITICAL REJECTION (DITOLAK)
+  // 1. HARD GATE: CRITICAL REJECTION (DITOLAK MUTLAK)
   if (vals.includes("E")) return "DITOLAK";
 
-  // Critical Components (Quran or Wawancara Calon Santri) getting D is an automatic rejection
-  if (
-    grades.quran === "D" ||
-    grades.wawancaraSantri === "D"
-  ) {
-    return "DITOLAK";
-  }
+  // Pilar Mutlak: Bacaan Al-Qur'an < 70 (Grade D) otomatis DITOLAK
+  // Nilai CBT Akademik/Wawancara setinggi apapun tidak bisa menyelamatkan jika Al-Qur'an < 70
+  if (grades.quran === "D") return "DITOLAK";
+  if (grades.wawancaraSantri === "D") return "DITOLAK";
 
-  // If there are multiple Ds in secondary components, it's a rejection
+  // Jika ada lebih dari satu komponen sekunder bernilai D
   const secondaryDs = [
     grades.akademik,
     grades.kepribadian,
@@ -314,18 +316,15 @@ export function determineFinalDecision(grades: {
   ].filter((v) => v === "D").length;
   if (secondaryDs > 1) return "DITOLAK";
 
-  // 2. AUTOMATIC RESERVE (CADANGAN)
-  if (grades.quran === "B" || grades.quran === "C") return "CADANGAN";
+  // 2. PILAR CADANGAN / LULUS BERSYARAT (CADANGAN)
+  // Bacaan Al-Qur'an bernilai C (skor 70-74): Lulus Bersyarat / Wajib Matrikulasi Tahsin
+  if (grades.quran === "C") return "CADANGAN";
   if (secondaryDs === 1) return "CADANGAN";
 
-  if (grades.wawancaraSantri === "B") {
-    const countA = vals.filter((v) => v === "A").length;
-    if (countA < 4) return "CADANGAN";
-  }
-
-  // 3. DITERIMA (LULUS)
   const countC = vals.filter((v) => v === "C").length;
   if (countC > 1) return "CADANGAN";
 
+  // 3. DITERIMA (LULUS MURNI)
+  // Al-Qur'an bernilai A atau B (>= 75) dan komponen lain aman
   return "DITERIMA";
 }

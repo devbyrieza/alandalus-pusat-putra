@@ -353,6 +353,7 @@ function InputNilaiContent() {
   const [peserta, setPeserta] = useState<Peserta[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState(initialSearch);
+  const [viewFilter, setViewFilter] = useState<"all" | "mine">("all");
   const [saving, setSaving] = useState<string | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
@@ -443,13 +444,16 @@ function InputNilaiContent() {
       });
   }, []);
 
-  const fetchPeserta = async (showLoading = true, roleOverride?: string) => {
+  const fetchPeserta = async (showLoading = true, roleOverride?: string, filterOverride?: string) => {
     try {
       if (showLoading) setLoading(true);
       const targetRole = roleOverride !== undefined ? roleOverride : activeRole;
+      const targetFilter = filterOverride !== undefined ? filterOverride : viewFilter;
       const roleParam = targetRole ? `&role=${encodeURIComponent(targetRole)}` : "";
+      const filterParam = targetFilter ? `&filter=${encodeURIComponent(targetFilter)}` : "";
+      const searchParam = search ? `&search=${encodeURIComponent(search.trim())}` : "";
       // Use no-store and timestamp to prevent caching issues after saving
-      const response = await fetch(`/api/penguji/peserta?t=${Date.now()}${roleParam}`, {
+      const response = await fetch(`/api/penguji/peserta?t=${Date.now()}${roleParam}${filterParam}${searchParam}`, {
         cache: 'no-store'
       });
       if (response.ok) {
@@ -466,6 +470,11 @@ function InputNilaiContent() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleViewFilterChange = (filter: "all" | "mine") => {
+    setViewFilter(filter);
+    fetchPeserta(true, activeRole, filter);
   };
 
   const startEditing = (p: Peserta, type: "quran" | "wawancara" | "ortu" | "hafalan" | "lisan_arab") => {
@@ -1525,8 +1534,36 @@ function InputNilaiContent() {
           </div>
         </div>
 
+        {/* Admin Filter View Toggle */}
+        {isAdmin && (
+          <div className="mt-6 flex flex-wrap items-center gap-2 bg-ink-50 p-1.5 rounded-xl border border-ink-100 w-fit relative z-10">
+            <button
+              type="button"
+              onClick={() => handleViewFilterChange("all")}
+              className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all ${
+                viewFilter === "all"
+                  ? "bg-white text-primary-700 shadow-sm"
+                  : "text-ink-600 hover:text-ink-900"
+              }`}
+            >
+              🌐 Semua Peserta Ujian (Admin View)
+            </button>
+            <button
+              type="button"
+              onClick={() => handleViewFilterChange("mine")}
+              className={`px-3 py-1.5 text-xs font-black rounded-lg transition-all ${
+                viewFilter === "mine"
+                  ? "bg-white text-primary-700 shadow-sm"
+                  : "text-ink-600 hover:text-ink-900"
+              }`}
+            >
+              👤 Khusus Plotting Saya
+            </button>
+          </div>
+        )}
+
         {/* Search */}
-        <div className="mt-8 relative z-10">
+        <div className="mt-6 relative z-10">
           <Search className="absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 w-4 sm:w-5 h-4 sm:h-5 text-ink-500" />
           <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Cari nama atau nomor..." className="w-full pl-11 sm:pl-14 pr-6 py-3.5 sm:py-4.5 bg-ink-50/50 border border-ink-200 rounded-xl sm:rounded-xl focus:border-primary-500 focus:ring-8 focus:ring-primary-500/5 outline-none text-sm sm:text-base font-black text-primary-950 transition-all placeholder:text-ink-400" />
         </div>

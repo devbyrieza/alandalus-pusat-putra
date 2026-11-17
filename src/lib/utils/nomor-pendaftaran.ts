@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { BRANDING } from "@/config/branding";
 
 // ===================================
 // NOMOR PENDAFTARAN GENERATION
@@ -9,11 +10,10 @@ import { prisma } from "@/lib/prisma";
  * Format: [PREFIX][YY][NNNNN]
  *
  * Prefixes:
- * - SPA = SMP IT Putra
- * - ILA = IL Putra (I'dad Lughowi Putra)
- * - SMA = SMA IT Putra (tapi Al-Andalus Pusat hanya membuka SMP IT dan IL)
+ * - MTA = MTs Putra (Laki-laki)
+ * - ILA = I'dad Lughowi Putra
  *
- * Example: SPA2700001, ILA2700045, SMA2700123
+ * Example: MTI2600001, MTA2600045, ILI2600123
  *
  * @param jenjang - MTs, IL, or SMA
  * @param jenis_kelamin - L (Laki-laki) or P (Perempuan)
@@ -56,42 +56,28 @@ export async function generateNomorPendaftaran(
   // Get year from tahun ajaran (last 2 digits)
   const tahun = String(tahunAjaranData.tahun_mulai).slice(-2);
 
-  // Fetch all used sequences for this prefix + year (including archived/withdrawn/deleted)
+  // Fetch all used valid sequences for this prefix + year
   const existingPendaftars = await prisma.pendaftar.findMany({
     where: {
       tahun_ajaran_id: tahunAjaranData.id,
       nomor_pendaftaran: {
-        contains: `${prefix}${tahun}` } },
+        startsWith: `${prefix}${tahun}` } },
     select: { nomor_pendaftaran: true } });
 
-  // Extract all numeric sequences that belong to this prefix + year
-  const seqRegex = new RegExp(`${prefix}${tahun}(\\d{5})`);
+  // Extract used sequences
   const usedSequences = existingPendaftars
-    .map((p) => {
-      const match = p.nomor_pendaftaran.match(seqRegex);
-      return match ? parseInt(match[1], 10) : null;
-    })
-    .filter((seq): seq is number => seq !== null && !isNaN(seq));
+    .map((p) => p.nomor_pendaftaran)
+    .filter((n) => n.length === 10) // Strict length to ignore renamed/deleted ones like WD_MTA...
+    .map((n) => parseInt(n.slice(5), 10))
+    .sort((a, b) => a - b);
 
-  // Determine next number strictly as MAX + 1 (strictly NO gap-filling to prevent recycling numbers)
-  const maxSeq = usedSequences.length > 0 ? Math.max(...usedSequences) : 0;
-  let nextNumber = maxSeq + 1;
-
-  // Collision safety loop: ensure candidate does NOT exist anywhere in database
-  let candidate = `${prefix}${tahun}${String(nextNumber).padStart(5, "0")}`;
-  while (true) {
-    const existing = await prisma.pendaftar.findFirst({
-      where: {
-        OR: [
-          { nomor_pendaftaran: candidate },
-          { nomor_pendaftaran: { endsWith: candidate } }
-        ]
-      },
-      select: { id: true }
-    });
-    if (!existing) break;
-    nextNumber++;
-    candidate = `${prefix}${tahun}${String(nextNumber).padStart(5, "0")}`;
+  let nextNumber = 1;
+  for (const seq of usedSequences) {
+    if (seq === nextNumber) {
+      nextNumber++;
+    } else if (seq > nextNumber) {
+      break; // Gap found!
+    }
   }
 
   // Check if reached maximum (99999)
@@ -101,7 +87,10 @@ export async function generateNomorPendaftaran(
     );
   }
 
-  return candidate;
+  // Format: MTI2600001
+  const nomorPendaftaran = `${prefix}${tahun}${String(nextNumber).padStart(5, "0")}`;
+
+  return nomorPendaftaran;
 }
 
 // ===================================
@@ -117,10 +106,35 @@ export async function generateNomorPendaftaran(
  */
 export function generatePrefix(jenjang: string, jenis_kelamin?: string): string {
   const normJenjang = (jenjang || "").toUpperCase().replace(/[\s\-_]/g, "");
-  if (normJenjang.includes("SMP") || normJenjang.includes("MTS")) return "SPA";
-  if (normJenjang.includes("IL") || normJenjang.includes("IDAD") || normJenjang.includes("LUGHAW")) return "ILA";
-  if (normJenjang.includes("SMA") || normJenjang.includes("MA")) return "SMA";
-  return "SPA";
+
+  const isPutriInstitution =
+    BRANDING?.gender?.toLowerCase() === "putri" ||
+    (BRANDING?.subtitle || "").toLowerCase().includes("putri") ||
+    (BRANDING?.schoolName || "").toLowerCase().includes("putri");
+
+  const isPutraInstitution =
+    BRANDING?.gender?.toLowerCase() === "putra" ||
+    (BRANDING?.subtitle || "").toLowerCase().includes("putra") ||
+    (BRANDING?.schoolName || "").toLowerCase().includes("putra") ||
+    (BRANDING?.schoolShortName || "").toLowerCase().includes("ulul albaab");
+
+  if (isPutriInstitution) {
+    if (normJenjang.includes("IL") || normJenjang.includes("IDAD") || normJenjang.includes("LUGHAW")) return "ILI";
+    if (normJenjang.includes("MA") || normJenjang.includes("SMA")) return "MAI";
+    return "MTI";
+  }
+
+  if (isPutraInstitution) {
+    if (normJenjang.includes("IL") || normJenjang.includes("IDAD") || normJenjang.includes("LUGHAW")) return "ILA";
+    if (normJenjang.includes("SMA") || normJenjang.includes("MA")) return "SMA";
+    return "MTA";
+  }
+
+  // Fallback untuk institusi campuran (contoh: template-demo) berdasarkan jenis_kelamin
+  const isPutri = (jenis_kelamin || "").toUpperCase() === "P" || (jenis_kelamin || "").toUpperCase() === "PUTRI";
+  if (normJenjang.includes("IL") || normJenjang.includes("IDAD") || normJenjang.includes("LUGHAW")) return isPutri ? "ILI" : "ILA";
+  if (normJenjang.includes("SMA") || normJenjang.includes("MA")) return isPutri ? "SMI" : "SMA";
+  return isPutri ? "SPI" : "SPA";
 }
 
 // ===================================
@@ -171,21 +185,19 @@ export function parseNomorPendaftaran(nomorPendaftaran: string): {
   let jenjang = "";
   let jenis_kelamin = "";
 
-  if (prefix.startsWith("SP")) {
-    jenjang = "SMP IT";
-  } else if (prefix.startsWith("SM")) {
-    jenjang = "SMA IT";
-  } else if (prefix.startsWith("MT")) {
-    jenjang = "SMP IT";
+  if (prefix === "SMA" || prefix === "SMI") {
+    jenjang = "SMA";
+  } else if (prefix.startsWith("SP") || prefix.startsWith("MT")) {
+    jenjang = "MTs";
   } else if (prefix.startsWith("IL")) {
     jenjang = "IL";
   } else if (prefix.startsWith("MA")) {
-    jenjang = "SMA IT";
+    jenjang = "MA";
   }
 
-  if (prefix.endsWith("A")) {
+  if (prefix.endsWith("A") || prefix === "SMA") {
     jenis_kelamin = "L"; // Putra
-  } else if (prefix.endsWith("I")) {
+  } else if (prefix.endsWith("I") || prefix === "SMI") {
     jenis_kelamin = "P"; // Putri
   }
 
@@ -307,16 +319,16 @@ export async function getRegistrationStats(): Promise<{
  */
 export function getPrefixLabel(prefix: string): string {
   const labels: Record<string, string> = {
-    SPA: "SMP IT Putra (Laki-laki)",
-    SPI: "SMP IT Putri (Perempuan)",
-    SMA: "SMA IT Putra (Laki-laki)",
-    SMI: "SMA IT Putri (Perempuan)",
+    SPA: "MTs Putra (Laki-laki)",
+    SPI: "MTs Putri (Perempuan)",
+    SMA: "SMA Putra (Laki-laki)",
+    SMI: "SMA Putri (Perempuan)",
     ILA: "I'dad Lughowi Putra (Laki-laki)",
     ILI: "I'dad Lughowi Putri (Perempuan)",
-    MTA: "SMP IT / SMP Putra (Laki-laki)",
-    MTI: "SMP IT / SMP Putri (Perempuan)",
-    MAA: "SMA IT / MA Putra (Laki-laki)",
-    MAI: "SMA IT / MA Putri (Perempuan)",
+    MTA: "MTs Putra (Laki-laki)",
+    MTI: "MTs Putri (Perempuan)",
+    MAA: "MA Putra (Laki-laki)",
+    MAI: "MA Putri (Perempuan)",
   };
 
   return labels[prefix] || prefix;

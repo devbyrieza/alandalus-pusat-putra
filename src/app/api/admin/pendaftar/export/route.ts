@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
 import { getAdminWhereClause } from "@/lib/utils/admin";
+import { getInstitutionType, normalizeJenjang } from "@/lib/utils/jenjang";
 
 const toTitleCase = (str: string) => {
   if (!str) return "-";
@@ -97,30 +98,19 @@ export async function GET(req: NextRequest) {
       ];
     }
 
-    if (status) {
-      if (status === "mengundurkan_diri") {
-        where.OR = [
-          { status_pendaftaran: "mengundurkan_diri" },
-          { nomor_pendaftaran: { startsWith: "WD_" } },
-        ];
-      } else {
-        query_status(status, where);
-        where.AND = [
-          { nomor_pendaftaran: { not: { startsWith: "WD_" } } },
-          { nomor_pendaftaran: { not: { startsWith: "DEL_" } } },
-        ];
-      }
-    } else {
-      where.status_pendaftaran = { notIn: ["mengundurkan_diri", "deleted"] };
-      where.AND = [
-        { nomor_pendaftaran: { not: { startsWith: "WD_" } } },
-        { nomor_pendaftaran: { not: { startsWith: "DEL_" } } },
-      ];
-    }
-
+    if (status) query_status(status, where);
     if (jenjang) {
-      if (jenjang.toUpperCase().includes("SMP") || jenjang.toUpperCase().includes("MTS")) {
-        where.jenjang = { in: ["SMP IT", "SMP", "MTs"] };
+      const inst = getInstitutionType();
+      if (inst === "ULUL_ALBAAB" && (jenjang.toUpperCase() === "SMA" || jenjang.toUpperCase() === "MA")) {
+        where.OR = [
+          { jenjang: { contains: "SMA", mode: "insensitive" } },
+          { jenjang: { contains: "MA", mode: "insensitive" } },
+        ];
+      } else if (inst === "AL_IMAM" && (jenjang.toUpperCase() === "MA" || jenjang.toUpperCase() === "SMA")) {
+        where.OR = [
+          { jenjang: { contains: "MA", mode: "insensitive" } },
+          { jenjang: { contains: "SMA", mode: "insensitive" } },
+        ];
       } else {
         where.jenjang = { contains: jenjang, mode: "insensitive" };
       }
@@ -188,19 +178,28 @@ export async function GET(req: NextRequest) {
     ];
 
     // Return as JSON for client-side export
-    const exportData = pendaftarData.map((item) => ({
-      "Nomor Pendaftaran": item.nomor_pendaftaran || "-",
-      NIK: item.nik ? `'${item.nik}` : "-", // Text format for Excel
-      "Nama Lengkap": item.nama_lengkap ? toTitleCase(item.nama_lengkap) : "-",
-      "Jenis Kelamin": ["L", "Laki-laki"].includes(item.jenis_kelamin || "")
-        ? "Laki-laki"
-        : "Perempuan",
-      "Tempat Lahir": item.tempat_lahir || "-",
-      "Tanggal Lahir": item.tanggal_lahir
-        ? new Date(item.tanggal_lahir).toLocaleDateString("id-ID")
-        : "-",
-      Jalur: item.tipe_pendaftaran === "PINDAHAN" ? "Pindahan" : "Reguler",
-      Jenjang: item.jenjang === "MTs" || item.jenjang === "SMP" ? "SMP IT" : (item.jenjang || "-"),
+    const currentInst = getInstitutionType();
+    const exportData = pendaftarData.map((item) => {
+      let displayNomor = item.nomor_pendaftaran;
+      if (currentInst === "ULUL_ALBAAB" && (displayNomor?.startsWith("MAI") || displayNomor?.startsWith("MAA"))) {
+        displayNomor = "SMA" + displayNomor.slice(3);
+      } else if (currentInst === "AL_IMAM" && displayNomor?.startsWith("SMA")) {
+        displayNomor = "MAI" + displayNomor.slice(3);
+      }
+
+      return {
+        "Nomor Pendaftaran": displayNomor || "-",
+        NIK: item.nik ? `'${item.nik}` : "-", // Text format for Excel
+        "Nama Lengkap": item.nama_lengkap ? toTitleCase(item.nama_lengkap) : "-",
+        "Jenis Kelamin": ["L", "Laki-laki"].includes(item.jenis_kelamin || "")
+          ? "Laki-laki"
+          : "Perempuan",
+        "Tempat Lahir": item.tempat_lahir || "-",
+        "Tanggal Lahir": item.tanggal_lahir
+          ? new Date(item.tanggal_lahir).toLocaleDateString("id-ID")
+          : "-",
+        Jalur: item.tipe_pendaftaran === "PINDAHAN" ? "Pindahan" : "Reguler",
+        Jenjang: normalizeJenjang(item.jenjang) || "-",
       "Asal Sekolah": item.asal_sekolah || "-",
       Alamat: item.alamat || "-",
       Kelurahan: item.kelurahan || "-",
@@ -214,7 +213,9 @@ export async function GET(req: NextRequest) {
       "Tahun Ajaran": item.tahun_ajaran?.nama || "-",
       "Tanggal Daftar": item.created_at
         ? new Date(item.created_at).toLocaleDateString("id-ID")
-        : "-" }));
+        : "-",
+    };
+  });
 
     return NextResponse.json({ data: exportData });
   } catch (error) {
@@ -283,5 +284,4 @@ function query_status(status: string, where: any) {
     where.status_pendaftaran = status;
   }
 }
-
 

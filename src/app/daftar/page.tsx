@@ -14,12 +14,14 @@ import {
   School,
   ChevronDown,
   Sparkles,
-  RefreshCw } from "lucide-react";
+  RefreshCw,
+  ExternalLink } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { countries } from "@/lib/data/countries";
 import { formatNamaLengkap } from "@/lib/validations/registration";
 import { motion, AnimatePresence } from "framer-motion";
 import Swal from "sweetalert2";
+import { getInstitutionType, normalizeJenjang } from "@/lib/utils/jenjang";
 
 interface FormData {
   nik: string;
@@ -27,7 +29,7 @@ interface FormData {
   tanggal_lahir: string;
   no_hp: string;
   jenis_kelamin: "L" | "P" | "";
-  jenjang: "SMP IT" | "SMP" | "MTs" | "IL" | "MA" | "";
+  jenjang: string;
 }
 
 // ========================================
@@ -69,17 +71,14 @@ export default function DaftarPage() {
   }, []);
 
   const router = useRouter();
-  const [jenjangFromUrl, setJenjangFromUrl] = useState<"SMP IT" | "SMP" | "MTs" | "IL" | "MA" | "">("");
+  const [jenjangFromUrl, setJenjangFromUrl] = useState<string>("");
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
-      const rawJenjang = params.get("jenjang");
-      if (rawJenjang) {
-        const norm = rawJenjang.toUpperCase();
-        if (norm.includes("SMP") || norm.includes("MTS")) setJenjangFromUrl("SMP IT");
-        else if (norm.includes("IL") || norm.includes("IDAD")) setJenjangFromUrl("IL");
-        else if (norm.includes("SMA") || norm.includes("MA")) setJenjangFromUrl("MA");
+      const jenjang = params.get("jenjang");
+      if (jenjang) {
+        setJenjangFromUrl(normalizeJenjang(jenjang));
       }
     }
   }, []);
@@ -89,7 +88,7 @@ export default function DaftarPage() {
     nama_lengkap: "",
     tanggal_lahir: "",
     no_hp: "",
-    jenis_kelamin: "L",
+    jenis_kelamin: "P",
     jenjang: jenjangFromUrl });
 
   const [countryCode, setCountryCode] = useState("+62");
@@ -162,7 +161,9 @@ export default function DaftarPage() {
         }
       }
     }
-    // Validasi jenis kelamin dihapus karena sudah di-hardcode
+    if (!formData.jenis_kelamin) {
+      formData.jenis_kelamin = "P";
+    }
 
     if (!formData.jenjang) {
       errors.jenjang = "Pilih jenjang pendidikan";
@@ -235,48 +236,82 @@ export default function DaftarPage() {
   };
 
   return (
-    <main className="min-h-dvh bg-white py-12 md:py-24 relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-full max-w-[600px] h-[600px] bg-secondary-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-full max-w-[600px] h-[600px] bg-amber-100/30 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-      <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] pointer-events-none" />
+    <main className="min-h-dvh bg-gradient-to-b from-[#F0F7FF] via-[#F8FAFC] to-white py-10 sm:py-16 relative overflow-hidden font-sans">
+      {/* Background Micro Grid */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4wMiIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTAgNjBoNjBNNjAgMGwwIDYwIi8+PC9nPjwvc3ZnPg==')] opacity-70 pointer-events-none" />
 
-      <Container className="relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-xl shadow-lg shadow-emerald-900/20 border border-secondary-200 mb-6 group hover:scale-110 transition-transform app-card">
-            <School className="w-8 h-8 text-primary-600" />
+      <Container className="relative z-10 max-w-3xl mx-auto px-4">
+        
+        {/* Top Navigation Pills (OMI Mobile/Desktop Standard) */}
+        <div className="w-full flex items-center justify-between gap-3 mb-6">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white/95 border border-slate-200/90 shadow-sm text-xs font-extrabold uppercase tracking-wider text-slate-700 hover:text-primary hover:border-primary/40 transition-all hover:-translate-y-0.5"
+          >
+            <span>← Kembali ke Beranda</span>
+          </Link>
+          <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white/95 border border-slate-200/90 shadow-sm text-xs font-bold text-slate-700">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span>Pendaftaran Santri Baru 2027</span>
           </div>
-          <motion.h1
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-2xl md:text-4xl sm:text-3xl lg:text-5xl font-display font-black text-ink-950 mb-3 tracking-tight"
-          >
-            Mulai Pendaftaran{" "}
-            <span className="text-gradient-primary">Terpadu</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-lg md:text-xl text-ink-700 font-medium"
-          >
-            Tahap Awal Penerimaan Santri Baru T.A 2027/2028
-          </motion.p>
-        </motion.div>
+        </div>
 
-        <div className="w-full max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3 }}
-            className="app-card bg-white rounded-[2.5rem] md:rounded-[3.5rem] shadow-lg p-6 md:p-16 border border-secondary-200 relative overflow-hidden"
+        {/* Banner Pengalihan Pendaftaran Santri Putra ke Ulul Albaab */}
+        <div className="w-full mb-6 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-blue-50/95 via-sky-50/90 to-blue-50/95 border-2 border-blue-200 p-4 sm:p-5 shadow-lg flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-start gap-3.5">
+            <div className="w-11 h-11 rounded-2xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5 sm:mt-0">
+              <School className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-[10px] font-black uppercase tracking-wider bg-blue-600 text-white px-2.5 py-0.5 rounded-full shadow-xs">
+                  Khusus Calon Santri Putra
+                </span>
+                <span className="text-xs font-bold text-blue-900">Mencari Pendaftaran Santri Putra (Laki-laki)?</span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                Pesantren Al-Imam Al-Islami <strong>resmi khusus santriwati (Putri)</strong>. Pendaftaran santri <strong>Putra</strong> dialihkan ke <strong>Pesantren Ulul Albaab (Managed by Al-Andalus IIBS)</strong>.
+              </p>
+            </div>
+          </div>
+          <a
+            href="https://spmb.pesantren-ululalbaab.com/daftar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-extrabold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all shrink-0 w-full sm:w-auto"
           >
+            <span>Daftar Santri Putra</span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
+        </div>
+
+        {/* Two-Section OMI Container Card */}
+        <div className="w-full rounded-3xl overflow-hidden shadow-xl shadow-slate-900/5 border border-slate-200 bg-white relative">
+          
+          {/* Section 1: Dark Maroon Gradient Header */}
+          <div className="bg-gradient-to-br from-[#831843] via-[#BE185D] to-[#E11D74] p-6 sm:p-8 text-white relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+            
+            <div className="relative z-10 space-y-3">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-pink-200 bg-white/10 px-3 py-1 rounded-full border border-white/15 inline-block">
+                  Tahap 1: Registrasi Data Awal
+                </span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-rose-200 bg-rose-500/25 px-3 py-1 rounded-full border border-rose-400/30 inline-block">
+                  KHUSUS PUTRI
+                </span>
+              </div>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+                Formulir Pendaftaran SPMB Online
+              </h1>
+              <p className="text-xs sm:text-sm text-slate-200 font-normal leading-relaxed">
+                Silakan isi data calon santriwati dan nomor WhatsApp aktif wali santri untuk verifikasi pendaftaran.
+              </p>
+            </div>
+          </div>
+
+          {/* Section 2: White Body Card */}
+          <div className="p-6 sm:p-10 space-y-8 bg-white">
             {/* Soft decorative blur inside card */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-secondary-50/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 
@@ -287,7 +322,7 @@ export default function DaftarPage() {
                   initial={{ opacity: 0, height: 0, marginBottom: 0 }}
                   animate={{ opacity: 1, height: "auto", marginBottom: 40 }}
                   exit={{ opacity: 0, height: 0, marginBottom: 0 }}
-                  className="bg-primary-50 border border-primary-100/50 rounded-xl p-6 flex items-start gap-4 relative z-10 overflow-hidden"
+                  className="bg-primary-50 border border-primary-100/50 rounded-3xl p-6 flex items-start gap-4 relative z-10 overflow-hidden"
                 >
                   <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center text-ink-950 shrink-0 shadow-premium-xs">
                     <CheckCircle className="w-6 h-6" />
@@ -320,7 +355,7 @@ export default function DaftarPage() {
                             nama_lengkap: "",
                             tanggal_lahir: "",
                             no_hp: "",
-                            jenis_kelamin: "L",
+                            jenis_kelamin: "P",
                             jenjang: "" });
                           setFieldErrors({});
                         }
@@ -344,7 +379,7 @@ export default function DaftarPage() {
                 transition={{ delay: 0.4 }}
               >
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="w-10 h-10 rounded-xl bg-secondary-50 flex items-center justify-center text-primary-900 shadow-lg shadow-emerald-900/20 border border-secondary-200">
+                  <div className="w-10 h-10 rounded-3xl bg-secondary-50 flex items-center justify-center text-primary-900 shadow-2xl border border-secondary-200">
                     <GraduationCap className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-display font-black text-ink-950">
@@ -354,32 +389,78 @@ export default function DaftarPage() {
 
                 <div
                   data-error={!!fieldErrors.jenjang}
-                  className="grid grid-cols-1 md:grid-cols-3 gap-6"
+                  className={`grid grid-cols-1 ${getInstitutionType() === "ANDALUS_PUSAT" ? "md:grid-cols-2" : "md:grid-cols-3"} gap-6`}
                 >
-                  {[
-                    {
-                      value: "SMP IT",
-                      title: "Sekolah Menengah Pertama Islam Terpadu (SMP IT)",
-                      subtitle: "Lulusan SD/MI/Sederajat",
-                      desc: "Jenjang pendidikan dasar setingkat SMP IT." },
-                    {
-                      value: "IL",
-                      title: "I'dad Lughowi",
-                      subtitle: "Lulusan SMP/MTs/Sederajat",
-                      desc: "Kelas persiapan bahasa Arab sebelum masuk MA." },
-                    {
-                      value: "MA",
-                      title: "Sekolah Menengah Atas (SMA) Langsung",
-                      subtitle: "Lulusan SMP/Sederajat",
-                      desc: "Jalur langsung tanpa IL. Khusus yang lancar berbahasa Arab & hafal minimal 5 juz mutqin." },
-                  ].map((option) => {
+                  {(() => {
+                    const inst = getInstitutionType();
+                    if (inst === "ANDALUS_PUSAT") {
+                      return [
+                        {
+                          value: "SMP IT",
+                          title: "SMP IT Al-Andalus",
+                          subtitle: "Lulusan SD/MI Sederajat",
+                          desc: "Pendidikan setara SMP memadukan kurikulum turots khas Al-Andalus, Tahfidz, dan Diknas.",
+                        },
+                        {
+                          value: "IL",
+                          title: "I'dad Lughowi (Persiapan Bahasa)",
+                          subtitle: "Lulusan SMP/MTs Sederajat",
+                          desc: "Program persiapan intensif bahasa Arab 1 tahun sebelum masuk jenjang lanjutan.",
+                        },
+                      ];
+                    }
+                    if (inst === "ULUL_ALBAAB") {
+                      return [
+                        {
+                          value: "MTs",
+                          title: "Madrasah Tsanawiyah (MTs)",
+                          subtitle: "Lulusan SD/MI Sederajat",
+                          desc: "Pendidikan setara SMP memadukan kurikulum turots khas Al-Andalus, Tahfidz, dan Diknas.",
+                        },
+                        {
+                          value: "IL",
+                          title: "I'dad Lughowi (Persiapan Bahasa)",
+                          subtitle: "Lulusan SMP/MTs Sederajat",
+                          desc: "Program persiapan bahasa Arab 1 tahun sebelum masuk jenjang Sekolah Menengah Atas (SMA).",
+                        },
+                        {
+                          value: "SMA",
+                          title: "Sekolah Menengah Atas (SMA)",
+                          subtitle: "Lulusan SMP/MTs Sederajat",
+                          desc: "Jalur langsung tanpa IL bagi santri yang lancar bahasa Arab aktif & hafalan Al-Qur'an mutqin.",
+                        },
+                      ];
+                    }
+                    return [
+                      {
+                        value: "MTs",
+                        title: "Madrasah Tsanawiyah (MTs)",
+                        subtitle: "Lulusan SD/MI Sederajat",
+                        desc: "Pendidikan setara SMP memadukan kurikulum turots khas Al-Andalus, Tahfidz, dan Diknas.",
+                      },
+                      {
+                        value: "IL",
+                        title: "I'dad Lughowi (Persiapan Bahasa)",
+                        subtitle: "Lulusan SMP/MTs Sederajat",
+                        desc: "Program persiapan bahasa Arab 1 tahun sebelum masuk jenjang Madrasah Aliyah (MA).",
+                      },
+                      {
+                        value: "MA",
+                        title: "Madrasah Aliyah (MA) Khusus Putri",
+                        subtitle: "Lulusan SMP/MTs Sederajat",
+                        desc: "Jalur langsung tanpa IL bagi santriwati yang lancar bahasa Arab aktif & hafalan Al-Qur'an mutqin.",
+                      },
+                    ];
+                  })().map((option) => {
                     const isPutra = formData.jenis_kelamin === "L";
                     const isPutri = formData.jenis_kelamin === "P";
-                    // Al-Andalus Putra: Hanya SMP Putra dan IL Putra yang buka. MA Putra tutup, semua Putri tutup.
-                    const isClosed = isPutri || option.value === "MA";
-                    const closedLabel = isPutri
-                      ? "Pendaftaran Putri Belum Dibuka"
-                      : "Pendaftaran Putra Belum Dibuka";
+                    const inst = getInstitutionType();
+                    const isClosed = inst === "AL_IMAM" ? isPutra : inst === "ULUL_ALBAAB" ? isPutri : false;
+                    const closedLabel = inst === "AL_IMAM" 
+                      ? "Pendaftaran Putra tidak tersedia di sini. Silakan daftar via website Ulul Albaab."
+                      : inst === "ULUL_ALBAAB"
+                        ? "Pendaftaran Putri tidak tersedia di sini. Silakan daftar via website Al-Imam."
+                        : "Pendaftaran tidak tersedia.";
 
                     return (
                       <motion.div
@@ -396,12 +477,12 @@ export default function DaftarPage() {
                           isClosed
                             ? "opacity-50 grayscale cursor-not-allowed border-secondary-200 bg-stone-50"
                             : formData.jenjang === option.value
-                              ? "border-primary-600 bg-secondary-50 shadow-md"
-                              : "border-secondary-200 bg-white hover:border-primary-200 hover:shadow-lg shadow-emerald-900/20"
+                              ? "border-primary-600 bg-secondary-50 shadow-2xl    "
+                              : "border-secondary-200 bg-white hover:border-primary-200 hover:shadow-xl     "
                         }`}
                       >
                         {isClosed && (
-                          <div className="absolute top-4 right-4 bg-red-600 text-white text-[10px] font-black px-2 py-1 rounded-full uppercase tracking-tighter shadow-lg shadow-emerald-900/20 z-10">
+                          <div className="absolute top-4 right-4 bg-red-600 text-white text-[10px] font-black px-2 py-1 rounded-full uppercase tracking-tighter shadow-2xl z-10">
                             {closedLabel}
                           </div>
                         )}
@@ -440,7 +521,31 @@ export default function DaftarPage() {
                   })}
                 </div>
 
-                {/* Pindahan ditutup */}
+                {/* Santri Pindahan Highlight Card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.35 }}
+                  className="mt-8 bg-amber-50 border border-amber-200 rounded-3xl p-6 flex items-start gap-4 relative z-10 overflow-hidden shadow-premium-xs"
+                >
+                  <div className="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center text-ink-950 shrink-0 shadow-premium-xs">
+                    <AlertCircle className="w-6 h-6" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-lg font-display font-black text-amber-900 leading-none mb-1">
+                      Pendaftaran Santri Pindahan
+                    </p>
+                    <p className="text-sm text-amber-700 font-bold leading-relaxed mb-3">
+                      Khusus calon santri pindahan yang akan masuk ke kelas <strong>8 MTs, 9 MTs, 11 MA, atau 12 MA</strong>, mohon <strong>TIDAK</strong> mengisi formulir reguler ini agar penempatan tidak salah.
+                    </p>
+                    <Link
+                      href="/daftar-pindahan"
+                      className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-widest text-amber-800 hover:text-amber-950 transition-colors bg-amber-100 hover:bg-amber-200/80 px-4 py-2.5 rounded-full border border-amber-200/50 whitespace-nowrap shrink-0"
+                    >
+                      Daftar Lewat Jalur Pindahan <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+                </motion.div>
 
                 {fieldErrors.jenjang && (
                   <p className="text-xs text-red-600 mt-4 font-bold flex items-center gap-1 ml-1">
@@ -458,7 +563,7 @@ export default function DaftarPage() {
                 className="space-y-8"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-secondary-50 flex items-center justify-center text-primary-900 shadow-lg shadow-emerald-900/20 border border-secondary-200">
+                  <div className="w-10 h-10 rounded-3xl bg-secondary-50 flex items-center justify-center text-primary-900 shadow-2xl border border-secondary-200">
                     <User className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-display font-black text-ink-950">
@@ -466,7 +571,7 @@ export default function DaftarPage() {
                   </h3>
                 </div>
 
-                <div className="grid md:grid-cols-1 sm:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-8">
                   <div className="md:col-span-2">
                     <InputField
                       label="Nama Lengkap"
@@ -481,7 +586,7 @@ export default function DaftarPage() {
                             nama_lengkap: formatNamaLengkap(e.target.value) }))
                         }
                         placeholder="Sesuai Akta Kelahiran santri"
-                        className="w-full px-5 py-3 md:px-8 md:py-5 rounded-xl md:rounded-xl bg-secondary-50 border border-transparent focus:bg-white focus:border-primary-200 focus:ring-4 focus:ring-secondary-50 transition-all font-bold placeholder:text-ink-500 text-sm md:text-base text-ink-950"
+                        className="w-full px-5 py-3 md:px-8 md:py-5 rounded-3xl md:rounded-2xl bg-secondary-50 border border-transparent focus:bg-white focus:border-primary-200 focus:ring-4 focus:ring-secondary-50 transition-all font-bold placeholder:text-ink-500 text-sm md:text-base text-ink-950"
                       />
                     </InputField>
                   </div>
@@ -499,7 +604,7 @@ export default function DaftarPage() {
                             nik: e.target.value.replace(/\D/g, "") }))
                         }
                         placeholder="16 Digit NIK"
-                        className="w-full px-5 py-3 md:px-8 md:py-5 rounded-xl md:rounded-xl bg-secondary-50 border border-transparent focus:bg-white focus:border-primary-200 focus:ring-4 focus:ring-secondary-50 transition-all font-bold placeholder:text-ink-500 text-sm md:text-base text-ink-950"
+                        className="w-full px-5 py-3 md:px-8 md:py-5 rounded-3xl md:rounded-2xl bg-secondary-50 border border-transparent focus:bg-white focus:border-primary-200 focus:ring-4 focus:ring-secondary-50 transition-all font-bold placeholder:text-ink-500 text-sm md:text-base text-ink-950"
                       />
                       <p className="text-[10px] text-ink-500 mt-1.5 ml-1 font-bold">
                         NIK (Nomor Induk Kependudukan) santri dapat dilihat pada lembar Kartu Keluarga (KK) di sebelah nama santri, atau pada KIA/KTP Anak.
@@ -519,11 +624,43 @@ export default function DaftarPage() {
                           ...prev,
                           tanggal_lahir: e.target.value }))
                       }
-                      className="w-full px-5 py-3 md:px-8 md:py-5 rounded-xl md:rounded-xl bg-secondary-50 border border-transparent focus:bg-white focus:border-primary-200 focus:ring-4 focus:ring-secondary-50 transition-all font-bold text-sm md:text-base text-ink-950"
+                      className="w-full px-5 py-3 md:px-8 md:py-5 rounded-3xl md:rounded-2xl bg-secondary-50 border border-transparent focus:bg-white focus:border-primary-200 focus:ring-4 focus:ring-secondary-50 transition-all font-bold text-sm md:text-base text-ink-950"
                     />
                   </InputField>
 
-                  {/* Jenis kelamin di-hardcode L */}
+                  <div className="md:col-span-2">
+                    <InputField
+                      label="Jenis Kelamin"
+                      error={fieldErrors.jenis_kelamin}
+                    >
+                      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-4 md:p-5 rounded-2xl bg-pink-50/70 border border-pink-200">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-black shadow-md text-sm">
+                            P
+                          </div>
+                          <div>
+                            <p className="font-extrabold text-slate-900 text-sm md:text-base">
+                              Khusus Santriwati Putri (Perempuan)
+                            </p>
+                            <p className="text-xs text-slate-500 font-medium">
+                              Pesantren Al-Imam Al-Islami khusus mendidik santriwati Putri
+                            </p>
+                          </div>
+                        </div>
+                        <div className="sm:text-right text-xs text-slate-500 font-medium border-t sm:border-t-0 sm:border-l border-pink-200/80 pt-2 sm:pt-0 sm:pl-4">
+                          <span>Untuk calon santri putra?</span>
+                          <a
+                            href="https://spmb.pesantren-ululalbaab.com/daftar"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block font-bold text-blue-600 hover:text-blue-700 hover:underline"
+                          >
+                            Daftar di Ulul Albaab (Putra) →
+                          </a>
+                        </div>
+                      </div>
+                    </InputField>
+                  </div>
                 </div>
               </motion.section>
 
@@ -535,7 +672,7 @@ export default function DaftarPage() {
                 className="space-y-8"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-secondary-50 flex items-center justify-center text-primary-900 shadow-lg shadow-emerald-900/20 border border-secondary-200">
+                  <div className="w-10 h-10 rounded-3xl bg-secondary-50 flex items-center justify-center text-primary-900 shadow-2xl border border-secondary-200">
                     <Phone className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-display font-black text-ink-950">
@@ -547,7 +684,7 @@ export default function DaftarPage() {
                   label="Nomor WhatsApp Orang Tua"
                   error={fieldErrors.no_hp}
                 >
-                  <div className="relative flex shadow-lg shadow-emerald-900/20 border border-transparent focus-within:border-primary-200 focus-within:ring-4 focus-within:ring-secondary-50 rounded-xl md:rounded-xl overflow-hidden bg-secondary-50 transition-all">
+                  <div className="relative flex shadow-2xl border border-transparent focus-within:border-primary-200 focus-within:ring-4 focus-within:ring-secondary-50 rounded-3xl md:rounded-2xl overflow-hidden bg-secondary-50 transition-all">
                     <div className="relative">
                       <select
                         value={countryCode}
@@ -596,7 +733,7 @@ export default function DaftarPage() {
                   whileTap={{ scale: 0.98 }}
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-4 md:py-6 rounded-pill bg-primary-700 text-white font-black text-lg md:text-xl hover:bg-primary-800 shadow-md transition-all flex items-center justify-center gap-3 disabled:opacity-50"
+                  className="w-full py-4 md:py-6 rounded-pill bg-primary text-white font-extrabold text-base hover:bg-primary-dark rounded-xl h-14 shadow-2xl transition-all flex items-center justify-center gap-3 disabled:opacity-50"
                 >
                   {isLoading ? (
                     <>
@@ -619,7 +756,7 @@ export default function DaftarPage() {
                 </p>
               </motion.div>
             </form>
-          </motion.div>
+          </div>
         </div>
 
         {/* Footer Link */}
@@ -640,4 +777,6 @@ export default function DaftarPage() {
     </main>
   );
 }
+
+
 

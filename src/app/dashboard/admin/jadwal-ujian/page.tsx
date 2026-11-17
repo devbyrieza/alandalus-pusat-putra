@@ -60,7 +60,7 @@ interface Pendaftar {
   no_hp?: string;
 }
 
-// Helper untuk mendeteksi jenjang tanpa IL (SMA IT non-IL)
+// Helper untuk mendeteksi jenjang tanpa IL (MA non-IL)
 export const formatExaminerRole = (role?: string) => {
   if (!role) return "";
   switch (role.toLowerCase()) {
@@ -117,7 +117,7 @@ export const isJenjangTanpaIL = (jenjang?: string | null): boolean => {
     return false;
   }
 
-  // Jika jenjangnya SMA IT dan tidak ada indikasi IL
+  // Jika jenjangnya MA dan tidak ada indikasi IL
   if (
     clean.includes("MA") ||
     clean.includes("SMA") ||
@@ -614,15 +614,21 @@ export default function JadwalUjianPage() {
         metode_ujian: formLocationType,
       };
 
-      if (
-        formTestType === "Tes Al-Qur'an (Bacaan & Hafalan)" ||
-        (formTestType === "Tes Al-Qur'an (Bacaan & Hafalan)" || formTestType === "Tes Bacaan Al-Qur'an") ||
-        formTestType === "Tes Hafalan Al-Qur'an"
-      ) {
-        const quranId = formPengujiQuranId || formPengujiSantriId || formPengujiHafalanId;
+      if (formTestType === "Tes Al-Qur'an (Bacaan & Hafalan)") {
+        const quranId = formPengujiQuranId || formPengujiHafalanId || formPengujiSantriId;
         if (quranId) {
           assignPayload.penguji_quran_id = quranId;
-          assignPayload.penguji_hafalan_id = null;
+          assignPayload.penguji_hafalan_id = formPengujiHafalanId || quranId;
+        }
+      } else if (formTestType === "Tes Bacaan Al-Qur'an") {
+        const quranId = formPengujiQuranId || formPengujiSantriId;
+        if (quranId) {
+          assignPayload.penguji_quran_id = quranId;
+        }
+      } else if (formTestType === "Tes Hafalan Al-Qur'an") {
+        const hafalanId = formPengujiHafalanId || formPengujiQuranId;
+        if (hafalanId) {
+          assignPayload.penguji_hafalan_id = hafalanId;
         }
       } else if (formTestType === "Wawancara Calon Santri") {
         if (formPengujiSantriId) {
@@ -641,7 +647,6 @@ export default function JadwalUjianPage() {
         if (generalId) {
           assignPayload.penguji_santri_id = generalId;
           assignPayload.penguji_quran_id = generalId;
-          assignPayload.penguji_hafalan_id = null;
         }
       }
 
@@ -651,7 +656,7 @@ export default function JadwalUjianPage() {
         if (formPengujiSantriId) assignPayload.penguji_santri_id = formPengujiSantriId;
         if (formPengujiQuranId) assignPayload.penguji_quran_id = formPengujiQuranId;
         if (formPengujiArabId) assignPayload.penguji_arab_id = formPengujiArabId;
-        assignPayload.penguji_hafalan_id = null;
+        if (formPengujiHafalanId) assignPayload.penguji_hafalan_id = formPengujiHafalanId;
       }
 
       const assignRes = await fetch("/api/admin/jadwal-ujian/assign", {
@@ -681,7 +686,7 @@ export default function JadwalUjianPage() {
           hour: "2-digit",
           minute: "2-digit",
         })} WIB telah berhasil dijadwalkan & notifikasi WhatsApp dikirim.`,
-        confirmButtonColor: "#800000",
+        confirmButtonColor: "#BE185D",
       });
 
       setScheduleModalOpen(false);
@@ -893,7 +898,7 @@ export default function JadwalUjianPage() {
     );
   }, [pendaftar, formCandidateSearch]);
 
-    const displayedCandidates = useMemo(() => {
+  const displayedCandidates = useMemo(() => {
     return filteredPendaftar.slice(0, candidatePageSize);
   }, [filteredPendaftar, candidatePageSize]);
 
@@ -924,7 +929,7 @@ export default function JadwalUjianPage() {
               onClick={handleSwitchToKetersediaan}
               className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs border transition-all whitespace-nowrap w-full lg:w-auto ${
                 mainTab === "ketersediaan"
-                  ? "bg-emerald-600 text-white border-emerald-600 shadow-md shadow-emerald-600/20"
+                  ? "bg-emerald-600 text-white border-emerald-600 shadow-md "
                   : "bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border-emerald-200"
               }`}
             >
@@ -942,16 +947,16 @@ export default function JadwalUjianPage() {
               onClick={() => setShowBroadcastModal(true)}
               className="flex items-center justify-center gap-2 px-4 py-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-xl font-bold text-xs border border-indigo-200 transition-all whitespace-nowrap w-full lg:w-auto"
             >
-              <Send className="w-4 h-4" />
+              <Send className="w-4 h-4 shrink-0" />
               Pulse Notifikasi
-              </button>
-              <button
-                onClick={handleBroadcastPenguji}
-                className="flex items-center justify-center gap-2 px-4 py-2.5 bg-violet-50 hover:bg-violet-100 text-violet-700 rounded-xl font-bold text-xs border border-violet-200 transition-all whitespace-nowrap w-full lg:w-auto"
-              >
-                <Send className="w-4 h-4" />
-                Pulse Penguji
-              </button>
+            </button>
+            <button
+              onClick={handleBroadcastPenguji}
+              className="flex items-center justify-center gap-2 px-4 py-2.5 bg-violet-50 hover:bg-violet-100 text-violet-700 rounded-xl font-bold text-xs border border-violet-200 transition-all whitespace-nowrap w-full lg:w-auto"
+            >
+              <Send className="w-4 h-4 shrink-0" />
+              Pulse Penguji
+            </button>
 
           </div>
         </div>
@@ -1134,7 +1139,7 @@ export default function JadwalUjianPage() {
                       <button
                         onClick={() => handleAssign(s.id)}
                         disabled={assigning || s.booked_count >= s.quota}
-                        className="w-full md:w-auto px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white rounded-xl font-bold text-xs shadow-md shadow-primary-600/20 transition-all flex items-center justify-center gap-2"
+                        className="w-full md:w-auto px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white rounded-xl font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2"
                       >
                         {assigning && <Loader2 className="w-4 h-4 animate-spin" />}
                         Plotkan Santri Terpilih
@@ -1326,7 +1331,6 @@ export default function JadwalUjianPage() {
       {/* ========================================================================= */}
       {scheduleModalOpen && (
         <div
-          onWheel={(e) => e.stopPropagation()}
           data-modal="true"
           aria-modal="true"
           role="dialog"
@@ -1342,7 +1346,7 @@ export default function JadwalUjianPage() {
                 </div>
                 <h2
                   style={{ color: "#ffffff" }}
-                  className="text-2xl font-black tracking-tight text-white !text-white drop-shadow-sm"
+                  className="text-xl sm:text-2xl font-black tracking-tight text-white !text-white drop-shadow-sm"
                 >
                   Penjadwalan Seleksi &amp; Penugasan Penguji
                 </h2>
@@ -1355,7 +1359,7 @@ export default function JadwalUjianPage() {
               </div>
               <button
                 onClick={() => setScheduleModalOpen(false)}
-                className="p-2 hover:bg-white/10 rounded-xl text-white/80 hover:text-white transition-all"
+                className="p-2 hover:bg-white/10 rounded-xl text-white/80 hover:text-white transition-all shrink-0"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -1608,7 +1612,7 @@ export default function JadwalUjianPage() {
 
                   <p className="text-[11px] text-stone-500 leading-relaxed">
                     {isCandidateTanpaIL
-                      ? "Pilih satu materi seleksi yang ingin dijadwalkan pada sesi ini. Jenjang langsung SMA IT Tanpa IL memiliki 5 pilihan materi seleksi."
+                      ? "Pilih satu materi seleksi yang ingin dijadwalkan pada sesi ini. Jenjang langsung MA Tanpa IL memiliki 5 pilihan materi seleksi."
                       : "Pilih satu materi seleksi yang ingin dijadwalkan pada sesi ini. Jenjang Standar / IL memiliki 3 materi seleksi."}
                   </p>
                 </div>
@@ -1888,7 +1892,7 @@ export default function JadwalUjianPage() {
                     }}
                     className={`flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-xs transition-all ${
                       formLocationType === "online"
-                        ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/20 font-black"
+                        ? "bg-emerald-600 text-white shadow-md  font-black"
                         : "text-stone-600 hover:text-stone-900"
                     }`}
                   >
@@ -2100,7 +2104,7 @@ export default function JadwalUjianPage() {
               </div>
 
               {/* Modal Actions */}
-              <div className="pt-4 border-t border-stone-100 flex gap-3 shrink-0 bg-white">
+              <div className="pt-4 border-t border-stone-100 flex gap-3">
                 <button
                   type="button"
                   onClick={() => setScheduleModalOpen(false)}
@@ -2111,7 +2115,7 @@ export default function JadwalUjianPage() {
                 <button
                   type="submit"
                   disabled={submittingSchedule}
-                  className="flex-[2] py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-xl font-black text-sm shadow-lg shadow-primary-600/20 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="flex-[2] py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-xl font-black text-sm shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   {submittingSchedule ? (
                     <>

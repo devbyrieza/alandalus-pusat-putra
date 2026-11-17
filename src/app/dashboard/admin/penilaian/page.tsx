@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import {
   AlertCircle,
   BarChart3,
@@ -43,6 +45,8 @@ type Student = {
     status_kelulusan: string;
     catatan_kelulusan: string;
     score_quran: number;
+    score_hafalan?: number;
+    score_arab?: number;
     score_wawancara: number;
     nilai_wawancara_santri: number;
     score_akademik: number;
@@ -191,7 +195,7 @@ export default function ExaminerDashboard() {
       setStudents(json.data || []);
 
       // Also fetch stats from cron result (using same secret)
-      const statsRes = await fetch("/api/cron/whatsapp?secret=ppdb-pusat-putra-cron-2026");
+      const statsRes = await fetch("/api/cron/whatsapp?secret=ppdb-alimam-cron-2026");
       const statsJson = await statsRes.json();
       if (statsJson.stats?.queue) {
         setQueueStats({
@@ -236,7 +240,7 @@ export default function ExaminerDashboard() {
       q10: "",
     });
     setCatatan("");
-    // Default to the current logged-in admin user so they are never blocked by empty examiner selection!
+    // Default to current logged-in admin
     setSelectedExaminerId(currentUserId || "");
   };
 
@@ -327,7 +331,7 @@ export default function ExaminerDashboard() {
 
       for (let i = 0; i < maxToProcess; i++) {
         try {
-          const res = await fetch("/api/cron/whatsapp?secret=ppdb-pusat-putra-cron-2026");
+          const res = await fetch("/api/cron/whatsapp?secret=ppdb-alimam-cron-2026");
           if (!res.ok) break;
 
           const data = await res.json();
@@ -570,7 +574,6 @@ export default function ExaminerDashboard() {
       const formatStudentForExport = (s: Student) => {
         const ws = s?.nilai_ujian?.nilai_wawancara_santri || 0;
         const wo = s?.nilai_ujian?.nilai_wawancara_ortu || 0;
-        const avgWawancara = ws > 0 && wo > 0 ? (ws + wo) / 2 : ws || wo || 0;
 
         let examStatus = s?.nilai_ujian?.status_kelulusan;
         const pendaftaranStatus = (s?.status_pendaftaran || "").toUpperCase();
@@ -595,9 +598,12 @@ export default function ExaminerDashboard() {
           (s?.nama_lengkap || "").toUpperCase(),
           s?.jenjang || "-",
           getGrade(s?.nilai_ujian?.score_quran, "quran"),
+          getGrade(s?.nilai_ujian?.score_hafalan, "quran"),
+          getGrade(s?.nilai_ujian?.score_arab, "akademik"),
           getGrade(s?.nilai_ujian?.score_akademik, "akademik"),
           getGrade(s?.nilai_ujian?.score_kepribadian, "kepribadian"),
-          getGrade(avgWawancara, "wawancara"),
+          getGrade(ws, "wawancara"),
+          getGrade(wo, "wawancara"),
           getGrade(s?.nilai_ujian?.score_kesiapan, "kesiapan"),
           totalScore,
           examStatus || "BELUM LENGKAP",
@@ -608,10 +614,13 @@ export default function ExaminerDashboard() {
         "NP",
         "Nama Santri",
         "Jenjang",
-        "Al-Qur'an",
+        "Bacaan Qur'an",
+        "Hafalan Qur'an",
+        "Lisan B. Arab",
         "Akademik",
         "Kepribadian",
-        "Wawancara",
+        "W. Santri",
+        "W. Ortu",
         "Kesiapan",
         "Total Skor",
         "Keputusan",
@@ -673,13 +682,107 @@ export default function ExaminerDashboard() {
     }
   };
 
+  const handleExportPDF = () => {
+    if (!students?.length) {
+      return Swal.fire("Info", "Tidak ada data santri untuk diekspor", "info");
+    }
+
+    try {
+      const getGrade = (score: number | undefined | null, type: string) => {
+        if (score == null) return "-";
+        if (type === "akademik") {
+          if (score >= 75) return "A";
+          if (score >= 60) return "B";
+          if (score >= 45) return "C";
+          if (score >= 30) return "D";
+          return "E";
+        }
+        if (type === "quran") {
+          if (score >= 85) return "A";
+          if (score >= 75) return "B";
+          if (score >= 70) return "C";
+          if (score >= 40) return "D";
+          return "E";
+        }
+        if (type === "kepribadian") {
+          if (score >= 80) return "A";
+          if (score >= 65) return "B";
+          if (score >= 50) return "C";
+          if (score >= 35) return "D";
+          return "E";
+        }
+        if (score >= 80) return "A";
+        if (score >= 65) return "B";
+        if (score >= 50) return "C";
+        if (score >= 35) return "D";
+        return "E";
+      };
+
+      const columns = [
+        "No",
+        "NP",
+        "Nama Santri",
+        "Jenjang",
+        "Qur'an",
+        "Hafalan",
+        "B. Arab",
+        "Akademik",
+        "Kepribadian",
+        "W. Santri",
+        "W. Ortu",
+        "Kesiapan",
+        "Total",
+        "Keputusan",
+      ];
+
+      const data = students.map((s, idx) => {
+        const ws = s?.nilai_ujian?.nilai_wawancara_santri || 0;
+        const wo = s?.nilai_ujian?.nilai_wawancara_ortu || 0;
+        let examStatus = s?.nilai_ujian?.status_kelulusan;
+        const pendaftaranStatus = (s?.status_pendaftaran || "").toUpperCase();
+        if (["ACCEPTED", "ENROLLED", "ENROLLED_FULL", "DITERIMA"].includes(pendaftaranStatus)) {
+          examStatus = "DITERIMA";
+        }
+        const totalScore = s?.nilai_ujian?.nilai_total != null ? Number(s.nilai_ujian.nilai_total).toFixed(1) : "-";
+
+        return [
+          String(idx + 1),
+          s?.nomor_pendaftaran || "-",
+          (s?.nama_lengkap || "").substring(0, 18),
+          s?.jenjang || "-",
+          getGrade(s?.nilai_ujian?.score_quran, "quran"),
+          getGrade(s?.nilai_ujian?.score_hafalan, "quran"),
+          getGrade(s?.nilai_ujian?.score_arab, "akademik"),
+          getGrade(s?.nilai_ujian?.score_akademik, "akademik"),
+          getGrade(s?.nilai_ujian?.score_kepribadian, "kepribadian"),
+          getGrade(ws, "wawancara"),
+          getGrade(wo, "wawancara"),
+          getGrade(s?.nilai_ujian?.score_kesiapan, "kesiapan"),
+          totalScore,
+          examStatus || "BELUM LENGKAP",
+        ];
+      });
+
+      exportToPDF(
+        "REKAPITULASI PENILAIAN HASIL SELEKSI PPDB",
+        columns,
+        data,
+        `Rekap_Nilai_PPDB_${new Date().toISOString().split("T")[0]}`,
+        "landscape"
+      );
+    } catch (e: any) {
+      console.error("Export PDF error:", e);
+      Swal.fire("Gagal Ekspor", "Terjadi kesalahan saat mengekspor ke PDF", "error");
+    }
+  };
+
   return (
     <div className="space-y-6 max-w-[1200px] mx-auto pb-10">
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-black text-ink-900 tracking-tight flex items-center gap-3">
-            <div className="p-4 bg-primary-600 rounded-xl shadow-lg shadow-primary-600/20">
+            <div className="p-4 bg-primary-600 rounded-3xl shadow-2xl">
               <ClipboardEdit className="w-6 h-6 text-white" />
             </div>
             Pusat <span className="text-primary-700">Penilaian</span>
@@ -689,10 +792,10 @@ export default function ExaminerDashboard() {
           </p>
         </div>
 
-        <div className="flex bg-ink-50 p-1 rounded-xl border border-ink-100 w-fit">
+        <div className="flex bg-ink-50 p-1 rounded-2xl border border-ink-100 w-fit">
           <button
             onClick={() => setActiveTab("data")}
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-3xl text-sm font-bold transition-all ${
               activeTab === "data"
                 ? "bg-white text-primary-700 shadow-clay-sm"
                 : "text-ink-500 hover:text-ink-800"
@@ -703,7 +806,7 @@ export default function ExaminerDashboard() {
           </button>
           <button
             onClick={() => setActiveTab("system")}
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-3xl text-sm font-bold transition-all ${
               activeTab === "system"
                 ? "bg-white text-primary-700 shadow-clay-sm"
                 : "text-ink-500 hover:text-ink-800"
@@ -721,18 +824,18 @@ export default function ExaminerDashboard() {
           </button>
         </div>
       </div>
-      {/* BARU: Banner Akses Khusus & Share WA Bank Soal Panitia (Al-Andalus Maroon & Krem Emas) */}
+      {/* BARU: Banner Akses Khusus & Share WA Bank Soal Panitia (Al-Imam Maroon & Krem Emas) */}
       <div
-        style={{ background: "linear-gradient(135deg, #550000 0%, #360000 100%)" }}
-        className="text-white p-5 sm:p-6 rounded-xl shadow-lg border border-[#6b0000]/60 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+        style={{ background: "linear-gradient(135deg, #9D174D 0%, #500724 100%)" }}
+        className="text-white p-5 sm:p-6 rounded-3xl shadow-2xl border border-[#831843]/60 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
       >
         <div className="flex items-center gap-3.5">
-          <div className="p-3.5 bg-white/10  rounded-xl border border-white/20 flex-shrink-0">
+          <div className="p-3.5 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex-shrink-0">
             <FileText className="w-6 h-6 text-[#ddc192]" />
           </div>
           <div>
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#ddc192]/20 text-[#ddc192] text-[10px] font-bold rounded-full border border-[#ddc192]/40 mb-1">
-              <Sparkles className="w-3 h-3 text-[#ddc192]" /> AKSES & DISKUSI PANITIA PPDB 2027/2028
+              <Sparkles className="w-3 h-3 text-[#ddc192]" /> AKSES & DISKUSI PANITIA SPMB 2027/2028
             </div>
             <h3 className="font-extrabold text-base text-white">
               Bank Soal & Form Penilaian Panitia
@@ -747,18 +850,18 @@ export default function ExaminerDashboard() {
         <div className="flex items-center gap-2.5 w-full md:w-auto flex-shrink-0">
           <Link
             href="/dashboard/admin/bank-soal"
-            className="flex-1 md:flex-none px-4 py-2.5 bg-[#ddc192] text-[#550000] hover:bg-[#c5a775] rounded-xl font-black text-xs flex items-center justify-center gap-2 shadow-sm transition-all border border-[#ddc192]"
+            className="flex-1 md:flex-none px-4 py-2.5 bg-[#ddc192] text-[#9D174D] hover:bg-[#c5a775] rounded-2xl font-black text-xs flex items-center justify-center gap-2 shadow-sm transition-all border border-[#ddc192]"
           >
-            <Eye className="w-4 h-4 text-[#550000]" /> Lihat Bank Soal
+            <Eye className="w-4 h-4 text-[#9D174D]" /> Lihat Bank Soal
           </Link>
           <button
             onClick={() => {
               const message = encodeURIComponent(
-                `*Assalamu’alaikum Warahmatullahi Wabarakatuh*\n\nYth. Ustadz / Ustadzah Panitia PPDB Pesantren Islam Internasional Al-Andalus Putra,\n\nBerikut link akses khusus Bank Soal Seleksi & Form Penilaian Penguji untuk peninjauan & evaluasi TA 2027/2028:\n\n🔗 https://ppdb.pesantren-alandalus-putra.com/panitia/bank-soal\n\n_Mohon bantuan ustadz/ustadzah untuk meninjau relevansi soal dan rubrik wawancara._\n\nSyukron, Jazakumullahu Khairan. 🙏`
+                `*Assalamu’alaikum Warahmatullahi Wabarakatuh*\n\nYth. Ustadz / Ustadzah Panitia SPMB Pesantren Al-Andalus Al-Imam,\n\nBerikut link akses khusus Bank Soal Seleksi & Form Penilaian Penguji untuk peninjauan & evaluasi TA 2027/2028:\n\n https://spmb.pesantren-alimam.com/panitia/bank-soal\n\n_Mohon bantuan ustadz/ustadzah untuk meninjau relevansi soal dan rubrik wawancara._\n\nSyukron, Jazakumullahu Khairan. `
               );
               window.open(`https://wa.me/?text=${message}`, "_blank");
             }}
-            className="flex-1 md:flex-none px-4 py-2.5 bg-white/10 hover:bg-white/20 text-[#ddc192] border border-[#ddc192]/40 rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all"
+            className="flex-1 md:flex-none px-4 py-2.5 bg-white/10 hover:bg-white/20 text-[#ddc192] border border-[#ddc192]/40 rounded-2xl font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all"
           >
             <Share2 className="w-4 h-4 text-[#ddc192]" /> Bagikan ke WA Panitia
           </button>
@@ -796,12 +899,12 @@ export default function ExaminerDashboard() {
 
           {/* Header Stats (Rekap Kelulusan) */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-            <div className="bg-green-50 p-6 rounded-xl shadow-md border border-green-100 relative overflow-hidden">
-              <p className="text-[#550000] text-sm font-bold tracking-wider uppercase mb-1">
+            <div className="bg-green-50 p-6 rounded-3xl shadow-2xl border border-green-100 relative overflow-hidden">
+              <p className="text-[#9D174D] text-sm font-bold tracking-wider uppercase mb-1">
                 Total Diterima
               </p>
               <div className="flex items-end gap-2">
-                <h3 className="text-2xl md:text-4xl font-black text-[#550000]">
+                <h3 className="text-2xl md:text-4xl font-black text-[#9D174D]">
                   {
                     students.filter(
                       (c) =>
@@ -809,11 +912,11 @@ export default function ExaminerDashboard() {
                     ).length
                   }
                 </h3>
-                <span className="text-[#550000]/70 font-medium mb-1 pl-1">Santri</span>
+                <span className="text-[#9D174D]/70 font-medium mb-1 pl-1">Santri</span>
               </div>
               <div className="absolute -right-4 -bottom-4 bg-green-200/50 w-24 h-24 rounded-full blur-xl"></div>
             </div>
-            <div className="bg-secondary-50 p-6 rounded-xl shadow-md border border-secondary-100 relative overflow-hidden">
+            <div className="bg-secondary-50 p-6 rounded-3xl shadow-2xl border border-secondary-100 relative overflow-hidden">
               <p className="text-secondary-600 text-sm font-bold tracking-wider uppercase mb-1">
                 Cadangan
               </p>
@@ -830,7 +933,7 @@ export default function ExaminerDashboard() {
               </div>
               <div className="absolute -right-4 -bottom-4 bg-secondary-200/50 w-24 h-24 rounded-full blur-xl"></div>
             </div>
-            <div className="bg-rose-50 p-6 rounded-xl shadow-md border border-rose-100 relative overflow-hidden">
+            <div className="bg-rose-50 p-6 rounded-3xl shadow-2xl border border-rose-100 relative overflow-hidden">
               <p className="text-rose-600 text-sm font-bold tracking-wider uppercase mb-1">
                 Ditolak
               </p>
@@ -842,7 +945,7 @@ export default function ExaminerDashboard() {
               </div>
               <div className="absolute -right-4 -bottom-4 bg-rose-200/50 w-24 h-24 rounded-full blur-xl"></div>
             </div>
-            <div className="bg-ink-50 p-6 rounded-xl shadow-md border border-ink-200 relative overflow-hidden">
+            <div className="bg-ink-50 p-6 rounded-3xl shadow-2xl border border-ink-200 relative overflow-hidden">
               <p className="text-ink-600 text-sm font-bold tracking-wider uppercase mb-1">
                 Proses Penilaian
               </p>
@@ -863,7 +966,7 @@ export default function ExaminerDashboard() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-clay-md border border-white/40 overflow-hidden">
+          <div className="bg-white rounded-3xl shadow-clay-md border border-white/40 overflow-hidden">
             <div className="p-6 border-b border-ink-50 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 bg-ink-50/30">
               <div className="relative w-full lg:w-96">
                 <Search className="absolute left-3 top-2.5 w-4 h-4 text-ink-400" />
@@ -872,7 +975,7 @@ export default function ExaminerDashboard() {
                   placeholder="Cari nama atau no. pendaftaran..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-white border border-ink-100 rounded-xl pl-9 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary-600/10 outline-none shadow-inner"
+                  className="w-full bg-white border border-ink-100 rounded-3xl pl-9 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary-600/10 outline-none shadow-inner"
                 />
               </div>
 
@@ -880,7 +983,7 @@ export default function ExaminerDashboard() {
                 <Button
                   onClick={handleExportExcel}
                   disabled={isExporting}
-                  className="btn-secondary flex items-center gap-2 bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100 rounded-xl font-bold py-2 whitespace-nowrap shrink-0 disabled:opacity-50"
+                  className="btn-secondary flex items-center gap-2 bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100 rounded-3xl font-bold py-2 whitespace-nowrap shrink-0 disabled:opacity-50"
                 >
                   {isExporting ? (
                     <>
@@ -891,6 +994,14 @@ export default function ExaminerDashboard() {
                       <Download className="w-4 h-4" /> Export Excel
                     </>
                   )}
+                </Button>
+
+                <Button
+                  onClick={handleExportPDF}
+                  disabled={isExporting}
+                  className="btn-secondary flex items-center gap-2 bg-rose-50 text-rose-800 border-rose-200 hover:bg-rose-100 rounded-3xl font-bold py-2 whitespace-nowrap shrink-0 disabled:opacity-50"
+                >
+                  <FileText className="w-4 h-4" /> Export PDF
                 </Button>
 
                 <Button
@@ -915,7 +1026,7 @@ export default function ExaminerDashboard() {
                       Swal.fire("Error", "Gagal menghitung ulang", "error");
                     }
                   }}
-                  className="btn-secondary flex items-center gap-2 bg-purple-50 text-purple-700 border-purple-100 hover:bg-purple-100 rounded-xl font-bold py-2 whitespace-nowrap shrink-0"
+                  className="btn-secondary flex items-center gap-2 bg-purple-50 text-purple-700 border-purple-100 hover:bg-purple-100 rounded-3xl font-bold py-2 whitespace-nowrap shrink-0"
                 >
                   <RefreshCcw className="w-4 h-4" /> Hitung Ulang
                 </Button>
@@ -923,7 +1034,7 @@ export default function ExaminerDashboard() {
                 <Button
                   onClick={fetchStudents}
                   variant="outline"
-                  className="rounded-xl border-ink-200"
+                  className="rounded-3xl border-ink-200"
                 >
                   <RefreshCcw className="w-4 h-4 mr-2" /> Refresh
                 </Button>
@@ -1009,8 +1120,8 @@ export default function ExaminerDashboard() {
                           </p>
                         </td>
                         <td className="px-4 py-4 whitespace-nowrap">
-                          <span className="text-xs font-bold text-ink-600 bg-ink-100 px-2 py-1 rounded-xl">
-                            {s.jenjang === "IL" ? "IL" : "SMP IT"}
+                          <span className="text-xs font-bold text-ink-600 bg-ink-100 px-2 py-1 rounded-2xl">
+                            {s.jenjang}
                           </span>
                         </td>
                         <td className="px-4 py-4 whitespace-nowrap">
@@ -1033,8 +1144,8 @@ export default function ExaminerDashboard() {
                             }
 
                             const colors: any = {
-                              LULUS: "bg-green-100 text-[#550000] border-green-200",
-                              DITERIMA: "bg-green-100 text-[#550000] border-green-200",
+                              LULUS: "bg-green-100 text-[#9D174D] border-green-200",
+                              DITERIMA: "bg-green-100 text-[#9D174D] border-green-200",
                               CADANGAN: "bg-secondary-100 text-secondary-700 border-secondary-200",
                               DITOLAK: "bg-red-100 text-red-700 border-red-200",
                               "BELUM LENGKAP": "bg-orange-100 text-orange-700 border-orange-200",
@@ -1045,7 +1156,7 @@ export default function ExaminerDashboard() {
                               "bg-ink-100 text-ink-500 border-ink-200";
                             return (
                               <span
-                                className={`px-2.5 py-1 text-[10px] font-black rounded-full border shadow-md ${color}`}
+                                className={`px-2.5 py-1 text-[10px] font-black rounded-full border ${color}`}
                               >
                                 {examStatus || "MENUNGGU"}
                               </span>
@@ -1066,7 +1177,7 @@ export default function ExaminerDashboard() {
 
                             if (isSkipped) {
                               return (
-                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-md border border-amber-200 whitespace-nowrap inline-block shrink-0">
+                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded border border-amber-200 whitespace-nowrap inline-block shrink-0">
                                   SKIP
                                 </span>
                               );
@@ -1083,7 +1194,7 @@ export default function ExaminerDashboard() {
                                   : "bg-secondary-400";
                             return (
                               <span
-                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded shadow-md`}
+                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded      `}
                               >
                                 {grade}
                               </span>
@@ -1103,7 +1214,7 @@ export default function ExaminerDashboard() {
 
                             if (isSkipped) {
                               return (
-                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-md border border-amber-200 whitespace-nowrap inline-block shrink-0">
+                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded border border-amber-200 whitespace-nowrap inline-block shrink-0">
                                   SKIP
                                 </span>
                               );
@@ -1120,7 +1231,7 @@ export default function ExaminerDashboard() {
                                   : "bg-secondary-400";
                             return (
                               <span
-                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded shadow-md`}
+                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded      `}
                               >
                                 {grade}
                               </span>
@@ -1140,7 +1251,7 @@ export default function ExaminerDashboard() {
 
                             if (isSkipped) {
                               return (
-                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-md border border-amber-200 whitespace-nowrap inline-block shrink-0">
+                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded border border-amber-200 whitespace-nowrap inline-block shrink-0">
                                   SKIP
                                 </span>
                               );
@@ -1157,7 +1268,7 @@ export default function ExaminerDashboard() {
                                   : "bg-secondary-400";
                             return (
                               <span
-                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded shadow-md`}
+                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded      `}
                               >
                                 {grade}
                               </span>
@@ -1179,7 +1290,7 @@ export default function ExaminerDashboard() {
 
                             if (isWsSkipped && isWoSkipped) {
                               return (
-                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-md border border-amber-200 whitespace-nowrap inline-block shrink-0">
+                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded border border-amber-200 whitespace-nowrap inline-block shrink-0">
                                   SKIP
                                 </span>
                               );
@@ -1190,14 +1301,14 @@ export default function ExaminerDashboard() {
 
                             if (isWsSkipped && wo === 0) {
                               return (
-                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-md border border-amber-200 whitespace-nowrap inline-block shrink-0">
+                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded border border-amber-200 whitespace-nowrap inline-block shrink-0">
                                   S: SKIP
                                 </span>
                               );
                             }
                             if (isWoSkipped && ws === 0) {
                               return (
-                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-md border border-amber-200 whitespace-nowrap inline-block shrink-0">
+                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded border border-amber-200 whitespace-nowrap inline-block shrink-0">
                                   O: SKIP
                                 </span>
                               );
@@ -1216,7 +1327,7 @@ export default function ExaminerDashboard() {
                                   : "bg-secondary-400";
                             return (
                               <span
-                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded shadow-md`}
+                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded      `}
                               >
                                 {grade} {isWsSkipped ? "(S:SKIP)" : isWoSkipped ? "(O:SKIP)" : ""}
                               </span>
@@ -1236,7 +1347,7 @@ export default function ExaminerDashboard() {
 
                             if (isSkipped) {
                               return (
-                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded shadow-md border border-amber-200 whitespace-nowrap inline-block shrink-0">
+                                <span className="bg-amber-100 text-amber-800 text-[10px] font-black px-2 py-1 rounded border border-amber-200 whitespace-nowrap inline-block shrink-0">
                                   SKIP
                                 </span>
                               );
@@ -1253,7 +1364,7 @@ export default function ExaminerDashboard() {
                                   : "bg-secondary-400";
                             return (
                               <span
-                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded shadow-md`}
+                                className={`${color} text-white text-[10px] font-black px-2 py-1 rounded      `}
                               >
                                 {grade}
                               </span>
@@ -1276,13 +1387,13 @@ export default function ExaminerDashboard() {
                               <>
                                 <button
                                   onClick={() => handleOpenSkipDialog(s)}
-                                  className="flex items-center gap-1.5 bg-amber-500 text-white px-3 py-1.5 rounded-xl text-[10px] font-black hover:bg-amber-600 transition-all shadow-lg group-hover:scale-105"
+                                  className="flex items-center gap-1.5 bg-amber-500 text-white px-3 py-1.5 rounded-3xl text-[10px] font-black hover:bg-amber-600 transition-all shadow-2xl group-hover:scale-105"
                                 >
                                   <Zap className="w-3 h-3" /> BYPASS
                                 </button>
                                 <button
                                   onClick={() => handleOpenAssignDialog(s)}
-                                  className="flex items-center gap-1.5 bg-[#550000] text-white px-3 py-1.5 rounded-xl text-[10px] font-black hover:bg-[#550000] transition-all shadow-lg group-hover:scale-105"
+                                  className="flex items-center gap-1.5 bg-[#9D174D] text-white px-3 py-1.5 rounded-3xl text-[10px] font-black hover:bg-[#9D174D] transition-all shadow-2xl group-hover:scale-105"
                                 >
                                   <Users className="w-3 h-3" /> PLOT
                                 </button>
@@ -1290,19 +1401,19 @@ export default function ExaminerDashboard() {
                             )}
                             <button
                               onClick={() => handleOpenInput(s, "quran")}
-                              className="flex items-center gap-1.5 bg-ink-900 text-white px-3 py-1.5 rounded-xl text-[10px] font-black hover:bg-primary-600 transition-all shadow-lg group-hover:scale-105"
+                              className="flex items-center gap-1.5 bg-ink-900 text-white px-3 py-1.5 rounded-3xl text-[10px] font-black hover:bg-primary-600 transition-all shadow-2xl group-hover:scale-105"
                             >
                               <Zap className="w-3 h-3" /> QUR&apos;AN
                             </button>
                             <button
                               onClick={() => handleOpenInput(s, "wawancara_santri")}
-                              className="flex items-center gap-1.5 bg-white border border-ink-200 text-ink-700 px-3 py-1.5 rounded-xl text-[10px] font-black hover:border-primary-600 transition-all shadow-md group-hover:scale-105"
+                              className="flex items-center gap-1.5 bg-white border border-ink-200 text-ink-700 px-3 py-1.5 rounded-3xl text-[10px] font-black hover:border-primary-600 transition-all shadow-2xl group-hover:scale-105"
                             >
                               <MessageSquare className="w-3 h-3" /> W.SANTRI
                             </button>
                             <button
                               onClick={() => handleOpenInput(s, "wawancara_ortu")}
-                              className="flex items-center gap-1.5 bg-gold-50 border border-gold-200 text-gold-800 px-3 py-1.5 rounded-xl text-[10px] font-black hover:border-gold-400 transition-all shadow-md group-hover:scale-105"
+                              className="flex items-center gap-1.5 bg-gold-50 border border-gold-200 text-gold-800 px-3 py-1.5 rounded-3xl text-[10px] font-black hover:border-gold-400 transition-all shadow-2xl group-hover:scale-105"
                             >
                               <MessageSquare className="w-3 h-3" /> W.ORTU
                             </button>
@@ -1329,7 +1440,7 @@ export default function ExaminerDashboard() {
                 filteredStudents.map((s) => (
                   <div
                     key={s.id}
-                    className="bg-white rounded-xl p-5 shadow-clay-sm border border-ink-50 space-y-4"
+                    className="bg-white rounded-3xl p-5 shadow-clay-sm border border-ink-50 space-y-4"
                   >
                     {/* Header: No. Daftar + Nama + Jenjang */}
                     <div className="flex items-start justify-between gap-3 flex-wrap">
@@ -1338,8 +1449,8 @@ export default function ExaminerDashboard() {
                           <span className="text-[10px] font-mono font-bold text-ink-400 tracking-tight">
                             {s.nomor_pendaftaran || "-"}
                           </span>
-                          <span className="text-[9px] font-black text-primary-700 bg-primary-50 px-2 py-0.5 rounded-xl uppercase">
-                            {s.jenjang === "IL" ? "IL" : "SMP IT"}
+                          <span className="text-[9px] font-black text-primary-700 bg-primary-50 px-2 py-0.5 rounded-2xl uppercase">
+                            {s.jenjang}
                           </span>
                         </div>
                         <h3 className="text-sm font-black text-ink-900 uppercase leading-snug">
@@ -1355,7 +1466,7 @@ export default function ExaminerDashboard() {
                         </p>
                       </div>
                       {/* Total Badge */}
-                      <div className="bg-primary-600 px-4 py-2.5 rounded-xl text-white text-center shrink-0">
+                      <div className="bg-primary-600 px-4 py-2.5 rounded-2xl text-white text-center shrink-0">
                         <p className="text-[8px] font-black opacity-70 uppercase">Total</p>
                         <p className="text-xl font-black leading-none mt-0.5">
                           {s.nilai_ujian?.nilai_total != null
@@ -1369,8 +1480,8 @@ export default function ExaminerDashboard() {
                     {(() => {
                       const examStatus = s.nilai_ujian?.status_kelulusan;
                       const colors: any = {
-                        LULUS: "bg-green-100 text-[#550000] border-green-200",
-                        DITERIMA: "bg-green-100 text-[#550000] border-green-200",
+                        LULUS: "bg-green-100 text-[#9D174D] border-green-200",
+                        DITERIMA: "bg-green-100 text-[#9D174D] border-green-200",
                         CADANGAN: "bg-secondary-100 text-secondary-700 border-secondary-200",
                         DITOLAK: "bg-red-100 text-red-700 border-red-200",
                         "BELUM LENGKAP": "bg-orange-100 text-orange-700 border-orange-200",
@@ -1421,7 +1532,7 @@ export default function ExaminerDashboard() {
                           stageKey: "WAWANCARA_ORTU",
                         },
                       ].map((item) => (
-                        <div key={item.label} className="bg-ink-50 rounded-xl p-4.5 text-center">
+                        <div key={item.label} className="bg-ink-50 rounded-3xl p-4.5 text-center">
                           <p className="text-sm font-black text-ink-900 leading-none">
                             {(() => {
                               let isSkipped = false;
@@ -1455,13 +1566,13 @@ export default function ExaminerDashboard() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 col-span-full">
                           <button
                             onClick={() => handleOpenSkipDialog(s)}
-                            className="flex items-center justify-center gap-2 bg-amber-500 text-white py-3 rounded-xl text-[11px] font-black shadow-lg shadow-amber-500/20 active:scale-95 transition-all"
+                            className="flex items-center justify-center gap-2 bg-amber-500 text-white py-3 rounded-2xl text-[11px] font-black shadow-2xl shadow-amber-500/20 active:scale-95 transition-all"
                           >
                             <Zap className="w-3.5 h-3.5" /> BYPASS
                           </button>
                           <button
                             onClick={() => handleOpenAssignDialog(s)}
-                            className="flex items-center justify-center gap-2 bg-[#550000] text-white py-3 rounded-xl text-[11px] font-black shadow-lg shadow-blue-500/20 active:scale-95 transition-all"
+                            className="flex items-center justify-center gap-2 bg-[#9D174D] text-white py-3 rounded-2xl text-[11px] font-black shadow-2xl active:scale-95 transition-all"
                           >
                             <Users className="w-3.5 h-3.5" /> PLOT
                           </button>
@@ -1469,13 +1580,13 @@ export default function ExaminerDashboard() {
                       )}
                       <button
                         onClick={() => handleOpenInput(s, "quran")}
-                        className="flex items-center justify-center gap-2 bg-ink-900 text-white py-3 rounded-xl text-[11px] font-black shadow-lg shadow-ink-900/10 active:scale-95 transition-all"
+                        className="flex items-center justify-center gap-2 bg-ink-900 text-white py-3 rounded-2xl text-[11px] font-black shadow-2xl shadow-ink-900/10 active:scale-95 transition-all"
                       >
                         <Zap className="w-3.5 h-3.5" /> TES QUR&apos;AN
                       </button>
                       <button
                         onClick={() => handleOpenInput(s, "wawancara_santri")}
-                        className="flex flex-col items-center justify-center bg-gold-400 text-primary-900 py-2 rounded-xl text-[10px] sm:text-[11px] font-black shadow-lg shadow-gold-400/20 active:scale-95 transition-all"
+                        className="flex flex-col items-center justify-center bg-gold-400 text-primary-900 py-2 rounded-2xl text-[10px] sm:text-[11px] font-black shadow-2xl shadow-gold-400/20 active:scale-95 transition-all"
                       >
                         <span className="flex items-center gap-1">
                           <MessageSquare className="w-3 h-3" /> SANTRI
@@ -1483,7 +1594,7 @@ export default function ExaminerDashboard() {
                       </button>
                       <button
                         onClick={() => handleOpenInput(s, "wawancara_ortu")}
-                        className="flex flex-col items-center justify-center bg-gold-200 text-gold-900 py-2 rounded-xl text-[10px] sm:text-[11px] font-black shadow-lg shadow-gold-200/20 active:scale-95 transition-all"
+                        className="flex flex-col items-center justify-center bg-gold-200 text-gold-900 py-2 rounded-2xl text-[10px] sm:text-[11px] font-black shadow-2xl shadow-gold-200/20 active:scale-95 transition-all"
                       >
                         <span className="flex items-center gap-1">
                           <MessageSquare className="w-3 h-3" /> ORTU
@@ -1501,7 +1612,7 @@ export default function ExaminerDashboard() {
         <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
           {/* Progress Monitor if Processing */}
           {isProcessingQueue && (
-            <div className="bg-primary-600 rounded-xl p-6 text-white shadow-lg shadow-primary-600/20 overflow-hidden relative">
+            <div className="bg-primary-600 rounded-3xl p-6 text-white shadow-2xl overflow-hidden relative">
               <div className="absolute top-0 right-0 p-5 md:p-8 opacity-10">
                 <Send className="w-32 h-32 rotate-12" />
               </div>
@@ -1524,8 +1635,8 @@ export default function ExaminerDashboard() {
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-xl p-6 shadow-clay-md border border-white/40 flex items-center gap-4">
-              <div className="p-6 sm:p-8 bg-secondary-50 text-secondary-600 rounded-xl">
+            <div className="bg-white rounded-3xl p-6 shadow-clay-md border border-white/40 flex items-center gap-4">
+              <div className="p-6 sm:p-8 bg-secondary-50 text-secondary-600 rounded-2xl">
                 <Clock className="w-8 h-8" />
               </div>
               <div>
@@ -1535,8 +1646,8 @@ export default function ExaminerDashboard() {
                 <p className="text-3xl font-black text-ink-900">{queueStats?.pending || 0}</p>
               </div>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-clay-md border border-white/40 flex items-center gap-4">
-              <div className="p-6 sm:p-8 bg-green-50 text-[#550000] rounded-xl">
+            <div className="bg-white rounded-3xl p-6 shadow-clay-md border border-white/40 flex items-center gap-4">
+              <div className="p-6 sm:p-8 bg-green-50 text-[#9D174D] rounded-2xl">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
               <div>
@@ -1546,8 +1657,8 @@ export default function ExaminerDashboard() {
                 <p className="text-3xl font-black text-ink-900">{queueStats?.sent || 0}</p>
               </div>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-clay-md border border-white/40 flex items-center gap-4">
-              <div className="p-6 sm:p-8 bg-red-50 text-red-600 rounded-xl">
+            <div className="bg-white rounded-3xl p-6 shadow-clay-md border border-white/40 flex items-center gap-4">
+              <div className="p-6 sm:p-8 bg-red-50 text-red-600 rounded-2xl">
                 <AlertCircle className="w-8 h-8" />
               </div>
               <div>
@@ -1589,12 +1700,12 @@ export default function ExaminerDashboard() {
 
           {/* Header Stats (Rekap Kelulusan) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <div className="bg-green-50 p-6 rounded-xl shadow-md border border-green-100 relative overflow-hidden">
-              <p className="text-[#550000] text-sm font-bold tracking-wider uppercase mb-1">
+            <div className="bg-green-50 p-6 rounded-3xl shadow-2xl border border-green-100 relative overflow-hidden">
+              <p className="text-[#9D174D] text-sm font-bold tracking-wider uppercase mb-1">
                 Total Diterima
               </p>
               <div className="flex items-end gap-2">
-                <h3 className="text-2xl md:text-4xl font-black text-[#550000]">
+                <h3 className="text-2xl md:text-4xl font-black text-[#9D174D]">
                   {
                     students.filter(
                       (c) =>
@@ -1602,11 +1713,11 @@ export default function ExaminerDashboard() {
                     ).length
                   }
                 </h3>
-                <span className="text-[#550000]/70 font-medium mb-1 pl-1">Santri</span>
+                <span className="text-[#9D174D]/70 font-medium mb-1 pl-1">Santri</span>
               </div>
               <div className="absolute -right-4 -bottom-4 bg-green-200/50 w-24 h-24 rounded-full blur-xl"></div>
             </div>
-            <div className="bg-secondary-50 p-6 rounded-xl shadow-md border border-secondary-100 relative overflow-hidden">
+            <div className="bg-secondary-50 p-6 rounded-3xl shadow-2xl border border-secondary-100 relative overflow-hidden">
               <p className="text-secondary-600 text-sm font-bold tracking-wider uppercase mb-1">
                 Cadangan
               </p>
@@ -1623,7 +1734,7 @@ export default function ExaminerDashboard() {
               </div>
               <div className="absolute -right-4 -bottom-4 bg-secondary-200/50 w-24 h-24 rounded-full blur-xl"></div>
             </div>
-            <div className="bg-rose-50 p-6 rounded-xl shadow-md border border-rose-100 relative overflow-hidden">
+            <div className="bg-rose-50 p-6 rounded-3xl shadow-2xl border border-rose-100 relative overflow-hidden">
               <p className="text-rose-600 text-sm font-bold tracking-wider uppercase mb-1">
                 Ditolak
               </p>
@@ -1637,10 +1748,10 @@ export default function ExaminerDashboard() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-clay-md border border-white/40 overflow-hidden">
+          <div className="bg-white rounded-3xl shadow-clay-md border border-white/40 overflow-hidden">
             <div className="p-5 md:p-8 space-y-8">
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-ink-50 rounded-xl">
+                <div className="p-3 bg-ink-50 rounded-2xl">
                   <LayoutDashboard className="w-6 h-6 text-ink-600" />
                 </div>
                 <div>
@@ -1654,7 +1765,7 @@ export default function ExaminerDashboard() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-4">
-                <div className="p-6 bg-primary-50/30 rounded-xl border border-primary-100/50 hover:bg-primary-50 transition-colors">
+                <div className="p-6 bg-primary-50/30 rounded-3xl border border-primary-100/50 hover:bg-primary-50 transition-colors">
                   <h4 className="font-black text-primary-900 mb-2">Broadcast Jadwal Seleksi</h4>
                   <p className="text-xs text-primary-700/70 mb-6 font-medium leading-relaxed">
                     Sistem akan memindai pendaftar yang sudah terverifikasi berkasnya tapi belum
@@ -1699,22 +1810,22 @@ export default function ExaminerDashboard() {
                       }
                     }}
                     disabled={isBroadcasting}
-                    className="w-full bg-primary-600 hover:bg-primary-700 text-white rounded-xl py-6 font-black text-base shadow-lg shadow-primary-600/20"
+                    className="w-full bg-primary-600 hover:bg-primary-700 text-white rounded-2xl py-6 font-black text-base shadow-2xl"
                   >
                     {isBroadcasting ? "Memproses..." : "Siarkan Jadwal Sekarang"}
                   </Button>
                 </div>
 
-                <div className="p-6 bg-emerald-50/30 rounded-xl border border-emerald-100/50 hover:bg-emerald-50 transition-colors">
-                  <h4 className="font-black text-[#550000] mb-2">Kirim Paksa Antrean (Flush)</h4>
-                  <p className="text-xs text-[#550000]/70 mb-6 font-medium leading-relaxed">
+                <div className="p-6 bg-emerald-50/30 rounded-3xl border border-emerald-100/50 hover:bg-emerald-50 transition-colors">
+                  <h4 className="font-black text-[#9D174D] mb-2">Kirim Paksa Antrean (Flush)</h4>
+                  <p className="text-xs text-[#9D174D]/70 mb-6 font-medium leading-relaxed">
                     Jalankan pemicu manual untuk mengirim pesan yang sedang tertahan di antrean ke
                     server provider WhatsApp (Wablas).
                   </p>
                   <Button
                     onClick={handleFlushQueue}
                     disabled={isProcessingQueue || !queueStats?.pending}
-                    className="w-full bg-[#550000] hover:bg-[#550000] text-white rounded-xl py-6 font-black text-base shadow-lg shadow-emerald-600/20 disabled:bg-slate-200 disabled:text-slate-400 disabled:shadow-none"
+                    className="w-full bg-[#9D174D] hover:bg-[#9D174D] text-white rounded-2xl py-6 font-black text-base shadow-md disabled:bg-slate-200 disabled:text-slate-400 disabled:shadow-none"
                   >
                     {isProcessingQueue
                       ? `Mengirim (${flushProgress}%)...`

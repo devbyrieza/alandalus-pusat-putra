@@ -24,6 +24,7 @@ import DailyDigestBanner from "@/components/admin/DailyDigestBanner";
 import { BRANDING } from "@/config/branding";
 import type { UserRole } from "@/lib/access-control";
 import { exportToExcelProfessional, exportToPDF } from "@/lib/utils/export";
+import { getAvailableJenjang } from "@/lib/utils/jenjang";
 
 const StatWidget = ({
   label,
@@ -185,84 +186,41 @@ const StatWidget = ({
           </div>
         )}
 
-        {breakdown && (
+        {Array.isArray(breakdown) && breakdown.length > 0 && (
           <div
-            className={`grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t ${
+            className={`grid ${
+              breakdown.length === 3 ? "grid-cols-3" : "grid-cols-2"
+            } gap-3 pt-6 border-t ${
               highlighted ? "border-white/10" : "border-secondary-200"
             }`}
           >
-            <div className="space-y-4">
-              <div className="flex flex-col">
+            {breakdown.map((item: { label: string; value: number }, idx: number) => (
+              <div
+                key={item.label}
+                className={`flex flex-col ${
+                  idx > 0
+                    ? `border-l pl-3 ${
+                        highlighted ? "border-white/10" : "border-secondary-200"
+                      }`
+                    : ""
+                }`}
+              >
                 <span
                   className={`text-[9px] font-black uppercase tracking-widest mb-1 ${
                     highlighted ? "text-secondary-300" : "text-primary-400"
                   }`}
                 >
-                  SMP Putra
+                  {item.label}
                 </span>
                 <span
                   className={`text-base font-black leading-none ${
                     highlighted ? "text-white" : "text-primary-700"
                   }`}
                 >
-                  {breakdown.mts_l || 0}
+                  {item.value || 0}
                 </span>
               </div>
-              <div className="flex flex-col">
-                <span
-                  className={`text-[9px] font-black uppercase tracking-widest mb-1 ${
-                    highlighted ? "text-secondary-300" : "text-primary-400"
-                  }`}
-                >
-                  SMP Putri
-                </span>
-                <span
-                  className={`text-base font-black leading-none ${
-                    highlighted ? "text-pink-300" : "text-pink-500"
-                  }`}
-                >
-                  {breakdown.mts_p || 0}
-                </span>
-              </div>
-            </div>
-            <div
-              className={`space-y-4 border-l pl-4 ${
-                highlighted ? "border-white/10" : "border-secondary-200"
-              }`}
-            >
-              <div className="flex flex-col">
-                <span
-                  className={`text-[9px] font-black uppercase tracking-widest mb-1 ${
-                    highlighted ? "text-secondary-300" : "text-primary-400"
-                  }`}
-                >
-                  IL Putra
-                </span>
-                <span
-                  className={`text-base font-black leading-none ${
-                    highlighted ? "text-white" : "text-primary-700"
-                  }`}
-                >
-                  {breakdown.il_l || 0}
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span
-                  className={`text-[9px] font-black uppercase tracking-widest mb-1 ${
-                    highlighted ? "text-secondary-300" : "text-primary-400"
-                  }`}
-                >
-                  IL Putri
-                </span>
-                <span
-                  className={`text-base font-black leading-none ${
-                    highlighted ? "text-pink-300" : "text-pink-500"
-                  }`}
-                >
-                  {breakdown.il_p || 0}
-                </span>
-              </div>
-            </div>
+            ))}
           </div>
         )}
       </div>
@@ -534,86 +492,37 @@ export default function AdminDashboardPage() {
       | "data"
       | "seleksi"
   ) => {
-    const mts = stats.stats_per_jenjang.find((j: any) => j.jenjang === "MTS") || {};
-    const il = stats.stats_per_jenjang.find((j: any) => j.jenjang === "IL") || {};
-    if (type === "total")
-      return {
-        mts_l: mts.pendaftar_putra || 0,
-        mts_p: mts.pendaftar_putri || 0,
-        il_l: il.pendaftar_putra || 0,
-        il_p: il.pendaftar_putri || 0,
-      };
-    if (type === "lulus")
-      return {
-        mts_l: mts.diterima_putra || 0,
-        mts_p: mts.diterima_putri || 0,
-        il_l: il.diterima_putra || 0,
-        il_p: il.diterima_putri || 0,
-      };
-    if (type === "ulang")
-      return {
-        mts_l: mts.ulang_putra || 0,
-        mts_p: mts.ulang_putri || 0,
-        il_l: il.ulang_putra || 0,
-        il_p: il.ulang_putri || 0,
-      };
-    if (type === "ulang_sedang")
-      return {
-        mts_l: mts.ulang_sedang_putra || 0,
-        mts_p: mts.ulang_sedang_putri || 0,
-        il_l: il.ulang_sedang_putra || 0,
-        il_p: il.ulang_sedang_putri || 0,
-      };
-    if (type === "ulang_selesai")
-      return {
-        mts_l: mts.ulang_selesai_putra || 0,
-        mts_p: mts.ulang_selesai_putri || 0,
-        il_l: il.ulang_selesai_putra || 0,
-        il_p: il.ulang_selesai_putri || 0,
-      };
-    if (type === "cadangan")
-      return {
-        mts_l: mts.cadangan_putra || 0,
-        mts_p: mts.cadangan_putri || 0,
-        il_l: il.cadangan_putra || 0,
-        il_p: il.cadangan_putri || 0,
-      };
-    if (type === "ditolak")
-      return {
-        mts_l: mts.ditolak_putra || 0,
-        mts_p: mts.ditolak_putri || 0,
-        il_l: il.ditolak_putra || 0,
-        il_p: il.ditolak_putri || 0,
-      };
-    if (type === "berkas")
-      return {
-        mts_l: mts.berkas_putra || 0,
-        mts_p: mts.berkas_putri || 0,
-        il_l: il.berkas_putra || 0,
-        il_p: il.berkas_putri || 0,
-      };
-    if (type === "seleksi")
-      return {
-        mts_l: mts.seleksi_putra || 0,
-        mts_p: mts.seleksi_putri || 0,
-        il_l: il.seleksi_putra || 0,
-        il_p: il.seleksi_putri || 0,
-      };
-    if (type === "bayar")
-      return {
-        mts_l: mts.bayar_putra || 0,
-        mts_p: mts.bayar_putri || 0,
-        il_l: il.bayar_putra || 0,
-        il_p: il.bayar_putri || 0,
-      };
-    if (type === "data")
-      return {
-        mts_l: mts.data_putra || 0,
-        mts_p: mts.data_putri || 0,
-        il_l: il.data_putra || 0,
-        il_p: il.data_putri || 0,
-      };
-    return null;
+    const jenjangList = getAvailableJenjang();
+    const list = stats.stats_per_jenjang || [];
+    const findBucket = (label: string) => {
+      const upper = label.toUpperCase();
+      return (
+        list.find((j: any) => (j.jenjang || "").toUpperCase() === upper) ||
+        (upper === "MA" ? list.find((j: any) => (j.jenjang || "").toUpperCase() === "SMA") : null) ||
+        (upper === "SMP IT" ? list.find((j: any) => (j.jenjang || "").toUpperCase() === "MTS") : null) ||
+        {}
+      );
+    };
+
+    const pickVal = (b: any): number => {
+      if (type === "total") return b.pendaftar ?? b.total_pendaftar ?? (b.pendaftar_putra || 0) + (b.pendaftar_putri || 0);
+      if (type === "lulus") return b.diterima ?? (b.diterima_putra || 0) + (b.diterima_putri || 0);
+      if (type === "ulang") return b.daftar_ulang ?? (b.ulang_putra || 0) + (b.ulang_putri || 0);
+      if (type === "ulang_sedang") return b.ulang_sedang ?? (b.ulang_sedang_putra || 0) + (b.ulang_sedang_putri || 0);
+      if (type === "ulang_selesai") return b.ulang_selesai ?? (b.ulang_selesai_putra || 0) + (b.ulang_selesai_putri || 0);
+      if (type === "cadangan") return b.cadangan ?? (b.cadangan_putra || 0) + (b.cadangan_putri || 0);
+      if (type === "ditolak") return b.ditolak ?? (b.ditolak_putra || 0) + (b.ditolak_putri || 0);
+      if (type === "berkas") return b.berkas_lengkap ?? b.berkas ?? (b.berkas_putra || 0) + (b.berkas_putri || 0);
+      if (type === "seleksi") return b.sedang_seleksi ?? b.seleksi ?? (b.seleksi_putra || 0) + (b.seleksi_putri || 0);
+      if (type === "bayar") return b.bayar_total ?? b.bayar ?? (b.bayar_putra || 0) + (b.bayar_putri || 0);
+      if (type === "data") return b.data_total ?? b.data ?? (b.data_putra || 0) + (b.data_putri || 0);
+      return 0;
+    };
+
+    return jenjangList.map((label) => ({
+      label,
+      value: pickVal(findBucket(label)),
+    }));
   };
 
   if (loading && stats.total_pendaftar === 0)

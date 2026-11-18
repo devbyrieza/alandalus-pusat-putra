@@ -42,6 +42,7 @@ interface ExamSession {
   _count?: {
     bookings: number;
   };
+  is_busy_elsewhere?: boolean;
 }
 
 interface Examiner {
@@ -827,7 +828,9 @@ export default function SesiKetersediaanSection({
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {paginatedSlots.map((slot) => {
-            const isBooked = (slot._count?.bookings || 0) >= slot.quota;
+            const isDirectBooked = (slot._count?.bookings || 0) >= slot.quota;
+            const isBusyElsewhere = Boolean(slot.is_busy_elsewhere);
+            const isBooked = isDirectBooked || isBusyElsewhere;
             const isSelected = selectedSlotIds.has(slot.id);
 
             return (
@@ -847,9 +850,13 @@ export default function SesiKetersediaanSection({
                 {/* Select checkbox overlay */}
                 {isSelectMode && (
                   <div className="absolute top-4 right-4 z-10">
-                    {isBooked ? (
+                    {isDirectBooked ? (
                       <span className="text-[10px] bg-stone-100 text-stone-400 px-2 py-1 rounded-md font-bold">
                         Terisi
+                      </span>
+                    ) : isBusyElsewhere ? (
+                      <span className="text-[10px] bg-purple-100 text-purple-700 px-2 py-1 rounded-md font-bold">
+                        Terkunci
                       </span>
                     ) : isSelected ? (
                       <CheckSquare className="w-5 h-5 text-primary-600" />
@@ -864,12 +871,18 @@ export default function SesiKetersediaanSection({
                   <div className="pr-8">
                     <span
                       className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-wide mb-1.5 ${
-                        isBooked
+                        isDirectBooked
                           ? "bg-amber-100 text-amber-800"
+                          : isBusyElsewhere
+                          ? "bg-purple-100 text-purple-800"
                           : "bg-emerald-100 text-emerald-800"
                       }`}
                     >
-                      {isBooked ? "Sudah Diplot / Terisi" : "Tersedia (Siap Diplot)"}
+                      {isDirectBooked
+                        ? "Sudah Diplot / Terisi"
+                        : isBusyElsewhere
+                        ? "Terkunci (Penguji Terisi di Sesi Lain)"
+                        : "Tersedia (Siap Diplot)"}
                     </span>
                     <h4 className="font-black text-stone-900 text-sm leading-snug">
                       {slot.title || "Sesi Ujian"}
@@ -917,7 +930,9 @@ export default function SesiKetersediaanSection({
                   {!isSelectMode && (
                     <div className="flex items-center justify-between pt-2 border-t border-stone-100">
                       <span className="text-[11px] font-bold text-stone-400">
-                        Kuota: {slot._count?.bookings || 0} / {slot.quota} Santri
+                        {isBusyElsewhere
+                          ? "Terkunci (Bentrok Role Ganda)"
+                          : `Kuota: ${slot._count?.bookings || 0} / ${slot.quota} Santri`}
                       </span>
                       <div className="flex items-center gap-1.5">
                         <button

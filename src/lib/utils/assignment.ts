@@ -4,7 +4,7 @@ import { prisma } from "../prisma";
  * Mencari penguji dengan beban kerja paling ringan dari sekumpulan sesi yang tersedia di waktu yang sama.
  *
  * @param startTime Waktu mulai ujian
- * @param category Kategori ujian (QURAN, W_SANTRI, W_ORTU, LISAN_ARAB)
+ * @param category Kategori ujian (QURAN, W_SANTRI, W_ORTU)
  * @param tahunAjaranId ID Tahun Ajaran aktif
  * @returns Object berisi examiner_id dan session_id pemenang, atau null jika tidak ada pilihan
  */
@@ -104,6 +104,7 @@ export async function getLeastLoadedExaminerFromPool(
     },
     select: {
       penguji_quran_id: true,
+      penguji_hafalan_id: true,
       penguji_santri_id: true,
       penguji_ortu_id: true,
       penguji_arab_id: true,
@@ -113,6 +114,7 @@ export async function getLeastLoadedExaminerFromPool(
   const busyExaminerIds = new Set<string>();
   busyExaminers.forEach((b) => {
     if (b.penguji_quran_id) busyExaminerIds.add(b.penguji_quran_id);
+    if (b.penguji_hafalan_id) busyExaminerIds.add(b.penguji_hafalan_id);
     if (b.penguji_santri_id) busyExaminerIds.add(b.penguji_santri_id);
     if (b.penguji_ortu_id) busyExaminerIds.add(b.penguji_ortu_id);
     if (b.penguji_arab_id) busyExaminerIds.add(b.penguji_arab_id);

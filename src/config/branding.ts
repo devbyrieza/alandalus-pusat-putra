@@ -4,6 +4,7 @@ export const IS_PUTRA = true;
 export const IS_PUTRI = false;
 
 export const BRANDING = {
+  gender: "Putra",
   schoolName: "Pesantren Islam Internasional Al-Andalus Putra",
   schoolShortName: "Al-Andalus",
   schoolLegalName: "Pesantren Islam Internasional Al-Andalus",

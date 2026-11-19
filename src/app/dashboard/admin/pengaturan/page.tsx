@@ -3,6 +3,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import SpmbRecipientSettingsCard from "@/components/admin/SpmbRecipientSettingsCard";
 import {
   Settings,
   Calendar,
@@ -342,6 +343,9 @@ export default function PengaturanPage() {
           </>
         )}
       </div>
+
+            {/* Pengaturan Nomor WhatsApp Penanggung Jawab SPMB */}
+      <SpmbRecipientSettingsCard />
 
       {/* Edit Modal Overlay */}
       {editingTa && (

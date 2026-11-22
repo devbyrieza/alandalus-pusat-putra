@@ -457,23 +457,40 @@ export async function GET(request: Request) {
       );
     }
 
-    const openSlots = filteredSessions.map((s) => {
+    const slotMap = new Map<string, any>();
+
+    filteredSessions.forEach((s) => {
       const busy = isExaminerBusy(s);
       const isFull = s._count.bookings >= s.quota || busy;
-      return {
-        id: s.id,
-        title: sanitizeTitle(s.title || "Seleksi Santri Baru"),
-        raw_title: s.title, // Keep for reference if needed
-        category: getExamCategory(s.title || ""),
-        start_time: s.start_time,
-        end_time: s.end_time,
-        quota: s.quota,
-        booked: busy ? s.quota : s._count.bookings,
-        location: s.location,
-        notes: s.notes,
-        isFull,
-      };
+      const cat = getExamCategory(s.title || "");
+      const key = `${cat}_${new Date(s.start_time).getTime()}`;
+      const existing = slotMap.get(key);
+
+      if (!existing) {
+        slotMap.set(key, {
+          id: s.id,
+          title: sanitizeTitle(s.title || "Seleksi Santri Baru"),
+          raw_title: s.title,
+          category: cat,
+          start_time: s.start_time,
+          end_time: s.end_time,
+          quota: s.quota,
+          booked: busy ? s.quota : s._count.bookings,
+          location: s.location,
+          notes: s.notes,
+          isFull,
+        });
+      } else {
+        existing.quota += s.quota;
+        existing.booked += busy ? s.quota : s._count.bookings;
+        existing.isFull = existing.booked >= existing.quota;
+        if (!isFull && existing.isFull) {
+          existing.id = s.id;
+        }
+      }
     });
+
+    const openSlots = Array.from(slotMap.values());
 
     // Calculate overall progress
     // Grup B: only count as completed when status is "completed", not just "scheduled"

@@ -20,7 +20,7 @@ interface PreviewData {
 }
 
 const ASPEK_LABELS = [
-  "Tes Tilawah Al-Quran",
+  "Tes Bacaan Al-Qur'an",
   "Tes Kepribadian",
   "Tes Kesiapan",
   "Tes Potensi Akademik",

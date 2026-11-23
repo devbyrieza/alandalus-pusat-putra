@@ -64,11 +64,13 @@ export default function DashboardTabs({ statusProses }: DashboardTabsProps) {
       label: "Daftar Ulang",
       icon: CheckCircle,
       href: "/dashboard/pendaftar/daftar-ulang" },
+    /* Menu ZAD di-hide sementara sesuai instruksi
     {
-      id: "kartu-jajan" as TabName, // Using kartu-jajan id for access control rule
+      id: "kartu-jajan" as TabName,
       label: "ZAD",
       icon: CreditCard,
       href: "/dashboard/pendaftar/keuangan" },
+    */
     {
       id: "profil",
       label: "Profil",

@@ -94,7 +94,7 @@ export default function DaftarPindahanPage() {
     tempat_lahir: "",
     tanggal_lahir: "",
     no_hp: "",
-    jenis_kelamin: "P",
+    jenis_kelamin: "L",
     jenjang: jenjangFromUrl,
     kelas_masuk: "",
     asal_institusi: "",
@@ -189,12 +189,9 @@ export default function DaftarPindahanPage() {
 
     if (!formData.jenis_kelamin) {
       errors.jenis_kelamin = "Pilih jenis kelamin santri";
-    } else if (formData.jenis_kelamin === "P") {
+    } else if (formData.jenis_kelamin !== "L") {
       errors.jenis_kelamin =
-        "Mohon maaf, pendaftaran Santri Putri dilakukan melalui Pesantren Ulul Albaab.";
-    } else if (formData.jenis_kelamin === "L") {
-      errors.jenis_kelamin =
-        "Mohon maaf, pendaftaran Santri Pindahan Al-Imam Belum Dibuka.";
+        "Pendaftaran santri pindahan di sini khusus Santri Putra. Untuk Santriwati Putri, silakan mendaftar di Al-Andalus Putri.";
     }
 
     if (!formData.jenjang) {
@@ -376,7 +373,7 @@ export default function DaftarPindahanPage() {
                             tempat_lahir: "",
                             tanggal_lahir: "",
                             no_hp: "",
-                            jenis_kelamin: "P",
+                            jenis_kelamin: "L",
                             jenjang: "",
                             kelas_masuk: "",
                             asal_institusi: "",
@@ -568,29 +565,29 @@ export default function DaftarPindahanPage() {
                       label="Jenis Kelamin"
                       error={fieldErrors.jenis_kelamin}
                     >
-                      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-4 md:p-5 rounded-2xl bg-pink-50/70 border border-pink-200">
+                      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-4 md:p-5 rounded-2xl bg-emerald-50/70 border border-emerald-200">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-black shadow-md text-sm">
-                            P
+                          <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-black shadow-md text-sm">
+                            L
                           </div>
                           <div>
                             <p className="font-extrabold text-slate-900 text-sm md:text-base">
-                              Khusus Santriwati Putri (Perempuan)
+                              Khusus Santri Putra (Laki-laki)
                             </p>
                             <p className="text-xs text-slate-500 font-medium">
-                              Pesantren Al-Imam Al-Islami khusus mendidik santriwati Putri
+                              Pesantren Islam Internasional Al-Andalus Putra khusus mendidik santri Putra
                             </p>
                           </div>
                         </div>
-                        <div className="sm:text-right text-xs text-slate-500 font-medium border-t sm:border-t-0 sm:border-l border-pink-200/80 pt-2 sm:pt-0 sm:pl-4">
-                          <span>Untuk calon santri putra?</span>
+                        <div className="sm:text-right text-xs text-slate-500 font-medium border-t sm:border-t-0 sm:border-l border-emerald-200/80 pt-2 sm:pt-0 sm:pl-4">
+                          <span>Untuk calon santriwati putri?</span>
                           <a
-                            href="https://spmb.pesantren-ululalbaab.com/daftar"
+                            href="https://pesantren-alandalus-putri.com/daftar"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block font-bold text-blue-600 hover:text-blue-700 hover:underline"
+                            className="block font-bold text-rose-600 hover:text-rose-700 hover:underline"
                           >
-                            Daftar di Ulul Albaab (Putra) →
+                            Daftar di Al-Andalus Putri (Putri) →
                           </a>
                         </div>
                       </div>

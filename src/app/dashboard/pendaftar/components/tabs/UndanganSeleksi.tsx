@@ -21,6 +21,10 @@ import {
   ArrowRight,
   Filter,
   CalendarClock,
+  Video,
+  Copy,
+  Share2,
+  Phone,
 } from "lucide-react";
 import Swal from "sweetalert2";
 import { expandExamTitle } from "@/lib/utils";
@@ -94,6 +98,7 @@ interface BookedData {
   lokasi: string;
   keterangan: string;
   online_test_link?: string;
+  meet_link?: string;
   status_santri?: string;
   status_quran?: string;
   status_ortu?: string;
@@ -109,6 +114,13 @@ interface ProgressData {
 interface UndanganData {
   isSMA?: boolean;
   jenjang?: string;
+  pendaftar_info?: {
+    id?: string;
+    nama_lengkap?: string;
+    no_hp?: string;
+    no_hp_ayah?: string;
+    no_hp_ibu?: string;
+  };
   grupA: GrupAData;
   grupB: {
     hasSchedules: boolean;
@@ -393,6 +405,115 @@ export default function UndanganSeleksiTab() {
     }
   };
 
+  const handleCopyLink = async (link: string) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(link);
+      } else {
+        const textArea = document.createElement("textarea");
+        textArea.value = link;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand("copy");
+        textArea.remove();
+      }
+      Swal.fire({
+        icon: "success",
+        title: "Tautan Disalin!",
+        text: "Link Google Meet berhasil disalin ke clipboard.",
+        timer: 2000,
+        showConfirmButton: false,
+        toast: true,
+        position: "top-end",
+      });
+    } catch {
+      Swal.fire({
+        icon: "info",
+        title: "Tautan Ujian",
+        html: `<p class="text-xs text-slate-600 mb-2">Silakan salin tautan berikut secara manual:</p><input class="swal2-input text-xs" value="${link}" readonly onclick="this.select()" />`,
+      });
+    }
+  };
+
+  const handleOpenForwardModal = async (item: BookedData, resolvedMeetLink: string | null) => {
+    const defaultPhone = data?.pendaftar_info?.no_hp || "";
+    const examTitle = expandExamTitle(item.jenis_ujian);
+
+    const { value: targetPhone } = await Swal.fire({
+      title: "Kirim Jadwal ke WhatsApp",
+      html: `
+        <div class="text-left text-xs text-slate-600 space-y-2.5">
+          <p>Kirimkan rincian jadwal dan link Google Meet untuk <strong>${examTitle}</strong> ke nomor WhatsApp yang sedang aktif/digunakan saat ini:</p>
+          <div class="p-2.5 bg-emerald-50 rounded-xl border border-emerald-200 text-emerald-800 text-[11px]">
+            📱 <strong>Nomor Terdaftar Akun:</strong> ${defaultPhone || "-"}
+          </div>
+        </div>
+      `,
+      input: "text",
+      inputLabel: "Nomor WhatsApp Penerima",
+      inputValue: defaultPhone,
+      inputPlaceholder: "Contoh: 081234567890",
+      showCancelButton: true,
+      confirmButtonText: "Kirim Sekarang 📲",
+      cancelButtonText: "Batal",
+      confirmButtonColor: "#059669",
+      inputValidator: (value) => {
+        if (!value || !value.trim()) {
+          return "Nomor WhatsApp wajib diisi!";
+        }
+        const clean = value.replace(/[\s\-\(\)\+]/g, "");
+        if (!/^(08|628|\+628)\d{7,13}$/.test(clean)) {
+          return "Format nomor tidak valid. Gunakan awalan 08 atau 628 (contoh: 081234567890).";
+        }
+        return null;
+      },
+    });
+
+    if (targetPhone) {
+      try {
+        Swal.fire({
+          title: "Mengirimkan Pesan...",
+          text: `Sedang mengirimkan link ke WhatsApp ${targetPhone}`,
+          allowOutsideClick: false,
+          didOpen: () => {
+            Swal.showLoading();
+          },
+        });
+
+        const res = await fetch("/api/pendaftar/undangan-seleksi/resend-wa", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            jadwal_id: item.id,
+            target_phone: targetPhone,
+          }),
+        });
+
+        const result = await res.json();
+        if (!res.ok) {
+          throw new Error(result.error || "Gagal mengirimkan WhatsApp");
+        }
+
+        Swal.fire({
+          icon: "success",
+          title: "Pesan Terkirim!",
+          text: result.message || `Tautan jadwal telah dikirim ke WhatsApp ${targetPhone}.`,
+          confirmButtonColor: "#059669",
+        });
+      } catch (err: any) {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal Mengirim",
+          text: err.message || "Terjadi kesalahan saat memproses pengiriman WhatsApp.",
+          confirmButtonColor: "#ef4444",
+        });
+      }
+    }
+  };
+
   const formatDate = (dateInput: string | Date | undefined | null) => {
     if (!dateInput) return "-";
     const d = typeof dateInput === "string" ? new Date(dateInput) : dateInput;
@@ -600,7 +721,7 @@ export default function UndanganSeleksiTab() {
         {/* RIWAYAT / JADWAL TERKONFIRMASI */}
         {data.grupB.booked.length > 0 && (
           <div className="space-y-3">
-            <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl flex items-center justify-between gap-3">
+            <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0" />
                 <div>
@@ -608,10 +729,16 @@ export default function UndanganSeleksiTab() {
                     Jadwal Terkonfirmasi ({data.grupB.booked.length} Sesi Terjadwal)
                   </h3>
                   <p className="text-xs text-emerald-700 font-medium">
-                    Sesi seleksi yang telah Anda pilih dapat dilihat rinciannya di bawah ini
+                    Sesi seleksi yang telah Anda pilih dapat langsung diikuti melalui tombol di kartu bawah.
                   </p>
                 </div>
               </div>
+              {data.pendaftar_info?.no_hp && (
+                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-100/90 text-emerald-900 border border-emerald-300 rounded-xl text-xs font-semibold shrink-0">
+                  <Phone className="w-3.5 h-3.5 text-emerald-700" />
+                  <span>Notifikasi WA Terkirim: <strong className="font-mono">{data.pendaftar_info.no_hp}</strong></span>
+                </div>
+              )}
             </div>
 
             <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
@@ -620,6 +747,15 @@ export default function UndanganSeleksiTab() {
                   ? new Date(item.waktu_selesai) <= new Date()
                   : false;
                 const Icon = GRUP_B_ICONS[item.category] || Calendar;
+                const linkTes =
+                  item.meet_link ||
+                  item.online_test_link ||
+                  (item.lokasi &&
+                  (item.lokasi.includes("meet.google") ||
+                    item.lokasi.includes("zoom") ||
+                    item.lokasi.startsWith("http"))
+                    ? item.lokasi
+                    : null);
 
                 return (
                   <div
@@ -669,17 +805,58 @@ export default function UndanganSeleksiTab() {
                       </div>
                     </div>
 
-                    {item.lokasi && (item.lokasi.includes("meet.google") || item.lokasi.includes("zoom") || item.lokasi.startsWith("http")) && (
-                      <div className="pt-2 border-t border-stone-100 mt-2">
-                        <a
-                          href={item.lokasi}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm transition-all"
-                        >
-                          <LinkIcon className="w-3.5 h-3.5" />
-                          Buka Google Meet Ujian
-                        </a>
+                    {!isSelesai && (
+                      <div className="pt-3 border-t border-stone-100 mt-2 space-y-2">
+                        {linkTes ? (
+                          <>
+                            <div className="flex items-center gap-2">
+                              <a
+                                href={linkTes}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-1 py-2.5 px-3 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white rounded-xl text-xs font-black flex items-center justify-center gap-1.5 shadow-md hover:shadow-lg transition-all"
+                              >
+                                <Video className="w-4 h-4" />
+                                <span>Masuk Google Meet</span>
+                              </a>
+                              <button
+                                type="button"
+                                title="Salin Link Google Meet"
+                                onClick={() => handleCopyLink(linkTes)}
+                                className="py-2.5 px-3 bg-stone-100 hover:bg-stone-200 active:scale-95 text-stone-700 rounded-xl text-xs font-bold flex items-center justify-center gap-1 border border-stone-200 transition-all shrink-0"
+                              >
+                                <Copy className="w-3.5 h-3.5" />
+                                <span className="hidden sm:inline">Salin</span>
+                              </button>
+                            </div>
+
+                            <button
+                              type="button"
+                              onClick={() => handleOpenForwardModal(item, linkTes)}
+                              className="w-full py-2 px-2.5 bg-emerald-50 hover:bg-emerald-100 active:scale-95 text-emerald-800 rounded-xl text-[11px] font-bold flex items-center justify-center gap-1.5 border border-emerald-200/80 transition-all"
+                            >
+                              <Share2 className="w-3.5 h-3.5 text-emerald-600" />
+                              <span>Kirim Link ke WhatsApp Lain</span>
+                            </button>
+                          </>
+                        ) : (
+                          <div className="bg-amber-50/90 border border-amber-200/90 rounded-xl p-2.5 text-[11px] text-amber-900 space-y-2">
+                            <div className="flex items-start gap-1.5 font-medium leading-relaxed">
+                              <Info className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
+                              <span>
+                                Tautan Google Meet sedang disiapkan panitia & akan aktif sebelum sesi dimulai.
+                              </span>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => handleOpenForwardModal(item, null)}
+                              className="w-full py-1.5 px-2 bg-white hover:bg-amber-100 text-amber-900 rounded-lg text-[10px] font-black uppercase tracking-wider flex items-center justify-center gap-1 border border-amber-300 transition-all shadow-xs"
+                            >
+                              <Phone className="w-3 h-3 text-amber-700" />
+                              <span>Kirim Salinan Jadwal ke WA Saya</span>
+                            </button>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>

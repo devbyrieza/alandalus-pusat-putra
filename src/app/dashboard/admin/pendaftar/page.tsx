@@ -1121,13 +1121,13 @@ function AdminPendaftarContent() {
         label: "Berkas Lengkap",
         color: "bg-emerald-50 text-[#9D174D] border border-emerald-100" },
       selection: {
-        label: "Sedang Ujian",
+        label: "Proses Seleksi",
         color: "bg-amber-50 text-amber-800 border border-amber-200" },
       scheduled: {
         label: "Terjadwal Ujian",
         color: "bg-indigo-50 text-indigo-800 border border-indigo-200" },
       testing: {
-        label: "Sedang Ujian",
+        label: "Proses Seleksi",
         color: "bg-amber-50 text-amber-800 border border-amber-200" },
       tested: {
         label: "Siap Dirapatkan",

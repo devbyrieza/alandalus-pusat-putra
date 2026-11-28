@@ -234,15 +234,14 @@ export async function recalculateNilaiUjian(pendaftarId: string, overrideStatus?
       console.log(`[Scoring] Semua ujian selesai. Status ${pendaftar.nama_lengkap} → tested. Rekomendasi: ${displayLabel}. Menunggu Rapat Kelulusan & publish manual Admin.`);
     }
   } else {
-    // If not all graded, but some are, update status to 'tested' (Sedang Seleksi)
-    // to ensure they appear in the right lists
+    // Belum semua komponen dinilai -> status tetap Proses Seleksi ('testing'), bukan 'tested' (Siap Dirapatkan)
     const someGraded = ak != null || quran != null || kp != null || ks != null || ws != null || wo != null;
     if (someGraded) {
       const pendaftar = await prisma.pendaftar.findUnique({ where: { id: pendaftarId } });
-      if (pendaftar && ["docs_verified", "scheduled"].includes(pendaftar.status_pendaftaran)) {
+      if (pendaftar && ["docs_verified", "scheduled", "selection", "tested"].includes(pendaftar.status_pendaftaran)) {
         await prisma.pendaftar.update({
           where: { id: pendaftarId },
-          data: { status_pendaftaran: "tested" }
+          data: { status_pendaftaran: "testing" }
         });
       }
     }
